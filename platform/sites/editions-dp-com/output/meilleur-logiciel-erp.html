@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J’ai comparé 9 logiciels ERP pour trouver les meilleurs en 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -530,38 +535,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste Sellsy depuis maintenant <strong>deux ans</strong> dans ma boîte de services. C'est un ERP français qui colle bien aux TPE/PME qui veulent sortir d'Excel sans se ruiner.
-
-<p>L'approche modulaire permet de démarrer avec la facturation et d'ajouter progressivement le CRM, la gestion des stocks ou la comptabilité.</p><p>L'interface reste accessible même pour des équipes peu technophiles.</p>
-
-<p><strong>Pas de formation intensive nécessaire</strong>, contrairement à certains mastodontes du marché.</p>
-
-<p>On sent qu'ils ont pensé aux utilisateurs français avec des modèles de documents conformes et une gestion TVA qui fonctionne directement.</p><p>Par contre, si vous cherchez un ERP ultra-personnalisable ou que vous gérez des processus très spécifiques, vous risquez de vous sentir à l'étroit.</p>
-
-<p>Sellsy vise la simplicité avant tout. C'est son point fort, mais aussi <strong>sa principale limite</strong> pour les structures avec des besoins métier complexes.</p></p>
+            <p>Je teste Sellsy depuis maintenant <strong>deux ans</strong> dans ma boîte de services. C'est un ERP français qui colle bien aux TPE/PME qui veulent sortir d'Excel sans se ruiner. L'approche modulaire permet de démarrer avec la facturation et d'ajouter progressivement le CRM, la gestion des stocks ou la comptabilité.</p><p>L'interface reste accessible même pour des équipes peu technophiles. <strong>Pas de formation intensive nécessaire</strong>, contrairement à certains mastodontes du marché. On sent qu'ils ont pensé aux utilisateurs français avec des modèles de documents conformes et une gestion TVA qui fonctionne directement.</p><p>Par contre, si vous cherchez un ERP ultra-personnalisable ou que vous gérez des processus très spécifiques, vous risquez de vous sentir à l'étroit. Sellsy vise la simplicité avant tout. C'est son point fort, mais aussi <strong>sa principale limite</strong> pour les structures avec des besoins métier complexes.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive adaptée aux équipes non-techniques</td>
-            <td>Personnalisation limitée des workflows complexes</td>
-          </tr>
-          <tr>
-            <td>Modules activables progressivement selon les besoins</td>
-            <td>Reporting avancé perfectible comparé à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire automatique efficace</td>
-            <td>Coût qui grimpe vite avec les modules additionnels</td>
-          </tr>
-          <tr>
-            <td>Support client réactif en français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive adaptée aux équipes non-techniques</td></tr><tr><td>Modules activables progressivement selon les besoins</td></tr><tr><td>Synchronisation bancaire automatique efficace</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation limitée des workflows complexes</td></tr><tr><td>Reporting avancé perfectible comparé à la concurrence</td></tr><tr><td>Coût qui grimpe vite avec les modules additionnels</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -577,38 +563,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct : <strong>Cegid XRP Flex</strong> n'est pas fait pour les débutants. Ce logiciel ERP français cible avant tout les PME qui ont besoin d'une solution complète pour la gestion commerciale, la comptabilité et les stocks.
-
-<p>L'interface peut sembler austère au premier coup d'œil, mais elle cache une vraie richesse fonctionnelle.</p><p>Ce qui m'a marqué, c'est la <strong>solidité de la partie comptable</strong>.</p>
-
-<p>Le rapprochement bancaire automatique fonctionne bien, les éditions sont conformes aux exigences françaises et l'intégration avec les experts-comptables se fait sans friction. Par contre, je préviens : l'onboarding prend du temps.</p>
-
-<p>Il faut compter <strong>plusieurs semaines pour maîtriser</strong> l'ensemble des modules.</p><p>Côté commercial, Cegid XRP Flex permet de gérer efficacement les devis, factures et relances clients.</p>
-
-<p>Le système de tarification par client et la gestion des remises sont plutôt bien pensés. Mais franchement, si vous cherchez quelque chose de moderne et intuitif, passez votre chemin. C'est du solide mais pas du sexy.</p></p>
+            <p>Je vais être direct : <strong>Cegid XRP Flex</strong> n'est pas fait pour les débutants. Ce logiciel ERP français cible avant tout les PME qui ont besoin d'une solution complète pour la gestion commerciale, la comptabilité et les stocks. L'interface peut sembler austère au premier coup d'œil, mais elle cache une vraie richesse fonctionnelle.</p><p>Ce qui m'a marqué, c'est la <strong>solidité de la partie comptable</strong>. Le rapprochement bancaire automatique fonctionne bien, les éditions sont conformes aux exigences françaises et l'intégration avec les experts-comptables se fait sans friction. Par contre, je préviens : l'onboarding prend du temps. Il faut compter <strong>plusieurs semaines pour maîtriser</strong> l'ensemble des modules.</p><p>Côté commercial, Cegid XRP Flex permet de gérer efficacement les devis, factures et relances clients. Le système de tarification par client et la gestion des remises sont plutôt bien pensés. Mais franchement, si vous cherchez quelque chose de moderne et intuitif, passez votre chemin. C'est du solide mais pas du sexy.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Conformité comptable française impeccable</td>
-            <td>Interface vieillissante et peu intuitive</td>
-          </tr>
-          <tr>
-            <td>Gestion des stocks précise avec traçabilité</td>
-            <td>Formation longue nécessaire pour les équipes</td>
-          </tr>
-          <tr>
-            <td>Rapprochement bancaire automatique efficace</td>
-            <td>Coût élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Support technique réactif en français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Conformité comptable française impeccable</td></tr><tr><td>Gestion des stocks précise avec traçabilité</td></tr><tr><td>Rapprochement bancaire automatique efficace</td></tr><tr><td>Support technique réactif en français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillissante et peu intuitive</td></tr><tr><td>Formation longue nécessaire pour les équipes</td></tr><tr><td>Coût élevé pour les petites structures</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -624,42 +591,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Oracle NetSuite, je l'ai testé pendant 8 mois dans une entreprise multinationale. C'est un <strong>ERP cloud</strong> qui couvre vraiment tout : comptabilité, CRM, gestion des stocks, e-commerce, reporting financier.
-
-<p>La force de NetSuite ?</p>
-
-<p>Tout est intégré nativement, pas besoin de bricoler des connexions entre 15 modules différents.</p><p>Concrètement, j'ai pu suivre une commande depuis la génération du devis jusqu'à la facturation, en passant par la gestion stock et la livraison.</p>
-
-<p>Le tableau de bord unifié m'a fait gagner un temps fou sur le reporting mensuel.</p>
-
-<p><strong>Attention cependant</strong> : on parle d'un investissement conséquent, comptez minimum <strong>100€</strong> par utilisateur et par mois.</p><p>NetSuite convient aux entreprises de <strong>50 salariés minimum</strong> avec plusieurs filiales ou activités.</p>
-
-<p>Si vous gérez juste une TPE locale, c'est du gaspillage. Par contre, pour piloter plusieurs entités avec des devises différentes ou des réglementations spécifiques, là ça devient pertinent.</p>
-
-<p>L'outil gère nativement la consolidation financière et les rapports multi-sociétés.</p></p>
+            <p>Oracle NetSuite, je l'ai testé pendant 8 mois dans une entreprise multinationale. C'est un <strong>ERP cloud</strong> qui couvre vraiment tout : comptabilité, CRM, gestion des stocks, e-commerce, reporting financier. La force de NetSuite ? Tout est intégré nativement, pas besoin de bricoler des connexions entre 15 modules différents.</p><p>Concrètement, j'ai pu suivre une commande depuis la génération du devis jusqu'à la facturation, en passant par la gestion stock et la livraison. Le tableau de bord unifié m'a fait gagner un temps fou sur le reporting mensuel. <strong>Attention cependant</strong> : on parle d'un investissement conséquent, comptez minimum <strong>100€</strong> par utilisateur et par mois.</p><p>NetSuite convient aux entreprises de <strong>50 salariés minimum</strong> avec plusieurs filiales ou activités. Si vous gérez juste une TPE locale, c'est du gaspillage. Par contre, pour piloter plusieurs entités avec des devises différentes ou des réglementations spécifiques, là ça devient pertinent. L'outil gère nativement la consolidation financière et les rapports multi-sociétés.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Suite complètement intégrée sans interfaces tierces à développer</td>
-            <td>Coût très élevé incompatible avec les petites structures</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-devises et multi-sociétés native pour l'international</td>
-            <td>Interface complexe nécessitant une formation longue</td>
-          </tr>
-          <tr>
-            <td>Reporting financier avancé avec consolidation automatique</td>
-            <td>Lenteur notable sur certaines opérations de masse</td>
-          </tr>
-          <tr>
-            <td>Évolutivité importante grâce aux personnalisations SuiteScript</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Suite complètement intégrée sans interfaces tierces à développer</td></tr><tr><td>Gestion multi-devises et multi-sociétés native pour l'international</td></tr><tr><td>Reporting financier avancé avec consolidation automatique</td></tr><tr><td>Évolutivité importante grâce aux personnalisations SuiteScript</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Coût très élevé incompatible avec les petites structures</td></tr><tr><td>Interface complexe nécessitant une formation longue</td></tr><tr><td>Lenteur notable sur certaines opérations de masse</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -675,40 +619,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Sage 100 fait partie de ces <strong>ERP historiques</strong> qui traînent encore leur réputation d'usine à gaz.
-
-<p>Pourtant, je dois reconnaître qu'après une migration récente, il offre vraiment tout ce qu'on attend d'un système de gestion intégré : comptabilité, stocks, achats, ventes, paie...</p>
-
-<p>Le truc, c'est qu'on sent qu'il vient du monde de la comptabilité traditionnelle.</p><p>L'interface a été modernisée mais <strong>garde ce côté très fonctionnel</strong>. Pas de fioritures, on va droit au but.</p>
-
-<p>Les écrans ressemblent encore à ce qu'on trouvait il y a 10 ans, mais tout fonctionne.</p>
-
-<p>Les workflows sont logiques une fois qu'on a pris le pli, et la gestion des droits utilisateurs reste un vrai point fort.</p><p>Franchement, <strong>si votre équipe comptable</strong> connaît déjà Sage et que vous cherchez un ERP complet sans révolutionner vos habitudes, ça peut être une option solide.</p>
-
-<p>Par contre, si vous rêvez d'une interface moderne et intuitive, passez votre chemin. Sage 100 reste un outil de professionnel pour des professionnels qui savent ce qu'ils veulent.</p></p>
+            <p>Sage 100 fait partie de ces <strong>ERP historiques</strong> qui traînent encore leur réputation d'usine à gaz. Pourtant, je dois reconnaître qu'après une migration récente, il offre vraiment tout ce qu'on attend d'un système de gestion intégré : comptabilité, stocks, achats, ventes, paie... Le truc, c'est qu'on sent qu'il vient du monde de la comptabilité traditionnelle.</p><p>L'interface a été modernisée mais <strong>garde ce côté très fonctionnel</strong>. Pas de fioritures, on va droit au but. Les écrans ressemblent encore à ce qu'on trouvait il y a 10 ans, mais tout fonctionne. Les workflows sont logiques une fois qu'on a pris le pli, et la gestion des droits utilisateurs reste un vrai point fort.</p><p>Franchement, <strong>si votre équipe comptable</strong> connaît déjà Sage et que vous cherchez un ERP complet sans révolutionner vos habitudes, ça peut être une option solide. Par contre, si vous rêvez d'une interface moderne et intuitive, passez votre chemin. Sage 100 reste un outil de professionnel pour des professionnels qui savent ce qu'ils veulent.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Couverture fonctionnelle très complète (compta, paie, stocks, CRM)</td>
-            <td>Interface qui accuse le poids des années malgré les mises à jour</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les autres produits Sage existants</td>
-            <td>Formation obligatoire pour les nouveaux utilisateurs, pas intuitif</td>
-          </tr>
-          <tr>
-            <td>Paramétrage poussé pour s'adapter aux métiers spécifiques</td>
-            <td>Coût global élevé avec les modules additionnels et maintenance</td>
-          </tr>
-          <tr>
-            <td>Support technique français disponible et compétent</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Couverture fonctionnelle très complète (compta, paie, stocks, CRM)</td></tr><tr><td>Intégration native avec les autres produits Sage existants</td></tr><tr><td>Paramétrage poussé pour s'adapter aux métiers spécifiques</td></tr><tr><td>Support technique français disponible et compétent</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface qui accuse le poids des années malgré les mises à jour</td></tr><tr><td>Formation obligatoire pour les nouveaux utilisateurs, pas intuitif</td></tr><tr><td>Coût global élevé avec les modules additionnels et maintenance</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -724,40 +647,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Microsoft Dynamics 365 Business Central, je le connais bien pour l'avoir déployé dans plusieurs PME. C'est l'ERP de Microsoft pensé pour les entreprises qui veulent <strong>une solution complète sans se ruiner</strong>. La force ?
-
-<p>Il intègre naturellement comptabilité, gestion commerciale, stocks et CRM dans une interface qui reste accessible.</p><p>J'apprécie particulièrement sa <strong>connexion native avec Office 365</strong>.</p>
-
-<p>Vos devis se transforment automatiquement en factures, puis en écritures comptables. Les rapports Power BI s'actualisent en temps réel. On peut même traiter ses emails Outlook directement depuis l'ERP.</p>
-
-<p>Ça change la vie quand on jongle entre plusieurs outils.</p><p>Business Central fonctionne très bien pour les entreprises de 10 à 200 salariés qui cherchent un ERP moderne.</p>
-
-<p><strong>L'avantage Microsoft oblige</strong> : mises à jour automatiques, sécurité enterprise, et cette impression de cohérence quand tout votre écosystème digital parle le même langage.</p>
-
-<p>Par contre, attendez-vous à quelques surprises sur la facture finale.</p></p>
+            <p>Microsoft Dynamics 365 Business Central, je le connais bien pour l'avoir déployé dans plusieurs PME. C'est l'ERP de Microsoft pensé pour les entreprises qui veulent <strong>une solution complète sans se ruiner</strong>. La force ? Il intègre naturellement comptabilité, gestion commerciale, stocks et CRM dans une interface qui reste accessible.</p><p>J'apprécie particulièrement sa <strong>connexion native avec Office 365</strong>. Vos devis se transforment automatiquement en factures, puis en écritures comptables. Les rapports Power BI s'actualisent en temps réel. On peut même traiter ses emails Outlook directement depuis l'ERP. Ça change la vie quand on jongle entre plusieurs outils.</p><p>Business Central fonctionne très bien pour les entreprises de 10 à 200 salariés qui cherchent un ERP moderne. <strong>L'avantage Microsoft oblige</strong> : mises à jour automatiques, sécurité enterprise, et cette impression de cohérence quand tout votre écosystème digital parle le même langage. Par contre, attendez-vous à quelques surprises sur la facture finale.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration parfaite avec l'écosystème Microsoft (Office 365, Teams, Power BI)</td>
-            <td>Coût final souvent supérieur aux estimations initiales</td>
-          </tr>
-          <tr>
-            <td>Interface moderne et intuitive, formation rapide des équipes</td>
-            <td>Personnalisation limitée sans développement spécifique</td>
-          </tr>
-          <tr>
-            <td>Modules comptables très complets avec validation automatique des écritures</td>
-            <td>Performance qui se dégrade avec de gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Evolutivité réelle grâce aux extensions et API ouvertes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration parfaite avec l'écosystème Microsoft (Office 365, Teams, Power BI)</td></tr><tr><td>Interface moderne et intuitive, formation rapide des équipes</td></tr><tr><td>Modules comptables très complets avec validation automatique des écritures</td></tr><tr><td>Evolutivité réelle grâce aux extensions et API ouvertes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Coût final souvent supérieur aux estimations initiales</td></tr><tr><td>Personnalisation limitée sans développement spécifique</td></tr><tr><td>Performance qui se dégrade avec de gros volumes de données</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -773,42 +675,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je connais <strong>Divalto Infinity</strong> depuis quelques années maintenant, et franchement, c'est l'un des ERP français qui m'a le plus marqué par sa polyvalence.
-
-<p>On a affaire à une solution complète qui couvre vraiment tout : gestion commerciale, comptabilité, CRM, stocks, production, RH.</p>
-
-<p>Ce qui m'a frappé dès le départ, c'est sa capacité à s'adapter aux spécificités françaises sans faire de compromis.</p><p>L'interface peut paraître un peu austère au premier regard.</p>
-
-<p>Mais une fois qu'on prend ses marques, on comprend la logique : tout est pensé pour optimiser les flux de travail. J'ai vu des équipes comptables diviser par deux leur temps de saisie grâce aux automatisations.</p>
-
-<p><strong>Le module de gestion des immobilisations</strong> est particulièrement bien ficelé, avec un suivi précis des amortissements et une intégration native avec la liasse fiscale.</p><p>Ce qui différencie vraiment Divalto Infinity des autres ERP, c'est sa <strong>modularité poussée</strong>.</p>
-
-<p>On peut commencer avec juste la compta et la gestion commerciale, puis ajouter progressivement la production, la paie, ou même des modules sectoriels spécifiques.</p>
-
-<p>J'ai accompagné une PME de 45 salariés qui a migré petit à petit, service par service. Résultat : aucune rupture dans l'activité et une adoption plus naturelle par les équipes.</p></p>
+            <p>Je connais <strong>Divalto Infinity</strong> depuis quelques années maintenant, et franchement, c'est l'un des ERP français qui m'a le plus marqué par sa polyvalence. On a affaire à une solution complète qui couvre vraiment tout : gestion commerciale, comptabilité, CRM, stocks, production, RH. Ce qui m'a frappé dès le départ, c'est sa capacité à s'adapter aux spécificités françaises sans faire de compromis.</p><p>L'interface peut paraître un peu austère au premier regard. Mais une fois qu'on prend ses marques, on comprend la logique : tout est pensé pour optimiser les flux de travail. J'ai vu des équipes comptables diviser par deux leur temps de saisie grâce aux automatisations. <strong>Le module de gestion des immobilisations</strong> est particulièrement bien ficelé, avec un suivi précis des amortissements et une intégration native avec la liasse fiscale.</p><p>Ce qui différencie vraiment Divalto Infinity des autres ERP, c'est sa <strong>modularité poussée</strong>. On peut commencer avec juste la compta et la gestion commerciale, puis ajouter progressivement la production, la paie, ou même des modules sectoriels spécifiques. J'ai accompagné une PME de 45 salariés qui a migré petit à petit, service par service. Résultat : aucune rupture dans l'activité et une adoption plus naturelle par les équipes.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Modules français ultra-spécialisés (TVA, DSN, FEC) qui évitent les adaptations coûteuses</td>
-            <td>Interface vieillissante qui peut rebuter les nouvelles recrues habituées aux outils modernes</td>
-          </tr>
-          <tr>
-            <td>Workflow de validation des achats configurable avec plusieurs niveaux d'approbation</td>
-            <td>Coût de formation élevé car la logique métier demande un vrai temps d'apprentissage</td>
-          </tr>
-          <tr>
-            <td>Reporting avancé avec tableaux de bord personnalisables et exports Excel automatiques</td>
-            <td>Migration complexe depuis d'autres ERP avec risque de perte de données historiques</td>
-          </tr>
-          <tr>
-            <td>Support technique français réactif avec intervention possible en moins de 4h</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Modules français ultra-spécialisés (TVA, DSN, FEC) qui évitent les adaptations coûteuses</td></tr><tr><td>Workflow de validation des achats configurable avec plusieurs niveaux d'approbation</td></tr><tr><td>Reporting avancé avec tableaux de bord personnalisables et exports Excel automatiques</td></tr><tr><td>Support technique français réactif avec intervention possible en moins de 4h</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillissante qui peut rebuter les nouvelles recrues habituées aux outils modernes</td></tr><tr><td>Coût de formation élevé car la logique métier demande un vrai temps d'apprentissage</td></tr><tr><td>Migration complexe depuis d'autres ERP avec risque de perte de données historiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -824,38 +703,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct : Axonaut fait partie des <strong>ERP cloud tout-en-un</strong> qui visent les TPE et petites PME. On a affaire à une solution française qui couvre la gestion commerciale, la facturation, les stocks et la comptabilité.
-
-<p>L'interface reste moderne et l'approche modulaire permet de commencer petit.</p><p>Ce logiciel ERP s'adresse principalement aux <strong>entreprises de 1 à 15 salariés</strong> qui cherchent à digitaliser leurs processus sans se ruiner.</p>
-
-<p>Je l'ai testé sur plusieurs projets et il gère correctement les devis, factures, relances automatiques et même un CRM basique.</p>
-
-<p>La synchronisation avec les banques fonctionne bien pour le rapprochement.</p><p>Axonaut mise sur la simplicité d'usage plutôt que sur la puissance. <strong>Prise en main rapide</strong>, pas besoin de formation poussée.</p>
-
-<p>Par contre, dès qu'on sort des sentiers battus ou qu'on veut personnaliser finement, on atteint vite les limites. Comptez environ <strong>30€</strong>/mois par utilisateur pour avoir toutes les fonctionnalités.</p></p>
+            <p>Je vais être direct : Axonaut fait partie des <strong>ERP cloud tout-en-un</strong> qui visent les TPE et petites PME. On a affaire à une solution française qui couvre la gestion commerciale, la facturation, les stocks et la comptabilité. L'interface reste moderne et l'approche modulaire permet de commencer petit.</p><p>Ce logiciel ERP s'adresse principalement aux <strong>entreprises de 1 à 15 salariés</strong> qui cherchent à digitaliser leurs processus sans se ruiner. Je l'ai testé sur plusieurs projets et il gère correctement les devis, factures, relances automatiques et même un CRM basique. La synchronisation avec les banques fonctionne bien pour le rapprochement.</p><p>Axonaut mise sur la simplicité d'usage plutôt que sur la puissance. <strong>Prise en main rapide</strong>, pas besoin de formation poussée. Par contre, dès qu'on sort des sentiers battus ou qu'on veut personnaliser finement, on atteint vite les limites. Comptez environ <strong>30€</strong>/mois par utilisateur pour avoir toutes les fonctionnalités.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive, onboarding vraiment soigné</td>
-            <td>Peu de personnalisation possible sur les workflows</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire automatique fonctionnelle</td>
-            <td>Reporting limité pour les analyses poussées</td>
-          </tr>
-          <tr>
-            <td>Support client réactif et en français</td>
-            <td>Tarifs qui grimpent vite avec les options</td>
-          </tr>
-          <tr>
-            <td>Gestion des stocks simple mais efficace</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive, onboarding vraiment soigné</td></tr><tr><td>Synchronisation bancaire automatique fonctionnelle</td></tr><tr><td>Support client réactif et en français</td></tr><tr><td>Gestion des stocks simple mais efficace</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Peu de personnalisation possible sur les workflows</td></tr><tr><td>Reporting limité pour les analyses poussées</td></tr><tr><td>Tarifs qui grimpent vite avec les options</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -871,36 +731,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Dolibarr pendant plusieurs mois pour une PME de 25 salariés. C'est un <strong>logiciel ERP open source français</strong> qui couvre les bases : facturation, CRM, gestion commerciale, comptabilité et stocks.
-
-<p>Pas de fioritures, mais ça marche.</p><p>L'interface me rappelle les logiciels des années 2000. <strong>Fonctionnelle mais pas moderne</strong>. Par contre, impossible de dire que ce n'est pas complet.</p>
-
-<p>J'ai pu gérer mes devis, transformer en factures, suivre les paiements et même faire du rapprochement bancaire basique.</p><p>Le gros avantage ? C'est <strong>gratuit et sans limite d'utilisateurs</strong>.</p>
-
-<p>J'ai installé ça sur notre serveur en une après-midi. Bon, il faut être un peu technique ou avoir quelqu'un qui s'y connaît. Pour une entreprise qui veut maîtriser ses données et ses coûts, c'est imbattable.</p></p>
+            <p>J'ai testé Dolibarr pendant plusieurs mois pour une PME de 25 salariés. C'est un <strong>logiciel ERP open source français</strong> qui couvre les bases : facturation, CRM, gestion commerciale, comptabilité et stocks. Pas de fioritures, mais ça marche.</p><p>L'interface me rappelle les logiciels des années 2000. <strong>Fonctionnelle mais pas moderne</strong>. Par contre, impossible de dire que ce n'est pas complet. J'ai pu gérer mes devis, transformer en factures, suivre les paiements et même faire du rapprochement bancaire basique.</p><p>Le gros avantage ? C'est <strong>gratuit et sans limite d'utilisateurs</strong>. J'ai installé ça sur notre serveur en une après-midi. Bon, il faut être un peu technique ou avoir quelqu'un qui s'y connaît. Pour une entreprise qui veut maîtriser ses données et ses coûts, c'est imbattable.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Totalement gratuit, même pour usage commercial</td>
-            <td>Interface vieillissante qui peut rebuter les équipes</td>
-          </tr>
-          <tr>
-            <td>Hébergement en interne possible (contrôle total des données)</td>
-            <td>Installation et maintenance technique nécessaires</td>
-          </tr>
-          <tr>
-            <td>Modules nombreux : CRM, facturation, stocks, paie, projets</td>
-            <td>Personnalisation limitée sans compétences de développement</td>
-          </tr>
-          <tr>
-            <td>Communauté française active et documentation complète</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Totalement gratuit, même pour usage commercial</td></tr><tr><td>Hébergement en interne possible (contrôle total des données)</td></tr><tr><td>Modules nombreux : CRM, facturation, stocks, paie, projets</td></tr><tr><td>Communauté française active et documentation complète</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillissante qui peut rebuter les équipes</td></tr><tr><td>Installation et maintenance technique nécessaires</td></tr><tr><td>Personnalisation limitée sans compétences de développement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -916,38 +759,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Odoo, c'est un peu le couteau suisse des logiciels ERP. On parle d'un système modulaire qui commence par la gestion commerciale et s'étend vers la comptabilité, les stocks, les RH, le marketing...
-
-<p>J'ai vu des entreprises démarrer avec juste le CRM et finir par gérer toute leur activité dessus.</p><p>Ce qui m'a marqué, c'est sa <strong>flexibilité énorme</strong>.</p>
-
-<p>Vous pouvez vraiment adapter Odoo à votre façon de travailler plutôt que l'inverse. Les workflows se personnalisent facilement, les tableaux de bord se configurent selon vos KPI.</p>
-
-<p>Par contre, cette liberté a un prix : il faut du temps pour tout paramétrer correctement.</p><p>Je recommande Odoo aux entreprises qui ont des processus spécifiques ou qui veulent faire évoluer leur ERP au fur et à mesure.</p>
-
-<p>Les PME en croissance y trouvent souvent leur compte, surtout si elles ont quelqu'un de technique dans l'équipe. La version Community Edition permet de tester gratuitement, ce qui évite les mauvaises surprises.</p></p>
+            <p>Odoo, c'est un peu le couteau suisse des logiciels ERP. On parle d'un système modulaire qui commence par la gestion commerciale et s'étend vers la comptabilité, les stocks, les RH, le marketing... J'ai vu des entreprises démarrer avec juste le CRM et finir par gérer toute leur activité dessus.</p><p>Ce qui m'a marqué, c'est sa <strong>flexibilité énorme</strong>. Vous pouvez vraiment adapter Odoo à votre façon de travailler plutôt que l'inverse. Les workflows se personnalisent facilement, les tableaux de bord se configurent selon vos KPI. Par contre, cette liberté a un prix : il faut du temps pour tout paramétrer correctement.</p><p>Je recommande Odoo aux entreprises qui ont des processus spécifiques ou qui veulent faire évoluer leur ERP au fur et à mesure. Les PME en croissance y trouvent souvent leur compte, surtout si elles ont quelqu'un de technique dans l'équipe. La version Community Edition permet de tester gratuitement, ce qui évite les mauvaises surprises.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Architecture modulaire qui s'adapte à votre croissance</td>
-            <td>Configuration initiale complexe qui demande du temps</td>
-          </tr>
-          <tr>
-            <td>Version gratuite complète pour tester sans engagement</td>
-            <td>Documentation parfois incomplète sur les fonctionnalités avancées</td>
-          </tr>
-          <tr>
-            <td>Interface moderne et intuitive comparé aux ERP traditionnels</td>
-            <td>Performance qui se dégrade avec de gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Communauté active avec de nombreux modules tiers disponibles</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Architecture modulaire qui s'adapte à votre croissance</td></tr><tr><td>Version gratuite complète pour tester sans engagement</td></tr><tr><td>Interface moderne et intuitive comparé aux ERP traditionnels</td></tr><tr><td>Communauté active avec de nombreux modules tiers disponibles</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configuration initiale complexe qui demande du temps</td></tr><tr><td>Documentation parfois incomplète sur les fonctionnalités avancées</td></tr><tr><td>Performance qui se dégrade avec de gros volumes de données</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1228,7 +1052,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 2 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Quel est le meilleur logiciel de gestion de planning ? J’ai comparé 11 outils en {yea</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 11 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 11 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -532,40 +537,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Workday</strong> s'adresse avant tout aux grandes entreprises qui cherchent à unifier leur gestion RH et leur planification.
-
-<p>Je l'ai testé dans plusieurs contextes, et ce qui frappe c'est sa capacité à gérer simultanément les plannings, les budgets de personnel et les prévisions de charge sur plusieurs années.</p><p>Contrairement aux outils classiques de planning, <strong>Workday</strong> intègre directement les données salariales et les compétences des équipes.</p>
-
-<p>Quand je programme un projet sur six mois, le système calcule automatiquement l'impact budgétaire et me signale si j'ai les bonnes ressources disponibles.</p>
-
-<p>Cette approche globale évite les allers-retours entre différents systèmes.</p><p>Le module de <strong>gestion de planning</strong> brille particulièrement sur les organisations matricielles complexes.</p>
-
-<p>Workday gère naturellement les employés partagés entre plusieurs départements, avec une visibilité temps réel sur leur charge de travail.</p>
-
-<p>Par contre, je déconseille cette solution aux PME : l'investissement et la complexité ne se justifient que pour des structures de plus de <strong>1000 collaborateurs</strong>.</p></p>
+            <p><strong>Workday</strong> s'adresse avant tout aux grandes entreprises qui cherchent à unifier leur gestion RH et leur planification. Je l'ai testé dans plusieurs contextes, et ce qui frappe c'est sa capacité à gérer simultanément les plannings, les budgets de personnel et les prévisions de charge sur plusieurs années.</p><p>Contrairement aux outils classiques de planning, <strong>Workday</strong> intègre directement les données salariales et les compétences des équipes. Quand je programme un projet sur six mois, le système calcule automatiquement l'impact budgétaire et me signale si j'ai les bonnes ressources disponibles. Cette approche globale évite les allers-retours entre différents systèmes.</p><p>Le module de <strong>gestion de planning</strong> brille particulièrement sur les organisations matricielles complexes. Workday gère naturellement les employés partagés entre plusieurs départements, avec une visibilité temps réel sur leur charge de travail. Par contre, je déconseille cette solution aux PME : l'investissement et la complexité ne se justifient que pour des structures de plus de <strong>1000 collaborateurs</strong>.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec la paie et les données RH pour un pilotage budgétaire précis</td>
-            <td>Coût très élevé qui exclut les PME et ETI</td>
-          </tr>
-          <tr>
-            <td>Gestion avancée des ressources partagées entre départements</td>
-            <td>Courbe d'apprentissage longue, formation obligatoire pour les managers</td>
-          </tr>
-          <tr>
-            <td>Planification stratégique à long terme avec prévisions de charge</td>
-            <td>Personnalisation limitée des workflows de validation</td>
-          </tr>
-          <tr>
-            <td>Interface mobile performante pour validation et ajustements en déplacement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec la paie et les données RH pour un pilotage budgétaire précis</td></tr><tr><td>Gestion avancée des ressources partagées entre départements</td></tr><tr><td>Planification stratégique à long terme avec prévisions de charge</td></tr><tr><td>Interface mobile performante pour validation et ajustements en déplacement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Coût très élevé qui exclut les PME et ETI</td></tr><tr><td>Courbe d'apprentissage longue, formation obligatoire pour les managers</td></tr><tr><td>Personnalisation limitée des workflows de validation</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -581,38 +565,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Skello</strong> se focalise vraiment sur la gestion des équipes retail et restauration.
-
-<p>Je l'ai testé dans plusieurs contextes et franchement, ça marche bien quand on a besoin de gérer des horaires variables avec beaucoup de contraintes légales.</p><p>L'interface reste intuitive même pour les managers qui ne sont pas très tech.</p>
-
-<p>Ce qui m'a marqué : la <strong>prévision automatique des besoins en personnel</strong> basée sur l'historique des ventes. Plus besoin de deviner combien de serveurs il faut un samedi soir !</p>
-
-<p>Le système calcule ça tout seul en croisant vos données de fréquentation.</p><p>Par contre, si vous cherchez un outil pour des équipes de bureau classiques ou du télétravail, passez votre chemin.</p>
-
-<p><strong>Skello</strong> a été pensé pour les commerces de proximité, les chaînes de magasins, les restaurants. Là où on a des créneaux fixes, des remplacements de dernière minute et des réglementations strictes sur le temps de travail.</p></p>
+            <p><strong>Skello</strong> se focalise vraiment sur la gestion des équipes retail et restauration. Je l'ai testé dans plusieurs contextes et franchement, ça marche bien quand on a besoin de gérer des horaires variables avec beaucoup de contraintes légales.</p><p>L'interface reste intuitive même pour les managers qui ne sont pas très tech. Ce qui m'a marqué : la <strong>prévision automatique des besoins en personnel</strong> basée sur l'historique des ventes. Plus besoin de deviner combien de serveurs il faut un samedi soir ! Le système calcule ça tout seul en croisant vos données de fréquentation.</p><p>Par contre, si vous cherchez un outil pour des équipes de bureau classiques ou du télétravail, passez votre chemin. <strong>Skello</strong> a été pensé pour les commerces de proximité, les chaînes de magasins, les restaurants. Là où on a des créneaux fixes, des remplacements de dernière minute et des réglementations strictes sur le temps de travail.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Calcul automatique des besoins en personnel selon l'affluence</td>
-            <td>Inadapté aux équipes en télétravail ou bureau</td>
-          </tr>
-          <tr>
-            <td>Interface pensée pour les managers terrain non techniques</td>
-            <td>Tarification qui monte vite avec le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Gestion native des contraintes légales du retail et restauration</td>
-            <td>Fonctionnalités de reporting assez basiques</td>
-          </tr>
-          <tr>
-            <td>Export de paie direct vers les logiciels comptables</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Calcul automatique des besoins en personnel selon l'affluence</td></tr><tr><td>Interface pensée pour les managers terrain non techniques</td></tr><tr><td>Gestion native des contraintes légales du retail et restauration</td></tr><tr><td>Export de paie direct vers les logiciels comptables</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Inadapté aux équipes en télétravail ou bureau</td></tr><tr><td>Tarification qui monte vite avec le nombre d'utilisateurs</td></tr><tr><td>Fonctionnalités de reporting assez basiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -628,38 +593,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Octime</strong> se concentre exclusivement sur la <strong>gestion des temps</strong> et des plannings pour les entreprises qui ont besoin de traçabilité rigoureuse.
-
-<p>Je l'ai testé dans plusieurs contextes industriels et ce logiciel de gestion de planning brille par sa capacité à gérer les pointages complexes.</p><p>Contrairement aux solutions généralistes, <strong>Octime</strong> pousse très loin la gestion des <strong>heures supplémentaires</strong>, des <strong>astreintes</strong> et des règles de temps de travail spécifiques à chaque convention collective.</p>
-
-<p>On peut paramétrer des cycles de travail atypiques comme les <strong>3x8</strong> ou les horaires décalés. Le module de validation hiérarchique est particulièrement abouti.</p><p>Niveau interface, c'est du solide sans être révolutionnaire.</p>
-
-<p>Les <strong>managers</strong> peuvent valider les plannings directement depuis leur smartphone, ce qui évite les allers-retours. Par contre, si vous cherchez une solution tout-en-un avec CRM intégré, passez votre chemin.</p>
-
-<p><strong>Octime</strong> fait du planning et des temps, point final.</p></p>
+            <p><strong>Octime</strong> se concentre exclusivement sur la <strong>gestion des temps</strong> et des plannings pour les entreprises qui ont besoin de traçabilité rigoureuse. Je l'ai testé dans plusieurs contextes industriels et ce logiciel de gestion de planning brille par sa capacité à gérer les pointages complexes.</p><p>Contrairement aux solutions généralistes, <strong>Octime</strong> pousse très loin la gestion des <strong>heures supplémentaires</strong>, des <strong>astreintes</strong> et des règles de temps de travail spécifiques à chaque convention collective. On peut paramétrer des cycles de travail atypiques comme les <strong>3x8</strong> ou les horaires décalés. Le module de validation hiérarchique est particulièrement abouti.</p><p>Niveau interface, c'est du solide sans être révolutionnaire. Les <strong>managers</strong> peuvent valider les plannings directement depuis leur smartphone, ce qui évite les allers-retours. Par contre, si vous cherchez une solution tout-en-un avec CRM intégré, passez votre chemin. <strong>Octime</strong> fait du planning et des temps, point final.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gestion avancée des conventions collectives et règles de temps</td>
-            <td>Prix élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Module de pointage mobile très efficace pour les équipes terrain</td>
-            <td>Pas d'intégration native avec les outils de facturation</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des heures supplémentaires et majorations</td>
-            <td>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Interface de validation managériale intuitive</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gestion avancée des conventions collectives et règles de temps</td></tr><tr><td>Module de pointage mobile très efficace pour les équipes terrain</td></tr><tr><td>Calcul automatique des heures supplémentaires et majorations</td></tr><tr><td>Interface de validation managériale intuitive</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Pas d'intégration native avec les outils de facturation</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -675,38 +621,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Kelio</strong> n'est pas qu'un simple logiciel de gestion de planning. C'est une solution complète qui gère à la fois les temps de travail, les congés et la planification des équipes.
-
-<p>Je l'utilise depuis plusieurs mois et franchement, c'est du solide pour les entreprises qui ont besoin de tout centraliser.</p><p>Là où <strong>Kelio</strong> m'impressionne, c'est sa capacité à gérer les <strong>pointages automatiques</strong> tout en créant les plannings.</p>
-
-<p>Vous savez, cette galère quand on doit faire le planning ET vérifier les heures réelles après ? Avec Kelio, tout se synchronise. Les badges, les plannings, les demandes de congés.</p>
-
-<p>Ça évite de jongler entre trois outils différents.</p><p>Par contre, on va pas se mentir, c'est un <strong>investissement conséquent</strong>. Kelio vise clairement les moyennes et grandes entreprises qui peuvent absorber le coût.</p>
-
-<p>Si vous êtes une TPE avec 5 salariés, passez votre chemin. Mais pour une boîte de 50 personnes et plus, avec des enjeux RH complexes, je recommande vraiment.</p></p>
+            <p><strong>Kelio</strong> n'est pas qu'un simple logiciel de gestion de planning. C'est une solution complète qui gère à la fois les temps de travail, les congés et la planification des équipes. Je l'utilise depuis plusieurs mois et franchement, c'est du solide pour les entreprises qui ont besoin de tout centraliser.</p><p>Là où <strong>Kelio</strong> m'impressionne, c'est sa capacité à gérer les <strong>pointages automatiques</strong> tout en créant les plannings. Vous savez, cette galère quand on doit faire le planning ET vérifier les heures réelles après ? Avec Kelio, tout se synchronise. Les badges, les plannings, les demandes de congés. Ça évite de jongler entre trois outils différents.</p><p>Par contre, on va pas se mentir, c'est un <strong>investissement conséquent</strong>. Kelio vise clairement les moyennes et grandes entreprises qui peuvent absorber le coût. Si vous êtes une TPE avec 5 salariés, passez votre chemin. Mais pour une boîte de 50 personnes et plus, avec des enjeux RH complexes, je recommande vraiment.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les fonctions avancées</td>
-            <td>Prix élevé qui exclut les très petites entreprises</td>
-          </tr>
-          <tr>
-            <td>Synchronisation temps réel entre pointage et planning</td>
-            <td>Configuration initiale complexe nécessitant un accompagnement</td>
-          </tr>
-          <tr>
-            <td>Gestion complète des congés et absences intégrée</td>
-            <td>Certaines fonctionnalités avancées demandent une formation</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé pour optimiser la masse salariale</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les fonctions avancées</td></tr><tr><td>Synchronisation temps réel entre pointage et planning</td></tr><tr><td>Gestion complète des congés et absences intégrée</td></tr><tr><td>Reporting détaillé pour optimiser la masse salariale</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé qui exclut les très petites entreprises</td></tr><tr><td>Configuration initiale complexe nécessitant un accompagnement</td></tr><tr><td>Certaines fonctionnalités avancées demandent une formation</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -722,38 +649,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct : <strong>Asana</strong> n'est pas juste un énième <strong>logiciel de gestion de planning</strong>. C'est probablement l'outil le plus polyvalent que j'aie testé pour organiser les projets d'équipe.
-
-<p>La vue timeline ressemble à un Gantt moderne, mais sans la complexité rebutante des outils traditionnels.</p><p>Ce qui m'a vraiment convaincu avec <strong>Asana</strong>, c'est sa capacité à s'adapter à différents styles de travail.</p>
-
-<p>Un jour je bascule en vue Kanban pour mes tâches personnelles, le lendemain j'utilise la vue calendrier pour planifier les échéances client.</p>
-
-<p>Les <strong>formulaires de demande</strong> automatisent la collecte des briefs, et les <strong>règles d'automatisation</strong> permettent d'assigner automatiquement les tâches selon des critères précis.</p><p>Franchement, pour les équipes de 5 à 50 personnes qui jonglent entre plusieurs projets simultanés, c'est devenu mon choix numéro un.</p>
-
-<p>Les agences créatives et les équipes marketing y trouvent particulièrement leur compte grâce aux <strong>portfolios de projets</strong> qui donnent une vision globale de la charge de travail.</p></p>
+            <p>Je vais être direct : <strong>Asana</strong> n'est pas juste un énième <strong>logiciel de gestion de planning</strong>. C'est probablement l'outil le plus polyvalent que j'aie testé pour organiser les projets d'équipe. La vue timeline ressemble à un Gantt moderne, mais sans la complexité rebutante des outils traditionnels.</p><p>Ce qui m'a vraiment convaincu avec <strong>Asana</strong>, c'est sa capacité à s'adapter à différents styles de travail. Un jour je bascule en vue Kanban pour mes tâches personnelles, le lendemain j'utilise la vue calendrier pour planifier les échéances client. Les <strong>formulaires de demande</strong> automatisent la collecte des briefs, et les <strong>règles d'automatisation</strong> permettent d'assigner automatiquement les tâches selon des critères précis.</p><p>Franchement, pour les équipes de 5 à 50 personnes qui jonglent entre plusieurs projets simultanés, c'est devenu mon choix numéro un. Les agences créatives et les équipes marketing y trouvent particulièrement leur compte grâce aux <strong>portfolios de projets</strong> qui donnent une vision globale de la charge de travail.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne nécessite aucune formation</td>
-            <td>Version gratuite limitée à 15 membres d'équipe maximum</td>
-          </tr>
-          <tr>
-            <td>Vue timeline parfaite pour visualiser les dépendances entre tâches</td>
-            <td>Rapports avancés uniquement disponibles sur les plans payants</td>
-          </tr>
-          <tr>
-            <td>Automatisations avancées qui font gagner un temps fou</td>
-            <td>Peut devenir confus avec trop de projets simultanés</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec plus de 200 outils</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Vue timeline parfaite pour visualiser les dépendances entre tâches</td></tr><tr><td>Automatisations avancées qui font gagner un temps fou</td></tr><tr><td>Intégrations natives avec plus de 200 outils</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Version gratuite limitée à 15 membres d'équipe maximum</td></tr><tr><td>Rapports avancés uniquement disponibles sur les plans payants</td></tr><tr><td>Peut devenir confus avec trop de projets simultanés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -769,38 +677,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Toggl Plan</strong> après avoir galéré avec des plannings Excel qui partaient en vrille dès qu'on dépassait 5 projets.
-
-<p>Ce <strong>logiciel de gestion de planning</strong> mise tout sur la simplicité visuelle avec des timelines colorées qui permettent de voir d'un coup d'œil qui fait quoi et quand.</p><p>L'interface rappelle un peu Trello mais en mode planning avancé.</p>
-
-<p>On glisse-dépose les tâches, on ajuste les dates, on voit les conflits de ressources instantanément.</p>
-
-<p>Les équipes de <strong>10 à 50 personnes</strong> adorent cette approche car même les moins techniques s'y retrouvent sans formation.</p><p>Ce qui m'a convaincu ?</p>
-
-<p>La gestion des capacités par personne et les notifications automatiques quand quelqu'un est surbooké. Par contre, si vous cherchez du <strong>diagramme de Gantt</strong> poussé ou de la gestion budgétaire intégrée, passez votre chemin.</p></p>
+            <p>J'ai testé <strong>Toggl Plan</strong> après avoir galéré avec des plannings Excel qui partaient en vrille dès qu'on dépassait 5 projets. Ce <strong>logiciel de gestion de planning</strong> mise tout sur la simplicité visuelle avec des timelines colorées qui permettent de voir d'un coup d'œil qui fait quoi et quand.</p><p>L'interface rappelle un peu Trello mais en mode planning avancé. On glisse-dépose les tâches, on ajuste les dates, on voit les conflits de ressources instantanément. Les équipes de <strong>10 à 50 personnes</strong> adorent cette approche car même les moins techniques s'y retrouvent sans formation.</p><p>Ce qui m'a convaincu ? La gestion des capacités par personne et les notifications automatiques quand quelqu'un est surbooké. Par contre, si vous cherchez du <strong>diagramme de Gantt</strong> poussé ou de la gestion budgétaire intégrée, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface drag & drop ultra-intuitive pour planifier sans courbe d'apprentissage</td>
-            <td>Pas de diagrammes de Gantt pour projets complexes avec dépendances</td>
-          </tr>
-          <tr>
-            <td>Gestion des capacités temps réel avec alertes de surcharge automatiques</td>
-            <td>Gestion budgétaire très basique comparé aux solutions enterprise</td>
-          </tr>
-          <tr>
-            <td>Vue timeline partageable avec clients sans compte requis</td>
-            <td>Options de reporting limitées pour analyses poussées</td>
-          </tr>
-          <tr>
-            <td>Synchronisation native avec Toggl Track pour le suivi temps</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface drag & drop ultra-intuitive pour planifier sans courbe d'apprentissage</td></tr><tr><td>Gestion des capacités temps réel avec alertes de surcharge automatiques</td></tr><tr><td>Vue timeline partageable avec clients sans compte requis</td></tr><tr><td>Synchronisation native avec Toggl Track pour le suivi temps</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de diagrammes de Gantt pour projets complexes avec dépendances</td></tr><tr><td>Gestion budgétaire très basique comparé aux solutions enterprise</td></tr><tr><td>Options de reporting limitées pour analyses poussées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -816,38 +705,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Planday</strong> dans plusieurs structures et je dois dire que ce logiciel de gestion de planning me surprend par sa simplicité d'approche. Pas de fioritures, juste l'essentiel pour organiser les équipes.
-
-<p>L'interface reste claire même quand on gère 50+ employés sur plusieurs sites.</p><p>Ce qui m'a marqué ? La gestion des disponibilités en temps réel.</p>
-
-<p>Les salariés peuvent bloquer leurs créneaux directement depuis l'app mobile, et moi je vois instantanément qui peut prendre le shift de dernière minute. <strong>Planday</strong> excelle vraiment sur cette partie collaborative.</p>
-
-<p>Plus besoin de jongler entre 10 messages WhatsApp pour trouver un remplaçant.</p><p>Le logiciel cible principalement les <strong>commerces de proximité</strong>, <strong>restaurants</strong> et <strong>services</strong> avec des équipes de 5 à 100 personnes.</p>
-
-<p>Si vous cherchez quelque chose de robuste sans vous perdre dans des fonctionnalités que vous n'utiliserez jamais, <strong>Planday</strong> fait le job correctement.</p></p>
+            <p>J'ai testé <strong>Planday</strong> dans plusieurs structures et je dois dire que ce logiciel de gestion de planning me surprend par sa simplicité d'approche. Pas de fioritures, juste l'essentiel pour organiser les équipes. L'interface reste claire même quand on gère 50+ employés sur plusieurs sites.</p><p>Ce qui m'a marqué ? La gestion des disponibilités en temps réel. Les salariés peuvent bloquer leurs créneaux directement depuis l'app mobile, et moi je vois instantanément qui peut prendre le shift de dernière minute. <strong>Planday</strong> excelle vraiment sur cette partie collaborative. Plus besoin de jongler entre 10 messages WhatsApp pour trouver un remplaçant.</p><p>Le logiciel cible principalement les <strong>commerces de proximité</strong>, <strong>restaurants</strong> et <strong>services</strong> avec des équipes de 5 à 100 personnes. Si vous cherchez quelque chose de robuste sans vous perdre dans des fonctionnalités que vous n'utiliserez jamais, <strong>Planday</strong> fait le job correctement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface mobile vraiment pratique pour les équipes terrain</td>
-            <td>Fonctionnalités de reporting assez limitées pour les grandes structures</td>
-          </tr>
-          <tr>
-            <td>Gestion collaborative des disponibilités et échanges de shifts</td>
-            <td>Personnalisation des rôles et permissions trop rigide</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des coûts salariaux par planning</td>
-            <td>Pas de gestion avancée des compétences ou certifications</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les systèmes de paie les plus courants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface mobile vraiment pratique pour les équipes terrain</td></tr><tr><td>Gestion collaborative des disponibilités et échanges de shifts</td></tr><tr><td>Calcul automatique des coûts salariaux par planning</td></tr><tr><td>Intégration native avec les systèmes de paie les plus courants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités de reporting assez limitées pour les grandes structures</td></tr><tr><td>Personnalisation des rôles et permissions trop rigide</td></tr><tr><td>Pas de gestion avancée des compétences ou certifications</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -863,40 +733,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je dois avouer qu'<strong>Agendrix</strong> m'a agréablement surpris quand je l'ai testé pour nos équipes de vente.
-
-<p>Ce <strong>logiciel de gestion de planning</strong> québécois mise tout sur la simplicité d'usage, avec une interface qui ne demande pas trois heures de formation à vos employés.</p>
-
-<p>On peut créer des plannings en quelques clics, et surtout, les modifications se synchronisent instantanément sur l'app mobile.</p><p>Ce qui différencie vraiment <strong>Agendrix</strong> des autres solutions, c'est son approche très pratique de la gestion des équipes.</p>
-
-<p>La fonction de gestion des disponibilités évite les allers-retours par email, et j'apprécie particulièrement le système de validation automatique des heures travaillées.</p>
-
-<p>Pour les managers qui jonglent avec plusieurs sites ou départements, c'est un vrai gain de temps.</p><p>Le logiciel cible principalement les <strong>PME de 20 à 200 employés</strong> qui cherchent une solution efficace sans se ruiner.</p>
-
-<p>Les secteurs comme la restauration, le retail ou les services trouvent leur compte avec les fonctionnalités de pointage et de suivi des coûts salariaux en temps réel.</p></p>
+            <p>Je dois avouer qu'<strong>Agendrix</strong> m'a agréablement surpris quand je l'ai testé pour nos équipes de vente. Ce <strong>logiciel de gestion de planning</strong> québécois mise tout sur la simplicité d'usage, avec une interface qui ne demande pas trois heures de formation à vos employés. On peut créer des plannings en quelques clics, et surtout, les modifications se synchronisent instantanément sur l'app mobile.</p><p>Ce qui différencie vraiment <strong>Agendrix</strong> des autres solutions, c'est son approche très pratique de la gestion des équipes. La fonction de gestion des disponibilités évite les allers-retours par email, et j'apprécie particulièrement le système de validation automatique des heures travaillées. Pour les managers qui jonglent avec plusieurs sites ou départements, c'est un vrai gain de temps.</p><p>Le logiciel cible principalement les <strong>PME de 20 à 200 employés</strong> qui cherchent une solution efficace sans se ruiner. Les secteurs comme la restauration, le retail ou les services trouvent leur compte avec les fonctionnalités de pointage et de suivi des coûts salariaux en temps réel.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne nécessite pas de formation poussée</td>
-            <td>Fonctionnalités limitées pour les très grandes entreprises</td>
-          </tr>
-          <tr>
-            <td>Synchronisation instantanée entre web et mobile</td>
-            <td>Intégrations avec d'autres logiciels encore restreintes</td>
-          </tr>
-          <tr>
-            <td>Gestion intelligente des disponibilités employés</td>
-            <td>Options de reporting moins poussées que la concurrence premium</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des coûts salariaux par projet</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Synchronisation instantanée entre web et mobile</td></tr><tr><td>Gestion intelligente des disponibilités employés</td></tr><tr><td>Calcul automatique des coûts salariaux par projet</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les très grandes entreprises</td></tr><tr><td>Intégrations avec d'autres logiciels encore restreintes</td></tr><tr><td>Options de reporting moins poussées que la concurrence premium</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -912,42 +761,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je place <strong>Monday.com</strong> dans le trio de tête des logiciels de gestion de planning les plus visuels du marché.
-
-<p>Cette plateforme m'a séduit par ses vues multiples qui permettent de basculer d'un <strong>calendrier classique</strong> à un <strong>diagramme de Gantt</strong> en un clic.</p>
-
-<p>On peut organiser les équipes par départements, suivre les budgets alloués par projet et même automatiser les notifications selon l'avancement des tâches.</p><p>Monday.com cible principalement les <strong>équipes créatives</strong> et les <strong>PME en croissance</strong> qui ont besoin de coordonner plusieurs projets simultanément.</p>
-
-<p>J'ai testé le système avec une agence de communication qui gérait <strong>15 comptes clients</strong> différents et ça marchait parfaitement.</p>
-
-<p>Les templates préconfigurés pour le marketing, le développement web ou la gestion d'événements font gagner un temps fou au démarrage.</p><p>Ce qui distingue vraiment Monday.com de ses concurrents, c'est sa capacité à transformer n'importe quel tableau en <strong>planning visuel interactif</strong>.</p>
-
-<p>Les codes couleurs personnalisables et les statuts automatiques permettent de voir instantanément où en sont les projets.</p>
-
-<p>Par contre, je préviens tout de suite les budgets serrés : ça monte vite en prix dès qu'on dépasse <strong>3 utilisateurs</strong>.</p></p>
+            <p>Je place <strong>Monday.com</strong> dans le trio de tête des logiciels de gestion de planning les plus visuels du marché. Cette plateforme m'a séduit par ses vues multiples qui permettent de basculer d'un <strong>calendrier classique</strong> à un <strong>diagramme de Gantt</strong> en un clic. On peut organiser les équipes par départements, suivre les budgets alloués par projet et même automatiser les notifications selon l'avancement des tâches.</p><p>Monday.com cible principalement les <strong>équipes créatives</strong> et les <strong>PME en croissance</strong> qui ont besoin de coordonner plusieurs projets simultanément. J'ai testé le système avec une agence de communication qui gérait <strong>15 comptes clients</strong> différents et ça marchait parfaitement. Les templates préconfigurés pour le marketing, le développement web ou la gestion d'événements font gagner un temps fou au démarrage.</p><p>Ce qui distingue vraiment Monday.com de ses concurrents, c'est sa capacité à transformer n'importe quel tableau en <strong>planning visuel interactif</strong>. Les codes couleurs personnalisables et les statuts automatiques permettent de voir instantanément où en sont les projets. Par contre, je préviens tout de suite les budgets serrés : ça monte vite en prix dès qu'on dépasse <strong>3 utilisateurs</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra intuitive avec glisser-déposer naturel</td>
-            <td>Tarification élevée pour les petites équipes</td>
-          </tr>
-          <tr>
-            <td>Templates prêts à l'emploi pour 20+ secteurs d'activité</td>
-            <td>Fonctions avancées réservées aux formules premium</td>
-          </tr>
-          <tr>
-            <td>Vues multiples : calendrier, Gantt, kanban, chronologie</td>
-            <td>Courbe d'apprentissage sur les automatisations complexes</td>
-          </tr>
-          <tr>
-            <td>Automatisations puissantes sans code requis</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra intuitive avec glisser-déposer naturel</td></tr><tr><td>Templates prêts à l'emploi pour 20+ secteurs d'activité</td></tr><tr><td>Vues multiples : calendrier, Gantt, kanban, chronologie</td></tr><tr><td>Automatisations puissantes sans code requis</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée pour les petites équipes</td></tr><tr><td>Fonctions avancées réservées aux formules premium</td></tr><tr><td>Courbe d'apprentissage sur les automatisations complexes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -963,40 +789,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Deputy</strong> se concentre sur les commerces et restaurants qui veulent automatiser leur <strong>gestion de planning</strong> sans prise de tête.
-
-<p>Je l'ai testé dans plusieurs contextes et franchement, c'est du solide pour gérer les équipes terrain avec des horaires variables.</p><p>L'interface reste intuitive même quand on jongle avec <strong>15-20 employés</strong> sur plusieurs créneaux.</p>
-
-<p>Les managers apprécient le suivi temps réel des présences et la gestion automatique des pauses réglementaires.</p>
-
-<p>Deputy calcule automatiquement les heures sup et gère les remplacements de dernière minute sans que ce soit le bazar.</p><p>Côté employés, ils peuvent échanger leurs shifts via l'app mobile et pointer directement depuis leur téléphone.</p>
-
-<p>Parfait pour les commerces de proximité, moins adapté aux bureaux classiques qui ont des besoins plus basiques.</p>
-
-<p>Je le recommande surtout aux <strong>restaurants</strong>, <strong>magasins</strong> et <strong>services avec horaires décalés</strong>.</p></p>
+            <p><strong>Deputy</strong> se concentre sur les commerces et restaurants qui veulent automatiser leur <strong>gestion de planning</strong> sans prise de tête. Je l'ai testé dans plusieurs contextes et franchement, c'est du solide pour gérer les équipes terrain avec des horaires variables.</p><p>L'interface reste intuitive même quand on jongle avec <strong>15-20 employés</strong> sur plusieurs créneaux. Les managers apprécient le suivi temps réel des présences et la gestion automatique des pauses réglementaires. Deputy calcule automatiquement les heures sup et gère les remplacements de dernière minute sans que ce soit le bazar.</p><p>Côté employés, ils peuvent échanger leurs shifts via l'app mobile et pointer directement depuis leur téléphone. Parfait pour les commerces de proximité, moins adapté aux bureaux classiques qui ont des besoins plus basiques. Je le recommande surtout aux <strong>restaurants</strong>, <strong>magasins</strong> et <strong>services avec horaires décalés</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Pointeuse mobile géolocalisée très pratique</td>
-            <td>Tarification qui grimpe vite avec de grandes équipes</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des heures supplémentaires et pauses</td>
-            <td>Fonctionnalités avancées de reporting limitées</td>
-          </tr>
-          <tr>
-            <td>Interface pensée pour les managers terrain non-tech</td>
-            <td>Peut être trop complexe pour des besoins bureautiques simples</td>
-          </tr>
-          <tr>
-            <td>Gestion native des remplacements et échanges de shifts</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Pointeuse mobile géolocalisée très pratique</td></tr><tr><td>Calcul automatique des heures supplémentaires et pauses</td></tr><tr><td>Interface pensée pour les managers terrain non-tech</td></tr><tr><td>Gestion native des remplacements et échanges de shifts</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui grimpe vite avec de grandes équipes</td></tr><tr><td>Fonctionnalités avancées de reporting limitées</td></tr><tr><td>Peut être trop complexe pour des besoins bureautiques simples</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1012,40 +817,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Combo</strong> pendant plusieurs mois et je dois dire que ce logiciel de gestion de planning m'a surpris par sa simplicité d'approche.
-
-<p>Contrairement à d'autres solutions qui multiplient les fonctionnalités, <strong>Combo</strong> mise tout sur l'intuitivité et la rapidité de prise en main.</p>
-
-<p>On peut créer des plannings complets en quelques clics, sans formation préalable.</p><p>Le logiciel brille particulièrement dans la <strong>gestion des équipes mobiles</strong> et des interventions terrain.</p>
-
-<p>J'ai pu tester la fonction de géolocalisation qui permet de suivre en temps réel les déplacements des techniciens. Très pratique quand on gère une équipe de maintenance ou de livraison.</p>
-
-<p>L'application mobile synchronise parfaitement les données, même en mode hors ligne.</p><p><strong>Combo</strong> s'adresse avant tout aux PME de <strong>10 à 50 salariés</strong> qui cherchent une solution efficace sans complexité excessive.</p>
-
-<p>Les secteurs du service à la personne, de la maintenance et du transport y trouveront leur compte. Par contre, si vous gérez des projets complexes avec de nombreuses interdépendances, ce logiciel risque de vous limiter.</p></p>
+            <p>J'ai testé <strong>Combo</strong> pendant plusieurs mois et je dois dire que ce logiciel de gestion de planning m'a surpris par sa simplicité d'approche. Contrairement à d'autres solutions qui multiplient les fonctionnalités, <strong>Combo</strong> mise tout sur l'intuitivité et la rapidité de prise en main. On peut créer des plannings complets en quelques clics, sans formation préalable.</p><p>Le logiciel brille particulièrement dans la <strong>gestion des équipes mobiles</strong> et des interventions terrain. J'ai pu tester la fonction de géolocalisation qui permet de suivre en temps réel les déplacements des techniciens. Très pratique quand on gère une équipe de maintenance ou de livraison. L'application mobile synchronise parfaitement les données, même en mode hors ligne.</p><p><strong>Combo</strong> s'adresse avant tout aux PME de <strong>10 à 50 salariés</strong> qui cherchent une solution efficace sans complexité excessive. Les secteurs du service à la personne, de la maintenance et du transport y trouveront leur compte. Par contre, si vous gérez des projets complexes avec de nombreuses interdépendances, ce logiciel risque de vous limiter.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra intuitive accessible sans formation</td>
-            <td>Fonctionnalités limitées pour les gros projets</td>
-          </tr>
-          <tr>
-            <td>Géolocalisation temps réel des équipes mobiles</td>
-            <td>Pas de gestion avancée des ressources</td>
-          </tr>
-          <tr>
-            <td>Application mobile avec synchronisation hors ligne</td>
-            <td>Options de personnalisation restreintes</td>
-          </tr>
-          <tr>
-            <td>Tarifs compétitifs pour les PME</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra intuitive accessible sans formation</td></tr><tr><td>Géolocalisation temps réel des équipes mobiles</td></tr><tr><td>Application mobile avec synchronisation hors ligne</td></tr><tr><td>Tarifs compétitifs pour les PME</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les gros projets</td></tr><tr><td>Pas de gestion avancée des ressources</td></tr><tr><td>Options de personnalisation restreintes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1309,7 +1093,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 2 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

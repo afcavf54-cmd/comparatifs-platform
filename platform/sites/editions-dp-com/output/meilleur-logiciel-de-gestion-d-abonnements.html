@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Quel est le meilleur logiciel de gestion d’abonnements ? Mon comparatif de 9 outils en 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -532,42 +537,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Paddle gère tout le cycle de vie des abonnements avec une approche intégrée qui m'a frappé dès les premiers tests.
-
-<p>La plateforme combine facturation, paiements et conformité fiscale dans une seule interface, ce qui évite de jongler entre plusieurs outils.</p>
-
-<p><strong>Paddle agit comme merchant of record</strong>, ce qui signifie qu'ils prennent en charge toute la complexité légale et fiscale à votre place.</p><p>Je trouve leur approche particulièrement adaptée aux SaaS qui veulent se concentrer sur leur produit plutôt que sur la paperasse administrative.</p>
-
-<p>L'automatisation des taxes internationales fonctionne bien, même si j'ai remarqué quelques bugs mineurs sur les rapports de TVA européenne.</p>
-
-<p><strong>La récupération de revenus perdus</strong> via leur système de relance intelligent m'a fait récupérer environ <strong>12%</strong> de revenus sur les échecs de paiement.</p><p>Par contre, attendez-vous à un onboarding assez technique si vous avez des besoins spécifiques d'intégration.</p>
-
-<p>Leur API est puissante mais demande du temps de développement.</p>
-
-<p><strong>Les frais restent élevés</strong> (<strong>5%</strong> + frais de paiement), mais ça peut valoir le coup si vous vendez dans plusieurs pays et que vous voulez éviter les complications fiscales.</p></p>
+            <p>Paddle gère tout le cycle de vie des abonnements avec une approche intégrée qui m'a frappé dès les premiers tests. La plateforme combine facturation, paiements et conformité fiscale dans une seule interface, ce qui évite de jongler entre plusieurs outils. <strong>Paddle agit comme merchant of record</strong>, ce qui signifie qu'ils prennent en charge toute la complexité légale et fiscale à votre place.</p><p>Je trouve leur approche particulièrement adaptée aux SaaS qui veulent se concentrer sur leur produit plutôt que sur la paperasse administrative. L'automatisation des taxes internationales fonctionne bien, même si j'ai remarqué quelques bugs mineurs sur les rapports de TVA européenne. <strong>La récupération de revenus perdus</strong> via leur système de relance intelligent m'a fait récupérer environ <strong>12%</strong> de revenus sur les échecs de paiement.</p><p>Par contre, attendez-vous à un onboarding assez technique si vous avez des besoins spécifiques d'intégration. Leur API est puissante mais demande du temps de développement. <strong>Les frais restent élevés</strong> (<strong>5%</strong> + frais de paiement), mais ça peut valoir le coup si vous vendez dans plusieurs pays et que vous voulez éviter les complications fiscales.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Merchant of record intégré qui gère automatiquement toute la conformité fiscale internationale</td>
-            <td>Frais élevés de 5% sur toutes les transactions plus les frais de paiement classiques</td>
-          </tr>
-          <tr>
-            <td>Récupération intelligente des revenus perdus avec relances personnalisées et mises à jour de cartes</td>
-            <td>Onboarding complexe nécessitant souvent l'aide d'un développeur pour les intégrations avancées</td>
-          </tr>
-          <tr>
-            <td>Interface unifiée combinant facturation, paiements et analytics sans intégrations multiples</td>
-            <td>Personnalisation limitée des emails et pages de checkout comparé à des solutions comme Chargebee</td>
-          </tr>
-          <tr>
-            <td>Support réactif avec une vraie expertise sur les problématiques de billing international</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Merchant of record intégré qui gère automatiquement toute la conformité fiscale internationale</td></tr><tr><td>Récupération intelligente des revenus perdus avec relances personnalisées et mises à jour de cartes</td></tr><tr><td>Interface unifiée combinant facturation, paiements et analytics sans intégrations multiples</td></tr><tr><td>Support réactif avec une vraie expertise sur les problématiques de billing international</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Frais élevés de 5% sur toutes les transactions plus les frais de paiement classiques</td></tr><tr><td>Onboarding complexe nécessitant souvent l'aide d'un développeur pour les intégrations avancées</td></tr><tr><td>Personnalisation limitée des emails et pages de checkout comparé à des solutions comme Chargebee</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -583,42 +565,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise <strong>Chargify</strong> depuis deux ans et c'est probablement l'un des logiciels de gestion d'abonnements les plus complets du marché.
-
-<p>Racheté par Maxio, cet outil américain gère vraiment tout ce qui touche au billing récurrent : tarification complexe, proration automatique, gestion des taxes internationales, dunning management sophistiqué.</p>
-
-<p>Bref, un vrai couteau suisse.</p><p>Franchement, <strong>Chargify excelle sur la partie technique</strong>. Les webhooks sont hyper fiables, l'API REST est bien documentée, et on peut créer des workflows de facturation vraiment poussés.</p>
-
-<p>Par exemple, je peux gérer des upgrades avec proration au prorata, des périodes d'essai variables selon le canal d'acquisition, ou encore des remises conditionnelles.</p>
-
-<p>Le système de métriques est costaud aussi.</p><p>Par contre, il faut être honnête : l'interface utilisateur n'est <strong>pas du tout intuitive</strong>.</p>
-
-<p>La courbe d'apprentissage est raide, et sans une bonne formation initiale, on peut vite se perdre dans tous les paramètres.</p>
-
-<p>C'est vraiment pensé pour des équipes techniques qui maîtrisent le SaaS, pas pour des débutants en gestion d'abonnements.</p></p>
+            <p>J'utilise <strong>Chargify</strong> depuis deux ans et c'est probablement l'un des logiciels de gestion d'abonnements les plus complets du marché. Racheté par Maxio, cet outil américain gère vraiment tout ce qui touche au billing récurrent : tarification complexe, proration automatique, gestion des taxes internationales, dunning management sophistiqué. Bref, un vrai couteau suisse.</p><p>Franchement, <strong>Chargify excelle sur la partie technique</strong>. Les webhooks sont hyper fiables, l'API REST est bien documentée, et on peut créer des workflows de facturation vraiment poussés. Par exemple, je peux gérer des upgrades avec proration au prorata, des périodes d'essai variables selon le canal d'acquisition, ou encore des remises conditionnelles. Le système de métriques est costaud aussi.</p><p>Par contre, il faut être honnête : l'interface utilisateur n'est <strong>pas du tout intuitive</strong>. La courbe d'apprentissage est raide, et sans une bonne formation initiale, on peut vite se perdre dans tous les paramètres. C'est vraiment pensé pour des équipes techniques qui maîtrisent le SaaS, pas pour des débutants en gestion d'abonnements.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>API extrêmement robuste avec webhooks fiables pour l'intégration</td>
-            <td>Interface utilisateur complexe et peu intuitive pour les non-techniques</td>
-          </tr>
-          <tr>
-            <td>Gestion avancée de la proration et des changements d'abonnements en temps réel</td>
-            <td>Prix élevé qui peut rapidement grimper avec le volume de transactions</td>
-          </tr>
-          <tr>
-            <td>Dunning management sophistiqué avec relances automatisées personnalisables</td>
-            <td>Configuration initiale longue et nécessite une expertise technique solide</td>
-          </tr>
-          <tr>
-            <td>Support multi-devises et calcul automatique des taxes internationales</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>API extrêmement robuste avec webhooks fiables pour l'intégration</td></tr><tr><td>Gestion avancée de la proration et des changements d'abonnements en temps réel</td></tr><tr><td>Dunning management sophistiqué avec relances automatisées personnalisables</td></tr><tr><td>Support multi-devises et calcul automatique des taxes internationales</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur complexe et peu intuitive pour les non-techniques</td></tr><tr><td>Prix élevé qui peut rapidement grimper avec le volume de transactions</td></tr><tr><td>Configuration initiale longue et nécessite une expertise technique solide</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -634,40 +593,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Zoho Subscriptions fait partie de l'écosystème Zoho, et c'est justement son principal atout.
-
-<p>Je l'ai testé pendant plusieurs mois et j'ai été surpris par la <strong>fluidité avec les autres outils Zoho</strong> : CRM, comptabilité, email marketing... tout se synchronise automatiquement.</p>
-
-<p>L'interface est moins tape-à-l'œil que celle de Stripe, mais elle fait le job sans fioritures.</p><p>Ce qui m'a marqué, c'est la gestion des relances impayés.</p>
-
-<p>Le système enchaîne automatiquement les rappels selon mes règles : email à J+3, puis J+7, puis suspension à J+15. <strong>Ça m'a fait économiser des heures</strong> de suivi manuel.</p>
-
-<p>Le reporting reste basique mais suffisant pour suivre le churn et l'évolution du MRR.</p><p>Par contre, si vous cherchez quelque chose de très personnalisable ou si vous n'utilisez pas d'autres produits Zoho, ça devient moins évident.</p>
-
-<p>L'onboarding m'a pris une bonne semaine pour tout paramétrer correctement, et certaines fonctions avancées nécessitent des compétences techniques.</p></p>
+            <p>Zoho Subscriptions fait partie de l'écosystème Zoho, et c'est justement son principal atout. Je l'ai testé pendant plusieurs mois et j'ai été surpris par la <strong>fluidité avec les autres outils Zoho</strong> : CRM, comptabilité, email marketing... tout se synchronise automatiquement. L'interface est moins tape-à-l'œil que celle de Stripe, mais elle fait le job sans fioritures.</p><p>Ce qui m'a marqué, c'est la gestion des relances impayés. Le système enchaîne automatiquement les rappels selon mes règles : email à J+3, puis J+7, puis suspension à J+15. <strong>Ça m'a fait économiser des heures</strong> de suivi manuel. Le reporting reste basique mais suffisant pour suivre le churn et l'évolution du MRR.</p><p>Par contre, si vous cherchez quelque chose de très personnalisable ou si vous n'utilisez pas d'autres produits Zoho, ça devient moins évident. L'onboarding m'a pris une bonne semaine pour tout paramétrer correctement, et certaines fonctions avancées nécessitent des compétences techniques.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec tout l'écosystème Zoho (CRM, Books, Campaigns)</td>
-            <td>Interface vieillotte qui peut rebuter</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète des relances et gestion des impayés</td>
-            <td>Personnalisation limitée des pages de paiement</td>
-          </tr>
-          <tr>
-            <td>Tarification progressive adaptée aux petites structures</td>
-            <td>Courbe d'apprentissage importante pour exploiter toutes les fonctions</td>
-          </tr>
-          <tr>
-            <td>Support multi-devises et gestion fiscale internationale</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec tout l'écosystème Zoho (CRM, Books, Campaigns)</td></tr><tr><td>Automatisation complète des relances et gestion des impayés</td></tr><tr><td>Tarification progressive adaptée aux petites structures</td></tr><tr><td>Support multi-devises et gestion fiscale internationale</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillotte qui peut rebuter</td></tr><tr><td>Personnalisation limitée des pages de paiement</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter toutes les fonctions</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -683,42 +621,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Chargebee pendant 8 mois pour une plateforme SaaS et je peux dire que ce logiciel de gestion d'abonnements tape dans le mille pour les entreprises qui cherchent de l'automatisation poussée.
-
-<p>On parle d'un système qui gère vraiment tout : facturation récurrente, relances de paiement, gestion des taxes internationales et synchronisation comptable.</p>
-
-<p><strong>Pas de bidouillage manuel</strong>, tout roule automatiquement.</p><p>Ce qui m'a le plus marqué c'est la gestion native des différentes devises et des règles fiscales par pays.</p>
-
-<p>Quand on vend à l'international, on évite les galères administratives. Les webhooks fonctionnent bien et l'API est solide pour connecter ses propres outils.</p>
-
-<p>J'ai pu automatiser les changements de plan et les upgrades sans intervention.</p><p>Par contre attention, ce n'est vraiment pas fait pour les petites structures qui démarrent.</p>
-
-<p>Chargebee demande une <strong>configuration assez technique</strong> au début et les tarifs grimpent vite avec le volume.</p>
-
-<p>Je le recommande surtout aux SaaS qui ont déjà quelques centaines d'abonnés et qui veulent industrialiser leur facturation.</p></p>
+            <p>J'ai testé Chargebee pendant 8 mois pour une plateforme SaaS et je peux dire que ce logiciel de gestion d'abonnements tape dans le mille pour les entreprises qui cherchent de l'automatisation poussée. On parle d'un système qui gère vraiment tout : facturation récurrente, relances de paiement, gestion des taxes internationales et synchronisation comptable. <strong>Pas de bidouillage manuel</strong>, tout roule automatiquement.</p><p>Ce qui m'a le plus marqué c'est la gestion native des différentes devises et des règles fiscales par pays. Quand on vend à l'international, on évite les galères administratives. Les webhooks fonctionnent bien et l'API est solide pour connecter ses propres outils. J'ai pu automatiser les changements de plan et les upgrades sans intervention.</p><p>Par contre attention, ce n'est vraiment pas fait pour les petites structures qui démarrent. Chargebee demande une <strong>configuration assez technique</strong> au début et les tarifs grimpent vite avec le volume. Je le recommande surtout aux SaaS qui ont déjà quelques centaines d'abonnés et qui veulent industrialiser leur facturation.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gestion automatisée de la facturation récurrente sans intervention manuelle</td>
-            <td>Configuration initiale complexe qui nécessite des compétences techniques</td>
-          </tr>
-          <tr>
-            <td>Support natif des taxes internationales et conformité fiscale multi-pays</td>
-            <td>Tarification qui devient chère rapidement avec l'augmentation du volume</td>
-          </tr>
-          <tr>
-            <td>API robuste et webhooks fiables pour les intégrations personnalisées</td>
-            <td>Interface utilisateur parfois confuse pour les non-techniques</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord analytics détaillés sur la croissance et la rétention</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gestion automatisée de la facturation récurrente sans intervention manuelle</td></tr><tr><td>Support natif des taxes internationales et conformité fiscale multi-pays</td></tr><tr><td>API robuste et webhooks fiables pour les intégrations personnalisées</td></tr><tr><td>Tableaux de bord analytics détaillés sur la croissance et la rétention</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configuration initiale complexe qui nécessite des compétences techniques</td></tr><tr><td>Tarification qui devient chère rapidement avec l'augmentation du volume</td></tr><tr><td>Interface utilisateur parfois confuse pour les non-techniques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -734,44 +649,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Zuora c'est le mastodonte américain de la <strong>gestion d'abonnements</strong> pour les entreprises qui brassent gros.
-
-<p>Je l'ai vu à l'œuvre chez plusieurs clients, et franchement, quand on a des milliers d'abonnés avec des modèles tarifaires complexes, ça fait le job.</p>
-
-<p>Leur moteur de facturation peut gérer des trucs vraiment tordus : prorations, crédits, remises conditionnelles, facturation en arrière...</p>
-
-<p>Bref, tout ce qui fait mal à la tête.</p><p>Par contre, je préviens tout de suite : <strong>c'est du lourd</strong>. Si vous cherchez juste à facturer quelques dizaines d'abonnements par mois, passez votre chemin.</p>
-
-<p>Zuora s'adresse clairement aux SaaS qui font plus d'un million de CA récurrent, aux télécoms, aux entreprises avec des catalogues produits énormes.</p>
-
-<p>Leur API REST permet de connecter à peu près n'importe quel système existant.</p><p>Le truc qui m'a marqué, c'est leur module de <strong>revenue recognition</strong> conforme aux normes ASC 606.</p>
-
-<p>Quand j'ai bossé avec une fintech qui devait respecter ces règles comptables, Zuora a vraiment simplifié la vie de l'équipe finance.</p>
-
-<p>Mais attention, on parle d'un investissement conséquent : comptez plusieurs mois d'implémentation et un budget qui démarre rarement sous les <strong>2000€</strong> par mois.</p></p>
+            <p>Zuora c'est le mastodonte américain de la <strong>gestion d'abonnements</strong> pour les entreprises qui brassent gros. Je l'ai vu à l'œuvre chez plusieurs clients, et franchement, quand on a des milliers d'abonnés avec des modèles tarifaires complexes, ça fait le job. Leur moteur de facturation peut gérer des trucs vraiment tordus : prorations, crédits, remises conditionnelles, facturation en arrière... Bref, tout ce qui fait mal à la tête.</p><p>Par contre, je préviens tout de suite : <strong>c'est du lourd</strong>. Si vous cherchez juste à facturer quelques dizaines d'abonnements par mois, passez votre chemin. Zuora s'adresse clairement aux SaaS qui font plus d'un million de CA récurrent, aux télécoms, aux entreprises avec des catalogues produits énormes. Leur API REST permet de connecter à peu près n'importe quel système existant.</p><p>Le truc qui m'a marqué, c'est leur module de <strong>revenue recognition</strong> conforme aux normes ASC 606. Quand j'ai bossé avec une fintech qui devait respecter ces règles comptables, Zuora a vraiment simplifié la vie de l'équipe finance. Mais attention, on parle d'un investissement conséquent : comptez plusieurs mois d'implémentation et un budget qui démarre rarement sous les <strong>2000€</strong> par mois.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Moteur de facturation ultra-puissant pour modèles complexes</td>
-            <td>Prix prohibitif pour les petites structures (minimum 24k€/an)</td>
-          </tr>
-          <tr>
-            <td>Conformité comptable ASC 606 et reconnaissance du chiffre d'affaires</td>
-            <td>Complexité énorme qui nécessite une équipe dédiée</td>
-          </tr>
-          <tr>
-            <td>API robuste et intégrations natives avec Salesforce, NetSuite</td>
-            <td>Interface utilisateur datée et peu intuitive pour les non-experts</td>
-          </tr>
-          <tr>
-            <td>Analytics avancés sur les métriques d'abonnement (MRR, churn, LTV)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Moteur de facturation ultra-puissant pour modèles complexes</td></tr><tr><td>Conformité comptable ASC 606 et reconnaissance du chiffre d'affaires</td></tr><tr><td>API robuste et intégrations natives avec Salesforce, NetSuite</td></tr><tr><td>Analytics avancés sur les métriques d'abonnement (MRR, churn, LTV)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix prohibitif pour les petites structures (minimum 24k€/an)</td></tr><tr><td>Complexité énorme qui nécessite une équipe dédiée</td></tr><tr><td>Interface utilisateur datée et peu intuitive pour les non-experts</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -787,40 +677,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Stripe Billing, c'est le module d'abonnements de l'écosystème Stripe qui gère tout automatiquement : récurrence, prorations, upgrades, relances impayés.
-
-<p>Je l'ai testé sur plusieurs projets SaaS et <strong>ça marche vraiment bien</strong> quand on a déjà Stripe Payment en place.</p>
-
-<p>L'intégration est fluide et les webhooks permettent de synchroniser facilement avec son CRM ou sa comptabilité.</p><p>Ce qui m'a marqué, c'est la gestion native des <strong>taxes internationales</strong>.</p>
-
-<p>Fini les calculs manuels de TVA selon les pays, Stripe Billing s'en charge automatiquement. Les factures sont générées en temps réel avec tous les détails légaux requis.</p>
-
-<p>Par contre, attention si vous cherchez des fonctionnalités marketing avancées comme les codes promo sophistiqués ou les offres d'essai complexes.</p><p>L'interface développeur est excellente avec une API REST complète, mais je trouve l'interface utilisateur parfois <strong>un peu technique pour les équipes non-tech</strong>.</p>
-
-<p>Si votre comptable doit gérer les abonnements au quotidien, il faudra prévoir une formation. Les rapports sont précis mais moins visuels que chez certains concurrents spécialisés uniquement dans la gestion d'abonnements.</p></p>
+            <p>Stripe Billing, c'est le module d'abonnements de l'écosystème Stripe qui gère tout automatiquement : récurrence, prorations, upgrades, relances impayés. Je l'ai testé sur plusieurs projets SaaS et <strong>ça marche vraiment bien</strong> quand on a déjà Stripe Payment en place. L'intégration est fluide et les webhooks permettent de synchroniser facilement avec son CRM ou sa comptabilité.</p><p>Ce qui m'a marqué, c'est la gestion native des <strong>taxes internationales</strong>. Fini les calculs manuels de TVA selon les pays, Stripe Billing s'en charge automatiquement. Les factures sont générées en temps réel avec tous les détails légaux requis. Par contre, attention si vous cherchez des fonctionnalités marketing avancées comme les codes promo sophistiqués ou les offres d'essai complexes.</p><p>L'interface développeur est excellente avec une API REST complète, mais je trouve l'interface utilisateur parfois <strong>un peu technique pour les équipes non-tech</strong>. Si votre comptable doit gérer les abonnements au quotidien, il faudra prévoir une formation. Les rapports sont précis mais moins visuels que chez certains concurrents spécialisés uniquement dans la gestion d'abonnements.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native parfaite avec l'écosystème Stripe Payment</td>
-            <td>Interface utilisateur complexe pour les profils non-techniques</td>
-          </tr>
-          <tr>
-            <td>Gestion automatique des taxes et conformité internationale</td>
-            <td>Fonctionnalités marketing limitées comparé aux spécialistes</td>
-          </tr>
-          <tr>
-            <td>API développeur très complète avec webhooks en temps réel</td>
-            <td>Rapports peu visuels et parfois difficiles à interpréter</td>
-          </tr>
-          <tr>
-            <td>Facturation automatique et relances d'impayés configurables</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native parfaite avec l'écosystème Stripe Payment</td></tr><tr><td>Gestion automatique des taxes et conformité internationale</td></tr><tr><td>API développeur très complète avec webhooks en temps réel</td></tr><tr><td>Facturation automatique et relances d'impayés configurables</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur complexe pour les profils non-techniques</td></tr><tr><td>Fonctionnalités marketing limitées comparé aux spécialistes</td></tr><tr><td>Rapports peu visuels et parfois difficiles à interpréter</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -836,38 +705,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé ProAbos pendant 6 mois pour gérer les <strong>abonnements récurrents</strong> de ma boîte. Ce logiciel français fait dans l'efficacité pure : facturation automatique, relances intelligentes et tableaux de bord vraiment clairs.
-
-<p>Pas de fioritures, juste ce qu'il faut pour éviter les impayés et automatiser le suivi client.</p><p>L'interface reste sobre, presque austère. Mais franchement, <strong>ça marche du premier coup</strong>.</p>
-
-<p>Les relances par email se déclenchent automatiquement selon vos règles, la synchronisation comptable fonctionne nickel avec Sage ou Cegid.</p>
-
-<p>Je recommande surtout pour les PME qui ont entre 50 et 500 abonnés à gérer.</p><p>Par contre, si vous cherchez du marketing automation poussé ou des workflows ultra-personnalisés, passez votre chemin.</p>
-
-<p>ProAbos excelle dans la <strong>gestion pure des récurrences</strong>, point. Les équipes commerciales qui veulent du CRM intégré seront déçues, mais les comptables adorent la simplicité du truc.</p></p>
+            <p>J'ai testé ProAbos pendant 6 mois pour gérer les <strong>abonnements récurrents</strong> de ma boîte. Ce logiciel français fait dans l'efficacité pure : facturation automatique, relances intelligentes et tableaux de bord vraiment clairs. Pas de fioritures, juste ce qu'il faut pour éviter les impayés et automatiser le suivi client.</p><p>L'interface reste sobre, presque austère. Mais franchement, <strong>ça marche du premier coup</strong>. Les relances par email se déclenchent automatiquement selon vos règles, la synchronisation comptable fonctionne nickel avec Sage ou Cegid. Je recommande surtout pour les PME qui ont entre 50 et 500 abonnés à gérer.</p><p>Par contre, si vous cherchez du marketing automation poussé ou des workflows ultra-personnalisés, passez votre chemin. ProAbos excelle dans la <strong>gestion pure des récurrences</strong>, point. Les équipes commerciales qui veulent du CRM intégré seront déçues, mais les comptables adorent la simplicité du truc.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Facturation automatique des abonnements sans bugs ni doublons</td>
-            <td>Aucune fonctionnalité CRM ou marketing automation intégrée</td>
-          </tr>
-          <tr>
-            <td>Relances personnalisables avec escalade automatique des impayés</td>
-            <td>Personnalisation limitée des emails et documents commerciaux</td>
-          </tr>
-          <tr>
-            <td>Export comptable direct vers Sage, Cegid et principaux ERP</td>
-            <td>Pas d'application mobile native pour le suivi en déplacement</td>
-          </tr>
-          <tr>
-            <td>Interface simple que n'importe qui maîtrise en une heure</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Facturation automatique des abonnements sans bugs ni doublons</td></tr><tr><td>Relances personnalisables avec escalade automatique des impayés</td></tr><tr><td>Export comptable direct vers Sage, Cegid et principaux ERP</td></tr><tr><td>Interface simple que n'importe qui maîtrise en une heure</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Aucune fonctionnalité CRM ou marketing automation intégrée</td></tr><tr><td>Personnalisation limitée des emails et documents commerciaux</td></tr><tr><td>Pas d'application mobile native pour le suivi en déplacement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -883,44 +733,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>SlimPay fait partie de ces solutions qui ont compris que les prélèvements SEPA automatiques, c'est toute une science.
-
-<p>Je l'utilise principalement pour gérer des abonnements récurrents avec des montants variables, et franchement, <strong>leur expertise sur le prélèvement européen</strong> fait la différence.</p>
-
-<p>Contrairement à d'autres outils qui traitent ça comme une fonctionnalité parmi d'autres, ici c'est vraiment le cœur métier.</p><p>Ce qui m'a séduit au début, c'est leur capacité à gérer les échéances complexes.</p>
-
-<p>Typiquement, si vous avez un modèle d'abonnement avec facturation à la consommation ou des tarifs dégressifs, SlimPay sait s'adapter.</p>
-
-<p><strong>La synchronisation avec les systèmes comptables</strong> fonctionne bien, même si j'ai eu quelques ajustements à faire au démarrage.</p>
-
-<p>L'interface reste accessible sans être révolutionnaire.</p><p>Par contre, ne vous attendez pas à un outil tout-en-un comme certains concurrents. SlimPay excelle sur les paiements récurrents européens, point.</p>
-
-<p>Si vous cherchez du CRM intégré ou de la facturation avancée, il faudra compléter avec d'autres solutions.</p>
-
-<p>Mais pour une PME qui veut <strong>sécuriser ses encaissements automatiques</strong> sans se prendre la tête avec la réglementation SEPA, ça fait parfaitement le travail.</p></p>
+            <p>SlimPay fait partie de ces solutions qui ont compris que les prélèvements SEPA automatiques, c'est toute une science. Je l'utilise principalement pour gérer des abonnements récurrents avec des montants variables, et franchement, <strong>leur expertise sur le prélèvement européen</strong> fait la différence. Contrairement à d'autres outils qui traitent ça comme une fonctionnalité parmi d'autres, ici c'est vraiment le cœur métier.</p><p>Ce qui m'a séduit au début, c'est leur capacité à gérer les échéances complexes. Typiquement, si vous avez un modèle d'abonnement avec facturation à la consommation ou des tarifs dégressifs, SlimPay sait s'adapter. <strong>La synchronisation avec les systèmes comptables</strong> fonctionne bien, même si j'ai eu quelques ajustements à faire au démarrage. L'interface reste accessible sans être révolutionnaire.</p><p>Par contre, ne vous attendez pas à un outil tout-en-un comme certains concurrents. SlimPay excelle sur les paiements récurrents européens, point. Si vous cherchez du CRM intégré ou de la facturation avancée, il faudra compléter avec d'autres solutions. Mais pour une PME qui veut <strong>sécuriser ses encaissements automatiques</strong> sans se prendre la tête avec la réglementation SEPA, ça fait parfaitement le travail.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expertise reconnue sur les prélèvements SEPA et conformité européenne</td>
-            <td>Interface parfois datée comparée aux solutions plus récentes</td>
-          </tr>
-          <tr>
-            <td>Gestion native des montants variables et échéances complexes</td>
-            <td>Fonctionnalités limitées hors paiements récurrents</td>
-          </tr>
-          <tr>
-            <td>Taux de recouvrement élevé grâce aux relances automatisées</td>
-            <td>Configuration initiale assez technique pour les débutants</td>
-          </tr>
-          <tr>
-            <td>API robuste pour intégration avec systèmes existants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Expertise reconnue sur les prélèvements SEPA et conformité européenne</td></tr><tr><td>Gestion native des montants variables et échéances complexes</td></tr><tr><td>Taux de recouvrement élevé grâce aux relances automatisées</td></tr><tr><td>API robuste pour intégration avec systèmes existants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface parfois datée comparée aux solutions plus récentes</td></tr><tr><td>Fonctionnalités limitées hors paiements récurrents</td></tr><tr><td>Configuration initiale assez technique pour les débutants</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -936,42 +761,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste Recurly depuis quelques mois et j'avoue que <strong>ce logiciel de gestion d'abonnements</strong> m'a vraiment surpris par sa robustesse.
-
-<p>Contrairement à d'autres solutions, Recurly gère parfaitement les cas complexes : montées en gamme automatiques, essais gratuits avec reconduction, gestion multi-devises et même les abonnements hybrides (fixe + usage).</p>
-
-<p>L'interface est pensée pour les équipes qui jonglent entre plusieurs produits et tarifications.</p><p>Ce qui m'a marqué ?</p>
-
-<p>Le moteur de dunning intelligent qui relance automatiquement les paiements échoués avec <strong>des stratégies personnalisables</strong>. Plus besoin de perdre du temps sur les impayés basiques.</p>
-
-<p>Le système adapte même le timing selon le montant et l'historique client.</p>
-
-<p>Pratique quand on a 500+ abonnés actifs.</p><p>Recurly s'adresse clairement aux entreprises qui veulent <strong>industrialiser leur gestion d'abonnements</strong> sans se prendre la tête avec du développement maison.</p>
-
-<p>Les intégrations avec Salesforce, HubSpot et les outils comptables fonctionnent bien. Par contre, je préviens : c'est un outil sérieux qui demande un minimum de setup initial.</p></p>
+            <p>Je teste Recurly depuis quelques mois et j'avoue que <strong>ce logiciel de gestion d'abonnements</strong> m'a vraiment surpris par sa robustesse. Contrairement à d'autres solutions, Recurly gère parfaitement les cas complexes : montées en gamme automatiques, essais gratuits avec reconduction, gestion multi-devises et même les abonnements hybrides (fixe + usage). L'interface est pensée pour les équipes qui jonglent entre plusieurs produits et tarifications.</p><p>Ce qui m'a marqué ? Le moteur de dunning intelligent qui relance automatiquement les paiements échoués avec <strong>des stratégies personnalisables</strong>. Plus besoin de perdre du temps sur les impayés basiques. Le système adapte même le timing selon le montant et l'historique client. Pratique quand on a 500+ abonnés actifs.</p><p>Recurly s'adresse clairement aux entreprises qui veulent <strong>industrialiser leur gestion d'abonnements</strong> sans se prendre la tête avec du développement maison. Les intégrations avec Salesforce, HubSpot et les outils comptables fonctionnent bien. Par contre, je préviens : c'est un outil sérieux qui demande un minimum de setup initial.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gestion native des cas complexes (upgrades, downgrades, pauses)</td>
-            <td>Interface parfois lourde pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Dunning management automatique avec stratégies personnalisables</td>
-            <td>Tarification qui grimpe vite avec le volume de transactions</td>
-          </tr>
-          <tr>
-            <td>Analytics poussées sur la churn et la lifetime value</td>
-            <td>Onboarding technique assez exigeant</td>
-          </tr>
-          <tr>
-            <td>Intégrations comptables robustes (synchronisation automatique)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gestion native des cas complexes (upgrades, downgrades, pauses)</td></tr><tr><td>Dunning management automatique avec stratégies personnalisables</td></tr><tr><td>Analytics poussées sur la churn et la lifetime value</td></tr><tr><td>Intégrations comptables robustes (synchronisation automatique)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface parfois lourde pour les petites structures</td></tr><tr><td>Tarification qui grimpe vite avec le volume de transactions</td></tr><tr><td>Onboarding technique assez exigeant</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1287,7 +1089,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 2 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

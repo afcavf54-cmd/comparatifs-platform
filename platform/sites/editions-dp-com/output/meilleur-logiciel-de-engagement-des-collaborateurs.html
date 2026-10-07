@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J’ai comparé 6 logiciels d’engagement des collaborateurs : voici ceux qui valent le détour en 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 6 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 6 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -532,38 +537,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Lattice</strong> m'a surpris par son approche complète de l'engagement collaborateur.
-
-<p>Là où d'autres outils se contentent d'enquêtes, cette plateforme combine feedback continu, gestion des performances et développement des talents dans une interface plutôt intuitive.</p><p>Je l'ai testé dans plusieurs contextes, et <strong>Lattice</strong> brille vraiment dans les équipes de <strong>50 à 500 personnes</strong> qui veulent structurer leur politique RH sans tomber dans la lourdeur administrative.</p>
-
-<p>Les managers apprécient particulièrement le système de one-on-one guidés et les tableaux de bord qui donnent une vision claire de l'engagement par équipe.</p>
-
-<p>Pour les collaborateurs, c'est moins fastidieux que les traditionnels entretiens annuels.</p><p>Ce qui m'a marqué : la fonction <strong>peer feedback</strong> qui permet aux collègues de se donner des retours constructifs de manière anonyme ou ouverte.</p>
-
-<p>J'ai vu des équipes développer une meilleure communication grâce à cette fonctionnalité. Par contre, attention si vous cherchez une solution ultra-personnalisable, <strong>Lattice</strong> reste assez rigide dans ses processus.</p></p>
+            <p><strong>Lattice</strong> m'a surpris par son approche complète de l'engagement collaborateur. Là où d'autres outils se contentent d'enquêtes, cette plateforme combine feedback continu, gestion des performances et développement des talents dans une interface plutôt intuitive.</p><p>Je l'ai testé dans plusieurs contextes, et <strong>Lattice</strong> brille vraiment dans les équipes de <strong>50 à 500 personnes</strong> qui veulent structurer leur politique RH sans tomber dans la lourdeur administrative. Les managers apprécient particulièrement le système de one-on-one guidés et les tableaux de bord qui donnent une vision claire de l'engagement par équipe. Pour les collaborateurs, c'est moins fastidieux que les traditionnels entretiens annuels.</p><p>Ce qui m'a marqué : la fonction <strong>peer feedback</strong> qui permet aux collègues de se donner des retours constructifs de manière anonyme ou ouverte. J'ai vu des équipes développer une meilleure communication grâce à cette fonctionnalité. Par contre, attention si vous cherchez une solution ultra-personnalisable, <strong>Lattice</strong> reste assez rigide dans ses processus.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface moderne qui encourage l'utilisation quotidienne</td>
-            <td>Prix élevé pour les petites structures (minimum 50 utilisateurs)</td>
-          </tr>
-          <tr>
-            <td>Système de feedback 360° vraiment bien pensé</td>
-            <td>Personnalisation limitée des processus RH</td>
-          </tr>
-          <tr>
-            <td>Automatisation des rappels et cycles de performance</td>
-            <td>Courbe d'apprentissage importante pour les managers peu tech</td>
-          </tr>
-          <tr>
-            <td>Analytics poussés sur les tendances d'engagement par équipe</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface moderne qui encourage l'utilisation quotidienne</td></tr><tr><td>Système de feedback 360° vraiment bien pensé</td></tr><tr><td>Automatisation des rappels et cycles de performance</td></tr><tr><td>Analytics poussés sur les tendances d'engagement par équipe</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé pour les petites structures (minimum 50 utilisateurs)</td></tr><tr><td>Personnalisation limitée des processus RH</td></tr><tr><td>Courbe d'apprentissage importante pour les managers peu tech</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -579,38 +565,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Culture Amp</strong> sur plusieurs années et c'est devenu ma référence pour l'<strong>engagement collaborateur</strong> dans les grandes structures.
-
-<p>Cette plateforme australienne ne fait pas que mesurer, elle aide vraiment à comprendre pourquoi vos équipes s'impliquent ou non.</p><p>Contrairement aux outils basiques qui balancent juste des questionnaires, Culture Amp pousse l'analyse très loin.</p>
-
-<p>Leurs <strong>modèles scientifiques</strong> décortiquent les réponses pour identifier les vrais leviers d'amélioration.</p>
-
-<p>J'ai vu des RH découvrir des problèmes qu'ils n'imaginaient même pas grâce aux corrélations automatiques.</p><p>Culture Amp vise clairement les <strong>entreprises de 200+ salariés</strong> qui prennent l'engagement au sérieux.</p>
-
-<p>Si vous cherchez une solution pour faire du reporting joli ou cocher une case, passez votre chemin. Ici on parle d'un vrai <strong>logiciel d'engagement des collaborateurs</strong> qui demande du temps et de la méthode.</p></p>
+            <p>J'ai testé <strong>Culture Amp</strong> sur plusieurs années et c'est devenu ma référence pour l'<strong>engagement collaborateur</strong> dans les grandes structures. Cette plateforme australienne ne fait pas que mesurer, elle aide vraiment à comprendre pourquoi vos équipes s'impliquent ou non.</p><p>Contrairement aux outils basiques qui balancent juste des questionnaires, Culture Amp pousse l'analyse très loin. Leurs <strong>modèles scientifiques</strong> décortiquent les réponses pour identifier les vrais leviers d'amélioration. J'ai vu des RH découvrir des problèmes qu'ils n'imaginaient même pas grâce aux corrélations automatiques.</p><p>Culture Amp vise clairement les <strong>entreprises de 200+ salariés</strong> qui prennent l'engagement au sérieux. Si vous cherchez une solution pour faire du reporting joli ou cocher une case, passez votre chemin. Ici on parle d'un vrai <strong>logiciel d'engagement des collaborateurs</strong> qui demande du temps et de la méthode.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Algorithmes prédictifs qui identifient les risques de turnover avant qu'ils se concrétisent</td>
-            <td>Prix élevé qui peut dépasser 15€/collaborateur/mois selon les modules</td>
-          </tr>
-          <tr>
-            <td>Benchmarking sectoriel avec base de données de 4000+ entreprises pour comparer vos scores</td>
-            <td>Courbe d'apprentissage importante pour exploiter toute la richesse des analyses</td>
-          </tr>
-          <tr>
-            <td>Modules d'onboarding et exit interviews intégrés qui complètent parfaitement les enquêtes</td>
-            <td>Support client parfois lent sur les questions techniques avancées</td>
-          </tr>
-          <tr>
-            <td>Interface manager intuitive qui donne des conseils d'action personnalisés par équipe</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Algorithmes prédictifs qui identifient les risques de turnover avant qu'ils se concrétisent</td></tr><tr><td>Benchmarking sectoriel avec base de données de 4000+ entreprises pour comparer vos scores</td></tr><tr><td>Modules d'onboarding et exit interviews intégrés qui complètent parfaitement les enquêtes</td></tr><tr><td>Interface manager intuitive qui donne des conseils d'action personnalisés par équipe</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé qui peut dépasser 15€/collaborateur/mois selon les modules</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter toute la richesse des analyses</td></tr><tr><td>Support client parfois lent sur les questions techniques avancées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -626,38 +593,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vous présente <strong>Zest</strong>, une plateforme d'engagement des collaborateurs qui mise tout sur la gamification et les défis collectifs.
-
-<p>Ce logiciel transforme littéralement les initiatives RH en jeux interactifs avec des tableaux de bord, des points et des récompenses.</p><p>L'approche de <strong>Zest</strong> sort des sentiers battus : au lieu de proposer des sondages classiques, ils créent des parcours d'apprentissage ludiques et des challenges d'équipe.</p>
-
-<p>J'ai testé leur module de formation gamifiée, et franchement, ça change tout.</p>
-
-<p>Les collaborateurs accumulent des badges, débattent sur des forums intégrés, et participent à des quiz en temps réel.</p><p>Ce <strong>logiciel d'engagement des collaborateurs</strong> brille particulièrement dans les environnements où l'équipe est jeune et connectée.</p>
-
-<p>Leur système de reconnaissance pair-à-pair fonctionne via des cartes virtuelles personnalisables - un concept qui marche étonnamment bien pour renforcer la cohésion d'équipe.</p></p>
+            <p>Je vous présente <strong>Zest</strong>, une plateforme d'engagement des collaborateurs qui mise tout sur la gamification et les défis collectifs. Ce logiciel transforme littéralement les initiatives RH en jeux interactifs avec des tableaux de bord, des points et des récompenses.</p><p>L'approche de <strong>Zest</strong> sort des sentiers battus : au lieu de proposer des sondages classiques, ils créent des parcours d'apprentissage ludiques et des challenges d'équipe. J'ai testé leur module de formation gamifiée, et franchement, ça change tout. Les collaborateurs accumulent des badges, débattent sur des forums intégrés, et participent à des quiz en temps réel.</p><p>Ce <strong>logiciel d'engagement des collaborateurs</strong> brille particulièrement dans les environnements où l'équipe est jeune et connectée. Leur système de reconnaissance pair-à-pair fonctionne via des cartes virtuelles personnalisables - un concept qui marche étonnamment bien pour renforcer la cohésion d'équipe.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra ludique avec badges et classements qui motivent réellement</td>
-            <td>Approche gamification pas forcément adaptée aux équipes seniors ou traditionnelles</td>
-          </tr>
-          <tr>
-            <td>Modules de formation gamifiés qui transforment l'apprentissage obligatoire en plaisir</td>
-            <td>Configuration initiale complexe pour paramétrer tous les défis et récompenses</td>
-          </tr>
-          <tr>
-            <td>Système de reconnaissance entre collègues simple et efficace</td>
-            <td>Prix élevé comparé à des solutions plus basiques de sondages collaborateurs</td>
-          </tr>
-          <tr>
-            <td>Analytics poussés sur l'engagement avec métriques comportementales</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra ludique avec badges et classements qui motivent réellement</td></tr><tr><td>Modules de formation gamifiés qui transforment l'apprentissage obligatoire en plaisir</td></tr><tr><td>Système de reconnaissance entre collègues simple et efficace</td></tr><tr><td>Analytics poussés sur l'engagement avec métriques comportementales</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Approche gamification pas forcément adaptée aux équipes seniors ou traditionnelles</td></tr><tr><td>Configuration initiale complexe pour paramétrer tous les défis et récompenses</td></tr><tr><td>Prix élevé comparé à des solutions plus basiques de sondages collaborateurs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -673,38 +621,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Peakon by Workday</strong> transforme les enquêtes de satisfaction en véritable pilotage de l'engagement.
-
-<p>On ne parle plus de questionnaire annuel qui traîne dans les tiroirs, mais d'un <strong>système de feedback continu</strong> qui analyse automatiquement les réponses et pousse des recommandations d'actions concrètes.</p><p>J'ai vu cette plateforme déployer ses <strong>algorithmes de machine learning</strong> sur les commentaires libres d'une équipe de 800 personnes.</p>
-
-<p>Résultat : identification automatique des thèmes récurrents et alertes en temps réel quand un manager voit son score d'équipe chuter.</p>
-
-<p>Le truc intelligent, c'est que Peakon ne se contente pas de mesurer - il suggère quoi faire ensuite.</p><p>La force de cette solution réside dans sa capacité à transformer les <strong>données RH en insights actionnables</strong>.</p>
-
-<p>Parfait pour les DRH qui veulent passer du ressenti aux faits, surtout dans les organisations où l'engagement devient un vrai défi de rétention des talents.</p></p>
+            <p><strong>Peakon by Workday</strong> transforme les enquêtes de satisfaction en véritable pilotage de l'engagement. On ne parle plus de questionnaire annuel qui traîne dans les tiroirs, mais d'un <strong>système de feedback continu</strong> qui analyse automatiquement les réponses et pousse des recommandations d'actions concrètes.</p><p>J'ai vu cette plateforme déployer ses <strong>algorithmes de machine learning</strong> sur les commentaires libres d'une équipe de 800 personnes. Résultat : identification automatique des thèmes récurrents et alertes en temps réel quand un manager voit son score d'équipe chuter. Le truc intelligent, c'est que Peakon ne se contente pas de mesurer - il suggère quoi faire ensuite.</p><p>La force de cette solution réside dans sa capacité à transformer les <strong>données RH en insights actionnables</strong>. Parfait pour les DRH qui veulent passer du ressenti aux faits, surtout dans les organisations où l'engagement devient un vrai défi de rétention des talents.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Analyses prédictives avancées qui anticipent les risques de turnover</td>
-            <td>Tarification élevée qui exclut les PME de moins de 200 salariés</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec l'écosystème Workday pour une vue 360°</td>
-            <td>Courbe d'apprentissage importante pour exploiter toute la richesse analytique</td>
-          </tr>
-          <tr>
-            <td>Benchmarking automatique par secteur et taille d'entreprise</td>
-            <td>Dépendance forte à Workday pour certaines fonctionnalités avancées</td>
-          </tr>
-          <tr>
-            <td>Interface manager intuitive avec plans d'action personnalisés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Analyses prédictives avancées qui anticipent les risques de turnover</td></tr><tr><td>Intégration native avec l'écosystème Workday pour une vue 360°</td></tr><tr><td>Benchmarking automatique par secteur et taille d'entreprise</td></tr><tr><td>Interface manager intuitive avec plans d'action personnalisés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée qui exclut les PME de moins de 200 salariés</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter toute la richesse analytique</td></tr><tr><td>Dépendance forte à Workday pour certaines fonctionnalités avancées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -720,38 +649,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Officevibe</strong> pendant 8 mois pour mesurer l'engagement dans notre équipe de 45 personnes.
-
-<p>Ce logiciel d'engagement des collaborateurs mise tout sur la simplicité avec ses sondages hebdomadaires automatiques et son tableau de bord coloré qui remonte les signaux faibles.</p><p>Contrairement aux plateformes complexes, <strong>Officevibe</strong> privilégie l'approche pulse avec des questions courtes envoyées chaque semaine.</p>
-
-<p>Les managers reçoivent des rapports visuels clairs sur le moral, la charge de travail et la reconnaissance.</p>
-
-<p>Le système de feedback anonyme fonctionne bien.</p><p>Je le recommande aux équipes de <strong>20 à 200 personnes</strong> qui veulent commencer à mesurer l'engagement sans se compliquer la vie.</p>
-
-<p>Par contre, les grosses entreprises avec des besoins d'analyse poussée passeront leur chemin.</p></p>
+            <p>J'ai testé <strong>Officevibe</strong> pendant 8 mois pour mesurer l'engagement dans notre équipe de 45 personnes. Ce logiciel d'engagement des collaborateurs mise tout sur la simplicité avec ses sondages hebdomadaires automatiques et son tableau de bord coloré qui remonte les signaux faibles.</p><p>Contrairement aux plateformes complexes, <strong>Officevibe</strong> privilégie l'approche pulse avec des questions courtes envoyées chaque semaine. Les managers reçoivent des rapports visuels clairs sur le moral, la charge de travail et la reconnaissance. Le système de feedback anonyme fonctionne bien.</p><p>Je le recommande aux équipes de <strong>20 à 200 personnes</strong> qui veulent commencer à mesurer l'engagement sans se compliquer la vie. Par contre, les grosses entreprises avec des besoins d'analyse poussée passeront leur chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra-simple qui favorise la participation des collaborateurs</td>
-            <td>Analytics limités pour les analyses approfondies d'engagement</td>
-          </tr>
-          <tr>
-            <td>Sondages pulse automatiques avec questions prêtes à l'emploi</td>
-            <td>Personnalisation restreinte des questionnaires par rapport à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Rapports visuels clairs pour les managers sans formation</td>
-            <td>Prix qui grimpe rapidement avec le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Système de feedback anonyme efficace et bien pensé</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra-simple qui favorise la participation des collaborateurs</td></tr><tr><td>Sondages pulse automatiques avec questions prêtes à l'emploi</td></tr><tr><td>Rapports visuels clairs pour les managers sans formation</td></tr><tr><td>Système de feedback anonyme efficace et bien pensé</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Analytics limités pour les analyses approfondies d'engagement</td></tr><tr><td>Personnalisation restreinte des questionnaires par rapport à la concurrence</td></tr><tr><td>Prix qui grimpe rapidement avec le nombre d'utilisateurs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -767,38 +677,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Honestly</strong> mise tout sur l'anonymat pour libérer la parole en entreprise. Cette plateforme de feedback permet aux salariés de s'exprimer sans retenue via des sondages anonymes et des discussions ouvertes.
-
-<p>J'ai testé leur système de questions intelligentes qui s'adaptent selon les réponses.</p><p>Côté managers, on récupère des insights bruts sans filtre. Les tableaux de bord montrent clairement les zones de tension.</p>
-
-<p>Par exemple, si <strong>75% des équipes</strong> pointent un problème de communication, c'est affiché directement avec des suggestions d'actions concrètes.</p>
-
-<p>Leur IA analyse les commentaires texte pour identifier les tendances émergentes.</p><p>Ce qui m'a marqué : les employés peuvent poser des questions anonymes au leadership et recevoir des réponses publiques.</p>
-
-<p>Ça casse les silos hiérarchiques traditionnels. <strong>Honestly</strong> convient parfaitement aux entreprises qui veulent vraiment entendre leurs collaborateurs, pas juste cocher la case engagement.</p></p>
+            <p><strong>Honestly</strong> mise tout sur l'anonymat pour libérer la parole en entreprise. Cette plateforme de feedback permet aux salariés de s'exprimer sans retenue via des sondages anonymes et des discussions ouvertes. J'ai testé leur système de questions intelligentes qui s'adaptent selon les réponses.</p><p>Côté managers, on récupère des insights bruts sans filtre. Les tableaux de bord montrent clairement les zones de tension. Par exemple, si <strong><strong>75%</strong> des équipes</strong> pointent un problème de communication, c'est affiché directement avec des suggestions d'actions concrètes. Leur IA analyse les commentaires texte pour identifier les tendances émergentes.</p><p>Ce qui m'a marqué : les employés peuvent poser des questions anonymes au leadership et recevoir des réponses publiques. Ça casse les silos hiérarchiques traditionnels. <strong>Honestly</strong> convient parfaitement aux entreprises qui veulent vraiment entendre leurs collaborateurs, pas juste cocher la case engagement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Anonymat total garanti techniquement</td>
-            <td>Peut créer une culture de défiance si mal introduit</td>
-          </tr>
-          <tr>
-            <td>Questions adaptatives selon les réponses précédentes</td>
-            <td>Fonctionnalités limitées sans anonymat</td>
-          </tr>
-          <tr>
-            <td>Analyse IA des commentaires texte en temps réel</td>
-            <td>Prix élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Interface de discussion directe avec le leadership</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Anonymat total garanti techniquement</td></tr><tr><td>Questions adaptatives selon les réponses précédentes</td></tr><tr><td>Analyse IA des commentaires texte en temps réel</td></tr><tr><td>Interface de discussion directe avec le leadership</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Peut créer une culture de défiance si mal introduit</td></tr><tr><td>Fonctionnalités limitées sans anonymat</td></tr><tr><td>Prix élevé pour les petites structures</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1016,7 +907,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 2 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

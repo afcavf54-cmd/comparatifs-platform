@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon top 12 pour choisir le meilleur logiciel d’emailing 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 12 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 12 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -530,40 +535,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je recommande <strong>EmailOctopus</strong> aux équipes qui cherchent une solution d'emailing simple sans se ruiner.
-
-<p>Ce logiciel britannique mise tout sur la simplicité : templates propres, envoi direct via Amazon SES, et tarifs qui restent raisonnables même avec une grosse base.</p>
-
-<p>Pas de fioritures, juste l'essentiel pour envoyer des newsletters efficaces.</p><p>L'interface fait parfois amateur comparée à Mailchimp, mais ça fonctionne.</p>
-
-<p>J'ai migré une base de 8000 contacts dessus en 20 minutes, et les taux de délivrabilité sont corrects. <strong>Le pricing reste linéaire</strong>, ce qui évite les mauvaises surprises quand on grandit.</p>
-
-<p>Par contre, ne vous attendez pas à des automations poussées.</p><p>EmailOctopus convient parfaitement aux consultants, petites agences ou e-commerçants qui veulent juste <strong>envoyer des campagnes régulières</strong> sans complexité.</p>
-
-<p>Si vous cherchez du marketing automation avancé ou des intégrations poussées, passez votre chemin. Mais pour une newsletter hebdomadaire ou des campagnes produits basiques, ça fait le job à petit prix.</p></p>
+            <p>Je recommande <strong>EmailOctopus</strong> aux équipes qui cherchent une solution d'emailing simple sans se ruiner. Ce logiciel britannique mise tout sur la simplicité : templates propres, envoi direct via Amazon SES, et tarifs qui restent raisonnables même avec une grosse base. Pas de fioritures, juste l'essentiel pour envoyer des newsletters efficaces.</p><p>L'interface fait parfois amateur comparée à Mailchimp, mais ça fonctionne. J'ai migré une base de 8000 contacts dessus en 20 minutes, et les taux de délivrabilité sont corrects. <strong>Le pricing reste linéaire</strong>, ce qui évite les mauvaises surprises quand on grandit. Par contre, ne vous attendez pas à des automations poussées.</p><p>EmailOctopus convient parfaitement aux consultants, petites agences ou e-commerçants qui veulent juste <strong>envoyer des campagnes régulières</strong> sans complexité. Si vous cherchez du marketing automation avancé ou des intégrations poussées, passez votre chemin. Mais pour une newsletter hebdomadaire ou des campagnes produits basiques, ça fait le job à petit prix.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tarifs transparents et compétitifs, même sur de gros volumes</td>
-            <td>Automations très limitées, juste l'autorépondeur de base</td>
-          </tr>
-          <tr>
-            <td>Interface épurée et prise en main rapide en moins d'une heure</td>
-            <td>Design des emails parfois daté comparé à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Bonne délivrabilité grâce à Amazon SES</td>
-            <td>Support client lent et uniquement en anglais</td>
-          </tr>
-          <tr>
-            <td>Templates responsive corrects pour du contenu simple</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tarifs transparents et compétitifs, même sur de gros volumes</td></tr><tr><td>Interface épurée et prise en main rapide en moins d'une heure</td></tr><tr><td>Bonne délivrabilité grâce à Amazon SES</td></tr><tr><td>Templates responsive corrects pour du contenu simple</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Automations très limitées, juste l'autorépondeur de base</td></tr><tr><td>Design des emails parfois daté comparé à la concurrence</td></tr><tr><td>Support client lent et uniquement en anglais</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -579,40 +563,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste SendPulse depuis 8 mois maintenant et je dois reconnaître que cette plateforme m'a surpris par sa polyvalence.
-
-<p>Au départ, je cherchais juste <strong>un outil d'emailing simple</strong>, mais j'ai découvert qu'ils proposent aussi SMS, notifications push et même un chatbot.</p>
-
-<p>L'interface reste assez intuitive malgré toutes ces fonctionnalités.</p><p>Ce qui m'a vraiment convaincu, c'est leur <strong>délivrabilité solide</strong>.</p>
-
-<p>Mes emails arrivent bien en boîte principale, même avec des listes de plusieurs milliers de contacts. L'éditeur drag-and-drop fonctionne correctement, même si j'aurais aimé plus de templates vraiment modernes.</p>
-
-<p>Par contre, leur système d'automatisation est plutôt bien pensé pour créer des séquences complexes.</p><p>SendPulse convient parfaitement aux e-commerces et PME qui veulent centraliser leur communication digitale.</p>
-
-<p>Si vous envoyez déjà des newsletters et que vous réfléchissez aux SMS de relance ou aux notifications web, ça devient vraiment intéressant. <strong>Comptez <strong>8€</strong>/mois minimum</strong> pour débuter avec les fonctions essentielles.</p></p>
+            <p>Je teste SendPulse depuis 8 mois maintenant et je dois reconnaître que cette plateforme m'a surpris par sa polyvalence. Au départ, je cherchais juste <strong>un outil d'emailing simple</strong>, mais j'ai découvert qu'ils proposent aussi SMS, notifications push et même un chatbot. L'interface reste assez intuitive malgré toutes ces fonctionnalités.</p><p>Ce qui m'a vraiment convaincu, c'est leur <strong>délivrabilité solide</strong>. Mes emails arrivent bien en boîte principale, même avec des listes de plusieurs milliers de contacts. L'éditeur drag-and-drop fonctionne correctement, même si j'aurais aimé plus de templates vraiment modernes. Par contre, leur système d'automatisation est plutôt bien pensé pour créer des séquences complexes.</p><p>SendPulse convient parfaitement aux e-commerces et PME qui veulent centraliser leur communication digitale. Si vous envoyez déjà des newsletters et que vous réfléchissez aux SMS de relance ou aux notifications web, ça devient vraiment intéressant. <strong>Comptez <strong>8€</strong>/mois minimum</strong> pour débuter avec les fonctions essentielles.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Plateforme tout-en-un avec emailing, SMS et push</td>
-            <td>Templates parfois datés esthétiquement</td>
-          </tr>
-          <tr>
-            <td>Bonne délivrabilité même sur de gros volumes</td>
-            <td>Support en français perfectible</td>
-          </tr>
-          <tr>
-            <td>Automatisations avancées avec conditions multiples</td>
-            <td>Interface chargée qui peut dérouter au début</td>
-          </tr>
-          <tr>
-            <td>Tarifs compétitifs pour débuter</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Plateforme tout-en-un avec emailing, SMS et push</td></tr><tr><td>Bonne délivrabilité même sur de gros volumes</td></tr><tr><td>Automatisations avancées avec conditions multiples</td></tr><tr><td>Tarifs compétitifs pour débuter</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Templates parfois datés esthétiquement</td></tr><tr><td>Support en français perfectible</td></tr><tr><td>Interface chargée qui peut dérouter au début</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -628,38 +591,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>MailerSend cible directement les développeurs et équipes techniques qui veulent garder la main sur leurs campagnes d'emailing.
-
-<p>Je l'ai testé principalement pour des emails transactionnels et j'ai apprécié son approche API-first qui <strong>facilite l'intégration</strong> dans les applications existantes.</p><p>L'interface reste accessible aux non-techniques, mais on sent que la plateforme privilégie la flexibilité technique.</p>
-
-<p>Les templates responsive sont corrects et l'éditeur drag & drop fait le travail.</p>
-
-<p>Par contre, j'ai trouvé le système de gestion des listes moins intuitif que chez Mailchimp.</p><p>Niveau tarification, MailerSend propose une approche pay-as-you-go qui peut être intéressante pour des volumes variables.</p>
-
-<p>Les statistiques de délivrabilité sont détaillées, avec un suivi précis des bounces et des plaintes spam. <strong>Pratique pour optimiser sa réputation d'expéditeur</strong> au fil du temps.</p></p>
+            <p>MailerSend cible directement les développeurs et équipes techniques qui veulent garder la main sur leurs campagnes d'emailing. Je l'ai testé principalement pour des emails transactionnels et j'ai apprécié son approche API-first qui <strong>facilite l'intégration</strong> dans les applications existantes.</p><p>L'interface reste accessible aux non-techniques, mais on sent que la plateforme privilégie la flexibilité technique. Les templates responsive sont corrects et l'éditeur drag & drop fait le travail. Par contre, j'ai trouvé le système de gestion des listes moins intuitif que chez Mailchimp.</p><p>Niveau tarification, MailerSend propose une approche pay-as-you-go qui peut être intéressante pour des volumes variables. Les statistiques de délivrabilité sont détaillées, avec un suivi précis des bounces et des plaintes spam. <strong>Pratique pour optimiser sa réputation d'expéditeur</strong> au fil du temps.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>API robuste avec documentation complète pour l'intégration</td>
-            <td>Interface moins polée que les solutions grand public</td>
-          </tr>
-          <tr>
-            <td>Tarification flexible sans engagement mensuel fixe</td>
-            <td>Courbe d'apprentissage plus élevée pour les non-techniques</td>
-          </tr>
-          <tr>
-            <td>Analytics détaillées avec tracking des événements en temps réel</td>
-            <td>Fonctionnalités d'automation limitées comparé aux leaders du marché</td>
-          </tr>
-          <tr>
-            <td>Support technique réactif pour les questions d'intégration</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>API robuste avec documentation complète pour l'intégration</td></tr><tr><td>Tarification flexible sans engagement mensuel fixe</td></tr><tr><td>Analytics détaillées avec tracking des événements en temps réel</td></tr><tr><td>Support technique réactif pour les questions d'intégration</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface moins polée que les solutions grand public</td></tr><tr><td>Courbe d'apprentissage plus élevée pour les non-techniques</td></tr><tr><td>Fonctionnalités d'automation limitées comparé aux leaders du marché</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -675,38 +619,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Sarbacane fait partie de ces logiciels d'emailing français qui ont <strong>grandi avec les PME</strong>. Je le vois souvent chez les entreprises qui veulent sortir d'outils basiques sans se lancer dans du très technique.
-
-<p>L'interface reste accessible et les templates sont plutôt corrects, même si on sent que le design n'est pas leur priorité absolue.</p><p>Ce qui m'a marqué avec Sarbacane, c'est leur approche <strong>très orientée accompagnement</strong>.</p>
-
-<p>Ils proposent encore du support téléphonique en français, ce qui devient rare. L'outil gère bien les bases : création de campagnes, segmentation des contacts, statistiques de performance.</p>
-
-<p>Par contre, ne vous attendez pas à des automatisations poussées comme chez Mailchimp ou Sendinblue.</p><p>Honnêtement, je recommande Sarbacane aux équipes marketing qui cherchent de la <strong>simplicité avec un vrai support humain</strong>.</p>
-
-<p>C'est particulièrement adapté si vous gérez entre 1000 et 20000 contacts et que vous envoyez 2 à 4 newsletters par mois. Au-delà, les limitations deviennent frustrantes.</p></p>
+            <p>Sarbacane fait partie de ces logiciels d'emailing français qui ont <strong>grandi avec les PME</strong>. Je le vois souvent chez les entreprises qui veulent sortir d'outils basiques sans se lancer dans du très technique. L'interface reste accessible et les templates sont plutôt corrects, même si on sent que le design n'est pas leur priorité absolue.</p><p>Ce qui m'a marqué avec Sarbacane, c'est leur approche <strong>très orientée accompagnement</strong>. Ils proposent encore du support téléphonique en français, ce qui devient rare. L'outil gère bien les bases : création de campagnes, segmentation des contacts, statistiques de performance. Par contre, ne vous attendez pas à des automatisations poussées comme chez Mailchimp ou Sendinblue.</p><p>Honnêtement, je recommande Sarbacane aux équipes marketing qui cherchent de la <strong>simplicité avec un vrai support humain</strong>. C'est particulièrement adapté si vous gérez entre 1000 et 20000 contacts et que vous envoyez 2 à 4 newsletters par mois. Au-delà, les limitations deviennent frustrantes.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Support client français par téléphone vraiment réactif</td>
-            <td>Automatisations marketing très limitées comparé aux leaders</td>
-          </tr>
-          <tr>
-            <td>Interface simple, prise en main rapide même pour les débutants</td>
-            <td>Templates un peu datés, design perfectible</td>
-          </tr>
-          <tr>
-            <td>Tarifs transparents sans frais cachés sur les envois</td>
-            <td>Intégrations natives assez restreintes avec les CRM populaires</td>
-          </tr>
-          <tr>
-            <td>Hébergement des données en France pour la conformité RGPD</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Support client français par téléphone vraiment réactif</td></tr><tr><td>Interface simple, prise en main rapide même pour les débutants</td></tr><tr><td>Tarifs transparents sans frais cachés sur les envois</td></tr><tr><td>Hébergement des données en France pour la conformité RGPD</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Automatisations marketing très limitées comparé aux leaders</td></tr><tr><td>Templates un peu datés, design perfectible</td></tr><tr><td>Intégrations natives assez restreintes avec les CRM populaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -722,40 +647,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>MailerLite fait partie de ces outils d'emailing qui misent tout sur la simplicité. Je l'ai testé pendant plusieurs mois pour des campagnes d'e-commerce et je dois dire que <strong>l'interface est vraiment intuitive</strong>.
-
-<p>L'éditeur drag-and-drop fonctionne bien, les templates sont propres sans être exceptionnels, et la création d'automatisations reste accessible même aux débutants.</p><p>Ce logiciel d'emailing convient parfaitement aux <strong>petites entreprises et freelances</strong> qui veulent démarrer rapidement sans se prendre la tête.</p>
-
-<p>Les fonctionnalités de base sont là : segmentation correcte, A/B testing, landing pages intégrées, pop-ups pour capturer des emails.</p>
-
-<p>J'ai apprécié le fait de pouvoir créer des séquences d'emails automatisées en quelques clics.</p><p>Par contre, ne vous attendez pas à des fonctionnalités avancées de marketing automation comme chez ActiveCampaign.</p>
-
-<p>MailerLite reste dans le basique, ce qui peut être frustrant quand on veut pousser la personnalisation. <strong>Les rapports sont simples</strong> mais suffisants pour suivre les taux d'ouverture et de clic.</p>
-
-<p>Le pricing reste honnête avec un plan gratuit jusqu'à 1000 contacts.</p></p>
+            <p>MailerLite fait partie de ces outils d'emailing qui misent tout sur la simplicité. Je l'ai testé pendant plusieurs mois pour des campagnes d'e-commerce et je dois dire que <strong>l'interface est vraiment intuitive</strong>. L'éditeur drag-and-drop fonctionne bien, les templates sont propres sans être exceptionnels, et la création d'automatisations reste accessible même aux débutants.</p><p>Ce logiciel d'emailing convient parfaitement aux <strong>petites entreprises et freelances</strong> qui veulent démarrer rapidement sans se prendre la tête. Les fonctionnalités de base sont là : segmentation correcte, A/B testing, landing pages intégrées, pop-ups pour capturer des emails. J'ai apprécié le fait de pouvoir créer des séquences d'emails automatisées en quelques clics.</p><p>Par contre, ne vous attendez pas à des fonctionnalités avancées de marketing automation comme chez ActiveCampaign. MailerLite reste dans le basique, ce qui peut être frustrant quand on veut pousser la personnalisation. <strong>Les rapports sont simples</strong> mais suffisants pour suivre les taux d'ouverture et de clic. Le pricing reste honnête avec un plan gratuit jusqu'à 1000 contacts.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment simple à prendre en main</td>
-            <td>Fonctionnalités de segmentation limitées</td>
-          </tr>
-          <tr>
-            <td>Plan gratuit généreux jusqu'à 1000 abonnés</td>
-            <td>Personnalisation avancée quasi inexistante</td>
-          </tr>
-          <tr>
-            <td>Éditeur drag-and-drop fluide et intuitif</td>
-            <td>Templates un peu datés visuellement</td>
-          </tr>
-          <tr>
-            <td>Automatisations de base efficaces pour débuter</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment simple à prendre en main</td></tr><tr><td>Plan gratuit généreux jusqu'à 1000 abonnés</td></tr><tr><td>Éditeur drag-and-drop fluide et intuitif</td></tr><tr><td>Automatisations de base efficaces pour débuter</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités de segmentation limitées</td></tr><tr><td>Personnalisation avancée quasi inexistante</td></tr><tr><td>Templates un peu datés visuellement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -771,42 +675,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Mailchimp depuis 3 ans pour mes campagnes emailing et je dois reconnaître que ce logiciel reste <strong>une référence solide</strong> malgré quelques défauts.
-
-<p>L'interface est intuitive, même pour débuter, et les templates prêts à l'emploi font gagner un temps fou.</p>
-
-<p>On peut segmenter sa liste assez finement et programmer ses envois facilement.</p><p>Ce qui m'a vraiment convaincu, c'est l'automatisation.</p>
-
-<p>Je peux créer des séquences de bienvenue, des relances panier abandonné ou des campagnes de réactivation sans me prendre la tête.</p>
-
-<p><strong>Les rapports détaillés</strong> montrent précisément qui ouvre, qui clique, et on peut même voir la géolocalisation des ouvertures.</p><p>Par contre, attention au pricing qui grimpe vite une fois qu'on dépasse les 2000 contacts.</p>
-
-<p>Et franchement, certaines fonctionnalités avancées restent verrouillées dans les plans premium, ce qui peut frustrer quand on commence à avoir des besoins plus pointus.</p>
-
-<p>Mais pour une boutique en ligne ou une PME qui veut <strong>professionnaliser ses newsletters</strong>, ça fait le job.</p></p>
+            <p>J'utilise Mailchimp depuis 3 ans pour mes campagnes emailing et je dois reconnaître que ce logiciel reste <strong>une référence solide</strong> malgré quelques défauts. L'interface est intuitive, même pour débuter, et les templates prêts à l'emploi font gagner un temps fou. On peut segmenter sa liste assez finement et programmer ses envois facilement.</p><p>Ce qui m'a vraiment convaincu, c'est l'automatisation. Je peux créer des séquences de bienvenue, des relances panier abandonné ou des campagnes de réactivation sans me prendre la tête. <strong>Les rapports détaillés</strong> montrent précisément qui ouvre, qui clique, et on peut même voir la géolocalisation des ouvertures.</p><p>Par contre, attention au pricing qui grimpe vite une fois qu'on dépasse les 2000 contacts. Et franchement, certaines fonctionnalités avancées restent verrouillées dans les plans premium, ce qui peut frustrer quand on commence à avoir des besoins plus pointus. Mais pour une boutique en ligne ou une PME qui veut <strong>professionnaliser ses newsletters</strong>, ça fait le job.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment accessible aux débutants</td>
-            <td>Prix qui explose rapidement avec l'augmentation des contacts</td>
-          </tr>
-          <tr>
-            <td>Templates variés et personnalisables rapidement</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>Automatisations avancées incluses dès le plan gratuit</td>
-            <td>Fonctionnalités premium verrouillées même sur les plans intermédiaires</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec la plupart des CMS et e-commerce</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment accessible aux débutants</td></tr><tr><td>Templates variés et personnalisables rapidement</td></tr><tr><td>Automatisations avancées incluses dès le plan gratuit</td></tr><tr><td>Intégration native avec la plupart des CMS et e-commerce</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix qui explose rapidement avec l'augmentation des contacts</td></tr><tr><td>Support client parfois lent en français</td></tr><tr><td>Fonctionnalités premium verrouillées même sur les plans intermédiaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -822,38 +703,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je connais <strong>Brevo</strong> depuis ses débuts sous le nom Sendinblue, et je dois avouer qu'il reste dans mon top 3 des solutions d'emailing.
-
-<p>Ce qui m'a séduit dès le départ : leur approche tout-en-un qui combine emailing, SMS, chat et CRM dans une interface plutôt claire.</p><p>L'outil cible principalement les PME et e-commerces qui veulent centraliser leur communication client.</p>
-
-<p>J'ai testé leurs templates : <strong>la bibliothèque est correcte</strong> sans être exceptionnelle, mais l'éditeur drag-and-drop fonctionne bien.</p>
-
-<p>Leur système d'automatisation me plaît beaucoup, surtout pour créer des séquences de bienvenue ou de relance panier abandonné.</p><p>Côté prix, Brevo joue la carte accessible avec <strong>un plan gratuit jusqu'à 300 emails par jour</strong>.</p>
-
-<p>Leurs plans payants démarrent à <strong>25€</strong>/mois, ce qui reste compétitif face à Mailchimp ou GetResponse. Je trouve leur delivrabilité honnête, même si j'ai parfois eu quelques emails en spam sur certains domaines sensibles.</p></p>
+            <p>Je connais <strong>Brevo</strong> depuis ses débuts sous le nom Sendinblue, et je dois avouer qu'il reste dans mon top 3 des solutions d'emailing. Ce qui m'a séduit dès le départ : leur approche tout-en-un qui combine emailing, SMS, chat et CRM dans une interface plutôt claire.</p><p>L'outil cible principalement les PME et e-commerces qui veulent centraliser leur communication client. J'ai testé leurs templates : <strong>la bibliothèque est correcte</strong> sans être exceptionnelle, mais l'éditeur drag-and-drop fonctionne bien. Leur système d'automatisation me plaît beaucoup, surtout pour créer des séquences de bienvenue ou de relance panier abandonné.</p><p>Côté prix, Brevo joue la carte accessible avec <strong>un plan gratuit jusqu'à 300 emails par jour</strong>. Leurs plans payants démarrent à <strong>25€</strong>/mois, ce qui reste compétitif face à Mailchimp ou GetResponse. Je trouve leur delivrabilité honnête, même si j'ai parfois eu quelques emails en spam sur certains domaines sensibles.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les débutants</td>
-            <td>Templates moins variés que la concurrence</td>
-          </tr>
-          <tr>
-            <td>Combinaison emailing + SMS + CRM dans un seul outil</td>
-            <td>Support client parfois lent en période de charge</td>
-          </tr>
-          <tr>
-            <td>Plan gratuit généreux avec 300 emails/jour</td>
-            <td>Quelques bugs sur l'éditeur mobile</td>
-          </tr>
-          <tr>
-            <td>Automatisations avancées faciles à paramétrer</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les débutants</td></tr><tr><td>Combinaison emailing + SMS + CRM dans un seul outil</td></tr><tr><td>Plan gratuit généreux avec 300 emails/jour</td></tr><tr><td>Automatisations avancées faciles à paramétrer</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Templates moins variés que la concurrence</td></tr><tr><td>Support client parfois lent en période de charge</td></tr><tr><td>Quelques bugs sur l'éditeur mobile</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -869,40 +731,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>GetResponse fait partie de ces solutions d'emailing qui ont vraiment compris l'évolution du marché. <strong>Je l'utilise principalement pour ses séquences automatisées</strong> qui fonctionnent de manière fluide, sans bugs majeurs.
-
-<p>L'interface reste accessible même quand on démarre en email marketing.</p><p>Ce qui m'a convaincu chez GetResponse, c'est sa capacité à gérer plusieurs canaux depuis la même plateforme.</p>
-
-<p>On peut créer ses pages de capture, programmer ses campagnes SMS et même organiser des webinaires.</p>
-
-<p><strong>Pratique quand on veut éviter de multiplier les abonnements.</strong> Par contre, je trouve que certaines fonctionnalités avancées manquent encore de finition.</p><p>Niveau ciblage, GetResponse propose des options correctes pour segmenter ses listes.</p>
-
-<p>J'ai pu créer des scénarios basés sur le comportement des abonnés, même si ça reste moins poussé que chez Klaviyo. <strong>Pour une TPE ou PME qui cherche du tout-en-un</strong> sans se ruiner, ça fait le travail.</p>
-
-<p>Je recommande surtout aux e-commerçants qui démarrent et aux consultants qui ont besoin d'organiser des formations en ligne.</p></p>
+            <p>GetResponse fait partie de ces solutions d'emailing qui ont vraiment compris l'évolution du marché. <strong>Je l'utilise principalement pour ses séquences automatisées</strong> qui fonctionnent de manière fluide, sans bugs majeurs. L'interface reste accessible même quand on démarre en email marketing.</p><p>Ce qui m'a convaincu chez GetResponse, c'est sa capacité à gérer plusieurs canaux depuis la même plateforme. On peut créer ses pages de capture, programmer ses campagnes SMS et même organiser des webinaires. <strong>Pratique quand on veut éviter de multiplier les abonnements.</strong> Par contre, je trouve que certaines fonctionnalités avancées manquent encore de finition.</p><p>Niveau ciblage, GetResponse propose des options correctes pour segmenter ses listes. J'ai pu créer des scénarios basés sur le comportement des abonnés, même si ça reste moins poussé que chez Klaviyo. <strong>Pour une TPE ou PME qui cherche du tout-en-un</strong> sans se ruiner, ça fait le travail. Je recommande surtout aux e-commerçants qui démarrent et aux consultants qui ont besoin d'organiser des formations en ligne.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Séquences d'automatisation stables et faciles à configurer</td>
-            <td>Interface parfois lente sur les gros volumes</td>
-          </tr>
-          <tr>
-            <td>Plateforme tout-en-un avec webinaires et SMS intégrés</td>
-            <td>Analytics moins détaillées que la concurrence</td>
-          </tr>
-          <tr>
-            <td>Pages de capture incluses sans frais supplémentaires</td>
-            <td>Personnalisation limitée sur les templates mobiles</td>
-          </tr>
-          <tr>
-            <td>Support réactif même sur les comptes basiques</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Séquences d'automatisation stables et faciles à configurer</td></tr><tr><td>Plateforme tout-en-un avec webinaires et SMS intégrés</td></tr><tr><td>Pages de capture incluses sans frais supplémentaires</td></tr><tr><td>Support réactif même sur les comptes basiques</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface parfois lente sur les gros volumes</td></tr><tr><td>Analytics moins détaillées que la concurrence</td></tr><tr><td>Personnalisation limitée sur les templates mobiles</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -918,42 +759,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>ActiveCampaign, c'est bien plus qu'un simple logiciel d'emailing. On parle d'une plateforme qui mélange automation marketing poussée, CRM intégré et segmentation ultra-fine.
-
-<p>J'ai testé pas mal d'outils dans cette catégorie, et je dois reconnaître qu'ActiveCampaign tape fort sur <strong>l'automatisation comportementale</strong>.</p>
-
-<p>Vous créez des scénarios complexes basés sur les actions de vos contacts, leurs achats, leurs visites sur votre site.</p><p>Ce qui m'a frappé dès les premiers tests ? La granularité des déclencheurs.</p>
-
-<p>Vous pouvez lancer une séquence d'emails si quelqu'un consulte une page produit spécifique mais n'achète pas dans les 3 jours. Ou encore relancer automatiquement les prospects qui ont ouvert vos emails mais n'ont pas cliqué.</p>
-
-<p><strong>Le scoring des leads</strong> fonctionne vraiment bien : on attribue des points selon l'engagement, et ça aide à prioriser le commercial.</p><p>Par contre, je préviens tout de suite : ActiveCampaign demande du temps d'apprentissage.</p>
-
-<p>L'interface peut dérouter au début, surtout si vous venez d'outils plus basiques comme Mailchimp. Mais une fois qu'on maîtrise, on gagne énormément en efficacité.</p>
-
-<p>Je le recommande surtout aux <strong>e-commerces et aux entreprises B2B</strong> qui veulent vraiment automatiser leur nurturing.</p></p>
+            <p>ActiveCampaign, c'est bien plus qu'un simple logiciel d'emailing. On parle d'une plateforme qui mélange automation marketing poussée, CRM intégré et segmentation ultra-fine. J'ai testé pas mal d'outils dans cette catégorie, et je dois reconnaître qu'ActiveCampaign tape fort sur <strong>l'automatisation comportementale</strong>. Vous créez des scénarios complexes basés sur les actions de vos contacts, leurs achats, leurs visites sur votre site.</p><p>Ce qui m'a frappé dès les premiers tests ? La granularité des déclencheurs. Vous pouvez lancer une séquence d'emails si quelqu'un consulte une page produit spécifique mais n'achète pas dans les 3 jours. Ou encore relancer automatiquement les prospects qui ont ouvert vos emails mais n'ont pas cliqué. <strong>Le scoring des leads</strong> fonctionne vraiment bien : on attribue des points selon l'engagement, et ça aide à prioriser le commercial.</p><p>Par contre, je préviens tout de suite : ActiveCampaign demande du temps d'apprentissage. L'interface peut dérouter au début, surtout si vous venez d'outils plus basiques comme Mailchimp. Mais une fois qu'on maîtrise, on gagne énormément en efficacité. Je le recommande surtout aux <strong>e-commerces et aux entreprises B2B</strong> qui veulent vraiment automatiser leur nurturing.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automation marketing très poussée avec déclencheurs comportementaux précis</td>
-            <td>Interface complexe qui demande une vraie courbe d'apprentissage</td>
-          </tr>
-          <tr>
-            <td>CRM intégré qui évite de jongler entre plusieurs outils</td>
-            <td>Tarification qui grimpe vite avec le nombre de contacts</td>
-          </tr>
-          <tr>
-            <td>Segmentation ultra-fine basée sur l'historique et les interactions</td>
-            <td>Fonctionnalités avancées parfois inutiles pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Scoring automatique des leads pour prioriser les actions commerciales</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automation marketing très poussée avec déclencheurs comportementaux précis</td></tr><tr><td>CRM intégré qui évite de jongler entre plusieurs outils</td></tr><tr><td>Segmentation ultra-fine basée sur l'historique et les interactions</td></tr><tr><td>Scoring automatique des leads pour prioriser les actions commerciales</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface complexe qui demande une vraie courbe d'apprentissage</td></tr><tr><td>Tarification qui grimpe vite avec le nombre de contacts</td></tr><tr><td>Fonctionnalités avancées parfois inutiles pour les petites structures</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -969,36 +787,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Digitaleo mise sur la simplicité pour les petites structures. Je l'ai testé chez un client comptable qui voulait <strong>automatiser ses relances de factures</strong>.
-
-<p>L'interface reste très accessible, même pour quelqu'un qui débute complètement dans l'emailing.</p><p>Ce qui m'a marqué : l'intégration native avec les principaux CRM français. Pas besoin de bidouiller des API ou de passer par Zapier.</p>
-
-<p>Les templates sont corrects sans être révolutionnaires, mais ça fait le travail pour des campagnes B2B classiques.</p><p>Par contre, je le déconseille aux e-commerçants qui veulent du marketing automation poussé.</p>
-
-<p><strong>Digitaleo cible clairement les TPE/PME</strong> qui cherchent un logiciel d'emailing fonctionnel sans les complications. Comptez environ <strong>25€</strong>/mois pour débuter.</p></p>
+            <p>Digitaleo mise sur la simplicité pour les petites structures. Je l'ai testé chez un client comptable qui voulait <strong>automatiser ses relances de factures</strong>. L'interface reste très accessible, même pour quelqu'un qui débute complètement dans l'emailing.</p><p>Ce qui m'a marqué : l'intégration native avec les principaux CRM français. Pas besoin de bidouiller des API ou de passer par Zapier. Les templates sont corrects sans être révolutionnaires, mais ça fait le travail pour des campagnes B2B classiques.</p><p>Par contre, je le déconseille aux e-commerçants qui veulent du marketing automation poussé. <strong>Digitaleo cible clairement les TPE/PME</strong> qui cherchent un logiciel d'emailing fonctionnel sans les complications. Comptez environ <strong>25€</strong>/mois pour débuter.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Configuration rapide en moins d'une heure</td>
-            <td>Fonctionnalités d'automation très limitées</td>
-          </tr>
-          <tr>
-            <td>Synchronisation directe avec Sage et Cegid</td>
-            <td>Peu d'options de personnalisation avancée</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif</td>
-            <td>Statistiques basiques comparé à Mailchimp</td>
-          </tr>
-          <tr>
-            <td>Templates adaptés aux communications B2B</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Configuration rapide en moins d'une heure</td></tr><tr><td>Synchronisation directe avec Sage et Cegid</td></tr><tr><td>Support client français réactif</td></tr><tr><td>Templates adaptés aux communications B2B</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités d'automation très limitées</td></tr><tr><td>Peu d'options de personnalisation avancée</td></tr><tr><td>Statistiques basiques comparé à Mailchimp</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1014,42 +815,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Mailjet m'a séduit par sa <strong>double casquette API/interface</strong> qui plaît autant aux développeurs qu'aux marketeurs.
-
-<p>Cette plateforme française permet d'envoyer des campagnes classiques tout en offrant un moteur transactionnel robuste pour les emails automatiques.</p>
-
-<p>Je l'utilise depuis 2 ans et j'apprécie particulièrement son éditeur drag & drop qui reste simple sans être basique.</p><p>Ce qui distingue vraiment Mailjet des autres solutions d'emailing, c'est sa capacité à gérer simultanément les besoins marketing ET techniques.</p>
-
-<p>Là où Mailchimp excelle en simplicité ou Sendinblue en automation, Mailjet trouve un équilibre intéressant.</p>
-
-<p><strong>L'interface collaborative</strong> permet à plusieurs personnes de travailler sur une même campagne, ce qui évite les allers-retours par email.</p><p>Côté délivrabilité, j'ai eu de bons résultats avec un taux moyen de <strong>92%</strong> en boîte principale sur mes listes B2B.</p>
-
-<p>Le système de réputation partagée fonctionne bien, même si parfois on subit les erreurs d'autres utilisateurs.</p>
-
-<p>Les statistiques sont détaillées sans être écrasantes, avec un focus sur l'essentiel : ouvertures, clics, désabonnements et bounces.</p></p>
+            <p>Mailjet m'a séduit par sa <strong>double casquette API/interface</strong> qui plaît autant aux développeurs qu'aux marketeurs. Cette plateforme française permet d'envoyer des campagnes classiques tout en offrant un moteur transactionnel robuste pour les emails automatiques. Je l'utilise depuis 2 ans et j'apprécie particulièrement son éditeur drag & drop qui reste simple sans être basique.</p><p>Ce qui distingue vraiment Mailjet des autres solutions d'emailing, c'est sa capacité à gérer simultanément les besoins marketing ET techniques. Là où Mailchimp excelle en simplicité ou Sendinblue en automation, Mailjet trouve un équilibre intéressant. <strong>L'interface collaborative</strong> permet à plusieurs personnes de travailler sur une même campagne, ce qui évite les allers-retours par email.</p><p>Côté délivrabilité, j'ai eu de bons résultats avec un taux moyen de <strong>92%</strong> en boîte principale sur mes listes B2B. Le système de réputation partagée fonctionne bien, même si parfois on subit les erreurs d'autres utilisateurs. Les statistiques sont détaillées sans être écrasantes, avec un focus sur l'essentiel : ouvertures, clics, désabonnements et bounces.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>API puissante avec documentation claire pour l'envoi transactionnel</td>
-            <td>Fonctionnalités d'automation limitées comparé à Sendinblue ou Mailchimp</td>
-          </tr>
-          <tr>
-            <td>Interface collaborative permettant le travail à plusieurs sur les campagnes</td>
-            <td>Réputation partagée qui peut impacter votre délivrabilité</td>
-          </tr>
-          <tr>
-            <td>Éditeur responsive intuitif avec prévisualisation temps réel</td>
-            <td>Templates de base assez datés, il faut partir de zéro</td>
-          </tr>
-          <tr>
-            <td>Support technique réactif avec des vrais experts techniques</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>API puissante avec documentation claire pour l'envoi transactionnel</td></tr><tr><td>Interface collaborative permettant le travail à plusieurs sur les campagnes</td></tr><tr><td>Éditeur responsive intuitif avec prévisualisation temps réel</td></tr><tr><td>Support technique réactif avec des vrais experts techniques</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités d'automation limitées comparé à Sendinblue ou Mailchimp</td></tr><tr><td>Réputation partagée qui peut impacter votre délivrabilité</td></tr><tr><td>Templates de base assez datés, il faut partir de zéro</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1065,40 +843,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise AWeber depuis 2 ans pour mes campagnes d'emailing et je dois admettre que cette plateforme américaine m'a surpris par sa <strong>simplicité déconcertante</strong>.
-
-<p>Contrairement à d'autres logiciels d'emailing qui multiplient les fonctionnalités, AWeber mise tout sur l'efficacité pure : créer des newsletters qui arrivent vraiment en boîte de réception.</p><p>Ce qui m'a convaincu ?</p>
-
-<p>Leurs templates responsive qui s'adaptent parfaitement aux mobiles et leur éditeur drag-and-drop vraiment intuitif. En 10 minutes, j'ai une newsletter professionnelle.</p>
-
-<p>Leur système d'autorépondeurs fonctionne très bien aussi, même si je regrette qu'il ne soit pas plus poussé que ça.</p>
-
-<p><strong>Délivrabilité excellente</strong> par contre, mes emails passent les filtres anti-spam sans problème.</p><p>AWeber convient parfaitement aux entrepreneurs et PME qui cherchent un outil d'email marketing <strong>sans prise de tête</strong>.</p>
-
-<p>Si vous débutez dans l'emailing ou que vous avez une liste de moins de 10 000 contacts, c'est un choix solide. Par contre, les grosses entreprises avec des besoins avancés en automation passeront probablement leur chemin.</p></p>
+            <p>J'utilise AWeber depuis 2 ans pour mes campagnes d'emailing et je dois admettre que cette plateforme américaine m'a surpris par sa <strong>simplicité déconcertante</strong>. Contrairement à d'autres logiciels d'emailing qui multiplient les fonctionnalités, AWeber mise tout sur l'efficacité pure : créer des newsletters qui arrivent vraiment en boîte de réception.</p><p>Ce qui m'a convaincu ? Leurs templates responsive qui s'adaptent parfaitement aux mobiles et leur éditeur drag-and-drop vraiment intuitif. En 10 minutes, j'ai une newsletter professionnelle. Leur système d'autorépondeurs fonctionne très bien aussi, même si je regrette qu'il ne soit pas plus poussé que ça. <strong>Délivrabilité excellente</strong> par contre, mes emails passent les filtres anti-spam sans problème.</p><p>AWeber convient parfaitement aux entrepreneurs et PME qui cherchent un outil d'email marketing <strong>sans prise de tête</strong>. Si vous débutez dans l'emailing ou que vous avez une liste de moins de 10 000 contacts, c'est un choix solide. Par contre, les grosses entreprises avec des besoins avancés en automation passeront probablement leur chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra-simple, parfaite pour débuter sans formation</td>
-            <td>Automation basique comparée à des outils comme ActiveCampaign</td>
-          </tr>
-          <tr>
-            <td>Excellente délivrabilité, emails qui arrivent vraiment</td>
-            <td>Statistiques limitées, manque de détails sur les comportements</td>
-          </tr>
-          <tr>
-            <td>Templates mobiles qui s'affichent correctement partout</td>
-            <td>Tarifs qui grimpent vite au-delà de 2500 contacts</td>
-          </tr>
-          <tr>
-            <td>Support client réactif même en français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra-simple, parfaite pour débuter sans formation</td></tr><tr><td>Excellente délivrabilité, emails qui arrivent vraiment</td></tr><tr><td>Templates mobiles qui s'affichent correctement partout</td></tr><tr><td>Support client réactif même en français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Automation basique comparée à des outils comme ActiveCampaign</td></tr><tr><td>Statistiques limitées, manque de détails sur les comportements</td></tr><tr><td>Tarifs qui grimpent vite au-delà de 2500 contacts</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1370,7 +1127,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 2 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

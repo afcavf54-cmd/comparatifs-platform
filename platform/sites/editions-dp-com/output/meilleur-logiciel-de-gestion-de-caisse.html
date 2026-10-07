@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J’ai testé 11 logiciels de gestion de caisse : voici mon comparatif 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 11 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 11 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -530,40 +535,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>SumUp POS Lite</strong> pendant plusieurs mois dans ma boutique de vêtements. Cette solution de caisse mobile me permet d'encaisser les paiements par carte directement sur mon téléphone ou ma tablette.
-
-<p>L'application se synchronise avec le lecteur de cartes SumUp et je peux même accepter les paiements sans contact en deux secondes.</p><p>Ce qui m'a convaincu ? La <strong>simplicité d'installation</strong>.</p>
-
-<p>J'ai créé mon compte, téléchargé l'app et commencé à vendre dans l'heure. Plus besoin de caisse enregistreuse traditionnelle, tout passe par l'écran tactile.</p>
-
-<p>Les reçus partent par email ou SMS automatiquement.</p><p>Par contre, on reste sur du basique.</p>
-
-<p>SumUp POS Lite convient parfaitement aux commerces qui cherchent une solution d'encaissement rapide sans se compliquer la vie avec des fonctionnalités avancées.</p>
-
-<p>Je recommande surtout aux <strong>commerçants itinérants</strong>, food trucks ou petites boutiques qui privilégient la mobilité.</p></p>
+            <p>J'ai testé <strong>SumUp POS Lite</strong> pendant plusieurs mois dans ma boutique de vêtements. Cette solution de caisse mobile me permet d'encaisser les paiements par carte directement sur mon téléphone ou ma tablette. L'application se synchronise avec le lecteur de cartes SumUp et je peux même accepter les paiements sans contact en deux secondes.</p><p>Ce qui m'a convaincu ? La <strong>simplicité d'installation</strong>. J'ai créé mon compte, téléchargé l'app et commencé à vendre dans l'heure. Plus besoin de caisse enregistreuse traditionnelle, tout passe par l'écran tactile. Les reçus partent par email ou SMS automatiquement.</p><p>Par contre, on reste sur du basique. SumUp POS Lite convient parfaitement aux commerces qui cherchent une solution d'encaissement rapide sans se compliquer la vie avec des fonctionnalités avancées. Je recommande surtout aux <strong>commerçants itinérants</strong>, food trucks ou petites boutiques qui privilégient la mobilité.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Installation ultra-rapide, opérationnel en moins d'une heure</td>
-            <td>Gestion des stocks très limitée, impossible de suivre les références précisément</td>
-          </tr>
-          <tr>
-            <td>Lecteur de cartes inclus, accepte tous les moyens de paiement</td>
-            <td>Pas de système de fidélité client intégré</td>
-          </tr>
-          <tr>
-            <td>Application mobile intuitive, parfaite pour les déplacements</td>
-            <td>Fonctionnalités comptables inexistantes, faut exporter vers un autre logiciel</td>
-          </tr>
-          <tr>
-            <td>Pas d'abonnement mensuel, seulement une commission par transaction</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Installation ultra-rapide, opérationnel en moins d'une heure</td></tr><tr><td>Lecteur de cartes inclus, accepte tous les moyens de paiement</td></tr><tr><td>Application mobile intuitive, parfaite pour les déplacements</td></tr><tr><td>Pas d'abonnement mensuel, seulement une commission par transaction</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Gestion des stocks très limitée, impossible de suivre les références précisément</td></tr><tr><td>Pas de système de fidélité client intégré</td></tr><tr><td>Fonctionnalités comptables inexistantes, faut exporter vers un autre logiciel</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -579,42 +563,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Zelty</strong> pendant 8 mois dans ma pizzeria, et je dois reconnaître que ce logiciel de caisse se distingue vraiment sur la gestion multi-canal.
-
-<p>Conçu spécialement pour la restauration, il synchronise parfaitement les commandes en salle, en livraison et à emporter sur une seule interface. L'avantage majeur ?</p>
-
-<p>Les modifications de carte se répercutent automatiquement sur tous les canaux, y compris les plateformes de livraison.</p><p>Ce qui m'a le plus marqué, c'est la <strong>fluidité pendant les coups de feu</strong>.</p>
-
-<p>L'interface reste réactive même avec 15 commandes simultanées, et le système de préparation cuisine affiche clairement les priorités.</p>
-
-<p>Les serveurs s'adaptent vite grâce aux raccourcis visuels et à la possibilité de modifier les commandes à la volée.</p><p>Par contre, Zelty vise clairement les restaurants qui veulent professionnaliser leur approche digitale.</p>
-
-<p>Si vous cherchez juste une caisse basique pour un petit commerce, vous risquez de payer pour des fonctionnalités que vous n'utiliserez jamais.</p>
-
-<p>La courbe d'apprentissage demande une vraie formation des équipes, surtout pour exploiter correctement tous les rapports de vente.</p></p>
+            <p>J'ai testé <strong>Zelty</strong> pendant 8 mois dans ma pizzeria, et je dois reconnaître que ce logiciel de caisse se distingue vraiment sur la gestion multi-canal. Conçu spécialement pour la restauration, il synchronise parfaitement les commandes en salle, en livraison et à emporter sur une seule interface. L'avantage majeur ? Les modifications de carte se répercutent automatiquement sur tous les canaux, y compris les plateformes de livraison.</p><p>Ce qui m'a le plus marqué, c'est la <strong>fluidité pendant les coups de feu</strong>. L'interface reste réactive même avec 15 commandes simultanées, et le système de préparation cuisine affiche clairement les priorités. Les serveurs s'adaptent vite grâce aux raccourcis visuels et à la possibilité de modifier les commandes à la volée.</p><p>Par contre, Zelty vise clairement les restaurants qui veulent professionnaliser leur approche digitale. Si vous cherchez juste une caisse basique pour un petit commerce, vous risquez de payer pour des fonctionnalités que vous n'utiliserez jamais. La courbe d'apprentissage demande une vraie formation des équipes, surtout pour exploiter correctement tous les rapports de vente.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation native avec Uber Eats, Deliveroo et autres plateformes</td>
-            <td>Tarification élevée pour les petits établissements</td>
-          </tr>
-          <tr>
-            <td>Interface rapide même en période d'affluence</td>
-            <td>Formation obligatoire pour maîtriser toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Gestion des stocks en temps réel avec alertes automatiques</td>
-            <td>Quelques bugs occasionnels sur la synchronisation des commandes</td>
-          </tr>
-          <tr>
-            <td>Rapports détaillés par produit, serveur et créneau horaire</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation native avec Uber Eats, Deliveroo et autres plateformes</td></tr><tr><td>Interface rapide même en période d'affluence</td></tr><tr><td>Gestion des stocks en temps réel avec alertes automatiques</td></tr><tr><td>Rapports détaillés par produit, serveur et créneau horaire</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée pour les petits établissements</td></tr><tr><td>Formation obligatoire pour maîtriser toutes les fonctionnalités</td></tr><tr><td>Quelques bugs occasionnels sur la synchronisation des commandes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -630,44 +591,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Square, c'est le logiciel de caisse qui a révolutionné la façon dont les petits commerçants encaissent leurs paiements.
-
-<p>Je l'ai testé pendant six mois dans un salon de thé, et <strong>l'installation prend littéralement 10 minutes</strong>. Tu connectes le lecteur de carte à ton smartphone ou ta tablette, tu télécharges l'app, et c'est parti.</p>
-
-<p>Fini les installations compliquées et les formations interminables.</p><p>Ce qui m'a séduit dès le départ, c'est la <strong>transparence totale des tarifs</strong>.</p>
-
-<p>Pas de frais cachés, pas d'abonnement mensuel de base : tu paies uniquement sur les transactions. <strong>1,75%</strong> par carte bancaire, c'est tout. Le tableau de bord web te montre chaque centime gagné, chaque commission prélevée.</p>
-
-<p>J'ai même pu suivre mes ventes en temps réel depuis chez moi.</p>
-
-<p>L'application mobile permet de gérer les stocks, créer des promotions et analyser les tendances de vente.</p><p>Square fonctionne parfaitement pour les restaurants, food trucks, boutiques, salons de coiffure, et même les marchés.</p>
-
-<p><strong>Accepter les paiements sans contact</strong> devient un jeu d'enfant, et tes clients peuvent même signer directement sur l'écran.</p>
-
-<p>Le système synchronise automatiquement avec ta comptabilité, et tu reçois tes paiements sous 1 à 2 jours ouvrés sur ton compte bancaire.</p></p>
+            <p>Square, c'est le logiciel de caisse qui a révolutionné la façon dont les petits commerçants encaissent leurs paiements. Je l'ai testé pendant six mois dans un salon de thé, et <strong>l'installation prend littéralement 10 minutes</strong>. Tu connectes le lecteur de carte à ton smartphone ou ta tablette, tu télécharges l'app, et c'est parti. Fini les installations compliquées et les formations interminables.</p><p>Ce qui m'a séduit dès le départ, c'est la <strong>transparence totale des tarifs</strong>. Pas de frais cachés, pas d'abonnement mensuel de base : tu paies uniquement sur les transactions. <strong>1,75%</strong> par carte bancaire, c'est tout. Le tableau de bord web te montre chaque centime gagné, chaque commission prélevée. J'ai même pu suivre mes ventes en temps réel depuis chez moi. L'application mobile permet de gérer les stocks, créer des promotions et analyser les tendances de vente.</p><p>Square fonctionne parfaitement pour les restaurants, food trucks, boutiques, salons de coiffure, et même les marchés. <strong>Accepter les paiements sans contact</strong> devient un jeu d'enfant, et tes clients peuvent même signer directement sur l'écran. Le système synchronise automatiquement avec ta comptabilité, et tu reçois tes paiements sous 1 à 2 jours ouvrés sur ton compte bancaire.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Installation ultra-rapide sans formation technique nécessaire</td>
-            <td>Commission plus élevée que les terminaux bancaires classiques</td>
-          </tr>
-          <tr>
-            <td>Tarification transparente : seulement 1,75% par transaction carte</td>
-            <td>Dépendant d'une connexion internet stable pour fonctionner</td>
-          </tr>
-          <tr>
-            <td>Fonctionne sur smartphone et tablette existants</td>
-            <td>Options de personnalisation limitées pour les grandes enseignes</td>
-          </tr>
-          <tr>
-            <td>Suivi des ventes et stocks en temps réel depuis l'app mobile</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Installation ultra-rapide sans formation technique nécessaire</td></tr><tr><td>Tarification transparente : seulement 1,75% par transaction carte</td></tr><tr><td>Fonctionne sur smartphone et tablette existants</td></tr><tr><td>Suivi des ventes et stocks en temps réel depuis l'app mobile</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Commission plus élevée que les terminaux bancaires classiques</td></tr><tr><td>Dépendant d'une connexion internet stable pour fonctionner</td></tr><tr><td>Options de personnalisation limitées pour les grandes enseignes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -683,40 +619,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Tactill s'est fait une place dans l'univers des logiciels de gestion de caisse en ciblant les commerces de proximité qui cherchent <strong>simplicité et prix maîtrisés</strong>.
-
-<p>Je l'ai testé dans deux boutiques différentes et j'ai été surpris par sa prise en main rapide, même pour des équipes peu à l'aise avec la technologie.</p><p>Ce qui m'a marqué ? L'interface vraiment épurée.</p>
-
-<p>Pas de menu à rallonge ou de fonctions cachées partout. On scanne, on encaisse, on édite les factures. <strong>L'essentiel sans le superflu</strong>.</p>
-
-<p>La synchronisation avec la comptabilité fonctionne bien, même si elle demande parfois une petite vérification manuelle.</p><p>Tactill mise tout sur l'accessibilité financière et la facilité d'usage.</p>
-
-<p>Pour un petit commerce qui veut digitaliser sa caisse sans se ruiner ni former ses équipes pendant des semaines, ça fait le travail.</p>
-
-<p>Par contre, si vous gérez plusieurs points de vente ou avez des besoins spécifiques en gestion de stock avancée, vous allez vite vous sentir limité.</p></p>
+            <p>Tactill s'est fait une place dans l'univers des logiciels de gestion de caisse en ciblant les commerces de proximité qui cherchent <strong>simplicité et prix maîtrisés</strong>. Je l'ai testé dans deux boutiques différentes et j'ai été surpris par sa prise en main rapide, même pour des équipes peu à l'aise avec la technologie.</p><p>Ce qui m'a marqué ? L'interface vraiment épurée. Pas de menu à rallonge ou de fonctions cachées partout. On scanne, on encaisse, on édite les factures. <strong>L'essentiel sans le superflu</strong>. La synchronisation avec la comptabilité fonctionne bien, même si elle demande parfois une petite vérification manuelle.</p><p>Tactill mise tout sur l'accessibilité financière et la facilité d'usage. Pour un petit commerce qui veut digitaliser sa caisse sans se ruiner ni former ses équipes pendant des semaines, ça fait le travail. Par contre, si vous gérez plusieurs points de vente ou avez des besoins spécifiques en gestion de stock avancée, vous allez vite vous sentir limité.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les équipes non techniques</td>
-            <td>Fonctionnalités limitées pour les grandes structures</td>
-          </tr>
-          <tr>
-            <td>Tarification transparente sans frais cachés</td>
-            <td>Personnalisation des rapports assez basique</td>
-          </tr>
-          <tr>
-            <td>Installation et paramétrage très rapides</td>
-            <td>Gestion multi-magasins perfectible</td>
-          </tr>
-          <tr>
-            <td>Support client réactif en français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les équipes non techniques</td></tr><tr><td>Tarification transparente sans frais cachés</td></tr><tr><td>Installation et paramétrage très rapides</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les grandes structures</td></tr><tr><td>Personnalisation des rapports assez basique</td></tr><tr><td>Gestion multi-magasins perfectible</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -732,40 +647,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Lightspeed</strong> dans plusieurs commerces et je peux dire que c'est une solution qui colle bien aux besoins du retail moderne.
-
-<p>Le système encaisse aussi bien en magasin qu'en ligne, avec une synchronisation des stocks qui fonctionne vraiment.</p>
-
-<p>Pas de mauvaise surprise quand un client commande sur le web un produit que vous venez de vendre en boutique.</p><p>Ce logiciel de caisse brille surtout dans la gestion multi-emplacements.</p>
-
-<p>J'ai accompagné une chaîne de 8 magasins de vêtements : le reporting consolidé leur fait gagner <strong>plusieurs heures par semaine</strong>.</p>
-
-<p>Les équipes apprécient l'interface tactile responsive et la possibilité de faire du click & collect sans se prendre la tête.</p><p>Bon, je ne vais pas mentir : Lightspeed demande un vrai budget et un temps d'adaptation.</p>
-
-<p>Mais pour les retailers qui ont des ambitions de croissance, ça reste un choix cohérent. L'écosystème d'applications tierces permet de personnaliser selon ses besoins métier.</p></p>
+            <p>J'ai testé <strong>Lightspeed</strong> dans plusieurs commerces et je peux dire que c'est une solution qui colle bien aux besoins du retail moderne. Le système encaisse aussi bien en magasin qu'en ligne, avec une synchronisation des stocks qui fonctionne vraiment. Pas de mauvaise surprise quand un client commande sur le web un produit que vous venez de vendre en boutique.</p><p>Ce logiciel de caisse brille surtout dans la gestion multi-emplacements. J'ai accompagné une chaîne de 8 magasins de vêtements : le reporting consolidé leur fait gagner <strong>plusieurs heures par semaine</strong>. Les équipes apprécient l'interface tactile responsive et la possibilité de faire du click & collect sans se prendre la tête.</p><p>Bon, je ne vais pas mentir : Lightspeed demande un vrai budget et un temps d'adaptation. Mais pour les retailers qui ont des ambitions de croissance, ça reste un choix cohérent. L'écosystème d'applications tierces permet de personnaliser selon ses besoins métier.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation temps réel entre vente en ligne et magasins physiques</td>
-            <td>Tarification élevée qui peut rebuter les petites structures</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-emplacements avec reporting centralisé très complet</td>
-            <td>Courbe d'apprentissage assez longue pour exploiter toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Interface moderne et intuitive qui plaît aux équipes de vente</td>
-            <td>Support client parfois lent à répondre selon les retours utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Écosystème d'extensions riche pour personnaliser les fonctionnalités</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation temps réel entre vente en ligne et magasins physiques</td></tr><tr><td>Gestion multi-emplacements avec reporting centralisé très complet</td></tr><tr><td>Interface moderne et intuitive qui plaît aux équipes de vente</td></tr><tr><td>Écosystème d'extensions riche pour personnaliser les fonctionnalités</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée qui peut rebuter les petites structures</td></tr><tr><td>Courbe d'apprentissage assez longue pour exploiter toutes les fonctionnalités</td></tr><tr><td>Support client parfois lent à répondre selon les retours utilisateurs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -781,42 +675,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>KerAwen fait partie de ces <strong>logiciels de caisse bretons</strong> qui misent sur la simplicité avant tout.
-
-<p>Je l'ai testé dans mon restaurant et franchement, l'interface ne casse pas trois pattes à un canard mais elle fait le travail.</p>
-
-<p>L'écran tactile répond bien, les commandes passent sans accroc et le système d'encaissement reste fluide même aux heures de pointe.</p><p>Ce qui m'a marqué avec ce logiciel de gestion de caisse, c'est qu'il <strong>ne cherche pas à en faire des tonnes</strong>.</p>
-
-<p>Pas de fioritures, pas de modules bizarres qu'on n'utilise jamais. Juste l'essentiel pour tenir une caisse proprement : gestion des tickets, suivi des stocks de base, rapports de vente journaliers.</p>
-
-<p>L'équipe s'y est habituée rapidement.</p><p>Par contre, je préviens tout de suite : si tu cherches un truc ultra moderne avec plein d'intégrations, passe ton chemin.</p>
-
-<p>KerAwen vise clairement les <strong>petits commerces traditionnels</strong> qui veulent juste une solution qui marche, sans se prendre la tête. Pour un café de quartier ou une boulangerie, ça colle parfaitement.</p>
-
-<p>Pour une chaîne de magasins, ça risque de coincer.</p></p>
+            <p>KerAwen fait partie de ces <strong>logiciels de caisse bretons</strong> qui misent sur la simplicité avant tout. Je l'ai testé dans mon restaurant et franchement, l'interface ne casse pas trois pattes à un canard mais elle fait le travail. L'écran tactile répond bien, les commandes passent sans accroc et le système d'encaissement reste fluide même aux heures de pointe.</p><p>Ce qui m'a marqué avec ce logiciel de gestion de caisse, c'est qu'il <strong>ne cherche pas à en faire des tonnes</strong>. Pas de fioritures, pas de modules bizarres qu'on n'utilise jamais. Juste l'essentiel pour tenir une caisse proprement : gestion des tickets, suivi des stocks de base, rapports de vente journaliers. L'équipe s'y est habituée rapidement.</p><p>Par contre, je préviens tout de suite : si tu cherches un truc ultra moderne avec plein d'intégrations, passe ton chemin. KerAwen vise clairement les <strong>petits commerces traditionnels</strong> qui veulent juste une solution qui marche, sans se prendre la tête. Pour un café de quartier ou une boulangerie, ça colle parfaitement. Pour une chaîne de magasins, ça risque de coincer.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment simple à prendre en main</td>
-            <td>Fonctionnalités limitées pour les gros volumes</td>
-          </tr>
-          <tr>
-            <td>Prix abordable pour les petites structures</td>
-            <td>Pas d'intégration avec les plateformes e-commerce</td>
-          </tr>
-          <tr>
-            <td>Support client en français réactif</td>
-            <td>Rapports analytiques assez basiques</td>
-          </tr>
-          <tr>
-            <td>Fonctionne bien hors ligne en cas de coupure réseau</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment simple à prendre en main</td></tr><tr><td>Prix abordable pour les petites structures</td></tr><tr><td>Support client en français réactif</td></tr><tr><td>Fonctionne bien hors ligne en cas de coupure réseau</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les gros volumes</td></tr><tr><td>Pas d'intégration avec les plateformes e-commerce</td></tr><tr><td>Rapports analytiques assez basiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -832,38 +703,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Zettle by PayPal m'a séduit par sa simplicité brutale : j'ai commencé à encaisser en 10 minutes chrono après avoir téléchargé l'app.
-
-<p>Ce logiciel de gestion de caisse transforme n'importe quel smartphone ou tablette en terminal de paiement complet, avec un lecteur de carte à <strong>19€</strong> seulement.</p><p>L'écosystème PayPal derrière change la donne.</p>
-
-<p>Les virements arrivent en <strong>24h maximum</strong> sur mon compte, parfois le jour même. Plus besoin d'attendre 3-4 jours comme avec d'autres prestataires.</p>
-
-<p>L'interface reste volontairement épurée : catalogue produits, encaissements CB/sans contact, suivi des ventes en temps réel.</p><p>Je recommande Zettle aux commerces de proximité, food trucks, marchés et artisans qui veulent une solution sans prise de tête.</p>
-
-<p>Par contre, si vous gérez des stocks complexes ou plusieurs points de vente, vous allez vite vous sentir à l'étroit. C'est du PayPal : <strong>efficace mais basique</strong>.</p></p>
+            <p>Zettle by PayPal m'a séduit par sa simplicité brutale : j'ai commencé à encaisser en 10 minutes chrono après avoir téléchargé l'app. Ce logiciel de gestion de caisse transforme n'importe quel smartphone ou tablette en terminal de paiement complet, avec un lecteur de carte à <strong><strong>19€</strong></strong> seulement.</p><p>L'écosystème PayPal derrière change la donne. Les virements arrivent en <strong>24h maximum</strong> sur mon compte, parfois le jour même. Plus besoin d'attendre 3-4 jours comme avec d'autres prestataires. L'interface reste volontairement épurée : catalogue produits, encaissements CB/sans contact, suivi des ventes en temps réel.</p><p>Je recommande Zettle aux commerces de proximité, food trucks, marchés et artisans qui veulent une solution sans prise de tête. Par contre, si vous gérez des stocks complexes ou plusieurs points de vente, vous allez vite vous sentir à l'étroit. C'est du PayPal : <strong>efficace mais basique</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prise en main immédiate, aucune formation nécessaire</td>
-            <td>Gestion des stocks très limitée pour les commerces étoffés</td>
-          </tr>
-          <tr>
-            <td>Virements rapides grâce à l'infrastructure PayPal</td>
-            <td>Impossible de créer des comptes utilisateurs multiples</td>
-          </tr>
-          <tr>
-            <td>Lecteur de carte à 19€, très accessible</td>
-            <td>Rapports basiques, manque d'analyses poussées</td>
-          </tr>
-          <tr>
-            <td>Fonctionne hors ligne, synchronise automatiquement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prise en main immédiate, aucune formation nécessaire</td></tr><tr><td>Virements rapides grâce à l'infrastructure PayPal</td></tr><tr><td>Lecteur de carte à 19€, très accessible</td></tr><tr><td>Fonctionne hors ligne, synchronise automatiquement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Gestion des stocks très limitée pour les commerces étoffés</td></tr><tr><td>Impossible de créer des comptes utilisateurs multiples</td></tr><tr><td>Rapports basiques, manque d'analyses poussées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -879,38 +731,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>TopOrder mise sur une approche modulaire qui m'a séduit pour équiper plusieurs points de vente. Le logiciel de gestion de caisse combine terminal de paiement, gestion des stocks et programme de fidélité dans une interface assez intuitive.
-
-<p>On peut configurer les promotions directement depuis l'écran tactile, ce qui évite de jongler entre plusieurs applications.</p><p>J'ai apprécié la <strong>synchronisation automatique</strong> entre les caisses quand on gère un réseau.</p>
-
-<p>Les ventes s'actualisent en temps réel et les niveaux de stock se mettent à jour instantanément. Le reporting quotidien tombe par email chaque matin avec les chiffres d'affaires détaillés par vendeur et par produit.</p>
-
-<p>Pratique pour suivre les performances sans se connecter.</p><p>La solution convient particulièrement aux commerces de détail qui veulent professionnaliser leur gestion sans complexité excessive.</p>
-
-<p>TopOrder gère les codes-barres, les variantes produits et les remises groupées assez facilement. Par contre, certaines fonctionnalités restent verrouillées selon l'abonnement choisi, ce qui peut frustrer au début.</p></p>
+            <p>TopOrder mise sur une approche modulaire qui m'a séduit pour équiper plusieurs points de vente. Le logiciel de gestion de caisse combine terminal de paiement, gestion des stocks et programme de fidélité dans une interface assez intuitive. On peut configurer les promotions directement depuis l'écran tactile, ce qui évite de jongler entre plusieurs applications.</p><p>J'ai apprécié la <strong>synchronisation automatique</strong> entre les caisses quand on gère un réseau. Les ventes s'actualisent en temps réel et les niveaux de stock se mettent à jour instantanément. Le reporting quotidien tombe par email chaque matin avec les chiffres d'affaires détaillés par vendeur et par produit. Pratique pour suivre les performances sans se connecter.</p><p>La solution convient particulièrement aux commerces de détail qui veulent professionnaliser leur gestion sans complexité excessive. TopOrder gère les codes-barres, les variantes produits et les remises groupées assez facilement. Par contre, certaines fonctionnalités restent verrouillées selon l'abonnement choisi, ce qui peut frustrer au début.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface tactile intuitive même pour les équipes peu formées</td>
-            <td>Fonctionnalités bridées selon le forfait choisi</td>
-          </tr>
-          <tr>
-            <td>Synchronisation temps réel entre plusieurs caisses</td>
-            <td>Support technique pas toujours réactif en période de rush</td>
-          </tr>
-          <tr>
-            <td>Programme de fidélité intégré avec cartes et points</td>
-            <td>Paramétrage initial assez chronophage pour les gros catalogues</td>
-          </tr>
-          <tr>
-            <td>Gestion des promotions directement sur la caisse</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface tactile intuitive même pour les équipes peu formées</td></tr><tr><td>Synchronisation temps réel entre plusieurs caisses</td></tr><tr><td>Programme de fidélité intégré avec cartes et points</td></tr><tr><td>Gestion des promotions directement sur la caisse</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités bridées selon le forfait choisi</td></tr><tr><td>Support technique pas toujours réactif en période de rush</td></tr><tr><td>Paramétrage initial assez chronophage pour les gros catalogues</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -926,42 +759,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je présente souvent <strong>SumUp Caisse Pro</strong> comme la solution d'encaissement qui fait le travail sans chichis.
-
-<p>Cette caisse enregistreuse numérique tourne aussi bien sur tablette que sur smartphone, avec un lecteur de carte qui fonctionne vraiment partout.</p>
-
-<p>On branche, on paramètre ses articles en 10 minutes, et c'est parti.</p><p>Ce qui m'a convaincu chez SumUp, c'est la <strong>simplicité d'usage</strong> pour les commerces de proximité.</p>
-
-<p>L'interface reste claire même quand on encaisse à la chaîne, la synchronisation avec leur lecteur de carte ne plante jamais, et les rapports de vente arrivent directement par mail.</p>
-
-<p>Franchement pratique quand on veut juste vendre sans se prendre la tête avec des paramétrages compliqués.</p><p>Par contre, on sent vite les limites dès qu'on grandit un peu.</p>
-
-<p>La gestion des stocks reste basique, impossible de créer des promotions automatiques, et <strong>les frais sur les paiements</strong> peuvent vite monter si on fait beaucoup de volume.</p>
-
-<p>Je recommande ce logiciel de gestion de caisse pour les petits commerces qui cherchent une solution plug-and-play, mais pas pour les enseignes qui ont besoin de fonctionnalités avancées.</p></p>
+            <p>Je présente souvent <strong>SumUp Caisse Pro</strong> comme la solution d'encaissement qui fait le travail sans chichis. Cette caisse enregistreuse numérique tourne aussi bien sur tablette que sur smartphone, avec un lecteur de carte qui fonctionne vraiment partout. On branche, on paramètre ses articles en 10 minutes, et c'est parti.</p><p>Ce qui m'a convaincu chez SumUp, c'est la <strong>simplicité d'usage</strong> pour les commerces de proximité. L'interface reste claire même quand on encaisse à la chaîne, la synchronisation avec leur lecteur de carte ne plante jamais, et les rapports de vente arrivent directement par mail. Franchement pratique quand on veut juste vendre sans se prendre la tête avec des paramétrages compliqués.</p><p>Par contre, on sent vite les limites dès qu'on grandit un peu. La gestion des stocks reste basique, impossible de créer des promotions automatiques, et <strong>les frais sur les paiements</strong> peuvent vite monter si on fait beaucoup de volume. Je recommande ce logiciel de gestion de caisse pour les petits commerces qui cherchent une solution plug-and-play, mais pas pour les enseignes qui ont besoin de fonctionnalités avancées.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Installation immédiate sur tous supports mobiles</td>
-            <td>Gestion des stocks très limitée</td>
-          </tr>
-          <tr>
-            <td>Lecteur de carte intégré ultra-fiable</td>
-            <td>Frais par transaction qui s'accumulent</td>
-          </tr>
-          <tr>
-            <td>Prix transparent avec terminal inclus</td>
-            <td>Aucune fonction de fidélisation client</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique des ventes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Installation immédiate sur tous supports mobiles</td></tr><tr><td>Lecteur de carte intégré ultra-fiable</td></tr><tr><td>Prix transparent avec terminal inclus</td></tr><tr><td>Synchronisation automatique des ventes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Gestion des stocks très limitée</td></tr><tr><td>Frais par transaction qui s'accumulent</td></tr><tr><td>Aucune fonction de fidélisation client</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -977,38 +787,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé L'Addition pendant 3 mois dans ma boulangerie, et je dois dire que ce <strong>logiciel de caisse français</strong> m'a vraiment simplifié la vie.
-
-<p>Contrairement aux mastodontes du secteur, L'Addition mise sur la simplicité d'utilisation sans sacrifier les fonctionnalités essentielles. La prise en commande tactile est fluide, même aux heures de pointe.</p><p>Ce qui m'a séduit ?</p>
-
-<p><strong>L'intégration native avec les principales banques françaises</strong> et la synchronisation automatique des stocks. Plus besoin de jongler entre trois applications différentes.</p>
-
-<p>L'Addition gère mes ventes, mes inventaires et même mes programmes de fidélité depuis une seule interface.</p><p>Franchement, pour les commerces de proximité qui cherchent un système de caisse moderne sans se ruiner, c'est du solide.</p>
-
-<p>Par contre, si vous avez des besoins très spécifiques en termes de reporting avancé ou de gestion multi-sites complexe, vous risquez d'être limité. <strong>Mais pour <strong>80%</strong> des petits commerces, ça fait parfaitement le job.</strong></p></p>
+            <p>J'ai testé L'Addition pendant 3 mois dans ma boulangerie, et je dois dire que ce <strong>logiciel de caisse français</strong> m'a vraiment simplifié la vie. Contrairement aux mastodontes du secteur, L'Addition mise sur la simplicité d'utilisation sans sacrifier les fonctionnalités essentielles. La prise en commande tactile est fluide, même aux heures de pointe.</p><p>Ce qui m'a séduit ? <strong>L'intégration native avec les principales banques françaises</strong> et la synchronisation automatique des stocks. Plus besoin de jongler entre trois applications différentes. L'Addition gère mes ventes, mes inventaires et même mes programmes de fidélité depuis une seule interface.</p><p>Franchement, pour les commerces de proximité qui cherchent un système de caisse moderne sans se ruiner, c'est du solide. Par contre, si vous avez des besoins très spécifiques en termes de reporting avancé ou de gestion multi-sites complexe, vous risquez d'être limité. <strong>Mais pour <strong>80%</strong> des petits commerces, ça fait parfaitement le job.</strong></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface tactile très intuitive, même pour le personnel peu formé</td>
-            <td>Options de personnalisation des rapports assez limitées</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique avec les comptes bancaires français</td>
-            <td>Pas d'application mobile pour gérer la caisse à distance</td>
-          </tr>
-          <tr>
-            <td>Gestion des stocks en temps réel avec alertes de rupture</td>
-            <td>Support client parfois lent à répondre en période de forte affluence</td>
-          </tr>
-          <tr>
-            <td>Prix transparent sans frais cachés sur les transactions</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface tactile très intuitive, même pour le personnel peu formé</td></tr><tr><td>Synchronisation automatique avec les comptes bancaires français</td></tr><tr><td>Gestion des stocks en temps réel avec alertes de rupture</td></tr><tr><td>Prix transparent sans frais cachés sur les transactions</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation des rapports assez limitées</td></tr><tr><td>Pas d'application mobile pour gérer la caisse à distance</td></tr><tr><td>Support client parfois lent à répondre en période de forte affluence</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1024,38 +815,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je me suis tourné vers <strong>Hiboutik</strong> quand j'ai ouvert ma boutique de prêt-à-porter. Ce logiciel de caisse français propose une solution complète avec gestion des stocks, multi-magasins et outils comptables intégrés.
-
-<p>Ce qui m'a séduit ? La possibilité de <strong>synchroniser plusieurs points de vente</strong> en temps réel.</p><p>L'interface reste accessible même si on n'est pas un expert technique.</p>
-
-<p>Les fonctionnalités de fidélisation client sont plutôt bien pensées : cartes de fidélité, programmes de points, relances automatiques.</p>
-
-<p>J'apprécie particulièrement le <strong>module de gestion des promotions</strong> qui permet de créer facilement des offres saisonnières.</p><p>Hiboutik couvre aussi la partie comptable avec exports vers les logiciels standards et édition des documents légaux.</p>
-
-<p>Pour un commerce physique qui veut <strong>centraliser toute sa gestion</strong>, c'est un choix cohérent. Par contre, ne vous attendez pas à une solution ultra moderne côté design.</p></p>
+            <p>Je me suis tourné vers <strong>Hiboutik</strong> quand j'ai ouvert ma boutique de prêt-à-porter. Ce logiciel de caisse français propose une solution complète avec gestion des stocks, multi-magasins et outils comptables intégrés. Ce qui m'a séduit ? La possibilité de <strong>synchroniser plusieurs points de vente</strong> en temps réel.</p><p>L'interface reste accessible même si on n'est pas un expert technique. Les fonctionnalités de fidélisation client sont plutôt bien pensées : cartes de fidélité, programmes de points, relances automatiques. J'apprécie particulièrement le <strong>module de gestion des promotions</strong> qui permet de créer facilement des offres saisonnières.</p><p>Hiboutik couvre aussi la partie comptable avec exports vers les logiciels standards et édition des documents légaux. Pour un commerce physique qui veut <strong>centraliser toute sa gestion</strong>, c'est un choix cohérent. Par contre, ne vous attendez pas à une solution ultra moderne côté design.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation multi-magasins en temps réel</td>
-            <td>Interface vieillissante qui peut rebuter</td>
-          </tr>
-          <tr>
-            <td>Gestion complète des stocks avec alertes automatiques</td>
-            <td>Configuration initiale assez technique</td>
-          </tr>
-          <tr>
-            <td>Outils de fidélisation client intégrés</td>
-            <td>Tarifs qui grimpent vite avec les options</td>
-          </tr>
-          <tr>
-            <td>Support français réactif et compétent</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation multi-magasins en temps réel</td></tr><tr><td>Gestion complète des stocks avec alertes automatiques</td></tr><tr><td>Outils de fidélisation client intégrés</td></tr><tr><td>Support français réactif et compétent</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillissante qui peut rebuter</td></tr><tr><td>Configuration initiale assez technique</td></tr><tr><td>Tarifs qui grimpent vite avec les options</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1308,7 +1080,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 2 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

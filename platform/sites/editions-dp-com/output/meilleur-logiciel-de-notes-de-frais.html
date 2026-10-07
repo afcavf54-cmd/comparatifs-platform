@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparatif des 9 meilleurs logiciels de notes de frais en 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -530,38 +535,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Spendesk</strong> pendant 8 mois dans une équipe de 45 personnes. C'est un logiciel de notes de frais qui mise tout sur l'automatisation et le contrôle en temps réel. Leur approche ?
-
-<p>Chaque salarié reçoit une carte bancaire virtuelle ou physique liée directement à la plateforme.</p><p>Concrètement, quand un collaborateur paie un restaurant client, la dépense remonte automatiquement dans Spendesk.</p>
-
-<p>Plus besoin de scanner des tickets ou de remplir des formulaires interminables.</p>
-
-<p><strong>La validation budgétaire se fait en amont</strong>, ce qui évite les mauvaises surprises en fin de mois.</p><p>Je recommande Spendesk aux entreprises qui veulent professionnaliser leur gestion des frais sans passer par une usine à gaz.</p>
-
-<p>L'interface reste claire même pour les équipes peu techniques. Par contre, attendez-vous à <strong>un budget conséquent</strong> si vous avez beaucoup de salariés en déplacement.</p></p>
+            <p>J'ai testé <strong>Spendesk</strong> pendant 8 mois dans une équipe de 45 personnes. C'est un logiciel de notes de frais qui mise tout sur l'automatisation et le contrôle en temps réel. Leur approche ? Chaque salarié reçoit une carte bancaire virtuelle ou physique liée directement à la plateforme.</p><p>Concrètement, quand un collaborateur paie un restaurant client, la dépense remonte automatiquement dans Spendesk. Plus besoin de scanner des tickets ou de remplir des formulaires interminables. <strong>La validation budgétaire se fait en amont</strong>, ce qui évite les mauvaises surprises en fin de mois.</p><p>Je recommande Spendesk aux entreprises qui veulent professionnaliser leur gestion des frais sans passer par une usine à gaz. L'interface reste claire même pour les équipes peu techniques. Par contre, attendez-vous à <strong>un budget conséquent</strong> si vous avez beaucoup de salariés en déplacement.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Cartes virtuelles et physiques intégrées directement à la plateforme</td>
-            <td>Tarification élevée qui peut vite exploser avec le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Validation des budgets en amont, avant la dépense</td>
-            <td>Paramétrage initial assez lourd pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique avec les principaux logiciels comptables</td>
-            <td>Certaines fonctionnalités avancées nécessitent des forfaits premium</td>
-          </tr>
-          <tr>
-            <td>Interface mobile vraiment pratique pour photographier les justificatifs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Cartes virtuelles et physiques intégrées directement à la plateforme</td></tr><tr><td>Validation des budgets en amont, avant la dépense</td></tr><tr><td>Synchronisation automatique avec les principaux logiciels comptables</td></tr><tr><td>Interface mobile vraiment pratique pour photographier les justificatifs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée qui peut vite exploser avec le nombre d'utilisateurs</td></tr><tr><td>Paramétrage initial assez lourd pour les petites structures</td></tr><tr><td>Certaines fonctionnalités avancées nécessitent des forfaits premium</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -577,40 +563,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Lucca Cleemy, c'est le module de gestion des notes de frais de la suite RH Lucca.
-
-<p>Je l'utilise depuis plus d'un an et je trouve que <strong>l'intégration complète avec la paie et les congés</strong> change vraiment la donne par rapport aux solutions isolées.</p>
-
-<p>L'interface épurée plaît aux équipes, même si parfois j'aimerais plus d'options de personnalisation.</p><p>Ce qui m'a convaincu ? La <strong>validation à plusieurs niveaux</strong> fonctionne parfaitement.</p>
-
-<p>Mon responsable valide, puis la compta fait ses vérifications, et tout remonte automatiquement en paie. Plus besoin de jongler entre trois outils différents.</p>
-
-<p>L'app mobile scan correctement les reçus, même si elle rame parfois sur les tickets de caisse froissés.</p><p>Attention par contre aux <strong>coûts qui grimpent vite</strong> avec les options avancées.</p>
-
-<p>Et si vous n'utilisez que les notes de frais sans le reste de la suite Lucca, d'autres solutions seront plus économiques. Mais pour les entreprises qui cherchent une cohérence RH globale, ça tient ses promesses.</p></p>
+            <p>Lucca Cleemy, c'est le module de gestion des notes de frais de la suite RH Lucca. Je l'utilise depuis plus d'un an et je trouve que <strong>l'intégration complète avec la paie et les congés</strong> change vraiment la donne par rapport aux solutions isolées. L'interface épurée plaît aux équipes, même si parfois j'aimerais plus d'options de personnalisation.</p><p>Ce qui m'a convaincu ? La <strong>validation à plusieurs niveaux</strong> fonctionne parfaitement. Mon responsable valide, puis la compta fait ses vérifications, et tout remonte automatiquement en paie. Plus besoin de jongler entre trois outils différents. L'app mobile scan correctement les reçus, même si elle rame parfois sur les tickets de caisse froissés.</p><p>Attention par contre aux <strong>coûts qui grimpent vite</strong> avec les options avancées. Et si vous n'utilisez que les notes de frais sans le reste de la suite Lucca, d'autres solutions seront plus économiques. Mais pour les entreprises qui cherchent une cohérence RH globale, ça tient ses promesses.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec paie et congés Lucca</td>
-            <td>Prix élevé si utilisé seul sans autres modules Lucca</td>
-          </tr>
-          <tr>
-            <td>Workflow de validation flexible et traçable</td>
-            <td>Options de personnalisation limitées par rapport aux concurrents</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive qui plaît aux utilisateurs</td>
-            <td>Application mobile parfois lente sur vieux smartphones</td>
-          </tr>
-          <tr>
-            <td>OCR performant sur factures et tickets</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec paie et congés Lucca</td></tr><tr><td>Workflow de validation flexible et traçable</td></tr><tr><td>Interface intuitive qui plaît aux utilisateurs</td></tr><tr><td>OCR performant sur factures et tickets</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé si utilisé seul sans autres modules Lucca</td></tr><tr><td>Options de personnalisation limitées par rapport aux concurrents</td></tr><tr><td>Application mobile parfois lente sur vieux smartphones</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -626,42 +591,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Expensya depuis maintenant 8 mois pour gérer les notes de frais de mon équipe commerciale.
-
-<p>Ce logiciel français mise tout sur l'automatisation : tu photographies tes reçus, l'OCR extrait les données et <strong>hop, la note de frais se remplit toute seule</strong>.</p>
-
-<p>L'intégration avec nos outils comptables (Sage, Cegid) fonctionne plutôt bien.</p><p>Ce qui m'a convaincu ?</p>
-
-<p>La <strong>validation automatique des frais kilométriques</strong> via GPS et la possibilité de créer des workflows d'approbation sur mesure.</p>
-
-<p>Mes commerciaux scannent leurs tickets restaurant directement depuis l'app mobile, et moi je valide tout depuis mon tableau de bord.</p>
-
-<p>Plus besoin de courir après les justificatifs perdus.</p><p>Par contre, je ne le recommande pas aux très petites structures.</p>
-
-<p>L'onboarding demande du temps et certaines fonctionnalités avancées restent <strong>complexes à paramétrer sans formation</strong>. C'est vraiment pensé pour des entreprises qui traitent un volume conséquent de notes de frais mensuelles.</p></p>
+            <p>J'utilise Expensya depuis maintenant 8 mois pour gérer les notes de frais de mon équipe commerciale. Ce logiciel français mise tout sur l'automatisation : tu photographies tes reçus, l'OCR extrait les données et <strong>hop, la note de frais se remplit toute seule</strong>. L'intégration avec nos outils comptables (Sage, Cegid) fonctionne plutôt bien.</p><p>Ce qui m'a convaincu ? La <strong>validation automatique des frais kilométriques</strong> via GPS et la possibilité de créer des workflows d'approbation sur mesure. Mes commerciaux scannent leurs tickets restaurant directement depuis l'app mobile, et moi je valide tout depuis mon tableau de bord. Plus besoin de courir après les justificatifs perdus.</p><p>Par contre, je ne le recommande pas aux très petites structures. L'onboarding demande du temps et certaines fonctionnalités avancées restent <strong>complexes à paramétrer sans formation</strong>. C'est vraiment pensé pour des entreprises qui traitent un volume conséquent de notes de frais mensuelles.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>OCR très performant qui reconnaît la plupart des tickets</td>
-            <td>Interface web parfois lente aux heures de pointe</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux logiciels comptables français</td>
-            <td>Tarification qui grimpe vite avec les options avancées</td>
-          </tr>
-          <tr>
-            <td>Application mobile fluide avec mode hors-ligne</td>
-            <td>Support client français mais pas toujours réactif</td>
-          </tr>
-          <tr>
-            <td>Workflows d'approbation personnalisables selon les services</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>OCR très performant qui reconnaît la plupart des tickets</td></tr><tr><td>Intégration native avec les principaux logiciels comptables français</td></tr><tr><td>Application mobile fluide avec mode hors-ligne</td></tr><tr><td>Workflows d'approbation personnalisables selon les services</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface web parfois lente aux heures de pointe</td></tr><tr><td>Tarification qui grimpe vite avec les options avancées</td></tr><tr><td>Support client français mais pas toujours réactif</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -677,38 +619,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Rydoo s'impose comme une solution de gestion des notes de frais plutôt complète, avec une approche mobile-first qui facilite vraiment la saisie en déplacement.
-
-<p>J'ai apprécié le scan automatique des reçus qui <strong>fonctionne bien</strong> même sur des tickets de restaurant un peu froissés, et l'intégration directe avec les cartes bancaires qui évite pas mal de ressaisie manuelle.</p><p>Le logiciel cible principalement les <strong>PME de 20 à 200 salariés</strong> qui ont des équipes commerciales ou techniques souvent en déplacement.</p>
-
-<p>L'interface reste assez intuitive, même si certaines fonctionnalités avancées demandent un petit temps d'adaptation.</p>
-
-<p>La validation des frais se fait de manière fluide, avec des workflows personnalisables selon la hiérarchie de l'entreprise.</p><p>Ce qui m'a marqué, c'est la possibilité de connecter directement les comptes bancaires pour un rapprochement automatique.</p>
-
-<p>Pratique quand on a plusieurs cartes d'entreprise à gérer. Par contre, <strong>attention au pricing</strong> qui peut vite grimper avec les options premium, surtout si vous avez besoin des fonctionnalités de reporting avancées.</p></p>
+            <p>Rydoo s'impose comme une solution de gestion des notes de frais plutôt complète, avec une approche mobile-first qui facilite vraiment la saisie en déplacement. J'ai apprécié le scan automatique des reçus qui <strong>fonctionne bien</strong> même sur des tickets de restaurant un peu froissés, et l'intégration directe avec les cartes bancaires qui évite pas mal de ressaisie manuelle.</p><p>Le logiciel cible principalement les <strong>PME de 20 à 200 salariés</strong> qui ont des équipes commerciales ou techniques souvent en déplacement. L'interface reste assez intuitive, même si certaines fonctionnalités avancées demandent un petit temps d'adaptation. La validation des frais se fait de manière fluide, avec des workflows personnalisables selon la hiérarchie de l'entreprise.</p><p>Ce qui m'a marqué, c'est la possibilité de connecter directement les comptes bancaires pour un rapprochement automatique. Pratique quand on a plusieurs cartes d'entreprise à gérer. Par contre, <strong>attention au pricing</strong> qui peut vite grimper avec les options premium, surtout si vous avez besoin des fonctionnalités de reporting avancées.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Reconnaissance OCR des reçus vraiment efficace, même manuscrits</td>
-            <td>Tarification qui devient chère avec les modules avancés</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire directe qui évite la double saisie</td>
-            <td>Interface parfois lente lors des pics d'activité</td>
-          </tr>
-          <tr>
-            <td>Application mobile fluide avec mode hors-ligne</td>
-            <td>Configuration initiale assez technique pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation personnalisables selon l'organigramme</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Reconnaissance OCR des reçus vraiment efficace, même manuscrits</td></tr><tr><td>Synchronisation bancaire directe qui évite la double saisie</td></tr><tr><td>Application mobile fluide avec mode hors-ligne</td></tr><tr><td>Workflows de validation personnalisables selon l'organigramme</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui devient chère avec les modules avancés</td></tr><tr><td>Interface parfois lente lors des pics d'activité</td></tr><tr><td>Configuration initiale assez technique pour les petites structures</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -724,40 +647,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Zoho Expense dans le cadre d'une PME de 25 salariés, et je dois dire que l'intégration avec l'écosystème Zoho change vraiment la donne.
-
-<p><strong>Le logiciel de notes de frais</strong> récupère automatiquement les données clients depuis Zoho CRM, synchronise avec Zoho Books pour la comptabilité, et pousse les remboursements vers Zoho Payroll.</p>
-
-<p>Ça évite les ressaisies fastidieuses.</p><p>La reconnaissance OCR fonctionne correctement sur les tickets français, même un peu froissés.</p>
-
-<p>J'ai apprécié la possibilité de paramétrer des <strong>règles de validation automatique</strong> : les frais de moins de <strong>50€</strong> avec justificatif passent sans validation manuelle.</p>
-
-<p>Par contre, l'interface mobile reste un peu rigide comparée à des solutions plus modernes.</p><p>On peut créer des rapports de frais thématiques (déplacement client, formation, prospection) et les managers reçoivent les demandes directement par mail avec un lien de validation.</p>
-
-<p><strong>Les workflows sont assez souples</strong> et permettent d'adapter le circuit selon le montant ou le type de dépense.</p></p>
+            <p>J'ai testé Zoho Expense dans le cadre d'une PME de 25 salariés, et je dois dire que l'intégration avec l'écosystème Zoho change vraiment la donne. <strong>Le logiciel de notes de frais</strong> récupère automatiquement les données clients depuis Zoho CRM, synchronise avec Zoho Books pour la comptabilité, et pousse les remboursements vers Zoho Payroll. Ça évite les ressaisies fastidieuses.</p><p>La reconnaissance OCR fonctionne correctement sur les tickets français, même un peu froissés. J'ai apprécié la possibilité de paramétrer des <strong>règles de validation automatique</strong> : les frais de moins de <strong>50€</strong> avec justificatif passent sans validation manuelle. Par contre, l'interface mobile reste un peu rigide comparée à des solutions plus modernes.</p><p>On peut créer des rapports de frais thématiques (déplacement client, formation, prospection) et les managers reçoivent les demandes directement par mail avec un lien de validation. <strong>Les workflows sont assez souples</strong> et permettent d'adapter le circuit selon le montant ou le type de dépense.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native parfaite avec tout l'écosystème Zoho (CRM, Books, Payroll)</td>
-            <td>Interface mobile vieillissante et moins intuitive que les concurrents récents</td>
-          </tr>
-          <tr>
-            <td>Règles de validation automatique paramétrables par montant et catégorie</td>
-            <td>Nécessite un abonnement Zoho global pour être vraiment rentable</td>
-          </tr>
-          <tr>
-            <td>OCR fiable sur les reçus français avec extraction automatique des données</td>
-            <td>Paramétrage initial complexe sans accompagnement technique</td>
-          </tr>
-          <tr>
-            <td>Rapports personnalisables par projet ou client avec export comptable direct</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native parfaite avec tout l'écosystème Zoho (CRM, Books, Payroll)</td></tr><tr><td>Règles de validation automatique paramétrables par montant et catégorie</td></tr><tr><td>OCR fiable sur les reçus français avec extraction automatique des données</td></tr><tr><td>Rapports personnalisables par projet ou client avec export comptable direct</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface mobile vieillissante et moins intuitive que les concurrents récents</td></tr><tr><td>Nécessite un abonnement Zoho global pour être vraiment rentable</td></tr><tr><td>Paramétrage initial complexe sans accompagnement technique</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -773,38 +675,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>PayHawk sort du lot avec une approche assez moderne de la gestion des frais professionnels. Je l'ai testé dans deux entreprises différentes et j'ai été surpris par <strong>la fluidité de l'onboarding</strong>.
-
-<p>Contrairement à d'autres solutions qui demandent des semaines de configuration, on peut démarrer en quelques jours.</p><p>Ce qui m'a marqué : l'intelligence artificielle pour catégoriser automatiquement les dépenses.</p>
-
-<p>Fini les notes de frais mal classées entre transport et restauration. PayHawk apprend de vos habitudes et devient de plus en plus précis.</p>
-
-<p>J'ai aussi apprécié la possibilité de créer des workflows personnalisés selon les équipes.</p><p>L'outil s'adresse principalement aux entreprises de 50 à 500 salariés qui veulent digitaliser sérieusement leur gestion des notes de frais.</p>
-
-<p><strong>Les start-ups en croissance</strong> y trouvent leur compte, mais je déconseille aux très petites structures : c'est un peu surdimensionné pour moins de 20 personnes.</p></p>
+            <p>PayHawk sort du lot avec une approche assez moderne de la gestion des frais professionnels. Je l'ai testé dans deux entreprises différentes et j'ai été surpris par <strong>la fluidité de l'onboarding</strong>. Contrairement à d'autres solutions qui demandent des semaines de configuration, on peut démarrer en quelques jours.</p><p>Ce qui m'a marqué : l'intelligence artificielle pour catégoriser automatiquement les dépenses. Fini les notes de frais mal classées entre transport et restauration. PayHawk apprend de vos habitudes et devient de plus en plus précis. J'ai aussi apprécié la possibilité de créer des workflows personnalisés selon les équipes.</p><p>L'outil s'adresse principalement aux entreprises de 50 à 500 salariés qui veulent digitaliser sérieusement leur gestion des notes de frais. <strong>Les start-ups en croissance</strong> y trouvent leur compte, mais je déconseille aux très petites structures : c'est un peu surdimensionné pour moins de 20 personnes.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive avec onboarding accéléré</td>
-            <td>Tarification qui grimpe vite avec les options avancées</td>
-          </tr>
-          <tr>
-            <td>IA performante pour la catégorisation automatique des dépenses</td>
-            <td>Support client parfois lent sur les demandes techniques</td>
-          </tr>
-          <tr>
-            <td>Workflows personnalisables selon les équipes et départements</td>
-            <td>Quelques bugs récurrents sur l'application mobile</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire fluide avec la plupart des établissements</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive avec onboarding accéléré</td></tr><tr><td>IA performante pour la catégorisation automatique des dépenses</td></tr><tr><td>Workflows personnalisables selon les équipes et départements</td></tr><tr><td>Synchronisation bancaire fluide avec la plupart des établissements</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui grimpe vite avec les options avancées</td></tr><tr><td>Support client parfois lent sur les demandes techniques</td></tr><tr><td>Quelques bugs récurrents sur l'application mobile</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -820,38 +703,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Jenji appartient à l'écosystème <strong>Silae</strong>, ce qui lui donne une vraie cohérence avec la paie et la comptabilité. Je l'ai testé sur plusieurs PME et franchement, l'intégration avec les logiciels RH existants fonctionne bien.
-
-<p>L'interface mobile reste correcte sans être exceptionnelle.</p><p>L'outil se débrouille pour <strong>automatiser la saisie des notes de frais</strong> grâce à l'OCR sur les tickets.</p>
-
-<p>Par contre, je trouve que la reconnaissance de certains justificatifs reste perfectible.</p>
-
-<p>Les workflows de validation sont assez flexibles, on peut paramétrer plusieurs niveaux selon les montants.</p><p>Le reporting s'avère plutôt complet pour une solution de cette gamme.</p>
-
-<p>J'ai pu extraire facilement les données pour le contrôle comptable. <strong>Attention au temps d'adaptation</strong> : mes utilisateurs ont eu besoin de deux semaines pour être vraiment à l'aise avec toutes les fonctionnalités.</p></p>
+            <p>Jenji appartient à l'écosystème <strong>Silae</strong>, ce qui lui donne une vraie cohérence avec la paie et la comptabilité. Je l'ai testé sur plusieurs PME et franchement, l'intégration avec les logiciels RH existants fonctionne bien. L'interface mobile reste correcte sans être exceptionnelle.</p><p>L'outil se débrouille pour <strong>automatiser la saisie des notes de frais</strong> grâce à l'OCR sur les tickets. Par contre, je trouve que la reconnaissance de certains justificatifs reste perfectible. Les workflows de validation sont assez flexibles, on peut paramétrer plusieurs niveaux selon les montants.</p><p>Le reporting s'avère plutôt complet pour une solution de cette gamme. J'ai pu extraire facilement les données pour le contrôle comptable. <strong>Attention au temps d'adaptation</strong> : mes utilisateurs ont eu besoin de deux semaines pour être vraiment à l'aise avec toutes les fonctionnalités.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec l'écosystème Silae (paie, compta)</td>
-            <td>Interface mobile moins intuitive que la concurrence</td>
-          </tr>
-          <tr>
-            <td>OCR performant sur la plupart des justificatifs</td>
-            <td>Reconnaissance OCR défaillante sur certains types de tickets</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation configurables par seuils</td>
-            <td>Courbe d'apprentissage assez longue pour les utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Export comptable direct sans ressaisie</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec l'écosystème Silae (paie, compta)</td></tr><tr><td>OCR performant sur la plupart des justificatifs</td></tr><tr><td>Workflows de validation configurables par seuils</td></tr><tr><td>Export comptable direct sans ressaisie</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface mobile moins intuitive que la concurrence</td></tr><tr><td>Reconnaissance OCR défaillante sur certains types de tickets</td></tr><tr><td>Courbe d'apprentissage assez longue pour les utilisateurs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -867,38 +731,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Mooncard me frappe d'abord par sa <strong>carte bancaire intégrée</strong>. Pas besoin de jongler entre app de gestion et moyens de paiement, tout se synchronise automatiquement dès que je dépense.
-
-<p>L'avantage, c'est que mes notes de frais se créent en temps réel avec les justificatifs.</p><p>Je trouve l'interface plutôt bien fichue pour les équipes qui voyagent beaucoup.</p>
-
-<p>La <strong>géolocalisation des dépenses</strong> évite de se demander où on était le mardi 12 il y a trois semaines.</p>
-
-<p>Par contre, j'ai remarqué que l'onboarding prend un peu de temps, surtout pour paramétrer les règles de validation selon les budgets.</p><p>Mooncard vise clairement les entreprises de <strong>50 à 500 salariés</strong> qui veulent simplifier la gestion des frais pros.</p>
-
-<p>Si vos équipes font beaucoup de déplacements ou ont des budgets délégués, ça peut vraiment faire la différence. Pour une TPE avec deux salariés qui sortent rarement, c'est probablement surdimensionné.</p></p>
+            <p>Mooncard me frappe d'abord par sa <strong>carte bancaire intégrée</strong>. Pas besoin de jongler entre app de gestion et moyens de paiement, tout se synchronise automatiquement dès que je dépense. L'avantage, c'est que mes notes de frais se créent en temps réel avec les justificatifs.</p><p>Je trouve l'interface plutôt bien fichue pour les équipes qui voyagent beaucoup. La <strong>géolocalisation des dépenses</strong> évite de se demander où on était le mardi 12 il y a trois semaines. Par contre, j'ai remarqué que l'onboarding prend un peu de temps, surtout pour paramétrer les règles de validation selon les budgets.</p><p>Mooncard vise clairement les entreprises de <strong>50 à 500 salariés</strong> qui veulent simplifier la gestion des frais pros. Si vos équipes font beaucoup de déplacements ou ont des budgets délégués, ça peut vraiment faire la différence. Pour une TPE avec deux salariés qui sortent rarement, c'est probablement surdimensionné.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Carte bancaire intégrée avec synchronisation automatique des dépenses</td>
-            <td>Paramétrage initial complexe pour les règles de validation</td>
-          </tr>
-          <tr>
-            <td>OCR performant qui extrait les données des reçus sans erreur</td>
-            <td>Coût élevé pour les petites structures avec peu de frais</td>
-          </tr>
-          <tr>
-            <td>Contrôles budgétaires en temps réel par équipe ou projet</td>
-            <td>Support client parfois lent à répondre aux demandes techniques</td>
-          </tr>
-          <tr>
-            <td>Interface mobile fluide pour saisir les frais en déplacement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Carte bancaire intégrée avec synchronisation automatique des dépenses</td></tr><tr><td>OCR performant qui extrait les données des reçus sans erreur</td></tr><tr><td>Contrôles budgétaires en temps réel par équipe ou projet</td></tr><tr><td>Interface mobile fluide pour saisir les frais en déplacement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Paramétrage initial complexe pour les règles de validation</td></tr><tr><td>Coût élevé pour les petites structures avec peu de frais</td></tr><tr><td>Support client parfois lent à répondre aux demandes techniques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -914,42 +759,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise N2F depuis presque deux ans dans mon cabinet comptable, et je dois dire que ce <strong>logiciel de notes de frais</strong> m'a vraiment simplifié la vie.
-
-<p>L'application mobile permet de photographier les reçus en temps réel, et l'OCR reconnaît assez bien les données (même si parfois il faut corriger).</p>
-
-<p>Ce qui me plaît, c'est la <strong>synchronisation automatique avec les outils comptables</strong> comme Sage ou QuickBooks.</p><p>N2F cible principalement les <strong>PME de 10 à 200 salariés</strong> qui cherchent à automatiser leur gestion des frais professionnels.</p>
-
-<p>Les workflows de validation sont bien pensés : le manager valide, puis ça passe en comptabilité. J'apprécie particulièrement le module de rapprochement bancaire qui évite les doublons.</p>
-
-<p>Par contre, ne vous attendez pas à un outil ultra-personnalisable comme certains concurrents.</p><p>L'interface reste assez classique, mais <strong>l'onboarding est rapide</strong>.</p>
-
-<p>En une semaine, mes clients maîtrisent les fonctions essentielles. Les rapports de TVA sont corrects, même si j'aimerais plus d'options d'export.</p>
-
-<p>Globalement, N2F fait le travail sans fioritures, ce qui convient bien aux entreprises qui veulent juste que ça marche.</p></p>
+            <p>J'utilise N2F depuis presque deux ans dans mon cabinet comptable, et je dois dire que ce <strong>logiciel de notes de frais</strong> m'a vraiment simplifié la vie. L'application mobile permet de photographier les reçus en temps réel, et l'OCR reconnaît assez bien les données (même si parfois il faut corriger). Ce qui me plaît, c'est la <strong>synchronisation automatique avec les outils comptables</strong> comme Sage ou QuickBooks.</p><p>N2F cible principalement les <strong>PME de 10 à 200 salariés</strong> qui cherchent à automatiser leur gestion des frais professionnels. Les workflows de validation sont bien pensés : le manager valide, puis ça passe en comptabilité. J'apprécie particulièrement le module de rapprochement bancaire qui évite les doublons. Par contre, ne vous attendez pas à un outil ultra-personnalisable comme certains concurrents.</p><p>L'interface reste assez classique, mais <strong>l'onboarding est rapide</strong>. En une semaine, mes clients maîtrisent les fonctions essentielles. Les rapports de TVA sont corrects, même si j'aimerais plus d'options d'export. Globalement, N2F fait le travail sans fioritures, ce qui convient bien aux entreprises qui veulent juste que ça marche.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>OCR performant qui reconnaît bien les données des reçus</td>
-            <td>Interface un peu datée comparée aux nouveaux acteurs</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux logiciels comptables</td>
-            <td>Options de personnalisation limitées pour les rapports</td>
-          </tr>
-          <tr>
-            <td>Application mobile intuitive pour saisir en déplacement</td>
-            <td>Support client parfois lent à répondre en période de pointe</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation clairs entre collaborateurs et managers</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>OCR performant qui reconnaît bien les données des reçus</td></tr><tr><td>Intégration native avec les principaux logiciels comptables</td></tr><tr><td>Application mobile intuitive pour saisir en déplacement</td></tr><tr><td>Workflows de validation clairs entre collaborateurs et managers</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface un peu datée comparée aux nouveaux acteurs</td></tr><tr><td>Options de personnalisation limitées pour les rapports</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1257,7 +1079,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 2 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>
