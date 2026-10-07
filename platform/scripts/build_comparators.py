@@ -380,6 +380,7 @@ def main(site: str, force: bool = False, limit: int | None = None, daily: bool =
 
     repo = load_backlink_repo()
     bl_sheet_urls: dict = {}   # norm(nom) -> (nom, url) à injecter dans le référentiel backlinks
+    missing_shots: list = []   # (titre, marque) : URL connue mais screenshot absent (capture échouée)
     s_index = site_index_for(site)
     global_prompt, persona = load_schema_prompts(site_dir, config)
     shots_dir = site_dir / "public" / "screenshots"
@@ -476,6 +477,7 @@ def main(site: str, force: bool = False, limit: int | None = None, daily: bool =
         # Marques : on prépare les `prod` (thread-safe car assignés ici), puis on
         # soumet screenshot + contenu de chaque marque.
         brand_prods: dict = {}
+        expected_shots: list = []  # (bslug, nom) des marques qui DEVRAIENT avoir un screenshot
         with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
             # — Champs éditoriaux du comparateur —
             if force or not str(existing.get("meta_description", "")).strip():
@@ -530,8 +532,10 @@ def main(site: str, force: bool = False, limit: int | None = None, daily: bool =
 
                 url = b["url"] or repo.get(norm(b["name"]), "")
                 shot = shots_dir / f"{bslug}-screenshot.png"
-                if url and (force or not shot.exists()):
-                    ex.submit(_safe_shot, bslug, url, s_index, shots_dir)   # fire-and-forget
+                if url:
+                    expected_shots.append((bslug, b["name"]))   # marque censée avoir une image
+                    if force or not shot.exists():
+                        ex.submit(_safe_shot, bslug, url, s_index, shots_dir)   # fire-and-forget
 
                 if force or not str(prod.get("description", "")).strip():
                     jobs[ex.submit(gen_json,
@@ -570,8 +574,24 @@ def main(site: str, force: bool = False, limit: int | None = None, daily: bool =
         for prod_key, prod in brand_prods.items():
             editorial[prod_key] = prod
 
+        # Vérif post-capture : les screenshots sont terminés (shutdown à la sortie
+        # du `with`). On relève les marques qui ont une URL mais pas de fichier.
+        for _bslug, _bname in expected_shots:
+            if not (shots_dir / f"{_bslug}-screenshot.png").exists():
+                missing_shots.append((titre, _bname))
+
     ed_path.write_text(json.dumps(editorial, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  ✓ editorial.json mis à jour ({len(selected)} comparateur(s) traité(s))")
+
+    # ── Vérification screenshots : marques avec URL mais capture échouée ──
+    if missing_shots:
+        print(f"  ⚠ SCREENSHOTS MANQUANTS : {len(missing_shots)} marque(s) avec URL mais sans image "
+              f"(capture échouée malgré les retries) :")
+        for _t, _n in missing_shots:
+            print(f"     · {_t} → {_n}")
+        print("     → relance le build pour retenter, ou vérifie l'URL de ces marques.")
+    else:
+        print("  ✓ screenshots : aucune marque manquante")
 
     # ── Référentiel backlinks : injecter les URLs du Sheet (sans écraser l'existant) ──
     if bl_sheet_urls:
