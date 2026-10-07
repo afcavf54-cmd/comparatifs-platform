@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 
 type Entry = {
   site: string; site_name: string; slug: string; title: string;
-  cat_parent: string; date: string; url: string
+  cat_parent: string; date: string; time: string; url: string
 }
 
 // Lecture d'une valeur simple dans un config.yaml (clé: "valeur" ou clé: valeur)
@@ -50,19 +50,24 @@ export async function GET() {
       const page = `meilleur-${slug}`
       // Date de première publication : dates.json (clé .html ou /index.html)
       const dEntry = dates[`${page}.html`] || dates[`${page}/index.html`]
-      const date = dEntry && typeof dEntry === 'object' ? (dEntry.date || '') : ''
+      const dtObj = dEntry && typeof dEntry === 'object' ? dEntry : {}
+      const dtFull = String(dtObj.datetime || '')        // "2026-10-07T14:03" si connu
+      const date = String(dtObj.date || (dtFull ? dtFull.slice(0, 10) : ''))
+      const time = dtFull.includes('T') ? dtFull.slice(11, 16) : ''   // "14:03" ou ''
       const title = (val as any).categorie || prettify(slug)
       const cat_parent = (val as any).cat_parent || ''
       const url = domain ? `${domain}${basePath}/${page}` : ''
-      all.push({ site, site_name: siteName, slug, title, cat_parent, date, url })
+      all.push({ site, site_name: siteName, slug, title, cat_parent, date, time, url })
     }
   }))
 
-  // Tri : par date décroissante (les sans-date en bas), puis par site.
+  // Tri : par date+heure décroissante (les sans-date en bas), puis par site.
+  const key = (e: Entry) => (e.date ? e.date + 'T' + (e.time || '00:00') : '')
   all.sort((a, b) => {
-    if (a.date && b.date && a.date !== b.date) return a.date < b.date ? 1 : -1
-    if (a.date && !b.date) return -1
-    if (!a.date && b.date) return 1
+    const ka = key(a), kb = key(b)
+    if (ka && kb && ka !== kb) return ka < kb ? 1 : -1
+    if (ka && !kb) return -1
+    if (!ka && kb) return 1
     return a.site.localeCompare(b.site) || a.title.localeCompare(b.title)
   })
 
