@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai comparé 9 logiciels de gestion des compétences : mon classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -528,42 +533,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Lattice</strong> pendant plusieurs mois et je peux dire que c'est l'un des logiciels de gestion des compétences les plus complets que j'ai utilisés.
-
-<p>Contrairement à d'autres solutions qui se contentent de faire de l'évaluation 360°, Lattice propose un véritable écosystème RH intégré.</p>
-
-<p>On y trouve les entretiens annuels, le suivi des objectifs OKR, les feedback continus et même des fonctionnalités de reconnaissance entre collègues.</p><p>Ce qui m'a vraiment frappé, c'est la fluidité de l'interface.</p>
-
-<p>Les managers peuvent créer des cycles d'évaluation personnalisés en quelques clics, paramétrer les compétences métier par équipe et automatiser les relances. J'ai configuré un cycle d'évaluation pour 45 personnes en moins d'une heure.</p>
-
-<p><strong>Les tableaux de bord</strong> donnent une vision claire des progressions individuelles et des gaps de compétences à l'échelle de l'entreprise.</p><p>Lattice s'adresse clairement aux entreprises de taille moyenne à grande qui veulent professionnaliser leur gestion RH.</p>
-
-<p>Les startups de 20 personnes trouveront probablement l'outil trop sophistiqué. Mais pour une équipe de 50 à 500 salariés avec plusieurs managers, c'est vraiment adapté.</p>
-
-<p>L'intégration avec Slack et les principaux SIRH facilite grandement l'adoption.</p></p>
+            <p>J'ai testé <strong>Lattice</strong> pendant plusieurs mois et je peux dire que c'est l'un des logiciels de gestion des compétences les plus complets que j'ai utilisés. Contrairement à d'autres solutions qui se contentent de faire de l'évaluation 360°, Lattice propose un véritable écosystème RH intégré. On y trouve les entretiens annuels, le suivi des objectifs OKR, les feedback continus et même des fonctionnalités de reconnaissance entre collègues.</p><p>Ce qui m'a vraiment frappé, c'est la fluidité de l'interface. Les managers peuvent créer des cycles d'évaluation personnalisés en quelques clics, paramétrer les compétences métier par équipe et automatiser les relances. J'ai configuré un cycle d'évaluation pour 45 personnes en moins d'une heure. <strong>Les tableaux de bord</strong> donnent une vision claire des progressions individuelles et des gaps de compétences à l'échelle de l'entreprise.</p><p>Lattice s'adresse clairement aux entreprises de taille moyenne à grande qui veulent professionnaliser leur gestion RH. Les startups de 20 personnes trouveront probablement l'outil trop sophistiqué. Mais pour une équipe de 50 à 500 salariés avec plusieurs managers, c'est vraiment adapté. L'intégration avec Slack et les principaux SIRH facilite grandement l'adoption.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les managers non techniques</td>
-            <td>Tarification élevée qui peut freiner les PME</td>
-          </tr>
-          <tr>
-            <td>Cycles d'évaluation entièrement personnalisables par métier</td>
-            <td>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Suivi des OKR et objectifs intégré dans la même plateforme</td>
-            <td>Support client parfois lent selon les créneaux horaires</td>
-          </tr>
-          <tr>
-            <td>Analytics poussés sur l'évolution des compétences équipes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les managers non techniques</td></tr><tr><td>Cycles d'évaluation entièrement personnalisables par métier</td></tr><tr><td>Suivi des OKR et objectifs intégré dans la même plateforme</td></tr><tr><td>Analytics poussés sur l'évolution des compétences équipes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée qui peut freiner les PME</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités</td></tr><tr><td>Support client parfois lent selon les créneaux horaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -579,38 +561,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Neobrain se concentre sur la <strong>gestion des talents</strong> avec une approche assez technique. Je l'ai testé pendant plusieurs mois et j'ai été surpris par sa capacité à cartographier précisément les compétences.
-
-<p>L'outil analyse les CV, les formations suivies et même les missions réalisées pour construire un référentiel détaillé.</p><p>Ce qui m'a marqué : la fonction de <strong>matching automatique</strong> entre les profils et les projets.</p>
-
-<p>Quand on lance un nouveau projet, Neobrain propose directement les collaborateurs qui ont les bonnes compétences. Pratique pour éviter de chercher dans tous les sens.</p><p>Par contre, je déconseille Neobrain aux petites structures.</p>
-
-<p>L'outil demande du temps pour paramétrer correctement tous les référentiels.</p>
-
-<p>On sent qu'il a été pensé pour des <strong>entreprises de 200 salariés minimum</strong> qui ont des enjeux complexes de mobilité interne et de développement des compétences.</p></p>
+            <p>Neobrain se concentre sur la <strong>gestion des talents</strong> avec une approche assez technique. Je l'ai testé pendant plusieurs mois et j'ai été surpris par sa capacité à cartographier précisément les compétences. L'outil analyse les CV, les formations suivies et même les missions réalisées pour construire un référentiel détaillé.</p><p>Ce qui m'a marqué : la fonction de <strong>matching automatique</strong> entre les profils et les projets. Quand on lance un nouveau projet, Neobrain propose directement les collaborateurs qui ont les bonnes compétences. Pratique pour éviter de chercher dans tous les sens.</p><p>Par contre, je déconseille Neobrain aux petites structures. L'outil demande du temps pour paramétrer correctement tous les référentiels. On sent qu'il a été pensé pour des <strong>entreprises de 200 salariés minimum</strong> qui ont des enjeux complexes de mobilité interne et de développement des compétences.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Cartographie automatique des compétences à partir des données RH existantes</td>
-            <td>Paramétrage initial long et technique qui peut décourager</td>
-          </tr>
-          <tr>
-            <td>Algorithme de matching performant pour associer profils et projets</td>
-            <td>Tarification élevée qui exclut les PME</td>
-          </tr>
-          <tr>
-            <td>Interface de pilotage claire pour les responsables RH et managers</td>
-            <td>Interface parfois lente sur les gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec la plupart des SIRH du marché</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Cartographie automatique des compétences à partir des données RH existantes</td></tr><tr><td>Algorithme de matching performant pour associer profils et projets</td></tr><tr><td>Interface de pilotage claire pour les responsables RH et managers</td></tr><tr><td>Intégration native avec la plupart des SIRH du marché</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Paramétrage initial long et technique qui peut décourager</td></tr><tr><td>Tarification élevée qui exclut les PME</td></tr><tr><td>Interface parfois lente sur les gros volumes de données</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -626,40 +589,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste Skillup depuis plusieurs mois sur mon équipe, et je peux dire que ce <strong>logiciel de gestion des compétences</strong> mise tout sur la simplicité d'usage.
-
-<p>L'interface reste épurée, sans fioritures, avec des cartographies de compétences visuelles qui permettent de voir immédiatement où en sont mes collaborateurs. Le point fort ?</p>
-
-<p>L'automatisation des évaluations périodiques et la création de parcours de formation personnalisés.</p><p>Skillup s'adresse principalement aux PME de <strong>50 à 300 salariés</strong> qui cherchent une solution plug-and-play.</p>
-
-<p>Je recommande particulièrement pour les équipes tech, marketing digital et service client où les compétences évoluent vite.</p>
-
-<p>L'outil excelle dans le suivi des montées en compétences individuelles et la planification des formations internes.</p><p>Par contre, si vous gérez une grande entreprise avec des besoins de reporting complexes ou des processus RH très spécifiques, vous risquez de vous sentir limités.</p>
-
-<p><strong>Skillup privilégie l'efficacité à la personnalisation poussée</strong>, ce qui peut frustrer les structures avec des workflows particuliers.</p></p>
+            <p>Je teste Skillup depuis plusieurs mois sur mon équipe, et je peux dire que ce <strong>logiciel de gestion des compétences</strong> mise tout sur la simplicité d'usage. L'interface reste épurée, sans fioritures, avec des cartographies de compétences visuelles qui permettent de voir immédiatement où en sont mes collaborateurs. Le point fort ? L'automatisation des évaluations périodiques et la création de parcours de formation personnalisés.</p><p>Skillup s'adresse principalement aux PME de <strong>50 à 300 salariés</strong> qui cherchent une solution plug-and-play. Je recommande particulièrement pour les équipes tech, marketing digital et service client où les compétences évoluent vite. L'outil excelle dans le suivi des montées en compétences individuelles et la planification des formations internes.</p><p>Par contre, si vous gérez une grande entreprise avec des besoins de reporting complexes ou des processus RH très spécifiques, vous risquez de vous sentir limités. <strong>Skillup privilégie l'efficacité à la personnalisation poussée</strong>, ce qui peut frustrer les structures avec des workflows particuliers.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive avec prise en main rapide (2-3 jours)</td>
-            <td>Options de personnalisation limitées pour les grands groupes</td>
-          </tr>
-          <tr>
-            <td>Automatisation des évaluations compétences et relances</td>
-            <td>Reporting basique comparé aux solutions enterprise</td>
-          </tr>
-          <tr>
-            <td>Cartographie visuelle des gaps de compétences par équipe</td>
-            <td>Pas de module de gestion prévisionnelle des emplois et compétences (GPEC) avancé</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principales plateformes de formation (Udemy, LinkedIn Learning)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive avec prise en main rapide (2-3 jours)</td></tr><tr><td>Automatisation des évaluations compétences et relances</td></tr><tr><td>Cartographie visuelle des gaps de compétences par équipe</td></tr><tr><td>Intégration native avec les principales plateformes de formation (Udemy, LinkedIn Learning)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation limitées pour les grands groupes</td></tr><tr><td>Reporting basique comparé aux solutions enterprise</td></tr><tr><td>Pas de module de gestion prévisionnelle des emplois et compétences (GPEC) avancé</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -675,40 +617,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Clevry se distingue par son approche très visuelle de la gestion des compétences. J'ai été frappé par leur système de cartographie qui permet de voir d'un coup d'œil les forces et les lacunes de chaque équipe.
-
-<p>Plutôt que de se perdre dans des tableaux Excel, on navigue dans une interface moderne qui rend la gestion RH <strong>vraiment accessible</strong>.</p><p>L'outil excelle particulièrement dans l'identification des besoins de formation.</p>
-
-<p>Leur algorithme de matching entre compétences disponibles et compétences requises m'a impressionné.</p>
-
-<p>Par exemple, si je cherche à monter une équipe projet, Clevry me suggère automatiquement les collaborateurs qui ont le bon mix de compétences.</p>
-
-<p>Plutôt malin.</p><p>Je le recommande aux PME de 50 à 200 salariés qui veulent professionnaliser leur gestion des talents sans avoir besoin d'un service RH de 10 personnes.</p>
-
-<p>L'interface intuitive permet même aux managers non-RH de <strong>prendre en main l'évaluation</strong> de leurs équipes rapidement.</p></p>
+            <p>Clevry se distingue par son approche très visuelle de la gestion des compétences. J'ai été frappé par leur système de cartographie qui permet de voir d'un coup d'œil les forces et les lacunes de chaque équipe. Plutôt que de se perdre dans des tableaux Excel, on navigue dans une interface moderne qui rend la gestion RH <strong>vraiment accessible</strong>.</p><p>L'outil excelle particulièrement dans l'identification des besoins de formation. Leur algorithme de matching entre compétences disponibles et compétences requises m'a impressionné. Par exemple, si je cherche à monter une équipe projet, Clevry me suggère automatiquement les collaborateurs qui ont le bon mix de compétences. Plutôt malin.</p><p>Je le recommande aux PME de 50 à 200 salariés qui veulent professionnaliser leur gestion des talents sans avoir besoin d'un service RH de 10 personnes. L'interface intuitive permet même aux managers non-RH de <strong>prendre en main l'évaluation</strong> de leurs équipes rapidement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface visuelle qui simplifie vraiment la lecture des compétences</td>
-            <td>Manque de profondeur dans l'analyse des soft skills</td>
-          </tr>
-          <tr>
-            <td>Système de recommandations intelligent pour le staffing</td>
-            <td>Intégrations limitées avec les SIRH existants</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide même pour des non-RH</td>
-            <td>Tarification qui devient chère au-delà de 100 utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord personnalisables selon les métiers</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface visuelle qui simplifie vraiment la lecture des compétences</td></tr><tr><td>Système de recommandations intelligent pour le staffing</td></tr><tr><td>Prise en main rapide même pour des non-RH</td></tr><tr><td>Tableaux de bord personnalisables selon les métiers</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Manque de profondeur dans l'analyse des soft skills</td></tr><tr><td>Intégrations limitées avec les SIRH existants</td></tr><tr><td>Tarification qui devient chère au-delà de 100 utilisateurs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -724,36 +645,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Skills Base est une plateforme de gestion des compétences qui <strong>mise tout sur la cartographie visuelle</strong>. J'ai testé leur approche qui ressemble plus à un organigramme interactif qu'aux tableaux Excel habituels.
-
-<p>Leur force, c'est vraiment cette visualisation en temps réel des compétences disponibles dans l'équipe.</p><p>L'outil s'adresse surtout aux <strong>entreprises de 50 à 500 salariés</strong> qui veulent arrêter de chercher qui sait faire quoi.</p>
-
-<p>Le système de matching automatique entre projets et compétences fonctionne bien. Par contre, j'ai trouvé l'interface parfois confuse pour les nouveaux utilisateurs.</p><p>Ce qui m'a marqué, c'est leur module de planification des formations.</p>
-
-<p>Il suggère automatiquement les parcours selon les écarts identifiés. <strong>Plutôt malin</strong> pour éviter les formations inutiles. Mais attention, la prise en main demande du temps et leur support client n'est pas toujours réactif.</p></p>
+            <p>Skills Base est une plateforme de gestion des compétences qui <strong>mise tout sur la cartographie visuelle</strong>. J'ai testé leur approche qui ressemble plus à un organigramme interactif qu'aux tableaux Excel habituels. Leur force, c'est vraiment cette visualisation en temps réel des compétences disponibles dans l'équipe.</p><p>L'outil s'adresse surtout aux <strong>entreprises de 50 à 500 salariés</strong> qui veulent arrêter de chercher qui sait faire quoi. Le système de matching automatique entre projets et compétences fonctionne bien. Par contre, j'ai trouvé l'interface parfois confuse pour les nouveaux utilisateurs.</p><p>Ce qui m'a marqué, c'est leur module de planification des formations. Il suggère automatiquement les parcours selon les écarts identifiés. <strong>Plutôt malin</strong> pour éviter les formations inutiles. Mais attention, la prise en main demande du temps et leur support client n'est pas toujours réactif.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Cartographie visuelle des compétences très intuitive</td>
-            <td>Interface complexe pour les nouveaux utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Matching automatique projets-compétences</td>
-            <td>Support client parfois lent à répondre</td>
-          </tr>
-          <tr>
-            <td>Suggestions intelligentes de formations</td>
-            <td>Paramétrage initial assez fastidieux</td>
-          </tr>
-          <tr>
-            <td>Suivi en temps réel des évolutions de compétences</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Cartographie visuelle des compétences très intuitive</td></tr><tr><td>Matching automatique projets-compétences</td></tr><tr><td>Suggestions intelligentes de formations</td></tr><tr><td>Suivi en temps réel des évolutions de compétences</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface complexe pour les nouveaux utilisateurs</td></tr><tr><td>Support client parfois lent à répondre</td></tr><tr><td>Paramétrage initial assez fastidieux</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -769,38 +673,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je suis tombé sur Elevo en cherchant une plateforme de gestion des compétences qui ne ressemble pas aux usines à gaz habituelles.
-
-<p>Développé par une équipe française, ce logiciel mise sur la <strong>simplicité d'usage</strong> avec des parcours de formation personnalisés et un système de validation des acquis plutôt bien pensé.</p><p>Ce qui m'a marqué ?</p>
-
-<p>L'interface épurée qui ne demande pas trois formations pour être maîtrisée. Elevo combine cartographie des compétences, création de parcours d'apprentissage et suivi des progressions dans un ensemble cohérent.</p>
-
-<p>Je trouve leur approche du microlearning particulièrement réussie, avec des modules courts qui s'intègrent facilement dans le quotidien.</p><p>Franchement, pour les PME qui veulent structurer leur démarche de développement des talents sans se ruiner, c'est une option sérieuse.</p>
-
-<p>Le logiciel gère aussi bien l'évaluation 360° que la planification des formations, avec un tableau de bord qui donne une vision claire des besoins.</p></p>
+            <p>Je suis tombé sur Elevo en cherchant une plateforme de gestion des compétences qui ne ressemble pas aux usines à gaz habituelles. Développé par une équipe française, ce logiciel mise sur la <strong>simplicité d'usage</strong> avec des parcours de formation personnalisés et un système de validation des acquis plutôt bien pensé.</p><p>Ce qui m'a marqué ? L'interface épurée qui ne demande pas trois formations pour être maîtrisée. Elevo combine cartographie des compétences, création de parcours d'apprentissage et suivi des progressions dans un ensemble cohérent. Je trouve leur approche du microlearning particulièrement réussie, avec des modules courts qui s'intègrent facilement dans le quotidien.</p><p>Franchement, pour les PME qui veulent structurer leur démarche de développement des talents sans se ruiner, c'est une option sérieuse. Le logiciel gère aussi bien l'évaluation 360° que la planification des formations, avec un tableau de bord qui donne une vision claire des besoins.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne nécessite pas de formation poussée</td>
-            <td>Catalogue de formations externes limité par rapport aux géants du secteur</td>
-          </tr>
-          <tr>
-            <td>Modules de microlearning adaptatifs selon le profil utilisateur</td>
-            <td>Fonctionnalités de reporting avancé parfois trop basiques pour les grands groupes</td>
-          </tr>
-          <tr>
-            <td>Système de validation des compétences avec preuves intégrées</td>
-            <td>Intégrations API encore restreintes avec certains SIRH populaires</td>
-          </tr>
-          <tr>
-            <td>Tarification transparente sans frais cachés sur les fonctionnalités de base</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Modules de microlearning adaptatifs selon le profil utilisateur</td></tr><tr><td>Système de validation des compétences avec preuves intégrées</td></tr><tr><td>Tarification transparente sans frais cachés sur les fonctionnalités de base</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Catalogue de formations externes limité par rapport aux géants du secteur</td></tr><tr><td>Fonctionnalités de reporting avancé parfois trop basiques pour les grands groupes</td></tr><tr><td>Intégrations API encore restreintes avec certains SIRH populaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -816,42 +701,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>MuchSkills propose une approche assez différente de la gestion des compétences.
-
-<p>Plutôt que de se baser sur des référentiels figés, cette <strong>plateforme collaborative</strong> permet aux équipes de cartographier leurs expertises en temps réel.</p>
-
-<p>J'ai testé l'outil sur plusieurs mois et je trouve que sa force réside dans sa capacité à faire émerger des compétences informelles souvent ignorées par les RH.</p><p>L'interface ressemble davantage à un réseau social qu'à un logiciel RH traditionnel.</p>
-
-<p>Les collaborateurs peuvent <strong>signaler leurs compétences</strong>, valider celles de leurs collègues et identifier qui maîtrise quoi dans l'organisation.</p>
-
-<p>Cette logique de reconnaissance mutuelle fonctionne bien dans les entreprises où la collaboration prime sur la hiérarchie.</p><p>MuchSkills s'adapte particulièrement aux <strong>startups tech</strong>, agences créatives et équipes projets transversales.</p>
-
-<p>Si vous cherchez un outil pour gérer des plans de formation très structurés ou des évaluations annuelles complexes, ce n'est probablement pas le bon choix.</p>
-
-<p>Par contre, pour créer une vraie dynamique de partage de connaissances et identifier rapidement les expertises disponibles, ça marche très bien.</p></p>
+            <p>MuchSkills propose une approche assez différente de la gestion des compétences. Plutôt que de se baser sur des référentiels figés, cette <strong>plateforme collaborative</strong> permet aux équipes de cartographier leurs expertises en temps réel. J'ai testé l'outil sur plusieurs mois et je trouve que sa force réside dans sa capacité à faire émerger des compétences informelles souvent ignorées par les RH.</p><p>L'interface ressemble davantage à un réseau social qu'à un logiciel RH traditionnel. Les collaborateurs peuvent <strong>signaler leurs compétences</strong>, valider celles de leurs collègues et identifier qui maîtrise quoi dans l'organisation. Cette logique de reconnaissance mutuelle fonctionne bien dans les entreprises où la collaboration prime sur la hiérarchie.</p><p>MuchSkills s'adapte particulièrement aux <strong>startups tech</strong>, agences créatives et équipes projets transversales. Si vous cherchez un outil pour gérer des plans de formation très structurés ou des évaluations annuelles complexes, ce n'est probablement pas le bon choix. Par contre, pour créer une vraie dynamique de partage de connaissances et identifier rapidement les expertises disponibles, ça marche très bien.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui favorise l'adoption spontanée</td>
-            <td>Manque de fonctionnalités de reporting avancées</td>
-          </tr>
-          <tr>
-            <td>Cartographie collaborative des compétences en temps réel</td>
-            <td>Pas d'intégration native avec les SIRH classiques</td>
-          </tr>
-          <tr>
-            <td>Identification rapide des experts internes sur des sujets précis</td>
-            <td>Suivi des formations moins poussé que d'autres solutions</td>
-          </tr>
-          <tr>
-            <td>Prix accessible pour les PME et startups</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui favorise l'adoption spontanée</td></tr><tr><td>Cartographie collaborative des compétences en temps réel</td></tr><tr><td>Identification rapide des experts internes sur des sujets précis</td></tr><tr><td>Prix accessible pour les PME et startups</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Manque de fonctionnalités de reporting avancées</td></tr><tr><td>Pas d'intégration native avec les SIRH classiques</td></tr><tr><td>Suivi des formations moins poussé que d'autres solutions</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -867,40 +729,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Cornerstone OnDemand pendant plusieurs mois dans une entreprise de 800 personnes. Cette plateforme de gestion des compétences couvre tout le cycle RH : formation, évaluation, développement des talents et succession planning.
-
-<p><strong>L'approche tout-en-un</strong> peut sembler séduisante mais demande un vrai investissement.</p><p>Le système brille dans les grandes structures qui veulent centraliser leur politique RH.</p>
-
-<p>Les fonctionnalités de reporting sont solides, avec des tableaux de bord configurables qui donnent une vision claire des compétences par équipe.</p>
-
-<p>J'ai particulièrement apprécié les <strong>matrices de compétences visuelles</strong> qui permettent d'identifier rapidement les gaps de formation.</p><p>Par contre, l'interface peut décourager.</p>
-
-<p>Cornerstone OnDemand garde un côté très corporate qui ne plaît pas à tout le monde. Le paramétrage initial prend du temps et nécessite souvent l'intervention d'un consultant.</p>
-
-<p>Comptez plusieurs semaines pour avoir quelque chose d'opérationnel.</p></p>
+            <p>J'ai testé Cornerstone OnDemand pendant plusieurs mois dans une entreprise de 800 personnes. Cette plateforme de gestion des compétences couvre tout le cycle RH : formation, évaluation, développement des talents et succession planning. <strong>L'approche tout-en-un</strong> peut sembler séduisante mais demande un vrai investissement.</p><p>Le système brille dans les grandes structures qui veulent centraliser leur politique RH. Les fonctionnalités de reporting sont solides, avec des tableaux de bord configurables qui donnent une vision claire des compétences par équipe. J'ai particulièrement apprécié les <strong>matrices de compétences visuelles</strong> qui permettent d'identifier rapidement les gaps de formation.</p><p>Par contre, l'interface peut décourager. Cornerstone OnDemand garde un côté très corporate qui ne plaît pas à tout le monde. Le paramétrage initial prend du temps et nécessite souvent l'intervention d'un consultant. Comptez plusieurs semaines pour avoir quelque chose d'opérationnel.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Suite RH complète avec gestion des talents intégrée</td>
-            <td>Interface vieillissante et peu intuitive pour les utilisateurs finaux</td>
-          </tr>
-          <tr>
-            <td>Reporting avancé et tableaux de bord personnalisables</td>
-            <td>Paramétrage complexe nécessitant souvent un accompagnement externe</td>
-          </tr>
-          <tr>
-            <td>Gestion des parcours de formation avec suivi automatique</td>
-            <td>Tarification élevée réservée aux grandes entreprises</td>
-          </tr>
-          <tr>
-            <td>Fonctionnalités de succession planning pour anticiper les départs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Suite RH complète avec gestion des talents intégrée</td></tr><tr><td>Reporting avancé et tableaux de bord personnalisables</td></tr><tr><td>Gestion des parcours de formation avec suivi automatique</td></tr><tr><td>Fonctionnalités de succession planning pour anticiper les départs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillissante et peu intuitive pour les utilisateurs finaux</td></tr><tr><td>Paramétrage complexe nécessitant souvent un accompagnement externe</td></tr><tr><td>Tarification élevée réservée aux grandes entreprises</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -916,40 +757,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>360Learning mise tout sur la formation collaborative. Je l'ai testé pendant six mois dans une PME de 150 salariés et j'avoue avoir été surpris par l'approche.
-
-<p>Au lieu de simplement diffuser du contenu tout fait, la plateforme pousse vraiment les équipes à <strong>créer leurs propres formations</strong> et à partager leur expertise interne.</p><p>L'interface ressemble un peu à un réseau social professionnel.</p>
-
-<p>On peut commenter les modules, poser des questions directement, noter les contenus. Ça change des LMS traditionnels où on subit passivement.</p>
-
-<p>Les managers peuvent suivre la progression en temps réel et identifier les <strong>experts internes</strong> qui émergent naturellement.</p>
-
-<p>Par contre, je trouve que ça demande une vraie maturité organisationnelle.</p><p>Le système de recommandations intelligentes fonctionne bien une fois qu'il a assez de données.</p>
-
-<p>Il propose automatiquement des parcours en fonction des lacunes détectées et des objectifs fixés. Plutôt malin pour une entreprise qui veut développer une <strong>culture d'apprentissage continu</strong> sans partir de zéro.</p></p>
+            <p>360Learning mise tout sur la formation collaborative. Je l'ai testé pendant six mois dans une PME de 150 salariés et j'avoue avoir été surpris par l'approche. Au lieu de simplement diffuser du contenu tout fait, la plateforme pousse vraiment les équipes à <strong>créer leurs propres formations</strong> et à partager leur expertise interne.</p><p>L'interface ressemble un peu à un réseau social professionnel. On peut commenter les modules, poser des questions directement, noter les contenus. Ça change des LMS traditionnels où on subit passivement. Les managers peuvent suivre la progression en temps réel et identifier les <strong>experts internes</strong> qui émergent naturellement. Par contre, je trouve que ça demande une vraie maturité organisationnelle.</p><p>Le système de recommandations intelligentes fonctionne bien une fois qu'il a assez de données. Il propose automatiquement des parcours en fonction des lacunes détectées et des objectifs fixés. Plutôt malin pour une entreprise qui veut développer une <strong>culture d'apprentissage continu</strong> sans partir de zéro.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Création de contenu collaborative très fluide</td>
-            <td>Prix élevé pour les petites structures (minimum 8€/utilisateur/mois)</td>
-          </tr>
-          <tr>
-            <td>Analytics détaillés sur l'engagement et la progression</td>
-            <td>Courbe d'apprentissage longue pour les équipes peu tech</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les outils RH (Workday, BambooHR)</td>
-            <td>Bibliothèque de contenus préfabriqués encore limitée en français</td>
-          </tr>
-          <tr>
-            <td>Mobile app vraiment bien fichue pour apprendre en mobilité</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Création de contenu collaborative très fluide</td></tr><tr><td>Analytics détaillés sur l'engagement et la progression</td></tr><tr><td>Intégration native avec les outils RH (Workday, BambooHR)</td></tr><tr><td>Mobile app vraiment bien fichue pour apprendre en mobilité</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé pour les petites structures (minimum 8€/utilisateur/mois)</td></tr><tr><td>Courbe d'apprentissage longue pour les équipes peu tech</td></tr><tr><td>Bibliothèque de contenus préfabriqués encore limitée en français</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1235,7 +1055,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 2 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai comparé 9 logiciels de gestion de l'avance immédiate de crédit d'impôt : mon comparatif</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -527,40 +532,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Horiio pendant 6 mois pour gérer l'avance immédiate de crédit d'impôt recherche dans ma PME.
-
-<p><strong>Cette solution cloud s'adresse clairement aux entreprises de 50 à 500 salariés</strong> qui veulent automatiser leurs déclarations CIR sans embaucher un expert-comptable spécialisé.</p>
-
-<p>L'interface reste accessible même si on n'est pas fiscaliste.</p><p>Ce qui m'a convaincu ? Le module de suivi des dépenses éligibles en temps réel. Horiio connecte directement la comptabilité et calcule automatiquement les assiettes.</p>
-
-<p>Plus besoin de jongler entre trois fichiers Excel pour préparer sa déclaration.</p>
-
-<p><strong>Le gain de temps est réel</strong> : on passe de 2 semaines à 3 jours pour monter un dossier complet.</p><p>Par contre, je déconseille Horiio aux très petites structures.</p>
-
-<p><strong>L'abonnement démarre à <strong>890€</strong>/mois</strong>, ce qui peut paraître lourd pour une startup de 10 personnes. Et franchement, l'onboarding prend du temps : comptez 3 semaines pour paramétrer correctement tous vos projets R&D.</p></p>
+            <p>J'ai testé Horiio pendant 6 mois pour gérer l'avance immédiate de crédit d'impôt recherche dans ma PME. <strong>Cette solution cloud s'adresse clairement aux entreprises de 50 à 500 salariés</strong> qui veulent automatiser leurs déclarations CIR sans embaucher un expert-comptable spécialisé. L'interface reste accessible même si on n'est pas fiscaliste.</p><p>Ce qui m'a convaincu ? Le module de suivi des dépenses éligibles en temps réel. Horiio connecte directement la comptabilité et calcule automatiquement les assiettes. Plus besoin de jongler entre trois fichiers Excel pour préparer sa déclaration. <strong>Le gain de temps est réel</strong> : on passe de 2 semaines à 3 jours pour monter un dossier complet.</p><p>Par contre, je déconseille Horiio aux très petites structures. <strong>L'abonnement démarre à <strong>890€</strong>/mois</strong>, ce qui peut paraître lourd pour une startup de 10 personnes. Et franchement, l'onboarding prend du temps : comptez 3 semaines pour paramétrer correctement tous vos projets R&D.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Calcul automatisé des assiettes CIR à partir de la comptabilité</td>
-            <td>Tarification élevée pour les petites entreprises</td>
-          </tr>
-          <tr>
-            <td>Interface claire pour les non-fiscalistes</td>
-            <td>Paramétrage initial complexe et chronophage</td>
-          </tr>
-          <tr>
-            <td>Support technique réactif avec des experts CIR</td>
-            <td>Quelques bugs sur l'export des annexes fiscales</td>
-          </tr>
-          <tr>
-            <td>Génération automatique des justificatifs pour l'administration</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Calcul automatisé des assiettes CIR à partir de la comptabilité</td></tr><tr><td>Interface claire pour les non-fiscalistes</td></tr><tr><td>Support technique réactif avec des experts CIR</td></tr><tr><td>Génération automatique des justificatifs pour l'administration</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée pour les petites entreprises</td></tr><tr><td>Paramétrage initial complexe et chronophage</td></tr><tr><td>Quelques bugs sur l'export des annexes fiscales</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -576,40 +560,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Avance Immédiate Services (AIS) cible principalement les <strong>entreprises de services à la personne</strong> qui jonglent avec les versements anticipés du crédit d'impôt.
-
-<p>Je l'ai testé dans une structure de 25 salariés en aide à domicile, et franchement ça simplifie pas mal les choses.</p>
-
-<p>Le logiciel automatise les calculs de trésorerie et suit les remboursements en temps réel.</p><p>L'interface reste assez basique mais efficace. On peut simuler différents scénarios d'avance selon le chiffre d'affaires prévisionnel.</p>
-
-<p><strong>Le point fort</strong> : la synchronisation directe avec les organismes sociaux pour récupérer les données de cotisations.</p>
-
-<p>Ça évite de ressaisir manuellement tous les montants chaque trimestre.</p><p>Par contre, je déconseille AIS aux très petites structures (moins de 5 salariés). Le coût mensuel devient disproportionné par rapport aux gains de temps.</p>
-
-<p>C'est vraiment pensé pour des entreprises qui gèrent <strong>plusieurs dizaines de dossiers clients</strong> et qui ont besoin d'un suivi précis de leur trésorerie liée aux crédits d'impôt.</p></p>
+            <p>Avance Immédiate Services (AIS) cible principalement les <strong>entreprises de services à la personne</strong> qui jonglent avec les versements anticipés du crédit d'impôt. Je l'ai testé dans une structure de 25 salariés en aide à domicile, et franchement ça simplifie pas mal les choses. Le logiciel automatise les calculs de trésorerie et suit les remboursements en temps réel.</p><p>L'interface reste assez basique mais efficace. On peut simuler différents scénarios d'avance selon le chiffre d'affaires prévisionnel. <strong>Le point fort</strong> : la synchronisation directe avec les organismes sociaux pour récupérer les données de cotisations. Ça évite de ressaisir manuellement tous les montants chaque trimestre.</p><p>Par contre, je déconseille AIS aux très petites structures (moins de 5 salariés). Le coût mensuel devient disproportionné par rapport aux gains de temps. C'est vraiment pensé pour des entreprises qui gèrent <strong>plusieurs dizaines de dossiers clients</strong> et qui ont besoin d'un suivi précis de leur trésorerie liée aux crédits d'impôt.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation automatique avec les organismes sociaux</td>
-            <td>Interface un peu datée qui manque de modernité</td>
-          </tr>
-          <tr>
-            <td>Simulateur de trésorerie intégré pour anticiper les besoins</td>
-            <td>Tarification élevée pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord clairs sur les montants d'avance disponibles</td>
-            <td>Pas d'application mobile pour consulter les données en déplacement</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec des conseillers qui connaissent le métier</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation automatique avec les organismes sociaux</td></tr><tr><td>Simulateur de trésorerie intégré pour anticiper les besoins</td></tr><tr><td>Tableaux de bord clairs sur les montants d'avance disponibles</td></tr><tr><td>Support client réactif avec des conseillers qui connaissent le métier</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface un peu datée qui manque de modernité</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Pas d'application mobile pour consulter les données en déplacement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -625,38 +588,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Wandle s'adresse aux experts-comptables et cabinets de taille moyenne qui veulent <strong>automatiser complètement</strong> la gestion du crédit d'impôt recherche et innovation.
-
-<p>J'ai testé cette solution pendant 6 mois sur une quinzaine de dossiers, et je dois dire qu'elle m'a fait gagner un temps considérable sur la partie administrative.</p><p>Ce qui m'a frappé d'emblée, c'est la <strong>fluidité du workflow</strong>.</p>
-
-<p>Wandle récupère automatiquement les données depuis les logiciels comptables les plus courants, calcule les montants éligibles et génère tous les documents nécessaires pour les demandes d'avance.</p>
-
-<p>Plus besoin de jongler entre Excel et les formulaires Cerfa.</p><p>Le logiciel excelle surtout sur les <strong>dossiers CIR complexes</strong> avec plusieurs entités ou projets simultanés.</p>
-
-<p>J'ai pu traiter des groupes de sociétés sans me perdre dans les ventilations, ce qui était mon cauchemar avant. Par contre, si vous cherchez juste à gérer 2-3 dossiers simples par an, Wandle risque d'être surdimensionné.</p></p>
+            <p>Wandle s'adresse aux experts-comptables et cabinets de taille moyenne qui veulent <strong>automatiser complètement</strong> la gestion du crédit d'impôt recherche et innovation. J'ai testé cette solution pendant 6 mois sur une quinzaine de dossiers, et je dois dire qu'elle m'a fait gagner un temps considérable sur la partie administrative.</p><p>Ce qui m'a frappé d'emblée, c'est la <strong>fluidité du workflow</strong>. Wandle récupère automatiquement les données depuis les logiciels comptables les plus courants, calcule les montants éligibles et génère tous les documents nécessaires pour les demandes d'avance. Plus besoin de jongler entre Excel et les formulaires Cerfa.</p><p>Le logiciel excelle surtout sur les <strong>dossiers CIR complexes</strong> avec plusieurs entités ou projets simultanés. J'ai pu traiter des groupes de sociétés sans me perdre dans les ventilations, ce qui était mon cauchemar avant. Par contre, si vous cherchez juste à gérer 2-3 dossiers simples par an, Wandle risque d'être surdimensionné.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Connexion native avec Sage, Cegid et QuadraCompta pour import automatique</td>
-            <td>Interface parfois lente sur les gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Calculs de répartition multi-entités sans erreur de ventilation</td>
-            <td>Tarification élevée pour les petits cabinets (à partir de 280€/mois)</td>
-          </tr>
-          <tr>
-            <td>Génération automatique des liasses fiscales et justificatifs DGFiP</td>
-            <td>Courbe d'apprentissage steep les premières semaines d'utilisation</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord temps réel sur l'avancement des dossiers clients</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Connexion native avec Sage, Cegid et QuadraCompta pour import automatique</td></tr><tr><td>Calculs de répartition multi-entités sans erreur de ventilation</td></tr><tr><td>Génération automatique des liasses fiscales et justificatifs DGFiP</td></tr><tr><td>Tableau de bord temps réel sur l'avancement des dossiers clients</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface parfois lente sur les gros volumes de données</td></tr><tr><td>Tarification élevée pour les petits cabinets (à partir de 280€/mois)</td></tr><tr><td>Courbe d'apprentissage steep les premières semaines d'utilisation</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -672,40 +616,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Infolib via AIS</strong> se concentre sur la gestion administrative des avances de crédit d'impôt recherche et innovation.
-
-<p>Je trouve que c'est l'un des rares outils qui traite vraiment le sujet sous l'angle réglementaire plutôt que comptable.</p>
-
-<p>L'interface permet de suivre les dossiers CIR/CII depuis la constitution jusqu'au versement effectif.</p><p>Contrairement aux solutions généralistes, Infolib intègre directement les <strong>référentiels fiscaux actualisés</strong> et les grilles de calcul officiel.</p>
-
-<p>J'ai pu tester le module de validation automatique des pièces justificatives.</p>
-
-<p>Ça évite pas mal d'erreurs de forme qui font perdre du temps avec l'administration.</p><p>L'outil s'adresse principalement aux cabinets d'expertise comptable et départements fiscaux qui gèrent plusieurs dossiers d'avance simultanément.</p>
-
-<p>La logique métier est vraiment pensée pour des professionnels qui connaissent les subtilités du dispositif. Pas vraiment fait pour une PME qui veut juste déposer son premier dossier.</p></p>
+            <p><strong>Infolib via AIS</strong> se concentre sur la gestion administrative des avances de crédit d'impôt recherche et innovation. Je trouve que c'est l'un des rares outils qui traite vraiment le sujet sous l'angle réglementaire plutôt que comptable. L'interface permet de suivre les dossiers CIR/CII depuis la constitution jusqu'au versement effectif.</p><p>Contrairement aux solutions généralistes, Infolib intègre directement les <strong>référentiels fiscaux actualisés</strong> et les grilles de calcul officiel. J'ai pu tester le module de validation automatique des pièces justificatives. Ça évite pas mal d'erreurs de forme qui font perdre du temps avec l'administration.</p><p>L'outil s'adresse principalement aux cabinets d'expertise comptable et départements fiscaux qui gèrent plusieurs dossiers d'avance simultanément. La logique métier est vraiment pensée pour des professionnels qui connaissent les subtilités du dispositif. Pas vraiment fait pour une PME qui veut juste déposer son premier dossier.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Référentiels fiscaux intégrés et mis à jour automatiquement</td>
-            <td>Courbe d'apprentissage assez raide pour les non-spécialistes</td>
-          </tr>
-          <tr>
-            <td>Module de validation des pièces justificatives avant envoi</td>
-            <td>Prix élevé pour une utilisation occasionnelle</td>
-          </tr>
-          <tr>
-            <td>Suivi détaillé des échéances et versements par dossier</td>
-            <td>Nécessite une bonne connaissance préalable du dispositif CIR/CII</td>
-          </tr>
-          <tr>
-            <td>Interface pensée pour la gestion multi-clients</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Référentiels fiscaux intégrés et mis à jour automatiquement</td></tr><tr><td>Module de validation des pièces justificatives avant envoi</td></tr><tr><td>Suivi détaillé des échéances et versements par dossier</td></tr><tr><td>Interface pensée pour la gestion multi-clients</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage assez raide pour les non-spécialistes</td></tr><tr><td>Prix élevé pour une utilisation occasionnelle</td></tr><tr><td>Nécessite une bonne connaissance préalable du dispositif CIR/CII</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -721,38 +644,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Organilog propose une approche intégrée du crédit d'impôt immédiat qui peut surprendre. Cette solution combine gestion commerciale et traitement fiscal dans une interface unique, ce qui évite de jongler entre plusieurs outils.
-
-<p>Je l'ai testé chez un électricien qui galère avec ses déclarations : <strong>gain de temps énorme</strong>.</p><p>Le logiciel brille surtout pour les artisans et PME du bâtiment qui veulent gérer leurs chantiers ET optimiser leur crédit d'impôt sans passer par un cabinet.</p>
-
-<p>L'automatisation des calculs fiscaux s'appuie sur les données déjà saisies pour les devis, ce qui limite les erreurs de double saisie.</p>
-
-<p><strong>Prise en main assez rapide</strong> pour quelqu'un qui connaît déjà un ERP.</p><p>Par contre, attention si vous cherchez uniquement un outil fiscal pur. Organilog reste avant tout un logiciel métier avec une couche fiscale intégrée.</p>
-
-<p>Les cabinets comptables risquent de trouver ça trop orienté terrain. Je recommande plutôt aux entreprises qui veulent centraliser opérationnel et administratif.</p></p>
+            <p>Organilog propose une approche intégrée du crédit d'impôt immédiat qui peut surprendre. Cette solution combine gestion commerciale et traitement fiscal dans une interface unique, ce qui évite de jongler entre plusieurs outils. Je l'ai testé chez un électricien qui galère avec ses déclarations : <strong>gain de temps énorme</strong>.</p><p>Le logiciel brille surtout pour les artisans et PME du bâtiment qui veulent gérer leurs chantiers ET optimiser leur crédit d'impôt sans passer par un cabinet. L'automatisation des calculs fiscaux s'appuie sur les données déjà saisies pour les devis, ce qui limite les erreurs de double saisie. <strong>Prise en main assez rapide</strong> pour quelqu'un qui connaît déjà un ERP.</p><p>Par contre, attention si vous cherchez uniquement un outil fiscal pur. Organilog reste avant tout un logiciel métier avec une couche fiscale intégrée. Les cabinets comptables risquent de trouver ça trop orienté terrain. Je recommande plutôt aux entreprises qui veulent centraliser opérationnel et administratif.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface tout-en-un qui évite les ressaisies entre commercial et fiscal</td>
-            <td>Complexité excessive si on ne veut que gérer le crédit d'impôt</td>
-          </tr>
-          <tr>
-            <td>Automatisation des calculs de crédit d'impôt basée sur les données chantier</td>
-            <td>Paramétrage initial assez lourd pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Suivi temps réel des montants disponibles et consommés</td>
-            <td>Support technique parfois lent sur les questions fiscales spécifiques</td>
-          </tr>
-          <tr>
-            <td>Module de validation collaborative entre terrain et comptabilité</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface tout-en-un qui évite les ressaisies entre commercial et fiscal</td></tr><tr><td>Automatisation des calculs de crédit d'impôt basée sur les données chantier</td></tr><tr><td>Suivi temps réel des montants disponibles et consommés</td></tr><tr><td>Module de validation collaborative entre terrain et comptabilité</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Complexité excessive si on ne veut que gérer le crédit d'impôt</td></tr><tr><td>Paramétrage initial assez lourd pour les petites structures</td></tr><tr><td>Support technique parfois lent sur les questions fiscales spécifiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -768,38 +672,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je découvre <strong>Tale Me</strong> comme une solution qui simplifie vraiment la gestion des avances de crédit d'impôts. L'interface me semble pensée pour les équipes comptables qui jonglent entre plusieurs dossiers client.
-
-<p>Le système automatise les calculs d'éligibilité et prépare les déclarations sans avoir besoin de ressaisir les données partout.</p><p>Ce qui m'a marqué c'est la <strong>synchronisation directe avec les logiciels comptables</strong> classiques.</p>
-
-<p>Tale Me récupère automatiquement les données de paie, calcule les montants d'avance possibles et génère tous les documents pour les demandes.</p>
-
-<p>J'ai testé l'import depuis Sage et Cegid, ça fonctionne sans accroc.</p><p>Le logiciel vise clairement les <strong>cabinets comptables de taille moyenne</strong> et les entreprises qui gèrent plusieurs entités.</p>
-
-<p>L'approche multi-dossiers permet de suivre l'avancement de chaque demande client depuis un tableau de bord centralisé. Par contre, si vous cherchez juste à gérer vos propres crédits d'impôts en interne, c'est probablement surdimensionné.</p></p>
+            <p>Je découvre <strong>Tale Me</strong> comme une solution qui simplifie vraiment la gestion des avances de crédit d'impôts. L'interface me semble pensée pour les équipes comptables qui jonglent entre plusieurs dossiers client. Le système automatise les calculs d'éligibilité et prépare les déclarations sans avoir besoin de ressaisir les données partout.</p><p>Ce qui m'a marqué c'est la <strong>synchronisation directe avec les logiciels comptables</strong> classiques. Tale Me récupère automatiquement les données de paie, calcule les montants d'avance possibles et génère tous les documents pour les demandes. J'ai testé l'import depuis Sage et Cegid, ça fonctionne sans accroc.</p><p>Le logiciel vise clairement les <strong>cabinets comptables de taille moyenne</strong> et les entreprises qui gèrent plusieurs entités. L'approche multi-dossiers permet de suivre l'avancement de chaque demande client depuis un tableau de bord centralisé. Par contre, si vous cherchez juste à gérer vos propres crédits d'impôts en interne, c'est probablement surdimensionné.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation native avec Sage, Cegid et QuadraCompta</td>
-            <td>Tarification élevée pour les petites structures mono-entité</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des montants d'avance éligibles selon la réglementation</td>
-            <td>Courbe d'apprentissage importante lors du paramétrage initial</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord multi-clients pour les cabinets comptables</td>
-            <td>Peu d'options de personnalisation des rapports générés</td>
-          </tr>
-          <tr>
-            <td>Génération automatique des liasses fiscales et attestations</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation native avec Sage, Cegid et QuadraCompta</td></tr><tr><td>Calcul automatique des montants d'avance éligibles selon la réglementation</td></tr><tr><td>Tableau de bord multi-clients pour les cabinets comptables</td></tr><tr><td>Génération automatique des liasses fiscales et attestations</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée pour les petites structures mono-entité</td></tr><tr><td>Courbe d'apprentissage importante lors du paramétrage initial</td></tr><tr><td>Peu d'options de personnalisation des rapports générés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -815,42 +700,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Ximi propose une approche différente de la gestion du crédit d'impôt recherche et innovation.
-
-<p><strong>J'ai été surpris par la simplicité</strong> de leur interface : on importe nos données comptables, le logiciel fait le <strong>tri</strong> automatiquement et génère directement les déclarations.</p>
-
-<p>Fini les heures passées à classer manuellement chaque facture.</p><p>Ce qui m'a marqué avec Ximi, c'est leur module de validation collaborative.</p>
-
-<p>L'expert-comptable peut vérifier les imputations en temps réel, annoter directement dans l'outil, et moi je peux corriger sans multiplier les allers-retours par email.</p>
-
-<p><strong>Gain de temps énorme</strong> sur la phase de contrôle.</p><p>Le logiciel excelle vraiment sur la traçabilité des dossiers.</p>
-
-<p>Chaque modification est horodatée, on peut revenir en arrière facilement, et surtout <strong>l'historique des échanges avec l'administration</strong> reste accessible.</p>
-
-<p>Par contre, je trouve que l'onboarding manque un peu de guidance pour les novices du CIR.</p></p>
+            <p>Ximi propose une approche différente de la gestion du crédit d'impôt recherche et innovation. <strong>J'ai été surpris par la simplicité</strong> de leur interface : on importe nos données comptables, le logiciel fait le <strong>tri</strong> automatiquement et génère directement les déclarations. Fini les heures passées à classer manuellement chaque facture.</p><p>Ce qui m'a marqué avec Ximi, c'est leur module de validation collaborative. L'expert-comptable peut vérifier les imputations en temps réel, annoter directement dans l'outil, et moi je peux corriger sans multiplier les allers-retours par email. <strong>Gain de temps énorme</strong> sur la phase de contrôle.</p><p>Le logiciel excelle vraiment sur la traçabilité des dossiers. Chaque modification est horodatée, on peut revenir en arrière facilement, et surtout <strong>l'historique des échanges avec l'administration</strong> reste accessible. Par contre, je trouve que l'onboarding manque un peu de guidance pour les novices du CIR.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Import automatique des données comptables avec tri intelligent</td>
-            <td>Onboarding insuffisant pour les entreprises débutantes sur le CIR</td>
-          </tr>
-          <tr>
-            <td>Validation collaborative en temps réel avec l'expert-comptable</td>
-            <td>Module de reporting assez basique comparé à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Traçabilité complète des modifications et échanges administratifs</td>
-            <td>Pas d'intégration native avec certains logiciels comptables populaires</td>
-          </tr>
-          <tr>
-            <td>Interface épurée qui évite les erreurs de saisie</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Import automatique des données comptables avec tri intelligent</td></tr><tr><td>Validation collaborative en temps réel avec l'expert-comptable</td></tr><tr><td>Traçabilité complète des modifications et échanges administratifs</td></tr><tr><td>Interface épurée qui évite les erreurs de saisie</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding insuffisant pour les entreprises débutantes sur le CIR</td></tr><tr><td>Module de reporting assez basique comparé à la concurrence</td></tr><tr><td>Pas d'intégration native avec certains logiciels comptables populaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -866,42 +728,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Progisap fait partie des solutions ERP complètes qui intègrent le traitement de l'avance immédiate du crédit d'impôt recherche.
-
-<p>Je l'ai testé chez un client dans l'industrie pharmaceutique, et <strong>l'approche diffère des outils spécialisés</strong> qu'on voit habituellement.</p>
-
-<p>Ici, tout passe par des modules interconnectés qui gèrent à la fois la comptabilité, la paie et le suivi des projets R&D.</p><p>L'intérêt principal ?</p>
-
-<p><strong>Vous n'avez pas besoin de jongler entre plusieurs logiciels</strong> pour calculer vos créances CIR et demander l'avance.</p>
-
-<p>Le système récupère automatiquement les données de temps passé, les frais de personnel et les dépenses de sous-traitance directement depuis les modules RH et comptable.</p>
-
-<p>Par contre, j'ai trouvé l'interface assez dense au début.</p><p>Je recommande Progisap aux entreprises qui ont déjà une structure ERP robuste et qui cherchent à centraliser leur gestion administrative.</p>
-
-<p>Si vous êtes une petite structure ou que vous voulez juste traiter ponctuellement l'avance CIR, ça risque d'être disproportionné. <strong>C'est vraiment un choix pour les organisations qui veulent tout intégrer</strong>.</p></p>
+            <p>Progisap fait partie des solutions ERP complètes qui intègrent le traitement de l'avance immédiate du crédit d'impôt recherche. Je l'ai testé chez un client dans l'industrie pharmaceutique, et <strong>l'approche diffère des outils spécialisés</strong> qu'on voit habituellement. Ici, tout passe par des modules interconnectés qui gèrent à la fois la comptabilité, la paie et le suivi des projets R&D.</p><p>L'intérêt principal ? <strong>Vous n'avez pas besoin de jongler entre plusieurs logiciels</strong> pour calculer vos créances CIR et demander l'avance. Le système récupère automatiquement les données de temps passé, les frais de personnel et les dépenses de sous-traitance directement depuis les modules RH et comptable. Par contre, j'ai trouvé l'interface assez dense au début.</p><p>Je recommande Progisap aux entreprises qui ont déjà une structure ERP robuste et qui cherchent à centraliser leur gestion administrative. Si vous êtes une petite structure ou que vous voulez juste traiter ponctuellement l'avance CIR, ça risque d'être disproportionné. <strong>C'est vraiment un choix pour les organisations qui veulent tout intégrer</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec la comptabilité et la paie pour récupérer automatiquement les coûts R&D</td>
-            <td>Interface complexe qui demande une formation approfondie des utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Suivi en temps réel des projets de recherche et calcul automatique des assiettes CIR</td>
-            <td>Coût d'implémentation élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Workflow de validation hiérarchique pour sécuriser les demandes d'avance</td>
-            <td>Délais de paramétrage importants pour adapter l'ERP aux spécificités du CIR</td>
-          </tr>
-          <tr>
-            <td>Historique complet des déclarations et correspondances avec l'administration fiscale</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec la comptabilité et la paie pour récupérer automatiquement les coûts R&D</td></tr><tr><td>Suivi en temps réel des projets de recherche et calcul automatique des assiettes CIR</td></tr><tr><td>Workflow de validation hiérarchique pour sécuriser les demandes d'avance</td></tr><tr><td>Historique complet des déclarations et correspondances avec l'administration fiscale</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface complexe qui demande une formation approfondie des utilisateurs</td></tr><tr><td>Coût d'implémentation élevé pour les petites structures</td></tr><tr><td>Délais de paramétrage importants pour adapter l'ERP aux spécificités du CIR</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -917,38 +756,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Abby pendant plusieurs mois pour gérer l'avance immédiate de crédit d'impôt recherche.
-
-<p>Ce logiciel se concentre exclusivement sur le <strong>CIR et le CII</strong>, avec une approche assez technique qui plaira aux cabinets comptables spécialisés.</p><p>L'interface n'est pas la plus moderne, mais elle colle parfaitement aux process comptables classiques.</p>
-
-<p>Je trouve que <strong>la validation des dépenses éligibles</strong> est vraiment bien fichue : le système détecte automatiquement les incohérences et propose des corrections.</p>
-
-<p>Ça m'a évité plusieurs erreurs sur les justificatifs.</p><p>Abby convient particulièrement aux <strong>structures entre 10 et 200 salariés</strong> qui font de la R&D de façon régulière.</p>
-
-<p>Par contre, si vous cherchez quelque chose de sexy pour impressionner vos clients, passez votre chemin. C'est du fonctionnel avant tout.</p></p>
+            <p>J'ai testé Abby pendant plusieurs mois pour gérer l'avance immédiate de crédit d'impôt recherche. Ce logiciel se concentre exclusivement sur le <strong>CIR et le CII</strong>, avec une approche assez technique qui plaira aux cabinets comptables spécialisés.</p><p>L'interface n'est pas la plus moderne, mais elle colle parfaitement aux process comptables classiques. Je trouve que <strong>la validation des dépenses éligibles</strong> est vraiment bien fichue : le système détecte automatiquement les incohérences et propose des corrections. Ça m'a évité plusieurs erreurs sur les justificatifs.</p><p>Abby convient particulièrement aux <strong>structures entre 10 et 200 salariés</strong> qui font de la R&D de façon régulière. Par contre, si vous cherchez quelque chose de sexy pour impressionner vos clients, passez votre chemin. C'est du fonctionnel avant tout.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Calculs automatiques fiables pour CIR/CII avec historique des taux</td>
-            <td>Design vieillot qui fait très logiciel des années 2010</td>
-          </tr>
-          <tr>
-            <td>Export direct vers les déclarations fiscales 2069-A et annexes</td>
-            <td>Pas d'intégration native avec les outils de gestion de projet</td>
-          </tr>
-          <tr>
-            <td>Interface comptable familière sans fioritures inutiles</td>
-            <td>Onboarding laborieux sans accompagnement personnalisé</td>
-          </tr>
-          <tr>
-            <td>Support téléphonique réactif avec des vrais experts fiscaux</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Calculs automatiques fiables pour CIR/CII avec historique des taux</td></tr><tr><td>Export direct vers les déclarations fiscales 2069-A et annexes</td></tr><tr><td>Interface comptable familière sans fioritures inutiles</td></tr><tr><td>Support téléphonique réactif avec des vrais experts fiscaux</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Design vieillot qui fait très logiciel des années 2010</td></tr><tr><td>Pas d'intégration native avec les outils de gestion de projet</td></tr><tr><td>Onboarding laborieux sans accompagnement personnalisé</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1276,7 +1096,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 2 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

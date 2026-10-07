@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai confronté 9 logiciels de gestion financière : mon analyse complète</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -531,40 +536,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Pigment pour refaire <strong>toute notre planification financière</strong> et franchement, ça change la donne par rapport aux tableurs Excel qu'on traînait depuis des années.
-
-<p>Ce logiciel de gestion financière mise tout sur la modélisation en temps réel et les scénarios multiples.</p>
-
-<p>Fini les versions de fichiers qui se perdent.</p><p>L'interface ressemble plus à un outil de business intelligence qu'à un tableur classique.</p>
-
-<p>Je peux créer des modèles financiers complexes, faire du rolling forecast et ajuster nos prévisions au trimestre sans me prendre la tête.</p>
-
-<p><strong>Les collaborations en équipe</strong> fonctionnent bien, chacun peut travailler sur sa partie sans écraser le travail des autres.</p><p>Par contre, on ne va pas se mentir : Pigment s'adresse aux entreprises qui ont déjà une certaine maturité financière.</p>
-
-<p>Si vous cherchez juste à faire vos factures et suivre votre trésorerie, passez votre chemin. Ici on parle de <strong>planification stratégique</strong> et d'analyse poussée.</p></p>
+            <p>J'ai testé Pigment pour refaire <strong>toute notre planification financière</strong> et franchement, ça change la donne par rapport aux tableurs Excel qu'on traînait depuis des années. Ce logiciel de gestion financière mise tout sur la modélisation en temps réel et les scénarios multiples. Fini les versions de fichiers qui se perdent.</p><p>L'interface ressemble plus à un outil de business intelligence qu'à un tableur classique. Je peux créer des modèles financiers complexes, faire du rolling forecast et ajuster nos prévisions au trimestre sans me prendre la tête. <strong>Les collaborations en équipe</strong> fonctionnent bien, chacun peut travailler sur sa partie sans écraser le travail des autres.</p><p>Par contre, on ne va pas se mentir : Pigment s'adresse aux entreprises qui ont déjà une certaine maturité financière. Si vous cherchez juste à faire vos factures et suivre votre trésorerie, passez votre chemin. Ici on parle de <strong>planification stratégique</strong> et d'analyse poussée.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Modélisation financière avancée avec scénarios multiples</td>
-            <td>Prix élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Collaboration temps réel sans conflits de versions</td>
-            <td>Courbe d'apprentissage importante</td>
-          </tr>
-          <tr>
-            <td>Interface moderne qui change d'Excel</td>
-            <td>Surdimensionné si besoins basiques</td>
-          </tr>
-          <tr>
-            <td>Rolling forecasts automatisés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Modélisation financière avancée avec scénarios multiples</td></tr><tr><td>Collaboration temps réel sans conflits de versions</td></tr><tr><td>Interface moderne qui change d'Excel</td></tr><tr><td>Rolling forecasts automatisés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Courbe d'apprentissage importante</td></tr><tr><td>Surdimensionné si besoins basiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -580,38 +564,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Qonto depuis deux ans dans ma PME et je recommande ce <strong>logiciel de gestion financière</strong> aux entrepreneurs qui cherchent à automatiser leur comptabilité.
-
-<p>La connexion avec leur expert-comptable se fait en un clic, et les factures se rapprochent automatiquement des virements reçus.</p><p>Ce qui m'a séduit ?</p>
-
-<p><strong>L'interface ultra-claire</strong> et les cartes physiques qu'on peut bloquer instantanément depuis l'app.</p>
-
-<p>Plus besoin de jongler entre trois outils : Qonto centralise comptes pro, virements SEPA et suivi de trésorerie dans une seule plateforme.</p><p>Par contre, je déconseille Qonto aux freelances qui font peu de transactions : <strong>à partir de <strong>9€</strong>/mois</strong>, ça devient vite cher pour émettre cinq virements par mois.</p>
-
-<p>Les grosses structures avec des besoins comptables complexes trouveront aussi les fonctionnalités limitées.</p></p>
+            <p>J'utilise Qonto depuis deux ans dans ma PME et je recommande ce <strong>logiciel de gestion financière</strong> aux entrepreneurs qui cherchent à automatiser leur comptabilité. La connexion avec leur expert-comptable se fait en un clic, et les factures se rapprochent automatiquement des virements reçus.</p><p>Ce qui m'a séduit ? <strong>L'interface ultra-claire</strong> et les cartes physiques qu'on peut bloquer instantanément depuis l'app. Plus besoin de jongler entre trois outils : Qonto centralise comptes pro, virements SEPA et suivi de trésorerie dans une seule plateforme.</p><p>Par contre, je déconseille Qonto aux freelances qui font peu de transactions : <strong>à partir de <strong>9€</strong>/mois</strong>, ça devient vite cher pour émettre cinq virements par mois. Les grosses structures avec des besoins comptables complexes trouveront aussi les fonctionnalités limitées.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation automatique avec les logiciels comptables (Sage, Cegid, etc.)</td>
-            <td>Tarifs élevés pour les petites structures avec peu de transactions</td>
-          </tr>
-          <tr>
-            <td>Cartes bancaires avec limites personnalisables par employé</td>
-            <td>Pas de découvert autorisé contrairement aux banques traditionnelles</td>
-          </tr>
-          <tr>
-            <td>Export des données comptables en un clic pour l'expert-comptable</td>
-            <td>Support client parfois lent à répondre lors des pics d'activité</td>
-          </tr>
-          <tr>
-            <td>Interface mobile vraiment pratique pour valider les dépenses en déplacement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation automatique avec les logiciels comptables (Sage, Cegid, etc.)</td></tr><tr><td>Cartes bancaires avec limites personnalisables par employé</td></tr><tr><td>Export des données comptables en un clic pour l'expert-comptable</td></tr><tr><td>Interface mobile vraiment pratique pour valider les dépenses en déplacement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs élevés pour les petites structures avec peu de transactions</td></tr><tr><td>Pas de découvert autorisé contrairement aux banques traditionnelles</td></tr><tr><td>Support client parfois lent à répondre lors des pics d'activité</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -627,40 +592,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Anaplan me semble pensé pour les grosses structures qui jonglent avec des budgets complexes et des dizaines de scénarios prévisionnels.
-
-<p>Je l'ai testé dans une multinationale de 8 000 salariés où on devait <strong>consolider les budgets de 15 filiales</strong> avec des devises différentes et des cycles métier décalés.</p><p>L'interface ressemble à un tableur survitaminé où tu peux créer des modèles financiers interconnectés.</p>
-
-<p>Concrètement, tu modélises tes processus budgétaires avec des formules qui se répercutent automatiquement sur tous les départements.</p>
-
-<p>Quand les commerciaux mettent à jour leurs prévisions de vente, ça recalcule instantanément les besoins en stock, les budgets RH et les cash-flows trimestriels.</p><p>Par contre, je préviens tout de suite : c'est du lourd niveau paramétrage.</p>
-
-<p>On a eu besoin d'un consultant Anaplan pendant <strong>4 mois pour la mise en route</strong>, et encore aujourd'hui seuls 3 personnes dans l'équipe finance maîtrisent vraiment l'outil.</p>
-
-<p>Si vous cherchez quelque chose de plug-and-play, passez votre chemin.</p></p>
+            <p>Anaplan me semble pensé pour les grosses structures qui jonglent avec des budgets complexes et des dizaines de scénarios prévisionnels. Je l'ai testé dans une multinationale de 8 000 salariés où on devait <strong>consolider les budgets de 15 filiales</strong> avec des devises différentes et des cycles métier décalés.</p><p>L'interface ressemble à un tableur survitaminé où tu peux créer des modèles financiers interconnectés. Concrètement, tu modélises tes processus budgétaires avec des formules qui se répercutent automatiquement sur tous les départements. Quand les commerciaux mettent à jour leurs prévisions de vente, ça recalcule instantanément les besoins en stock, les budgets RH et les cash-flows trimestriels.</p><p>Par contre, je préviens tout de suite : c'est du lourd niveau paramétrage. On a eu besoin d'un consultant Anaplan pendant <strong>4 mois pour la mise en route</strong>, et encore aujourd'hui seuls 3 personnes dans l'équipe finance maîtrisent vraiment l'outil. Si vous cherchez quelque chose de plug-and-play, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Modélisation financière ultra-puissante avec calculs en temps réel</td>
-            <td>Courbe d'apprentissage très raide, formation obligatoire</td>
-          </tr>
-          <tr>
-            <td>Gestion native des consolidations multi-entités et multi-devises</td>
-            <td>Coût prohibitif pour les PME (minimum 50K€/an)</td>
-          </tr>
-          <tr>
-            <td>Collaboration avancée sur les budgets avec workflows de validation</td>
-            <td>Interface parfois lourde avec des temps de réponse variables</td>
-          </tr>
-          <tr>
-            <td>Scalabilité impressionnante pour les grands volumes de données</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Modélisation financière ultra-puissante avec calculs en temps réel</td></tr><tr><td>Gestion native des consolidations multi-entités et multi-devises</td></tr><tr><td>Collaboration avancée sur les budgets avec workflows de validation</td></tr><tr><td>Scalabilité impressionnante pour les grands volumes de données</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage très raide, formation obligatoire</td></tr><tr><td>Coût prohibitif pour les PME (minimum 50K€/an)</td></tr><tr><td>Interface parfois lourde avec des temps de réponse variables</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -676,38 +620,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Agicap a bâti sa réputation sur la <strong>prévision de trésorerie</strong>. Concrètement, j'y importe mes factures et j'obtiens une projection fiable de ma situation financière sur plusieurs mois.
-
-<p>L'outil synchronise mes comptes bancaires et affiche une vision claire de mes entrées et sorties d'argent.</p><p>Ce logiciel de gestion financière vise principalement les <strong>PME entre 10 et 200 salariés</strong> qui jonglent avec plusieurs banques et ont besoin d'anticiper leurs besoins en financement.</p>
-
-<p>Les fonctionnalités de rapprochement bancaire automatique et de suivi des factures clients fonctionnent bien.</p>
-
-<p>On peut même paramétrer des alertes quand la trésorerie descend sous un certain seuil.</p><p>J'apprécie particulièrement le module de gestion des factures fournisseurs avec validation par circuit.</p>
-
-<p>Plus besoin de faire du ping-pong par email entre la comptabilité et la direction. Le tableau de bord reste lisible même quand on manipule des centaines de lignes.</p></p>
+            <p>Agicap a bâti sa réputation sur la <strong>prévision de trésorerie</strong>. Concrètement, j'y importe mes factures et j'obtiens une projection fiable de ma situation financière sur plusieurs mois. L'outil synchronise mes comptes bancaires et affiche une vision claire de mes entrées et sorties d'argent.</p><p>Ce logiciel de gestion financière vise principalement les <strong>PME entre 10 et 200 salariés</strong> qui jonglent avec plusieurs banques et ont besoin d'anticiper leurs besoins en financement. Les fonctionnalités de rapprochement bancaire automatique et de suivi des factures clients fonctionnent bien. On peut même paramétrer des alertes quand la trésorerie descend sous un certain seuil.</p><p>J'apprécie particulièrement le module de gestion des factures fournisseurs avec validation par circuit. Plus besoin de faire du ping-pong par email entre la comptabilité et la direction. Le tableau de bord reste lisible même quand on manipule des centaines de lignes.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire multi-établissements fluide</td>
-            <td>Prix élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Prévisions de trésorerie précises sur 12 mois</td>
-            <td>Paramétrage initial assez lourd</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation des paiements configurables</td>
-            <td>Limité sur la comptabilité analytique avancée</td>
-          </tr>
-          <tr>
-            <td>Interface claire pour le suivi client-fournisseur</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire multi-établissements fluide</td></tr><tr><td>Prévisions de trésorerie précises sur 12 mois</td></tr><tr><td>Workflows de validation des paiements configurables</td></tr><tr><td>Interface claire pour le suivi client-fournisseur</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Paramétrage initial assez lourd</td></tr><tr><td>Limité sur la comptabilité analytique avancée</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -723,40 +648,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Sismo s'adresse avant tout aux dirigeants de PME qui gèrent leur comptabilité sans expert-comptable ou qui veulent reprendre le contrôle sur leurs finances.
-
-<p>Je l'ai testé pendant trois mois sur une société de conseil, et j'ai apprécié <strong>l'approche très visuelle</strong> des tableaux de bord.</p>
-
-<p>Contrairement aux gros ERP, on comprend tout de suite où on en est.</p><p>Le logiciel mise sur l'automatisation des tâches répétitives : rapprochement bancaire, calcul de TVA, édition des factures récurrentes.</p>
-
-<p>L'interface reste assez intuitive même si on n'a pas fait d'études comptables.</p>
-
-<p>Je recommande particulièrement Sismo aux entreprises de services qui ont besoin de suivre leur trésorerie au quotidien et de piloter leur activité avec des indicateurs simples.</p><p>Niveau tarification, on démarre <strong>autour de <strong>39€</strong> par mois</strong> pour les fonctionnalités de base.</p>
-
-<p>C'est un investissement raisonnable quand on compare aux honoraires d'un cabinet comptable, surtout si on a déjà quelques notions en gestion. Par contre, attendez-vous à passer du temps sur la configuration initiale.</p></p>
+            <p>Sismo s'adresse avant tout aux dirigeants de PME qui gèrent leur comptabilité sans expert-comptable ou qui veulent reprendre le contrôle sur leurs finances. Je l'ai testé pendant trois mois sur une société de conseil, et j'ai apprécié <strong>l'approche très visuelle</strong> des tableaux de bord. Contrairement aux gros ERP, on comprend tout de suite où on en est.</p><p>Le logiciel mise sur l'automatisation des tâches répétitives : rapprochement bancaire, calcul de TVA, édition des factures récurrentes. L'interface reste assez intuitive même si on n'a pas fait d'études comptables. Je recommande particulièrement Sismo aux entreprises de services qui ont besoin de suivre leur trésorerie au quotidien et de piloter leur activité avec des indicateurs simples.</p><p>Niveau tarification, on démarre <strong>autour de <strong>39€</strong> par mois</strong> pour les fonctionnalités de base. C'est un investissement raisonnable quand on compare aux honoraires d'un cabinet comptable, surtout si on a déjà quelques notions en gestion. Par contre, attendez-vous à passer du temps sur la configuration initiale.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tableaux de bord très lisibles pour piloter son activité</td>
-            <td>Configuration initiale assez chronophage</td>
-          </tr>
-          <tr>
-            <td>Automatisation efficace du rapprochement bancaire</td>
-            <td>Fonctionnalités limitées pour les secteurs spécialisés</td>
-          </tr>
-          <tr>
-            <td>Prise en main accessible sans formation comptable</td>
-            <td>Support client parfois lent à répondre aux questions techniques</td>
-          </tr>
-          <tr>
-            <td>Suivi de trésorerie en temps réel avec alertes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tableaux de bord très lisibles pour piloter son activité</td></tr><tr><td>Automatisation efficace du rapprochement bancaire</td></tr><tr><td>Prise en main accessible sans formation comptable</td></tr><tr><td>Suivi de trésorerie en temps réel avec alertes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configuration initiale assez chronophage</td></tr><tr><td>Fonctionnalités limitées pour les secteurs spécialisés</td></tr><tr><td>Support client parfois lent à répondre aux questions techniques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -772,38 +676,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>RocketChart propose une approche visuelle de la gestion financière qui peut séduire les équipes qui en ont marre des tableaux Excel interminables.
-
-<p>J'ai testé leur interface de création de tableaux de bord, et <strong>je reconnais que c'est plutôt bien pensé</strong> pour suivre ses KPI financiers en temps réel.</p><p>Leur système de connecteurs automatiques avec les banques et les logiciels comptables fonctionne correctement, même si j'ai eu quelques ratés avec certaines banques régionales.</p>
-
-<p>Le reporting automatisé génère des documents assez propres pour les investisseurs ou le comité de direction.</p>
-
-<p><strong>Pas révolutionnaire, mais efficace</strong>.</p><p>Je le recommande surtout aux PME et startups qui veulent professionnaliser leur suivi financier sans se compliquer la vie.</p>
-
-<p>Par contre, si vous cherchez un outil de comptabilité pure ou de facturation, passez votre chemin. RocketChart se concentre sur l'analyse et le pilotage, pas sur la saisie comptable de base.</p></p>
+            <p>RocketChart propose une approche visuelle de la gestion financière qui peut séduire les équipes qui en ont marre des tableaux Excel interminables. J'ai testé leur interface de création de tableaux de bord, et <strong>je reconnais que c'est plutôt bien pensé</strong> pour suivre ses KPI financiers en temps réel.</p><p>Leur système de connecteurs automatiques avec les banques et les logiciels comptables fonctionne correctement, même si j'ai eu quelques ratés avec certaines banques régionales. Le reporting automatisé génère des documents assez propres pour les investisseurs ou le comité de direction. <strong>Pas révolutionnaire, mais efficace</strong>.</p><p>Je le recommande surtout aux PME et startups qui veulent professionnaliser leur suivi financier sans se compliquer la vie. Par contre, si vous cherchez un outil de comptabilité pure ou de facturation, passez votre chemin. RocketChart se concentre sur l'analyse et le pilotage, pas sur la saisie comptable de base.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface visuelle claire pour créer des tableaux de bord financiers</td>
-            <td>Bugs fréquents avec les banques régionales et certaines néobanques</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique avec la plupart des banques principales</td>
-            <td>Tarification qui monte vite avec le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Export PDF propre pour les présentations investisseurs</td>
-            <td>Pas de module de facturation ou de comptabilité intégré</td>
-          </tr>
-          <tr>
-            <td>Paramétrage des alertes de seuils assez flexible</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface visuelle claire pour créer des tableaux de bord financiers</td></tr><tr><td>Synchronisation automatique avec la plupart des banques principales</td></tr><tr><td>Export PDF propre pour les présentations investisseurs</td></tr><tr><td>Paramétrage des alertes de seuils assez flexible</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Bugs fréquents avec les banques régionales et certaines néobanques</td></tr><tr><td>Tarification qui monte vite avec le nombre d'utilisateurs</td></tr><tr><td>Pas de module de facturation ou de comptabilité intégré</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -819,38 +704,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise <strong>Fygr</strong> depuis 8 mois et je dois dire que ce logiciel de gestion financière m'a vraiment simplifié le suivi de trésorerie. L'interface ressemble plus à un tableau de bord moderne qu'à un vieux logiciel comptable.
-
-<p>Je peux voir d'un coup d'œil mes flux entrants et sortants, avec des graphiques qui parlent vraiment.</p><p>Ce qui me plaît le plus ? La synchronisation bancaire fonctionne parfaitement.</p>
-
-<p>Mes relevés se mettent à jour automatiquement et je gagne un temps fou sur le rapprochement. Plus besoin de ressaisir chaque transaction manuellement.</p>
-
-<p>Le système de catégorisation automatique apprend vite mes habitudes.</p><p>Fygr cible clairement les <strong>PME et freelances</strong> qui veulent une vision claire de leur trésorerie sans se prendre la tête avec des fonctionnalités trop complexes.</p>
-
-<p>J'ai testé d'autres solutions avant, mais là j'ai enfin trouvé quelque chose d'intuitif pour piloter mes finances d'entreprise.</p></p>
+            <p>J'utilise <strong>Fygr</strong> depuis 8 mois et je dois dire que ce logiciel de gestion financière m'a vraiment simplifié le suivi de trésorerie. L'interface ressemble plus à un tableau de bord moderne qu'à un vieux logiciel comptable. Je peux voir d'un coup d'œil mes flux entrants et sortants, avec des graphiques qui parlent vraiment.</p><p>Ce qui me plaît le plus ? La synchronisation bancaire fonctionne parfaitement. Mes relevés se mettent à jour automatiquement et je gagne un temps fou sur le rapprochement. Plus besoin de ressaisir chaque transaction manuellement. Le système de catégorisation automatique apprend vite mes habitudes.</p><p>Fygr cible clairement les <strong>PME et freelances</strong> qui veulent une vision claire de leur trésorerie sans se prendre la tête avec des fonctionnalités trop complexes. J'ai testé d'autres solutions avant, mais là j'ai enfin trouvé quelque chose d'intuitif pour piloter mes finances d'entreprise.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire fiable avec les principales banques françaises</td>
-            <td>Fonctionnalités comptables limitées pour les besoins avancés</td>
-          </tr>
-          <tr>
-            <td>Prévisionnel de trésorerie automatique basé sur l'historique</td>
-            <td>Pas d'intégration native avec tous les logiciels de facturation</td>
-          </tr>
-          <tr>
-            <td>Interface claire sans formation nécessaire</td>
-            <td>Support client parfois lent à répondre en période de pointe</td>
-          </tr>
-          <tr>
-            <td>Catégorisation intelligente des transactions qui s'améliore avec le temps</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire fiable avec les principales banques françaises</td></tr><tr><td>Prévisionnel de trésorerie automatique basé sur l'historique</td></tr><tr><td>Interface claire sans formation nécessaire</td></tr><tr><td>Catégorisation intelligente des transactions qui s'améliore avec le temps</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités comptables limitées pour les besoins avancés</td></tr><tr><td>Pas d'intégration native avec tous les logiciels de facturation</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -866,38 +732,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Pennylane s'adresse principalement aux entreprises qui veulent automatiser leur comptabilité sans passer par un cabinet. Je l'ai testé sur plusieurs PME et <strong>la synchronisation bancaire</strong> fonctionne vraiment bien.
-
-<p>Le logiciel récupère toutes les opérations automatiquement et propose des suggestions de catégorisation intelligentes.</p><p>L'interface reste accessible même si vous n'êtes pas comptable.</p>
-
-<p>On peut gérer la facturation, suivre la trésorerie et préparer les déclarations TVA en quelques clics. <strong>Le rapprochement bancaire automatique</strong> m'a fait gagner des heures chaque mois.</p>
-
-<p>Par contre, je trouve que certaines fonctionnalités avancées demandent un petit temps d'adaptation.</p><p>Pennylane convient surtout aux entrepreneurs qui veulent garder le contrôle sur leur comptabilité.</p>
-
-<p>Les freelances et petites entreprises y trouvent leur compte, mais <strong>attention aux tarifs qui grimpent vite</strong> avec les options. Je recommande pour les structures jusqu'à 50 salariés maximum.</p></p>
+            <p>Pennylane s'adresse principalement aux entreprises qui veulent automatiser leur comptabilité sans passer par un cabinet. Je l'ai testé sur plusieurs PME et <strong>la synchronisation bancaire</strong> fonctionne vraiment bien. Le logiciel récupère toutes les opérations automatiquement et propose des suggestions de catégorisation intelligentes.</p><p>L'interface reste accessible même si vous n'êtes pas comptable. On peut gérer la facturation, suivre la trésorerie et préparer les déclarations TVA en quelques clics. <strong>Le rapprochement bancaire automatique</strong> m'a fait gagner des heures chaque mois. Par contre, je trouve que certaines fonctionnalités avancées demandent un petit temps d'adaptation.</p><p>Pennylane convient surtout aux entrepreneurs qui veulent garder le contrôle sur leur comptabilité. Les freelances et petites entreprises y trouvent leur compte, mais <strong>attention aux tarifs qui grimpent vite</strong> avec les options. Je recommande pour les structures jusqu'à 50 salariés maximum.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique très fiable</td>
-            <td>Tarifs élevés dès qu'on ajoute des options</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même sans formation comptable</td>
-            <td>Paramétrage initial assez long à configurer</td>
-          </tr>
-          <tr>
-            <td>Rapprochement automatique des écritures</td>
-            <td>Peu adapté aux grandes entreprises complexes</td>
-          </tr>
-          <tr>
-            <td>Support client réactif et compétent</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique très fiable</td></tr><tr><td>Interface intuitive même sans formation comptable</td></tr><tr><td>Rapprochement automatique des écritures</td></tr><tr><td>Support client réactif et compétent</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs élevés dès qu'on ajoute des options</td></tr><tr><td>Paramétrage initial assez long à configurer</td></tr><tr><td>Peu adapté aux grandes entreprises complexes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -913,40 +760,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste <strong>Fizen</strong> depuis quelques mois et je trouve que cette solution de gestion financière sort vraiment du lot par sa simplicité.
-
-<p>On parle d'un logiciel qui automatise la saisie comptable grâce à l'IA et qui synchronise directement avec les banques.</p>
-
-<p>Plus besoin de ressaisir manuellement les écritures.</p><p>L'interface est pensée pour les entrepreneurs qui n'ont pas fait HEC. J'ai pu former ma comptable en <strong>moins d'une heure</strong> sur les fonctions essentielles.</p>
-
-<p>Le tableau de bord affiche en temps réel la trésorerie, les créances clients et les échéances fournisseurs.</p>
-
-<p>Parfait pour piloter sans se noyer dans les chiffres.</p><p>Fizen cible principalement les <strong>PME de 5 à 50 salariés</strong> qui cherchent à digitaliser leur gestion sans exploser le budget.</p>
-
-<p>Je recommande particulièrement aux secteurs du BTP, conseil ou commerce qui brassent beaucoup de factures. Les artisans et professions libérales y trouvent aussi leur compte.</p></p>
+            <p>Je teste <strong>Fizen</strong> depuis quelques mois et je trouve que cette solution de gestion financière sort vraiment du lot par sa simplicité. On parle d'un logiciel qui automatise la saisie comptable grâce à l'IA et qui synchronise directement avec les banques. Plus besoin de ressaisir manuellement les écritures.</p><p>L'interface est pensée pour les entrepreneurs qui n'ont pas fait HEC. J'ai pu former ma comptable en <strong>moins d'une heure</strong> sur les fonctions essentielles. Le tableau de bord affiche en temps réel la trésorerie, les créances clients et les échéances fournisseurs. Parfait pour piloter sans se noyer dans les chiffres.</p><p>Fizen cible principalement les <strong>PME de 5 à 50 salariés</strong> qui cherchent à digitaliser leur gestion sans exploser le budget. Je recommande particulièrement aux secteurs du BTP, conseil ou commerce qui brassent beaucoup de factures. Les artisans et professions libérales y trouvent aussi leur compte.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire en temps réel avec plus de 200 banques françaises</td>
-            <td>Paramétrage initial assez long pour les entreprises multi-activités</td>
-          </tr>
-          <tr>
-            <td>IA qui catégorise automatiquement 85% des écritures comptables</td>
-            <td>Rapports personnalisés limités comparé à des solutions plus haut de gamme</td>
-          </tr>
-          <tr>
-            <td>Facturation intégrée avec relances automatiques et suivi des impayés</td>
-            <td>Support client parfois lent en période de clôture comptable</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord financier mis à jour quotidiennement sans intervention manuelle</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire en temps réel avec plus de 200 banques françaises</td></tr><tr><td>IA qui catégorise automatiquement 85% des écritures comptables</td></tr><tr><td>Facturation intégrée avec relances automatiques et suivi des impayés</td></tr><tr><td>Tableau de bord financier mis à jour quotidiennement sans intervention manuelle</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Paramétrage initial assez long pour les entreprises multi-activités</td></tr><tr><td>Rapports personnalisés limités comparé à des solutions plus haut de gamme</td></tr><tr><td>Support client parfois lent en période de clôture comptable</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1232,7 +1058,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 2 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>
