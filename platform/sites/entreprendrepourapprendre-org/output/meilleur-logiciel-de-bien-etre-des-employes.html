@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparatif des meilleurs logiciels de bien-être des employés</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 7 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 7 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -532,40 +537,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Woliba</strong> propose une plateforme complète de bien-être des employés qui centralise programmes de santé, défis fitness et reconnaissance entre collègues.
-
-<p>Je l'ai testé sur plusieurs mois et j'ai été surpris par son approche gamifiée qui pousse vraiment à la participation.</p><p>La solution cible principalement les <strong>entreprises de 100 à 5000 salariés</strong> qui cherchent à fédérer leurs équipes autour du bien-être.</p>
-
-<p>Woliba mise tout sur l'engagement : système de points, classements par équipe, défis personnalisables... Ça marche bien quand on veut créer une vraie dynamique collective.</p>
-
-<p>Les RH apprécient particulièrement les <strong>analytics détaillés</strong> qui montrent concrètement l'impact des initiatives.</p><p>Par contre, si vous cherchez juste un simple outil de sondage bien-être, ça risque d'être trop lourd.</p>
-
-<p><strong>Woliba</strong> demande un vrai investissement en temps pour configurer et animer la plateforme.</p>
-
-<p>Les petites structures y trouvent moins leur compte, l'outil étant pensé pour des organisations avec plusieurs départements et une vraie stratégie bien-être.</p></p>
+            <p><strong>Woliba</strong> propose une plateforme complète de bien-être des employés qui centralise programmes de santé, défis fitness et reconnaissance entre collègues. Je l'ai testé sur plusieurs mois et j'ai été surpris par son approche gamifiée qui pousse vraiment à la participation.</p><p>La solution cible principalement les <strong>entreprises de 100 à 5000 salariés</strong> qui cherchent à fédérer leurs équipes autour du bien-être. Woliba mise tout sur l'engagement : système de points, classements par équipe, défis personnalisables... Ça marche bien quand on veut créer une vraie dynamique collective. Les RH apprécient particulièrement les <strong>analytics détaillés</strong> qui montrent concrètement l'impact des initiatives.</p><p>Par contre, si vous cherchez juste un simple outil de sondage bien-être, ça risque d'être trop lourd. <strong>Woliba</strong> demande un vrai investissement en temps pour configurer et animer la plateforme. Les petites structures y trouvent moins leur compte, l'outil étant pensé pour des organisations avec plusieurs départements et une vraie stratégie bien-être.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface gamifiée qui booste réellement la participation des salariés</td>
-            <td>Configuration initiale complexe qui demande plusieurs semaines</td>
-          </tr>
-          <tr>
-            <td>Analytics poussés avec ROI mesurable des programmes bien-être</td>
-            <td>Prix élevé pour les PME de moins de 50 salariés</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux SIRH et outils RH</td>
-            <td>Certaines fonctionnalités avancées nécessitent des modules payants supplémentaires</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec accompagnement personnalisé</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface gamifiée qui booste réellement la participation des salariés</td></tr><tr><td>Analytics poussés avec ROI mesurable des programmes bien-être</td></tr><tr><td>Intégration native avec les principaux SIRH et outils RH</td></tr><tr><td>Support client réactif avec accompagnement personnalisé</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configuration initiale complexe qui demande plusieurs semaines</td></tr><tr><td>Prix élevé pour les PME de moins de 50 salariés</td></tr><tr><td>Certaines fonctionnalités avancées nécessitent des modules payants supplémentaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -585,40 +569,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Plevo</strong> prend une approche différente du bien-être en entreprise.
-
-<p>Plutôt que de proposer un énième catalogue d'activités, cette plateforme mise sur l'engagement actif des équipes avec un système de défis personnalisables et de récompenses.</p>
-
-<p>J'ai testé leur module de suivi des habitudes, c'est assez malin.</p><p>Ce qui m'a frappé, c'est leur approche gamifiée sans tomber dans le ridicule.</p>
-
-<p><strong>Plevo</strong> permet aux RH de créer des parcours bien-être sur mesure : challenges sportifs entre services, défis nutrition, sessions méditation collective.</p>
-
-<p>Les employés gagnent des points qu'ils peuvent échanger contre des récompenses concrètes (jours de congé, chèques cadeaux, expériences).</p><p>Leur tableau de bord analytics est plutôt bien foutu pour mesurer l'engagement réel.</p>
-
-<p>On voit qui participe, quels défis marchent le mieux, l'évolution du moral des équipes. Parfait pour les entreprises de 50 à 500 salariés qui veulent relancer la dynamique après des périodes difficiles ou du télétravail intensif.</p></p>
+            <p><strong>Plevo</strong> prend une approche différente du bien-être en entreprise. Plutôt que de proposer un énième catalogue d'activités, cette plateforme mise sur l'engagement actif des équipes avec un système de défis personnalisables et de récompenses. J'ai testé leur module de suivi des habitudes, c'est assez malin.</p><p>Ce qui m'a frappé, c'est leur approche gamifiée sans tomber dans le ridicule. <strong>Plevo</strong> permet aux RH de créer des parcours bien-être sur mesure : challenges sportifs entre services, défis nutrition, sessions méditation collective. Les employés gagnent des points qu'ils peuvent échanger contre des récompenses concrètes (jours de congé, chèques cadeaux, expériences).</p><p>Leur tableau de bord analytics est plutôt bien foutu pour mesurer l'engagement réel. On voit qui participe, quels défis marchent le mieux, l'évolution du moral des équipes. Parfait pour les entreprises de 50 à 500 salariés qui veulent relancer la dynamique après des périodes difficiles ou du télétravail intensif.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ludique qui évite l'écueil du forcing motivationnel</td>
-            <td>Prix assez élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Système de récompenses flexibles configurables par l'entreprise</td>
-            <td>Nécessite un budget dédié aux récompenses pour être efficace</td>
-          </tr>
-          <tr>
-            <td>Analytics détaillés sur l'engagement et la participation</td>
-            <td>Peut créer une compétition malsaine si mal encadré</td>
-          </tr>
-          <tr>
-            <td>Intégration facile avec les outils RH existants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ludique qui évite l'écueil du forcing motivationnel</td></tr><tr><td>Système de récompenses flexibles configurables par l'entreprise</td></tr><tr><td>Analytics détaillés sur l'engagement et la participation</td></tr><tr><td>Intégration facile avec les outils RH existants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix assez élevé pour les petites structures</td></tr><tr><td>Nécessite un budget dédié aux récompenses pour être efficace</td></tr><tr><td>Peut créer une compétition malsaine si mal encadré</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -638,38 +601,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Wellhub</strong> quand on cherchait une solution pour améliorer le bien-être de nos équipes dispersées.
-
-<p>Ce qui m'a frappé, c'est leur approche concrète : plutôt que de proposer des méditations en ligne, ils donnent accès à un vrai réseau de <strong>50 000 partenaires</strong> (salles de sport, studios de yoga, spas).</p><p>Leur plateforme fonctionne comme un pass universel.</p>
-
-<p>Vos employés téléchargent l'app, choisissent leurs activités préférées dans leur ville et c'est parti.</p>
-
-<p>J'ai particulièrement apprécié le système de crédits mensuels qui permet à chacun de composer son programme selon ses goûts.</p><p>Cette solution de <strong>bien-être des employés</strong> vise les entreprises de taille moyenne à grande qui veulent offrir quelque chose de tangible à leurs équipes.</p>
-
-<p>Wellhub mise sur l'aspect pratique et la flexibilité géographique, ce qui change des programmes wellness classiques souvent trop théoriques.</p></p>
+            <p>J'ai testé <strong>Wellhub</strong> quand on cherchait une solution pour améliorer le bien-être de nos équipes dispersées. Ce qui m'a frappé, c'est leur approche concrète : plutôt que de proposer des méditations en ligne, ils donnent accès à un vrai réseau de <strong>50 000 partenaires</strong> (salles de sport, studios de yoga, spas).</p><p>Leur plateforme fonctionne comme un pass universel. Vos employés téléchargent l'app, choisissent leurs activités préférées dans leur ville et c'est parti. J'ai particulièrement apprécié le système de crédits mensuels qui permet à chacun de composer son programme selon ses goûts.</p><p>Cette solution de <strong>bien-être des employés</strong> vise les entreprises de taille moyenne à grande qui veulent offrir quelque chose de tangible à leurs équipes. Wellhub mise sur l'aspect pratique et la flexibilité géographique, ce qui change des programmes wellness classiques souvent trop théoriques.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Réseau physique de 50 000 partenaires dans le monde</td>
-            <td>Couverture inégale selon les villes (Paris ok, villes moyennes limitées)</td>
-          </tr>
-          <tr>
-            <td>App mobile intuitive avec géolocalisation des activités</td>
-            <td>Coût qui grimpe vite avec le nombre d'employés actifs</td>
-          </tr>
-          <tr>
-            <td>Système de crédits flexible adapté aux budgets variables</td>
-            <td>Interface parfois lente lors des pics d'utilisation</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé sur l'utilisation par équipe et département</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Réseau physique de 50 000 partenaires dans le monde</td></tr><tr><td>App mobile intuitive avec géolocalisation des activités</td></tr><tr><td>Système de crédits flexible adapté aux budgets variables</td></tr><tr><td>Reporting détaillé sur l'utilisation par équipe et département</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Couverture inégale selon les villes (Paris ok, villes moyennes limitées)</td></tr><tr><td>Coût qui grimpe vite avec le nombre d'employés actifs</td></tr><tr><td>Interface parfois lente lors des pics d'utilisation</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -689,38 +633,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Alan Mind</strong> transforme l'approche du bien-être au travail en combinant téléconsultations, coaching mental et prévention.
-
-<p>Cette plateforme française intègre directement les services de santé mentale dans l'écosystème digital des entreprises.</p><p>Je trouve leur approche particulièrement cohérente : ils ont greffé les fonctionnalités bien-être sur leur expertise mutuelle santé.</p>
-
-<p>Résultat ? On peut passer d'une consultation médicale classique à un coaching stress en deux clics.</p>
-
-<p>Les équipes RH accèdent à des tableaux de bord anonymisés pour mesurer l'engagement sur les programmes de prévention.</p><p>L'interface reste volontairement simple. Pas de gamification excessive ni de fonctionnalités gadgets.</p>
-
-<p><strong>Alan Mind</strong> mise sur l'efficacité : accès rapide aux thérapeutes, suivi personnalisé des parcours bien-être, et intégration native avec les autres services <strong>Alan</strong> si l'entreprise utilise déjà leur mutuelle.</p></p>
+            <p><strong>Alan Mind</strong> transforme l'approche du bien-être au travail en combinant téléconsultations, coaching mental et prévention. Cette plateforme française intègre directement les services de santé mentale dans l'écosystème digital des entreprises.</p><p>Je trouve leur approche particulièrement cohérente : ils ont greffé les fonctionnalités bien-être sur leur expertise mutuelle santé. Résultat ? On peut passer d'une consultation médicale classique à un coaching stress en deux clics. Les équipes RH accèdent à des tableaux de bord anonymisés pour mesurer l'engagement sur les programmes de prévention.</p><p>L'interface reste volontairement simple. Pas de gamification excessive ni de fonctionnalités gadgets. <strong>Alan Mind</strong> mise sur l'efficacité : accès rapide aux thérapeutes, suivi personnalisé des parcours bien-être, et intégration native avec les autres services <strong>Alan</strong> si l'entreprise utilise déjà leur mutuelle.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Écosystème santé complet avec mutuelle intégrée</td>
-            <td>Principalement orienté grandes entreprises, pricing moins adapté aux PME</td>
-          </tr>
-          <tr>
-            <td>Téléconsultations psy disponibles en 24-48h maximum</td>
-            <td>Catalogue de coachs encore limité comparé aux plateformes spécialisées</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord RH avec métriques anonymisées précises</td>
-            <td>Fonctionnalités avancées conditionnées à l'abonnement mutuelle Alan</td>
-          </tr>
-          <tr>
-            <td>Interface épurée qui évite la surcharge cognitive</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Écosystème santé complet avec mutuelle intégrée</td></tr><tr><td>Téléconsultations psy disponibles en 24-48h maximum</td></tr><tr><td>Tableaux de bord RH avec métriques anonymisées précises</td></tr><tr><td>Interface épurée qui évite la surcharge cognitive</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Principalement orienté grandes entreprises, pricing moins adapté aux PME</td></tr><tr><td>Catalogue de coachs encore limité comparé aux plateformes spécialisées</td></tr><tr><td>Fonctionnalités avancées conditionnées à l'abonnement mutuelle Alan</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -740,40 +665,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Zest (ZestMeUp)</strong> mise sur l'engagement par les défis collectifs et la gamification.
-
-<p>J'ai testé cette plateforme de <strong>bien-être des employés</strong> qui transforme les habitudes santé en mini-compétitions entre équipes.</p><p>Le point fort ?</p>
-
-<p>Les <strong>challenges wellness personnalisés</strong> qui s'adaptent vraiment aux profils. Marche, méditation, hydratation... tout devient un jeu avec des scores et classements en temps réel.</p>
-
-<p>L'interface reste simple, même pour les moins tech de l'équipe.</p>
-
-<p>Par contre, je trouve que ça manque encore d'options pour les entreprises avec du télétravail massif.</p><p>Zest fonctionne bien dans les boîtes qui cherchent à dynamiser leur culture d'entreprise via le <strong>bien-être collaboratif</strong>.</p>
-
-<p>Les modules de coaching restent basiques mais suffisants pour commencer. L'analytics manager permet de suivre l'engagement global, même si les détails par département pourraient être plus fins.</p></p>
+            <p><strong>Zest (ZestMeUp)</strong> mise sur l'engagement par les défis collectifs et la gamification. J'ai testé cette plateforme de <strong>bien-être des employés</strong> qui transforme les habitudes santé en mini-compétitions entre équipes.</p><p>Le point fort ? Les <strong>challenges wellness personnalisés</strong> qui s'adaptent vraiment aux profils. Marche, méditation, hydratation... tout devient un jeu avec des scores et classements en temps réel. L'interface reste simple, même pour les moins tech de l'équipe. Par contre, je trouve que ça manque encore d'options pour les entreprises avec du télétravail massif.</p><p>Zest fonctionne bien dans les boîtes qui cherchent à dynamiser leur culture d'entreprise via le <strong>bien-être collaboratif</strong>. Les modules de coaching restent basiques mais suffisants pour commencer. L'analytics manager permet de suivre l'engagement global, même si les détails par département pourraient être plus fins.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Challenges gamifiés qui créent vraiment de l'émulation entre collègues</td>
-            <td>Module coaching individuel assez limité par rapport à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Configuration rapide des défis selon la taille d'équipe et secteur</td>
-            <td>Peu d'options pour les équipes 100% remote</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord simple pour les RH avec métriques d'engagement</td>
-            <td>Tarification qui grimpe vite avec les fonctionnalités avancées</td>
-          </tr>
-          <tr>
-            <td>Integration native avec les apps fitness populaires (Fitbit, Apple Health)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Challenges gamifiés qui créent vraiment de l'émulation entre collègues</td></tr><tr><td>Configuration rapide des défis selon la taille d'équipe et secteur</td></tr><tr><td>Tableau de bord simple pour les RH avec métriques d'engagement</td></tr><tr><td>Integration native avec les apps fitness populaires (Fitbit, Apple Health)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Module coaching individuel assez limité par rapport à la concurrence</td></tr><tr><td>Peu d'options pour les équipes 100% remote</td></tr><tr><td>Tarification qui grimpe vite avec les fonctionnalités avancées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -793,38 +697,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>BetterMe Business</strong> transforme l'approche du bien-être en entreprise avec une plateforme axée sur le développement personnel et la santé mentale.
-
-<p>J'ai testé cette solution qui mise sur des programmes de <strong>coaching personnalisé</strong> et des contenus de méditation adaptés au monde professionnel.</p><p>Ce qui m'a frappé, c'est leur approche holistique.</p>
-
-<p><strong>BetterMe Business</strong> combine fitness, nutrition et gestion du stress dans une interface pensée pour les RH.</p>
-
-<p>Les employés accèdent à des <strong>parcours personnalisés</strong> basés sur leurs objectifs personnels, que ce soit perdre du poids, améliorer leur sommeil ou gérer leur anxiété au travail.</p><p>La plateforme brille par ses <strong>analytics détaillés</strong> qui permettent aux entreprises de mesurer l'engagement et l'impact sur la productivité.</p>
-
-<p>On peut suivre les progrès collectifs sans compromettre la confidentialité individuelle. Parfait pour les DRH qui veulent justifier leurs investissements bien-être avec du concret.</p></p>
+            <p><strong>BetterMe Business</strong> transforme l'approche du bien-être en entreprise avec une plateforme axée sur le développement personnel et la santé mentale. J'ai testé cette solution qui mise sur des programmes de <strong>coaching personnalisé</strong> et des contenus de méditation adaptés au monde professionnel.</p><p>Ce qui m'a frappé, c'est leur approche holistique. <strong>BetterMe Business</strong> combine fitness, nutrition et gestion du stress dans une interface pensée pour les RH. Les employés accèdent à des <strong>parcours personnalisés</strong> basés sur leurs objectifs personnels, que ce soit perdre du poids, améliorer leur sommeil ou gérer leur anxiété au travail.</p><p>La plateforme brille par ses <strong>analytics détaillés</strong> qui permettent aux entreprises de mesurer l'engagement et l'impact sur la productivité. On peut suivre les progrès collectifs sans compromettre la confidentialité individuelle. Parfait pour les DRH qui veulent justifier leurs investissements bien-être avec du concret.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Programmes de coaching personnalisé adaptatifs</td>
-            <td>Prix élevé pour les PME de moins de 100 salariés</td>
-          </tr>
-          <tr>
-            <td>Interface multilingue avec contenu localisé</td>
-            <td>Contenu principalement axé lifestyle plutôt que stress professionnel</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord RH avec métriques d'engagement</td>
-            <td>Application mobile parfois lente sur les anciens smartphones</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principales plateformes SIRH</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Programmes de coaching personnalisé adaptatifs</td></tr><tr><td>Interface multilingue avec contenu localisé</td></tr><tr><td>Tableaux de bord RH avec métriques d'engagement</td></tr><tr><td>Intégration native avec les principales plateformes SIRH</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé pour les PME de moins de 100 salariés</td></tr><tr><td>Contenu principalement axé lifestyle plutôt que stress professionnel</td></tr><tr><td>Application mobile parfois lente sur les anciens smartphones</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -844,40 +729,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Vantage Fit</strong> mise tout sur l'engagement ludique pour transformer le bien-être des employés.
-
-<p>Cette plateforme combine défis fitness, suivi de santé et récompenses pour créer une vraie dynamique collective dans l'entreprise.</p><p>Ce qui me frappe avec ce <strong>logiciel de bien-être des employés</strong>, c'est son approche gamifiée poussée.</p>
-
-<p>On peut organiser des compétitions par équipes, suivre ses pas quotidiens, participer à des challenges wellness... L'idée c'est de rendre le sport et la santé addictifs au boulot.</p>
-
-<p>Les employés gagnent des points, débloquent des badges et peuvent même remporter des prix.</p><p>Je recommande <strong>Vantage Fit</strong> aux entreprises qui veulent vraiment booster la participation.</p>
-
-<p>Les fonctionnalités de tracking automatique via smartphone, les tableaux de bord en temps réel et les intégrations avec les objets connectés fonctionnent plutôt bien.</p>
-
-<p>Par contre, si votre équipe n'est pas du tout portée sur la compétition ou le digital, ça risque de faire un flop.</p></p>
+            <p><strong>Vantage Fit</strong> mise tout sur l'engagement ludique pour transformer le bien-être des employés. Cette plateforme combine défis fitness, suivi de santé et récompenses pour créer une vraie dynamique collective dans l'entreprise.</p><p>Ce qui me frappe avec ce <strong>logiciel de bien-être des employés</strong>, c'est son approche gamifiée poussée. On peut organiser des compétitions par équipes, suivre ses pas quotidiens, participer à des challenges wellness... L'idée c'est de rendre le sport et la santé addictifs au boulot. Les employés gagnent des points, débloquent des badges et peuvent même remporter des prix.</p><p>Je recommande <strong>Vantage Fit</strong> aux entreprises qui veulent vraiment booster la participation. Les fonctionnalités de tracking automatique via smartphone, les tableaux de bord en temps réel et les intégrations avec les objets connectés fonctionnent plutôt bien. Par contre, si votre équipe n'est pas du tout portée sur la compétition ou le digital, ça risque de faire un flop.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gamification avancée avec système de points et récompenses</td>
-            <td>Peut créer de la pression sociale chez certains employés</td>
-          </tr>
-          <tr>
-            <td>Suivi automatique des activités via smartphone et wearables</td>
-            <td>Fonctionnalités avancées payantes assez chères</td>
-          </tr>
-          <tr>
-            <td>Challenges d'équipe qui créent de la cohésion</td>
-            <td>Nécessite une vraie culture digitale dans l'équipe</td>
-          </tr>
-          <tr>
-            <td>Interface mobile intuitive et engageante</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gamification avancée avec système de points et récompenses</td></tr><tr><td>Suivi automatique des activités via smartphone et wearables</td></tr><tr><td>Challenges d'équipe qui créent de la cohésion</td></tr><tr><td>Interface mobile intuitive et engageante</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Peut créer de la pression sociale chez certains employés</td></tr><tr><td>Fonctionnalités avancées payantes assez chères</td></tr><tr><td>Nécessite une vraie culture digitale dans l'équipe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1084,7 +948,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 2 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

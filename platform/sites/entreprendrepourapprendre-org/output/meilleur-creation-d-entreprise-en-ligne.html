@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparateur de 5 services de création d'entreprise en ligne</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 5 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 5 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -530,42 +535,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>LegalPlace</strong> accompagne la création d'entreprise en ligne avec une approche qui mélange automatisation et conseil humain.
-
-<p>Je trouve leur positionnement intéressant : ils ne se contentent pas de remplir les formulaires, mais proposent un vrai suivi juridique post-création.</p>
-
-<p>Leur plateforme couvre les <strong>SASU, SAS, SARL</strong> et autres formes juridiques avec des tarifs transparents.</p><p>Ce qui m'a marqué chez <strong>LegalPlace</strong>, c'est leur équipe de juristes disponibles par téléphone.</p>
-
-<p>Quand on crée sa première société, avoir quelqu'un au bout du fil qui comprend les enjeux fiscaux ou les statuts, ça change tout.</p>
-
-<p>Leur processus de création prend environ <strong>15 jours</strong> en moyenne, ce qui reste correct.</p><p>Par contre, je dois être honnête : leurs tarifs sont plus élevés que la concurrence pure automatisation.</p>
-
-<p>Mais on paie la <strong>sécurité juridique</strong> et l'accompagnement. Si vous voulez juste créer une micro-entreprise basique, ça peut sembler surdimensionné.</p>
-
-<p>Pour les projets plus complexes avec des associés ou des questions de propriété intellectuelle, je recommande.</p></p>
+            <p><strong>LegalPlace</strong> accompagne la création d'entreprise en ligne avec une approche qui mélange automatisation et conseil humain. Je trouve leur positionnement intéressant : ils ne se contentent pas de remplir les formulaires, mais proposent un vrai suivi juridique post-création. Leur plateforme couvre les <strong>SASU, SAS, SARL</strong> et autres formes juridiques avec des tarifs transparents.</p><p>Ce qui m'a marqué chez <strong>LegalPlace</strong>, c'est leur équipe de juristes disponibles par téléphone. Quand on crée sa première société, avoir quelqu'un au bout du fil qui comprend les enjeux fiscaux ou les statuts, ça change tout. Leur processus de création prend environ <strong>15 jours</strong> en moyenne, ce qui reste correct.</p><p>Par contre, je dois être honnête : leurs tarifs sont plus élevés que la concurrence pure automatisation. Mais on paie la <strong>sécurité juridique</strong> et l'accompagnement. Si vous voulez juste créer une micro-entreprise basique, ça peut sembler surdimensionné. Pour les projets plus complexes avec des associés ou des questions de propriété intellectuelle, je recommande.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Juristes disponibles par téléphone pour conseils personnalisés</td>
-            <td>Tarifs supérieurs aux solutions automatisées basiques</td>
-          </tr>
-          <tr>
-            <td>Suivi post-création inclus dans le service</td>
-            <td>Délais de traitement parfois longs en période de forte demande</td>
-          </tr>
-          <tr>
-            <td>Interface claire avec validation des informations en temps réel</td>
-            <td>Moins adapté aux créations d'entreprise très simples</td>
-          </tr>
-          <tr>
-            <td>Gestion complète des formalités administratives</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Juristes disponibles par téléphone pour conseils personnalisés</td></tr><tr><td>Suivi post-création inclus dans le service</td></tr><tr><td>Interface claire avec validation des informations en temps réel</td></tr><tr><td>Gestion complète des formalités administratives</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs supérieurs aux solutions automatisées basiques</td></tr><tr><td>Délais de traitement parfois longs en période de forte demande</td></tr><tr><td>Moins adapté aux créations d'entreprise très simples</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -585,40 +567,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je connais <strong>Legal Start</strong> depuis quelques années et j'avoue que leur approche m'a séduit : ils combinent création d'entreprise en ligne avec un vrai accompagnement juridique.
-
-<p>Contrairement à d'autres plateformes qui se contentent de générer des statuts, eux proposent des juristes dédiés qui relisent vos documents.</p><p>Leur interface guide vraiment bien les entrepreneurs débutants.</p>
-
-<p>On remplit un questionnaire détaillé, et derrière, un professionnel vérifie que tout est cohérent avec votre projet.</p>
-
-<p>J'ai testé leur service pour une <strong>SARL</strong> l'année dernière : la création s'est faite en <strong>5 jours ouvrés</strong>, avec plusieurs échanges téléphoniques pour ajuster l'objet social.</p><p>Ce qui m'a marqué, c'est leur suivi post-création.</p>
-
-<p>Ils ne vous lâchent pas après l'immatriculation et proposent des services complémentaires comme la rédaction de CGV ou l'aide aux formalités RCS.</p>
-
-<p>Parfait pour ceux qui veulent une <strong>création d'entreprise sécurisée</strong> sans se prendre la tête avec les aspects juridiques.</p></p>
+            <p>Je connais <strong>Legal Start</strong> depuis quelques années et j'avoue que leur approche m'a séduit : ils combinent création d'entreprise en ligne avec un vrai accompagnement juridique. Contrairement à d'autres plateformes qui se contentent de générer des statuts, eux proposent des juristes dédiés qui relisent vos documents.</p><p>Leur interface guide vraiment bien les entrepreneurs débutants. On remplit un questionnaire détaillé, et derrière, un professionnel vérifie que tout est cohérent avec votre projet. J'ai testé leur service pour une <strong>SARL</strong> l'année dernière : la création s'est faite en <strong>5 jours ouvrés</strong>, avec plusieurs échanges téléphoniques pour ajuster l'objet social.</p><p>Ce qui m'a marqué, c'est leur suivi post-création. Ils ne vous lâchent pas après l'immatriculation et proposent des services complémentaires comme la rédaction de CGV ou l'aide aux formalités RCS. Parfait pour ceux qui veulent une <strong>création d'entreprise sécurisée</strong> sans se prendre la tête avec les aspects juridiques.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Accompagnement par de vrais juristes, pas juste une plateforme automatisée</td>
-            <td>Tarifs plus élevés que les pure players automatisés</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive qui guide étape par étape sans jargon juridique</td>
-            <td>Moins rapide que les solutions 100% digitales</td>
-          </tr>
-          <tr>
-            <td>Suivi post-création avec services complémentaires (CGV, modifications)</td>
-            <td>Choix de formes juridiques limité par rapport aux généralistes</td>
-          </tr>
-          <tr>
-            <td>Délais respectés et communication transparente sur l'avancement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Accompagnement par de vrais juristes, pas juste une plateforme automatisée</td></tr><tr><td>Interface intuitive qui guide étape par étape sans jargon juridique</td></tr><tr><td>Suivi post-création avec services complémentaires (CGV, modifications)</td></tr><tr><td>Délais respectés et communication transparente sur l'avancement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs plus élevés que les pure players automatisés</td></tr><tr><td>Moins rapide que les solutions 100% digitales</td></tr><tr><td>Choix de formes juridiques limité par rapport aux généralistes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -638,42 +599,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Dougs</strong> fait partie de ces plateformes qui mélangent création d'entreprise en ligne et services comptables. Je les ai testés quand j'ai créé ma dernière SASU. Leur approche ?
-
-<p>Vous accompagner de A à Z, depuis les formalités administratives jusqu'à la gestion comptable mensuelle.</p><p>Ce qui m'a marqué avec <strong>Dougs</strong>, c'est leur équipe de <strong>comptables dédiés</strong>.</p>
-
-<p>Pas de chatbot pour répondre à mes questions sur la TVA, mais un vrai expert-comptable assigné à mon dossier.</p>
-
-<p>Leur plateforme digitalise les processus classiques : <strong>création automatisée des statuts</strong>, dépôt du capital social, immatriculation au RCS.</p>
-
-<p>Ils gèrent aussi la comptabilité post-création avec un tableau de bord assez clair.</p><p>Je recommande <strong>Dougs</strong> aux entrepreneurs qui veulent une solution tout-en-un sans se prendre la tête avec la paperasse.</p>
-
-<p>Par contre, si vous cherchez juste à créer votre entreprise rapidement et pas cher, vous allez payer plus que nécessaire.</p>
-
-<p>Leurs <strong>tarifs démarrent à <strong>69€</strong>/mois</strong> tout compris, ce qui inclut la compta mais peut faire mal au portefeuille les premiers mois.</p></p>
+            <p><strong>Dougs</strong> fait partie de ces plateformes qui mélangent création d'entreprise en ligne et services comptables. Je les ai testés quand j'ai créé ma dernière SASU. Leur approche ? Vous accompagner de A à Z, depuis les formalités administratives jusqu'à la gestion comptable mensuelle.</p><p>Ce qui m'a marqué avec <strong>Dougs</strong>, c'est leur équipe de <strong>comptables dédiés</strong>. Pas de chatbot pour répondre à mes questions sur la TVA, mais un vrai expert-comptable assigné à mon dossier. Leur plateforme digitalise les processus classiques : <strong>création automatisée des statuts</strong>, dépôt du capital social, immatriculation au RCS. Ils gèrent aussi la comptabilité post-création avec un tableau de bord assez clair.</p><p>Je recommande <strong>Dougs</strong> aux entrepreneurs qui veulent une solution tout-en-un sans se prendre la tête avec la paperasse. Par contre, si vous cherchez juste à créer votre entreprise rapidement et pas cher, vous allez payer plus que nécessaire. Leurs <strong>tarifs démarrent à <strong>69€</strong>/mois</strong> tout compris, ce qui inclut la compta mais peut faire mal au portefeuille les premiers mois.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expert-comptable dédié inclus dans l'offre</td>
-            <td>Prix élevé comparé à la création seule</td>
-          </tr>
-          <tr>
-            <td>Gestion comptable intégrée après création</td>
-            <td>Pas adapté si vous avez déjà un comptable</td>
-          </tr>
-          <tr>
-            <td>Interface moderne avec tableau de bord financier</td>
-            <td>Moins de choix dans les statuts juridiques complexes</td>
-          </tr>
-          <tr>
-            <td>Accompagnement personnalisé par téléphone</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Expert-comptable dédié inclus dans l'offre</td></tr><tr><td>Gestion comptable intégrée après création</td></tr><tr><td>Interface moderne avec tableau de bord financier</td></tr><tr><td>Accompagnement personnalisé par téléphone</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé comparé à la création seule</td></tr><tr><td>Pas adapté si vous avez déjà un comptable</td></tr><tr><td>Moins de choix dans les statuts juridiques complexes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -693,38 +631,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Swapn</strong> propose une approche collaborative pour créer son entreprise en ligne. Au lieu de rester seul face aux démarches, on peut échanger avec d'autres entrepreneurs et bénéficier d'un accompagnement communautaire.
-
-<p>Je trouve cette dimension sociale plutôt rafraîchissante dans un secteur souvent déshumanisé.</p><p>Ce qui m'a marqué avec <strong>Swapn</strong>, c'est leur système de mise en relation entre porteurs de projets.</p>
-
-<p>On peut partager ses doutes, poser des questions concrètes et même trouver des associés potentiels.</p>
-
-<p>La plateforme intègre aussi les outils classiques de <strong>création d'entreprise en ligne</strong> : aide au business plan, choix du statut juridique, démarches administratives.</p><p>L'interface ressemble plus à un réseau social qu'à un générateur de documents administratifs.</p>
-
-<p>Parfait si vous cherchez une alternative aux services froids et impersonnels. Par contre, si vous voulez juste créer votre <strong>SASU</strong> rapidement sans interaction, passez votre chemin.</p></p>
+            <p><strong>Swapn</strong> propose une approche collaborative pour créer son entreprise en ligne. Au lieu de rester seul face aux démarches, on peut échanger avec d'autres entrepreneurs et bénéficier d'un accompagnement communautaire. Je trouve cette dimension sociale plutôt rafraîchissante dans un secteur souvent déshumanisé.</p><p>Ce qui m'a marqué avec <strong>Swapn</strong>, c'est leur système de mise en relation entre porteurs de projets. On peut partager ses doutes, poser des questions concrètes et même trouver des associés potentiels. La plateforme intègre aussi les outils classiques de <strong>création d'entreprise en ligne</strong> : aide au business plan, choix du statut juridique, démarches administratives.</p><p>L'interface ressemble plus à un réseau social qu'à un générateur de documents administratifs. Parfait si vous cherchez une alternative aux services froids et impersonnels. Par contre, si vous voulez juste créer votre <strong>SASU</strong> rapidement sans interaction, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Communauté active d'entrepreneurs pour échanger et s'entraider</td>
-            <td>Processus plus long à cause de l'aspect communautaire</td>
-          </tr>
-          <tr>
-            <td>Accompagnement personnalisé avec des conseillers disponibles</td>
-            <td>Moins adapté si on veut créer son entreprise discrètement</td>
-          </tr>
-          <tr>
-            <td>Outils de networking pour trouver associés ou partenaires</td>
-            <td>Tarification parfois floue selon le niveau d'accompagnement choisi</td>
-          </tr>
-          <tr>
-            <td>Interface moderne qui humanise les démarches administratives</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Communauté active d'entrepreneurs pour échanger et s'entraider</td></tr><tr><td>Accompagnement personnalisé avec des conseillers disponibles</td></tr><tr><td>Outils de networking pour trouver associés ou partenaires</td></tr><tr><td>Interface moderne qui humanise les démarches administratives</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Processus plus long à cause de l'aspect communautaire</td></tr><tr><td>Moins adapté si on veut créer son entreprise discrètement</td></tr><tr><td>Tarification parfois floue selon le niveau d'accompagnement choisi</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -744,38 +663,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai découvert <strong>Qonto</strong> quand j'ai créé ma SARL en 2023. C'est pas juste une banque pro - c'est un vrai écosystème pour <strong>créer son entreprise en ligne</strong> de A à Z.
-
-<p>Le truc qui m'a bluffé : ils gèrent à la fois l'ouverture du compte bancaire professionnel ET toute la paperasse administrative.</p><p>Leur force ? L'interface ultra claire où je vois en temps réel où j'en suis dans les démarches.</p>
-
-<p><strong>Création SASU, SARL, auto-entrepreneur</strong> - tout y passe avec un suivi étape par étape.</p>
-
-<p>Plus besoin de jongler entre 15 sites différents pour déposer mon capital social, publier mon annonce légale ou demander mon Kbis.</p><p>Ce qui fait vraiment la différence avec les autres solutions de <strong>création d'entreprise</strong> : une fois l'entreprise créée, je reste sur Qonto pour la gestion quotidienne.</p>
-
-<p>Cartes bancaires, virements, comptabilité... Tout reste centralisé. Pratique quand on débute et qu'on veut pas se disperser.</p></p>
+            <p>J'ai découvert <strong>Qonto</strong> quand j'ai créé ma SARL en 2023. C'est pas juste une banque pro - c'est un vrai écosystème pour <strong>créer son entreprise en ligne</strong> de A à Z. Le truc qui m'a bluffé : ils gèrent à la fois l'ouverture du compte bancaire professionnel ET toute la paperasse administrative.</p><p>Leur force ? L'interface ultra claire où je vois en temps réel où j'en suis dans les démarches. <strong>Création SASU, SARL, auto-entrepreneur</strong> - tout y passe avec un suivi étape par étape. Plus besoin de jongler entre 15 sites différents pour déposer mon capital social, publier mon annonce légale ou demander mon Kbis.</p><p>Ce qui fait vraiment la différence avec les autres solutions de <strong>création d'entreprise</strong> : une fois l'entreprise créée, je reste sur Qonto pour la gestion quotidienne. Cartes bancaires, virements, comptabilité... Tout reste centralisé. Pratique quand on débute et qu'on veut pas se disperser.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra intuitive même pour les débutants en création d'entreprise</td>
-            <td>Plus cher que les pure players de création d'entreprise basiques</td>
-          </tr>
-          <tr>
-            <td>Suivi en temps réel de toutes les démarches administratives</td>
-            <td>Certaines formes juridiques rares pas disponibles</td>
-          </tr>
-          <tr>
-            <td>Compte bancaire professionnel intégré dès la création</td>
-            <td>Obligation de rester client pour garder tous les avantages</td>
-          </tr>
-          <tr>
-            <td>Support client réactif par chat en cas de blocage</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra intuitive même pour les débutants en création d'entreprise</td></tr><tr><td>Suivi en temps réel de toutes les démarches administratives</td></tr><tr><td>Compte bancaire professionnel intégré dès la création</td></tr><tr><td>Support client réactif par chat en cas de blocage</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Plus cher que les pure players de création d'entreprise basiques</td></tr><tr><td>Certaines formes juridiques rares pas disponibles</td></tr><tr><td>Obligation de rester client pour garder tous les avantages</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1034,7 +934,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 2 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

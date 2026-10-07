@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des meilleurs logiciels de gestion des talents parmi 10 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -533,38 +538,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Skillup</strong> pendant six mois dans ma boîte, et je peux dire qu'on a enfin trouvé un <strong>logiciel de gestion des talents</strong> qui simplifie vraiment la vie RH.
-
-<p>Contrairement à d'autres plateformes que j'ai pu utiliser, Skillup mise sur une approche hyper intuitive avec des <strong>parcours de formation personnalisés</strong> qui s'adaptent automatiquement selon les lacunes détectées.</p><p>Ce qui m'a marqué ?</p>
-
-<p>La fonction de <strong>cartographie des compétences en temps réel</strong>. On peut visualiser instantanément qui maîtrise quoi dans l'équipe, et surtout identifier les gaps avant qu'ils deviennent problématiques.</p>
-
-<p>Le système de <strong>recommandations automatiques</strong> propose des formations pertinentes sans qu'on ait besoin de creuser dans des catalogues interminables.</p><p>Skillup cible clairement les <strong>entreprises de 50 à 500 salariés</strong> qui veulent professionnaliser leur gestion des talents sans se compliquer la vie.</p>
-
-<p>Les RH apprécient l'interface claire, les managers ont leurs tableaux de bord simplifiés, et les collaborateurs ne se perdent pas dans la navigation.</p></p>
+            <p>J'ai testé <strong>Skillup</strong> pendant six mois dans ma boîte, et je peux dire qu'on a enfin trouvé un <strong>logiciel de gestion des talents</strong> qui simplifie vraiment la vie RH. Contrairement à d'autres plateformes que j'ai pu utiliser, Skillup mise sur une approche hyper intuitive avec des <strong>parcours de formation personnalisés</strong> qui s'adaptent automatiquement selon les lacunes détectées.</p><p>Ce qui m'a marqué ? La fonction de <strong>cartographie des compétences en temps réel</strong>. On peut visualiser instantanément qui maîtrise quoi dans l'équipe, et surtout identifier les gaps avant qu'ils deviennent problématiques. Le système de <strong>recommandations automatiques</strong> propose des formations pertinentes sans qu'on ait besoin de creuser dans des catalogues interminables.</p><p>Skillup cible clairement les <strong>entreprises de 50 à 500 salariés</strong> qui veulent professionnaliser leur gestion des talents sans se compliquer la vie. Les RH apprécient l'interface claire, les managers ont leurs tableaux de bord simplifiés, et les collaborateurs ne se perdent pas dans la navigation.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra-intuitive qui ne nécessite aucune formation</td>
-            <td>Catalogue de formations externe limité comparé aux gros acteurs</td>
-          </tr>
-          <tr>
-            <td>Cartographie automatique des compétences par équipe et département</td>
-            <td>Pas d'intégration native avec tous les SIRH du marché</td>
-          </tr>
-          <tr>
-            <td>Recommandations de formation personnalisées basées sur l'IA</td>
-            <td>Fonctionnalités avancées de reporting encore perfectibles</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord managers avec suivi des progressions en un coup d'œil</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra-intuitive qui ne nécessite aucune formation</td></tr><tr><td>Cartographie automatique des compétences par équipe et département</td></tr><tr><td>Recommandations de formation personnalisées basées sur l'IA</td></tr><tr><td>Tableaux de bord managers avec suivi des progressions en un coup d'œil</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Catalogue de formations externe limité comparé aux gros acteurs</td></tr><tr><td>Pas d'intégration native avec tous les SIRH du marché</td></tr><tr><td>Fonctionnalités avancées de reporting encore perfectibles</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -584,38 +570,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Zola</strong> pendant plusieurs mois et ce logiciel de gestion des talents se démarque par une approche très axée sur l'engagement collaborateur.
-
-<p>On est loin des plateformes RH classiques qui ressemblent à des usines à gaz.</p><p>Le point fort de <strong>Zola</strong> ?</p>
-
-<p>Son interface pensée pour les managers de proximité qui n'ont pas envie de passer des heures à comprendre comment faire un entretien annuel. Les workflows d'évaluation sont vraiment intuitifs.</p>
-
-<p>J'ai pu créer un cycle d'évaluation à 360° en moins de <strong>15 minutes</strong> chrono, là où d'autres solutions me demandaient une demi-journée de paramétrage.</p><p>Ce <strong>logiciel de gestion des talents</strong> convient parfaitement aux entreprises de <strong>100 à 1000 salariés</strong> qui cherchent à professionnaliser leurs processus RH sans tomber dans la complexité inutile.</p>
-
-<p>Les PME en forte croissance y trouvent leur compte, surtout celles qui veulent garder un côté humain dans leurs pratiques RH.</p></p>
+            <p>J'ai testé <strong>Zola</strong> pendant plusieurs mois et ce logiciel de gestion des talents se démarque par une approche très axée sur l'engagement collaborateur. On est loin des plateformes RH classiques qui ressemblent à des usines à gaz.</p><p>Le point fort de <strong>Zola</strong> ? Son interface pensée pour les managers de proximité qui n'ont pas envie de passer des heures à comprendre comment faire un entretien annuel. Les workflows d'évaluation sont vraiment intuitifs. J'ai pu créer un cycle d'évaluation à 360° en moins de <strong>15 minutes</strong> chrono, là où d'autres solutions me demandaient une demi-journée de paramétrage.</p><p>Ce <strong>logiciel de gestion des talents</strong> convient parfaitement aux entreprises de <strong>100 à 1000 salariés</strong> qui cherchent à professionnaliser leurs processus RH sans tomber dans la complexité inutile. Les PME en forte croissance y trouvent leur compte, surtout celles qui veulent garder un côté humain dans leurs pratiques RH.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface manager ultra-intuitive, même pour les non-RH</td>
-            <td>Module de formation assez basique comparé aux spécialistes</td>
-          </tr>
-          <tr>
-            <td>Workflows d'évaluation paramétrable en quelques clics</td>
-            <td>Reporting avancé limité pour les grandes structures</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord visuels avec indicateurs clés de performance</td>
-            <td>Pas de gestion des compétences métier très poussée</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux SIRH du marché</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface manager ultra-intuitive, même pour les non-RH</td></tr><tr><td>Workflows d'évaluation paramétrable en quelques clics</td></tr><tr><td>Tableaux de bord visuels avec indicateurs clés de performance</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Module de formation assez basique comparé aux spécialistes</td></tr><tr><td>Reporting avancé limité pour les grandes structures</td></tr><tr><td>Pas de gestion des compétences métier très poussée</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -635,40 +602,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je recommande <strong>Cornerstone OnDemand</strong> aux entreprises de <strong>1000 salariés et plus</strong> qui veulent centraliser leur gestion RH.
-
-<p>Cette plateforme couvre formation, recrutement, évaluation et gestion de carrière dans une interface unique.</p>
-
-<p>Pas de bricolage avec 5 outils différents.</p><p>Le logiciel brille particulièrement sur la <strong>personnalisation des parcours de formation</strong>.</p>
-
-<p>On peut créer des cursus adaptatifs qui évoluent selon les résultats et le profil de chaque employé.</p>
-
-<p>Leur module de <strong>planification de succession</strong> aide aussi à identifier les futurs leaders en croisant compétences actuelles et potentiel.</p><p>Par contre, les <strong>PME</strong> vont probablement fuir devant la complexité.</p>
-
-<p>L'interface demande du temps d'adaptation et le paramétrage initial peut prendre plusieurs mois. Si vous cherchez du simple et rapide, passez votre chemin.</p></p>
+            <p>Je recommande <strong>Cornerstone OnDemand</strong> aux entreprises de <strong>1000 salariés et plus</strong> qui veulent centraliser leur gestion RH. Cette plateforme couvre formation, recrutement, évaluation et gestion de carrière dans une interface unique. Pas de bricolage avec 5 outils différents.</p><p>Le logiciel brille particulièrement sur la <strong>personnalisation des parcours de formation</strong>. On peut créer des cursus adaptatifs qui évoluent selon les résultats et le profil de chaque employé. Leur module de <strong>planification de succession</strong> aide aussi à identifier les futurs leaders en croisant compétences actuelles et potentiel.</p><p>Par contre, les <strong>PME</strong> vont probablement fuir devant la complexité. L'interface demande du temps d'adaptation et le paramétrage initial peut prendre plusieurs mois. Si vous cherchez du simple et rapide, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Suite complète qui évite la multiplication d'outils</td>
-            <td>Interface complexe qui décourage les nouveaux utilisateurs</td>
-          </tr>
-          <tr>
-            <td>IA pour recommandations de formation personnalisées</td>
-            <td>Coût élevé peu adapté aux PME</td>
-          </tr>
-          <tr>
-            <td>Modules de planification de succession avancés</td>
-            <td>Paramétrage initial long et technique</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé avec analytics prédictifs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Suite complète qui évite la multiplication d'outils</td></tr><tr><td>IA pour recommandations de formation personnalisées</td></tr><tr><td>Modules de planification de succession avancés</td></tr><tr><td>Reporting détaillé avec analytics prédictifs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface complexe qui décourage les nouveaux utilisateurs</td></tr><tr><td>Coût élevé peu adapté aux PME</td></tr><tr><td>Paramétrage initial long et technique</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -688,40 +634,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>SAP SuccessFactors</strong> est la solution de gestion des talents pensée pour les grandes entreprises qui veulent vraiment industrialiser leurs processus RH.
-
-<p>Je l'ai vu tourner chez plusieurs multinationales, et c'est du costaud niveau fonctionnalités.</p><p>Ce qui frappe d'abord, c'est l'intégration native avec l'écosystème <strong>SAP</strong>.</p>
-
-<p>Si vous êtes déjà sur SAP ERP, SuccessFactors se connecte naturellement à vos données existantes. Le module de gestion des performances permet de créer des cycles d'évaluation complexes avec des matrices de compétences très poussées.</p>
-
-<p>J'ai vu des entreprises configurer des parcours de développement qui s'adaptent automatiquement selon le poste et le niveau hiérarchique.</p><p>Mais attention, on parle d'un outil qui demande des ressources.</p>
-
-<p>L'interface utilisateur reste très <strong>enterprise</strong>, parfois lourde pour les managers qui veulent juste faire une évaluation rapide.</p>
-
-<p>C'est clairement conçu pour des organisations de <strong>plus de 1000 salariés</strong> avec des besoins structurés et des équipes RH dédiées à l'administration.</p></p>
+            <p><strong>SAP SuccessFactors</strong> est la solution de gestion des talents pensée pour les grandes entreprises qui veulent vraiment industrialiser leurs processus RH. Je l'ai vu tourner chez plusieurs multinationales, et c'est du costaud niveau fonctionnalités.</p><p>Ce qui frappe d'abord, c'est l'intégration native avec l'écosystème <strong>SAP</strong>. Si vous êtes déjà sur SAP ERP, SuccessFactors se connecte naturellement à vos données existantes. Le module de gestion des performances permet de créer des cycles d'évaluation complexes avec des matrices de compétences très poussées. J'ai vu des entreprises configurer des parcours de développement qui s'adaptent automatiquement selon le poste et le niveau hiérarchique.</p><p>Mais attention, on parle d'un outil qui demande des ressources. L'interface utilisateur reste très <strong>enterprise</strong>, parfois lourde pour les managers qui veulent juste faire une évaluation rapide. C'est clairement conçu pour des organisations de <strong>plus de 1000 salariés</strong> avec des besoins structurés et des équipes RH dédiées à l'administration.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration parfaite avec l'écosystème SAP existant</td>
-            <td>Interface utilisateur complexe peu intuitive pour les managers</td>
-          </tr>
-          <tr>
-            <td>Modules de gestion des performances très configurables</td>
-            <td>Coût de mise en œuvre et de maintenance très élevé</td>
-          </tr>
-          <tr>
-            <td>Analytics RH poussés avec tableaux de bord personnalisables</td>
-            <td>Nécessite une équipe technique dédiée pour la configuration</td>
-          </tr>
-          <tr>
-            <td>Support multilingue et conformité réglementaire internationale</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration parfaite avec l'écosystème SAP existant</td></tr><tr><td>Modules de gestion des performances très configurables</td></tr><tr><td>Analytics RH poussés avec tableaux de bord personnalisables</td></tr><tr><td>Support multilingue et conformité réglementaire internationale</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur complexe peu intuitive pour les managers</td></tr><tr><td>Coût de mise en œuvre et de maintenance très élevé</td></tr><tr><td>Nécessite une équipe technique dédiée pour la configuration</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -741,36 +666,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Skeely</strong> mise sur l'automatisation des tâches RH répétitives pour libérer du temps aux équipes.
-
-<p>Cette plateforme de <strong>gestion des talents</strong> centralise le recrutement, l'onboarding et le suivi des performances dans une interface simple d'utilisation.</p><p>Je trouve que <strong>Skeely</strong> s'adresse particulièrement aux PME de <strong>50 à 500 salariés</strong> qui cherchent à professionnaliser leurs processus RH sans investir dans des solutions complexes.</p>
-
-<p>L'outil brille par sa capacité à créer des workflows personnalisés : diffusion automatique d'offres sur plusieurs jobboards, relances candidats programmées, ou encore génération de rapports de performance trimestriels.</p><p>Un exemple concret : chez un client dans la tech, <strong>Skeely</strong> a permis de réduire de <strong>60% le temps</strong> passé sur le <strong>tri</strong> des candidatures grâce à ses filtres intelligents.</p>
-
-<p>Par contre, les grandes entreprises avec des besoins très spécifiques risquent de se sentir à l'étroit niveau personnalisation avancée.</p></p>
+            <p><strong>Skeely</strong> mise sur l'automatisation des tâches RH répétitives pour libérer du temps aux équipes. Cette plateforme de <strong>gestion des talents</strong> centralise le recrutement, l'onboarding et le suivi des performances dans une interface simple d'utilisation.</p><p>Je trouve que <strong>Skeely</strong> s'adresse particulièrement aux PME de <strong>50 à 500 salariés</strong> qui cherchent à professionnaliser leurs processus RH sans investir dans des solutions complexes. L'outil brille par sa capacité à créer des workflows personnalisés : diffusion automatique d'offres sur plusieurs jobboards, relances candidats programmées, ou encore génération de rapports de performance trimestriels.</p><p>Un exemple concret : chez un client dans la tech, <strong>Skeely</strong> a permis de réduire de <strong><strong>60%</strong> le temps</strong> passé sur le <strong>tri</strong> des candidatures grâce à ses filtres intelligents. Par contre, les grandes entreprises avec des besoins très spécifiques risquent de se sentir à l'étroit niveau personnalisation avancée.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation poussée des tâches RH répétitives</td>
-            <td>Options de personnalisation limitées pour les grands comptes</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive nécessitant peu de formation</td>
-            <td>Reporting analytique moins poussé que les leaders du marché</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec les principaux jobboards</td>
-            <td>Support client parfois lent en période de forte activité</td>
-          </tr>
-          <tr>
-            <td>Workflows personnalisables selon les métiers</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation poussée des tâches RH répétitives</td></tr><tr><td>Interface intuitive nécessitant peu de formation</td></tr><tr><td>Intégrations natives avec les principaux jobboards</td></tr><tr><td>Workflows personnalisables selon les métiers</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation limitées pour les grands comptes</td></tr><tr><td>Reporting analytique moins poussé que les leaders du marché</td></tr><tr><td>Support client parfois lent en période de forte activité</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -790,38 +698,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Lattice</strong> s'est fait une place dans la gestion des talents en misant tout sur l'engagement collaborateur et les évaluations continues.
-
-<p>Je l'utilise depuis maintenant <strong>18 mois</strong> et franchement, c'est devenu mon outil de référence pour structurer les entretiens et suivre la progression des équipes.</p><p>Contrairement à d'autres plateformes qui restent très RH, <strong>Lattice</strong> implique directement les managers dans le processus.</p>
-
-<p>Les <strong>one-on-ones</strong> sont guidés avec des templates personnalisables, les objectifs se définissent en mode collaboratif, et surtout : tout reste simple d'utilisation.</p>
-
-<p>Même mes collègues les plus réfractaires aux outils digitaux s'y sont mis sans rechigner.</p><p>La plateforme cible principalement les <strong>entreprises de 50 à 500 salariés</strong> qui veulent professionnaliser leur gestion RH sans tomber dans la complexité administrative.</p>
-
-<p>Si vous cherchez à remplacer vos tableaux Excel par quelque chose de plus structuré tout en gardant de la flexibilité, <strong>Lattice</strong> mérite vraiment le détour.</p></p>
+            <p><strong>Lattice</strong> s'est fait une place dans la gestion des talents en misant tout sur l'engagement collaborateur et les évaluations continues. Je l'utilise depuis maintenant <strong>18 mois</strong> et franchement, c'est devenu mon outil de référence pour structurer les entretiens et suivre la progression des équipes.</p><p>Contrairement à d'autres plateformes qui restent très RH, <strong>Lattice</strong> implique directement les managers dans le processus. Les <strong>one-on-ones</strong> sont guidés avec des templates personnalisables, les objectifs se définissent en mode collaboratif, et surtout : tout reste simple d'utilisation. Même mes collègues les plus réfractaires aux outils digitaux s'y sont mis sans rechigner.</p><p>La plateforme cible principalement les <strong>entreprises de 50 à 500 salariés</strong> qui veulent professionnaliser leur gestion RH sans tomber dans la complexité administrative. Si vous cherchez à remplacer vos tableaux Excel par quelque chose de plus structuré tout en gardant de la flexibilité, <strong>Lattice</strong> mérite vraiment le détour.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne nécessite aucune formation</td>
-            <td>Prix élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Système de feedback 360° vraiment bien pensé</td>
-            <td>Fonctionnalités de reporting limitées</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec Slack et Microsoft Teams</td>
-            <td>Pas de version française disponible</td>
-          </tr>
-          <tr>
-            <td>Templates d'entretiens personnalisables selon les postes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Système de feedback 360° vraiment bien pensé</td></tr><tr><td>Intégration native avec Slack et Microsoft Teams</td></tr><tr><td>Templates d'entretiens personnalisables selon les postes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Fonctionnalités de reporting limitées</td></tr><tr><td>Pas de version française disponible</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -841,38 +730,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p><strong>Cegid Talentsoft</strong> s'adresse principalement aux entreprises moyennes et grandes structures qui cherchent une solution complète pour la gestion des talents.
-
-<p>Je l'ai testé dans plusieurs contextes RH et il couvre vraiment l'ensemble du cycle : recrutement, évaluation, formation, mobilité interne.</p><p>Ce qui m'a marqué avec ce <strong>logiciel de gestion des talents</strong>, c'est sa capacité à centraliser toutes les données RH dans un seul endroit.</p>
-
-<p>Les responsables RH peuvent suivre les parcours individuels, identifier les potentiels et planifier les successions.</p>
-
-<p>L'interface reste accessible même pour les managers qui ne sont pas des experts RH.</p><p>L'outil brille particulièrement sur la partie <strong>évaluation des performances</strong> et <strong>gestion des compétences</strong>.</p>
-
-<p>On peut créer des référentiels métiers personnalisés, suivre les montées en compétences et anticiper les besoins futurs. Par contre, il faut prévoir un temps d'adaptation non négligeable pour exploiter toutes ses fonctionnalités.</p></p>
+            <p><strong>Cegid Talentsoft</strong> s'adresse principalement aux entreprises moyennes et grandes structures qui cherchent une solution complète pour la gestion des talents. Je l'ai testé dans plusieurs contextes RH et il couvre vraiment l'ensemble du cycle : recrutement, évaluation, formation, mobilité interne.</p><p>Ce qui m'a marqué avec ce <strong>logiciel de gestion des talents</strong>, c'est sa capacité à centraliser toutes les données RH dans un seul endroit. Les responsables RH peuvent suivre les parcours individuels, identifier les potentiels et planifier les successions. L'interface reste accessible même pour les managers qui ne sont pas des experts RH.</p><p>L'outil brille particulièrement sur la partie <strong>évaluation des performances</strong> et <strong>gestion des compétences</strong>. On peut créer des référentiels métiers personnalisés, suivre les montées en compétences et anticiper les besoins futurs. Par contre, il faut prévoir un temps d'adaptation non négligeable pour exploiter toutes ses fonctionnalités.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui facilite l'adoption par les managers non-RH</td>
-            <td>Temps de déploiement assez long pour les grandes organisations</td>
-          </tr>
-          <tr>
-            <td>Couverture complète du cycle de vie des talents (recrutement à mobilité)</td>
-            <td>Prix élevé qui peut freiner les PME</td>
-          </tr>
-          <tr>
-            <td>Référentiels de compétences personnalisables selon les métiers</td>
-            <td>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Reporting avancé pour piloter la stratégie RH</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui facilite l'adoption par les managers non-RH</td></tr><tr><td>Couverture complète du cycle de vie des talents (recrutement à mobilité)</td></tr><tr><td>Référentiels de compétences personnalisables selon les métiers</td></tr><tr><td>Reporting avancé pour piloter la stratégie RH</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Temps de déploiement assez long pour les grandes organisations</td></tr><tr><td>Prix élevé qui peut freiner les PME</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -892,40 +762,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai découvert <strong>Elevo</strong> par hasard en cherchant une solution moins rigide que les mastodontes du marché.
-
-<p>Ce <strong>logiciel de gestion des talents</strong> français mise tout sur la simplicité d'usage, et franchement ça fait du bien.</p>
-
-<p>L'interface épurée cache une logique métier bien pensée pour les équipes RH qui veulent aller à l'essentiel.</p><p>Contrairement aux plateformes complexes qui nécessitent des formations, <strong>Elevo</strong> permet de lancer ses premiers entretiens annuels en quelques clics.</p>
-
-<p>La grille d'évaluation s'adapte aux métiers, les collaborateurs peuvent préparer leur autoévaluation en amont, et les managers reçoivent des rappels automatiques.</p>
-
-<p>Pas de fioritures.</p><p>Je le recommande surtout aux <strong>PME et ETI</strong> qui cherchent leur première vraie solution de gestion des talents sans se ruiner.</p>
-
-<p>Les startups en forte croissance y trouvent aussi leur compte pour structurer leurs processus RH rapidement. Par contre, les grands groupes avec des besoins très spécifiques risquent de se sentir à l'étroit.</p></p>
+            <p>J'ai découvert <strong>Elevo</strong> par hasard en cherchant une solution moins rigide que les mastodontes du marché. Ce <strong>logiciel de gestion des talents</strong> français mise tout sur la simplicité d'usage, et franchement ça fait du bien. L'interface épurée cache une logique métier bien pensée pour les équipes RH qui veulent aller à l'essentiel.</p><p>Contrairement aux plateformes complexes qui nécessitent des formations, <strong>Elevo</strong> permet de lancer ses premiers entretiens annuels en quelques clics. La grille d'évaluation s'adapte aux métiers, les collaborateurs peuvent préparer leur autoévaluation en amont, et les managers reçoivent des rappels automatiques. Pas de fioritures.</p><p>Je le recommande surtout aux <strong>PME et ETI</strong> qui cherchent leur première vraie solution de gestion des talents sans se ruiner. Les startups en forte croissance y trouvent aussi leur compte pour structurer leurs processus RH rapidement. Par contre, les grands groupes avec des besoins très spécifiques risquent de se sentir à l'étroit.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne nécessite aucune formation</td>
-            <td>Fonctionnalités limitées pour les grandes entreprises</td>
-          </tr>
-          <tr>
-            <td>Prix abordable pour les PME comparé aux solutions enterprise</td>
-            <td>Pas d'intégration avec certains SIRH spécialisés</td>
-          </tr>
-          <tr>
-            <td>Support client réactif basé en France</td>
-            <td>Reporting avancé encore perfectible</td>
-          </tr>
-          <tr>
-            <td>Déploiement rapide en moins d'une semaine</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Prix abordable pour les PME comparé aux solutions enterprise</td></tr><tr><td>Support client réactif basé en France</td></tr><tr><td>Déploiement rapide en moins d'une semaine</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les grandes entreprises</td></tr><tr><td>Pas d'intégration avec certains SIRH spécialisés</td></tr><tr><td>Reporting avancé encore perfectible</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -945,40 +794,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Oracle Talent Management fait partie de l'écosystème Oracle HCM Cloud et s'adresse clairement aux grandes entreprises qui cherchent une solution de gestion des talents intégrée.
-
-<p>Je dirais qu'on est sur du lourd, avec des fonctionnalités qui couvrent vraiment tout le cycle de vie des talents.</p><p>Ce qui m'a frappé, c'est la profondeur des modules.</p>
-
-<p>La gestion des performances permet de créer des évaluations à 360 degrés avec des workflows complexes.</p>
-
-<p>Le module succession planning est particulièrement poussé : on peut modéliser les organigrammes futurs et identifier les high potentials avec des matrices de risque.</p>
-
-<p>L'aspect développement des compétences s'appuie sur des parcours d'apprentissage personnalisés qui s'adaptent selon les évaluations.</p><p>Franchement, si vous gérez plus de 1000 collaborateurs avec des besoins de reporting avancés et des processus RH structurés, Oracle Talent Management devient pertinent.</p>
-
-<p>Par contre, attendez-vous à un projet d'implémentation de plusieurs mois et à une courbe d'apprentissage non négligeable pour vos équipes RH.</p></p>
+            <p>Oracle Talent Management fait partie de l'écosystème Oracle HCM Cloud et s'adresse clairement aux grandes entreprises qui cherchent une solution de gestion des talents intégrée. Je dirais qu'on est sur du lourd, avec des fonctionnalités qui couvrent vraiment tout le cycle de vie des talents.</p><p>Ce qui m'a frappé, c'est la profondeur des modules. La gestion des performances permet de créer des évaluations à 360 degrés avec des workflows complexes. Le module succession planning est particulièrement poussé : on peut modéliser les organigrammes futurs et identifier les high potentials avec des matrices de risque. L'aspect développement des compétences s'appuie sur des parcours d'apprentissage personnalisés qui s'adaptent selon les évaluations.</p><p>Franchement, si vous gérez plus de 1000 collaborateurs avec des besoins de reporting avancés et des processus RH structurés, Oracle Talent Management devient pertinent. Par contre, attendez-vous à un projet d'implémentation de plusieurs mois et à une courbe d'apprentissage non négligeable pour vos équipes RH.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec Oracle HCM Cloud et les systèmes d'information existants</td>
-            <td>Complexité d'implémentation importante, nécessite souvent un accompagnement externe</td>
-          </tr>
-          <tr>
-            <td>Modules de succession planning et identification des talents très sophistiqués</td>
-            <td>Interface utilisateur perfectible, moins intuitive que les solutions récentes</td>
-          </tr>
-          <tr>
-            <td>Capacités de reporting et analytics RH poussées avec tableaux de bord personnalisables</td>
-            <td>Coût global élevé incluant licences, formation et maintenance sur le long terme</td>
-          </tr>
-          <tr>
-            <td>Gestion des performances avec workflows configurables et évaluations 360°</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec Oracle HCM Cloud et les systèmes d'information existants</td></tr><tr><td>Modules de succession planning et identification des talents très sophistiqués</td></tr><tr><td>Capacités de reporting et analytics RH poussées avec tableaux de bord personnalisables</td></tr><tr><td>Gestion des performances avec workflows configurables et évaluations 360°</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Complexité d'implémentation importante, nécessite souvent un accompagnement externe</td></tr><tr><td>Interface utilisateur perfectible, moins intuitive que les solutions récentes</td></tr><tr><td>Coût global élevé incluant licences, formation et maintenance sur le long terme</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -998,40 +826,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct : <strong>Workday</strong> joue dans la cour des grands avec une approche cloud qui dépasse le simple logiciel de gestion des talents.
-
-<p>On parle d'un écosystème complet qui marie RH et finance sur une même plateforme, ce qui change la donne quand on veut une vision 360° de ses équipes.</p><p>L'interface me frappe par sa modernité.</p>
-
-<p>Pas de menus à rallonge ou de workflows compliqués. <strong>Workday</strong> mise tout sur l'expérience utilisateur avec des tableaux de bord visuels qui parlent même aux moins techniques.</p>
-
-<p>Le recrutement, l'évaluation des performances et la planification des carrières s'enchaînent naturellement.</p>
-
-<p>J'ai testé leur module de feedback continu : franchement bluffant pour remplacer les entretiens annuels poussiéreux.</p><p>Ce <strong>logiciel de gestion des talents</strong> vise clairement les entreprises de <strong>1000+ salariés</strong> qui veulent standardiser leurs processus RH à l'international.</p>
-
-<p>Les multinationales adorent, surtout avec les fonctionnalités de conformité réglementaire intégrées. Mais attention : c'est du haut de gamme, pas du plug-and-play pour PME.</p></p>
+            <p>Je vais être direct : <strong>Workday</strong> joue dans la cour des grands avec une approche cloud qui dépasse le simple logiciel de gestion des talents. On parle d'un écosystème complet qui marie RH et finance sur une même plateforme, ce qui change la donne quand on veut une vision 360° de ses équipes.</p><p>L'interface me frappe par sa modernité. Pas de menus à rallonge ou de workflows compliqués. <strong>Workday</strong> mise tout sur l'expérience utilisateur avec des tableaux de bord visuels qui parlent même aux moins techniques. Le recrutement, l'évaluation des performances et la planification des carrières s'enchaînent naturellement. J'ai testé leur module de feedback continu : franchement bluffant pour remplacer les entretiens annuels poussiéreux.</p><p>Ce <strong>logiciel de gestion des talents</strong> vise clairement les entreprises de <strong>1000+ salariés</strong> qui veulent standardiser leurs processus RH à l'international. Les multinationales adorent, surtout avec les fonctionnalités de conformité réglementaire intégrées. Mais attention : c'est du haut de gamme, pas du plug-and-play pour PME.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface utilisateur moderne et intuitive qui facilite l'adoption</td>
-            <td>Prix prohibitif pour les entreprises moyennes</td>
-          </tr>
-          <tr>
-            <td>Intégration native RH-Finance pour une vision unifiée des coûts</td>
-            <td>Paramétrage initial complexe qui nécessite des consultants</td>
-          </tr>
-          <tr>
-            <td>Analytics avancés avec tableaux de bord en temps réel</td>
-            <td>Performance parfois lente sur les gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Conformité réglementaire multi-pays intégrée</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur moderne et intuitive qui facilite l'adoption</td></tr><tr><td>Intégration native RH-Finance pour une vision unifiée des coûts</td></tr><tr><td>Analytics avancés avec tableaux de bord en temps réel</td></tr><tr><td>Conformité réglementaire multi-pays intégrée</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix prohibitif pour les entreprises moyennes</td></tr><tr><td>Paramétrage initial complexe qui nécessite des consultants</td></tr><tr><td>Performance parfois lente sur les gros volumes de données</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1242,7 +1049,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 2 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>
