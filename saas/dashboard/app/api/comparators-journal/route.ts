@@ -51,8 +51,12 @@ export async function GET() {
       // Date de première publication : dates.json (clé .html ou /index.html)
       const dEntry = dates[`${page}.html`] || dates[`${page}/index.html`]
       const dtObj = dEntry && typeof dEntry === 'object' ? dEntry : {}
-      const dtFull = String(dtObj.datetime || '')        // "2026-10-07T14:03" si connu
-      const date = String(dtObj.date || (dtFull ? dtFull.slice(0, 10) : ''))
+      // Date de CRÉATION (figée) en priorité : un redéploiement re-date le HTML
+      // (champ `datetime`/`date`) mais ne doit PAS faire remonter le comparateur
+      // dans le journal comme s'il venait d'être créé. Fallback sur l'ancien
+      // comportement pour les entrées pas encore backfillées.
+      const dtFull = String(dtObj.created || dtObj.datetime || '')   // "2026-10-07T14:03"
+      const date = dtFull ? dtFull.slice(0, 10) : String(dtObj.date || '')
       const time = dtFull.includes('T') ? dtFull.slice(11, 16) : ''   // "14:03" ou ''
       const title = (val as any).categorie || prettify(slug)
       const cat_parent = (val as any).cat_parent || ''
