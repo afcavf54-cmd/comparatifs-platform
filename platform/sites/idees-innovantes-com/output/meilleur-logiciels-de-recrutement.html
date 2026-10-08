@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des meilleurs logiciels de recrutement parmi 9 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Emma David" class="hero-author-avatar">
     <span>Rédigé par Emma David</span>
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Workable</strong> : le meilleur logiciel de recrutement pour équipes structurées</li>
-<li><strong>Flatchr</strong> : solution française idéale pour PME cherchant simplicité d'usage</li>
-<li><strong>Recruitee</strong> : plateforme collaborative parfaite pour startups avec budgets serrés</li>
-<li><strong>Teamtailor</strong> : outil complet pour entreprises voulant optimiser leur marque employeur</li>
-<li><strong>Taleez</strong> : logiciel accessible aux débutants sans expérience technique préalable</li>
+<li><strong>Workable</strong> :<br>le meilleur logiciel de recrutement pour équipes structurées</li>
+<li><strong>Flatchr</strong> :<br>solution française idéale pour PME cherchant simplicité d'usage</li>
+<li><strong>Recruitee</strong> :<br>plateforme collaborative parfaite pour startups avec budgets serrés</li>
+<li><strong>Teamtailor</strong> :<br>outil complet pour entreprises voulant optimiser leur marque employeur</li>
+<li><strong>Taleez</strong> :<br>logiciel accessible aux débutants sans expérience technique préalable</li>
 </ul>
   </div>
 
@@ -537,11 +537,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation approfondie</td></tr><tr><td>Collaboration fluide entre RH et managers opérationnels</td></tr><tr><td>Automatisation intelligente des tâches répétitives</td></tr><tr><td>Reporting détaillé sur les performances de recrutement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Intégrations limitées avec certains SIRH français</td></tr><tr><td>Fonctionnalités de sourcing moins poussées que les spécialistes</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -565,11 +565,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Base de données candidats enrichie avec sourcing intégré</td></tr><tr><td>Scoring automatique et filtres de recherche très précis</td></tr><tr><td>Workflows personnalisables pour chaque type de poste</td></tr><tr><td>Suivi des métriques de recrutement en temps réel</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petites équipes RH</td></tr><tr><td>Courbe d'apprentissage un peu longue au début</td></tr><tr><td>Interface parfois surchargée avec toutes les fonctionnalités</td></tr></tbody>
         </table>
       </div>
@@ -593,11 +593,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Scoring automatique des CV avec critères personnalisables</td></tr><tr><td>Interface collaborative permettant aux managers de suivre les recrutements</td></tr><tr><td>Intégration native avec LinkedIn, Indeed et principales jobboards</td></tr><tr><td>Rapports détaillés sur les performances de recrutement et sources de candidats</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés pour les petites structures (à partir de 99€/mois)</td></tr><tr><td>Paramétrage initial assez long pour bien exploiter toutes les fonctionnalités</td></tr><tr><td>Support client parfois lent à répondre en français</td></tr></tbody>
         </table>
       </div>
@@ -621,11 +621,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Diffusion automatique sur 500+ job boards</td></tr><tr><td>Parsing CV performant et scoring automatique</td></tr><tr><td>Interface intuitive pour les non-techniciens</td></tr><tr><td>Gestion multi-clients pour les cabinets</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding très chronophage</td></tr><tr><td>Support client parfois lent</td></tr><tr><td>Tarification qui monte vite avec le volume</td></tr></tbody>
         </table>
       </div>
@@ -649,11 +649,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec workflows 100% personnalisables selon les postes</td></tr><tr><td>Scoring automatique des candidats basé sur des critères métier précis</td></tr><tr><td>Intégrations natives avec tous les job boards et réseaux sociaux</td></tr><tr><td>Analytics poussées pour optimiser chaque étape du recrutement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé qui peut rebuter les PME (à partir de 6000$/an)</td></tr><tr><td>Courbe d'apprentissage assez raide pour les débutants en ATS</td></tr><tr><td>Support client parfois lent à répondre sur les questions techniques</td></tr></tbody>
         </table>
       </div>
@@ -677,11 +677,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec prise en main rapide</td></tr><tr><td>Sourcing automatisé depuis les principales plateformes</td></tr><tr><td>Collaboration efficace entre recruteurs avec système de notation</td></tr><tr><td>Intégrations natives avec les SIRH populaires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée des workflows de recrutement</td></tr><tr><td>Support client parfois lent à répondre</td></tr><tr><td>Tarification qui peut vite grimper avec les options avancées</td></tr></tbody>
         </table>
       </div>
@@ -705,11 +705,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive et moderne, prise en main rapide</td></tr><tr><td>Collaboration équipe très bien pensée avec scoring partagé</td></tr><tr><td>Pages carrières personnalisables sans développeur</td></tr><tr><td>Automatisation des relances candidats efficace</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Intégrations limitées avec les jobboards français</td></tr><tr><td>Reporting avancé peu développé</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -733,11 +733,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Diffusion automatique sur 15+ jobboards en un clic</td></tr><tr><td>Scoring intelligent des CV avec critères personnalisables</td></tr><tr><td>Interface française intuitive et support réactif</td></tr><tr><td>Prix transparent sans frais cachés sur les publications</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding un peu long pour maîtriser toutes les fonctions</td></tr><tr><td>Rapports analytiques basiques comparé à la concurrence</td></tr><tr><td>Intégrations limitées avec certains SIRH populaires</td></tr></tbody>
         </table>
       </div>
@@ -761,11 +761,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Scoring automatique des CV qui fait vraiment gagner du temps sur le tri initial</td></tr><tr><td>Collaboration équipe fluide avec attribution automatique des candidatures</td></tr><tr><td>Intégration native avec les principaux job boards français</td></tr><tr><td>Tableau de bord temps réel avec métriques de performance détaillées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lente lors des pics d'activité avec beaucoup de candidatures</td></tr><tr><td>Paramétrage initial complexe qui nécessite une formation dédiée</td></tr><tr><td>Tarification qui grimpe vite avec les modules complémentaires</td></tr></tbody>
         </table>
       </div>
@@ -1013,7 +1013,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 7 octobre 2026
+        © 2026 idees-innovantes.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

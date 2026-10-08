@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -509,11 +509,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Shell</strong> : idéale pour les flottes qui roulent beaucoup à l'international.</li>
-<li><strong>UTA Edenred</strong> : parfaite pour les transporteurs avec des besoins multi-pays complexes.</li>
-<li><strong>TotalEnergies</strong> : top pour les PME françaises qui veulent un réseau dense.</li>
-<li><strong>DKV Mobility</strong> : faite pour les flottes mixtes carburant et péages en Europe.</li>
-<li><strong>E.Leclerc</strong> : imbattable pour les petites structures qui cherchent le prix le plus bas.</li>
+    <li><strong>Shell</strong> :<br>idéale pour les flottes qui roulent beaucoup à l'international.</li>
+<li><strong>UTA Edenred</strong> :<br>parfaite pour les transporteurs avec des besoins multi-pays complexes.</li>
+<li><strong>TotalEnergies</strong> :<br>top pour les PME françaises qui veulent un réseau dense.</li>
+<li><strong>DKV Mobility</strong> :<br>faite pour les flottes mixtes carburant et péages en Europe.</li>
+<li><strong>E.Leclerc</strong> :<br>imbattable pour les petites structures qui cherchent le prix le plus bas.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs de cartes carburant pour entreprises</h2>
@@ -535,11 +535,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prix à la pompe souvent très compétitifs grâce au positionnement tarifaire E.Leclerc</td></tr><tr><td>Prise en main rapide, même pour une équipe non technique</td></tr><tr><td>Suivi des dépenses par véhicule accessible depuis l'espace client en ligne</td></tr><tr><td>Pas de frais d'abonnement élevés, adapté aux petits budgets</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réseau limité aux stations E.Leclerc, inutilisable sur autoroute ou en zone blanche</td></tr><tr><td>Reporting basique, aucune intégration comptable avancée ni export automatisé vers un ERP</td></tr><tr><td>Support client peu réactif dès que tu as un problème un peu spécifique</td></tr></tbody>
         </table>
       </div>
@@ -563,11 +563,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau accepteur très large, en France comme en Europe</td></tr><tr><td>Paramétrage fin des cartes par véhicule ou conducteur</td></tr><tr><td>Services additionnels intégrés : télépéage, lavage, parking</td></tr><tr><td>Exports comptables clairs et bien structurés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de gestion vieillissante, pas très intuitive au premier abord</td></tr><tr><td>Onboarding un peu lent, le support met parfois du temps à répondre</td></tr><tr><td>Moins pertinent pour les très petites flottes uniquement locales</td></tr></tbody>
         </table>
       </div>
@@ -591,11 +591,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Plafonds paramétrables par véhicule ou par conducteur</td></tr><tr><td>Alertes de transactions en temps réel</td></tr><tr><td>Exports compatibles avec les outils comptables courants</td></tr><tr><td>Tableau de bord lisible sans formation technique</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Application mobile moins aboutie que l'interface web</td></tr><tr><td>Onboarding long si tu veux exploiter toutes les options de contrôle</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
         </table>
       </div>
@@ -619,11 +619,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau d'acceptation très étendu, autoroutes incluses</td></tr><tr><td>Paramétrage des plafonds par véhicule ou par conducteur</td></tr><tr><td>Exports CSV exploitables directement en comptabilité</td></tr><tr><td>Prise en main rapide, même sans profil technique</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface web un peu vieillissante, navigation pas toujours intuitive</td></tr><tr><td>Support client parfois lent à répondre en cas de blocage</td></tr><tr><td>Reporting basique, insuffisant pour des analyses poussées</td></tr></tbody>
         </table>
       </div>
@@ -647,11 +647,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau de stations très couvert, pratique pour les flottes qui roulent beaucoup</td></tr><tr><td>Contrôle des dépenses par carte : plafonds, restrictions par type d'achat</td></tr><tr><td>Reporting clair et accessible, même pour une équipe non technique</td></tr><tr><td>Carte acceptée chez des partenaires au-delà des stations Shell</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification peu transparente à la souscription, attention aux frais cachés</td></tr><tr><td>Support client joignable mais les délais de réponse peuvent être longs</td></tr><tr><td>Options d'export des données limitées, peu de personnalisation des rapports</td></tr></tbody>
         </table>
       </div>
@@ -675,11 +675,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau européen étendu, utilisable dans de nombreux pays sans changer de carte</td></tr><tr><td>Contrôles fins par carte : blocage de certaines dépenses, restrictions horaires, plafonds</td></tr><tr><td>Reporting détaillé exportable par véhicule ou par conducteur</td></tr><tr><td>Adapté aux flottes avec des déplacements internationaux fréquents</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface back-office peu intuitive pour les équipes sans expérience en gestion de flotte</td></tr><tr><td>Support client parfois lent à répondre, documentation en français perfectible</td></tr><tr><td>Onboarding peu accompagné : on est souvent livré à soi-même au démarrage</td></tr></tbody>
         </table>
       </div>
@@ -703,11 +703,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau étendu en Europe, très utile pour les flottes itinérantes</td></tr><tr><td>Contrôle fin des dépenses par véhicule ou conducteur avec plafonds paramétrables</td></tr><tr><td>Exports comptables compatibles pour simplifier la réconciliation mensuelle</td></tr><tr><td>Gestion multi-pays sur une seule carte, sans avoir à multiplier les contrats</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Portail de gestion peu intuitif, la prise en main demande du temps</td></tr><tr><td>Support client parfois lent à répondre, ce qui peut bloquer en cas d'urgence sur le terrain</td></tr><tr><td>L'accès à l'API est réservé aux grandes structures, pas adapté aux petites flottes</td></tr></tbody>
         </table>
       </div>
@@ -731,11 +731,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau de stations très dense en France et en Europe</td></tr><tr><td>Paramétrage des plafonds et suivi en temps réel par véhicule</td></tr><tr><td>Reporting exportable pour la comptabilité</td></tr><tr><td>Acceptation dans les stations sur autoroute, pratique pour les grands déplacements</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface du portail de gestion peu intuitive, la prise en main prend du temps</td></tr><tr><td>Support client parfois lent à répondre</td></tr><tr><td>Moins adapté si tu cherches des outils poussés d'optimisation des coûts de flotte</td></tr></tbody>
         </table>
       </div>
@@ -819,11 +819,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 
 
-  <aside class="backlink-note">
-    <p>Pour approfondir le sujet, découvrez également
-<a href="https://www.essocard.com" target="_blank" rel="noopener">Esso Card</a>,
-un acteur reconnu de ce secteur.</p>
-  </aside>
 
 
 

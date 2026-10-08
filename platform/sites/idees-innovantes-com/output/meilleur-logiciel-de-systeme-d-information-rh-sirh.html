@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des meilleurs logiciels SIRH parmi 10 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Emma David" class="hero-author-avatar">
     <span>Rédigé par Emma David</span>
@@ -514,11 +514,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>PayFit</strong> : TPE/PME qui veulent automatiser la paie sans galères</li>
-<li><strong>Personio</strong> : équipes RH complètes cherchant un outil tout-en-un puissant</li>
-<li><strong>Lucca</strong> : entreprises françaises privilégiant conformité et support local réactif</li>
-<li><strong>Factorial</strong> : startups et PME avec budgets serrés mais besoins complets</li>
-<li><strong>Eurécia</strong> : structures traditionnelles voulant digitaliser progressivement leurs processus RH</li>
+<li><strong>PayFit</strong> :<br>TPE/PME qui veulent automatiser la paie sans galères</li>
+<li><strong>Personio</strong> :<br>équipes RH complètes cherchant un outil tout-en-un puissant</li>
+<li><strong>Lucca</strong> :<br>entreprises françaises privilégiant conformité et support local réactif</li>
+<li><strong>Factorial</strong> :<br>startups et PME avec budgets serrés mais besoins complets</li>
+<li><strong>Eurécia</strong> :<br>structures traditionnelles voulant digitaliser progressivement leurs processus RH</li>
 </ul>
   </div>
 
@@ -541,11 +541,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Paie française très complète avec mises à jour réglementaires automatiques</td></tr><tr><td>Modules RH intégrés (congés, formation, entretiens, notes de frais)</td></tr><tr><td>Paramétrage poussé pour s'adapter aux conventions collectives</td></tr><tr><td>Support Sage réactif et documentation fournie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillissante qui manque de modernité</td></tr><tr><td>Temps d'apprentissage long pour exploiter toutes les fonctionnalités</td></tr><tr><td>Coût élevé si on active tous les modules</td></tr></tbody>
         </table>
       </div>
@@ -569,11 +569,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface en français avec un support client réactif basé en France</td></tr><tr><td>Gestion des temps très complète avec pointeuses et calculs automatiques</td></tr><tr><td>Module formation intégré pour le suivi des compétences et obligations légales</td></tr><tr><td>Évolutivité réelle pour grandir de 50 à 500 salariés sans changer d'outil</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial assez lourd, il faut prévoir 2-3 semaines de configuration</td></tr><tr><td>Prix qui peut vite grimper avec les modules additionnels</td></tr><tr><td>Interface parfois lente sur les gros volumes de données</td></tr></tbody>
         </table>
       </div>
@@ -597,11 +597,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface utilisateur remarquablement ergonomique et intuitive</td></tr><tr><td>Modules interconnectés permettant une gestion fluide des workflows</td></tr><tr><td>Automatisation poussée des tâches administratives RH</td></tr><tr><td>Support client réactif avec accompagnement personnalisé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale parfois complexe pour les petites structures</td></tr><tr><td>Certains modules avancés nécessitent des compétences techniques</td></tr><tr><td>Tarification qui peut vite grimper selon les modules choisis</td></tr></tbody>
         </table>
       </div>
@@ -625,11 +625,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Prix transparent à partir de 4€ par employé par mois</td></tr><tr><td>Application mobile complète pour la gestion nomade</td></tr><tr><td>Intégrations natives avec les principaux outils comptables français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités de paie limitées pour les structures complexes</td></tr><tr><td>Support client parfois lent en français</td></tr><tr><td>Rapports analytiques moins poussés que les solutions premium</td></tr></tbody>
         </table>
       </div>
@@ -653,11 +653,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation complète de la paie avec calculs légaux français</td></tr><tr><td>Interface intuitive accessible aux non-spécialistes RH</td></tr><tr><td>Mises à jour réglementaires automatiques incluses</td></tr><tr><td>Onboarding digital complet pour nouveaux salariés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité aux entreprises françaises uniquement</td></tr><tr><td>Personnalisation réduite pour besoins spécifiques</td></tr><tr><td>Support parfois lent en période de forte activité</td></tr></tbody>
         </table>
       </div>
@@ -681,11 +681,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation IT-RH vraiment innovante (création comptes, provisioning matériel)</td></tr><tr><td>Interface moderne et intuitive, loin des SIRH traditionnels</td></tr><tr><td>Intégrations poussées avec +500 applications tierces</td></tr><tr><td>Gestion paie automatisée avec synchronisation bancaire</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Adaptation française encore imparfaite (conventions collectives, DSN)</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Support client parfois lent depuis l'Europe</td></tr></tbody>
         </table>
       </div>
@@ -709,11 +709,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment simple pour débuter</td></tr><tr><td>Gestion automatisée des taxes américaines</td></tr><tr><td>Onboarding employés fluide et rapide</td></tr><tr><td>Support client réactif en anglais</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Uniquement disponible aux États-Unis</td></tr><tr><td>Fonctionnalités RH limitées pour grandes structures</td></tr><tr><td>Pas d'intégrations avec logiciels comptables européens</td></tr></tbody>
         </table>
       </div>
@@ -737,11 +737,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment intuitive, formation des équipes en 2 semaines</td></tr><tr><td>Workflow d'onboarding entièrement automatisé avec génération de contrats</td></tr><tr><td>Gestion des congés avec validation hiérarchique et synchronisation Outlook</td></tr><tr><td>Support réactif en français avec vrais conseillers RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peu de personnalisation des tableaux de bord et rapports</td></tr><tr><td>Intégrations limitées avec les logiciels de paie français</td></tr><tr><td>Tarification qui grimpe vite avec les modules additionnels</td></tr></tbody>
         </table>
       </div>
@@ -765,11 +765,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment intuitive, prise en main rapide même pour les novices RH</td></tr><tr><td>Module recrutement intégré performant avec suivi candidats et planification entretiens</td></tr><tr><td>Onboarding automatisé qui simplifie l'arrivée des nouveaux employés</td></tr><tr><td>Support client réactif avec documentation complète en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification opaque avec nombreux modules payants non inclus dans l'offre de base</td></tr><tr><td>Personnalisation limitée des rapports et tableaux de bord</td></tr><tr><td>Intégrations comptables françaises perfectibles, notamment avec Sage</td></tr></tbody>
         </table>
       </div>
@@ -793,11 +793,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui facilite l'adoption par les équipes</td></tr><tr><td>Automations efficaces pour les tâches répétitives RH</td></tr><tr><td>Tableaux de bord visuels pour suivre les indicateurs clés</td></tr><tr><td>Intégrations nombreuses avec les outils existants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités RH limitées comparé à un vrai SIRH</td></tr><tr><td>Coût qui augmente rapidement avec les options avancées</td></tr><tr><td>Pas de module paie intégré ni de gestion réglementaire</td></tr></tbody>
         </table>
       </div>
@@ -1071,7 +1071,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 7 octobre 2026
+        © 2026 idees-innovantes.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

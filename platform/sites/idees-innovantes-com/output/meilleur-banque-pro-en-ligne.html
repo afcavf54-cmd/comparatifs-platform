@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Quel compte pro en ligne choisir ? Mon comparatif de 12 banques</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 12 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 12 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Emma David" class="hero-author-avatar">
     <span>Rédigé par Emma David</span>
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Qonto</strong> : parfait pour les équipes qui veulent tout automatiser</li>
-<li><strong>Shine</strong> : idéal pour freelances et micro-entreprises sans complications</li>
-<li><strong>Finom</strong> : excellent pour PME cherchant comptabilité intégrée complète</li>
-<li><strong>Indy</strong> : top pour indépendants voulant gérer factures facilement</li>
-<li><strong>Revolut Business</strong> : génial pour entreprises avec besoins internationaux fréquents</li>
+<li><strong>Qonto</strong> :<br>parfait pour les équipes qui veulent tout automatiser</li>
+<li><strong>Shine</strong> :<br>idéal pour freelances et micro-entreprises sans complications</li>
+<li><strong>Finom</strong> :<br>excellent pour PME cherchant comptabilité intégrée complète</li>
+<li><strong>Indy</strong> :<br>top pour indépendants voulant gérer factures facilement</li>
+<li><strong>Revolut Business</strong> :<br>génial pour entreprises avec besoins internationaux fréquents</li>
 </ul>
   </div>
 
@@ -539,11 +539,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile exceptionnelle, vraiment pensée pour l'usage quotidien</td></tr><tr><td>Facturation intégrée avec relances automatiques des impayés</td></tr><tr><td>Ouverture de compte express en moins de 15 minutes</td></tr><tr><td>Catégorisation automatique des transactions par IA</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Plafonds de transactions assez bas sur l'offre de base</td></tr><tr><td>Pas de chéquier disponible, problématique pour certains secteurs</td></tr><tr><td>Support client parfois lent aux heures de pointe</td></tr></tbody>
         </table>
       </div>
@@ -567,11 +567,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Frais de change très compétitifs pour les transactions internationales</td></tr><tr><td>Interface mobile intuitive et gestion multi-comptes simplifiée</td></tr><tr><td>Ouverture de compte 100% digitale en moins de 10 minutes</td></tr><tr><td>Cartes physiques et virtuelles illimitées avec contrôles granulaires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas d'autorisation de découvert, même temporaire</td></tr><tr><td>Support client parfois long à répondre en cas de problème</td></tr><tr><td>Fonctionnalités comptables basiques, nécessite un logiciel externe</td></tr></tbody>
         </table>
       </div>
@@ -595,11 +595,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation native avec les logiciels comptables français</td></tr><tr><td>Cartes virtuelles illimitées incluses dans l'abonnement</td></tr><tr><td>Interface multilingue adaptée aux entrepreneurs européens</td></tr><tr><td>Sous-comptes multiples pour séparer les flux financiers</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Frais cachés sur certaines opérations internationales</td></tr><tr><td>Support client parfois lent en français</td></tr><tr><td>Fonctionnalités comptables limitées comparé à un vrai logiciel</td></tr></tbody>
         </table>
       </div>
@@ -623,11 +623,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation native avec la plupart des logiciels comptables</td></tr><tr><td>Frais transparents sans commissions cachées sur les virements</td></tr><tr><td>Support client réactif avec conseillers dédiés</td></tr><tr><td>Validation des virements par SMS ou application mobile</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillotte comparée aux néobanques</td></tr><tr><td>Pas d'API ouverte pour les intégrations personnalisées</td></tr><tr><td>Délais de traitement encore longs le vendredi après-midi</td></tr></tbody>
         </table>
       </div>
@@ -651,11 +651,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sous-comptes illimités pour organiser sa trésorerie</td></tr><tr><td>Interface mobile intuitive et rapide</td></tr><tr><td>Virements instantanés inclus</td></tr><tr><td>Frais transparents sans mauvaises surprises</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Support client uniquement par chat</td></tr><tr><td>Virements internationaux limités et chers</td></tr><tr><td>Pas d'accompagnement conseil personnalisé</td></tr></tbody>
         </table>
       </div>
@@ -679,11 +679,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface moderne et intuitive, vraiment pensée pour l'usage quotidien</td></tr><tr><td>Intégration native avec la plupart des logiciels comptables du marché</td></tr><tr><td>Cartes virtuelles illimitées avec contrôle des plafonds en temps réel</td></tr><tr><td>Support client français réactif, même sur les comptes basiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés pour les petites structures (29€/mois minimum)</td></tr><tr><td>Frais bancaires qui s'accumulent vite sur les virements internationaux</td></tr><tr><td>Fonctionnalités avancées réservées aux forfaits premium uniquement</td></tr></tbody>
         </table>
       </div>
@@ -707,11 +707,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Aucun frais sur les virements SEPA et carte Visa Business gratuite</td></tr><tr><td>Application mobile très réactive avec notifications en temps réel</td></tr><tr><td>Ouverture de compte 100% en ligne en moins de 48h</td></tr><tr><td>Découvert autorisé négociable même pour les nouvelles entreprises</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas d'outils de facturation intégrés contrairement aux néobanques spécialisées</td></tr><tr><td>Support client parfois lent en période de forte affluence</td></tr><tr><td>Fonctionnalités limitées pour les sociétés avec plusieurs associés</td></tr></tbody>
         </table>
       </div>
@@ -735,11 +735,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native avec les outils comptables Fiducial</td></tr><tr><td>Synchronisation automatique des écritures bancaires</td></tr><tr><td>Accompagnement par le même interlocuteur banque et compta</td></tr><tr><td>Tarifs compétitifs sur les services de base</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Intérêt limité si vous n'êtes pas client comptabilité Fiducial</td></tr><tr><td>Interface vieillissante comparée aux néobanques</td></tr><tr><td>Gamme de services moins étoffée que les grandes banques</td></tr></tbody>
         </table>
       </div>
@@ -763,11 +763,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Ouverture de compte en moins de 10 minutes avec IBAN français immédiat</td></tr><tr><td>Application mobile intuitive sans fonctionnalités superflues</td></tr><tr><td>Virements instantanés et gratuits vers d'autres banques européennes</td></tr><tr><td>Support client réactif via chat avec des vraies personnes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucun service de financement ou crédit professionnel disponible</td></tr><tr><td>Fonctionnalités comptables limitées pour les entreprises complexes</td></tr><tr><td>Pas d'agences physiques si vous avez besoin de conseils en face à face</td></tr></tbody>
         </table>
       </div>
@@ -791,11 +791,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Ouverture de compte 100% digitale en quelques minutes</td></tr><tr><td>Frais transparents et compétitifs pour une banque en ligne</td></tr><tr><td>Catégorisation automatique des dépenses professionnelles</td></tr><tr><td>Application mobile intuitive pour la gestion quotidienne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Absence de conseiller dédié pour les projets complexes</td></tr><tr><td>Options de financement limitées par rapport aux banques traditionnelles</td></tr><tr><td>Peu de personnalisation des tableaux de bord et rapports</td></tr></tbody>
         </table>
       </div>
@@ -819,11 +819,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Ouverture de compte en 48h sans rendez-vous physique</td></tr><tr><td>Tarif fixe à 9€/mois avec carte Visa Business incluse</td></tr><tr><td>Application mobile complète avec virements 7j/7</td></tr><tr><td>IBAN français et support téléphonique disponible</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface qui change régulièrement et peut dérouter</td></tr><tr><td>Pas de découvert autorisé contrairement aux banques classiques</td></tr><tr><td>Fonctionnalités comptables basiques pour les entreprises complexes</td></tr></tbody>
         </table>
       </div>
@@ -847,11 +847,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation automatique avec la comptabilité Indy</td></tr><tr><td>Carte Mastercard incluse sans frais supplémentaires</td></tr><tr><td>Virements SEPA gratuits et illimités</td></tr><tr><td>Interface simplifiée pour les débutants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gamme de services bancaires limitée comparée aux néobanques spécialisées</td></tr><tr><td>Pas d'encaissement CB physique en magasin</td></tr><tr><td>Support client parfois lent en période de forte affluence</td></tr></tbody>
         </table>
       </div>
@@ -1137,7 +1137,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 7 octobre 2026
+        © 2026 idees-innovantes.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

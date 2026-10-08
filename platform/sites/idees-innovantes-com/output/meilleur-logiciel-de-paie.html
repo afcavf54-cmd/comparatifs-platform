@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des meilleurs logiciels de paie parmi 9 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Emma David" class="hero-author-avatar">
     <span>Rédigé par Emma David</span>
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>PayFit</strong> : idéal pour les PME qui veulent automatiser leur paie sans complication technique.</li>
-<li><strong>My Silae</strong> : parfait pour les entreprises cherchant un logiciel français avec support réactif.</li>
-<li><strong>Sage Business Cloud Paie</strong> : recommandé aux moyennes entreprises ayant des besoins de gestion avancés.</li>
-<li><strong>Cegid Payroll</strong> : adapté aux grandes structures nécessitant des fonctionnalités RH complètes et robustes.</li>
-<li><strong>Malibou</strong> : excellent choix pour les TPE privilégiant la simplicité et les tarifs compétitifs.</li>
+<li><strong>PayFit</strong> :<br>idéal pour les PME qui veulent automatiser leur paie sans complication technique.</li>
+<li><strong>My Silae</strong> :<br>parfait pour les entreprises cherchant un logiciel français avec support réactif.</li>
+<li><strong>Sage Business Cloud Paie</strong> :<br>recommandé aux moyennes entreprises ayant des besoins de gestion avancés.</li>
+<li><strong>Cegid Payroll</strong> :<br>adapté aux grandes structures nécessitant des fonctionnalités RH complètes et robustes.</li>
+<li><strong>Malibou</strong> :<br>excellent choix pour les TPE privilégiant la simplicité et les tarifs compétitifs.</li>
 </ul>
   </div>
 
@@ -539,11 +539,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main rapide sans formation poussée</td></tr><tr><td>Conformité réglementaire française irréprochable</td></tr><tr><td>Intégration native avec les autres logiciels EBP</td></tr><tr><td>Prix abordable pour les petites structures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillissante et peu ergonomique</td></tr><tr><td>Fonctionnalités limitées pour les cas de paie complexes</td></tr><tr><td>Pas d'application mobile digne de ce nom</td></tr></tbody>
         </table>
       </div>
@@ -567,11 +567,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Service client avec conseillers paie dédiés très compétents</td></tr><tr><td>Gestion complète des obligations légales et déclarations sociales</td></tr><tr><td>Plateforme stable même sur de gros volumes de bulletins</td></tr><tr><td>Accompagnement sur les restructurations et dossiers complexes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés qui excluent les très petites structures</td></tr><tr><td>Peu de personnalisation possible des processus internes</td></tr><tr><td>Dépendance totale au prestataire pour la moindre modification</td></tr></tbody>
         </table>
       </div>
@@ -595,11 +595,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calculs de paie fiables avec mise à jour automatique des taux légaux</td></tr><tr><td>Interface intuitive pour la gestion des variables et des absences</td></tr><tr><td>Édition automatique des bulletins conformes aux dernières normes</td></tr><tr><td>Support technique réactif avec une vraie expertise métier</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites structures avec peu de salariés</td></tr><tr><td>Paramétrage initial complexe qui nécessite une formation</td></tr><tr><td>Fonctionnalités RH limitées comparé à des solutions spécialisées</td></tr></tbody>
         </table>
       </div>
@@ -623,11 +623,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les non-spécialistes RH</td></tr><tr><td>DSN automatisée et conformité réglementaire à jour</td></tr><tr><td>Stockage sécurisé et archivage légal des bulletins</td></tr><tr><td>Support client réactif et disponible</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées pour les grosses structures</td></tr><tr><td>Personnalisation des rapports assez basique</td></tr><tr><td>Pas idéal pour les conventions collectives très spécifiques</td></tr></tbody>
         </table>
       </div>
@@ -651,11 +651,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface moderne et ergonomique qui évite les menus à rallonge</td></tr><tr><td>Automatisation poussée des bulletins avec gestion des variables de paie</td></tr><tr><td>Module congés et absences intégré avec validation hiérarchique</td></tr><tr><td>Synchronisation bancaire pour le virement des salaires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial complexe pour les conventions collectives spécifiques</td></tr><tr><td>Support client parfois lent à répondre en français</td></tr><tr><td>Quelques bugs sur l'export comptable vers certains logiciels</td></tr></tbody>
         </table>
       </div>
@@ -679,11 +679,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation complète des déclarations sociales (DSN, Urssaf, caisses)</td></tr><tr><td>Interface intuitive même pour les non-spécialistes de la paie</td></tr><tr><td>Calcul automatique des congés payés et RTT avec gestion des soldes</td></tr><tr><td>Support réactif avec des vrais conseillers paie (pas que du chatbot)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification qui grimpe vite avec les options (variables, primes complexes)</td></tr><tr><td>Gestion limitée des cas atypiques (expatriés, statuts particuliers)</td></tr><tr><td>Personnalisation des bulletins assez restreinte pour l'image de marque</td></tr></tbody>
         </table>
       </div>
@@ -707,11 +707,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration parfaite avec l'écosystème Lucca (congés, notes de frais)</td></tr><tr><td>Interface intuitive pour les non-experts comptables</td></tr><tr><td>Mise à jour automatique des taux de cotisations</td></tr><tr><td>Support réactif avec des vrais experts paie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées pour les besoins spécifiques</td></tr><tr><td>Tarification qui grimpe vite avec les modules additionnels</td></tr><tr><td>Quelques bugs sur l'export des variables de paie complexes</td></tr></tbody>
         </table>
       </div>
@@ -735,11 +735,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Moteur de calcul très fiable pour les paies complexes</td></tr><tr><td>Automatisation complète des déclarations sociales</td></tr><tr><td>Interface moderne et ergonomique</td></tr><tr><td>Support technique réactif avec expertise métier</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Paramétrage initial long et technique</td></tr><tr><td>Overkill pour les entreprises avec paies simples</td></tr></tbody>
         </table>
       </div>
@@ -763,11 +763,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Calculs automatiques des charges sociales avec mise à jour réglementaire</td></tr><tr><td>Dématérialisation complète des bulletins avec coffre-fort numérique</td></tr><tr><td>Support réactif avec des vrais experts paie au téléphone</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée pour les entreprises avec des besoins très spécifiques</td></tr><tr><td>Quelques lenteurs lors des pics de traitement en fin de mois</td></tr><tr><td>Prix qui peut grimper rapidement avec les modules complémentaires</td></tr></tbody>
         </table>
       </div>
@@ -1033,7 +1033,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 7 octobre 2026
+        © 2026 idees-innovantes.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>
