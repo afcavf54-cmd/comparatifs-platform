@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des meilleurs logiciels de gestion des talents parmi 10 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -511,12 +511,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>BambooHR</strong> : interface intuitive, idéal TPE</li>
-<li><strong>Workday</strong> : solution complète mais coûteuse</li>
-<li><strong>Cornerstone OnDemand</strong> : parfait grandes entreprises</li>
-<li><strong>SAP SuccessFactors</strong> : robuste, nécessite formation</li>
-<li><strong>Zoho People</strong> : économique, fonctionnalités essentielles</li>
-<li><strong>Sage People</strong> : équilibre prix-performances optimal</li>
+<li><strong>BambooHR</strong> :<br>interface intuitive, idéal TPE</li>
+<li><strong>Workday</strong> :<br>solution complète mais coûteuse</li>
+<li><strong>Cornerstone OnDemand</strong> :<br>parfait grandes entreprises</li>
+<li><strong>SAP SuccessFactors</strong> :<br>robuste, nécessite formation</li>
+<li><strong>Zoho People</strong> :<br>économique, fonctionnalités essentielles</li>
+<li><strong>Sage People</strong> :<br>équilibre prix-performances optimal</li>
 </ul>
   </div>
 
@@ -543,11 +543,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-intuitive qui ne nécessite aucune formation</td></tr><tr><td>Cartographie automatique des compétences par équipe et département</td></tr><tr><td>Recommandations de formation personnalisées basées sur l'IA</td></tr><tr><td>Tableaux de bord managers avec suivi des progressions en un coup d'œil</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue de formations externe limité comparé aux gros acteurs</td></tr><tr><td>Pas d'intégration native avec tous les SIRH du marché</td></tr><tr><td>Fonctionnalités avancées de reporting encore perfectibles</td></tr></tbody>
         </table>
       </div>
@@ -575,11 +575,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface manager ultra-intuitive, même pour les non-RH</td></tr><tr><td>Workflows d'évaluation paramétrable en quelques clics</td></tr><tr><td>Tableaux de bord visuels avec indicateurs clés de performance</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Module de formation assez basique comparé aux spécialistes</td></tr><tr><td>Reporting avancé limité pour les grandes structures</td></tr><tr><td>Pas de gestion des compétences métier très poussée</td></tr></tbody>
         </table>
       </div>
@@ -607,11 +607,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Suite complète qui évite la multiplication d'outils</td></tr><tr><td>IA pour recommandations de formation personnalisées</td></tr><tr><td>Modules de planification de succession avancés</td></tr><tr><td>Reporting détaillé avec analytics prédictifs</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface complexe qui décourage les nouveaux utilisateurs</td></tr><tr><td>Coût élevé peu adapté aux PME</td></tr><tr><td>Paramétrage initial long et technique</td></tr></tbody>
         </table>
       </div>
@@ -639,11 +639,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration parfaite avec l'écosystème SAP existant</td></tr><tr><td>Modules de gestion des performances très configurables</td></tr><tr><td>Analytics RH poussés avec tableaux de bord personnalisables</td></tr><tr><td>Support multilingue et conformité réglementaire internationale</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface utilisateur complexe peu intuitive pour les managers</td></tr><tr><td>Coût de mise en œuvre et de maintenance très élevé</td></tr><tr><td>Nécessite une équipe technique dédiée pour la configuration</td></tr></tbody>
         </table>
       </div>
@@ -671,11 +671,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation poussée des tâches RH répétitives</td></tr><tr><td>Interface intuitive nécessitant peu de formation</td></tr><tr><td>Intégrations natives avec les principaux jobboards</td></tr><tr><td>Workflows personnalisables selon les métiers</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées pour les grands comptes</td></tr><tr><td>Reporting analytique moins poussé que les leaders du marché</td></tr><tr><td>Support client parfois lent en période de forte activité</td></tr></tbody>
         </table>
       </div>
@@ -703,11 +703,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Système de feedback 360° vraiment bien pensé</td></tr><tr><td>Intégration native avec Slack et Microsoft Teams</td></tr><tr><td>Templates d'entretiens personnalisables selon les postes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Fonctionnalités de reporting limitées</td></tr><tr><td>Pas de version française disponible</td></tr></tbody>
         </table>
       </div>
@@ -735,11 +735,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui facilite l'adoption par les managers non-RH</td></tr><tr><td>Couverture complète du cycle de vie des talents (recrutement à mobilité)</td></tr><tr><td>Référentiels de compétences personnalisables selon les métiers</td></tr><tr><td>Reporting avancé pour piloter la stratégie RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Temps de déploiement assez long pour les grandes organisations</td></tr><tr><td>Prix élevé qui peut freiner les PME</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités</td></tr></tbody>
         </table>
       </div>
@@ -767,11 +767,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Prix abordable pour les PME comparé aux solutions enterprise</td></tr><tr><td>Support client réactif basé en France</td></tr><tr><td>Déploiement rapide en moins d'une semaine</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour les grandes entreprises</td></tr><tr><td>Pas d'intégration avec certains SIRH spécialisés</td></tr><tr><td>Reporting avancé encore perfectible</td></tr></tbody>
         </table>
       </div>
@@ -799,11 +799,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native avec Oracle HCM Cloud et les systèmes d'information existants</td></tr><tr><td>Modules de succession planning et identification des talents très sophistiqués</td></tr><tr><td>Capacités de reporting et analytics RH poussées avec tableaux de bord personnalisables</td></tr><tr><td>Gestion des performances avec workflows configurables et évaluations 360°</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Complexité d'implémentation importante, nécessite souvent un accompagnement externe</td></tr><tr><td>Interface utilisateur perfectible, moins intuitive que les solutions récentes</td></tr><tr><td>Coût global élevé incluant licences, formation et maintenance sur le long terme</td></tr></tbody>
         </table>
       </div>
@@ -831,11 +831,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface utilisateur moderne et intuitive qui facilite l'adoption</td></tr><tr><td>Intégration native RH-Finance pour une vision unifiée des coûts</td></tr><tr><td>Analytics avancés avec tableaux de bord en temps réel</td></tr><tr><td>Conformité réglementaire multi-pays intégrée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix prohibitif pour les entreprises moyennes</td></tr><tr><td>Paramétrage initial complexe qui nécessite des consultants</td></tr><tr><td>Performance parfois lente sur les gros volumes de données</td></tr></tbody>
         </table>
       </div>
@@ -1059,7 +1059,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

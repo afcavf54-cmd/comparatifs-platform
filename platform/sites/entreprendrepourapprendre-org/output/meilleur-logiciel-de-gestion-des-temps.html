@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparatif des meilleurs logiciels de gestion des temps</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive que les équipes adoptent rapidement</td></tr><tr><td>Workflows personnalisables selon les métiers et services</td></tr><tr><td>Gestion centralisée congés, absences et planning</td></tr><tr><td>Support client réactif avec une vraie expertise RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités analytiques limitées pour les grandes structures</td></tr><tr><td>Intégrations avec certains logiciels de paie perfectibles</td></tr><tr><td>Prix qui grimpe vite avec les modules complémentaires</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive adoptée rapidement par les équipes</td></tr><tr><td>Conformité parfaite au droit du travail français</td></tr><tr><td>Application mobile performante pour le badgeage à distance</td></tr><tr><td>Intégration native avec les principaux logiciels de paie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les très petites structures</td></tr><tr><td>Fonctionnalités de reporting limitées comparé à la concurrence</td></tr><tr><td>Pas d'intelligence artificielle pour l'optimisation des plannings</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile vraiment pensée pour les équipes terrain</td></tr><tr><td>Gestion automatique des remplacements et échanges d'horaires</td></tr><tr><td>Intégration native avec les principaux logiciels de paie</td></tr><tr><td>Notifications intelligentes qui évitent les absences imprévues</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites structures (moins de 10 employés)</td></tr><tr><td>Fonctionnalités avancées de reporting limitées comparé à la concurrence</td></tr><tr><td>Courbe d'apprentissage importante pour les managers peu tech</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration automatique avec les outils créatifs (Figma, Adobe, Slack)</td></tr><tr><td>Interface pensée pour les workflows d'agence</td></tr><tr><td>Facturation directe depuis les temps trackés</td></tr><tr><td>Rapports visuels adaptés aux présentations clients</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Courbe d'apprentissage importante au démarrage</td></tr><tr><td>Fonctionnalités limitées hors secteur créatif</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Version gratuite très complète avec tracking illimité</td></tr><tr><td>Interface intuitive et rapide à prendre en main</td></tr><tr><td>Rapports détaillés avec exports multiples (PDF, Excel, CSV)</td></tr><tr><td>Intégrations natives avec plus de 80 outils (Trello, Asana, Google Calendar)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées de budgeting limitées en gratuit</td></tr><tr><td>Application mobile parfois lente sur Android</td></tr><tr><td>Pas de reconnaissance automatique d'activité comme certains concurrents</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile intuitive avec géolocalisation précise</td></tr><tr><td>Exports automatisés vers les systèmes de paie</td></tr><tr><td>Gestion multi-sites simplifiée</td></tr><tr><td>Notifications en temps réel pour les retards</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix qui grimpe vite avec les modules additionnels</td></tr><tr><td>Personnalisation limitée des rapports avancés</td></tr><tr><td>Pas adapté aux très grandes entreprises de plus de 500 employés</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-intuitive avec démarrage de chrono en un clic</td></tr><tr><td>Rapports automatiques avec export PDF et Excel</td></tr><tr><td>Applications mobiles vraiment pratiques pour tracker en déplacement</td></tr><tr><td>Détection d'inactivité qui rappelle d'arrêter le chrono</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de gestion budgétaire avancée</td></tr><tr><td>Fonctionnalités projet limitées par rapport à des outils dédiés</td></tr><tr><td>Version gratuite bridée à 5 utilisateurs maximum</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Planification automatique basée sur l'activité prévisionnelle</td></tr><tr><td>Échange de créneaux entre salariés via l'app mobile</td></tr><tr><td>Calcul en temps réel du coût de la main d'œuvre</td></tr><tr><td>Interface intuitive même pour les non-techniciens</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif élevé pour les petites structures de moins de 20 salariés</td></tr><tr><td>Paramétrage initial complexe pour les entreprises multi-sites</td></tr><tr><td>Pas d'intégration native avec tous les logiciels de paie du marché</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Timer intuitif avec synchronisation temps réel sur tous les devices</td></tr><tr><td>Facturation automatique intégrée avec calculs de TVA</td></tr><tr><td>Rapports détaillés par client et projet exportables</td></tr><tr><td>Application mobile vraiment fonctionnelle pour traquer en déplacement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif qui grimpe vite dès qu'on dépasse 2 utilisateurs</td></tr><tr><td>Manque d'options avancées pour le suivi de projets complexes</td></tr><tr><td>Intégrations limitées comparé à des concurrents comme Toggl</td></tr></tbody>
         </table>
       </div>
@@ -1036,7 +1036,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

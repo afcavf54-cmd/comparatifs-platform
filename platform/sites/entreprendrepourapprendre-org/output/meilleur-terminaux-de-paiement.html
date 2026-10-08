@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparateur de terminaux de paiement après 8 essais</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -542,11 +542,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Tarification transparente avec un taux unique et fixe, sans frais cachés ni surprises sur la facture mensuelle</td></tr><tr><td>Installation ultra-rapide et prise en main intuitive, idéale pour les commerçants non techniques</td></tr><tr><td>Acceptation de tous les moyens de paiement modernes : cartes, NFC, Apple Pay et Google Pay</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Disponibilité géographique encore limitée, principalement déployé dans les pays nordiques et quelques marchés européens</td></tr><tr><td>Fonctionnalités analytiques et de gestion back-office moins avancées que certains concurrents bien établis</td></tr></tbody>
         </table>
       </div>
@@ -577,11 +577,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Aucun frais fixe mensuel, seulement 2,65% par transaction</td></tr><tr><td>Installation ultra-rapide en 10 minutes sur smartphone ou tablette</td></tr><tr><td>Synchronisation automatique des ventes avec reporting en temps réel</td></tr><tr><td>Accepte tous les moyens de paiement : cartes, contactless, Apple Pay, Google Pay</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commission de 2,65% élevée pour les gros volumes de ventes</td></tr><tr><td>Dépendant de la connexion internet du smartphone pour fonctionner</td></tr><tr><td>Pas de terminal autonome, obligé de passer par l'application mobile</td></tr></tbody>
         </table>
       </div>
@@ -609,11 +609,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Installation en 5 minutes sans banque traditionnelle</td></tr><tr><td>Frais fixes de 2,75% sans abonnement caché</td></tr><tr><td>Batterie qui tient vraiment une journée complète</td></tr><tr><td>Synchronisation automatique avec l'app mobile</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Écran parfois difficile à lire en plein soleil</td></tr><tr><td>Connexion Bluetooth qui décroche occasionnellement</td></tr><tr><td>Pas de fonction caisse enregistreuse avancée</td></tr></tbody>
         </table>
       </div>
@@ -641,11 +641,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Installation en 10 minutes sans banque</td></tr><tr><td>Aucun abonnement mensuel fixe</td></tr><tr><td>Fonctionne avec n'importe quel smartphone</td></tr><tr><td>Écran tactile couleur réactif et intuitif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commission élevée pour gros volumes</td></tr><tr><td>Autonomie limitée à 200 transactions</td></tr><tr><td>Pas de reçu papier intégré</td></tr></tbody>
         </table>
       </div>
@@ -673,11 +673,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Terminal portable ultra-compact qui tient dans une poche</td></tr><tr><td>Connexion WiFi et 4G intégrée sans abonnement supplémentaire</td></tr><tr><td>Application mobile complète pour suivi des ventes et gestion</td></tr><tr><td>Accepte tous types de paiements contactless et mobiles</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Autonomie limitée à une journée d'utilisation intensive</td></tr><tr><td>Écran parfois difficile à lire en plein soleil</td></tr><tr><td>Frais de transaction plus élevés que les solutions fixes</td></tr></tbody>
         </table>
       </div>
@@ -705,11 +705,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Frais de transaction compétitifs entre 0,8% et 1,2%</td></tr><tr><td>Encaissement instantané sur le compte Revolut Business</td></tr><tr><td>Configuration rapide via l'application mobile</td></tr><tr><td>Accepte tous les modes de paiement modernes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Connexion Bluetooth parfois instable</td></tr><tr><td>Limité aux comptes Revolut Business uniquement</td></tr><tr><td>Aucune fonction de gestion avancée intégrée</td></tr></tbody>
         </table>
       </div>
@@ -737,11 +737,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Aucun abonnement mensuel, tarif à l'usage uniquement</td></tr><tr><td>Autonomie de 7 jours en utilisation normale</td></tr><tr><td>Activation rapide en 48h maximum</td></tr><tr><td>Compatible avec tous les smartphones via Bluetooth</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Plafond sans contact limité à 50 euros obligatoirement</td></tr><tr><td>Connexions Bluetooth parfois instables</td></tr><tr><td>Application mobile très basique niveau reporting</td></tr></tbody>
         </table>
       </div>
@@ -769,11 +769,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration API simple et rapide</td></tr><tr><td>Tarification transparente sans frais cachés</td></tr><tr><td>Validation des comptes en 24h maximum</td></tr><tr><td>Dashboard clair pour le suivi des transactions</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Documentation technique incomplète</td></tr><tr><td>Fonctionnalités avancées limitées</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
         </table>
       </div>
@@ -1084,7 +1084,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

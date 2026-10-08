@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai évalué 8 logiciels de gestion des congés et absences : mon comparatif</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native dans Teams et Slack sans formation</td></tr><tr><td>Traitement automatique des demandes par intelligence artificielle</td></tr><tr><td>Configuration des règles métier personnalisées en quelques clics</td></tr><tr><td>Tableaux de bord temps réel pour managers et RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité aux utilisateurs de Microsoft Teams ou Slack</td></tr><tr><td>Paramétrage initial complexe pour les règles avancées</td></tr><tr><td>Pas d'application mobile dédiée</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration paie automatique qui évite les erreurs de calcul</td></tr><tr><td>Workflow de validation intelligent avec remontée hiérarchique</td></tr><tr><td>Application mobile intuitive pour les équipes terrain</td></tr><tr><td>Alertes automatiques sur les soldes de congés et seuils critiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les très petites entreprises de moins de 10 salariés</td></tr><tr><td>Paramétrage initial complexe qui nécessite du temps de formation</td></tr><tr><td>Fonctionnalités avancées parfois trop poussées pour des besoins simples</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native avec tous les outils Zoho (CRM, Projects, Books)</td></tr><tr><td>Configuration très poussée des types de congés et règles métier</td></tr><tr><td>Validation multi-niveaux avec notifications automatiques</td></tr><tr><td>Tableau de bord visual pour anticiper les conflits de planning</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lente avec de gros volumes de données</td></tr><tr><td>Fonctionnalités limitées si on n'utilise pas d'autres produits Zoho</td></tr><tr><td>Rapports d'analyse moins détaillés que des solutions spécialisées</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les managers peu à l'aise avec le digital</td></tr><tr><td>Notifications automatiques qui accélérent vraiment les validations</td></tr><tr><td>Intégration native avec la paie et les plannings d'équipe</td></tr><tr><td>Rapports détaillés sur les tendances d'absences par service</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé si vous ne voulez que la gestion des congés</td></tr><tr><td>Configuration initiale complexe pour les petites structures</td></tr><tr><td>Certaines fonctionnalités avancées nécessitent une formation</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Calcul automatique des soldes selon les conventions collectives</td></tr><tr><td>Intégration complète paie et gestion RH</td></tr><tr><td>Application mobile vraiment pratique pour les demandes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial assez complexe pour les règles spécifiques</td></tr><tr><td>Support client parfois lent en français</td></tr><tr><td>Rapports limités par rapport aux outils spécialisés</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface 100% en français avec terminologie RH locale</td></tr><tr><td>Calculs automatiques des droits selon la convention collective</td></tr><tr><td>Intégration native avec les principaux logiciels de paie français</td></tr><tr><td>Application mobile vraiment fonctionnelle pour les validations</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification qui grimpe vite avec les modules complémentaires</td></tr><tr><td>Paramétrages initiaux assez longs pour les grandes structures</td></tr><tr><td>Reporting limité comparé aux solutions enterprise</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile vraiment réactive pour les demandes en déplacement</td></tr><tr><td>Validation des congés en 2 clics avec notifications automatiques</td></tr><tr><td>Calcul automatique des soldes RTT et congés payés</td></tr><tr><td>Prix accessible pour les PME avec facturation au nombre d'utilisateurs</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée pour les entreprises aux process très spécifiques</td></tr><tr><td>Pas d'intégration native avec certains logiciels de paie anciens</td></tr><tr><td>Fonctionnalités de reporting assez basiques comparé à des solutions premium</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Approbation des demandes directement par email</td></tr><tr><td>Gestion automatique des soldes et reports de congés</td></tr><tr><td>Planning visuel en temps réel pour toute l'équipe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées pour les grandes entreprises</td></tr><tr><td>Pas d'intégration native avec tous les logiciels de paie</td></tr><tr><td>Fonctionnalités RH avancées absentes</td></tr></tbody>
         </table>
       </div>
@@ -978,7 +978,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

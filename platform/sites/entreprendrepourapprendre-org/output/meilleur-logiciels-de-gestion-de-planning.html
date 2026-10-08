@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparateur des logiciels de gestion de planning les plus populaires</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra flexible qui s'adapte à tous types de projets et métiers</td></tr><tr><td>Automatisations puissantes pour éliminer les tâches répétitives</td></tr><tr><td>Collaboration en temps réel avec commentaires et mentions</td></tr><tr><td>Plus de 40 intégrations natives avec les outils populaires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix qui grimpe vite avec les utilisateurs et fonctionnalités avancées</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter tout le potentiel</td></tr><tr><td>Interface parfois trop chargée qui peut perdre les débutants</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intelligence artificielle qui optimise automatiquement les affectations selon les compétences</td></tr><tr><td>Intégration native avec toute la suite RH (paie, formation, évaluations)</td></tr><tr><td>Analytics prédictives pour anticiper les besoins en ressources</td></tr><tr><td>Workflows de validation complexes adaptés aux grandes structures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix prohibitif pour les PME (plusieurs dizaines de milliers d'euros)</td></tr><tr><td>Complexité de paramétrage qui nécessite des consultants spécialisés</td></tr><tr><td>Temps d'implémentation très long (6 à 18 mois minimum)</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface simple et adoption rapide par les équipes</td></tr><tr><td>Système d'échange de shifts entre employés très fluide</td></tr><tr><td>Notifications push efficaces pour les changements de planning</td></tr><tr><td>Calcul automatique des heures et coûts de main-d'œuvre</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée pour des besoins complexes</td></tr><tr><td>Peu d'intégrations avec les systèmes de paie français</td></tr><tr><td>Tarification qui grimpe vite avec les options avancées</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Échange de postes simplifié entre employés</td></tr><tr><td>Calcul automatique des coûts de main-d'œuvre</td></tr><tr><td>App mobile vraiment bien conçue pour le terrain</td></tr><tr><td>Gestion des congés et disponibilités intégrée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites équipes</td></tr><tr><td>Surdimensionné pour les plannings fixes</td></tr><tr><td>Interface parfois lente sur les gros volumes</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui reste lisible même avec de nombreux projets</td></tr><tr><td>Automatisations avancées pour réduire les tâches répétitives</td></tr><tr><td>Vues multiples adaptées aux différents profils d'équipe</td></tr><tr><td>Intégrations natives avec la plupart des outils métier</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage importante pour exploiter tout le potentiel</td></tr><tr><td>Version gratuite très limitée en fonctionnalités de reporting</td></tr><tr><td>Prix qui grimpe vite dès qu'on veut des fonctionnalités avancées</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-intuitive avec drag & drop fluide</td></tr><tr><td>Vues multiples : timeline, Kanban, calendrier</td></tr><tr><td>Synchronisation automatique avec Toggl Track</td></tr><tr><td>Gestion des vacances et congés intégrée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting limité comparé à Microsoft Project</td></tr><tr><td>Pas de gestion budgétaire avancée</td></tr><tr><td>Fonctionnalités de collaboration basiques</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Gestion efficace des rotations et équipes postées</td></tr><tr><td>Suivi des absences et congés intégré naturellement</td></tr><tr><td>Reporting automatique sur la charge de travail</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées pour les besoins très spécifiques</td></tr><tr><td>Manque d'intégration native avec certains SIRH</td></tr><tr><td>Fonctionnalités de gestion de projet assez basiques</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calcul automatique des coûts de personnel en temps réel</td></tr><tr><td>Interface mobile intuitive pour les équipes terrain</td></tr><tr><td>Gestion native des contraintes légales du code du travail</td></tr><tr><td>Intégration directe avec les logiciels de caisse</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Fonctionnalités limitées hors gestion de planning</td></tr><tr><td>Courbe d'apprentissage importante pour les managers</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion fine des compétences par poste de travail</td></tr><tr><td>Interface familière pour les managers de terrain</td></tr><tr><td>Synchronisation avec les systèmes de caisse</td></tr><tr><td>Respect automatique des règles du droit du travail</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Inadapté aux équipes en télétravail</td></tr><tr><td>Interface un peu datée visuellement</td></tr><tr><td>Fonctionnalités limitées hors secteur commerce</td></tr></tbody>
         </table>
       </div>
@@ -832,11 +832,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calcul automatique des coûts de personnel selon les barèmes et heures supplémentaires</td></tr><tr><td>Gestion native multi-sites avec synchronisation temps réel</td></tr><tr><td>Intégration directe avec les systèmes de paie (ADP, QuickBooks, Xero)</td></tr><tr><td>Application mobile robuste avec géolocalisation et pointage photo</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lourde qui demande une formation pour les nouveaux utilisateurs</td></tr><tr><td>Tarification qui grimpe rapidement avec le nombre d'employés</td></tr><tr><td>Support client uniquement en anglais malgré une interface traduite</td></tr></tbody>
         </table>
       </div>
@@ -1056,7 +1056,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

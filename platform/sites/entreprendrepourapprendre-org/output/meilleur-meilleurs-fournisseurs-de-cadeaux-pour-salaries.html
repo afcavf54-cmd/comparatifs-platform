@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé les 10 fournisseurs de cadeaux pour salariés, mon analyse</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>CadoMaestro Pro</strong> : idéal pour les TPE qui veulent tout gérer en un seul endroit.</li>
-<li><strong>Vegea</strong> : parfait si vous misez sur des cadeaux éco-responsables et engagés.</li>
-<li><strong>Cadoétik</strong> : recommandé pour les équipes qui veulent personnaliser chaque cadeau facilement.</li>
-<li><strong>Maxilia</strong> : adapté aux petites structures avec un budget serré à respecter.</li>
-<li><strong>ObjetRAMA</strong> : convient aux commandes volumineuses avec des délais courts.</li>
+    <li><strong>CadoMaestro Pro</strong> :<br>idéal pour les TPE qui veulent tout gérer en un seul endroit.</li>
+<li><strong>Vegea</strong> :<br>parfait si vous misez sur des cadeaux éco-responsables et engagés.</li>
+<li><strong>Cadoétik</strong> :<br>recommandé pour les équipes qui veulent personnaliser chaque cadeau facilement.</li>
+<li><strong>Maxilia</strong> :<br>adapté aux petites structures avec un budget serré à respecter.</li>
+<li><strong>ObjetRAMA</strong> :<br>convient aux commandes volumineuses avec des délais courts.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs de cadeaux pour salariés</h2>
@@ -536,11 +536,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Commande groupée avec envoi par email : zéro logistique physique à gérer</td></tr><tr><td>Le salarié choisit lui-même son cadeau parmi les options du coffret</td></tr><tr><td>Catalogue varié couvrant gastronomie, bien-être et loisirs</td></tr><tr><td>Interface suffisamment rapide pour ne pas perdre une demi-journée à configurer une commande</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Coût unitaire moins avantageux pour les très petites commandes</td></tr><tr><td>Navigation dans l'espace de gestion pas toujours claire, j'ai perdu du temps au moment de valider</td></tr><tr><td>Support client difficile à joindre rapidement si un bon ne s'active pas côté salarié</td></tr></tbody>
         </table>
       </div>
@@ -564,11 +564,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Petites quantités acceptées, idéal pour une TPE</td></tr><tr><td>Aperçu en ligne avec son logo avant de valider la commande</td></tr><tr><td>Catalogue large couvrant plusieurs catégories de cadeaux</td></tr><tr><td>Livraison conforme et dans des délais corrects</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Les délais de production ne sont pas toujours clairement affichés</td></tr><tr><td>Catalogue un peu standard, peu d'options vraiment originales</td></tr><tr><td>Le support client n'est pas joignable facilement en cas de question urgente</td></tr></tbody>
         </table>
       </div>
@@ -592,11 +592,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Positionnement éco-responsable crédible, avec traçabilité des produits</td></tr><tr><td>Accompagnement humain à la commande, pas juste un tunnel e-commerce froid</td></tr><tr><td>Catalogue curaté qui évite la surcharge de choix</td></tr><tr><td>Cohérence forte pour les entreprises soucieuses de leur image</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais de production plus longs que la moyenne, il faut anticiper</td></tr><tr><td>Gamme moins large que les fournisseurs généralistes, certains besoins spécifiques ne sont pas couverts</td></tr><tr><td>Tarifs un peu au-dessus du marché classique, le positionnement premium se ressent sur la facture</td></tr></tbody>
         </table>
       </div>
@@ -620,11 +620,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau d'enseignes large et reconnu, les salariés apprennent vite à utiliser la carte</td></tr><tr><td>Gestion en ligne centralisée, commande rapide même pour une petite équipe</td></tr><tr><td>Conformité URSSAF facilitée, ce qui évite des allers-retours avec le comptable</td></tr><tr><td>Présentation soignée du cadeau côté bénéficiaire, l'effet est professionnel</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de gestion parfois peu intuitive, prévoir un temps d'adaptation</td></tr><tr><td>Peu adapté si on veut valoriser des commerces locaux ou des artisans</td></tr></tbody>
         </table>
       </div>
@@ -648,11 +648,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Personnalisation visuelle poussée avec logo et charte graphique</td></tr><tr><td>Catalogue très large d'objets publicitaires adaptés aux cadeaux salariés</td></tr><tr><td>Bon à tirer inclus, ce qui évite les mauvaises surprises à la livraison</td></tr><tr><td>Cohérent pour les entreprises qui veulent renforcer leur image de marque même dans les cadeaux</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue trop dense, la navigation prend du temps avant de trouver le bon produit</td></tr><tr><td>Délais de production incompressibles, impossible de commander en urgence</td></tr><tr><td>Moins adapté si on cherche un cadeau immatériel ou à valeur d'usage immédiat</td></tr></tbody>
         </table>
       </div>
@@ -676,11 +676,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sélection orientée cadeaux d'entreprise, avec une vraie cohérence dans les gammes</td></tr><tr><td>Personnalisation possible avec le logo de la société</td></tr><tr><td>Option dématérialisée pratique pour les équipes en télétravail</td></tr><tr><td>Qualité de présentation des coffrets clairement au-dessus de la moyenne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commande minimum sur certaines gammes, contraignant pour une petite structure</td></tr><tr><td>Navigation sur le site perfectible, on s'y perd un peu quand on compare plusieurs produits</td></tr><tr><td>Le support client répond, mais pas toujours rapidement en période de rush de fin d'année</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Carte virtuelle rechargeable, zéro papier à gérer</td></tr><tr><td>Tableau de bord en temps réel pour suivre les soldes et activations</td></tr><tr><td>Rechargement en masse via import de fichier, très rapide</td></tr><tr><td>Conformité avantages salariaux intégrée, pas besoin de chercher soi-même</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réseau de partenaires parfois limité selon les habitudes de consommation des salariés</td></tr><tr><td>Peu de personnalisation possible autour du cadeau, l'expérience reste très utilitaire</td></tr><tr><td>Support client pas toujours réactif pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -732,11 +732,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue large avec options de personnalisation accessibles dès les petites quantités</td></tr><tr><td>Navigation sur le site claire et filtres pratiques par budget ou type de cadeau</td></tr><tr><td>Délais respectés et qualité produits fidèle aux descriptions</td></tr><tr><td>Possibilité de marquer les objets au logo de l'entreprise sans minimum de commande excessif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'aperçu de personnalisation en ligne manque de précision, difficile de valider le rendu final avant commande</td></tr><tr><td>Le service client met parfois du temps à répondre aux demandes spécifiques sur les marquages complexes</td></tr><tr><td>L'offre reste centrée sur les objets physiques : aucune solution de carte cadeau ou de bon dématérialisé</td></tr></tbody>
         </table>
       </div>
@@ -760,11 +760,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Cadeaux numériques et culturels originaux, bien adaptés aux profils digitaux</td></tr><tr><td>Livraison 100% dématérialisée : aucune logistique physique à gérer</td></tr><tr><td>Commande groupée possible, pratique pour une TPE avec une petite équipe</td></tr><tr><td>Bonne alternative aux coffrets classiques souvent trop génériques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de commande un peu datée, prise en main pas immédiate</td></tr><tr><td>Catalogue orienté univers digital uniquement : moins adapté si l'équipe a des profils très variés</td></tr><tr><td>Support client difficile à joindre rapidement si problème sur un code cadeau</td></tr></tbody>
         </table>
       </div>
@@ -788,11 +788,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Logique de campagne groupée très pratique pour envoyer à plusieurs adresses en une seule fois</td></tr><tr><td>Aucun minimum de commande contraignant, adapté aux petites structures</td></tr><tr><td>Message personnalisé possible par destinataire</td></tr><tr><td>Suivi de livraison individuel accessible directement depuis l'interface</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue de personnalisation limité, pas de marquage logo sur tous les produits</td></tr><tr><td>Support client uniquement par mail, les délais de réponse peuvent ralentir une commande urgente</td></tr><tr><td>Offre assez généraliste, peu différenciante pour une agence qui veut soigner son image</td></tr></tbody>
         </table>
       </div>
@@ -939,7 +939,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

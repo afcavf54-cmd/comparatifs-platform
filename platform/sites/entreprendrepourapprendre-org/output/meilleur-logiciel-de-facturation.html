@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparateur de logiciels de facturation après 16 essais</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 16 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 16 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Henrri</strong> : pour les TPE qui cherchent une facturation simple sans fioritures</li>
-<li><strong>Tiime</strong> : parfait si vous voulez centraliser comptabilité et facturation en un outil</li>
-<li><strong>Facture.net</strong> : idéal pour débuter avec un logiciel gratuit et fonctionnel rapidement</li>
-<li><strong>Sellsy</strong> : adapté aux entreprises qui ont besoin de CRM avec leur facturation</li>
-<li><strong>Zervant</strong> : excellent choix pour les freelances qui facturent peu mais régulièrement</li>
+<li><strong>Henrri</strong> :<br>pour les TPE qui cherchent une facturation simple sans fioritures</li>
+<li><strong>Tiime</strong> :<br>parfait si vous voulez centraliser comptabilité et facturation en un outil</li>
+<li><strong>Facture.net</strong> :<br>idéal pour débuter avec un logiciel gratuit et fonctionnel rapidement</li>
+<li><strong>Sellsy</strong> :<br>adapté aux entreprises qui ont besoin de CRM avec leur facturation</li>
+<li><strong>Zervant</strong> :<br>excellent choix pour les freelances qui facturent peu mais régulièrement</li>
 </ul>
   </div>
 
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra intuitive, même pour les non-comptables</td></tr><tr><td>Relances clients automatiques avec plusieurs modèles</td></tr><tr><td>Synchronisation bancaire qui détecte les paiements automatiquement</td></tr><tr><td>Export comptable direct vers les logiciels populaires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour les entreprises avec plusieurs collaborateurs</td></tr><tr><td>Pas de gestion avancée des stocks ou projets complexes</td></tr><tr><td>Support client parfois lent en période de forte charge</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>OCR très performant qui reconnaît automatiquement les données des factures fournisseurs</td></tr><tr><td>Rapprochement bancaire automatisé avec synchronisation directe</td></tr><tr><td>Workflows de validation personnalisables selon les montants et services</td></tr><tr><td>Export comptable natif vers Sage, Cegid et autres logiciels métier</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface un peu lourde au démarrage, courbe d'apprentissage raide</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les débutants</td></tr><tr><td>Création de factures ultra rapide</td></tr><tr><td>Relances automatiques par email incluses</td></tr><tr><td>Rapport de TVA généré automatiquement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Templates de factures peu personnalisables</td></tr><tr><td>Pas d'intégration avec les banques</td></tr><tr><td>Fonctions de reporting assez basiques</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Rapprochement bancaire automatique qui évite la saisie manuelle</td></tr><tr><td>Interface intuitive même pour les non-comptables</td></tr><tr><td>Gestion complète : facturation, devis, stocks et reporting</td></tr><tr><td>Relances automatiques des impayés avec personnalisation</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé dès qu'on dépasse 3 utilisateurs</td></tr><tr><td>Version française moins riche que la version US</td></tr><tr><td>Synchronisation bancaire limitée avec certaines banques françaises</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive sans formation nécessaire</td></tr><tr><td>Rapprochement bancaire automatique qui fonctionne vraiment</td></tr><tr><td>Synchronisation directe avec les experts-comptables</td></tr><tr><td>Gestion des devis et relances automatisées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les très petites structures</td></tr><tr><td>Fonctionnalités avancées parfois cachées dans les menus</td></tr><tr><td>Support client parfois lent en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface stable et complète pour gestion commerciale intégrée</td></tr><tr><td>Export comptable direct vers expert-comptable</td></tr><tr><td>Rapprochement bancaire automatisé très efficace</td></tr><tr><td>Prix abordable comparé aux solutions cloud récentes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillie qui peut rebuter les nouveaux utilisateurs</td></tr><tr><td>Installation uniquement Windows, pas d'accès mobile</td></tr><tr><td>Courbe d'apprentissage assez longue pour maîtriser tous les modules</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Rapprochement bancaire automatique avec les principales banques françaises</td></tr><tr><td>Transformation directe devis vers facture sans ressaisie</td></tr><tr><td>Relances automatiques de factures impayées programmables</td></tr><tr><td>Interface CRM intégrée pour suivre les prospects jusqu'au paiement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif qui grimpe vite dès qu'on dépasse 5 utilisateurs</td></tr><tr><td>Synchronisation comptable parfois capricieuse avec certains logiciels</td></tr><tr><td>Courbe d'apprentissage un peu raide pour exploiter toutes les fonctionnalités</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Relances automatiques personnalisables qui fonctionnent vraiment</td></tr><tr><td>Interface intuitive adaptée aux freelances débutants</td></tr><tr><td>Synchronisation bancaire avec rapprochement automatique</td></tr><tr><td>Exports comptables prêts pour l'expert-comptable</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Quelques bugs de synchronisation avec certaines banques en ligne</td></tr><tr><td>Fonctionnalités limitées pour les entreprises multi-salariés</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Vraie solution tout-en-un : CRM, facturation, gestion des stocks et relances dans un seul outil</td></tr><tr><td>Workflow commercial fluide du prospect à la facture payée avec conversion automatique</td></tr><tr><td>Relances clients automatisées avec suivi des impayés et alertes personnalisées</td></tr><tr><td>Interface intuitive qui ne nécessite pas de formation longue pour les équipes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctions comptables basiques, il faut exporter vers un vrai logiciel de compta</td></tr><tr><td>Personnalisation limitée des documents, les templates restent assez rigides</td></tr><tr><td>Quelques bugs sur la synchronisation bancaire qui m'ont fait perdre du temps</td></tr></tbody>
         </table>
       </div>
@@ -832,11 +832,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-simple, même pour les allergiques à l'informatique</td></tr><tr><td>Prix abordable à partir de 9€/mois sans engagement</td></tr><tr><td>Synchronisation bancaire pour rapprocher automatiquement les paiements</td></tr><tr><td>Support client réactif par chat en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de gestion de stock ni de catalogue produit avancé</td></tr><tr><td>Limité pour les entreprises avec plusieurs TVA ou comptabilité complexe</td></tr><tr><td>Peu d'options de personnalisation des modèles de factures</td></tr></tbody>
         </table>
       </div>
@@ -864,11 +864,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>IA qui apprend de vos habitudes de facturation</td></tr><tr><td>Pré-remplissage automatique des données clients récurrents</td></tr><tr><td>Détection intelligente des doublons et erreurs</td></tr><tr><td>Suggestions de prix basées sur l'historique</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Période d'apprentissage de 2-3 semaines avant optimisation</td></tr><tr><td>Interface parfois lente avec de gros volumes de données</td></tr><tr><td>Fonctionnalités avancées cachées dans les sous-menus</td></tr></tbody>
         </table>
       </div>
@@ -896,11 +896,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les débutants</td></tr><tr><td>Synchronisation bancaire automatique efficace</td></tr><tr><td>Support client français réactif</td></tr><tr><td>Prix compétitif pour les fonctionnalités proposées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée des modèles de factures</td></tr><tr><td>Pas d'API pour les intégrations avancées</td></tr><tr><td>Fonctionnalités de reporting assez basiques</td></tr></tbody>
         </table>
       </div>
@@ -928,11 +928,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra intuitive, on prend en main en 10 minutes</td></tr><tr><td>Relances automatiques configurables qui fonctionnent vraiment</td></tr><tr><td>Version gratuite généreuse jusqu'à 5 clients</td></tr><tr><td>Synchronisation bancaire pour pointer les règlements automatiquement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune fonction comptabilité avancée intégrée</td></tr><tr><td>Personnalisation des factures très limitée</td></tr><tr><td>Support client parfois lent à répondre en français</td></tr></tbody>
         </table>
       </div>
@@ -960,11 +960,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra simple pour créer ses factures rapidement</td></tr><tr><td>Synchronisation bancaire automatique qui évite la saisie manuelle</td></tr><tr><td>Relances clients programmables sans intervention</td></tr><tr><td>Tableau de bord clair sur les impayés et encours</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de gestion de stock ni de catalogue produits</td></tr><tr><td>Fonctionnalités limitées pour les entreprises qui grandissent</td></tr><tr><td>Personnalisation des factures assez basique</td></tr></tbody>
         </table>
       </div>
@@ -992,11 +992,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>OCR performant pour scanner et extraire automatiquement les données des factures fournisseurs</td></tr><tr><td>Synchronisation bancaire fluide avec rapprochement comptable automatisé</td></tr><tr><td>Interface ultra intuitive, création de facture en moins d'une minute</td></tr><tr><td>Système de relances clients programmables avec templates d'emails personnalisables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées pour les devis et factures complexes</td></tr><tr><td>Pas de gestion de stocks ni suivi des projets avancé</td></tr><tr><td>Tableau de bord assez basique pour l'analyse financière poussée</td></tr></tbody>
         </table>
       </div>
@@ -1024,11 +1024,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec courbe d'apprentissage très rapide</td></tr><tr><td>Intégration native avec l'écosystème Zoho (CRM, Books, Inventory)</td></tr><tr><td>Gestion multi-devises et multi-langues incluse dans tous les plans</td></tr><tr><td>Application mobile complète pour créer et envoyer des factures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation des modèles de facture limitée</td></tr><tr><td>Pas de gestion comptable avancée intégrée</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -1314,7 +1314,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparateur d'experts-comptables en ligne après 11 essais</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 11 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 11 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Pennylane</strong> : idéal pour TPE cherchant simplicité administrative</li>
-<li><strong>Sage 50cloud Ciel</strong> : parfait pour artisans traditionnels</li>
-<li><strong>QuickBooks</strong> : excellent pour entreprises déjà digitalisées</li>
-<li><strong>Tiime</strong> : optimal pour freelances et micro-entreprises</li>
-<li><strong>EBP Compta</strong> : adapté aux PME avec comptable</li>
+<li><strong>Pennylane</strong> :<br>idéal pour TPE cherchant simplicité administrative</li>
+<li><strong>Sage 50cloud Ciel</strong> :<br>parfait pour artisans traditionnels</li>
+<li><strong>QuickBooks</strong> :<br>excellent pour entreprises déjà digitalisées</li>
+<li><strong>Tiime</strong> :<br>optimal pour freelances et micro-entreprises</li>
+<li><strong>EBP Compta</strong> :<br>adapté aux PME avec comptable</li>
 </ul>
   </div>
 
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Application mobile vraiment ergonomique avec scan de factures instantané</td></tr><tr><td>Expert-comptable disponible en chat 6j/7 avec réponse sous 2h en moyenne</td></tr><tr><td>Synchronisation automatique avec 300+ banques et outils de paiement</td></tr><tr><td>Tarif transparent à 59€/mois sans frais cachés ni engagement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité sur les opérations comptables très spécialisées type BIC/BNC complexes</td></tr><tr><td>Pas d'accompagnement physique si vous préférez le face-à-face</td></tr><tr><td>Interface parfois trop simplifiée pour les gros volumes de transactions</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expert-comptable dédié qui connaît vraiment votre dossier</td></tr><tr><td>Accompagnement personnalisé avec appels réguliers</td></tr><tr><td>Réactivité exceptionnelle par téléphone et email</td></tr><tr><td>Expertise pointue sur les TPE et micro-entreprises</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs plus élevés que les solutions low-cost</td></tr><tr><td>Interface moins moderne que les concurrents</td></tr><tr><td>Offre digitale limitée comparée aux pure players</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expert-comptable dédié joignable directement</td></tr><tr><td>Tableau de bord unifié compta + paie + social</td></tr><tr><td>Conseil stratégique et optimisation fiscale inclus</td></tr><tr><td>Onboarding personnalisé avec audit initial</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Interface parfois lente sur les gros volumes</td></tr><tr><td>Peu d'intégrations avec les logiciels métier spécialisés</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expert-comptable dédié avec suivi personnalisé</td></tr><tr><td>Conseil téléphonique inclus dans les formules</td></tr><tr><td>Accompagnement création d'entreprise complet</td></tr><tr><td>Tarification transparente dès 69€ par mois</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Plus cher que les solutions automatisées</td></tr><tr><td>Interface client basique et peu moderne</td></tr><tr><td>Délais de réponse parfois longs en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Accompagnement pédagogique très poussé pour les débutants</td></tr><tr><td>Interface simple avec messagerie directe comptable</td></tr><tr><td>Réactivité excellente, réponses sous 24h maximum</td></tr><tr><td>Tarifs transparents sans surprise</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peu d'options pour les entreprises avec besoins spécifiques</td></tr><tr><td>Fonctionnalités avancées limitées par rapport à la concurrence</td></tr><tr><td>Expertise sectorielle parfois insuffisante pour certains métiers</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expert-comptable dédié joignable en direct</td></tr><tr><td>Numérisation automatique des documents par photo</td></tr><tr><td>Service de relance clients intégré à la compta</td></tr><tr><td>Gestion complète des obligations sociales et fiscales</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs plus élevés que les solutions 100% digitales</td></tr><tr><td>Fonctionnalités limitées pour les grosses structures</td></tr><tr><td>Pas d'API pour connecter des outils métier spécifiques</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation bancaire automatique avec catégorisation intelligente</td></tr><tr><td>Expert-comptable dédié accessible par chat en temps réel</td></tr><tr><td>Interface mobile intuitive pour saisir ses frais en déplacement</td></tr><tr><td>Calcul automatique des cotisations sociales et taxes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réservé aux micro-entreprises et freelances uniquement</td></tr><tr><td>Pas de gestion multi-devises pour l'international</td></tr><tr><td>Options de personnalisation limitées pour les rapports</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Reconnaissance OCR très fiable sur les factures fournisseurs</td></tr><tr><td>Synchronisation automatique avec votre cabinet d'expertise comptable</td></tr><tr><td>Application mobile intuitive pour photographier les justificatifs</td></tr><tr><td>Validation collaborative des écritures avec votre expert-comptable</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface web parfois lente aux heures de pointe</td></tr><tr><td>Incompatible avec certains logiciels de gestion existants</td></tr><tr><td>Support client uniquement par email en français</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expert-comptable dédié avec suivi personnalisé</td></tr><tr><td>Interface digitale simple pour déposer documents</td></tr><tr><td>Conseil juridique et fiscal inclus dans l'abonnement</td></tr><tr><td>Délais de traitement respectés pour déclarations</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs plus élevés que les pure players low-cost</td></tr><tr><td>Pas adapté aux grosses structures avec besoins complexes</td></tr><tr><td>Fonctionnalités de reporting limitées pour pilotage avancé</td></tr></tbody>
         </table>
       </div>
@@ -832,11 +832,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation poussée de la saisie comptable</td></tr><tr><td>Interface moderne et facile à prendre en main</td></tr><tr><td>Support client réactif par chat et téléphone</td></tr><tr><td>Tarifs transparents sans surprise</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour les grandes structures</td></tr><tr><td>Pas d'accompagnement fiscal approfondi</td></tr><tr><td>Quelques bugs lors de l'import de certains formats de factures</td></tr></tbody>
         </table>
       </div>
@@ -864,11 +864,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface unique pour juridique et comptable</td></tr><tr><td>Équipe juridique vraiment compétente</td></tr><tr><td>Prix correct pour les micro-entreprises</td></tr><tr><td>Création de société bien maîtrisée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Services comptables très limités</td></tr><tr><td>Pas de vrai conseil fiscal</td></tr><tr><td>Inadapté aux structures complexes</td></tr></tbody>
         </table>
       </div>
@@ -1108,7 +1108,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

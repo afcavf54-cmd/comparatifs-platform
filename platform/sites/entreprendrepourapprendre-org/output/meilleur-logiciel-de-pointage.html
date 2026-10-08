@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparateur de 9 logiciels de pointage : lequel choisir ?</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="hero-author-avatar">
     <span>Rédigé par Camille Lefevre</span>
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Captures d'écran automatiques toutes les 10 minutes avec floutage optionnel</td></tr><tr><td>Géolocalisation GPS pour les équipes mobiles et commerciaux</td></tr><tr><td>Génération automatique des fiches de paie et facturation client</td></tr><tr><td>Intégration native avec Asana, Trello et plus de 30 outils projet</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface un peu lourde pour les équipes non-tech</td></tr><tr><td>Prix qui grimpe vite avec les options avancées</td></tr><tr><td>Peut créer une ambiance de surveillance excessive selon les équipes</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Application mobile vraiment intuitive, même pour les moins tech</td></tr><tr><td>Géolocalisation précise avec fonctionnement hors ligne</td></tr><tr><td>Interface manager simple pour valider les pointages</td></tr><tr><td>Paramétrage rapide, opérationnel en quelques heures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options RH limitées comparé aux gros logiciels</td></tr><tr><td>Peu de possibilités de personnalisation avancée</td></tr><tr><td>Export comptable basique qui peut frustrer</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Version gratuite très complète avec suivi illimité</td></tr><tr><td>Interface claire qui évite la surcharge cognitive</td></tr><tr><td>Rapports détaillés et exports PDF pour la facturation</td></tr><tr><td>Applications mobiles réactives avec mode hors-ligne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctions avancées de gestion d'équipe payantes dès 10 utilisateurs</td></tr><tr><td>Pas d'intégration native avec certains outils comptables français</td></tr><tr><td>Notifications parfois trop discrètes, on oublie de pointer</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface bilingue français-anglais native</td></tr><tr><td>Gestion avancée des heures supplémentaires et majorations</td></tr><tr><td>Badgeuses robustes adaptées aux environnements industriels</td></tr><tr><td>Support technique français réactif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface utilisateur datée qui rebute les jeunes équipes</td></tr><tr><td>Coût élevé pour les petites structures</td></tr><tr><td>Temps de paramétrage initial assez long</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Géolocalisation GPS très précise pour le pointage terrain</td></tr><tr><td>Interface mobile intuitive pour les employés</td></tr><tr><td>Planification automatisée des équipes et rotations</td></tr><tr><td>Intégration native avec la plupart des logiciels de paie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Configuration initiale complexe</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile ultra-rapide pour le pointage quotidien</td></tr><tr><td>Intégration native congés, notes de frais et paie</td></tr><tr><td>Support client réactif en français</td></tr><tr><td>Paramétrage simple des horaires flexibles</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités de reporting limitées</td></tr><tr><td>Pas de suivi détaillé par projet ou tâche</td></tr><tr><td>Coût élevé pour les très petites structures</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Géolocalisation précise avec zones définissables</td></tr><tr><td>Reconnaissance faciale pour éviter les fraudes</td></tr><tr><td>Version gratuite fonctionnelle jusqu'à 3 utilisateurs</td></tr><tr><td>Application mobile intuitive pour équipes terrain</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface web assez basique et peu moderne</td></tr><tr><td>Fonctionnalités RH limitées comparé aux concurrents</td></tr><tr><td>Pas d'intégration native avec tous les logiciels de paie français</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile vraiment intuitive pour les employés</td></tr><tr><td>Géolocalisation intégrée pour contrôler le pointage sur site</td></tr><tr><td>Gestion flexible des horaires variables et pauses</td></tr><tr><td>Export direct vers les logiciels de paie courants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités RH limitées comparé à des solutions complètes</td></tr><tr><td>Tarification qui grimpe vite avec le nombre d'utilisateurs</td></tr><tr><td>Personnalisation des rapports assez basique</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile intuitive avec pointage géolocalisé</td></tr><tr><td>Planification prévisionnelle basée sur l'activité attendue</td></tr><tr><td>Exports automatiques vers les logiciels de paie</td></tr><tr><td>Gestion multi-sites centralisée depuis un tableau de bord</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité aux secteurs avec horaires variables (moins pertinent pour bureaux classiques)</td></tr><tr><td>Pas de gestion complète RH (formation, entretiens, congés avancés)</td></tr><tr><td>Coût qui augmente vite avec le nombre d'utilisateurs</td></tr></tbody>
         </table>
       </div>
@@ -1034,7 +1034,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 7 octobre 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

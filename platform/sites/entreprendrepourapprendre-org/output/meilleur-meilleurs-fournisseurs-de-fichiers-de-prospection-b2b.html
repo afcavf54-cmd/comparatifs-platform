@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Kompass</strong> : idéal pour les PME qui veulent une base de données internationale fiable.</li>
-<li><strong>DataProspects</strong> : parfait pour les équipes commerciales qui cherchent des listes ciblées rapidement.</li>
-<li><strong>Societeinfo</strong> : recommandé pour prospecter des entreprises françaises avec des données fraîches.</li>
-<li><strong>Nomination</strong> : fait pour cibler les décideurs par nom, fonction et secteur précisément.</li>
-<li><strong>Pharow</strong> : pensé pour les TPE qui veulent prospecter sans y passer des heures.</li>
+    <li><strong>Kompass</strong> :<br>idéal pour les PME qui veulent une base de données internationale fiable.</li>
+<li><strong>DataProspects</strong> :<br>parfait pour les équipes commerciales qui cherchent des listes ciblées rapidement.</li>
+<li><strong>Societeinfo</strong> :<br>recommandé pour prospecter des entreprises françaises avec des données fraîches.</li>
+<li><strong>Nomination</strong> :<br>fait pour cibler les décideurs par nom, fonction et secteur précisément.</li>
+<li><strong>Pharow</strong> :<br>pensé pour les TPE qui veulent prospecter sans y passer des heures.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs de fichiers de prospection B2B</h2>
@@ -536,11 +536,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface simple, prise en main rapide sans formation</td></tr><tr><td>Filtres sectoriels et géographiques efficaces pour cibler les TPE/PME françaises</td></tr><tr><td>Export des données fluide, compatible avec les outils de mailing courants</td></tr><tr><td>Bon rapport qualité/prix pour une utilisation régulière en petite structure</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fraîcheur des données parfois insuffisante, quelques contacts obsolètes à vérifier manuellement</td></tr><tr><td>Moins pertinent pour cibler des profils de cadres dans de grandes entreprises ou des niches très spécifiques</td></tr><tr><td>Le support client peut manquer de réactivité selon les créneaux horaires</td></tr></tbody>
         </table>
       </div>
@@ -564,11 +564,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Données très complètes sur les entreprises françaises, avec filtres sectoriels et géographiques précis</td></tr><tr><td>Alertes sur événements déclencheurs (nominations, recrutements, levées de fonds) vraiment utiles pour prospecter au bon moment</td></tr><tr><td>Exports propres et directement exploitables dans un CRM ou un tableur</td></tr><tr><td>Outil adapté à une prospection ciblée et qualitative, pas au volume brut</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif élevé, difficile à justifier si la prospection n'est pas une activité régulière et intensive</td></tr><tr><td>Prise en main un peu solitaire, le support à l'onboarding manque de proactivité</td></tr><tr><td>Application mobile très limitée, usage quasi exclusivement desktop</td></tr></tbody>
         </table>
       </div>
@@ -592,11 +592,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Données légales et financières fiables et bien mises à jour</td></tr><tr><td>Interface simple, prise en main rapide sans formation lourde</td></tr><tr><td>Exports CSV propres, faciles à intégrer dans un CRM</td></tr><tr><td>Bon rapport qualité-prix pour du ciblage sectoriel ou géographique</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Contacts nominatifs (emails, téléphones directs) souvent incomplets ou absents</td></tr><tr><td>Moins adapté à une prospection en volume important sur des cibles décideurs précis</td></tr><tr><td>Le support client n'est pas toujours réactif sur les questions de facturation ou d'accès</td></tr></tbody>
         </table>
       </div>
@@ -620,11 +620,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface simple, prise en main rapide même pour une équipe non technique</td></tr><tr><td>Filtres de segmentation précis : secteur, taille, localisation, poste du contact</td></tr><tr><td>Emails vérifiés et contacts directs dans une majorité des résultats</td></tr><tr><td>Export CSV propre, compatible avec la plupart des CRM sans retraitement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Certaines fiches contacts sont incomplètes, notamment sur les numéros directs</td></tr><tr><td>Le volume de contacts disponibles sur des niches très spécifiques peut être limité</td></tr><tr><td>Peu d'options d'enrichissement automatique une fois le fichier exporté</td></tr></tbody>
         </table>
       </div>
@@ -667,11 +667,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Base de données très large avec segmentation fine par secteur, taille et zone géographique</td></tr><tr><td>Export de fichiers propres et structurés, utilisables directement sans retraitement</td></tr><tr><td>Couverture internationale utile si vous prospectez hors de France</td></tr><tr><td>Module EasyBusiness pensé pour la prospection, plus lisible que l'interface classique</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fiches parfois incomplètes sur les très petites structures, emails nominatifs manquants</td></tr><tr><td>Tarifs élevés pour une TPE avec un budget serré, le ROI doit être anticipé clairement</td></tr><tr><td>Prise en main qui demande un peu de temps, pas un outil qu'on maîtrise en une heure</td></tr></tbody>
         </table>
       </div>
@@ -695,11 +695,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Contacts nominatifs très qualifiés, avec fonction et historique de mobilité</td></tr><tr><td>Alertes en temps réel sur les changements de poste des décideurs ciblés</td></tr><tr><td>Exports propres et compatibles avec la plupart des CRM</td></tr><tr><td>Données régulièrement mises à jour, nettement moins de contacts obsolètes qu'ailleurs</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface pas immédiatement intuitive, la prise en main prend du temps</td></tr><tr><td>Tarif élevé pour une TPE avec un faible volume de prospection mensuel</td></tr><tr><td>Le support client peut être long à répondre en cas de problème sur un export</td></tr></tbody>
         </table>
       </div>
@@ -723,11 +723,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Segmentation très fine avec de nombreux critères cumulables (secteur, effectif, zone géographique)</td></tr><tr><td>Aperçu du volume estimé avant export, ce qui aide à calibrer la liste</td></tr><tr><td>Couverture internationale utile si on vise des prospects hors de France</td></tr><tr><td>Interface globalement claire, prise en main assez rapide sans formation</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés pour une TPE, surtout si le besoin en prospection est ponctuel</td></tr><tr><td>Qualité des contacts nominatifs inégale selon les secteurs, nettoyage parfois nécessaire</td></tr><tr><td>Moins adapté à un usage régulier en volume si le budget est serré</td></tr></tbody>
         </table>
       </div>
