@@ -1410,7 +1410,12 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
             new_db[rel] = rec  # on conserve le record tel quel
         else:
             # Contenu nouveau ou modifié → today devient la nouvelle dateModified.
-            new_db[rel] = {"date": today_iso, "datetime": now_iso_min, "hash": h}
+            # `created` = date de PREMIÈRE publication, figée pour toujours : une
+            # modif de contenu (ex. changement de template) NE doit PAS la bouger,
+            # sinon le journal croit que la page vient d'être créée.
+            created = (rec.get("created") or rec.get("datetime") or rec.get("date")) if rec else now_iso_min
+            new_db[rel] = {"date": today_iso, "datetime": now_iso_min,
+                           "created": created, "hash": h}
             if rec:
                 updated_pages += 1
             else:
