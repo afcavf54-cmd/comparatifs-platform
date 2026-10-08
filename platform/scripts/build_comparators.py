@@ -408,6 +408,18 @@ def main(site: str, force: bool = False, limit: int | None = None, daily: bool =
         if not selected:
             print("  ✓ rien de nouveau à rédiger (tout le Sheet est déjà en ligne)")
 
+    # ── Référentiel backlinks : collecter les URLs de marques de TOUT le Sheet ──
+    # Les liens rotatifs doivent connaître TOUTES les marques du Sheet, même
+    # celles dont le comparateur n'est pas encore rédigé (le drafting est
+    # plafonné à N/jour, pas la collecte d'URLs qui est gratuite). Sinon une
+    # marque n'entre dans le référentiel que le jour où son comparateur sort.
+    for _row in rows:
+        for _b in parse_brands(_fix_mojibake(_row_get(_row, "Marques"))):
+            _bu = (_b.get("url") or "").strip()
+            if _bu:
+                bl_sheet_urls[norm(_b["name"])] = (_b["name"], _bu)
+    print(f"  🔗 {len(bl_sheet_urls)} URL(s) de marque collectée(s) depuis le Sheet")
+
     for _ridx, row in selected:
         titre = _fix_mojibake(_row_get(row, "Titre")).strip()
         marques_cell = _fix_mojibake(_row_get(row, "Marques"))
@@ -415,10 +427,6 @@ def main(site: str, force: bool = False, limit: int | None = None, daily: bool =
         if not titre or not marques_cell.strip():
             continue
         brands = parse_brands(marques_cell)
-        for _b in brands:
-            _bu = (_b.get("url") or "").strip()
-            if _bu:
-                bl_sheet_urls[norm(_b["name"])] = (_b["name"], _bu)
         if not brands:
             continue
         cat_slug = slugify(titre)
