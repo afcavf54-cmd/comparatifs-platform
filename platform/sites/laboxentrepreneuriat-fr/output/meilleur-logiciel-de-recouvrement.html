@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif complet des logiciels de recouvrement après 10 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -511,11 +511,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>My DSO Manager</strong> : PME cherchant une solution complète de recouvrement automatisé</li>
-<li><strong>Upflow</strong> : startups tech voulant optimiser leur processus de relance clients</li>
-<li><strong>Clearnox</strong> : TPE ayant besoin d'un outil simple pour suivre impayés</li>
-<li><strong>Collectys Cash</strong> : entreprises privilégiant l'expertise humaine en recouvrement amiable professionnel</li>
-<li><strong>LeanPay</strong> : dirigeants souhaitant déléguer entièrement la gestion des créances clients</li>
+<li><strong>My DSO Manager</strong> :<br>PME cherchant une solution complète de recouvrement automatisé</li>
+<li><strong>Upflow</strong> :<br>startups tech voulant optimiser leur processus de relance clients</li>
+<li><strong>Clearnox</strong> :<br>TPE ayant besoin d'un outil simple pour suivre impayés</li>
+<li><strong>Collectys Cash</strong> :<br>entreprises privilégiant l'expertise humaine en recouvrement amiable professionnel</li>
+<li><strong>LeanPay</strong> :<br>dirigeants souhaitant déléguer entièrement la gestion des créances clients</li>
 </ul>
   </div>
 
@@ -538,11 +538,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows de relance très personnalisables avec conditions avancées</td></tr><tr><td>Relances multi-canaux automatisées (email, SMS, courrier)</td></tr><tr><td>Bonne intégration avec les principaux logiciels comptables</td></tr><tr><td>Suivi précis des échéanciers et plans de paiement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface pas très intuitive au début, courbe d'apprentissage</td></tr><tr><td>Reporting limité pour l'analyse comportementale des débiteurs</td></tr><tr><td>Tarification pas transparente, devis obligatoire</td></tr></tbody>
         </table>
       </div>
@@ -566,11 +566,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows de relance très automatisés avec SMS/emails/courriers</td></tr><tr><td>Gestion avancée des échéanciers et plans de paiement</td></tr><tr><td>Reporting détaillé adapté aux cabinets de recouvrement</td></tr><tr><td>Traçabilité juridique complète des actions</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillissante et parfois peu intuitive</td></tr><tr><td>Paramétrage initial assez complexe</td></tr><tr><td>Prix élevé pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -594,11 +594,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>IA qui analyse le comportement client et adapte les relances</td></tr><tr><td>Scoring prédictif pour identifier les risques d'impayés en amont</td></tr><tr><td>Workflows automatisés qui évitent la relance manuelle systématique</td></tr><tr><td>Tableaux de bord avec métriques DSO et taux de recouvrement détaillés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Complexité excessive pour les petites structures avec peu de clients</td></tr><tr><td>Paramétrage initial long et technique qui nécessite de la formation</td></tr><tr><td>Tarification élevée qui peut décourager les PME</td></tr></tbody>
         </table>
       </div>
@@ -622,11 +622,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Relances automatiques progressives avec personnalisation avancée</td></tr><tr><td>Interface intuitive pour les équipes comptables</td></tr><tr><td>Scoring automatique des débiteurs selon leur historique</td></tr><tr><td>Support client réactif avec accompagnement à la prise en main</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Module de reporting assez basique comparé à la concurrence</td></tr><tr><td>Pas d'intégration native avec tous les ERP du marché</td></tr><tr><td>Fonctionnalités de recouvrement contentieux limitées</td></tr></tbody>
         </table>
       </div>
@@ -650,11 +650,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Scénarios de relance adaptatifs selon le profil client</td></tr><tr><td>Préservation de la relation commerciale dans les messages automatiques</td></tr><tr><td>Interface claire pour créer des workflows personnalisés</td></tr><tr><td>Reporting détaillé par segment de clientèle</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding assez long et parfois confus</td></tr><tr><td>Limité pour les très gros volumes de créances</td></tr><tr><td>Manque de fonctionnalités avancées pour les créances complexes</td></tr></tbody>
         </table>
       </div>
@@ -678,11 +678,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation complète des campagnes de relance multicanal</td></tr><tr><td>Synchronisation native avec les principaux logiciels comptables</td></tr><tr><td>Reporting détaillé sur les performances de recouvrement</td></tr><tr><td>Interface claire pour suivre les promesses de paiement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage assez longue pour maîtriser toutes les options</td></tr><tr><td>Tarification qui peut grimper rapidement selon le nombre d'utilisateurs</td></tr><tr><td>Fonctionnalités de contentieux limitées pour les dossiers complexes</td></tr></tbody>
         </table>
       </div>
@@ -706,11 +706,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive pour les non-spécialistes du recouvrement</td></tr><tr><td>Templates de courriers personnalisables et conformes légalement</td></tr><tr><td>Automatisation des relances par email et courrier postal</td></tr><tr><td>Prix accessible pour les TPE avec formules sans engagement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Rapports d'analyse peu détaillés pour optimiser les campagnes</td></tr><tr><td>Fonctionnalités limitées comparé aux solutions enterprise</td></tr><tr><td>Support client parfois lent à répondre aux questions techniques</td></tr></tbody>
         </table>
       </div>
@@ -734,11 +734,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation poussée des relances avec scénarios personnalisables</td></tr><tr><td>Segmentation intelligente des débiteurs selon leur profil</td></tr><tr><td>Interface claire pour suivre l'évolution de chaque dossier</td></tr><tr><td>Génération automatique de courriers et emails de relance</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Ton des relances parfois trop agressif pour certains secteurs</td></tr><tr><td>Intégrations ERP limitées, souvent du développement sur mesure</td></tr><tr><td>Reporting basique comparé à d'autres solutions du marché</td></tr></tbody>
         </table>
       </div>
@@ -762,11 +762,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Approche hybride automatisation + négociateurs humains</td></tr><tr><td>Workflow configurable du recouvrement amiable au contentieux</td></tr><tr><td>Scoring automatique des débiteurs pour prioriser les actions</td></tr><tr><td>Interface de suivi en temps réel des dossiers</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale complexe et chronophage</td></tr><tr><td>Coût élevé pour les petites structures de recouvrement</td></tr><tr><td>Dépendance aux partenaires juristes pour le contentieux</td></tr></tbody>
         </table>
       </div>
@@ -790,11 +790,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Relances personnalisées qui préservent la relation client</td></tr><tr><td>Interface française intuitive et prise en main rapide</td></tr><tr><td>Synchronisation automatique avec la plupart des logiciels comptables</td></tr><tr><td>Reporting détaillé sur l'efficacité des campagnes de recouvrement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs qui grimpent vite avec le volume de factures</td></tr><tr><td>Options d'export limitées pour les analyses avancées</td></tr><tr><td>Personnalisation des modèles d'emails parfois restrictive</td></tr></tbody>
         </table>
       </div>
@@ -1134,7 +1134,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

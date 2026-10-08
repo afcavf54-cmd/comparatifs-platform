@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparatif de 10 logiciels de gestion des talents pour entreprises</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -511,11 +511,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Skeely</strong> : startup tech qui veut digitaliser formation sans complexité</li>
-<li><strong>Zola</strong> : PME traditionnelle cherchant solution complète et sécurisée</li>
-<li><strong>Elevo</strong> : dirigeant pressé privilégiant prise en main ultra rapide</li>
-<li><strong>Skillup</strong> : équipe jeune souhaitant gamification et expérience utilisateur moderne</li>
-<li><strong>Cegid Talentsoft</strong> : entreprise structurée nécessitant conformité et reporting avancé</li>
+<li><strong>Skeely</strong> :<br>startup tech qui veut digitaliser formation sans complexité</li>
+<li><strong>Zola</strong> :<br>PME traditionnelle cherchant solution complète et sécurisée</li>
+<li><strong>Elevo</strong> :<br>dirigeant pressé privilégiant prise en main ultra rapide</li>
+<li><strong>Skillup</strong> :<br>équipe jeune souhaitant gamification et expérience utilisateur moderne</li>
+<li><strong>Cegid Talentsoft</strong> :<br>entreprise structurée nécessitant conformité et reporting avancé</li>
 </ul>
   </div>
 
@@ -538,11 +538,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>IA de scoring qui apprend de vos décisions de recrutement</td></tr><tr><td>Interface française intuitive avec support réactif</td></tr><tr><td>Automatisation des relances candidats et planification entretiens</td></tr><tr><td>Tarification transparente adaptée aux PME</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités de reporting limitées et peu personnalisables</td></tr><tr><td>Base de données candidats encore restreinte comparé aux leaders</td></tr><tr><td>Intégrations avec les job boards parfois instables</td></tr></tbody>
         </table>
       </div>
@@ -566,11 +566,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface unifiée qui évite la multiplication des outils RH</td></tr><tr><td>Analytics prédictifs pour anticiper les besoins en talents</td></tr><tr><td>Workflows automatisés pour les évaluations et promotions</td></tr><tr><td>Intégration native avec les systèmes de paie et SIRH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Coût très élevé, hors budget des PME</td></tr><tr><td>Implémentation longue et complexe nécessitant des consultants</td></tr><tr><td>Courbe d'apprentissage importante pour les utilisateurs finaux</td></tr></tbody>
         </table>
       </div>
@@ -594,11 +594,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec workflows automatisés</td></tr><tr><td>Analytics RH poussés et tableaux de bord personnalisables</td></tr><tr><td>Intégration native avec Slack et les outils tech</td></tr><tr><td>Système de feedback continu très bien pensé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale complexe pour les PME</td></tr><tr><td>Tarifs élevés avec les modules complémentaires</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -622,11 +622,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native avec l'écosystème SAP et ERP existants</td></tr><tr><td>Modules de talent management très avancés avec IA prédictive</td></tr><tr><td>Conformité réglementaire internationale et gestion multi-pays</td></tr><tr><td>Reporting et analytics RH de niveau enterprise avec tableaux de bord personnalisables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Complexité de mise en œuvre qui nécessite souvent des consultants externes</td></tr><tr><td>Interface utilisateur parfois lourde et peu intuitive pour les managers</td></tr><tr><td>Coût global élevé entre licences, formation et maintenance</td></tr></tbody>
         </table>
       </div>
@@ -650,11 +650,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Détection prédictive des risques de départ avec alertes en temps réel</td></tr><tr><td>Analyse automatique des compétences via traitement du langage naturel</td></tr><tr><td>Interface intuitive avec tableaux de bord visuels très clairs</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée qui exclut les PME de moins de 100 salariés</td></tr><tr><td>Paramétrage initial complexe nécessitant un accompagnement</td></tr><tr><td>Algorithmes encore perfectibles sur l'évaluation des soft skills</td></tr></tbody>
         </table>
       </div>
@@ -678,11 +678,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Module de gestion des compétences très abouti avec cartographie détaillée</td></tr><tr><td>Workflows d'évaluation 360° configurables et automatisés</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr><tr><td>Tableau de bord analytique poussé pour le pilotage RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage steep pour les utilisateurs novices</td></tr><tr><td>Tarification élevée qui exclut les PME de moins de 100 salariés</td></tr><tr><td>Interface parfois lourde avec trop d'options visibles simultanément</td></tr></tbody>
         </table>
       </div>
@@ -706,11 +706,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive adaptée aux managers de terrain</td></tr><tr><td>Suivi détaillé des habilitations et formations obligatoires</td></tr><tr><td>Gestion des parcours individualisés pour l'insertion professionnelle</td></tr><tr><td>Solution française avec support réactif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité aux secteurs éducatif et médico-social</td></tr><tr><td>Fonctionnalités RH classiques moins développées</td></tr><tr><td>Tarification peu transparente selon la taille</td></tr></tbody>
         </table>
       </div>
@@ -734,11 +734,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Plateforme complète couvrant tout le cycle RH (recrutement, formation, performance)</td></tr><tr><td>Modules de formation très aboutis avec tracking détaillé des progressions</td></tr><tr><td>Analytics poussés pour le pilotage des talents et planification des successions</td></tr><tr><td>Scalabilité excellente pour les grandes organisations multinationales</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lourde et complexe pour les nouveaux utilisateurs</td></tr><tr><td>Coût élevé qui peut être prohibitif pour les PME</td></tr><tr><td>Paramétrage initial long et nécessitant souvent un accompagnement</td></tr></tbody>
         </table>
       </div>
@@ -762,11 +762,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intelligence artificielle avancée pour prédire les départs et identifier les talents</td></tr><tr><td>Intégration native avec tout l'écosystème Oracle HCM</td></tr><tr><td>Outils de succession planning très complets avec visualisation des risques</td></tr><tr><td>Analyses prédictives poussées sur les gaps de compétences</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Complexité énorme qui nécessite plusieurs mois de formation</td></tr><tr><td>Tarification très élevée réservée aux grands budgets</td></tr><tr><td>Interface peu intuitive comparée aux solutions modernes</td></tr></tbody>
         </table>
       </div>
@@ -790,11 +790,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Système de feedback 360° bien pensé et engageant</td></tr><tr><td>Suivi des formations avec certificats automatisés</td></tr><tr><td>Prix transparent sans frais cachés sur les modules essentiels</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Rapports analytiques trop basiques pour le pilotage stratégique</td></tr><tr><td>Pas d'API robuste pour connecter d'autres outils métier</td></tr><tr><td>Support client parfois lent sur les questions techniques</td></tr></tbody>
         </table>
       </div>
@@ -1115,7 +1115,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Vegea</strong> : idéale pour les entreprises qui veulent des goodies vraiment innovants et durables.</li>
-<li><strong>Goodies Impact</strong> : parfaite pour les marques engagées cherchant traçabilité et impact mesurable.</li>
-<li><strong>Pandacola</strong> : recommandée pour les équipes qui veulent un large choix sans se compliquer la vie.</li>
-<li><strong>Ecoburo</strong> : conçue pour les bureaux qui veulent verdir leur quotidien article par article.</li>
-<li><strong>Good Act</strong> : adaptée aux TPE et indépendants avec un petit budget écoresponsable.</li>
+    <li><strong>Vegea</strong> :<br>idéale pour les entreprises qui veulent des goodies vraiment innovants et durables.</li>
+<li><strong>Goodies Impact</strong> :<br>parfaite pour les marques engagées cherchant traçabilité et impact mesurable.</li>
+<li><strong>Pandacola</strong> :<br>recommandée pour les équipes qui veulent un large choix sans se compliquer la vie.</li>
+<li><strong>Ecoburo</strong> :<br>conçue pour les bureaux qui veulent verdir leur quotidien article par article.</li>
+<li><strong>Good Act</strong> :<br>adaptée aux TPE et indépendants avec un petit budget écoresponsable.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs goodies écologiques / écoresponsables</h2>
@@ -536,11 +536,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue écoresponsable large et bien étiqueté avec les certifications matières</td></tr><tr><td>Outil de personnalisation en ligne simple, BAT rapide</td></tr><tr><td>Service client réactif et à l'écoute sur les questions techniques produit</td></tr><tr><td>Bonne option polyvalente pour des commandes ponctuelles de PME ou TPE</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais de livraison parfois longs en période haute, à anticiper</td></tr><tr><td>Moins adapté aux commandes très volumineuses avec exigences de traçabilité poussées</td></tr><tr><td>La plateforme peut sembler un peu dense au premier abord quand on veut filtrer précisément</td></tr></tbody>
         </table>
       </div>
@@ -564,11 +564,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gamme <strong>100% écoresponsable</strong> avec certifications vérifiables sur chaque produit</td></tr><tr><td>Transparence sur les filières, les matières et l'origine des produits</td></tr><tr><td>Idéal pour les démarches RSE qui doivent être justifiées auprès de partenaires ou clients</td></tr><tr><td>Cohérence de l'offre : pas de produit conventionnel glissé entre deux références vertes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue plus limité que chez un fournisseur multi-univers, moins de variété sur les formats</td></tr><tr><td>Site web perfectible : navigation pas toujours fluide, et certaines informations nécessitent de contacter directement l'équipe</td></tr></tbody>
         </table>
       </div>
@@ -592,11 +592,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Positionnement éco-responsable crédible, avec matières recyclées et certifications accessibles</td></tr><tr><td>Minimum de commande adapté aux petites structures et associations</td></tr><tr><td>Configurateur en ligne simple, prise en main rapide sans formation</td></tr><tr><td>Qualité de fabrication solide, rendu professionnel à la réception</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'aperçu du configurateur peut légèrement différer du produit final, notamment sur le placement des marquages</td></tr><tr><td>Gamme de modèles moins étendue que chez certains concurrents généralistes, choix plus limité si vous avez des besoins très spécifiques</td></tr><tr><td>Tarifs un peu au-dessus de l'entrée de gamme du marché, ce qui peut freiner les budgets très serrés</td></tr></tbody>
         </table>
       </div>
@@ -620,11 +620,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gamme réellement pensée autour de l'écoresponsabilité, pas un simple ajout marketing</td></tr><tr><td>Certifications et traçabilité des matières vérifiables, utile pour valoriser une démarche RSE</td></tr><tr><td>Processus de personnalisation structuré avec BAT clair et suivi de commande</td></tr><tr><td>Service client réactif, j'ai toujours eu une réponse concrète sans relance</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de configuration en ligne un peu rigide, la personnalisation fine peut prendre plus de temps que prévu</td></tr><tr><td>Minimum de commande parfois contraignant pour les très petites structures ou les tests ponctuels</td></tr></tbody>
         </table>
       </div>
@@ -648,11 +648,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sélection resserrée mais réellement écoresponsable, avec fiches produits transparentes sur les matériaux et certifications</td></tr><tr><td>Process de personnalisation clair et délais annoncés en amont, sans devis opaque</td></tr><tr><td>Adapté aux petites et moyennes commandes, idéal pour TPE, associations ou événements ponctuels</td></tr><tr><td>Interface de commande lisible, prise en main rapide sans besoin d'un commercial dédié</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gamme limitée : peu d'options sur les goodies tech ou les cadeaux premium haut de gamme</td></tr><tr><td>Moins adapté aux très gros volumes avec des besoins logistiques complexes ou des délais très courts</td></tr></tbody>
         </table>
       </div>
@@ -676,11 +676,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sélection de produits artisanaux et fabriqués majoritairement en France ou en Europe</td></tr><tr><td>Packaging écoresponsable soigné, sans plastique superflu</td></tr><tr><td>Personnalisation de l'emballage adaptée aux besoins des entreprises</td></tr><tr><td>Rendu final premium, qui tranche clairement avec les coffrets génériques du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais de production longs, peu compatibles avec des commandes de dernière minute</td></tr><tr><td>Tarification peu transparente sans demande de devis préalable</td></tr><tr><td>Quantités minimales parfois élevées pour les très petites structures</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue cohérent avec des matières réellement écoresponsables et des fiches produits transparentes sur l'origine</td></tr><tr><td>Personnalisation complète, logo, packaging, finitions, gérée via un outil en ligne assez intuitif</td></tr><tr><td>Qualité de fabrication perceptible dès la réception des échantillons, pas de compromis sur la durabilité</td></tr><tr><td>Service client réactif et interlocuteur unique sur les commandes B2B</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Quantités minimales de commande élevées, peu adapté aux petits volumes ou aux tests ponctuels</td></tr><tr><td>Positionnement tarifaire premium qui peut peser sur les budgets communication des très petites structures</td></tr></tbody>
         </table>
       </div>
@@ -732,11 +732,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sélection de produits réellement écoconçus, pas un catalogue classique verdi en surface</td></tr><tr><td>Informations produits détaillées : labels, origines, matières, utile pour les démarches RSE</td></tr><tr><td>Possibilité de personnalisation sur-mesure avec un interlocuteur dédié</td></tr><tr><td>Cohérence entre la promesse en ligne et la qualité reçue à la livraison</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'outil de prévisualisation en ligne manque de précision, les échanges pour valider un BAT peuvent prendre du temps</td></tr><tr><td>Offre moins adaptée aux petites commandes urgentes ou aux achats sans exigence de traçabilité particulière</td></tr></tbody>
         </table>
       </div>
@@ -760,11 +760,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Matériau biosourcé unique, issu des résidus de viticulture, vraiment différenciant</td></tr><tr><td>Rendu premium proche du cuir, idéal pour des cadeaux d'entreprise haut de gamme</td></tr><tr><td>Démarche écoresponsable cohérente et documentée, pas juste un argument marketing</td></tr><tr><td>Personnalisation possible sur des produits à forte valeur perçue (carnets, housses, accessoires)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Volumes minimums élevés, peu accessible pour les petites commandes</td></tr><tr><td>Parcours d'achat indirect, tout passe par un devis, pas de commande en ligne rapide</td></tr><tr><td>Offre difficile à lire si vous cherchez un catalogue de goodies clé en main</td></tr></tbody>
         </table>
       </div>
@@ -788,11 +788,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Kits cadeaux écoresponsables cohérents et prêts à personnaliser</td></tr><tr><td>Bonne transparence sur les matières et l'origine des produits</td></tr><tr><td>Prise en main rapide, idéal pour les équipes sans acheteur dédié</td></tr><tr><td>Délais de livraison fiables d'après mon expérience terrain</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue de références moins étendu que certains concurrents</td></tr><tr><td>Personnalisation très poussée (couleurs, formats spéciaux) nécessite des échanges manuels qui allongent les délais</td></tr></tbody>
         </table>
       </div>

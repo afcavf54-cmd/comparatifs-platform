@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé les 8 prestataires de livraison du dernier kilomètre, mon analyse</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Shopopop</strong> : idéal pour les commerces de proximité qui veulent livrer rapidement.</li>
-<li><strong>Star Service</strong> : parfait pour les enseignes premium exigeant un service livraison haut de gamme.</li>
-<li><strong>Colisweb</strong> : conçu pour les retailers et e-commerçants avec forts volumes à gérer.</li>
-<li><strong>Coursier.fr</strong> : recommandé aux TPE et indépendants cherchant un coursier ponctuel et flexible.</li>
-<li><strong>Urby</strong> : pensé pour les entreprises souhaitant une livraison urbaine écologique et mutualisée.</li>
+    <li><strong>Shopopop</strong> :<br>idéal pour les commerces de proximité qui veulent livrer rapidement.</li>
+<li><strong>Star Service</strong> :<br>parfait pour les enseignes premium exigeant un service livraison haut de gamme.</li>
+<li><strong>Colisweb</strong> :<br>conçu pour les retailers et e-commerçants avec forts volumes à gérer.</li>
+<li><strong>Coursier.fr</strong> :<br>recommandé aux TPE et indépendants cherchant un coursier ponctuel et flexible.</li>
+<li><strong>Urby</strong> :<br>pensé pour les entreprises souhaitant une livraison urbaine écologique et mutualisée.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs prestataires de livraison du dernier kilomètre</h2>
@@ -536,11 +536,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Flotte propre (véhicules électriques, cargo-bikes) avec livraison sans sous-traitance en cascade</td></tr><tr><td>Suivi en temps réel fiable et notifications destinataire bien conçues</td></tr><tr><td>Taux de réussite à la première présentation élevé sur les zones urbaines denses</td></tr><tr><td>Approche adaptée aux livraisons sur créneau pour le retail et les professionnels de santé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Couverture géographique limitée aux centres urbains, zones péri-urbaines et rurales non couvertes</td></tr><tr><td>Intégration API et connecteurs e-commerce nécessitent un accompagnement technique au lancement</td></tr></tbody>
         </table>
       </div>
@@ -564,11 +564,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau de transporteurs locaux permettant des livraisons le jour même sur de nombreuses villes</td></tr><tr><td>Tracking en temps réel communiqué au client final avec créneau précis</td></tr><tr><td>Intégration API avec les plateformes e-commerce et les OMS</td></tr><tr><td>Gestion sérieuse des livraisons non abouties avec re-livraison organisée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peu adapté aux petits volumes, le modèle devient pertinent uniquement à partir d'un flux régulier et conséquent</td></tr><tr><td>Intégration technique parfois longue à mettre en place, surtout sans développeur disponible en interne</td></tr><tr><td>Support moins réactif une fois passée la phase de démarrage, selon les retours que j'ai collectés</td></tr></tbody>
         </table>
       </div>
@@ -592,11 +592,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau de points relais très dense, y compris en zones semi-rurales</td></tr><tr><td>Intégration e-commerce accessible, API documentée et modules plug-and-play</td></tr><tr><td>Suivi colis en temps réel pour le destinataire, ce qui allège le support client</td></tr><tr><td>Option consignes automatiques disponible 24h/24</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de gestion marchand assez datée, prise en main pas toujours intuitive</td></tr><tr><td>Peu adapté aux usages B2B ou à la collecte de colis en volume</td></tr></tbody>
         </table>
       </div>
@@ -620,11 +620,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Livraison collaborative le jour même, efficace en zone urbaine dense</td></tr><tr><td>Prise en main rapide pour les commerçants, interface claire</td></tr><tr><td>Coûts de livraison souvent inférieurs aux prestataires classiques</td></tr><tr><td>Compatible avec plusieurs plateformes e-commerce pour éviter la double saisie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Disponibilité des livreurs très aléatoire hors des grandes villes</td></tr><tr><td>Niveau de fiabilité variable selon les livreurs particuliers, difficile à anticiper</td></tr></tbody>
         </table>
       </div>
@@ -667,11 +667,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Orchestration automatique multi-transporteurs selon des règles personnalisables</td></tr><tr><td>API ouverte, compatible avec la plupart des CMS et ERP du marché</td></tr><tr><td>Suivi des livraisons centralisé avec alertes et relances automatiques en cas d'anomalie</td></tr><tr><td>Tableau de bord clair pour piloter l'activité logistique sans multiplier les outils</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prise en main longue : la configuration initiale des workflows et des connecteurs prend du temps</td></tr><tr><td>Solution inadaptée aux petites structures à faible volume ou avec un seul transporteur</td></tr><tr><td>Support parfois lent à répondre lors des phases de paramétrage</td></tr></tbody>
         </table>
       </div>
@@ -714,11 +714,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Livraison soignée avec livreurs formés à la relation client, idéale pour les produits fragiles ou haut de gamme</td></tr><tr><td>Suivi en temps réel précis avec preuve de livraison photo et notifications automatiques au destinataire</td></tr><tr><td>Créneaux horaires fins qui réduisent les tentatives de livraison infructueuses</td></tr><tr><td>Remontées d'information structurées côté expéditeur, utiles pour le service client</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs nettement plus élevés que les prestataires généralistes, difficiles à absorber sur des marges serrées</td></tr><tr><td>Couverture géographique limitée aux zones urbaines et péri-urbaines denses, peu adapté aux livraisons rurales</td></tr><tr><td>Offre peu flexible pour les gros volumes ou les structures qui ont besoin d'un tarif dégressif agressif</td></tr></tbody>
         </table>
       </div>
@@ -910,7 +910,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

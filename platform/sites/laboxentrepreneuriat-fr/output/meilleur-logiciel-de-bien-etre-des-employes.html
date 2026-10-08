@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai évalué 7 logiciels de bien-être des employés : mon analyse</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 7 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 7 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Zest</strong> : startups tech cherchant un accompagnement personnalisé innovant</li>
-<li><strong>Alan Mind</strong> : PME privilégiant une approche médicale du bien-être</li>
-<li><strong>Plevo</strong> : entreprises traditionnelles voulant digitaliser leurs avantages sociaux</li>
-<li><strong>Woliba</strong> : organisations internationales gérant des équipes multi-sites dispersées</li>
-<li><strong>Wellhub</strong> : grandes structures offrant un accès fitness complet</li>
+<li><strong>Zest</strong> :<br>startups tech cherchant un accompagnement personnalisé innovant</li>
+<li><strong>Alan Mind</strong> :<br>PME privilégiant une approche médicale du bien-être</li>
+<li><strong>Plevo</strong> :<br>entreprises traditionnelles voulant digitaliser leurs avantages sociaux</li>
+<li><strong>Woliba</strong> :<br>organisations internationales gérant des équipes multi-sites dispersées</li>
+<li><strong>Wellhub</strong> :<br>grandes structures offrant un accès fitness complet</li>
 </ul>
   </div>
 
@@ -540,11 +540,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Consultations avec psychologues certifiés incluses dans la couverture santé</td></tr><tr><td>Réservation ultra-simple depuis l'app Alan existante</td></tr><tr><td>Aucun délai d'attente, créneaux disponibles rapidement</td></tr><tr><td>Sessions de groupe et ateliers collectifs sur le stress</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réservé exclusivement aux clients de la mutuelle Alan</td></tr><tr><td>Catalogue d'outils bien-être assez limité comparé aux plateformes spécialisées</td></tr><tr><td>Dépendant de la disponibilité des praticiens dans votre région</td></tr></tbody>
         </table>
       </div>
@@ -568,11 +568,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sondages intelligents qui s'adaptent aux réponses précédentes</td></tr><tr><td>Alertes automatiques quand les indicateurs de bien-être chutent</td></tr><tr><td>Recommandations d'actions personnalisées par équipe</td></tr><tr><td>Interface épurée qui ne décourage pas l'utilisation</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Absence de modules wellness concrets (méditation, sport, nutrition)</td></tr><tr><td>Dépendance forte à la participation volontaire des salariés</td></tr><tr><td>Fonctionnalités limitées pour les très grandes entreprises</td></tr></tbody>
         </table>
       </div>
@@ -596,11 +596,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Personnalisation poussée selon le profil de chaque employé</td></tr><tr><td>Interface intuitive qui favorise l'adoption spontanée</td></tr><tr><td>Analytics RH détaillés sans compromettre la vie privée</td></tr><tr><td>Programmes variés couvrant fitness, nutrition et bien-être mental</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Contenu principalement en anglais, traductions parfois approximatives</td></tr><tr><td>Intégration limitée avec les SIRH existants</td></tr><tr><td>Prix élevé pour les petites structures de moins de 50 salariés</td></tr></tbody>
         </table>
       </div>
@@ -624,11 +624,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec adoption rapide par les équipes</td></tr><tr><td>Création de défis personnalisés adaptés à la culture d'entreprise</td></tr><tr><td>Intégrations natives avec Apple Health, Google Fit et Fitbit</td></tr><tr><td>Tableaux de bord RH avec métriques d'engagement détaillées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Nécessite une animation constante pour maintenir la participation</td></tr><tr><td>Fonctionnalités avancées limitées sur le plan gratuit</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -652,11 +652,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gamification réellement motivante avec classements et récompenses</td></tr><tr><td>Coaching personnalisé par des professionnels certifiés</td></tr><tr><td>Défis collectifs qui créent de la cohésion d'équipe</td></tr><tr><td>Analytics précis sur l'engagement et la participation</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Fonctionnalités avancées parfois complexes à paramétrer</td></tr><tr><td>Nécessite une culture d'entreprise déjà ouverte au bien-être</td></tr></tbody>
         </table>
       </div>
@@ -680,11 +680,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ludique qui booste réellement l'engagement des salariés</td></tr><tr><td>Intégration native avec la plupart des trackers d'activité</td></tr><tr><td>Défis personnalisables selon les objectifs de l'entreprise</td></tr><tr><td>Analytics détaillés sur la participation et les résultats wellness</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peut créer une pression sociale indésirable entre collègues</td></tr><tr><td>Fonctionnalités limitées pour le suivi médical approfondi</td></tr><tr><td>Interface parfois trop enfantine pour certaines cultures d'entreprise</td></tr></tbody>
         </table>
       </div>
@@ -708,11 +708,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau de partenaires très étendu dans les grandes villes</td></tr><tr><td>Système de crédits flexible qui s'adapte aux habitudes</td></tr><tr><td>Interface mobile fluide pour réserver et gérer ses activités</td></tr><tr><td>Reporting détaillé sur l'utilisation par équipe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Coût élevé pour les petites structures (minimum 15€/employé/mois)</td></tr><tr><td>Couverture géographique limitée en zones rurales</td></tr><tr><td>Crédits perdus si non utilisés dans le mois</td></tr></tbody>
         </table>
       </div>
@@ -966,7 +966,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

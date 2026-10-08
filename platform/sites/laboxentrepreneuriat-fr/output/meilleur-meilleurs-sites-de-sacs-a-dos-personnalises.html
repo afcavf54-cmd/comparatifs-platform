@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Good Act</strong> : idéal pour les entreprises qui veulent un impact éco-responsable rapide.</li>
-<li><strong>Sac-Pub</strong> : parfait si vous cherchez un large choix sans vous ruiner.</li>
-<li><strong>L'Atelier du Goodies</strong> : recommandé pour les petites séries avec une finition soignée.</li>
-<li><strong>AlloGoodies</strong> : adapté aux commandes urgentes avec délais courts garantis.</li>
-<li><strong>Goodies Discount</strong> : le bon choix pour les gros volumes à prix serré.</li>
+    <li><strong>Good Act</strong> :<br>idéal pour les entreprises qui veulent un impact éco-responsable rapide.</li>
+<li><strong>Sac-Pub</strong> :<br>parfait si vous cherchez un large choix sans vous ruiner.</li>
+<li><strong>L'Atelier du Goodies</strong> :<br>recommandé pour les petites séries avec une finition soignée.</li>
+<li><strong>AlloGoodies</strong> :<br>adapté aux commandes urgentes avec délais courts garantis.</li>
+<li><strong>Goodies Discount</strong> :<br>le bon choix pour les gros volumes à prix serré.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs sites de sacs à dos personnalisés</h2>
@@ -536,11 +536,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Outil de personnalisation en ligne intuitif, prise en main rapide même sans formation</td></tr><tr><td>Plusieurs techniques de marquage disponibles dont la broderie, idéale pour les sacs à dos</td></tr><tr><td>SAV réactif et délais de livraison globalement fiables sur les commandes testées</td></tr><tr><td>Bonne lisibilité des fiches produits avec aperçu du rendu personnalisé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix unitaires élevés sur les petites quantités, peu adapté aux très petites commandes</td></tr><tr><td>Informations sur les zones d'impression parfois imprécises, nécessite de contacter le service client pour confirmer</td></tr></tbody>
         </table>
       </div>
@@ -564,11 +564,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue bien structuré avec zones de marquage clairement indiquées</td></tr><tr><td>Broderie disponible sur certains modèles pour un rendu plus soigné</td></tr><tr><td>Processus de validation du BAT simple et rapide</td></tr><tr><td>Bon rapport qualité-prix sur les modèles mid-range</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Suivi de commande peu transparent, nécessite parfois des relances</td></tr><tr><td>Moins adapté aux besoins de commandes récurrentes ou en gestion multi-sites</td></tr></tbody>
         </table>
       </div>
@@ -592,11 +592,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Spécialisation sacs et bagagerie, le catalogue est plus profond qu'un généraliste</td></tr><tr><td>Bon à tirer systématique avant impression, ce qui évite les mauvaises surprises</td></tr><tr><td>Tarifs dégressifs bien lisibles selon les quantités commandées</td></tr><tr><td>Suivi de commande clair et communication réactive</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Quantités minimales élevées, peu adapté aux petites structures qui veulent tester</td></tr><tr><td>Le site manque parfois d'inspiration visuelle pour aider à choisir le bon modèle</td></tr></tbody>
         </table>
       </div>
@@ -620,11 +620,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Configuration et simulation en ligne sans intermédiaire, idéal pour gagner du temps</td></tr><tr><td>Plusieurs techniques d'impression disponibles selon les modèles (broderie, sérigraphie, numérique)</td></tr><tr><td>Interface claire, prise en main rapide même sans compétences graphiques</td></tr><tr><td>Bon rapport qualité/prix pour des commandes de volume moyen</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue limité : peu de modèles premium ou de matières techniques disponibles</td></tr><tr><td>Délais de livraison variables selon la technique choisie, peu de flexibilité en cas d'urgence</td></tr><tr><td>Le support client est essentiellement en ligne, la réactivité peut laisser à désirer sur les commandes complexes</td></tr></tbody>
         </table>
       </div>
@@ -648,11 +648,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Spécialisation textile claire, pas un généraliste</td></tr><tr><td>Bon à tirer fourni rapidement pour valider la personnalisation</td></tr><tr><td>Qualité de finition solide sur les petites et moyennes séries</td></tr><tr><td>Choix entre broderie et sérigraphie selon le modèle</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réactivité du service client perfectible, surtout en période chargée</td></tr><tr><td>Gamme de sacs à dos moins étendue que certains concurrents généralistes</td></tr></tbody>
         </table>
       </div>
@@ -676,11 +676,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Tarifs affichés clairement, sans demande de devis obligatoire</td></tr><tr><td>Accessible dès de petites quantités, idéal pour les TPE avec budget limité</td></tr><tr><td>Livraison correctement communiquée avec suivi par notifications email</td></tr><tr><td>Bon choix pour des commandes événementielles ou promotionnelles simples</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Qualité des matériaux en retrait par rapport à des acteurs plus spécialisés</td></tr><tr><td>L'outil de personnalisation en ligne manque de précision sur le rendu couleur final</td></tr><tr><td>Service client difficile à joindre rapidement en cas de problème sur une commande</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Positionnement éco-responsable crédible, avec matières recyclées et certifications accessibles</td></tr><tr><td>Minimum de commande adapté aux petites structures et associations</td></tr><tr><td>Configurateur en ligne simple, prise en main rapide sans formation</td></tr><tr><td>Qualité de fabrication solide, rendu professionnel à la réception</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'aperçu du configurateur peut légèrement différer du produit final, notamment sur le placement des marquages</td></tr><tr><td>Gamme de modèles moins étendue que chez certains concurrents généralistes, choix plus limité si vous avez des besoins très spécifiques</td></tr><tr><td>Tarifs un peu au-dessus de l'entrée de gamme du marché, ce qui peut freiner les budgets très serrés</td></tr></tbody>
         </table>
       </div>
@@ -732,11 +732,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Configurateur en ligne autonome, sans avoir à contacter un commercial pour démarrer</td></tr><tr><td>Gamme de sacs assez large pour couvrir différents contextes (événementiel, corporate, sport)</td></tr><tr><td>Rendu visuel en temps réel lors de la personnalisation</td></tr><tr><td>Délais affichés clairement dès la sélection du produit</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Navigation du site parfois confuse, plusieurs catégories se ressemblent</td></tr><tr><td>Support client peu réactif sur les commandes avec des demandes spécifiques</td></tr></tbody>
         </table>
       </div>
@@ -760,11 +760,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Configurateur en ligne avec aperçu du rendu avant validation</td></tr><tr><td>Délais de livraison tenus sans relance, conditionnement soigné</td></tr><tr><td>Bon choix de techniques de marquage : broderie, sérigraphie, numérique</td></tr><tr><td>Catalogue filtrable efficacement par matière et budget</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillissante, navigation lente sur mobile</td></tr><tr><td>Options de personnalisation multizone peu documentées sur les fiches produit</td></tr><tr><td>Service client indispensable pour certaines configurations, ce qui allonge le process</td></tr></tbody>
         </table>
       </div>
@@ -788,11 +788,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gamme réellement pensée autour de l'écoresponsabilité, pas un simple ajout marketing</td></tr><tr><td>Certifications et traçabilité des matières vérifiables, utile pour valoriser une démarche RSE</td></tr><tr><td>Processus de personnalisation structuré avec BAT clair et suivi de commande</td></tr><tr><td>Service client réactif, j'ai toujours eu une réponse concrète sans relance</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de configuration en ligne un peu rigide, la personnalisation fine peut prendre plus de temps que prévu</td></tr><tr><td>Minimum de commande parfois contraignant pour les très petites structures ou les tests ponctuels</td></tr></tbody>
         </table>
       </div>
@@ -882,7 +882,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <aside class="backlink-note">
     <p>Pour approfondir le sujet, découvrez également
-<a href="https://sac-pub.fr" target="_blank" rel="noopener">Sac-Pub</a>,
+<a href="https://goodact.fr" target="_blank" rel="noopener">Good Act</a>,
 un acteur reconnu de ce secteur.</p>
   </aside>
 

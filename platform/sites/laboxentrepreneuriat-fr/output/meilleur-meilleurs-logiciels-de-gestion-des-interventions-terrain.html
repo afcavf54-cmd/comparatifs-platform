@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé les 8 logiciels de gestion des interventions terrain, mon analyse</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Organilog</strong> : idéal pour les TPE qui veulent planifier sans se compliquer la vie.</li>
-<li><strong>Bob! Desk</strong> : parfait pour les équipes de maintenance avec beaucoup de tickets récurrents.</li>
-<li><strong>Synchroteam</strong> : fait pour les PME qui gèrent des techniciens terrain sur plusieurs sites.</li>
-<li><strong>Kizeo Forms</strong> : conçu pour digitaliser rapidement des formulaires papier sans développement.</li>
-<li><strong>Alobees</strong> : pensé pour les entreprises du BTP qui suivent chantiers et équipes mobiles.</li>
+    <li><strong>Organilog</strong> :<br>idéal pour les TPE qui veulent planifier sans se compliquer la vie.</li>
+<li><strong>Bob! Desk</strong> :<br>parfait pour les équipes de maintenance avec beaucoup de tickets récurrents.</li>
+<li><strong>Synchroteam</strong> :<br>fait pour les PME qui gèrent des techniciens terrain sur plusieurs sites.</li>
+<li><strong>Kizeo Forms</strong> :<br>conçu pour digitaliser rapidement des formulaires papier sans développement.</li>
+<li><strong>Alobees</strong> :<br>pensé pour les entreprises du BTP qui suivent chantiers et équipes mobiles.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs logiciels de gestion des interventions terrain</h2>
@@ -536,11 +536,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Création de formulaires 100% personnalisables sans compétence technique, avec champs conditionnels, photos et signature</td></tr><tr><td>Export PDF automatique avec mise en page professionnelle, prêt à envoyer au client</td></tr><tr><td>Synchronisation des données en temps réel même hors connexion, utile sur les chantiers sans réseau</td></tr><tr><td>Intégrations API et connecteurs natifs pour s'interfacer avec des outils déjà en place</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune fonctionnalité native de planification ou d'affectation d'interventions, ce qui oblige à utiliser un second outil en parallèle</td></tr><tr><td>La richesse des options de configuration peut décourager au démarrage, l'onboarding demande un vrai temps d'investissement avant d'être autonome</td></tr><tr><td>Tarification qui grimpe rapidement dès que le nombre d'utilisateurs augmente</td></tr></tbody>
         </table>
       </div>
@@ -564,11 +564,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Générateur de formulaires mobiles très flexible, adaptable à de nombreux métiers terrain</td></tr><tr><td>Rapports d'intervention générés automatiquement en PDF, envoyés au client sans ressaisie</td></tr><tr><td>Remontée des données en temps réel avec gestion des workflows de validation multi-niveaux</td></tr><tr><td>Fonctionne aussi en mode hors connexion, pratique sur les chantiers sans réseau</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial des formulaires assez long, courbe d'apprentissage réelle pour les non-techniciens</td></tr><tr><td>Interface d'administration back-office perfectible, navigation parfois peu intuitive</td></tr></tbody>
         </table>
       </div>
@@ -592,11 +592,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Optimisation des tournées en temps réel, avec recalcul automatique selon les aléas du terrain</td></tr><tr><td>Application mobile utilisable sans connexion internet, utile en zones blanches</td></tr><tr><td>Rapports d'intervention personnalisables, exports PDF, ajout de photos directement depuis le mobile</td></tr><tr><td>Dispatching et géolocalisation des équipes fluides, sans latence notable</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prise en main longue : l'interface est dense et la configuration initiale demande un accompagnement réel</td></tr><tr><td>Tarification positionnée vers le haut, peu adaptée aux structures de moins de cinq techniciens</td></tr></tbody>
         </table>
       </div>
@@ -620,11 +620,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Portail client intégré qui réduit les sollicitations inutiles par téléphone</td></tr><tr><td>Gestion des contrats de maintenance directement dans l'outil</td></tr><tr><td>Interface accessible, prise en main rapide même pour des profils non techniques</td></tr><tr><td>Historique des interventions par équipement facile à consulter</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Application mobile moins réactive que la version web, quelques bugs de synchronisation signalés</td></tr><tr><td>Planification visuelle moins puissante que les solutions spécialisées en gestion de tournées</td></tr></tbody>
         </table>
       </div>
@@ -648,11 +648,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Planification visuelle par glisser-déposer, simple à utiliser au quotidien</td></tr><tr><td>Formulaires d'intervention personnalisables avec photos, signatures et checklists</td></tr><tr><td>Synchronisation mobile en temps réel, les techniciens reçoivent leurs missions instantanément</td></tr><tr><td>Intégrations disponibles avec des CRM et outils comptables populaires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial des workflows un peu long, pas totalement plug-and-play</td></tr><tr><td>Support client parfois lent à répondre depuis l'Europe, surtout en dehors des heures ouvrées US</td></tr><tr><td>Application mobile fonctionnelle mais UX visuellement moins moderne que certains concurrents</td></tr></tbody>
         </table>
       </div>
@@ -676,11 +676,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Planning visuel et affectation des techniciens en temps réel, très lisible</td></tr><tr><td>Pointage terrain depuis mobile, sans ressaisie manuelle</td></tr><tr><td>Conçu spécifiquement pour le BTP, les fonctionnalités collent bien aux besoins chantier</td></tr><tr><td>Suivi de l'avancement des interventions centralisé, accessible à toute l'équipe encadrante</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Secteur très ciblé BTP, peu adapté aux entreprises de services terrain hors construction</td></tr><tr><td>Intégrations avec outils tiers limitées, ce qui peut poser problème si votre stack logiciel est déjà en place</td></tr><tr><td>Configuration initiale qui nécessite un accompagnement, l'onboarding en autonomie manque de guidage</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Planification en temps réel avec réaffectation rapide des techniciens</td></tr><tr><td>Formulaires terrain entièrement personnalisables et rapports générés sur mobile</td></tr><tr><td>Intégrations API solides avec ERP et outils de facturation pour éviter la double saisie</td></tr><tr><td>Application mobile utilisable hors connexion pour les zones sans réseau</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prise en main back-office assez longue, comptez plusieurs semaines pour exploiter toutes les options</td></tr><tr><td>Application mobile perfectible sur les appareils Android anciens, avec des lenteurs observées</td></tr><tr><td>Tarification orientée grands comptes, moins accessible pour les très petites structures</td></tr></tbody>
         </table>
       </div>
@@ -732,11 +732,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main rapide, même pour des équipes non techniques</td></tr><tr><td>Planification visuelle claire avec drag-and-drop</td></tr><tr><td>Formulaires et bons d'intervention personnalisables avec signature et photos</td></tr><tr><td>Application mobile fonctionnelle même avec une connexion limitée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Intégrations avec des logiciels tiers parfois laborieuses à mettre en place</td></tr><tr><td>Reporting et tableaux de bord assez basiques pour les structures qui ont besoin d'analyses détaillées</td></tr><tr><td>Support client réactif, mais principalement disponible en horaires de bureau</td></tr></tbody>
         </table>
       </div>
@@ -916,7 +916,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

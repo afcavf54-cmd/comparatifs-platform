@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai évalué 6 logiciels d'engagement des collaborateurs : mon comparatif</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 6 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 6 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Zest</strong> : startups tech qui veulent des données précises sur l'engagement</li>
-<li><strong>Officevibe</strong> : PME cherchant une solution simple pour sonder régulièrement leurs équipes</li>
-<li><strong>Lattice</strong> : entreprises structurées voulant lier feedback et gestion de performance complète</li>
-<li><strong>Culture Amp</strong> : organisations matures privilégiant l'analyse poussée et benchmarks sectoriels détaillés</li>
-<li><strong>Honestly</strong> : dirigeants préférant les échanges directs aux questionnaires formatés classiques</li>
+<li><strong>Zest</strong> :<br>startups tech qui veulent des données précises sur l'engagement</li>
+<li><strong>Officevibe</strong> :<br>PME cherchant une solution simple pour sonder régulièrement leurs équipes</li>
+<li><strong>Lattice</strong> :<br>entreprises structurées voulant lier feedback et gestion de performance complète</li>
+<li><strong>Culture Amp</strong> :<br>organisations matures privilégiant l'analyse poussée et benchmarks sectoriels détaillés</li>
+<li><strong>Honestly</strong> :<br>dirigeants préférant les échanges directs aux questionnaires formatés classiques</li>
 </ul>
   </div>
 
@@ -539,11 +539,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-simple qui incite vraiment à répondre aux sondages</td></tr><tr><td>Analyses prédictives qui détectent les risques de démission avant les managers</td></tr><tr><td>Intégration native avec l'écosystème Workday</td></tr><tr><td>Benchmarks sectoriels pour comparer ses résultats</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix assez élevé, surtout pour les petites structures</td></tr><tr><td>Customisation limitée des questionnaires</td></tr><tr><td>Temps d'adaptation long pour exploiter toutes les données</td></tr></tbody>
         </table>
       </div>
@@ -567,11 +567,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Feedback anonyme vraiment anonyme avec système de cryptage avancé</td></tr><tr><td>Interface intuitive, prise en main en 15 minutes pour les utilisateurs</td></tr><tr><td>Suggestions d'actions concrètes générées automatiquement selon les retours</td></tr><tr><td>Prix transparent sans frais cachés, facturation mensuelle flexible</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting assez basique, pas d'analyses poussées pour les grands groupes</td></tr><tr><td>Intégration limitée avec les SIRH existants, synchronisation manuelle</td></tr><tr><td>Support client parfois lent, réponses en 48h minimum en français</td></tr></tbody>
         </table>
       </div>
@@ -595,11 +595,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gamification efficace qui pousse réellement au partage</td></tr><tr><td>Interface intuitive pour documenter et retrouver les bonnes pratiques</td></tr><tr><td>Analytics détaillés sur l'engagement et les contributions</td></tr><tr><td>Intégration fluide avec Slack et Microsoft Teams</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Nécessite une culture de partage préexistante dans l'entreprise</td></tr><tr><td>Peu adapté aux équipes avec fort turnover</td></tr><tr><td>Tarification qui devient vite chère au-delà de 100 utilisateurs</td></tr></tbody>
         </table>
       </div>
@@ -623,11 +623,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface moderne qui facilite l'adoption par les équipes</td></tr><tr><td>Templates d'entretiens personnalisables selon les postes</td></tr><tr><td>Suivi des OKR intégré avec notifications automatiques</td></tr><tr><td>Analytics détaillés sur l'évolution de l'engagement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés pour les petites structures (à partir de 11$/utilisateur/mois)</td></tr><tr><td>Nécessite une culture feedback préexistante pour être efficace</td></tr><tr><td>Synchronisation parfois lente entre les différents modules</td></tr></tbody>
         </table>
       </div>
@@ -651,11 +651,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Analytics RH poussées avec corrélations entre engagement et performance</td></tr><tr><td>Benchmarking sectoriel basé sur 25 millions de réponses dans leur base</td></tr><tr><td>Modules de développement personnalisés selon les profils d'engagement</td></tr><tr><td>API robuste pour intégration avec les SIRH existants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé qui peut atteindre 8-12€ par collaborateur par mois</td></tr><tr><td>Interface complexe qui nécessite une formation dédiée pour les RH</td></tr><tr><td>Questionnaires parfois longs qui peuvent créer de la lassitude</td></tr></tbody>
         </table>
       </div>
@@ -679,11 +679,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Micro-sondages hebdomadaires qui prennent vraiment 2 minutes</td></tr><tr><td>Anonymat total qui libère la parole des collaborateurs</td></tr><tr><td>Intégration native avec Slack et Microsoft Teams</td></tr><tr><td>Interface simple qui ne demande aucune formation</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Analytics limités pour les grosses structures</td></tr><tr><td>Pas de personnalisation poussée des questionnaires</td></tr><tr><td>Support client parfois lent à répondre en français</td></tr></tbody>
         </table>
       </div>
@@ -1012,7 +1012,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai recherché le meilleur terminal de paiement : comparatif complet</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -511,11 +511,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Square Reader</strong> : idéal pour les commerçants débutants qui cherchent une solution simple et fiable</li>
-<li><strong>Zettle Reader 2</strong> : parfait pour les petites entreprises voulant un écosystème complet de gestion</li>
-<li><strong>SumUp Solo Lite</strong> : recommandé aux indépendants privilégiant les tarifs transparents et sans abonnement mensuel</li>
-<li><strong>myPOS Go 2</strong> : adapté aux professionnels mobiles nécessitant un terminal robuste avec écran tactile</li>
-<li><strong>Revolut Reader</strong> : conçu pour les entreprises modernes recherchant une intégration bancaire et comptable fluide</li>
+<li><strong>Square Reader</strong> :<br>idéal pour les commerçants débutants qui cherchent une solution simple et fiable</li>
+<li><strong>Zettle Reader 2</strong> :<br>parfait pour les petites entreprises voulant un écosystème complet de gestion</li>
+<li><strong>SumUp Solo Lite</strong> :<br>recommandé aux indépendants privilégiant les tarifs transparents et sans abonnement mensuel</li>
+<li><strong>myPOS Go 2</strong> :<br>adapté aux professionnels mobiles nécessitant un terminal robuste avec écran tactile</li>
+<li><strong>Revolut Reader</strong> :<br>conçu pour les entreprises modernes recherchant une intégration bancaire et comptable fluide</li>
 </ul>
   </div>
 
@@ -540,11 +540,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Tarification simple et transparente avec un taux unique tout compris, sans frais mensuels cachés ni contrat d'engagement longue durée</td></tr><tr><td>Terminal moderne et performant acceptant tous types de paiements : cartes bancaires, NFC, Apple Pay et Google Pay pour une expérience client optimale</td></tr><tr><td>Tableau de bord analytique intuitif permettant un suivi en temps réel des transactions et une gestion simplifiée de la comptabilité quotidienne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Disponibilité géographique encore limitée, principalement concentrée sur les marchés nordiques et quelques pays européens, ce qui restreint son accessibilité pour les commerçants français</td></tr><tr><td>Absence de fonctionnalités avancées telles que la gestion des stocks intégrée ou les programmes de fidélité, nécessitant des outils tiers complémentaires pour les besoins plus complexes</td></tr></tbody>
         </table>
       </div>
@@ -571,11 +571,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Aucun frais fixe ni abonnement mensuel</td></tr><tr><td>Installation immédiate sans validation bancaire</td></tr><tr><td>Application tout-en-un avec gestion des stocks</td></tr><tr><td>Compatible avec tous les types de cartes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commission de 2,65% par transaction assez élevée</td></tr><tr><td>Fonctionne uniquement avec smartphone ou tablette</td></tr><tr><td>Pas de terminal autonome pour les gros volumes</td></tr></tbody>
         </table>
       </div>
@@ -599,11 +599,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Connexion PayPal native avec virement immédiat des fonds</td></tr><tr><td>Paiements sans contact ultra-rapides, moins de 2 secondes</td></tr><tr><td>Application intuitive, formation en 20 minutes chrono</td></tr><tr><td>Autonomie batterie excellente, 8h d'usage continu</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Connexion Bluetooth uniquement, dépendant du smartphone</td></tr><tr><td>Gestion de stock très basique, pas de variantes produits</td></tr><tr><td>Frais de transaction parmi les plus élevés du marché</td></tr></tbody>
         </table>
       </div>
@@ -627,11 +627,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prix d'achat ultra-accessible à 19€ seulement</td></tr><tr><td>Installation en 5 minutes chrono via smartphone</td></tr><tr><td>Aucun abonnement mensuel ni frais cachés</td></tr><tr><td>Parfait pour les marchés et ventes nomades</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commission élevée à 1,95% par transaction</td></tr><tr><td>Connexion Bluetooth uniquement, pas de WiFi ni 4G</td></tr><tr><td>Fonctionnalités très limitées, pas d'impression de tickets</td></tr></tbody>
         </table>
       </div>
@@ -655,11 +655,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Aucun frais d'abonnement mensuel, que du commission par vente</td></tr><tr><td>Fonctionne même sans connexion internet, synchronise plus tard</td></tr><tr><td>Application complète avec facturation et suivi comptable intégré</td></tr><tr><td>Ultra portable, tient dans une poche de veste</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commission de 2,95% assez élevée pour les gros volumes</td></tr><tr><td>Dépendance totale au smartphone, problématique si batterie vide</td></tr><tr><td>Pas de clavier physique, moins pratique pour saisir les montants</td></tr></tbody>
         </table>
       </div>
@@ -683,11 +683,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Frais très compétitifs à 0,8% sur les cartes européennes</td></tr><tr><td>Intégration native avec l'app Revolut Business pour le suivi en temps réel</td></tr><tr><td>Configuration ultra-rapide en quelques minutes</td></tr><tr><td>Pas de frais cachés ni d'engagement long terme</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité si vous n'utilisez pas déjà les services Revolut Business</td></tr><tr><td>Support client parfois lent en cas de problème technique</td></tr><tr><td>Moins de fonctionnalités avancées que les terminaux pro traditionnels</td></tr></tbody>
         </table>
       </div>
@@ -711,11 +711,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Aucun frais de location mensuelle, achat unique à 29€</td></tr><tr><td>Virements rapides sous 24h ouvrées</td></tr><tr><td>Installation ultra-simple via smartphone</td></tr><tr><td>Sans engagement ni abonnement fixe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commission élevée de 1,65% pour les gros volumes</td></tr><tr><td>Pas de fonctionnalités avancées de gestion</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
         </table>
       </div>
@@ -739,11 +739,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>API moderne avec documentation développeur claire</td></tr><tr><td>Tarification transparente sans frais cachés</td></tr><tr><td>Tableau de bord intuitif pour le suivi des transactions</td></tr><tr><td>Support client réactif par chat</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées encore limitées par rapport aux leaders</td></tr><tr><td>Pas d'application mobile dédiée pour les commerçants</td></tr><tr><td>Historique de paiements limité à 12 mois en standard</td></tr></tbody>
         </table>
       </div>
@@ -1001,7 +1001,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>
