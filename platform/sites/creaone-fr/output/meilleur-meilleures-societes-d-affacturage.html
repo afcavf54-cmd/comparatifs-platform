@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -507,11 +507,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Finexkap</strong> : idéal pour les TPE qui veulent céder leurs factures ponctuellement.</li>
-<li><strong>Bibby Factor France</strong> : adapté aux PME cherchant un accompagnement terrain personnalisé.</li>
-<li><strong>Edebex</strong> : parfait pour les entreprises qui préfèrent une place de marché flexible.</li>
-<li><strong>Eurofactor</strong> : conçu pour les ETI avec des volumes de facturation importants et réguliers.</li>
-<li><strong>Crédit Agricole Leasing & Factoring</strong> : recommandé aux entreprises déjà clientes du réseau Crédit Agricole.</li>
+    <li><strong>Finexkap</strong> :<br>idéal pour les TPE qui veulent céder leurs factures ponctuellement.</li>
+<li><strong>Bibby Factor France</strong> :<br>adapté aux PME cherchant un accompagnement terrain personnalisé.</li>
+<li><strong>Edebex</strong> :<br>parfait pour les entreprises qui préfèrent une place de marché flexible.</li>
+<li><strong>Eurofactor</strong> :<br>conçu pour les ETI avec des volumes de facturation importants et réguliers.</li>
+<li><strong>Crédit Agricole Leasing & Factoring</strong> :<br>recommandé aux entreprises déjà clientes du réseau Crédit Agricole.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs sociétés d’affacturage</h2>
@@ -533,11 +533,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion des créances internationales et couverture du risque sur acheteurs étrangers</td></tr><tr><td>Reporting détaillé et relances automatisées accessibles depuis l'espace client</td></tr><tr><td>Intégration fluide avec les principaux ERP du marché</td></tr><tr><td>Appui d'un grand groupe bancaire avec une solidité financière rassurante</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface utilisateur datée, prise en main longue pour des équipes non techniques</td></tr><tr><td>Processus de contractualisation assez lourd, les délais de mise en place peuvent être frustrants</td></tr></tbody>
         </table>
       </div>
@@ -561,11 +561,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Affacturage confidentiel disponible, ce qui préserve la relation client</td></tr><tr><td>Suivi des créances fiable avec paramétrage par débiteur</td></tr><tr><td>Adossé au réseau Crédit Agricole, ce qui rassure sur la solidité financière</td></tr><tr><td>Espace en ligne pour monitorer les financements au quotidien</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface en ligne datée et peu intuitive, onboarding peu guidé</td></tr><tr><td>Pas d'intégration native avec les ERP du marché, exports manuels à prévoir</td></tr></tbody>
         </table>
       </div>
@@ -589,11 +589,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Financement rapide des créances, souvent sous 48h après activation du compte</td></tr><tr><td>Recouvrement délégué disponible, ce qui allège vraiment la charge de relances internes</td></tr><tr><td>Adossement au Crédit Agricole : solidité financière et interlocuteurs stables</td></tr><tr><td>Interface en ligne fonctionnelle pour les remises de factures B2B</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Intégration ERP non native dans tous les cas, nécessite parfois une configuration manuelle avec le support</td></tr><tr><td>Contrat et montage du dossier perçus comme complexes pour les petites structures avec peu de volume</td></tr></tbody>
         </table>
       </div>
@@ -617,11 +617,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interlocuteur dédié et accessible, pas de centre d'appel impersonnel</td></tr><tr><td>Gestion du poste clients incluse : relances et reporting sans coût supplémentaire</td></tr><tr><td>Délais de financement courts après cession des créances</td></tr><tr><td>Adapté aux PME avec des besoins concrets et un budget maîtrisé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Plateforme en ligne vieillissante, l'UX laisse à désirer face à des concurrents plus récents</td></tr><tr><td>Peu d'intégrations natives avec les ERP ou logiciels comptables du marché</td></tr></tbody>
         </table>
       </div>
@@ -645,11 +645,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interlocuteur dédié grâce au réseau Banque Populaire et Caisse d'Épargne</td></tr><tr><td>Gestion des relances clients incluse, ce qui allège vraiment la charge administrative</td></tr><tr><td>Financement rapide après acceptation des factures</td></tr><tr><td>Contrat adapté aux entreprises de taille intermédiaire avec des volumes significatifs</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface client datée, peu intuitive pour des équipes non habituées aux outils bancaires classiques</td></tr><tr><td>Intégration limitée avec les logiciels comptables tiers, pas d'API ouverte documentée</td></tr><tr><td>Frais de gestion et de financement à décortiquer soigneusement, les conditions peuvent surprendre</td></tr></tbody>
         </table>
       </div>
@@ -673,11 +673,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Aucun engagement de durée ni de volume minimum, idéal pour une utilisation ponctuelle</td></tr><tr><td>Processus de soumission de facture simple et interface accessible même pour une équipe non technique</td></tr><tr><td>Financement sélectif facture par facture, ce qui laisse un contrôle total sur ce qu'on cède</td></tr><tr><td>Pas de frais fixes mensuels : on paie uniquement sur les factures effectivement financées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Les factures de clients peu notés ou inconnus sont souvent refusées ou financées à des conditions moins avantageuses</td></tr><tr><td>Aucun outil de relance, de suivi du poste client ou de reporting intégré : c'est un outil de financement, pas de gestion</td></tr><tr><td>Le modèle place de marché implique une certaine variabilité des taux selon les investisseurs présents, ce qui rend la prévision de coût difficile</td></tr></tbody>
         </table>
       </div>
@@ -701,11 +701,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Processus 100% en ligne, sans paperasse ni interlocuteur à relancer</td></tr><tr><td>Financement possible en moins de 48h sur les factures éligibles</td></tr><tr><td>Aucun engagement de volume minimum, on cède à la carte</td></tr><tr><td>Accessible aux structures sans historique long avec une banque</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting et tableaux de bord peu développés pour les équipes comptables qui veulent de la granularité</td></tr><tr><td>Coût unitaire par facture qui peut devenir élevé si on utilise le service de façon intensive sur le long terme</td></tr><tr><td>Moins adapté aux PME avec des processus internes complexes ou des besoins multi-entités</td></tr></tbody>
         </table>
       </div>
@@ -729,11 +729,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Adossé au réseau BNP Paribas, ce qui facilite la relation bancaire globale</td></tr><tr><td>Gestion externalisée du poste clients avec suivi des relances intégré</td></tr><tr><td>Accès direct aux rapports d'assurance-crédit depuis l'espace client</td></tr><tr><td>Financement des créances dans des délais raisonnables une fois le contrat paramétré</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Support client peu réactif sur les litiges, les délais de réponse peuvent dépasser deux jours</td></tr><tr><td>Contrat peu flexible avec des frais de gestion à décortiquer avant signature</td></tr><tr><td>Intégration ERP non native, le paramétrage manuel prend du temps au démarrage</td></tr></tbody>
         </table>
       </div>

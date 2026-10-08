@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -492,7 +492,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de recouvrement 2026 : Top 10</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -508,11 +508,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>My DSO Manager</strong> : idéal pour les équipes qui veulent automatiser leurs relances clients efficacement.</li>
-<li><strong>Upflow</strong> : parfait pour les PME qui cherchent un suivi des encaissements simple et visuel.</li>
-<li><strong>LeanPay</strong> : recommandé aux TPE avec peu de temps à consacrer au recouvrement quotidien.</li>
-<li><strong>Clearnox</strong> : adapté aux responsables comptables qui gèrent plusieurs portefeuilles clients simultanément.</li>
-<li><strong>Hoopiz</strong> : convient aux équipes qui veulent prioriser leurs actions de relance sans effort manuel.</li>
+<li><strong>My DSO Manager</strong> :<br>idéal pour les équipes qui veulent automatiser leurs relances clients efficacement.</li>
+<li><strong>Upflow</strong> :<br>parfait pour les PME qui cherchent un suivi des encaissements simple et visuel.</li>
+<li><strong>LeanPay</strong> :<br>recommandé aux TPE avec peu de temps à consacrer au recouvrement quotidien.</li>
+<li><strong>Clearnox</strong> :<br>adapté aux responsables comptables qui gèrent plusieurs portefeuilles clients simultanément.</li>
+<li><strong>Hoopiz</strong> :<br>convient aux équipes qui veulent prioriser leurs actions de relance sans effort manuel.</li>
 </ul>
   </div>
 
@@ -539,11 +539,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Scoring IA du comportement de paiement : la priorisation automatique des relances selon le risque client évite de perdre du temps sur des dossiers peu urgents</td></tr><tr><td>Workflows de relance entièrement personnalisables par segment, montant ou ancienneté de créance, sans intervention technique à chaque modification</td></tr><tr><td>Synchronisation native avec les grands ERP (SAP, Oracle, Microsoft Dynamics) : les données de facturation remontent en temps réel sans ressaisie</td></tr><tr><td>Reporting DAF très complet avec DSO, taux de recouvrement, évolution de l'encours et exports prêts à l'emploi pour les comités de direction</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding long et paramétrage initial complexe : compter plusieurs semaines avant d'avoir une configuration vraiment opérationnelle, surtout si les données ERP sont hétérogènes</td></tr><tr><td>Tarification orientée grands comptes, peu accessible pour les PME avec un volume de créances modeste. Aucune grille tarifaire publique, ce qui complique la comparaison</td></tr><tr><td>Interface qui peut sembler dense pour des utilisateurs peu habitués aux outils de credit management. La prise en main sans accompagnement reste difficile pour les profils non financiers</td></tr></tbody>
         </table>
       </div>
@@ -571,11 +571,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows de relance entièrement automatisables par palier de retard, avec personnalisation des messages selon le profil client</td></tr><tr><td>Scoring de risque intégré qui aide à prioriser les relances manuelles sur les dossiers les plus critiques</td></tr><tr><td>Synchronisation avec les principaux logiciels de facturation pour éviter toute ressaisie des factures impayées</td></tr><tr><td>Reporting lisible par ancienneté de créance avec exports exploitables directement dans Excel</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas adapté au suivi contentieux ou judiciaire : dès qu'un dossier passe chez un huissier, l'outil ne suit plus vraiment</td></tr><tr><td>L'onboarding peut être laborieux si ton process de facturation est atypique, la configuration des paliers prend du temps au départ</td></tr><tr><td>Le support est parfois lent à répondre sur les questions techniques, j'ai attendu deux jours pour un problème de synchronisation</td></tr></tbody>
         </table>
       </div>
@@ -603,11 +603,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows de relance très configurables : par ancienneté, par segment client, par seuil de montant</td></tr><tr><td>Suivi des promesses de paiement avec alertes automatiques en cas de non-respect de l'échéance</td></tr><tr><td>Relance multicanal native (email, SMS, courrier) sans module tiers à ajouter</td></tr><tr><td>Gestion des litiges intégrée directement dans le dossier client, sans jongler entre plusieurs outils</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding long et technique : la configuration initiale des workflows et des connecteurs ERP demande un accompagnement sérieux, ça ne s'installe pas en deux jours</td></tr><tr><td>Interface vieillissante et dense, la prise en main est laborieuse pour les nouveaux utilisateurs qui n'ont pas de formation dédiée</td></tr><tr><td>Documentation API insuffisante pour les intégrations non standards, ce qui peut bloquer les équipes techniques sur des projets de connexion avec des systèmes internes spécifiques</td></tr></tbody>
         </table>
       </div>
@@ -635,11 +635,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Scénarios de relance automatisés et personnalisables par profil client, avec déclenchement conditionnel selon le délai et le montant de la facture</td></tr><tr><td>Suivi des promesses de paiement intégré directement dans la fiche débiteur, ce qui évite les relances intempestives quand un accord a déjà été passé</td></tr><tr><td>Connexion native avec plusieurs ERP et logiciels comptables français, ce qui facilite la synchro des données de facturation sans ressaisie</td></tr><tr><td>Tableau de bord de suivi des créances clair, avec vue en temps réel sur les encours, les retards et les priorités de relance</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>La configuration initiale des workflows peut être longue et technique si votre environnement ERP sort des intégrations standard, il faut compter sur un accompagnement ou du temps en interne</td></tr><tr><td>L'interface manque un peu de modernité sur certains écrans, notamment dans la gestion des modèles de mails, ce que j'ai trouvé franchement frustrant quand on veut aller vite</td></tr><tr><td>L'outil est quasi exclusivement orienté B2B avec des volumes modérés, il ne conviendra pas du tout à des structures qui font du recouvrement en volume ou sur des créances B2C</td></tr></tbody>
         </table>
       </div>
@@ -667,11 +667,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Scoring automatique des débiteurs avec priorisation des relances selon le profil de risque réel, pas juste la date d'échéance</td></tr><tr><td>Vue trésorerie intégrée : l'impact des impayés sur le cash prévisionnel est visible directement dans le tableau de bord, sans export Excel intermédiaire</td></tr><tr><td>Scénarios de relance multicanal paramétrables (email, SMS, courrier) avec historique complet des actions par client</td></tr><tr><td>Exports DSO et reporting recouvrement prêts à l'emploi pour les présentations direction financière</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'intégration avec certains ERP métiers (hors Sage, Cegid, et quelques connecteurs standards) demande un développement spécifique qui peut allonger le déploiement de plusieurs semaines</td></tr><tr><td>L'interface est fonctionnelle mais dense : la prise en main sans accompagnement prend du temps, et l'onboarding proposé de base reste assez léger pour les équipes qui démarrent de zéro</td></tr><tr><td>Le tarif, non affiché publiquement, est négocié au cas par cas, ce qui complique la comparaison budgétaire rapide et peut surprendre à la signature</td></tr></tbody>
         </table>
       </div>
@@ -699,11 +699,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation des scénarios de relance par segment client, avec déclenchement automatique selon les délais configurés</td></tr><tr><td>Suivi des promesses de paiement avec alertes automatiques si l'échéance n'est pas respectée</td></tr><tr><td>Tableau de bord DSO et encours lisible immédiatement, sans avoir à paramétrer des dizaines de rapports</td></tr><tr><td>Intégrations ERP nombreuses (SAP, Sage, Cegid, Dynamics) et synchronisation des données de facturation fiable</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding peut être long si l'ERP est mal documenté côté client : j'ai mis trois semaines avant d'avoir une synchronisation propre avec Sage X3</td></tr><tr><td>L'interface manque de modernité et certains menus restent peu intuitifs, notamment pour configurer les workflows de relance avancés la première fois</td></tr><tr><td>Le tarif devient vite élevé pour les PME qui n'ont pas un volume de créances suffisant pour rentabiliser l'outil : en dessous de 200 clients actifs, le ROI est discutable</td></tr></tbody>
         </table>
       </div>
@@ -731,11 +731,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation des scénarios de relance par segment : on paramètre des règles précises (délai, montant, type de client) et les relances partent sans intervention manuelle</td></tr><tr><td>Suivi complet du dossier débiteur : historique des contacts, promesses de paiement, litiges, notes internes, tout centralisé en un seul endroit</td></tr><tr><td>Tableaux de bord DSO et taux de recouvrement exploitables directement sans export ou retraitement manuel</td></tr><tr><td>Prise en main assez rapide pour un outil métier de cette complexité, la logique credit management est bien intégrée dans l'ergonomie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'interface manque de modernité sur certains modules, quelques écrans font penser à un logiciel des années 2010 et ça ralentit légèrement la navigation quotidienne</td></tr><tr><td>Le paramétrage initial des workflows demande du temps et une vraie compréhension métier, sans accompagnement au démarrage on peut vite configurer des scénarios bancals</td></tr><tr><td>L'intégration ERP fonctionne mais reste parfois rigide sur les formats d'import, j'ai perdu du temps à nettoyer des fichiers avant synchronisation</td></tr></tbody>
         </table>
       </div>
@@ -763,11 +763,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows de relance automatisés configurables par segment client, avec des scénarios multicanaux (email, SMS) adaptables selon l'ancienneté de la facture</td></tr><tr><td>Portail de paiement client intégré : le débiteur reçoit un lien, consulte ses factures et paie directement, sans friction supplémentaire</td></tr><tr><td>Synchronisation native avec QuickBooks, Xero, NetSuite et Pennylane, ce qui évite les doubles saisies et les décalages entre le logiciel de recouvrement et la comptabilité</td></tr><tr><td>Suivi des promesses de paiement avec historique des échanges par facture, utile quand plusieurs personnes gèrent le même portefeuille client</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding demande du temps : paramétrer les workflows, connecter le logiciel comptable et former les équipes prend facilement deux à trois semaines avant d'être vraiment opérationnel</td></tr><tr><td>Le reporting reste assez standard, difficile de construire des vues personnalisées poussées sans passer par une extraction manuelle des données</td></tr><tr><td>Les tarifs ne sont pas affichés publiquement et le positionnement est clairement orienté vers des budgets PME/scale-up, ce qui peut surprendre les petites structures qui s'attendent à un abonnement accessible</td></tr></tbody>
         </table>
       </div>
@@ -795,11 +795,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Scénarios de relance automatisés entièrement paramétrables par palier et par canal (email, SMS, courrier)</td></tr><tr><td>Tableau de bord des encours par ancienneté de dette, filtrable par client ou par commercial en quelques clics</td></tr><tr><td>Synchronisation avec les principaux ERP et exports comptables qui évitent les ressaisies manuelles</td></tr><tr><td>Onboarding rapide : j'ai formé deux personnes de l'équipe en moins d'une semaine sans formation officielle</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface datée qui manque d'ergonomie, certains écrans nécessitent trop de clics pour des actions courantes</td></tr><tr><td>Pas de module de scoring de risque client intégré ni de gestion du recouvrement judiciaire, ce qui oblige à jongler avec d'autres outils dès que la situation se complique</td></tr><tr><td>Le support client peut être lent à répondre en dehors des horaires de bureau, ce qui est frustrant quand on a un bug en cours de clôture mensuelle</td></tr></tbody>
         </table>
       </div>
@@ -827,11 +827,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Scénarios de relance automatisés configurables (email, SMS, courrier) sans compétence technique requise</td></tr><tr><td>Suivi des promesses de paiement intégré, ce qui évite les relances inutiles et les conflits clients</td></tr><tr><td>Tableaux de bord clairs sur les encours, les délais moyens de paiement et les taux de recouvrement par période</td></tr><tr><td>Affectation des dossiers par gestionnaire avec historique complet des actions, utile dès qu'on travaille en équipe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'intégration avec certains ERP ou logiciels comptables demande un paramétrage manuel qui peut prendre du temps, surtout si ton outil de compta n'est pas dans la liste des connecteurs natifs</td></tr><tr><td>L'interface a quelques zones un peu denses visuellement, notamment dans la gestion des scénarios avancés. Pas un bloquant, mais j'ai mis quelques jours à m'y retrouver complètement</td></tr><tr><td>Le support client répond, mais pas toujours dans la journée. Pour une équipe qui démarre et qui bloque sur une config, ça peut être frustrant les premières semaines</td></tr></tbody>
         </table>
       </div>
@@ -1137,7 +1137,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

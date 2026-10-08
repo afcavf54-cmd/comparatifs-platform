@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -492,7 +492,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel d’emailing 2026 : Top 12</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 12 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 12 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -506,11 +506,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-  <li><strong>Brevo</strong> : idéal pour les équipes qui veulent centraliser email et SMS simplement.</li>
-  <li><strong>Mailchimp</strong> : parfait si vous débutez en emailing et cherchez une prise en main rapide.</li>
-  <li><strong>ActiveCampaign</strong> : recommandé pour automatiser des séquences complexes sans compétences techniques avancées.</li>
-  <li><strong>MailerLite</strong> : le bon choix quand le budget est serré mais les besoins restent solides.</li>
-  <li><strong>Sarbacane</strong> : conçu pour les entreprises françaises qui veulent un support local réactif.</li>
+  <li><strong>Brevo</strong> :<br>idéal pour les équipes qui veulent centraliser email et SMS simplement.</li>
+  <li><strong>Mailchimp</strong> :<br>parfait si vous débutez en emailing et cherchez une prise en main rapide.</li>
+  <li><strong>ActiveCampaign</strong> :<br>recommandé pour automatiser des séquences complexes sans compétences techniques avancées.</li>
+  <li><strong>MailerLite</strong> :<br>le bon choix quand le budget est serré mais les besoins restent solides.</li>
+  <li><strong>Sarbacane</strong> :<br>conçu pour les entreprises françaises qui veulent un support local réactif.</li>
 </ul>
   </div>
 
@@ -537,11 +537,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Tarification à l'envoi et non au nombre de contacts : idéal pour les bases volumineuses mais peu actives</td></tr><tr><td>Automatisation des emails complète dès les formules d'entrée de gamme, avec scénarios préconfigurés</td></tr><tr><td>CRM, SMS, chat et emailing centralisés dans une seule interface sans multiplier les abonnements</td></tr><tr><td>Plan gratuit généreux : 300 emails par jour sans CB, pratique pour tester réellement avant de s'engager</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting limité sur les plans standard : pas de heatmap de clics avancée ni de tests multivariés réels</td></tr><tr><td>Support client inégal : le chat répond vite pour les questions simples, mais les problèmes techniques complexes peuvent traîner plusieurs jours</td></tr><tr><td>L'éditeur d'automatisation devient difficile à lire passé 6 ou 7 étapes, la lisibilité des workflows longs laisse à désirer</td></tr></tbody>
         </table>
       </div>
@@ -569,11 +569,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>API REST solide avec documentation claire, idéale pour intégrer l'envoi transactionnel dans une app ou un SaaS sans friction</td></tr><tr><td>Gestion automatique des bounces et suppressions : la réputation d'envoi est protégée sans avoir à surveiller manuellement les listes</td></tr><tr><td>Éditeur de templates hybride : drag-and-drop pour les équipes marketing, HTML brut pour les devs, les deux modes cohabitent vraiment bien</td></tr><tr><td>Plan gratuit généreux à 3 000 emails/mois avec accès à l'API et aux analytics, suffisant pour valider un projet avant de passer en payant</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas adapté aux campagnes marketing classiques avec segmentation avancée, automatisations type nurturing ou scoring : c'est un outil transactionnel avant tout, pas un CRM email</td></tr><tr><td>Le support peut être lent sur les plans bas de gamme, quelques tickets restés sans réponse pendant plus de 48h selon les périodes, ce qui est frustrant quand on a un bug de délivrabilité en production</td></tr><tr><td>La gestion des listes de contacts reste basique : si tu cherches à faire du bulk emailing avec des segments dynamiques, tu vas vite te heurter aux limites de l'outil</td></tr></tbody>
         </table>
       </div>
@@ -601,11 +601,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Éditeur visuel vraiment agréable à utiliser, on crée un email responsive en quelques minutes sans compétences techniques</td></tr><tr><td>Délivrabilité solide avec une infrastructure française, les emails atterrissent moins souvent en spam que chez certains concurrents</td></tr><tr><td>Multicanal natif : emailing, SMS et landing pages dans le même outil sans abonnement supplémentaire</td></tr><tr><td>Support client francophone disponible et réactif, pas un chatbot, de vraies personnes qui connaissent le produit</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Les scénarios d'automatisation avancés deviennent vite difficiles à lire visuellement, l'arborescence des workflows manque de clarté dès qu'on dépasse cinq étapes</td></tr><tr><td>Le tarif grimpe assez vite selon le volume de contacts, les petites structures avec une base qui grossit peuvent se retrouver sur une formule plus chère que prévu</td></tr><tr><td>L'intégration avec des CRM tiers demande du travail, l'API existe mais la documentation est parfois insuffisante pour des configurations non standard</td></tr></tbody>
         </table>
       </div>
@@ -633,11 +633,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion multi-utilisateurs native : plusieurs équipes ou marques dans un seul compte, avec droits différenciés</td></tr><tr><td>API SMTP parmi les mieux documentées, idéale pour les emails transactionnels intégrés à une app ou un e-commerce</td></tr><tr><td>Plan gratuit généreux à 6 000 emails/mois, sans carte bancaire obligatoire pour démarrer</td></tr><tr><td>A/B testing intégré sur l'objet, le contenu et l'heure d'envoi, directement accessible sur les plans payants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Automatisation trop limitée : les workflows manquent de conditions avancées, difficile de créer des scénarios de relance comportementaux complexes</td></tr><tr><td>Reporting assez basique : pas de heatmap de clics, pas d'analyse fine par segment, les exports CSV sont peu flexibles</td></tr><tr><td>Support client lent sur les plans d'entrée de gamme, les réponses par email peuvent prendre 48h, ce qui est frustrant en cas de problème d'envoi urgent</td></tr></tbody>
         </table>
       </div>
@@ -665,11 +665,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisations conditionnelles parmi les plus avancées du marché : branches multiples, scoring de leads, déclencheurs comportementaux basés sur les visites de pages ou les achats</td></tr><tr><td>CRM natif intégré qui évite d'acheter un outil séparé pour les équipes PME avec une vraie logique de pipeline commercial</td></tr><tr><td>Segmentation très granulaire : on peut créer des listes dynamiques basées sur les tags, l'engagement, la localisation ou des champs personnalisés, utile pour du ciblage précis</td></tr><tr><td>Intégrations solides avec Shopify, WooCommerce, Salesforce et plus de 900 outils via connecteurs natifs ou Zapier, ce qui facilite la synchro des données</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>La prise en main est longue. J'ai mis facilement deux semaines à comprendre la logique des automatisations et des listes. Pour quelqu'un qui débute en emailing, c'est un vrai frein et l'onboarding ne compense pas totalement.</td></tr><tr><td>Le tarif grimpe vite. <strong>À partir de 49$/mois</strong> pour 1 000 contacts sur le plan Lite, mais dès qu'on monte en volume ou qu'on veut le CRM avancé, on passe rapidement à 149$ voire plus. Pour une petite structure, ça fait réfléchir.</td></tr><tr><td>Le support par chat est disponible mais les réponses manquent parfois de profondeur sur les cas complexes. J'ai eu une réponse à côté sur une question d'automatisation conditionnelle, j'ai dû chercher sur les forums communautaires moi-même.</td></tr></tbody>
         </table>
       </div>
@@ -697,11 +697,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automation visuelle complète avec conditions basées sur le comportement, les tags et le scoring de contacts</td></tr><tr><td>Webinaires intégrés directement dans la plateforme, sans abonnement tiers supplémentaire</td></tr><tr><td>Constructeur de landing pages et tunnels de vente inclus dans les plans payants</td></tr><tr><td>Reporting détaillé par campagne avec suivi des revenus si connecté à une boutique e-commerce</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'interface montre des incohérences visuelles selon les sections : certains écrans semblent datés par rapport au reste de l'outil, ce qui rend la navigation parfois confuse pour un nouvel utilisateur</td></tr><tr><td>Le CRM intégré reste basique. Si on gère des pipelines de vente un peu complexes, il faut connecter un vrai CRM externe via Zapier ou l'API, ce qui alourdit la stack</td></tr><tr><td>Le support par chat peut être lent aux heures de pointe et les réponses sont parfois trop génériques pour des problèmes techniques avancés liés aux workflows</td></tr></tbody>
         </table>
       </div>
@@ -729,11 +729,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Éditeur email drag-and-drop parmi les plus rapides à prendre en main, même sans formation</td></tr><tr><td>Plan gratuit fonctionnel jusqu'à 500 contacts avec envois mensuels inclus</td></tr><tr><td>Connecteurs natifs avec Shopify, WooCommerce, Squarespace et Zapier sans configuration technique</td></tr><tr><td>Rapports de campagne clairs avec taux d'ouverture, clics, désinscriptions et carte géographique des ouvertures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs qui grimpent vite dès 1 000 contacts : un abonné compté plusieurs fois s'il est dans plusieurs listes, ce qui gonfle la facture artificiellement</td></tr><tr><td>Automations limitées sur les plans inférieurs, les scénarios conditionnels avancés sont réservés au plan Standard minimum à partir de 20€/mois</td></tr><tr><td>Support client uniquement en anglais sur les plans gratuit et Essentials, ce qui peut poser problème pour des équipes non anglophones</td></tr></tbody>
         </table>
       </div>
@@ -761,11 +761,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion multi-établissements avec délégation contrôlée : le siège garde la main sur les templates pendant que chaque point de vente personnalise ses envois</td></tr><tr><td>Reporting centralisé par établissement, région ou campagne, idéal pour comparer les performances entre franchisés</td></tr><tr><td>Workflows de validation configurables : on peut imposer une validation siège avant envoi ou laisser en autonomie selon le niveau de confiance</td></tr><tr><td>Plateforme multicanal (email, SMS, réseaux sociaux) gérée depuis une seule interface, pratique pour les animations commerciales coordonnées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding est assez long : configurer la structure réseau, les droits par niveau, les templates validés... ça prend facilement plusieurs semaines avant d'être vraiment opérationnel</td></tr><tr><td>Pour une utilisation purement email sans logique réseau, l'interface paraît lourde et les tarifs ne sont pas justifiés face à des outils comme Brevo ou Mailchimp</td></tr><tr><td>Le support répond correctement mais les demandes de personnalisation avancée (intégration API, connecteurs CRM spécifiques) peuvent traîner plusieurs semaines</td></tr></tbody>
         </table>
       </div>
@@ -793,11 +793,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Plan gratuit généreux : jusqu'à 2 500 abonnés et 10 000 emails par mois sans carte bancaire</td></tr><tr><td>Prise en main très rapide, j'ai formé un assistant en moins de 30 minutes dessus</td></tr><tr><td>Séquences automatisées fonctionnelles pour les cas d'usage classiques : bienvenue, relance, nurturing simple</td></tr><tr><td>Tarifs parmi les plus bas du marché, idéal pour les projets avec un petit budget emailing</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Automatisations limitées : pas de logique conditionnelle avancée, pas de scoring, difficile de faire des parcours clients complexes</td></tr><tr><td>Intégrations natives peu nombreuses, il faut souvent passer par Zapier pour connecter à un CRM ou une boutique e-commerce</td></tr><tr><td>Support uniquement par email, et le délai de réponse peut dépasser 24h, ce qui est frustrant quand on a un envoi urgent</td></tr></tbody>
         </table>
       </div>
@@ -825,11 +825,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Plan gratuit généreux : jusqu'à 15 000 emails/mois pour 500 contacts, sans carte bancaire</td></tr><tr><td>Plateforme multicanale réelle : email, SMS, push web, chatbots et landing pages dans un seul outil</td></tr><tr><td>Éditeur visuel d'automatisation clair, avec conditions basées sur les comportements (ouverture, clic, délai)</td></tr><tr><td>Rapport qualité/prix difficile à battre pour les petites structures ou les solopreneurs qui débutent</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délivrabilité moins maîtrisée que des outils spécialisés : j'ai eu des envois qui partaient en spam sur certaines boîtes Gmail sans raison évidente</td></tr><tr><td>Le support client est inégal : en dehors des heures de pointe, les réponses par chat peuvent traîner et les réponses sont parfois trop génériques pour débloquer un problème technique précis</td></tr><tr><td>Les intégrations natives restent limitées comparé à Mailchimp ou Brevo : connecter SendPulse à un CRM comme HubSpot ou Salesforce demande souvent de passer par Zapier, ce qui ajoute du coût et de la complexité</td></tr></tbody>
         </table>
       </div>
@@ -857,11 +857,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Éditeur drag-and-drop parmi les plus fluides du marché, sans apprentissage long</td></tr><tr><td>Plan gratuit généreux jusqu'à 1 000 contacts avec envois illimités de newsletters</td></tr><tr><td>Renvoi automatique aux non-ouvreurs configurable en deux clics, vrai gain de temps</td></tr><tr><td>Landing pages et formulaires intégrés nativement, sans plugin supplémentaire</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Les automatisations avancées (scoring, branches conditionnelles multiples) restent basiques comparées à ActiveCampaign ou Brevo</td></tr><tr><td>Le support client est quasi inexistant sur le plan gratuit, et sur les plans payants les réponses peuvent prendre 24 à 48h</td></tr><tr><td>Quelques bugs d'affichage sur l'éditeur mobile signalés régulièrement, surtout sur certains blocs image</td></tr></tbody>
         </table>
       </div>
@@ -889,11 +889,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Autorépondeurs et séquences d'emails automatiques très faciles à configurer, même sans expérience en marketing automation</td></tr><tr><td>Intégrations natives avec WordPress, Shopify, WooCommerce et PayPal sans passer par un outil tiers</td></tr><tr><td>Éditeur drag-and-drop fluide avec une bibliothèque de templates correcte pour démarrer vite</td></tr><tr><td>Support client réactif par chat et email, disponible 7j/7, ce qui est rare à ce niveau de prix</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>La segmentation avancée reste limitée : on ne peut pas créer des segments très fins basés sur le comportement ou des combinaisons de critères multiples, ce qui devient frustrant dès qu'on veut personnaliser sérieusement</td></tr><tr><td>L'interface accuse son âge sur certaines sections, notamment dans la gestion des listes et les rapports, où on sent qu'on utilise quelque chose conçu il y a 10 ans avec un vernis modernisé</td></tr><tr><td>Le tarif grimpe vite au-delà de 500 abonnés et devient moins compétitif face à des alternatives comme Brevo ou MailerLite qui proposent plus de fonctionnalités pour un prix équivalent</td></tr></tbody>
         </table>
       </div>
@@ -1169,7 +1169,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

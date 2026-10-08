@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -507,11 +507,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Clovis Location</strong> : idéal pour les PME qui veulent des contrats flexibles sans engagement long.</li>
-<li><strong>Agilauto</strong> : parfait pour les petites structures cherchant des utilitaires accessibles rapidement.</li>
-<li><strong>Ayvens</strong> : conçu pour les grandes flottes avec des besoins de gestion centralisée avancée.</li>
-<li><strong>LeasePlan</strong> : recommandé aux entreprises multi-sites exigeant un suivi rigoureux de flotte.</li>
-<li><strong>Mobilize Financial Services</strong> : adapté aux professionnels roulant en véhicules électriques Renault Group.</li>
+    <li><strong>Clovis Location</strong> :<br>idéal pour les PME qui veulent des contrats flexibles sans engagement long.</li>
+<li><strong>Agilauto</strong> :<br>parfait pour les petites structures cherchant des utilitaires accessibles rapidement.</li>
+<li><strong>Ayvens</strong> :<br>conçu pour les grandes flottes avec des besoins de gestion centralisée avancée.</li>
+<li><strong>LeasePlan</strong> :<br>recommandé aux entreprises multi-sites exigeant un suivi rigoureux de flotte.</li>
+<li><strong>Mobilize Financial Services</strong> :<br>adapté aux professionnels roulant en véhicules électriques Renault Group.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs sociétés de leasing d’utilitaires professionnels</h2>
@@ -533,11 +533,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration directe avec le réseau Renault, ce qui accélère la mise en place des contrats</td></tr><tr><td>Offres modulables : kilométrage, maintenance et assurance configurables selon les besoins de la flotte</td></tr><tr><td>Suivi en ligne accessible et reporting clair pour les gestionnaires de parc</td></tr><tr><td>Interlocuteur unique pour le financement et les services associés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Offre clairement orientée Renault-Dacia : peu compétitif dès qu'on sort de cet écosystème</td></tr><tr><td>L'onboarding peut sembler rigide si votre structure a des besoins atypiques ou un parc très hétérogène</td></tr><tr><td>Support client parfois long à répondre en dehors des canaux concessionnaire</td></tr></tbody>
         </table>
       </div>
@@ -561,11 +561,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Plateforme de gestion AlphaGuide complète et centralisée</td></tr><tr><td>Exports et reporting adaptés aux besoins comptables</td></tr><tr><td>Offre sérieuse sur les utilitaires électriques et hybrides</td></tr><tr><td>Interlocuteur commercial disponible et structuré</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prise en main de l'outil assez longue pour les équipes non techniques</td></tr><tr><td>Support technique parfois lent à répondre en cas d'urgence</td></tr><tr><td>Tarifs peu compétitifs pour les petites flottes de moins de cinq véhicules</td></tr></tbody>
         </table>
       </div>
@@ -589,11 +589,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interlocuteurs locaux réactifs, dossiers traités rapidement</td></tr><tr><td>Contrats LLD lisibles avec entretien et assistance inclus dès le départ</td></tr><tr><td>Bonne flexibilité sur la personnalisation des contrats sans frais cachés</td></tr><tr><td>Adapté aux PME avec une relation de proximité réelle</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue véhicules limité pour les besoins très spécifiques ou les flottes importantes</td></tr><tr><td>Outils digitaux de suivi de flotte moins avancés que les grands réseaux nationaux</td></tr><tr><td>Couverture géographique moins étendue, peut poser problème pour des équipes multi-sites</td></tr></tbody>
         </table>
       </div>
@@ -617,11 +617,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interlocuteurs dédiés et accessibles, bien plus que chez les géants du secteur</td></tr><tr><td>Formules adaptables en durée et kilométrage, sans jargon contractuel excessif</td></tr><tr><td>Bon rapport qualité-prix pour les petites et moyennes flottes</td></tr><tr><td>Entretien et assistance souvent intégrés dès le départ</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue de véhicules plus restreint que les leaders nationaux, choix limité sur certains segments</td></tr><tr><td>Moins adapté aux grandes flottes : les délais et la disponibilité peuvent devenir problématiques</td></tr><tr><td>Support parfois plus lent en dehors des heures ouvrées classiques</td></tr></tbody>
         </table>
       </div>
@@ -645,11 +645,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Portail de gestion clair avec suivi en temps réel des contrats et kilométrages</td></tr><tr><td>Maintenance et assistance intégrées, gestion des sinistres prise en charge directement</td></tr><tr><td>Large gamme d'utilitaires disponibles, adaptée à des besoins variés</td></tr><tr><td>Exports de données pratiques pour les reportings comptables internes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Rotation fréquente des interlocuteurs commerciaux, ce qui complique les renégociations</td></tr><tr><td>Prise en main du portail client un peu longue pour des équipes non techniques</td></tr><tr><td>Réactivité du support parfois inégale selon les périodes de forte activité</td></tr></tbody>
         </table>
       </div>
@@ -673,11 +673,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue très large incluant véhicules industriels et spéciaux (frigo, benne, chantier)</td></tr><tr><td>Maintenance et assistance intégrées dans les contrats, zéro surprise sur les coûts</td></tr><tr><td>Interlocuteurs commerciaux compétents et habitués aux besoins métier complexes</td></tr><tr><td>Solution clé en main avec remplacement véhicule garanti en cas d'immobilisation</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peu adapté aux petites structures ou aux besoins de courte durée avec faibles volumes</td></tr><tr><td>Modification de contrat en cours assez rigide, nécessite plusieurs échanges pour aboutir</td></tr><tr><td>Processus de mise en place parfois long quand les besoins sont techniques ou très spécifiques</td></tr></tbody>
         </table>
       </div>
@@ -701,11 +701,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion complète de la flotte intégrée dans le contrat (entretien, assistance, pneumatiques)</td></tr><tr><td>Interlocuteur dédié avec un vrai suivi personnalisé</td></tr><tr><td>Reporting par véhicule accessible en ligne</td></tr><tr><td>Offre adaptable selon les usages réels de la flotte</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de l'espace client peu intuitive, prise en main longue</td></tr><tr><td>Délais parfois lents sur les modifications de contrat et les échanges administratifs</td></tr><tr><td>Offre plutôt calibrée pour des flottes moyennes à grandes, moins flexible pour très petites structures</td></tr></tbody>
         </table>
       </div>
@@ -729,11 +729,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Services inclus complets : entretien, pneumatiques, assistance et gestion des sinistres dans une seule offre</td></tr><tr><td>Catalogue utilitaires large, adapté à des flottes aux besoins variés</td></tr><tr><td>Gestionnaire de compte dédié, joignable et réactif pour les demandes courantes</td></tr><tr><td>Portail de suivi de flotte en ligne avec accès aux contrats et kilométrages</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface du portail client peu intuitive, prise en main plus longue que prévu</td></tr><tr><td>Conditions contractuelles peu flexibles, compliquées à faire évoluer en cours de location</td></tr></tbody>
         </table>
       </div>

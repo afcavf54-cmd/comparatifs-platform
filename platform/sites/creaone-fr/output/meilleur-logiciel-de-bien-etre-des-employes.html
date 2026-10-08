@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -492,7 +492,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de bien-être des employés 2026 : Top 7</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 7 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 7 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Zest (ZestMeUp)</strong> : idéal pour animer l'engagement des équipes au quotidien.</li>
-<li><strong>Alan Mind</strong> : parfait pour les entreprises qui veulent soutenir la santé mentale.</li>
-<li><strong>Wellhub</strong> : recommandé si vous cherchez un accès sport et bien-être large.</li>
-<li><strong>Woliba</strong> : adapté aux RH qui pilotent le bien-être avec des données claires.</li>
-<li><strong>Vantage Fit</strong> : conçu pour motiver les salariés via défis santé et récompenses.</li>
+<li><strong>Zest (ZestMeUp)</strong> :<br>idéal pour animer l'engagement des équipes au quotidien.</li>
+<li><strong>Alan Mind</strong> :<br>parfait pour les entreprises qui veulent soutenir la santé mentale.</li>
+<li><strong>Wellhub</strong> :<br>recommandé si vous cherchez un accès sport et bien-être large.</li>
+<li><strong>Woliba</strong> :<br>adapté aux RH qui pilotent le bien-être avec des données claires.</li>
+<li><strong>Vantage Fit</strong> :<br>conçu pour motiver les salariés via défis santé et récompenses.</li>
 </ul>
   </div>
 
@@ -541,11 +541,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Défis collectifs très engageants : marche, vélo, hydratation, yoga, les salariés accrochent vite et le taux de participation monte rapidement dans les premières semaines</td></tr><tr><td>Synchronisation native avec les principaux wearables du marché, ce qui évite la saisie manuelle et rend les données de santé fiables et exploitables</td></tr><tr><td>Reporting RH détaillé avec export des données d'engagement, utile pour présenter des résultats concrets au CODIR ou justifier le budget bien-être</td></tr><tr><td>Système de récompenses intégré directement dans l'appli : les points accumulés peuvent être convertis en avantages, ce qui booste la motivation sur la durée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding peut être long pour les équipes RH sans support dédié : la configuration des challenges personnalisés et des règles de récompenses demande du temps, et la documentation n'est pas toujours limpide</td></tr><tr><td>Les intégrations SIRH (type Workday, SAP SuccessFactors) sont limitées sur les plans d'entrée de gamme, ce qui oblige parfois à des imports manuels frustrants</td></tr><tr><td>Le support client est globalement réactif mais majoritairement en anglais, ce qui peut poser problème pour des équipes RH francophones qui ont besoin d'aide rapide sur des cas précis</td></tr></tbody>
         </table>
       </div>
@@ -573,11 +573,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Challenges d'équipe personnalisables avec suivi en temps réel, idéal pour créer de la cohésion sur des équipes distantes</td></tr><tr><td>Reporting RH intégré avec exports des données d'engagement par département, directement utilisable en reporting direction</td></tr><tr><td>Bibliothèque de contenus bien-être variée (nutrition, sport, sommeil, mindfulness) accessible 24h/24 sans formation préalable</td></tr><tr><td>Système de reconnaissance entre pairs qui s'intègre naturellement dans les rituels d'équipe sans alourdir les process RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Une partie des contenus et de l'interface reste en anglais, ce qui freine l'adoption dans les équipes peu à l'aise avec la langue</td></tr><tr><td>La personnalisation graphique et éditoriale est limitée : difficile d'adapter vraiment la plateforme à son identité de marque employeur</td></tr><tr><td>Le support client répond, mais les délais peuvent monter à 48-72h sur les demandes techniques, ce qui est frustrant en phase de lancement</td></tr></tbody>
         </table>
       </div>
@@ -605,11 +605,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue de partenaires très large (salles de sport, applis bien-être, coaching) centralisé sur une seule plateforme RH</td></tr><tr><td>Tableau de bord avec reporting d'utilisation par salarié et par catégorie, utile pour piloter le budget bien-être</td></tr><tr><td>Accessible pour les équipes en télétravail grâce aux partenaires digitaux intégrés (méditation, fitness en ligne)</td></tr><tr><td>Déploiement rapide côté RH : pas besoin de négocier chaque partenariat, tout est prêt à l'emploi</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Le tarif monte vite dès qu'on cherche un accès élargi au catalogue : les formules d'entrée sont limitées et les salariés le ressentent assez rapidement</td></tr><tr><td>L'onboarding des salariés reste à la charge de l'entreprise, Wellhub ne fournit pas vraiment d'accompagnement actif au lancement, j'ai vu des équipes RH se retrouver seules pour pousser l'adoption</td></tr><tr><td>La personnalisation de la plateforme est faible : impossible d'intégrer des initiatives bien-être internes (conférences, ateliers maison) dans l'outil, ce qui crée un angle mort dans le suivi global</td></tr></tbody>
         </table>
       </div>
@@ -637,11 +637,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Les micro-sondages sont courts (2-3 questions max) : le taux de réponse reste élevé même plusieurs mois après le déploiement, contrairement aux enquêtes annuelles classiques</td></tr><tr><td>Le tableau de bord manager est lisible en 30 secondes, avec des indicateurs visuels qui ne nécessitent aucune formation particulière pour être compris</td></tr><tr><td>Le module 1-to-1 permet de préparer, dérouler et archiver les entretiens réguliers, ce qui évite la perte d'information entre deux managers ou lors d'un turnover</td></tr><tr><td>L'intégration des OKR dans le même outil crée un lien direct entre bien-être perçu et performance, ce que peu de plateformes comparables proposent vraiment</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding peut être laborieux si les managers ne sont pas convaincus dès le départ : j'ai vu des déploiements stagner pendant 3 mois faute d'adhésion managériale, et le support ne compense pas ce manque d'adoption interne</td></tr><tr><td>La personnalisation des questionnaires reste limitée sur les formules d'entrée de gamme, ce qui peut frustrer les RH qui veulent coller à leur contexte métier spécifique</td></tr><tr><td>L'interface mobile est fonctionnelle mais pas enthousiasmante, et pour des équipes terrain ou sans poste fixe, l'expérience utilisateur laisse clairement à désirer</td></tr></tbody>
         </table>
       </div>
@@ -669,11 +669,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Accès à des psychologues certifiés avec des créneaux disponibles sous 48h, ce qui change vraiment la donne par rapport aux délais habituels</td></tr><tr><td>Tableau de bord RH anonymisé : les données restent agrégées, aucun risque de tracer un salarié individuellement</td></tr><tr><td>Parcours d'orientation personnalisé dès la première connexion, ce qui évite que les employés se perdent dans un catalogue vide de sens</td></tr><tr><td>Intégration naturelle avec l'écosystème Alan si l'entreprise utilise déjà la mutuelle, tout est centralisé dans une seule app</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Le catalogue de contenus en self-service (méditations, exercices) reste assez limité comparé à des concurrents spécialisés comme Moka.care ou Calm for Business, surtout en français</td></tr><tr><td>Quasi impossible à utiliser en standalone : si ton entreprise n'est pas cliente Alan pour la partie mutuelle, l'accès à Alan Mind est compliqué voire inexistant selon les configurations</td></tr><tr><td>Le reporting RH manque de granularité pour les grandes organisations, on ne peut pas filtrer par département ou par site géographique, ce qui frustre les DRH de groupes multi-sites</td></tr></tbody>
         </table>
       </div>
@@ -701,11 +701,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Déploiement rapide sans intervention IT, l'app est opérationnelle pour toute une équipe en moins d'une semaine</td></tr><tr><td>Bibliothèque de contenus bien-être très fournie : fitness, mobilité, méditation, nutrition, sommeil, tout est là dans une seule app</td></tr><tr><td>Le tableau de bord RH donne une vraie visibilité sur l'engagement collectif sans exposer les données individuelles, ce qui évite les problèmes RGPD</td></tr><tr><td>Idéal pour les équipes en télétravail ou multi-sites : chaque salarié accède aux programmes depuis son téléphone, n'importe où</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Le reporting reste superficiel : on voit le taux d'engagement global mais on ne peut pas croiser les données avec d'autres indicateurs RH, ce qui limite l'analyse</td></tr><tr><td>Aucune intégration native avec les SIRH du marché (BambooHR, Lucca, Workday...), tout est en silo, il faut gérer les comptes manuellement si quelqu'un quitte l'entreprise</td></tr><tr><td>Le support client met parfois plusieurs jours à répondre, j'ai eu un bug d'affichage sur le dashboard qui a traîné deux semaines sans résolution claire</td></tr></tbody>
         </table>
       </div>
@@ -733,11 +733,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Micro-questionnaires hebdomadaires très courts (2 à 3 minutes max), taux de réponse nettement plus élevé qu'un bilan annuel classique</td></tr><tr><td>Tableau de bord managérial avec suivi des tendances par équipe, détection rapide des signaux faibles avant qu'ils deviennent des problèmes RH</td></tr><tr><td>Ressources bien-être intégrées directement côté salarié (contenus courts, exercices de respiration, routines) sans avoir besoin d'un abonnement tiers</td></tr><tr><td>Export des données propre et compatible avec la majorité des outils de reporting RH, ce qui évite les ressaisies</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Les managers peu à l'aise avec les outils data mettent du temps à exploiter les tableaux de bord : sans accompagnement interne, les insights restent sous-utilisés</td></tr><tr><td>La personnalisation des questionnaires a des limites : on ne peut pas aller très loin dans la structure des questions sans passer par le support, ce qui freine les équipes RH qui ont des besoins spécifiques</td></tr><tr><td>Le tarif peut peser sur les très petites structures (moins de 20 salariés), le retour sur investissement est moins évident que pour des entreprises de taille intermédiaire</td></tr></tbody>
         </table>
       </div>
@@ -955,7 +955,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>
