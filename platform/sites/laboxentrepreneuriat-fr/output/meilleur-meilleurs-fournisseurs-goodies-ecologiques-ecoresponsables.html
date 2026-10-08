@@ -158,7 +158,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 
 <style>
 /* ── Wrapper scroll horizontal ─────────────────────────────────────
-   Le post-process Python normalize_table_html() enveloppe les <div class="table-wrap"><table>
+   Le post-process Python normalize_table_html() enveloppe les <table>
    nues dans <div class="table-wrap"> au build. Pour les contenus déjà
    wrappés (markdown conforme, IA bien dressée), c'est idempotent. */
 main .table-wrap,
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé les 10 fournisseurs goodies écologiques / écoresponsables, mon analyse</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -538,7 +538,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue écoresponsable large et bien étiqueté avec les certifications matières</td></tr><tr><td>Outil de personnalisation en ligne simple, BAT rapide</td></tr><tr><td>Service client réactif et à l'écoute sur les questions techniques produit</td></tr><tr><td>Bonne option polyvalente pour des commandes ponctuelles de PME ou TPE</td></tr></tbody>
-        </table></div>
+        </table>
         <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais de livraison parfois longs en période haute, à anticiper</td></tr><tr><td>Moins adapté aux commandes très volumineuses avec exigences de traçabilité poussées</td></tr><tr><td>La plateforme peut sembler un peu dense au premier abord quand on veut filtrer précisément</td></tr></tbody>
@@ -587,10 +587,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-          <p><strong>Good Act</strong> est une solution développée par <strong>Good Act</strong>.</p>
+            <p>Good Act, je l'ai découvert en cherchant une solution pour un client associatif qui voulait des sacs à dos pour ses bénévoles sans exploser son budget. Ce qui m'a tout de suite frappé, c'est l'angle <strong>éco-responsable vraiment assumé</strong>, pas juste un badge collé sur la page d'accueil, mais des matières recyclées, des certifications visibles et une charte fabrication qu'on peut lire sans chercher pendant dix minutes.</p><p>Côté commande, le configurateur en ligne est fonctionnel. On choisit le modèle, on uploade son logo, on voit un aperçu. Bon, l'aperçu n'est pas parfait, j'ai eu une légère surprise entre le rendu à l'écran et le produit reçu sur la position de la broderie. Rien de dramatique, mais je préfère prévenir. Le minimum de commande reste raisonnable pour des structures qui ne veulent pas stocker cinquante cartons de sacs.</p><p>Je recommande Good Act principalement aux associations, aux structures du secteur non-marchand et aux entreprises qui ont une politique RSE sérieuse à valoriser. Si vous cherchez juste le prix le plus bas sans vous préoccuper de la provenance des matières, vous trouverez moins cher ailleurs. Mais si l'argument écologique fait partie de votre communication, le produit fini tient vraiment la route.</p>
       </div>
 
-      <p style="font-size:13px;color:var(--ink3);font-style:italic">Analyse en cours...</p>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Positionnement éco-responsable crédible, avec matières recyclées et certifications accessibles</td></tr><tr><td>Minimum de commande adapté aux petites structures et associations</td></tr><tr><td>Configurateur en ligne simple, prise en main rapide sans formation</td></tr><tr><td>Qualité de fabrication solide, rendu professionnel à la réception</td></tr></tbody>
+        </table>
+        <table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'aperçu du configurateur peut légèrement différer du produit final, notamment sur le placement des marquages</td></tr><tr><td>Gamme de modèles moins étendue que chez certains concurrents généralistes, choix plus limité si vous avez des besoins très spécifiques</td></tr><tr><td>Tarifs un peu au-dessus de l'entrée de gamme du marché, ce qui peut freiner les budgets très serrés</td></tr></tbody>
+        </table>
+      </div>
 
     </div>
   </div>
@@ -872,6 +881,21 @@ un acteur reconnu de ce secteur.</p>
   </aside>
 
 
+  <section class="maillage-section">
+    <h3>Nos autres comparateurs <span style="color:var(--accent)">Objets publicitaires</span></h3>
+    <div class="maillage-grid">
+      <a href="/meilleur-meilleurs-sites-de-thermos-personnalises" class="maillage-card">
+        <div class="maillage-card-left">
+          <div class="maillage-card-icon">💻</div>
+          <div>
+            <div class="maillage-card-name">Meilleurs sites de thermos personnalisés</div>
+            <div class="maillage-card-count">10 logiciels</div>
+          </div>
+        </div>
+        <span class="maillage-card-arrow">→</span>
+      </a>
+    </div>
+  </section>
 
 
   <aside class="author-box" itemscope itemtype="https://schema.org/Person">
@@ -956,7 +980,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>
