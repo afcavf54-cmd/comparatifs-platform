@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -497,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon top 12 pour choisir le meilleur logiciel d’emailing 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 12 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 12 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Brevo</strong> : TPE débutantes cherchant une solution gratuite complète</li>
-<li><strong>Sarbacane</strong> : PME françaises privilégiant un support client réactif</li>
-<li><strong>MailerLite</strong> : Entrepreneurs souhaitant créer facilement des campagnes professionnelles</li>
-<li><strong>Mailchimp</strong> : E-commerces ayant besoin d'automatisations marketing avancées</li>
-<li><strong>GetResponse</strong> : Entreprises recherchant un outil tout-en-un avec webinaires</li>
+<li><strong>Brevo</strong> :<br>TPE débutantes cherchant une solution gratuite complète</li>
+<li><strong>Sarbacane</strong> :<br>PME françaises privilégiant un support client réactif</li>
+<li><strong>MailerLite</strong> :<br>Entrepreneurs souhaitant créer facilement des campagnes professionnelles</li>
+<li><strong>Mailchimp</strong> :<br>E-commerces ayant besoin d'automatisations marketing avancées</li>
+<li><strong>GetResponse</strong> :<br>Entreprises recherchant un outil tout-en-un avec webinaires</li>
 </ul>
   </div>
 
@@ -540,11 +540,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Tarifs transparents et compétitifs, même sur de gros volumes</td></tr><tr><td>Interface épurée et prise en main rapide en moins d'une heure</td></tr><tr><td>Bonne délivrabilité grâce à Amazon SES</td></tr><tr><td>Templates responsive corrects pour du contenu simple</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Automations très limitées, juste l'autorépondeur de base</td></tr><tr><td>Design des emails parfois daté comparé à la concurrence</td></tr><tr><td>Support client lent et uniquement en anglais</td></tr></tbody>
         </table>
       </div>
@@ -568,11 +568,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Plateforme tout-en-un avec emailing, SMS et push</td></tr><tr><td>Bonne délivrabilité même sur de gros volumes</td></tr><tr><td>Automatisations avancées avec conditions multiples</td></tr><tr><td>Tarifs compétitifs pour débuter</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Templates parfois datés esthétiquement</td></tr><tr><td>Support en français perfectible</td></tr><tr><td>Interface chargée qui peut dérouter au début</td></tr></tbody>
         </table>
       </div>
@@ -596,11 +596,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>API robuste avec documentation complète pour l'intégration</td></tr><tr><td>Tarification flexible sans engagement mensuel fixe</td></tr><tr><td>Analytics détaillées avec tracking des événements en temps réel</td></tr><tr><td>Support technique réactif pour les questions d'intégration</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface moins polée que les solutions grand public</td></tr><tr><td>Courbe d'apprentissage plus élevée pour les non-techniques</td></tr><tr><td>Fonctionnalités d'automation limitées comparé aux leaders du marché</td></tr></tbody>
         </table>
       </div>
@@ -624,11 +624,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Support client français par téléphone vraiment réactif</td></tr><tr><td>Interface simple, prise en main rapide même pour les débutants</td></tr><tr><td>Tarifs transparents sans frais cachés sur les envois</td></tr><tr><td>Hébergement des données en France pour la conformité RGPD</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Automatisations marketing très limitées comparé aux leaders</td></tr><tr><td>Templates un peu datés, design perfectible</td></tr><tr><td>Intégrations natives assez restreintes avec les CRM populaires</td></tr></tbody>
         </table>
       </div>
@@ -652,11 +652,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment simple à prendre en main</td></tr><tr><td>Plan gratuit généreux jusqu'à 1000 abonnés</td></tr><tr><td>Éditeur drag-and-drop fluide et intuitif</td></tr><tr><td>Automatisations de base efficaces pour débuter</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités de segmentation limitées</td></tr><tr><td>Personnalisation avancée quasi inexistante</td></tr><tr><td>Templates un peu datés visuellement</td></tr></tbody>
         </table>
       </div>
@@ -680,11 +680,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment accessible aux débutants</td></tr><tr><td>Templates variés et personnalisables rapidement</td></tr><tr><td>Automatisations avancées incluses dès le plan gratuit</td></tr><tr><td>Intégration native avec la plupart des CMS et e-commerce</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix qui explose rapidement avec l'augmentation des contacts</td></tr><tr><td>Support client parfois lent en français</td></tr><tr><td>Fonctionnalités premium verrouillées même sur les plans intermédiaires</td></tr></tbody>
         </table>
       </div>
@@ -708,11 +708,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les débutants</td></tr><tr><td>Combinaison emailing + SMS + CRM dans un seul outil</td></tr><tr><td>Plan gratuit généreux avec 300 emails/jour</td></tr><tr><td>Automatisations avancées faciles à paramétrer</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Templates moins variés que la concurrence</td></tr><tr><td>Support client parfois lent en période de charge</td></tr><tr><td>Quelques bugs sur l'éditeur mobile</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Séquences d'automatisation stables et faciles à configurer</td></tr><tr><td>Plateforme tout-en-un avec webinaires et SMS intégrés</td></tr><tr><td>Pages de capture incluses sans frais supplémentaires</td></tr><tr><td>Support réactif même sur les comptes basiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lente sur les gros volumes</td></tr><tr><td>Analytics moins détaillées que la concurrence</td></tr><tr><td>Personnalisation limitée sur les templates mobiles</td></tr></tbody>
         </table>
       </div>
@@ -764,11 +764,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automation marketing très poussée avec déclencheurs comportementaux précis</td></tr><tr><td>CRM intégré qui évite de jongler entre plusieurs outils</td></tr><tr><td>Segmentation ultra-fine basée sur l'historique et les interactions</td></tr><tr><td>Scoring automatique des leads pour prioriser les actions commerciales</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface complexe qui demande une vraie courbe d'apprentissage</td></tr><tr><td>Tarification qui grimpe vite avec le nombre de contacts</td></tr><tr><td>Fonctionnalités avancées parfois inutiles pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -792,11 +792,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Configuration rapide en moins d'une heure</td></tr><tr><td>Synchronisation directe avec Sage et Cegid</td></tr><tr><td>Support client français réactif</td></tr><tr><td>Templates adaptés aux communications B2B</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités d'automation très limitées</td></tr><tr><td>Peu d'options de personnalisation avancée</td></tr><tr><td>Statistiques basiques comparé à Mailchimp</td></tr></tbody>
         </table>
       </div>
@@ -820,11 +820,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>API puissante avec documentation claire pour l'envoi transactionnel</td></tr><tr><td>Interface collaborative permettant le travail à plusieurs sur les campagnes</td></tr><tr><td>Éditeur responsive intuitif avec prévisualisation temps réel</td></tr><tr><td>Support technique réactif avec des vrais experts techniques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités d'automation limitées comparé à Sendinblue ou Mailchimp</td></tr><tr><td>Réputation partagée qui peut impacter votre délivrabilité</td></tr><tr><td>Templates de base assez datés, il faut partir de zéro</td></tr></tbody>
         </table>
       </div>
@@ -848,11 +848,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-simple, parfaite pour débuter sans formation</td></tr><tr><td>Excellente délivrabilité, emails qui arrivent vraiment</td></tr><tr><td>Templates mobiles qui s'affichent correctement partout</td></tr><tr><td>Support client réactif même en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Automation basique comparée à des outils comme ActiveCampaign</td></tr><tr><td>Statistiques limitées, manque de détails sur les comportements</td></tr><tr><td>Tarifs qui grimpent vite au-delà de 2500 contacts</td></tr></tbody>
         </table>
       </div>
@@ -1137,7 +1137,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

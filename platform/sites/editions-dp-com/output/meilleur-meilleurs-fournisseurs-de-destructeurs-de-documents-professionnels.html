@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>IDEAL</strong> : idéal pour les grandes structures qui traitent des volumes importants quotidiennement.</li>
-<li><strong>Dahle</strong> : parfait pour les bureaux exigeants qui ne veulent aucun compromis sur la qualité.</li>
-<li><strong>Leitz</strong> : recommandé pour les petites équipes qui cherchent simplicité et fiabilité au quotidien.</li>
-<li><strong>Rexel</strong> : adapté aux TPE avec un budget serré mais des besoins réguliers de destruction.</li>
-<li><strong>Fellowes</strong> : convient aux entreprises qui veulent polyvalence et robustesse sans se ruiner.</li>
+    <li><strong>IDEAL</strong> :<br>idéal pour les grandes structures qui traitent des volumes importants quotidiennement.</li>
+<li><strong>Dahle</strong> :<br>parfait pour les bureaux exigeants qui ne veulent aucun compromis sur la qualité.</li>
+<li><strong>Leitz</strong> :<br>recommandé pour les petites équipes qui cherchent simplicité et fiabilité au quotidien.</li>
+<li><strong>Rexel</strong> :<br>adapté aux TPE avec un budget serré mais des besoins réguliers de destruction.</li>
+<li><strong>Fellowes</strong> :<br>convient aux entreprises qui veulent polyvalence et robustesse sans se ruiner.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs de destructeurs de documents professionnels</h2>
@@ -538,11 +538,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Robustesse de fabrication nettement au-dessus de l'entrée de gamme</td></tr><tr><td>Capacité corbeille élevée, idéale pour un usage intensif en open space</td></tr><tr><td>Gestion des agrafes et trombones sans prétraitement du document</td></tr><tr><td>Prise en main rapide, même pour un opérateur non technique</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif d'achat élevé, difficile à justifier pour une petite structure avec peu de volume</td></tr><tr><td>Consommables et pièces détachées parfois compliqués à trouver rapidement en dehors du réseau revendeur</td></tr></tbody>
         </table>
       </div>
@@ -566,11 +566,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Niveaux de sécurité clairement indiqués sur chaque modèle (jusqu'au P-5)</td></tr><tr><td>Prise en main rapide, interface très simple</td></tr><tr><td>Bon rapport qualité/prix sur la gamme intermédiaire</td></tr><tr><td>Sécurité active : arrêt automatique en cas de bourrage ou surchauffe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Bac de récupération de taille insuffisante sur les modèles d'entrée de gamme, à vider régulièrement</td></tr><tr><td>Support client parfois long à répondre en cas de panne sous garantie</td></tr><tr><td>Bruyant en fonctionnement continu, ce qui peut gêner en open space</td></tr></tbody>
         </table>
       </div>
@@ -594,11 +594,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Moteurs solides adaptés à un usage intensif quotidien</td></tr><tr><td>Large gamme de niveaux de sécurité jusqu'à la micro-coupe RGPD</td></tr><tr><td>Traitement polyvalent : papier, cartes plastiques, CD, agrafes sans préparation</td></tr><tr><td>Rapport qualité/prix compétitif face aux marques dominantes du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réseau de distribution et SAV moins développé en France, pièces parfois difficiles à trouver</td></tr><tr><td>Interface utilisateur peu intuitive sur les modèles d'entrée de gamme, prise en main plus longue pour des équipes non techniques</td></tr></tbody>
         </table>
       </div>
@@ -622,11 +622,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Qualité de coupe en croix très efficace, rassurante pour les documents sensibles</td></tr><tr><td>Alimentation automatique fonctionnelle, gain de temps réel sur les gros volumes</td></tr><tr><td>Bonne robustesse dans le temps, peu de bourrages constatés au quotidien</td></tr><tr><td>Gamme large qui couvre des besoins du bureau individuel jusqu'au départemental</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gamme complexe à lire, difficile de choisir le bon modèle sans y passer du temps</td></tr><tr><td>Tarifs souvent au-dessus de la moyenne, l'entrée de gamme reste chère pour une TPE</td></tr><tr><td>L'onboarding est minimaliste, la notice ne suffit pas toujours pour régler les paramètres fins</td></tr></tbody>
         </table>
       </div>
@@ -650,11 +650,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Robustesse mécanique réelle, conçue pour un usage intensif</td></tr><tr><td>Plusieurs niveaux de coupe disponibles, y compris pour documents très sensibles</td></tr><tr><td>Prise en main rapide, même pour des profils non techniques</td></tr><tr><td>Faible consommation électrique sur le long terme</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gamme étendue mais nomenclature peu claire, le choix du bon modèle prend du temps</td></tr><tr><td>Prix d'achat plus élevé que certains concurrents directs</td></tr><tr><td>Support client parfois lent à répondre en cas de problème</td></tr></tbody>
         </table>
       </div>
@@ -697,11 +697,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main immédiate, idéale pour une équipe non technique</td></tr><tr><td>Design compact et silencieux, adapté à un environnement bureau</td></tr><tr><td>Indicateur de remplissage du bac sur plusieurs modèles</td></tr><tr><td>Gamme de niveaux de coupe variée, jusqu'au micro-coupe certifié DIN</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Rapport prix/capacité perfectible sur les modèles d'entrée de gamme</td></tr><tr><td>Compatibilité CD, cartes plastiques ou agrafes non garantie sur tous les modèles</td></tr><tr><td>Pas la marque la plus rapide pour des destructions en volume important</td></tr></tbody>
         </table>
       </div>
@@ -725,11 +725,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Robustesse perceptible dès la première utilisation, les machines encaissent des volumes élevés sans surchauffe fréquente</td></tr><tr><td>Coupe en particules très fine qui garantit un niveau de confidentialité adapté aux documents sensibles</td></tr><tr><td>Reverse automatique qui évite la plupart des bourrages sans intervention manuelle</td></tr><tr><td>Accepte les trombones et cartes plastiques directement, ce qui réduit le temps de préparation des documents</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réseau de distribution limité en France, ce qui rallonge les délais de commande et complique le SAV</td></tr><tr><td>Tarifs élevés par rapport à la concurrence, notamment sur les modèles à alimentation automatique</td></tr><tr><td>Interface des machines peu intuitive pour des collaborateurs non habitués à ce type de matériel</td></tr></tbody>
         </table>
       </div>
@@ -811,11 +811,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 
 
-  <aside class="backlink-note">
-    <p>Pour approfondir le sujet, découvrez également
-<a href="https://www.elcoman.it" target="_blank" rel="noopener">Kobra</a>,
-un acteur reconnu de ce secteur.</p>
-  </aside>
 
 
 

@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -497,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J’ai testé 11 logiciels de gestion de caisse : voici mon comparatif 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 11 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 11 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Tactill</strong> : idéal pour les commerces de proximité cherchant une solution simple et abordable</li>
-<li><strong>L'Addition</strong> : parfait pour les restaurants voulant une caisse intuitive avec gestion des stocks</li>
-<li><strong>SumUp Caisse Pro</strong> : excellent choix pour les débutants privilégiant un démarrage rapide et économique</li>
-<li><strong>Lightspeed</strong> : recommandé aux entreprises multi-magasins nécessitant des fonctionnalités avancées de reporting</li>
-<li><strong>Zelty</strong> : optimal pour la restauration rapide avec commande en ligne et livraison intégrées</li>
+<li><strong>Tactill</strong> :<br>idéal pour les commerces de proximité cherchant une solution simple et abordable</li>
+<li><strong>L'Addition</strong> :<br>parfait pour les restaurants voulant une caisse intuitive avec gestion des stocks</li>
+<li><strong>SumUp Caisse Pro</strong> :<br>excellent choix pour les débutants privilégiant un démarrage rapide et économique</li>
+<li><strong>Lightspeed</strong> :<br>recommandé aux entreprises multi-magasins nécessitant des fonctionnalités avancées de reporting</li>
+<li><strong>Zelty</strong> :<br>optimal pour la restauration rapide avec commande en ligne et livraison intégrées</li>
 </ul>
   </div>
 
@@ -540,11 +540,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Installation ultra-rapide, opérationnel en moins d'une heure</td></tr><tr><td>Lecteur de cartes inclus, accepte tous les moyens de paiement</td></tr><tr><td>Application mobile intuitive, parfaite pour les déplacements</td></tr><tr><td>Pas d'abonnement mensuel, seulement une commission par transaction</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gestion des stocks très limitée, impossible de suivre les références précisément</td></tr><tr><td>Pas de système de fidélité client intégré</td></tr><tr><td>Fonctionnalités comptables inexistantes, faut exporter vers un autre logiciel</td></tr></tbody>
         </table>
       </div>
@@ -568,11 +568,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation native avec Uber Eats, Deliveroo et autres plateformes</td></tr><tr><td>Interface rapide même en période d'affluence</td></tr><tr><td>Gestion des stocks en temps réel avec alertes automatiques</td></tr><tr><td>Rapports détaillés par produit, serveur et créneau horaire</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petits établissements</td></tr><tr><td>Formation obligatoire pour maîtriser toutes les fonctionnalités</td></tr><tr><td>Quelques bugs occasionnels sur la synchronisation des commandes</td></tr></tbody>
         </table>
       </div>
@@ -596,11 +596,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Installation ultra-rapide sans formation technique nécessaire</td></tr><tr><td>Tarification transparente : seulement 1,75% par transaction carte</td></tr><tr><td>Fonctionne sur smartphone et tablette existants</td></tr><tr><td>Suivi des ventes et stocks en temps réel depuis l'app mobile</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commission plus élevée que les terminaux bancaires classiques</td></tr><tr><td>Dépendant d'une connexion internet stable pour fonctionner</td></tr><tr><td>Options de personnalisation limitées pour les grandes enseignes</td></tr></tbody>
         </table>
       </div>
@@ -624,11 +624,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les équipes non techniques</td></tr><tr><td>Tarification transparente sans frais cachés</td></tr><tr><td>Installation et paramétrage très rapides</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour les grandes structures</td></tr><tr><td>Personnalisation des rapports assez basique</td></tr><tr><td>Gestion multi-magasins perfectible</td></tr></tbody>
         </table>
       </div>
@@ -652,11 +652,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation temps réel entre vente en ligne et magasins physiques</td></tr><tr><td>Gestion multi-emplacements avec reporting centralisé très complet</td></tr><tr><td>Interface moderne et intuitive qui plaît aux équipes de vente</td></tr><tr><td>Écosystème d'extensions riche pour personnaliser les fonctionnalités</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée qui peut rebuter les petites structures</td></tr><tr><td>Courbe d'apprentissage assez longue pour exploiter toutes les fonctionnalités</td></tr><tr><td>Support client parfois lent à répondre selon les retours utilisateurs</td></tr></tbody>
         </table>
       </div>
@@ -680,11 +680,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment simple à prendre en main</td></tr><tr><td>Prix abordable pour les petites structures</td></tr><tr><td>Support client en français réactif</td></tr><tr><td>Fonctionne bien hors ligne en cas de coupure réseau</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour les gros volumes</td></tr><tr><td>Pas d'intégration avec les plateformes e-commerce</td></tr><tr><td>Rapports analytiques assez basiques</td></tr></tbody>
         </table>
       </div>
@@ -708,11 +708,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main immédiate, aucune formation nécessaire</td></tr><tr><td>Virements rapides grâce à l'infrastructure PayPal</td></tr><tr><td>Lecteur de carte à 19€, très accessible</td></tr><tr><td>Fonctionne hors ligne, synchronise automatiquement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gestion des stocks très limitée pour les commerces étoffés</td></tr><tr><td>Impossible de créer des comptes utilisateurs multiples</td></tr><tr><td>Rapports basiques, manque d'analyses poussées</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface tactile intuitive même pour les équipes peu formées</td></tr><tr><td>Synchronisation temps réel entre plusieurs caisses</td></tr><tr><td>Programme de fidélité intégré avec cartes et points</td></tr><tr><td>Gestion des promotions directement sur la caisse</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités bridées selon le forfait choisi</td></tr><tr><td>Support technique pas toujours réactif en période de rush</td></tr><tr><td>Paramétrage initial assez chronophage pour les gros catalogues</td></tr></tbody>
         </table>
       </div>
@@ -764,11 +764,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Installation immédiate sur tous supports mobiles</td></tr><tr><td>Lecteur de carte intégré ultra-fiable</td></tr><tr><td>Prix transparent avec terminal inclus</td></tr><tr><td>Synchronisation automatique des ventes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gestion des stocks très limitée</td></tr><tr><td>Frais par transaction qui s'accumulent</td></tr><tr><td>Aucune fonction de fidélisation client</td></tr></tbody>
         </table>
       </div>
@@ -792,11 +792,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface tactile très intuitive, même pour le personnel peu formé</td></tr><tr><td>Synchronisation automatique avec les comptes bancaires français</td></tr><tr><td>Gestion des stocks en temps réel avec alertes de rupture</td></tr><tr><td>Prix transparent sans frais cachés sur les transactions</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation des rapports assez limitées</td></tr><tr><td>Pas d'application mobile pour gérer la caisse à distance</td></tr><tr><td>Support client parfois lent à répondre en période de forte affluence</td></tr></tbody>
         </table>
       </div>
@@ -820,11 +820,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation multi-magasins en temps réel</td></tr><tr><td>Gestion complète des stocks avec alertes automatiques</td></tr><tr><td>Outils de fidélisation client intégrés</td></tr><tr><td>Support français réactif et compétent</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillissante qui peut rebuter</td></tr><tr><td>Configuration initiale assez technique</td></tr><tr><td>Tarifs qui grimpent vite avec les options</td></tr></tbody>
         </table>
       </div>
@@ -1090,7 +1090,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

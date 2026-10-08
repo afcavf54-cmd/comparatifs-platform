@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -497,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Quel est le meilleur logiciel de gestion d’abonnements ? Mon comparatif de 9 outils en 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -515,11 +515,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Stripe Billing</strong> : parfait pour les startups tech qui veulent une solution simple et efficace</li>
-<li><strong>Chargebee</strong> : idéal pour les PME cherchant un outil complet avec support réactif français</li>
-<li><strong>Paddle</strong> : conçu pour les éditeurs SaaS voulant déléguer complètement la gestion des abonnements</li>
-<li><strong>Recurly</strong> : adapté aux entreprises établies privilégiant la fiabilité et les fonctionnalités avancées</li>
-<li><strong>SlimPay</strong> : recommandé pour les TPE françaises cherchant une solution locale et abordable</li>
+<li><strong>Stripe Billing</strong> :<br>parfait pour les startups tech qui veulent une solution simple et efficace</li>
+<li><strong>Chargebee</strong> :<br>idéal pour les PME cherchant un outil complet avec support réactif français</li>
+<li><strong>Paddle</strong> :<br>conçu pour les éditeurs SaaS voulant déléguer complètement la gestion des abonnements</li>
+<li><strong>Recurly</strong> :<br>adapté aux entreprises établies privilégiant la fiabilité et les fonctionnalités avancées</li>
+<li><strong>SlimPay</strong> :<br>recommandé pour les TPE françaises cherchant une solution locale et abordable</li>
 </ul>
   </div>
 
@@ -542,11 +542,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Merchant of record intégré qui gère automatiquement toute la conformité fiscale internationale</td></tr><tr><td>Récupération intelligente des revenus perdus avec relances personnalisées et mises à jour de cartes</td></tr><tr><td>Interface unifiée combinant facturation, paiements et analytics sans intégrations multiples</td></tr><tr><td>Support réactif avec une vraie expertise sur les problématiques de billing international</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Frais élevés de 5% sur toutes les transactions plus les frais de paiement classiques</td></tr><tr><td>Onboarding complexe nécessitant souvent l'aide d'un développeur pour les intégrations avancées</td></tr><tr><td>Personnalisation limitée des emails et pages de checkout comparé à des solutions comme Chargebee</td></tr></tbody>
         </table>
       </div>
@@ -570,11 +570,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>API extrêmement robuste avec webhooks fiables pour l'intégration</td></tr><tr><td>Gestion avancée de la proration et des changements d'abonnements en temps réel</td></tr><tr><td>Dunning management sophistiqué avec relances automatisées personnalisables</td></tr><tr><td>Support multi-devises et calcul automatique des taxes internationales</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface utilisateur complexe et peu intuitive pour les non-techniques</td></tr><tr><td>Prix élevé qui peut rapidement grimper avec le volume de transactions</td></tr><tr><td>Configuration initiale longue et nécessite une expertise technique solide</td></tr></tbody>
         </table>
       </div>
@@ -598,11 +598,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native avec tout l'écosystème Zoho (CRM, Books, Campaigns)</td></tr><tr><td>Automatisation complète des relances et gestion des impayés</td></tr><tr><td>Tarification progressive adaptée aux petites structures</td></tr><tr><td>Support multi-devises et gestion fiscale internationale</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillotte qui peut rebuter</td></tr><tr><td>Personnalisation limitée des pages de paiement</td></tr><tr><td>Courbe d'apprentissage importante pour exploiter toutes les fonctions</td></tr></tbody>
         </table>
       </div>
@@ -626,11 +626,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion automatisée de la facturation récurrente sans intervention manuelle</td></tr><tr><td>Support natif des taxes internationales et conformité fiscale multi-pays</td></tr><tr><td>API robuste et webhooks fiables pour les intégrations personnalisées</td></tr><tr><td>Tableaux de bord analytics détaillés sur la croissance et la rétention</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale complexe qui nécessite des compétences techniques</td></tr><tr><td>Tarification qui devient chère rapidement avec l'augmentation du volume</td></tr><tr><td>Interface utilisateur parfois confuse pour les non-techniques</td></tr></tbody>
         </table>
       </div>
@@ -654,11 +654,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Moteur de facturation ultra-puissant pour modèles complexes</td></tr><tr><td>Conformité comptable ASC 606 et reconnaissance du chiffre d'affaires</td></tr><tr><td>API robuste et intégrations natives avec Salesforce, NetSuite</td></tr><tr><td>Analytics avancés sur les métriques d'abonnement (MRR, churn, LTV)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix prohibitif pour les petites structures (minimum 24k€/an)</td></tr><tr><td>Complexité énorme qui nécessite une équipe dédiée</td></tr><tr><td>Interface utilisateur datée et peu intuitive pour les non-experts</td></tr></tbody>
         </table>
       </div>
@@ -682,11 +682,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native parfaite avec l'écosystème Stripe Payment</td></tr><tr><td>Gestion automatique des taxes et conformité internationale</td></tr><tr><td>API développeur très complète avec webhooks en temps réel</td></tr><tr><td>Facturation automatique et relances d'impayés configurables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface utilisateur complexe pour les profils non-techniques</td></tr><tr><td>Fonctionnalités marketing limitées comparé aux spécialistes</td></tr><tr><td>Rapports peu visuels et parfois difficiles à interpréter</td></tr></tbody>
         </table>
       </div>
@@ -710,11 +710,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Facturation automatique des abonnements sans bugs ni doublons</td></tr><tr><td>Relances personnalisables avec escalade automatique des impayés</td></tr><tr><td>Export comptable direct vers Sage, Cegid et principaux ERP</td></tr><tr><td>Interface simple que n'importe qui maîtrise en une heure</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune fonctionnalité CRM ou marketing automation intégrée</td></tr><tr><td>Personnalisation limitée des emails et documents commerciaux</td></tr><tr><td>Pas d'application mobile native pour le suivi en déplacement</td></tr></tbody>
         </table>
       </div>
@@ -738,11 +738,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expertise reconnue sur les prélèvements SEPA et conformité européenne</td></tr><tr><td>Gestion native des montants variables et échéances complexes</td></tr><tr><td>Taux de recouvrement élevé grâce aux relances automatisées</td></tr><tr><td>API robuste pour intégration avec systèmes existants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois datée comparée aux solutions plus récentes</td></tr><tr><td>Fonctionnalités limitées hors paiements récurrents</td></tr><tr><td>Configuration initiale assez technique pour les débutants</td></tr></tbody>
         </table>
       </div>
@@ -766,11 +766,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion native des cas complexes (upgrades, downgrades, pauses)</td></tr><tr><td>Dunning management automatique avec stratégies personnalisables</td></tr><tr><td>Analytics poussées sur la churn et la lifetime value</td></tr><tr><td>Intégrations comptables robustes (synchronisation automatique)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lourde pour les petites structures</td></tr><tr><td>Tarification qui grimpe vite avec le volume de transactions</td></tr><tr><td>Onboarding technique assez exigeant</td></tr></tbody>
         </table>
       </div>
@@ -1099,7 +1099,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

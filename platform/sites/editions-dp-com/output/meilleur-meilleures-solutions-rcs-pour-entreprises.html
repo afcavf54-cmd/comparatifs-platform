@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Orange Business</strong> : idéal pour les grandes structures déjà clientes Orange.</li>
-<li><strong>Esendex</strong> : parfait pour les équipes qui veulent déployer vite sans technique.</li>
-<li><strong>smsmode</strong> : recommandé aux TPE/PME avec un budget serré à optimiser.</li>
-<li><strong>SFR Business</strong> : adapté aux entreprises cherchant un interlocuteur télécom unique.</li>
-<li><strong>LINK Mobility</strong> : pensé pour les projets multi-pays avec des volumes importants.</li>
+    <li><strong>Orange Business</strong> :<br>idéal pour les grandes structures déjà clientes Orange.</li>
+<li><strong>Esendex</strong> :<br>parfait pour les équipes qui veulent déployer vite sans technique.</li>
+<li><strong>smsmode</strong> :<br>recommandé aux TPE/PME avec un budget serré à optimiser.</li>
+<li><strong>SFR Business</strong> :<br>adapté aux entreprises cherchant un interlocuteur télécom unique.</li>
+<li><strong>LINK Mobility</strong> :<br>pensé pour les projets multi-pays avec des volumes importants.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs solutions RCS pour entreprises</h2>
@@ -538,11 +538,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>API bien documentée avec fallback SMS automatique</td></tr><tr><td>Messages RCS riches : carrousels, boutons, pièces jointes</td></tr><tr><td>Tarification à la consommation, adaptée aux volumes variables</td></tr><tr><td>Tableau de bord clair pour suivre les campagnes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Support client principalement en anglais, frustrant au quotidien</td></tr><tr><td>Onboarding technique nécessaire, pas vraiment clé en main pour une équipe non technique</td></tr></tbody>
         </table>
       </div>
@@ -566,11 +566,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Fallback automatique SMS quand le RCS n'est pas disponible</td></tr><tr><td>Messages enrichis avec carousels, boutons et pièces jointes</td></tr><tr><td>API bien documentée, intégration CRM facilitée</td></tr><tr><td>Opérateur présent sur plusieurs marchés européens</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface d'administration peu intuitive, prise en main longue</td></tr><tr><td>Support client avec des délais de réponse parfois lents</td></tr><tr><td>Tarification variable selon les volumes, à surveiller de près</td></tr></tbody>
         </table>
       </div>
@@ -594,11 +594,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface accessible, prise en main rapide pour des équipes non techniques</td></tr><tr><td>Fallback SMS automatique quand le RCS n'est pas disponible chez le destinataire</td></tr><tr><td>Support client réactif avec des réponses concrètes</td></tr><tr><td>Tarification lisible, sans mauvaises surprises à la facturation</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation des messages et des workflows assez limitée pour des besoins complexes</td></tr><tr><td>Pas vraiment adapté si les volumes d'envoi sont très importants ou si les scénarios sont très avancés</td></tr></tbody>
         </table>
       </div>
@@ -622,11 +622,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Infrastructure télécom robuste avec une fiabilité réseau solide</td></tr><tr><td>Messagerie RCS enrichie complète : images, carrousels, boutons d'action</td></tr><tr><td>Reporting détaillé sur les taux de délivrance et de lecture</td></tr><tr><td>Intégration API disponible pour les équipes techniques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés, peu adaptés aux petites structures avec un budget limité</td></tr><tr><td>Onboarding long et accompagnement technique nécessaire dès le départ</td></tr><tr><td>Interface et documentation pas toujours accessibles pour des équipes non techniques</td></tr></tbody>
         </table>
       </div>
@@ -650,11 +650,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Opérateur français direct, sans agrégateur intermédiaire</td></tr><tr><td>Accompagnement commercial personnalisé avec interlocuteur dédié</td></tr><tr><td>Messages enrichis opérationnels : boutons, images, carrousels</td></tr><tr><td>Reporting de lecture et de clic intégré à l'espace client</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs non disponibles en ligne, devis obligatoire à chaque fois</td></tr><tr><td>Interface de gestion assez datée, prise en main moins intuitive que la concurrence</td></tr><tr><td>Moins adapté si vous avez besoin d'une intégration API avancée en autonomie complète</td></tr></tbody>
         </table>
       </div>
@@ -678,11 +678,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>RCS enrichi avec carrousels, boutons et accusés de lecture natifs</td></tr><tr><td>Automatisation de workflows sans développement</td></tr><tr><td>Reporting détaillé exportable par canal et par campagne</td></tr><tr><td>Couverture internationale étendue pour les envois multi-pays</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification opaque, devis obligatoire sans grille de prix accessible</td></tr><tr><td>Prise en main longue pour une équipe non technique</td></tr><tr><td>Support parfois lent sur les demandes urgentes</td></tr></tbody>
         </table>
       </div>
@@ -706,11 +706,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Plateforme tout-en-un : RCS, SMS, workflows, reporting dans une seule interface</td></tr><tr><td>Fallback SMS automatique bien implémenté, sans configuration complexe</td></tr><tr><td>Éditeur visuel accessible même pour des équipes sans profil technique</td></tr><tr><td>Reporting en temps réel avec taux de lecture et suivi des interactions</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Validation de marque obligatoire avant de lancer, le processus peut traîner</td></tr><tr><td>Tarification qui devient lourde pour les petits volumes d'envoi</td></tr><tr><td>Support parfois lent à répondre sur les demandes de configuration avancée</td></tr></tbody>
         </table>
       </div>
@@ -734,11 +734,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface claire, prise en main rapide sans formation technique</td></tr><tr><td>Fallback SMS automatique quand le RCS n'est pas supporté</td></tr><tr><td>API bien documentée, connexion à des outils tiers réalisable en interne</td></tr><tr><td>Tarification à l'usage, adaptée aux budgets limités</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting RCS peu détaillé, manque d'analyse fine sur les interactions</td></tr><tr><td>Support client disponible mais les délais de réponse peuvent allonger sur les questions techniques complexes</td></tr></tbody>
         </table>
       </div>

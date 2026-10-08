@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -497,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J’ai analysé 7 logiciels d’audit et commissariat aux comptes en 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 7 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 7 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>MyUnisoft</strong> : TPE cherchant une solution complète abordable</li>
-<li><strong>Beeye</strong> : Cabinets privilégiant la collaboration et suivi client</li>
-<li><strong>RevisAudit</strong> : Experts-comptables exigeants sur les fonctionnalités avancées</li>
-<li><strong>Auditsoft Premier</strong> : Structures moyennes voulant automatiser leurs processus</li>
-<li><strong>Caseware</strong> : Grandes firmes nécessitant outils audit très spécialisés</li>
+<li><strong>MyUnisoft</strong> :<br>TPE cherchant une solution complète abordable</li>
+<li><strong>Beeye</strong> :<br>Cabinets privilégiant la collaboration et suivi client</li>
+<li><strong>RevisAudit</strong> :<br>Experts-comptables exigeants sur les fonctionnalités avancées</li>
+<li><strong>Auditsoft Premier</strong> :<br>Structures moyennes voulant automatiser leurs processus</li>
+<li><strong>Caseware</strong> :<br>Grandes firmes nécessitant outils audit très spécialisés</li>
 </ul>
   </div>
 
@@ -540,11 +540,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation poussée des tests d'audit et contrôles de cohérence</td></tr><tr><td>Import direct depuis les logiciels comptables majeurs</td></tr><tr><td>Génération rapide des papiers de travail normalisés</td></tr><tr><td>Module de revue analytique avec alertes automatiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage assez raide pour les nouveaux utilisateurs</td></tr><tr><td>Personnalisation limitée des rapports selon les besoins spécifiques</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -568,11 +568,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows d'audit pré-configurés selon les normes NEP</td></tr><tr><td>Synchronisation multi-utilisateurs sans conflit de versions</td></tr><tr><td>Export automatique des dossiers de révision au format requis</td></tr><tr><td>Intégration directe avec les principaux logiciels comptables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface un peu datée qui peut rebuter les jeunes auditeurs</td></tr><tr><td>Paramétrage initial complexe pour les petites structures</td></tr><tr><td>Coût élevé pour un usage occasionnel en audit</td></tr></tbody>
         </table>
       </div>
@@ -596,11 +596,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Détection automatique des anomalies par IA sur 100% des transactions</td></tr><tr><td>Traitement de millions d'écritures comptables en quelques minutes</td></tr><tr><td>Interface de visualisation des risques très claire avec scoring</td></tr><tr><td>Réduction drastique du temps passé sur les contrôles de substance</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée qui peut freiner les petits cabinets</td></tr><tr><td>Nécessite une formation poussée pour exploiter toutes les fonctionnalités IA</td></tr><tr><td>Parfois trop sensible et génère des faux positifs sur des opérations normales</td></tr></tbody>
         </table>
       </div>
@@ -624,11 +624,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Conformité native aux normes ISA et référentiels français d'audit</td></tr><tr><td>Gestion centralisée et sécurisée des papiers de travail avec traçabilité complète</td></tr><tr><td>Analyses automatiques de cohérence et détection d'anomalies dans les données</td></tr><tr><td>Intégration directe avec les logiciels comptables pour import automatique des balances</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage très raide nécessitant plusieurs semaines de formation</td></tr><tr><td>Interface utilisateur vieillissante qui peut rebuter les jeunes auditeurs</td></tr><tr><td>Coût d'acquisition élevé difficile à justifier pour les petits cabinets</td></tr></tbody>
         </table>
       </div>
@@ -652,11 +652,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec courbe d'apprentissage réduite</td></tr><tr><td>Workflows d'audit préconstruits conformes aux normes ISA</td></tr><tr><td>Collaboration en temps réel sur les dossiers de travail</td></tr><tr><td>Modèles de rapports personnalisables intégrés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée des processus d'audit</td></tr><tr><td>Fonctionnalités analytiques moins développées que la concurrence</td></tr><tr><td>Intégrations tierces encore restreintes</td></tr></tbody>
         </table>
       </div>
@@ -680,11 +680,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Planning automatisé des missions avec alertes échéances</td></tr><tr><td>Import direct depuis les logiciels comptables clients</td></tr><tr><td>Suivi temps collaborateurs intégré à la facturation</td></tr><tr><td>Bibliothèque de procédures d'audit personnalisables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lente sur les gros dossiers</td></tr><tr><td>Formation nécessaire pour exploiter toutes les fonctions</td></tr><tr><td>Tarification qui monte vite avec les modules complémentaires</td></tr></tbody>
         </table>
       </div>
@@ -708,11 +708,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Programmes de travail conformes aux NEP intégrés</td></tr><tr><td>Automatisation des contrôles de cohérence et rapprochements</td></tr><tr><td>Interface pensée pour les commissaires aux comptes</td></tr><tr><td>Export direct vers les logiciels de production comptable</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée pour les audits complexes</td></tr><tr><td>Courbe d'apprentissage pour les non-auditeurs</td></tr><tr><td>Tarification élevée pour les petits cabinets</td></tr></tbody>
         </table>
       </div>
@@ -957,7 +957,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

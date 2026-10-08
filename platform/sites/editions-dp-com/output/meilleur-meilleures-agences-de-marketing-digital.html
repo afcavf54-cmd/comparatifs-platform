@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Eskimoz</strong> : idéale pour les entreprises qui veulent dominer les résultats Google rapidement.</li>
-<li><strong>Primelis</strong> : parfaite pour les marques e-commerce avec des ambitions SEO et SEA ambitieuses.</li>
-<li><strong>WAM</strong> : recommandée pour les TPE et PME cherchant un accompagnement digital complet et accessible.</li>
-<li><strong>Ad's up</strong> : pensée pour les annonceurs qui veulent maximiser leurs budgets publicitaires en ligne.</li>
-<li><strong>Noiise</strong> : adaptée aux structures qui préfèrent un partenaire agile, transparent et orienté résultats.</li>
+    <li><strong>Eskimoz</strong> :<br>idéale pour les entreprises qui veulent dominer les résultats Google rapidement.</li>
+<li><strong>Primelis</strong> :<br>parfaite pour les marques e-commerce avec des ambitions SEO et SEA ambitieuses.</li>
+<li><strong>WAM</strong> :<br>recommandée pour les TPE et PME cherchant un accompagnement digital complet et accessible.</li>
+<li><strong>Ad's up</strong> :<br>pensée pour les annonceurs qui veulent maximiser leurs budgets publicitaires en ligne.</li>
+<li><strong>Noiise</strong> :<br>adaptée aux structures qui préfèrent un partenaire agile, transparent et orienté résultats.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs agences de marketing digital</h2>
@@ -538,11 +538,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Approche personnalisée, pas de package imposé</td></tr><tr><td>Reporting mensuel accessible même sans profil technique</td></tr><tr><td>Interlocuteurs compétents et disponibles</td></tr><tr><td>Bonne maîtrise du SEO local, utile pour une entreprise ancrée en région</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Résultats SEO visibles seulement après plusieurs mois, difficile à justifier avec un budget limité</td></tr><tr><td>Onboarding un peu lent au démarrage, les premières semaines manquent de rythme</td></tr></tbody>
         </table>
       </div>
@@ -566,11 +566,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expertise SEO technique poussée, bien au-delà des audits superficiels</td></tr><tr><td>Gestion SEO et SEA intégrée, pratique pour éviter de multiplier les interlocuteurs</td></tr><tr><td>Reporting mensuel lisible, même pour un non-spécialiste</td></tr><tr><td>Équipes réactives une fois la phase de lancement passée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés, peu adaptés aux budgets serrés des TPE</td></tr><tr><td>Onboarding lent : les premières semaines, on attend beaucoup sans voir d'actions concrètes</td></tr><tr><td>Moins flexible sur la personnalisation des contrats pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -594,11 +594,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Agence physiquement proche, rendez-vous en présentiel possibles</td></tr><tr><td>Audits détaillés et actionnables, sans jargon inutile</td></tr><tr><td>Couverture complète SEO + SEA + analytics sous un même toit</td></tr><tr><td>Équipes réactives sur les échanges et les ajustements de campagne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Budget qui peut rapidement dépasser les attentes selon le périmètre choisi</td></tr><tr><td>La mise en œuvre reste à la charge du client sans formule d'accompagnement étendue</td></tr></tbody>
         </table>
       </div>
@@ -622,11 +622,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Audit SEO technique solide dès le démarrage</td></tr><tr><td>Reporting mensuel clair et lisible, même sans bagage technique</td></tr><tr><td>Gestion directe avec les équipes techniques internes, sans intermédiaire inutile</td></tr><tr><td>Bonne maîtrise de la production de contenus optimisés à volume</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Les offres en entrée de gamme manquent de personnalisation réelle</td></tr><tr><td>Le niveau de réactivité peut baisser sur les petits contrats, selon la période</td></tr></tbody>
         </table>
       </div>
@@ -650,11 +650,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interlocuteur unique qui pilote l'ensemble des leviers : SEO, Ads, contenu</td></tr><tr><td>Reporting mensuel lisible, même sans bagage technique</td></tr><tr><td>Approche personnalisée dès le départ, pas de stratégie copier-coller</td></tr><tr><td>Bonne coordination entre les équipes internes, peu de perte d'information</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding assez long avant d'entrer dans le vif du sujet</td></tr><tr><td>Moins adapté pour des missions courtes ou des budgets très serrés</td></tr><tr><td>L'offre peut sembler large, parfois difficile de savoir exactement ce qui est prioritaire</td></tr></tbody>
         </table>
       </div>
@@ -678,11 +678,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Approche data très solide, avec des audits et reportings précis</td></tr><tr><td>Gestion multicanale réelle : SEO, SEA et analytics sous le même toit</td></tr><tr><td>Équipe réactive et disponible pour expliquer les résultats</td></tr><tr><td>Bon niveau de personnalisation selon le secteur d'activité</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Espace client pas très intuitif, courbe d'apprentissage notable</td></tr><tr><td>Moins adapté aux budgets limités ou aux besoins ponctuels</td></tr></tbody>
         </table>
       </div>
@@ -706,11 +706,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interlocuteur dédié, ce qui rassure quand on n'a pas d'équipe marketing interne</td></tr><tr><td>Reporting mensuel clair, accessible même sans bagage technique</td></tr><tr><td>Gestion simultanée SEO et SEA, pratique pour centraliser les efforts</td></tr><tr><td>Forte culture de la performance et du retour sur investissement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réactivité parfois lente sur les échanges urgents par mail</td></tr><tr><td>Offres peu adaptées aux très petits budgets, mieux vaut prévoir une enveloppe confortable</td></tr></tbody>
         </table>
       </div>
@@ -734,11 +734,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expertise forte sur les campagnes paid media (Google, Meta, Amazon)</td></tr><tr><td>Reportings lisibles et orientés performance réelle</td></tr><tr><td>Équipe réactive une fois le contrat bien cadré</td></tr><tr><td>Bonne maîtrise des stratégies d'acquisition multi-canaux</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Budget minimum élevé, peu adapté aux très petites structures</td></tr><tr><td>Quasi-absent sur le SEO et les stratégies de contenu</td></tr></tbody>
         </table>
       </div>

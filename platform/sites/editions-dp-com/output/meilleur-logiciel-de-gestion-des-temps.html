@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -497,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Après avoir comparé 9 logiciels de gestion des temps, voici ceux que je trouve les plus efficaces en 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Pierre Petit" class="hero-author-avatar">
     <span>Rédigé par Pierre Petit</span>
@@ -540,11 +540,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface française claire et ergonomique</td></tr><tr><td>Gestion automatisée des heures supplémentaires</td></tr><tr><td>Intégration native avec les logiciels de paie</td></tr><tr><td>Système de validation hiérarchique personnalisable</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites entreprises</td></tr><tr><td>Options de personnalisation limitées sur les rapports</td></tr><tr><td>Temps d'adaptation nécessaire pour les équipes</td></tr></tbody>
         </table>
       </div>
@@ -568,11 +568,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Pointage mobile par QR code ultra pratique</td></tr><tr><td>Interface intuitive même pour les non-techniciens</td></tr><tr><td>Calcul automatique des heures supplémentaires</td></tr><tr><td>Prix abordable pour les PME</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités RH limitées</td></tr><tr><td>Peu d'intégrations avec d'autres logiciels</td></tr><tr><td>Reporting basique comparé aux solutions enterprise</td></tr></tbody>
         </table>
       </div>
@@ -596,11 +596,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile vraiment pensée pour les équipes terrain</td></tr><tr><td>Automatisation poussée des calculs de temps et heures sup</td></tr><tr><td>Intégration native avec la plupart des logiciels de paie</td></tr><tr><td>Planification intelligente basée sur l'historique d'activité</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix assez élevé pour les petites structures</td></tr><tr><td>Fonctionnalités avancées parfois trop complexes pour un usage basique</td></tr><tr><td>Support client pas toujours réactif selon mon expérience</td></tr></tbody>
         </table>
       </div>
@@ -624,11 +624,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-intuitive qui ne nécessite aucune formation</td></tr><tr><td>Facturation automatique basée sur le temps enregistré</td></tr><tr><td>Intégrations natives avec plus de 50 outils populaires</td></tr><tr><td>Application mobile qui fonctionne même hors ligne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de gestion des congés ou planning équipe</td></tr><tr><td>Options de personnalisation des rapports limitées</td></tr><tr><td>Prix qui grimpe vite avec le nombre d'utilisateurs</td></tr></tbody>
         </table>
       </div>
@@ -652,11 +652,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-intuitive avec timer en un clic</td></tr><tr><td>Extensions navigateur qui détectent automatiquement les projets</td></tr><tr><td>Synchronisation temps réel sur tous les appareils</td></tr><tr><td>Rapports clients exportables en PDF sans mise en forme</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités de gestion d'équipe limitées</td></tr><tr><td>Analyses avancées payantes et basiques</td></tr><tr><td>Pas de facturation intégrée native</td></tr></tbody>
         </table>
       </div>
@@ -680,11 +680,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Version gratuite sans limite d'utilisateurs ni de projets</td></tr><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Rapports détaillés exportables en PDF et Excel</td></tr><tr><td>Applications mobiles et extensions navigateur fonctionnelles</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées comparé aux solutions payantes</td></tr><tr><td>Personnalisation des rapports assez basique</td></tr><tr><td>Support client parfois lent en version gratuite</td></tr></tbody>
         </table>
       </div>
@@ -708,11 +708,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Détection automatique d'activité sans saisie manuelle</td></tr><tr><td>Intégration native avec les principaux outils de facturation</td></tr><tr><td>Interface intuitive pour valider et ajuster les données</td></tr><tr><td>Rapports détaillés par projet et client</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peut créer des tensions sur la surveillance au travail</td></tr><tr><td>Nécessite une installation sur chaque poste</td></tr><tr><td>Prix élevé pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Planification automatique selon la charge de travail prévisionnelle</td></tr><tr><td>Système de remplacement intelligent en cas de désistement</td></tr><tr><td>Géolocalisation pour vérifier les pointages sur site</td></tr><tr><td>Notifications instantanées en cas de retard ou absence</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lente avec de gros volumes d'employés</td></tr><tr><td>Options de personnalisation limitées pour les rapports</td></tr><tr><td>Coût qui grimpe vite avec les modules additionnels</td></tr></tbody>
         </table>
       </div>
@@ -764,11 +764,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface utilisateur moderne et intuitive qui facilite la saisie quotidienne</td></tr><tr><td>Validation mobile des temps permettant aux managers de traiter les demandes en mobilité</td></tr><tr><td>Intégration native avec les autres modules RH Lucca pour une gestion unifiée</td></tr><tr><td>Paramétrage avancé des règles de calcul adaptable aux conventions collectives</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Temps de paramétrage initial très long nécessitant une expertise technique</td></tr><tr><td>Tarification élevée qui peut freiner les petites structures</td></tr><tr><td>Fonctionnalités limitées en mode déconnecté pour les équipes terrain</td></tr></tbody>
         </table>
       </div>
@@ -997,7 +997,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 7 octobre 2026
+        © 2026 editions-dp.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>
