@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des 9 logiciels de gestion de trésorerie les plus utilisés</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Pennylane</strong> : TPE et PME qui veulent automatiser leur comptabilité sans se ruiner</li>
-<li><strong>Qonto</strong> : Entreprises cherchant un compte pro avec gestion de trésorerie intégrée efficace</li>
-<li><strong>Agicap</strong> : PME de 20+ salariés nécessitant des prévisions de trésorerie professionnelles avancées</li>
-<li><strong>Fygr</strong> : Freelances et micro-entreprises privilégiant la simplicité et les tarifs abordables</li>
-<li><strong>Kyriba</strong> : Grandes entreprises avec besoins complexes en gestion de trésorerie multinationaux</li>
+<li><strong>Pennylane</strong> :<br>TPE et PME qui veulent automatiser leur comptabilité sans se ruiner</li>
+<li><strong>Qonto</strong> :<br>Entreprises cherchant un compte pro avec gestion de trésorerie intégrée efficace</li>
+<li><strong>Agicap</strong> :<br>PME de 20+ salariés nécessitant des prévisions de trésorerie professionnelles avancées</li>
+<li><strong>Fygr</strong> :<br>Freelances et micro-entreprises privilégiant la simplicité et les tarifs abordables</li>
+<li><strong>Kyriba</strong> :<br>Grandes entreprises avec besoins complexes en gestion de trésorerie multinationaux</li>
 </ul>
   </div>
 
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration parfaite avec Sage 100 Comptabilité</td></tr><tr><td>Rapprochement bancaire automatique fiable</td></tr><tr><td>Gestion des virements SEPA intégrée</td></tr><tr><td>Prévisionnel de trésorerie détaillé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial très long et technique</td></tr><tr><td>Interface vieillotte et peu intuitive</td></tr><tr><td>Coût élevé pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main rapide même sans formation comptable</td></tr><tr><td>Prévisions de trésorerie visuelles et compréhensibles</td></tr><tr><td>Synchronisation bancaire efficace avec les principales banques</td></tr><tr><td>Interface épurée qui va à l'essentiel</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour les entreprises avec plusieurs entités</td></tr><tr><td>Pas de gestion avancée des devises étrangères</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation complète des flux de trésorerie et rapprochements bancaires en temps réel</td></tr><tr><td>Gestion multi-devises native avec couverture de change automatisée selon vos règles</td></tr><tr><td>Prévisions de cash ultra précises grâce aux algorithmes d'intelligence artificielle</td></tr><tr><td>Connectivité bancaire mondiale avec plus de 4000 banques intégrées directement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Coût prohibitif pour les PME avec des licences démarrant à plusieurs dizaines de milliers d'euros</td></tr><tr><td>Complexité technique nécessitant une équipe IT dédiée et plusieurs mois d'implémentation</td></tr><tr><td>Interface perfectible qui peut sembler vieillotte comparée aux solutions récentes</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment accessible, même pour les non-experts comptables</td></tr><tr><td>Synchronisation bancaire automatique avec la plupart des établissements français</td></tr><tr><td>Rapprochement bancaire intelligent qui fait gagner du temps</td></tr><tr><td>Tarifs transparents sans frais cachés sur les fonctionnalités de base</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités de reporting avancées limitées pour les grosses structures</td></tr><tr><td>Pas de gestion multi-devises vraiment poussée</td></tr><tr><td>Support parfois lent en période de forte affluence</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Rapprochement bancaire 100% automatisé avec règles personnalisables</td></tr><tr><td>Synchronisation directe avec les principales banques françaises</td></tr><tr><td>Prévisions de trésorerie sur 12 mois avec scenarios multiples</td></tr><tr><td>Interface vraiment intuitive, formation rapide des équipes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gestion multi-devises basique, pas idéal pour l'international</td></tr><tr><td>Reporting limité comparé aux solutions plus haut de gamme</td></tr><tr><td>Quelques bugs occasionnels sur la synchronisation bancaire</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Comptes multiples pour séparer projets et budgets facilement</td></tr><tr><td>Cartes avec contrôles fins : plafonds, catégories, blocages instantanés</td></tr><tr><td>Synchronisation comptable automatique et exports au bon format</td></tr><tr><td>Interface mobile excellente pour valider à distance</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas d'outils de prévision de trésorerie avancés</td></tr><tr><td>Frais qui grimpent vite avec les cartes supplémentaires</td></tr><tr><td>Support parfois lent en période de forte affluence</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prévisionnel de trésorerie très visuel avec graphiques intuitifs</td></tr><tr><td>Connexion bancaire automatique fiable pour la plupart des banques françaises</td></tr><tr><td>Scénarios multiples pour tester différentes hypothèses budgétaires</td></tr><tr><td>Interface pensée pour les non-experts comptables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification qui grimpe vite avec le nombre d'utilisateurs</td></tr><tr><td>Fonctionnalités limitées pour les très petites structures</td></tr><tr><td>Paramétrage initial assez chronophage pour bien catégoriser les flux</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prévision automatisée de trésorerie sur 6 mois</td></tr><tr><td>Scénarios de simulation très détaillés</td></tr><tr><td>Alertes proactives sur les risques de découvert</td></tr><tr><td>Intégration bancaire multi-établissements</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial chronophage</td></tr><tr><td>Interface complexe pour les débutants</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Visualisation graphique claire des flux de trésorerie en temps réel</td></tr><tr><td>Alertes prédictives de découvert avec 15-20 jours d'avance</td></tr><tr><td>Synchronisation bancaire automatique avec les principales banques</td></tr><tr><td>Interface intuitive qui ne nécessite pas de formation comptable poussée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Synchronisation parfois capricieuse avec certaines banques en ligne</td></tr><tr><td>Fonctionnalités limitées pour les très petites entreprises (moins de 100k€ de CA)</td></tr><tr><td>Support client uniquement en français et aux horaires de bureau</td></tr></tbody>
         </table>
       </div>
@@ -1109,7 +1109,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

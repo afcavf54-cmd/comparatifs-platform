@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 9 logiciels de gestion des compétences : mon analyse</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -511,11 +511,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>360Learning</strong> : TPE cherchant une solution simple et abordable</li>
-<li><strong>Skillup</strong> : PME privilégiant l'analyse des compétences et rapports</li>
-<li><strong>Elevo</strong> : entreprises voulant un accompagnement personnalisé et français</li>
-<li><strong>Neobrain</strong> : grandes structures nécessitant une gestion RH complète</li>
-<li><strong>Cornerstone OnDemand</strong> : groupes internationaux avec besoins très avancés</li>
+<li><strong>360Learning</strong> :<br>TPE cherchant une solution simple et abordable</li>
+<li><strong>Skillup</strong> :<br>PME privilégiant l'analyse des compétences et rapports</li>
+<li><strong>Elevo</strong> :<br>entreprises voulant un accompagnement personnalisé et français</li>
+<li><strong>Neobrain</strong> :<br>grandes structures nécessitant une gestion RH complète</li>
+<li><strong>Cornerstone OnDemand</strong> :<br>groupes internationaux avec besoins très avancés</li>
 </ul>
   </div>
 
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive, prise en main rapide même pour des non-experts RH</td></tr><tr><td>Évaluations 360° automatisées avec relances intelligentes</td></tr><tr><td>Cartographie des compétences personnalisable par métier</td></tr><tr><td>Intégrations natives avec les principaux SIRH du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Module de formation en ligne assez basique, pas de SCORM avancé</td></tr><tr><td>Rapports limités pour des analyses statistiques poussées</td></tr><tr><td>Support client parfois lent à répondre en période de pic</td></tr></tbody>
         </table>
       </div>
@@ -581,11 +581,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive pour créer des formations sans compétences techniques</td></tr><tr><td>Système de badges et gamification qui motive vraiment les apprenants</td></tr><tr><td>Analytics poussés pour tracker la montée en compétences par équipe</td></tr><tr><td>API robuste pour synchroniser avec votre SIRH existant</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites structures (à partir de 8€/utilisateur/mois)</td></tr><tr><td>Fonctionnalités de reporting parfois lentes à charger avec de gros volumes</td></tr><tr><td>Personnalisation limitée de l'interface selon votre charte graphique</td></tr></tbody>
         </table>
       </div>
@@ -618,11 +618,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Algorithmes IA performants pour le matching compétences/postes</td></tr><tr><td>Interface utilisateur claire et moderne</td></tr><tr><td>Module d'évaluation 360° vraiment bien conçu</td></tr><tr><td>Reporting automatisé avec indicateurs prédictifs</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding assez long, surtout pour les équipes peu tech</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Fonctionnalités avancées parfois surdimensionnées pour des besoins simples</td></tr></tbody>
         </table>
       </div>
@@ -655,11 +655,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Mapping visuel des compétences par équipe très clair</td></tr><tr><td>Intégration native avec les entretiens annuels et 1-on-1</td></tr><tr><td>Analytics avancés sur les gaps de compétences</td></tr><tr><td>Workflows automatisés pour les plans de développement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale longue et technique</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Interface parfois lente avec de gros volumes de données</td></tr></tbody>
         </table>
       </div>
@@ -692,11 +692,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>IA prédictive qui anticipe réellement les besoins en compétences</td></tr><tr><td>Bibliothèque de contenus pédagogiques énorme avec 40 000+ cours</td></tr><tr><td>Analytics RH très poussés avec tableaux de bord personnalisables</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface complexe qui nécessite plusieurs semaines de formation</td></tr><tr><td>Tarifs élevés et peu transparents avec nombreux modules payants</td></tr><tr><td>Support technique parfois lent sur les demandes complexes</td></tr></tbody>
         </table>
       </div>
@@ -729,11 +729,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface très simple, prise en main en 30 minutes maximum</td></tr><tr><td>Visualisation claire des compétences disponibles dans l'équipe</td></tr><tr><td>Recherche rapide d'expertise interne lors de nouveaux projets</td></tr><tr><td>Tarifs accessibles pour les PME</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de module de formation ou de développement des compétences</td></tr><tr><td>Fonctionnalités limitées comparé à des solutions plus complètes</td></tr><tr><td>Pas d'intégration native avec les SIRH existants</td></tr></tbody>
         </table>
       </div>
@@ -766,11 +766,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>IA de matching très performante pour identifier les talents internes</td></tr><tr><td>Interface française intuitive avec support réactif</td></tr><tr><td>Cartographie des compétences automatisée et mise à jour en temps réel</td></tr><tr><td>Intégration native avec les SIRH les plus utilisés en France</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée qui exclut les petites entreprises</td></tr><tr><td>Paramétrage initial complexe nécessitant un accompagnement</td></tr><tr><td>Fonctionnalités avancées parfois trop techniques pour les équipes RH</td></tr></tbody>
         </table>
       </div>
@@ -803,11 +803,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation des utilisateurs</td></tr><tr><td>Déploiement express en quelques semaines seulement</td></tr><tr><td>Système de recommandations de formation assez pertinent</td></tr><tr><td>Prix abordable pour les PME avec un bon rapport qualité-prix</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées pour les grandes entreprises</td></tr><tr><td>Personnalisation des référentiels de compétences assez rigide</td></tr><tr><td>Support client uniquement en anglais, ce qui pose problème</td></tr></tbody>
         </table>
       </div>
@@ -840,11 +840,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive pour les auto-évaluations collaborateurs</td></tr><tr><td>Détection automatique des gaps de compétences par métier</td></tr><tr><td>Base de données formation riche avec plus de 50 000 références</td></tr><tr><td>Reporting détaillé sur l'évolution des compétences par service</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial très chronophage pour les référentiels métiers</td></tr><tr><td>Prix élevé pour les petites structures (à partir de 8€/utilisateur/mois)</td></tr><tr><td>Notifications trop nombreuses qui agacent les utilisateurs</td></tr></tbody>
         </table>
       </div>
@@ -1188,7 +1188,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

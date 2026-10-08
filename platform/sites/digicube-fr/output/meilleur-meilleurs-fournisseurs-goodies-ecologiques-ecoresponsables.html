@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -510,11 +510,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Ecoburo</strong> : idéal pour les TPE qui veulent des goodies simples et abordables.</li>
-<li><strong>Cadoétik</strong> : parfait si vous cherchez des cadeaux personnalisés avec un vrai engagement éco.</li>
-<li><strong>Vegea</strong> : recommandé pour les structures qui misent sur des matières végétales innovantes.</li>
-<li><strong>Goodies Impact</strong> : adapté aux équipes qui veulent tracer l'impact réel de chaque commande.</li>
-<li><strong>Atelier Box</strong> : conçu pour offrir des box artisanales à fort effet waouh, sans compromis éthique.</li>
+    <li><strong>Ecoburo</strong> :<br>idéal pour les TPE qui veulent des goodies simples et abordables.</li>
+<li><strong>Cadoétik</strong> :<br>parfait si vous cherchez des cadeaux personnalisés avec un vrai engagement éco.</li>
+<li><strong>Vegea</strong> :<br>recommandé pour les structures qui misent sur des matières végétales innovantes.</li>
+<li><strong>Goodies Impact</strong> :<br>adapté aux équipes qui veulent tracer l'impact réel de chaque commande.</li>
+<li><strong>Atelier Box</strong> :<br>conçu pour offrir des box artisanales à fort effet waouh, sans compromis éthique.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs goodies écologiques / écoresponsables</h2>
@@ -536,11 +536,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sélection de produits réellement écoresponsables et utiles au quotidien</td></tr><tr><td>Personnalisation disponible sur une large partie du catalogue</td></tr><tr><td>Tarifs accessibles pour des petites et moyennes quantités</td></tr><tr><td>Processus de commande globalement lisible pour un non-expert</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Minimums de commande variables selon les produits, pas toujours logiques</td></tr><tr><td>Catalogue moins étendu que certains concurrents spécialisés</td></tr><tr><td>Support client difficile à joindre rapidement en cas de problème</td></tr></tbody>
         </table>
       </div>
@@ -564,11 +564,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sélection de produits écoresponsables vraiment curatée, pas un simple catalogue générique</td></tr><tr><td>Personnalisation en ligne intuitive avec aperçu visuel avant commande</td></tr><tr><td>Qualité perçue des articles clairement supérieure à la moyenne du marché</td></tr><tr><td>Fabrication majoritairement française ou européenne, vérifiable</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue peu étendu : difficile de tout couvrir en une seule commande</td></tr><tr><td>Prix unitaires élevés, peu adaptés aux budgets serrés ou aux commandes en grande quantité</td></tr><tr><td>Support client réactif mais uniquement par email, pas toujours rapide</td></tr></tbody>
         </table>
       </div>
@@ -592,11 +592,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue écoresponsable varié avec fiches produits détaillées (matières, certifications)</td></tr><tr><td>Outil de personnalisation en ligne avec prévisualisation du rendu</td></tr><tr><td>Commande en autonomie sans passer par un commercial</td></tr><tr><td>Support client réactif via chat</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix unitaire élevé sur les petites quantités, les minimums de commande peuvent surprendre</td></tr><tr><td>L'outil de maquette en ligne bug selon le navigateur utilisé</td></tr><tr><td>Délais de livraison variables selon les produits, à bien vérifier avant de valider</td></tr></tbody>
         </table>
       </div>
@@ -620,11 +620,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue cohérent centré sur des produits écoresponsables du quotidien en entreprise</td></tr><tr><td>Certifications et origines des matériaux affichées clairement sur chaque fiche produit</td></tr><tr><td>Personnalisation avec logo disponible sur la majorité des références</td></tr><tr><td>Rapport qualité/prix correct pour des goodies engagés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Navigation sur le site peu intuitive, filtres pas toujours faciles à trouver</td></tr><tr><td>Quantités minimales de commande parfois élevées pour les très petites structures</td></tr><tr><td>Le support client met parfois du temps à répondre en période chargée</td></tr></tbody>
         </table>
       </div>
@@ -648,11 +648,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue orienté produits réellement écoresponsables, pas du greenwashing de façade</td></tr><tr><td>Fiches produits détaillées avec matières et options de marquage clairement indiquées</td></tr><tr><td>Bonne variété de catégories : papeterie, textiles, accessoires de bureau</td></tr><tr><td>Interlocuteurs réactifs pour les devis personnalisés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs au-dessus de la moyenne, difficile à absorber avec un petit budget</td></tr><tr><td>Quantités minimales de commande parfois élevées pour les très petites structures</td></tr><tr><td>Le site manque d'un simulateur de prix en temps réel, on perd du temps à demander des devis</td></tr></tbody>
         </table>
       </div>
@@ -676,11 +676,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue 100% orienté écoresponsable, sans produits gadgets mal sourcés</td></tr><tr><td>Fiches produits détaillées avec les matières et certifications clairement affichées</td></tr><tr><td>Processus de validation visuelle (bon à tirer) avant impression, ce qui évite les mauvaises surprises</td></tr><tr><td>Qualité des produits reçus nettement au-dessus de la moyenne constatée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix unitaires élevés pour les petites quantités, peu adapté aux budgets serrés ou aux commandes ponctuelles</td></tr><tr><td>Délais de production assez longs sur certaines références, à anticiper impérativement</td></tr><tr><td>Le support client n'est pas joignable en instantané, les réponses arrivent parfois sous 48h</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue vraiment axé écoresponsabilité, avec certifications visibles sur chaque produit</td></tr><tr><td>Prix accessibles pour des petites et moyennes commandes, adapté aux budgets TPE</td></tr><tr><td>Personnalisation disponible sur la plupart des références, qualité de marquage correcte</td></tr><tr><td>Approche cohérente, pas du greenwashing de surface</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réactivité du support perfectible, relances parfois nécessaires pour obtenir un suivi de commande</td></tr><tr><td>Délais de livraison pas toujours adaptés aux urgences de dernière minute</td></tr></tbody>
         </table>
       </div>
@@ -732,11 +732,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue structuré avec infos techniques accessibles dès la navigation</td></tr><tr><td>Plusieurs techniques d'impression disponibles selon le modèle choisi</td></tr><tr><td>Bon à tirer fourni avant lancement de la production</td></tr><tr><td>Rapport qualité/prix honnête pour des commandes de volume moyen</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais rallongés dès qu'on sort des options standard du catalogue</td></tr><tr><td>Le site manque parfois de réactivité, quelques lenteurs au chargement des visuels</td></tr></tbody>
         </table>
       </div>
@@ -760,11 +760,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Produits éco-responsables avec une vraie traçabilité des matières</td></tr><tr><td>Personnalisation logo propre et bien gérée</td></tr><tr><td>Qualité perçue élevée, les salariés apprécient le soin apporté aux emballages</td></tr><tr><td>Bonne adéquation si votre entreprise valorise les démarches durables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Quantités minimales de commande parfois élevées pour les très petites structures</td></tr><tr><td>Tarifs plus élevés que les fournisseurs généralistes, ce qui peut peser sur un budget limité</td></tr><tr><td>Le catalogue reste moins large que des plateformes multi-univers</td></tr></tbody>
         </table>
       </div>
@@ -788,11 +788,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Outil de personnalisation accessible même sans compétences graphiques</td></tr><tr><td>Tarifs dégressifs affichés directement, pas besoin de négocier un devis</td></tr><tr><td>Rendu d'impression fidèle à la prévisualisation</td></tr><tr><td>Quelques références éco-responsables disponibles dans le catalogue</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue de sacs à dos limité, peu de modèles premium ou techniques</td></tr><tr><td>Support client pas toujours réactif, compter parfois deux jours pour une réponse</td></tr></tbody>
         </table>
       </div>

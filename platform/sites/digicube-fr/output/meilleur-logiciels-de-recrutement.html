@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai comparé 10 logiciels de recrutement : mon classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -512,10 +512,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
 <li><strong>Kelio</strong>&nbsp;:&nbsp;PME et ETI souhaitant centraliser et fluidifier leurs recrutements</li>
-<li><strong>Workable</strong> : PME voulant professionnaliser leur processus de recrutement avec budget confortable</li>
-<li><strong>Recruitee</strong> : équipes RH expérimentées privilégiant la personnalisation et les fonctionnalités avancées</li>
-<li><strong>Teamtailor</strong> : entreprises misant sur l'expérience candidat et le branding employeur</li>
-<li><strong>Taleez</strong> : structures moyennes recherchant un logiciel complet sans complexité excessive</li>
+<li><strong>Workable</strong> :<br>PME voulant professionnaliser leur processus de recrutement avec budget confortable</li>
+<li><strong>Recruitee</strong> :<br>équipes RH expérimentées privilégiant la personnalisation et les fonctionnalités avancées</li>
+<li><strong>Teamtailor</strong> :<br>entreprises misant sur l'expérience candidat et le branding employeur</li>
+<li><strong>Taleez</strong> :<br>structures moyennes recherchant un logiciel complet sans complexité excessive</li>
 </ul>
   </div>
 
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Multidiffusion efficace des offres d'emploi et centralisation</td></tr><tr><td>Bascule automatique des candidats vers le dossier salarié</td></tr><tr><td>Suivi collaboratif des étapes de sélection très fluide</td></tr><tr><td>Conformité totale avec les exigences du RGPD</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prise en main nécessaire pour les managers occasionnels</td></tr><tr><td>Modèle tarifaire sur devis selon la taille de la structure</td></tr></tbody>
         </table>
       </div>
@@ -579,11 +579,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Module de cooptation collaboratif très efficace</td></tr><tr><td>Interface intuitive même pour les non-RH</td></tr><tr><td>Automatisation intelligente du tri de candidatures</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting avancé encore perfectible</td></tr><tr><td>Intégrations limitées avec certains SIRH</td></tr><tr><td>Prix qui monte vite avec les fonctionnalités premium</td></tr></tbody>
         </table>
       </div>
@@ -611,11 +611,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui demande peu de formation</td></tr><tr><td>Diffusion automatique sur 15+ jobboards en un clic</td></tr><tr><td>Scoring des candidats basé sur des critères personnalisables</td></tr><tr><td>Module de cooptation interne bien pensé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting limité pour les analyses poussées</td></tr><tr><td>Pas d'intégration native avec tous les SIRH</td></tr><tr><td>Support client parfois lent en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -643,11 +643,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Publication multi-jobboards en un clic (Indeed, APEC, LinkedIn)</td></tr><tr><td>Pipeline visuel simple pour suivre chaque candidature</td></tr><tr><td>Prise en main rapide, même pour les non-experts RH</td></tr><tr><td>Tarif accessible pour les petites structures (à partir de 59€/mois)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting basique, impossible de créer des tableaux de bord personnalisés</td></tr><tr><td>Pas d'évaluation par compétences ni de tests intégrés</td></tr><tr><td>Synchronisation limitée avec les SIRH existants</td></tr></tbody>
         </table>
       </div>
@@ -675,11 +675,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Multi-diffusion automatique sur 15+ jobboards en un clic</td></tr><tr><td>Interface intuitive avec prise en main rapide</td></tr><tr><td>Scoring automatique des candidatures avec tri intelligent</td></tr><tr><td>Synchronisation calendrier native pour planifier les entretiens</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Customisation limitée des workflows de recrutement</td></tr><tr><td>Reporting assez basique pour les analyses poussées</td></tr><tr><td>Support client parfois lent en période de rush</td></tr></tbody>
         </table>
       </div>
@@ -707,11 +707,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment intuitive, formation quasi inexistante</td></tr><tr><td>Diffusion automatique sur 20+ sites d'emploi français</td></tr><tr><td>Entretiens vidéo intégrés avec enregistrement</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting basique, difficile d'extraire des données poussées</td></tr><tr><td>Personnalisation limitée des workflows de validation</td></tr><tr><td>Quelques bugs sur la synchronisation avec LinkedIn</td></tr></tbody>
         </table>
       </div>
@@ -739,11 +739,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface claire même avec des dizaines de postes actifs</td></tr><tr><td>Scoring automatique des candidatures qui fait gagner du temps</td></tr><tr><td>Intégration native avec LinkedIn et les job boards</td></tr><tr><td>Rapports détaillés sur les métriques de recrutement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif élevé pour les petites structures (à partir de 99$/mois)</td></tr><tr><td>Personnalisation limitée des workflows de validation</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -771,11 +771,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les non-experts RH</td></tr><tr><td>Synchronisation automatique avec Indeed, LinkedIn Jobs et Monster</td></tr><tr><td>Templates de mails et relances automatisées</td></tr><tr><td>Rapports détaillés sur les métriques de recrutement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Workflows peu personnalisables pour les processus complexes</td></tr><tr><td>Fonctionnalités d'onboarding assez basiques</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -803,11 +803,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec onboarding rapide en quelques heures</td></tr><tr><td>Pages carrière personnalisables qui renforcent la marque employeur</td></tr><tr><td>Collaboration équipe fluide avec système de commentaires intégré</td></tr><tr><td>Intégration native avec LinkedIn, Indeed et principaux job boards</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées pour les rapports avancés</td></tr><tr><td>Tarification qui augmente rapidement avec le nombre d'utilisateurs</td></tr><tr><td>Manque de fonctionnalités IA pour le sourcing automatique</td></tr></tbody>
         </table>
       </div>
@@ -835,11 +835,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface collaborative très fluide pour les équipes RH</td></tr><tr><td>Automatisation poussée des relances candidats et validations</td></tr><tr><td>Analytics détaillés sur les performances de recrutement</td></tr><tr><td>Intégrations natives avec LinkedIn et principaux job boards</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés, peu accessible aux PME</td></tr><tr><td>Courbe d'apprentissage importante pour les nouveaux utilisateurs</td></tr><tr><td>Fonctionnalités de base verrouillées dans les formules premium</td></tr></tbody>
         </table>
       </div>
@@ -1078,7 +1078,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

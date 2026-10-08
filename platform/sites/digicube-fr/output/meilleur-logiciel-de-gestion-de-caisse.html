@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Quel logiciel de gestion de caisse choisir ? Mon comparatif complet</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 11 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 11 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Tactill</strong> : idéal pour les restaurants qui veulent une caisse simple sans complications techniques.</li>
-<li><strong>TopOrder</strong> : parfait pour les commerces multi-activités avec gestion stocks et commandes fournisseurs.</li>
-<li><strong>L'Addition</strong> : recommandé aux restaurateurs exigeants cherchant personnalisation avancée et analyses détaillées.</li>
-<li><strong>SumUp Caisse Pro</strong> : excellent choix pour débuter avec petit budget et besoins basiques.</li>
-<li><strong>Lightspeed</strong> : conçu pour retailers ambitieux gérant plusieurs points de vente simultanément.</li>
+<li><strong>Tactill</strong> :<br>idéal pour les restaurants qui veulent une caisse simple sans complications techniques.</li>
+<li><strong>TopOrder</strong> :<br>parfait pour les commerces multi-activités avec gestion stocks et commandes fournisseurs.</li>
+<li><strong>L'Addition</strong> :<br>recommandé aux restaurateurs exigeants cherchant personnalisation avancée et analyses détaillées.</li>
+<li><strong>SumUp Caisse Pro</strong> :<br>excellent choix pour débuter avec petit budget et besoins basiques.</li>
+<li><strong>Lightspeed</strong> :<br>conçu pour retailers ambitieux gérant plusieurs points de vente simultanément.</li>
 </ul>
   </div>
 
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Fonctionnement hors ligne avec synchronisation automatique</td></tr><tr><td>Terminal de paiement inclus sans frais cachés</td></tr><tr><td>Installation ultra rapide sur tablette Android ou iPad</td></tr><tr><td>Interface intuitive même pour le personnel non formé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gestion multi-établissements limitée</td></tr><tr><td>Personnalisation des workflows impossible</td></tr><tr><td>Intégrations comptables basiques seulement</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface tactile très réactive, formation du personnel en quelques heures</td></tr><tr><td>Synchronisation instantanée salle-cuisine avec gestion des modifications</td></tr><tr><td>Suivi des stocks en temps réel avec alertes automatiques</td></tr><tr><td>Prix abordable comparé aux solutions concurrentes du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Commissions sur les paiements CB plus élevées que la moyenne</td></tr><tr><td>Pas d'intégration comptable avancée, export manuel obligatoire</td></tr><tr><td>Support client parfois lent, surtout en période de rush</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Commission uniquement sur les ventes, aucun abonnement mensuel</td></tr><tr><td>Installation ultra rapide, fonctionne sur smartphone et tablette</td></tr><tr><td>Synchronisation automatique avec l'écosystème PayPal</td></tr><tr><td>Interface intuitive, formation d'un employé en 15 minutes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées pour les gros volumes</td></tr><tr><td>Dépendance totale à la connexion internet</td></tr><tr><td>Peu d'options de personnalisation des tickets</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface tactile fluide même avec des gants ou des mains mouillées</td></tr><tr><td>Synchronisation multi-points de vente efficace et en temps réel</td></tr><tr><td>Gestion des stocks simplifiée avec alertes automatiques</td></tr><tr><td>Application mobile complète pour encaisser partout</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peu de personnalisation possible sur les rapports de vente</td></tr><tr><td>Support technique parfois lent à répondre en cas de bug</td></tr><tr><td>Fonctionnalités comptables basiques pour les besoins avancés</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Version gratuite sans abonnement mensuel</td></tr><tr><td>Configuration ultra-rapide en quelques clics</td></tr><tr><td>Application mobile fonctionnelle même hors ligne</td></tr><tr><td>Intégration native avec les lecteurs SumUp</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gestion de stock très limitée pour les inventaires complexes</td></tr><tr><td>Rapports basiques insuffisants pour l'analyse poussée</td></tr><tr><td>Commission de 1,95% par transaction qui peut vite chiffrer</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main ultra-rapide, même pour des débutants</td></tr><tr><td>Écosystème complet intégré (caisse, lecteur, stock, comptabilité)</td></tr><tr><td>Application mobile performante pour encaisser partout</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Frais de transaction élevés (2,65% par paiement carte)</td></tr><tr><td>Fonctionnalités limitées pour les gros commerces</td></tr><tr><td>Dépendance totale à la connexion internet</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-intuitive même pour les non-initiés</td></tr><tr><td>Installation rapide sans formation complexe</td></tr><tr><td>Support client français réactif</td></tr><tr><td>Prix abordable pour les petits commerces</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour la gestion multi-magasins</td></tr><tr><td>Reporting basique qui manque de détails analytiques</td></tr><tr><td>Pas d'intégration avec les principales plateformes e-commerce</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation temps réel entre tous les canaux de vente</td></tr><tr><td>Interface unifiée pour salle, livraison et click & collect</td></tr><tr><td>Gestion automatisée des stocks avec alertes de rupture</td></tr><tr><td>Reporting détaillé et export comptable simplifié</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage assez raide au début</td></tr><tr><td>Interface parfois surchargée pour les petits établissements</td></tr><tr><td>Tarification qui grimpe vite avec les modules additionnels</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface rapide même avec beaucoup de produits</td></tr><tr><td>Gestion des variantes et stocks très poussée</td></tr><tr><td>Synchronisation magasin physique et e-commerce native</td></tr><tr><td>Reporting détaillé sur les ventes par période</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Certaines fonctionnalités restent complexes à paramétrer</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -832,11 +832,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface simple à prendre en main rapidement</td></tr><tr><td>Gestion des stocks avec alertes automatiques</td></tr><tr><td>Synchronisation multi-magasins incluse</td></tr><tr><td>Prix transparent sans frais cachés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour la relation client</td></tr><tr><td>Rapports assez basiques par rapport à la concurrence</td></tr><tr><td>Quelques bugs mineurs sur la synchronisation</td></tr></tbody>
         </table>
       </div>
@@ -864,11 +864,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface ultra-simple, formation quasi inexistante</td></tr><tr><td>Prix abordable pour les petits établissements</td></tr><tr><td>Synchronisation temps réel entre caisse et cuisine</td></tr><tr><td>Mode hors ligne fiable en cas de coupure réseau</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting limité pour l'analyse des ventes</td></tr><tr><td>Pas de gestion multi-établissements</td></tr><tr><td>Personnalisation des menus assez rigide</td></tr></tbody>
         </table>
       </div>
@@ -1172,7 +1172,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

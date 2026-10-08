@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 11 logiciels d'onboarding : comparatif et classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 11 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 11 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -514,10 +514,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
 <li><strong>Kelio</strong>&nbsp;:&nbsp;entreprises de plus de 50 salariés souhaitant automatiser et structurer l’intégration</li>
-<li><strong>Workelo</strong> : idéal pour les entreprises tech recherchant une solution moderne et intuitive</li>
-<li><strong>Welcom'App</strong> : parfait pour les structures ayant besoins d'accompagnement et de formation poussée</li>
-<li><strong>Lucca</strong> : recommandé aux moyennes entreprises privilégiant la complétude des fonctionnalités RH intégrées</li>
-<li><strong>Teelt</strong> : conçu pour les startups voulant automatiser rapidement leur processus d'intégration collaborateurs</li>
+<li><strong>Workelo</strong> :<br>idéal pour les entreprises tech recherchant une solution moderne et intuitive</li>
+<li><strong>Welcom'App</strong> :<br>parfait pour les structures ayant besoins d'accompagnement et de formation poussée</li>
+<li><strong>Lucca</strong> :<br>recommandé aux moyennes entreprises privilégiant la complétude des fonctionnalités RH intégrées</li>
+<li><strong>Teelt</strong> :<br>conçu pour les startups voulant automatiser rapidement leur processus d'intégration collaborateurs</li>
 </ul>
   </div>
 
@@ -546,11 +546,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Digitalisation complète et automatisée des parcours d'intégration</td></tr><tr><td>Lien direct avec la gestion du matériel et les droits d'accès</td></tr><tr><td>Portail collaboratif fluide et moderne pour le nouvel arrivant</td></tr><tr><td>Suivi en temps réel de l'avancement des tâches par les RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial nécessitant du temps et de la rigueur</td></tr><tr><td>Tarif peu adapté aux besoins des très petites TPE</td></tr></tbody>
         </table>
       </div>
@@ -581,11 +581,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation complète des tâches administratives d'accueil</td></tr><tr><td>Interface française intuitive avec support réactif</td></tr><tr><td>Parcours personnalisables par métier et département</td></tr><tr><td>Tableau de bord RH avec indicateurs de suivi précis</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation avancée nécessite des développements coûteux</td></tr><tr><td>Quelques ralentissements pendant les périodes de forte activité</td></tr><tr><td>Fonctionnalités limitées pour les grandes entreprises complexes</td></tr></tbody>
         </table>
       </div>
@@ -613,11 +613,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows automatisés par poste et département</td></tr><tr><td>Suivi en temps réel de la progression de chaque collaborateur</td></tr><tr><td>Relances automatiques aux managers et RH</td></tr><tr><td>Intégration facile avec les outils existants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peu de flexibilité pour les parcours non-standard</td></tr><tr><td>Interface parfois lente sur mobile</td></tr><tr><td>Prix élevé pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -645,11 +645,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les non-experts tech</td></tr><tr><td>Accès mobile natif pour les nouveaux arrivants</td></tr><tr><td>Relances automatiques et suivi en temps réel</td></tr><tr><td>Intégration facile des documents existants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités de reporting assez basiques</td></tr><tr><td>Pas d'intégration native avec tous les SIRH</td></tr><tr><td>Tarification qui peut monter vite avec les options</td></tr></tbody>
         </table>
       </div>
@@ -677,11 +677,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec workflow visuels clairs</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr><tr><td>Automatisation des relances et notifications personnalisées</td></tr><tr><td>Tableaux de bord RH avec indicateurs de suivi précis</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification qui devient élevée avec les modules additionnels</td></tr><tr><td>Configuration initiale assez chronophage</td></tr><tr><td>Certaines personnalisations nécessitent un accompagnement technique</td></tr></tbody>
         </table>
       </div>
@@ -709,11 +709,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation poussée des workflows d'intégration</td></tr><tr><td>Interface intuitive même avec de gros volumes</td></tr><tr><td>Gestion intelligente de la diffusion des documents</td></tr><tr><td>Reporting détaillé sur l'avancement des parcours</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation assez restreintes</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Courbe d'apprentissage longue pour les fonctions avancées</td></tr></tbody>
         </table>
       </div>
@@ -741,11 +741,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation complète des parcours d'intégration par profil</td></tr><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Suivi en temps réel des étapes validées par chaque nouvel employé</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée des templates visuels</td></tr><tr><td>Absence de fonctionnalités de mentorat ou de mise en relation</td></tr><tr><td>Tarification qui grimpe vite avec le nombre d'employés intégrés</td></tr></tbody>
         </table>
       </div>
@@ -773,11 +773,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Personnalisation vraiment poussée des parcours selon les profils</td></tr><tr><td>Automatisation complète des tâches administratives répétitives</td></tr><tr><td>Interface intuitive même pour les managers peu techniques</td></tr><tr><td>Suivi en temps réel de l'avancement de chaque nouvel arrivant</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Configuration initiale assez longue et technique</td></tr><tr><td>Peu d'intégrations avec les SIRH français spécifiques</td></tr></tbody>
         </table>
       </div>
@@ -805,11 +805,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Signature électronique intégrée et rapide</td></tr><tr><td>Workflows d'onboarding configurables facilement</td></tr><tr><td>Suivi automatisé des documents et rappels</td></tr><tr><td>Interface intuitive pour les équipes RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée des parcours d'intégration</td></tr><tr><td>Fonctionnalités de gamification absentes</td></tr><tr><td>Intégrations tierces encore perfectibles</td></tr></tbody>
         </table>
       </div>
@@ -837,11 +837,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive pour les équipes RH non-techniques</td></tr><tr><td>Automatisation poussée des tâches récurrentes et des relances</td></tr><tr><td>Signature électronique intégrée pour les documents contractuels</td></tr><tr><td>Intégrations solides avec les principaux SIRH du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation graphique limitée, design assez standard</td></tr><tr><td>Fonctionnalités de gamification basiques comparées à la concurrence</td></tr><tr><td>Support client parfois lent à répondre en français</td></tr></tbody>
         </table>
       </div>
@@ -869,11 +869,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Parcours d'intégration entièrement personnalisables par métier</td></tr><tr><td>Signature électronique native pour tous les documents RH</td></tr><tr><td>Tableau de bord temps réel pour suivre l'avancement de chaque recrue</td></tr><tr><td>Interface intuitive qui ne nécessite pas de formation particulière</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix assez élevé pour les petites structures (à partir de 8€/utilisateur/mois)</td></tr><tr><td>Intégrations limitées avec les SIRH moins répandus</td></tr><tr><td>Modules e-learning basiques comparés à des LMS dédiés</td></tr></tbody>
         </table>
       </div>
@@ -1169,7 +1169,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

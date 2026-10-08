@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 10 logiciels de pointage : comparatif et classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Lucca</strong> : parfait pour les entreprises de taille moyenne cherchant une gestion RH complète et intuitive</li>
-<li><strong>Clockify</strong> : idéal pour les petites équipes avec un budget serré nécessitant un suivi basique</li>
-<li><strong>Skello</strong> : conçu pour les commerces et restaurants ayant des plannings complexes à gérer quotidiennement</li>
-<li><strong>Agendrix</strong> : adapté aux PME québécoises privilégiant une interface française et un support local réactif</li>
-<li><strong>Deputy</strong> : recommandé pour les entreprises multi-sites recherchant des fonctionnalités avancées de gestion d'équipes</li>
+<li><strong>Lucca</strong> :<br>parfait pour les entreprises de taille moyenne cherchant une gestion RH complète et intuitive</li>
+<li><strong>Clockify</strong> :<br>idéal pour les petites équipes avec un budget serré nécessitant un suivi basique</li>
+<li><strong>Skello</strong> :<br>conçu pour les commerces et restaurants ayant des plannings complexes à gérer quotidiennement</li>
+<li><strong>Agendrix</strong> :<br>adapté aux PME québécoises privilégiant une interface française et un support local réactif</li>
+<li><strong>Deputy</strong> :<br>recommandé pour les entreprises multi-sites recherchant des fonctionnalités avancées de gestion d'équipes</li>
 </ul>
   </div>
 
@@ -546,11 +546,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile vraiment intuitive, adoption rapide par les équipes terrain</td></tr><tr><td>Géolocalisation automatique qui évite les erreurs de saisie de chantier</td></tr><tr><td>Synchronisation temps réel avec la planification des équipes</td></tr><tr><td>Prix transparent sans frais cachés sur les modules pointage</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour les grandes entreprises avec besoins complexes</td></tr><tr><td>Pas de reconnaissance biométrique avancée</td></tr><tr><td>Intégrations ERP encore perfectibles selon certains retours</td></tr></tbody>
         </table>
       </div>
@@ -583,11 +583,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calculs automatiques des coûts de main-d'œuvre en temps réel</td></tr><tr><td>Application mobile fonctionnant hors connexion pour le pointage terrain</td></tr><tr><td>Gestion centralisée multi-sites avec tableaux de bord consolidés</td></tr><tr><td>Intégration native avec les principales solutions de paie françaises</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lourde avec beaucoup d'options peu utiles pour les petites structures</td></tr><tr><td>Support client uniquement en anglais malgré la localisation française</td></tr><tr><td>Tarifs qui grimpent vite avec les modules complémentaires obligatoires</td></tr></tbody>
         </table>
       </div>
@@ -620,11 +620,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calcul automatique des majorations selon conventions collectives</td></tr><tr><td>Interface pensée pour les métiers à horaires variables</td></tr><tr><td>Échange de créneaux entre collaborateurs en autonomie</td></tr><tr><td>Pointage géolocalisé adapté aux équipes mobiles</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Plutôt cher pour les très petites structures (moins de 5 salariés)</td></tr><tr><td>Fonctionnalités limitées hors secteurs ciblés</td></tr><tr><td>Pas de gestion avancée des projets ou missions</td></tr></tbody>
         </table>
       </div>
@@ -657,11 +657,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Géolocalisation précise pour les équipes mobiles</td></tr><tr><td>Reconnaissance faciale anti-triche intégrée</td></tr><tr><td>Interface smartphone intuitive pour tous niveaux</td></tr><tr><td>Calcul automatique des heures supplémentaires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Version gratuite très limitée (2 utilisateurs seulement)</td></tr><tr><td>Pas de gestion avancée des congés et absences</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
         </table>
       </div>
@@ -694,11 +694,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface française claire et intuitive</td></tr><tr><td>Badgeage mobile très stable</td></tr><tr><td>Intégration native avec la paie</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification qui grimpe vite avec les options</td></tr><tr><td>Personnalisation limitée des workflows</td></tr><tr><td>Peu d'intégrations avec les outils métier spécialisés</td></tr></tbody>
         </table>
       </div>
@@ -731,11 +731,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface assez intuitive pour les managers RH</td></tr><tr><td>Gestion fine des plannings et des rotations d'équipes</td></tr><tr><td>Exports comptables et paie bien formatés</td></tr><tr><td>Support technique français réactif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial assez lourd à mettre en place</td></tr><tr><td>Application mobile perfectible sur certains smartphones</td></tr><tr><td>Tarification qui monte vite avec les options</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation automatique avec les logiciels de paie français</td></tr><tr><td>Interface simple qui réduit les erreurs de saisie</td></tr><tr><td>Gestion des congés intégrée au pointage</td></tr><tr><td>Support réactif avec des vrais humains</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Peu adapté aux horaires très flexibles</td></tr><tr><td>Fonctionnalités limitées pour le télétravail</td></tr><tr><td>Prix un peu élevé pour les très petites équipes</td></tr></tbody>
         </table>
       </div>
@@ -805,11 +805,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Bornes de badgeage très résistantes et fiables dans le temps</td></tr><tr><td>Interface simple qui ne nécessite pas de formation poussée</td></tr><tr><td>Exports paie bien formatés et compatibles avec la plupart des logiciels RH</td></tr><tr><td>Support technique réactif avec des techniciens qui connaissent le produit</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillissante qui manque de modernité comparé à la concurrence</td></tr><tr><td>Fonctionnalités de planification avancée assez limitées</td></tr><tr><td>Coût des bornes physiques relativement élevé à l'achat</td></tr></tbody>
         </table>
       </div>
@@ -842,11 +842,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Version gratuite réellement utilisable sans limitations cachées</td></tr><tr><td>Timer automatique avec détection d'inactivité paramétrable</td></tr><tr><td>Rapports exportables en PDF et Excel avec ventilation par projet</td></tr><tr><td>Application mobile qui synchronise parfaitement avec la version web</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface un peu datée qui manque de modernité</td></tr><tr><td>Fonctionnalités RH très limitées comparé aux concurrents payants</td></tr><tr><td>Support client parfois lent sur la version gratuite</td></tr></tbody>
         </table>
       </div>
@@ -879,11 +879,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Captures d'écran automatiques pour vérifier l'activité réelle</td></tr><tr><td>Tracking précis des applications et sites web utilisés</td></tr><tr><td>Facturation automatique basée sur le temps tracké</td></tr><tr><td>Géolocalisation pour les équipes mobiles</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Surveillance très intrusive qui peut créer des tensions</td></tr><tr><td>Interface parfois lente avec de gros volumes de données</td></tr><tr><td>Tarifs qui grimpent vite avec les fonctionnalités avancées</td></tr></tbody>
         </table>
       </div>
@@ -1224,7 +1224,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

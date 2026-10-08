@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai analysé 9 logiciels de gestion de l'avance immédiate de crédit d'impôt : comparatif détaillé</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>AIS (Avance Immédiate Services)</strong> : TPE cherchant une solution complète sans surprise tarifaire</li>
-<li><strong>Horiio</strong> : Startups privilégiant flexibilité et tarifs ajustables selon croissance réelle</li>
-<li><strong>Ximi</strong> : Dirigeants voulant automatiser facturation sans complications techniques particulières</li>
-<li><strong>Organilog</strong> : Entreprises terrain nécessitant mobilité et synchronisation temps réel</li>
-<li><strong>Wandle</strong> : Structures recherchant simplicité maximale pour démarrage rapide quotidien</li>
+<li><strong>AIS (Avance Immédiate Services)</strong> :<br>TPE cherchant une solution complète sans surprise tarifaire</li>
+<li><strong>Horiio</strong> :<br>Startups privilégiant flexibilité et tarifs ajustables selon croissance réelle</li>
+<li><strong>Ximi</strong> :<br>Dirigeants voulant automatiser facturation sans complications techniques particulières</li>
+<li><strong>Organilog</strong> :<br>Entreprises terrain nécessitant mobilité et synchronisation temps réel</li>
+<li><strong>Wandle</strong> :<br>Structures recherchant simplicité maximale pour démarrage rapide quotidien</li>
 </ul>
   </div>
 
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calculs automatisés des bases CICE et CIR à partir des données de paie</td></tr><tr><td>Synchronisation native avec Sage, Cegid et EBP</td></tr><tr><td>Tableau de bord temps réel sur les encours et échéances</td></tr><tr><td>Génération automatique des déclarations périodiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface un peu austère qui décourage les novices</td></tr><tr><td>Paramétrage initial complexe pour les petits cabinets</td></tr><tr><td>Support technique uniquement par email avec délais parfois longs</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface collaborative permettant aux équipes de suivre l'avancement des dossiers en temps réel</td></tr><tr><td>Calculs automatiques des montants d'avance selon la réglementation en vigueur</td></tr><tr><td>Intégration native avec Sage, Cegid, EBP et autres logiciels de paie français</td></tr><tr><td>Historique complet des déclarations avec statuts de remboursement par l'administration</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Support client parfois lent à répondre en période de pointe (mars-avril)</td></tr><tr><td>Paramétrage initial complexe pour les cabinets multi-entités</td></tr><tr><td>Certaines spécificités sectorielles (BTP, associations) mal prises en compte</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Validation automatique des dossiers CIR avec détection d'erreurs</td></tr><tr><td>Suivi temps réel des demandes d'avance avec alertes</td></tr><tr><td>Intégration native avec les ERP comptables</td></tr><tr><td>Interface intuitive pour les équipes finance</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les PME</td></tr><tr><td>Fonctionnalités limitées hors CIR</td></tr><tr><td>Courbe d'apprentissage importante au début</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface simple et intuitive pour les artisans</td></tr><tr><td>Gestion correcte des mentions obligatoires sur factures</td></tr><tr><td>Planning intégré pratique pour organiser les interventions</td></tr><tr><td>Prix abordable pour les petites structures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune fonctionnalité dédiée à l'avance immédiate</td></tr><tr><td>Pas de connexion aux services fiscaux</td></tr><tr><td>Gestion des taux multiples limitée</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calculs automatiques des assiettes CIR et CII avec mise à jour réglementaire</td></tr><tr><td>Interface de suivi en temps réel du statut des dossiers déposés</td></tr><tr><td>Export direct des justificatifs au format exigé par l'administration</td></tr><tr><td>Intégration native avec les principaux logiciels de paie et comptabilité</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial assez technique qui nécessite une formation</td></tr><tr><td>Prix élevé pour les petites structures avec peu de demandes d'avance</td></tr><tr><td>Support client parfois lent pendant les périodes de déclaration</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calculs automatisés précis pour le crédit d'impôt recherche</td></tr><tr><td>Interface dédiée au suivi des projets R&D éligibles</td></tr><tr><td>Génération automatique des justificatifs administratifs</td></tr><tr><td>Intégration native avec les outils de gestion de temps</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité au seul crédit d'impôt recherche, pas d'autres dispositifs</td></tr><tr><td>Paramétrage complexe pour les structures organisationnelles atypiques</td></tr><tr><td>Support technique parfois lent sur les cas spécifiques</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calcul automatique des montants d'avance selon les critères fiscaux en vigueur</td></tr><tr><td>Intégration native avec les principaux logiciels comptables du marché</td></tr><tr><td>Génération automatique de tous les justificatifs et pièces administratives</td></tr><tr><td>Traçabilité complète des opérations pour faciliter les contrôles fiscaux</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface complexe qui demande plusieurs semaines de formation</td></tr><tr><td>Quelques bugs récurrents avec certaines versions de Sage</td></tr><tr><td>Tarification élevée peu adaptée aux petits volumes de dossiers</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Calculs automatisés précis des montants d'avance selon les différents crédits d'impôts</td></tr><tr><td>Interface épurée qui évite les erreurs de saisie</td></tr><tr><td>Télédéclarations directement intégrées vers les services fiscaux</td></tr><tr><td>Support technique réactif avec des spécialistes fiscaux</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix relativement élevé pour les petites structures</td></tr><tr><td>Fonctionnalités limitées en dehors de la gestion d'avance immédiate</td></tr><tr><td>Courbe d'apprentissage pour maîtriser toutes les subtilités fiscales</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface pensée métier comptable avec workflows optimisés</td></tr><tr><td>Calculs automatiques conformes à la réglementation fiscale</td></tr><tr><td>Import direct depuis les principaux logiciels de paie du marché</td></tr><tr><td>Support technique réactif avec des vrais experts fiscaux</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Paramétrage initial assez lourd selon la complexité</td></tr><tr><td>Limité aux crédits d'impôts français uniquement</td></tr></tbody>
         </table>
       </div>
@@ -1078,7 +1078,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

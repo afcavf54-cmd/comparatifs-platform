@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 10 logiciels de gestion d'association : comparatif et classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -511,11 +511,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>HelloAsso</strong> : associations qui collectent des dons sans commission</li>
-<li><strong>AssoConnect</strong> : structures moyennes cherchant une solution complète professionnelle</li>
-<li><strong>Yapla</strong> : associations québécoises gérant événements et adhésions simultanément</li>
-<li><strong>Pep's Up</strong> : petites associations privilégiant simplicité et tarifs accessibles</li>
-<li><strong>MaCotisation</strong> : clubs sportifs automatisant uniquement gestion des cotisations</li>
+<li><strong>HelloAsso</strong> :<br>associations qui collectent des dons sans commission</li>
+<li><strong>AssoConnect</strong> :<br>structures moyennes cherchant une solution complète professionnelle</li>
+<li><strong>Yapla</strong> :<br>associations québécoises gérant événements et adhésions simultanément</li>
+<li><strong>Pep's Up</strong> :<br>petites associations privilégiant simplicité et tarifs accessibles</li>
+<li><strong>MaCotisation</strong> :<br>clubs sportifs automatisant uniquement gestion des cotisations</li>
 </ul>
   </div>
 
@@ -542,11 +542,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Relances automatiques par email et SMS configurables</td></tr><tr><td>Génération automatique des reçus fiscaux conformes</td></tr><tr><td>Interface dédiée uniquement aux cotisations, très claire</td></tr><tr><td>Synchronisation bancaire pour pointer les paiements</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune fonctionnalité de gestion d'événements ou communication</td></tr><tr><td>Options de personnalisation limitées pour les associations complexes</td></tr><tr><td>Tarification qui peut grimper avec le nombre d'adhérents</td></tr></tbody>
         </table>
       </div>
@@ -574,11 +574,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Relances automatiques de cotisations avec personnalisation des messages</td></tr><tr><td>Gestion native des licences fédérales et certificats médicaux</td></tr><tr><td>Interface accessible même pour les bénévoles peu habitués à l'informatique</td></tr><tr><td>Synchronisation directe avec les principales fédérations sportives</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Module événementiel assez basique pour les grosses manifestations</td></tr><tr><td>Pas de comptabilité analytique avancée</td></tr><tr><td>Support client parfois lent pendant les pics de rentrée sportive</td></tr></tbody>
         </table>
       </div>
@@ -606,11 +606,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion automatisée des cotisations et relances par email</td></tr><tr><td>Interface intuitive accessible aux bénévoles sans formation</td></tr><tr><td>Module événementiel complet avec billetterie intégrée</td></tr><tr><td>Tarif abordable adapté aux budgets associatifs serrés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités de reporting limitées pour les grosses structures</td></tr><tr><td>Personnalisation des documents parfois rigide</td></tr><tr><td>Support client uniquement par email, pas de téléphone</td></tr></tbody>
         </table>
       </div>
@@ -638,11 +638,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Conformité totale avec la réglementation associative française</td></tr><tr><td>Module comptable intégré avec plan comptable associations</td></tr><tr><td>Gestion automatisée des cotisations et relances par email</td></tr><tr><td>Export direct des données pour les déclarations obligatoires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois confuse pour les nouveaux utilisateurs</td></tr><tr><td>Options de personnalisation limitées sur les rapports</td></tr><tr><td>Synchronisation bancaire pas toujours fiable selon les banques</td></tr></tbody>
         </table>
       </div>
@@ -670,11 +670,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>100% gratuit, aucun frais fixe ni commission obligatoire</td></tr><tr><td>Interface ultra-simple, parfaite pour les bénévoles non-tech</td></tr><tr><td>Billetterie intégrée avec gestion des places et codes promo</td></tr><tr><td>Module de dons avec reçus fiscaux automatiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité pour la gestion comptable avancée et la facturation</td></tr><tr><td>Pas de CRM intégré pour suivre les membres sur le long terme</td></tr><tr><td>Fonctionnalités de reporting assez basiques pour les grandes structures</td></tr></tbody>
         </table>
       </div>
@@ -702,11 +702,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface hautement personnalisable selon les besoins de l'association</td></tr><tr><td>Gestion comptable spécialisée avec plan comptable associatif pré-configuré</td></tr><tr><td>Module événementiel intégré avec billetterie et inscriptions en ligne</td></tr><tr><td>Automatisation poussée des relances et du suivi des cotisations</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage importante due à la richesse des fonctionnalités</td></tr><tr><td>Interface parfois chargée qui peut intimider les novices</td></tr><tr><td>Tarification qui peut grimper avec les modules complémentaires</td></tr></tbody>
         </table>
       </div>
@@ -734,11 +734,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface pensée pour les bénévoles non-techniques</td></tr><tr><td>Automatisation complète des relances de cotisations</td></tr><tr><td>Gestion multi-événements avec inscriptions en ligne fluides</td></tr><tr><td>Rapports financiers adaptés aux exigences associatives</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée des formulaires d'adhésion</td></tr><tr><td>Pas d'intégration native avec les solutions comptables externes</td></tr><tr><td>Support technique parfois lent en période de forte activité</td></tr></tbody>
         </table>
       </div>
@@ -766,11 +766,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gratuit et open source, aucun coût de licence</td></tr><tr><td>Interface modulaire : on active seulement ce qu'on utilise</td></tr><tr><td>Gestion complète des adhérents avec suivi des cotisations</td></tr><tr><td>Comptabilité intégrée avec édition de bilans</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Installation technique, pas accessible aux débutants</td></tr><tr><td>Interface parfois datée et peu intuitive</td></tr><tr><td>Documentation en français incomplète sur certains modules</td></tr></tbody>
         </table>
       </div>
@@ -798,11 +798,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive accessible aux bénévoles non-techniques</td></tr><tr><td>Gestion automatisée des relances de cotisations</td></tr><tr><td>Module d'inscription en ligne personnalisable</td></tr><tr><td>Prix abordable même pour petites associations</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées pour besoins spécifiques</td></tr><tr><td>Rapports financiers assez basiques</td></tr><tr><td>Pas d'intégration avec logiciels comptables avancés</td></tr></tbody>
         </table>
       </div>
@@ -830,11 +830,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive accessible aux bénévoles non-techniciens</td></tr><tr><td>Module de paiement en ligne intégré pour les cotisations</td></tr><tr><td>Gestion événementielle avec billetterie automatisée</td></tr><tr><td>Support réactif avec formation incluse</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités comptables trop basiques pour les gros budgets</td></tr><tr><td>Personnalisation limitée de l'interface et des rapports</td></tr><tr><td>Prix qui grimpe vite avec les modules additionnels</td></tr></tbody>
         </table>
       </div>
@@ -1168,7 +1168,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Quel logiciel ERP choisir ? Mon comparatif détaillé</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -513,11 +513,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Odoo</strong> : PME cherchant une solution complète et modulaire abordable</li>
-<li><strong>Dolibarr</strong> : TPE voulant un ERP gratuit avec fonctionnalités essentielles</li>
-<li><strong>Axonaut</strong> : Petites entreprises privilégiant la simplicité et interface intuitive</li>
-<li><strong>Sellsy</strong> : Structures commerciales nécessitant CRM intégré et suivi prospects</li>
-<li><strong>Sage 100</strong> : Moyennes entreprises exigeant robustesse et conformité comptable</li>
+<li><strong>Odoo</strong> :<br>PME cherchant une solution complète et modulaire abordable</li>
+<li><strong>Dolibarr</strong> :<br>TPE voulant un ERP gratuit avec fonctionnalités essentielles</li>
+<li><strong>Axonaut</strong> :<br>Petites entreprises privilégiant la simplicité et interface intuitive</li>
+<li><strong>Sellsy</strong> :<br>Structures commerciales nécessitant CRM intégré et suivi prospects</li>
+<li><strong>Sage 100</strong> :<br>Moyennes entreprises exigeant robustesse et conformité comptable</li>
 </ul>
   </div>
 
@@ -544,11 +544,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Synchronisation automatique avec les logiciels comptables français</td></tr><tr><td>Gestion commerciale complète du lead à la facture</td></tr><tr><td>Support réactif en français et prix transparent</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Gestion stocks limitée pour les activités complexes</td></tr><tr><td>Personnalisation des rapports assez basique</td></tr><tr><td>Pas adapté aux processus industriels ou manufacturiers</td></tr></tbody>
         </table>
       </div>
@@ -576,11 +576,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Plus de 40 modules intégrés dans une seule interface</td></tr><tr><td>Version Community gratuite pour tester sans engagement</td></tr><tr><td>Évolutivité progressive selon la croissance de l'entreprise</td></tr><tr><td>Base de données unifiée pour tous les processus métier</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale complexe et chronophage</td></tr><tr><td>Support communautaire limité sur la version gratuite</td></tr><tr><td>Certains modules restent basiques face à des solutions spécialisées</td></tr></tbody>
         </table>
       </div>
@@ -608,11 +608,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion comptable française très complète avec toutes les déclarations obligatoires</td></tr><tr><td>Installation sur site pour garder le contrôle total des données</td></tr><tr><td>Personnalisation poussée des états et rapports selon vos besoins métier</td></tr><tr><td>Intégration native entre tous les modules (compta, stock, vente, paie)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillissante qui fait très "années 2000" comparée aux solutions cloud</td></tr><tr><td>Coût d'acquisition et de maintenance élevé avec les licences et mises à jour</td></tr><tr><td>Nécessite des compétences techniques internes ou un prestataire pour l'administration</td></tr></tbody>
         </table>
       </div>
@@ -640,11 +640,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface en français avec un support local réactif</td></tr><tr><td>Modules financiers très complets avec gestion multi-devises avancée</td></tr><tr><td>Excellente traçabilité et workflows de validation configurables</td></tr><tr><td>Intégration native avec l'écosystème Cegid (paie, RH, BI)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Coût de mise en œuvre élevé avec besoins en formation</td></tr><tr><td>Interface parfois vieillissante comparée aux solutions cloud natives</td></tr><tr><td>Paramétrage initial complexe qui nécessite un accompagnement</td></tr></tbody>
         </table>
       </div>
@@ -672,11 +672,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Suite complète intégrée (ERP + CRM + e-commerce + comptabilité)</td></tr><tr><td>Personnalisation avancée des workflows et interfaces</td></tr><tr><td>Consolidation multi-entités automatique pour les groupes</td></tr><tr><td>Scalabilité forte, suit la croissance de l'entreprise</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage steep, formation longue nécessaire</td></tr><tr><td>Coût élevé, surtout avec les modules additionnels</td></tr><tr><td>Interface parfois lourde, navigation pas toujours intuitive</td></tr></tbody>
         </table>
       </div>
@@ -704,11 +704,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface française intuitive, prise en main rapide</td></tr><tr><td>Facturation automatisée avec relances personnalisables</td></tr><tr><td>Synchronisation bancaire pour le rapprochement comptable</td></tr><tr><td>Module caisse intégré pour les points de vente physiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée des workflows complexes</td></tr><tr><td>Reporting avancé perfectible pour les grandes structures</td></tr><tr><td>Gestion des stocks basique pour l'industrie</td></tr></tbody>
         </table>
       </div>
@@ -736,11 +736,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Logiciel 100% gratuit sans limitation d'utilisateurs ni de durée</td></tr><tr><td>Installation simple sur serveur ou hébergement web classique</td></tr><tr><td>Modules activables à la demande selon les besoins métier</td></tr><tr><td>Communauté française active et documentation complète</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface un peu vieillotte qui peut rebuter les équipes habituées au design moderne</td></tr><tr><td>Nécessite des compétences techniques pour certaines personnalisations avancées</td></tr><tr><td>Pas de support commercial direct en cas de problème urgent</td></tr></tbody>
         </table>
       </div>
@@ -768,11 +768,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Modules métier très spécialisés (négoce, industrie, services)</td></tr><tr><td>Workflows entièrement personnalisables selon vos processus</td></tr><tr><td>Gestion multi-établissements et multi-devises native</td></tr><tr><td>Support français réactif avec expertise métier</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface utilisateur qui semble vieillotte comparée aux solutions modernes</td></tr><tr><td>Temps de mise en œuvre assez long (6 à 12 mois minimum)</td></tr><tr><td>Coût des licences élevé avec des modules payants séparément</td></tr></tbody>
         </table>
       </div>
@@ -800,11 +800,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration parfaite avec Office 365 et Teams</td></tr><tr><td>Gestion multi-sociétés et multi-devises native</td></tr><tr><td>Workflows automatisés très poussés</td></tr><tr><td>Possibilités de personnalisation quasi infinies</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage steep pour les nouveaux utilisateurs</td></tr><tr><td>Tarification qui peut rapidement exploser avec les licences</td></tr><tr><td>Interface parfois lourde comparée aux ERP nouvelle génération</td></tr></tbody>
         </table>
       </div>
@@ -1131,7 +1131,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

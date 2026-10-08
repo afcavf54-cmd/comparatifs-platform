@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai confronté 9 logiciels de notes de frais : lequel sort du lot ?</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>N2F</strong> : TPE cherchant une solution simple et économique pour débuter</li>
-<li><strong>Spendesk</strong> : PME voulant contrôler les dépenses en temps réel efficacement</li>
-<li><strong>Mooncard</strong> : Entreprises privilégiant l'automatisation et la synchronisation comptable avancée</li>
-<li><strong>Expensya</strong> : Structures mobiles nécessitant une reconnaissance OCR performante et intuitive</li>
-<li><strong>Jenji</strong> : Organisations recherchant un excellent rapport qualité-prix avec fonctionnalités complètes</li>
+<li><strong>N2F</strong> :<br>TPE cherchant une solution simple et économique pour débuter</li>
+<li><strong>Spendesk</strong> :<br>PME voulant contrôler les dépenses en temps réel efficacement</li>
+<li><strong>Mooncard</strong> :<br>Entreprises privilégiant l'automatisation et la synchronisation comptable avancée</li>
+<li><strong>Expensya</strong> :<br>Structures mobiles nécessitant une reconnaissance OCR performante et intuitive</li>
+<li><strong>Jenji</strong> :<br>Organisations recherchant un excellent rapport qualité-prix avec fonctionnalités complètes</li>
 </ul>
   </div>
 
@@ -543,11 +543,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile vraiment intuitive avec OCR performant</td></tr><tr><td>Workflows de validation flexibles selon les hiérarchies</td></tr><tr><td>Suite RH complète (congés, temps, frais) sur une seule plateforme</td></tr><tr><td>Support client réactif et en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Paramétrage initial assez long à configurer</td></tr><tr><td>Manque de connecteurs avec certains ERP spécialisés</td></tr></tbody>
         </table>
       </div>
@@ -575,11 +575,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native avec l'écosystème Zoho (Books, CRM, etc.)</td></tr><tr><td>OCR efficace pour la numérisation des reçus via mobile</td></tr><tr><td>Tarification compétitive avec version gratuite jusqu'à 3 utilisateurs</td></tr><tr><td>Workflows de validation personnalisables selon la hiérarchie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface utilisateur qui paraît vieillotte comparée aux concurrents récents</td></tr><tr><td>Fonctionnalités limitées si utilisé seul (sans autres produits Zoho)</td></tr><tr><td>Support client parfois lent, surtout en français</td></tr></tbody>
         </table>
       </div>
@@ -607,11 +607,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>OCR performant qui reconnaît tickets et factures automatiquement</td></tr><tr><td>Interface ultra simple même pour les moins tech</td></tr><tr><td>Synchronisation comptable native avec les principaux logiciels</td></tr><tr><td>Validation des notes rapide avec workflow personnalisable</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage limité pour les grandes structures</td></tr><tr><td>Reporting basique comparé à des solutions enterprise</td></tr><tr><td>Coût qui grimpe vite avec les options avancées</td></tr></tbody>
         </table>
       </div>
@@ -639,11 +639,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Carte de paiement intégrée qui évite les avances de frais</td></tr><tr><td>Reconnaissance OCR efficace sur les justificatifs français</td></tr><tr><td>Contrôles de dépenses en temps réel avec plafonds configurables</td></tr><tr><td>Intégration native avec les principaux logiciels comptables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Coût élevé pour les petites structures avec peu de frais</td></tr><tr><td>Délai d'activation des cartes parfois long lors du déploiement</td></tr><tr><td>Interface mobile qui manque de fluidité sur certaines fonctions</td></tr></tbody>
         </table>
       </div>
@@ -671,11 +671,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Application mobile très intuitive avec OCR performant</td></tr><tr><td>Intégration native avec l'écosystème Silae (paie et compta)</td></tr><tr><td>Workflows de validation flexibles et configurables</td></tr><tr><td>Synchronisation automatique avec les logiciels comptables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface web moins aboutie que l'application mobile</td></tr><tr><td>Fonctionnalités avancées limitées pour les grandes entreprises</td></tr><tr><td>Dépendance forte à l'écosystème Silae pour optimiser l'usage</td></tr></tbody>
         </table>
       </div>
@@ -703,11 +703,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Cartes virtuelles avec budgets paramétrables par projet</td></tr><tr><td>Scan OCR précis qui récupère TVA et catégories automatiquement</td></tr><tr><td>Rapprochement bancaire en temps réel avec les comptes entreprise</td></tr><tr><td>Interface mobile intuitive pour saisir les frais sur le terrain</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé dès qu'on dépasse 10 utilisateurs</td></tr><tr><td>Onboarding complexe qui demande du paramétrage comptable</td></tr><tr><td>Support client parfois lent sur les questions techniques</td></tr></tbody>
         </table>
       </div>
@@ -735,11 +735,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>OCR très performant même sur reçus de mauvaise qualité</td></tr><tr><td>Synchronisation automatique avec cartes bancaires pro</td></tr><tr><td>Workflow de validation personnalisable à plusieurs niveaux</td></tr><tr><td>Interface mobile fluide pour saisie en déplacement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Bugs récurrents lors des mises à jour mobiles</td></tr><tr><td>Paramétrage initial assez complexe pour petites structures</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
         </table>
       </div>
@@ -767,11 +767,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Cartes de paiement avec contrôles budgétaires en temps réel</td></tr><tr><td>Plus d'avances de frais personnelles à rembourser</td></tr><tr><td>Synchronisation directe avec les logiciels comptables (Sage, Cegid, QuickBooks)</td></tr><tr><td>Interface mobile fluide pour scanner les reçus instantanément</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les petites structures (minimum 15€/carte/mois)</td></tr><tr><td>Configuration initiale complexe avec les règles de validation</td></tr><tr><td>Support client uniquement en anglais selon les retours utilisateurs</td></tr></tbody>
         </table>
       </div>
@@ -799,11 +799,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>OCR très performant même sur des reçus de mauvaise qualité</td></tr><tr><td>Synchronisation bancaire automatique qui évite la double saisie</td></tr><tr><td>Application mobile vraiment fluide pour les commerciaux en déplacement</td></tr><tr><td>Workflow de validation paramétrable selon la hiérarchie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif assez élevé pour les petites structures de moins de 15 personnes</td></tr><tr><td>Interface de reporting parfois lourde à personnaliser</td></tr><tr><td>Support client qui peut être lent en période de forte charge</td></tr></tbody>
         </table>
       </div>
@@ -1094,7 +1094,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

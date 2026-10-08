@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -495,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai analysé 10 logiciels de création de site web : lequel est le plus complet ?</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -515,11 +515,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Wix</strong> : débutants voulant créer rapidement sans compétences techniques</li>
-<li><strong>Hostinger Website Builder</strong> : budgets serrés cherchant performance et simplicité</li>
-<li><strong>Squarespace</strong> : créatifs privilégiant design élégant et templates professionnels</li>
-<li><strong>Shopify</strong> : e-commerçants sérieux nécessitant fonctionnalités vente avancées complètes</li>
-<li><strong>Webflow</strong> : designers expérimentés maîtrisant CSS voulant contrôle total</li>
+<li><strong>Wix</strong> :<br>débutants voulant créer rapidement sans compétences techniques</li>
+<li><strong>Hostinger Website Builder</strong> :<br>budgets serrés cherchant performance et simplicité</li>
+<li><strong>Squarespace</strong> :<br>créatifs privilégiant design élégant et templates professionnels</li>
+<li><strong>Shopify</strong> :<br>e-commerçants sérieux nécessitant fonctionnalités vente avancées complètes</li>
+<li><strong>Webflow</strong> :<br>designers expérimentés maîtrisant CSS voulant contrôle total</li>
 </ul>
   </div>
 
@@ -546,11 +546,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Templates design premium avec animations fluides</td></tr><tr><td>Outils portfolio et galerie photo très avancés</td></tr><tr><td>Commerce en ligne intégré avec gestion stocks</td></tr><tr><td>Support client réactif par chat et email</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé comparé aux alternatives</td></tr><tr><td>Courbe d'apprentissage plus raide au début</td></tr><tr><td>Moins d'applications tierces que WordPress</td></tr></tbody>
         </table>
       </div>
@@ -578,11 +578,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Support client expert en e-commerce avec conseils métier</td></tr><tr><td>Formation incluse et accompagnement pour débutants</td></tr><tr><td>Interface française pensée pour les commerçants</td></tr><tr><td>Outils SEO et marketing intégrés sans plugins</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée du design et du code</td></tr><tr><td>Prix élevé comparé à la concurrence internationale</td></tr><tr><td>Moins de thèmes disponibles que Shopify ou WooCommerce</td></tr></tbody>
         </table>
       </div>
@@ -610,11 +610,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Hébergement et nom de domaine inclus dans le prix</td></tr><tr><td>Interface simple parfaite pour débuter</td></tr><tr><td>Templates modernes et responsive</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée des templates</td></tr><tr><td>Peu d'applications tierces disponibles</td></tr><tr><td>Fonctionnalités e-commerce basiques</td></tr></tbody>
         </table>
       </div>
@@ -642,11 +642,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Animations et micro-interactions très fluides, niveau professionnel</td></tr><tr><td>Contrôle précis du design responsive sans connaissances en code</td></tr><tr><td>Interface familière pour ceux qui connaissent Figma ou Sketch</td></tr><tr><td>Génération automatique de code propre et optimisé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage élevée pour les débutants complets</td></tr><tr><td>Prix assez élevé comparé aux solutions basiques</td></tr><tr><td>Moins d'intégrations e-commerce que Shopify ou WooCommerce</td></tr></tbody>
         </table>
       </div>
@@ -674,11 +674,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment simple, même pour les débutants complets</td></tr><tr><td>IA qui génère automatiquement un site à partir de vos réponses</td></tr><tr><td>Hébergement et nom de domaine inclus dans les formules payantes</td></tr><tr><td>Templates optimisés mobile sans effort supplémentaire</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées pour les sites complexes</td></tr><tr><td>Boutique en ligne basique comparée à des spécialistes e-commerce</td></tr><tr><td>Impossible de modifier le code pour des besoins spécifiques</td></tr></tbody>
         </table>
       </div>
@@ -706,11 +706,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface d'administration très intuitive pour gérer commandes et stocks</td></tr><tr><td>Plus de 8000 applications disponibles pour étendre les fonctionnalités</td></tr><tr><td>Hébergement sécurisé inclus avec certificat SSL automatique</td></tr><tr><td>Gestion des paiements intégrée avec Shopify Payments</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Coût élevé avec les abonnements mensuels et commissions sur les ventes</td></tr><tr><td>Difficile de migrer vers une autre plateforme une fois installé</td></tr><tr><td>Limité pour créer un site vitrine classique sans e-commerce</td></tr></tbody>
         </table>
       </div>
@@ -738,11 +738,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Liberté créative totale sans limites de thèmes</td></tr><tr><td>Code propre généré automatiquement</td></tr><tr><td>CMS intégré pour gérer le contenu dynamique</td></tr><tr><td>Hébergement rapide inclus dans l'abonnement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Apprentissage long et technique requis</td></tr><tr><td>Tarifs élevés pour les petits projets</td></tr><tr><td>Limites sur le nombre de pages selon l'abonnement</td></tr></tbody>
         </table>
       </div>
@@ -770,11 +770,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Création d'applications complexes sans code</td></tr><tr><td>Base de données native intégrée</td></tr><tr><td>Système de workflows visuels puissant</td></tr><tr><td>Déploiement automatique et hébergement inclus</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage très steep</td></tr><tr><td>Performance limitée sur les gros volumes</td></tr><tr><td>Dépendance totale à la plateforme Bubble</td></tr></tbody>
         </table>
       </div>
@@ -802,11 +802,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Éditeur visuel intuitif avec liberté de placement totale</td></tr><tr><td>Plus de 800 templates professionnels par secteur</td></tr><tr><td>App Market riche avec intégrations e-commerce natives</td></tr><tr><td>Hébergement et nom de domaine inclus dans l'abonnement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Migration impossible vers un autre hébergeur</td></tr><tr><td>Temps de chargement parfois lents sur mobile</td></tr><tr><td>Coûts qui s'accumulent rapidement avec les applications premium</td></tr></tbody>
         </table>
       </div>
@@ -834,11 +834,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gratuit et open source avec contrôle total du code</td></tr><tr><td>Écosystème gigantesque de thèmes et plugins</td></tr><tr><td>Excellent pour le SEO avec des outils comme Yoast</td></tr><tr><td>Évolutivité sans limites : du blog au site complexe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Maintenance technique obligatoire (sauvegardes, sécurité, mises à jour)</td></tr><tr><td>Courbe d'apprentissage steep pour les débutants</td></tr><tr><td>Performance dégradée avec trop de plugins mal optimisés</td></tr></tbody>
         </table>
       </div>
@@ -1120,7 +1120,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>
