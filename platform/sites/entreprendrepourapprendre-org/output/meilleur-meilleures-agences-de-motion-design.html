@@ -77,9 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
+.en-bref li{list-style:none;padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
+.en-bref li::marker{content:""}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
+/* Saut de ligne marque/texte : masqué par défaut => PC sur UNE ligne.
+   Affiché uniquement sur mobile (cf. media query max-width:768px). */
+.en-bref .eb-br{display:none}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
@@ -153,6 +157,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
   .nav-burger{display:flex}
   .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
+  .en-bref .eb-br{display:inline}
 }
 </style>
 
@@ -510,11 +515,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>KabochArts</strong> :<br>idéale pour les TPE qui veulent un rendu soigné sans budget excessif.</li>
-<li><strong>Topovideo</strong> :<br>parfaite si vous avez besoin de vidéos livrées vite et sans friction.</li>
-<li><strong>Yalp</strong> :<br>recommandée aux marques cherchant un style graphique vraiment singulier.</li>
-<li><strong>Il Est Une Fois</strong> :<br>conçue pour les projets narratifs avec une vraie direction artistique.</li>
-<li><strong>Mars Vidéos</strong> :<br>adaptée aux structures qui pilotent plusieurs campagnes en parallèle.</li>
+    <li><strong>KabochArts</strong> :<br class="eb-br">idéale pour les TPE qui veulent un rendu soigné sans budget excessif.</li>
+<li><strong>Topovideo</strong> :<br class="eb-br">parfaite si vous avez besoin de vidéos livrées vite et sans friction.</li>
+<li><strong>Yalp</strong> :<br class="eb-br">recommandée aux marques cherchant un style graphique vraiment singulier.</li>
+<li><strong>Il Est Une Fois</strong> :<br class="eb-br">conçue pour les projets narratifs avec une vraie direction artistique.</li>
+<li><strong>Mars Vidéos</strong> :<br class="eb-br">adaptée aux structures qui pilotent plusieurs campagnes en parallèle.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs agences de motion design</h2>
