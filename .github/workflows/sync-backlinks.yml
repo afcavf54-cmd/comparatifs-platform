@@ -1,0 +1,57 @@
+name: Sync backlinks URLs
+
+# Relit TOUS les Sheets de comparateurs et remplit le référentiel backlinks
+# (platform/backlink-settings.json) EN AJOUT. Indépendant du drafting : récupère
+# aussi les URLs des comparateurs déjà en ligne et des sites 100 % publiés.
+# Lancement manuel (Run workflow) ou quotidien, avant le cron comparateurs (05h).
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 4 * * *'   # 04h30 UTC
+
+concurrency:
+  group: backlink-settings     # jamais deux syncs en parallèle
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml requests pillow
+
+      - name: Collecte des URLs depuis les Sheets
+        run: python platform/scripts/sync_backlink_urls.py
+
+      - name: Commit + push (fusion additive, anti-collision)
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
+          git add platform/backlink-settings.json
+          if git diff --cached --quiet; then
+            echo "ℹ Référentiel déjà à jour, rien à commit"; exit 0
+          fi
+          git commit -m "Sync: URLs backlinks depuis les Sheets [$(date +%Y-%m-%d)]"
+          for attempt in $(seq 1 6); do
+            git fetch origin main
+            # fusion additive avec le distant (ne perd aucune marque)
+            python platform/scripts/merge_backlinks.py origin/main || true
+            git add platform/backlink-settings.json
+            git commit --amend --no-edit >/dev/null 2>&1 || true
+            if ! git rebase -X theirs --autostash origin/main; then
+              git rebase --abort 2>/dev/null || true
+              sleep $((RANDOM % 8 + 5)); continue
+            fi
+            if git push origin HEAD:main; then
+              echo "✅ Push réussi (tentative $attempt)"; exit 0
+            fi
+            sleep $((RANDOM % 10 + 5))
+          done
+          echo "❌ Push échoué"; exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
