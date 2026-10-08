@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -515,11 +515,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>My DSO Manager</strong> : TPE et PME cherchant une solution simple et efficace</li>
-<li><strong>Upflow</strong> : Entreprises en croissance nécessitant des workflows de recouvrement automatisés</li>
-<li><strong>Collectys Cash</strong> : Structures moyennes privilégiant l'accompagnement et la formation utilisateur</li>
-<li><strong>Clearnox</strong> : Sociétés techniques souhaitant personnaliser leurs processus de relance client</li>
-<li><strong>LeanPay</strong> : Organisations budgétaires recherchant un rapport qualité-prix optimal et accessible</li>
+<li><strong>My DSO Manager</strong> :<br>TPE et PME cherchant une solution simple et efficace</li>
+<li><strong>Upflow</strong> :<br>Entreprises en croissance nécessitant des workflows de recouvrement automatisés</li>
+<li><strong>Collectys Cash</strong> :<br>Structures moyennes privilégiant l'accompagnement et la formation utilisateur</li>
+<li><strong>Clearnox</strong> :<br>Sociétés techniques souhaitant personnaliser leurs processus de relance client</li>
+<li><strong>LeanPay</strong> :<br>Organisations budgétaires recherchant un rapport qualité-prix optimal et accessible</li>
 </ul>
   </div>
 

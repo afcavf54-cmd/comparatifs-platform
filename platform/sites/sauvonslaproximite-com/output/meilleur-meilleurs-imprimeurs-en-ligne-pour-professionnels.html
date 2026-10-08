@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Easyflyer</strong> : idéal pour les petites structures qui veulent des flyers rapidement.</li>
-<li><strong>Saxoprint</strong> : parfait pour les pros qui impriment en gros volumes régulièrement.</li>
-<li><strong>Onlineprinters</strong> : recommandé si vous cherchez qualité constante et large choix de formats.</li>
-<li><strong>Vistaprint</strong> : pensé pour les indépendants qui débutent avec un petit budget.</li>
-<li><strong>Exaprint</strong> : taillé pour les imprimeurs et revendeurs avec des besoins techniques précis.</li>
+    <li><strong>Easyflyer</strong> :<br>idéal pour les petites structures qui veulent des flyers rapidement.</li>
+<li><strong>Saxoprint</strong> :<br>parfait pour les pros qui impriment en gros volumes régulièrement.</li>
+<li><strong>Onlineprinters</strong> :<br>recommandé si vous cherchez qualité constante et large choix de formats.</li>
+<li><strong>Vistaprint</strong> :<br>pensé pour les indépendants qui débutent avec un petit budget.</li>
+<li><strong>Exaprint</strong> :<br>taillé pour les imprimeurs et revendeurs avec des besoins techniques précis.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs imprimeurs en ligne pour professionnels</h2>
