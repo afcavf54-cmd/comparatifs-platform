@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé les 8 fournisseurs d’emballages professionnels, mon analyse</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -509,11 +509,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>RAJA</strong> : idéal si tu commandes gros et veux des prix dégressifs rapides.</li>
-<li><strong>Antalis</strong> : parfait pour les pros du print avec des besoins papier très spécifiques.</li>
-<li><strong>Cenpac</strong> : recommandé si tu cherches un catalogue large sans prise de tête.</li>
-<li><strong>Retif</strong> : pensé pour le commerce de détail qui veut aussi du mobilier pro.</li>
-<li><strong>Manutan</strong> : pratique pour centraliser emballages et fournitures industrielles en un seul endroit.</li>
+    <li><strong>RAJA</strong> :<br>idéal si tu commandes gros et veux des prix dégressifs rapides.</li>
+<li><strong>Antalis</strong> :<br>parfait pour les pros du print avec des besoins papier très spécifiques.</li>
+<li><strong>Cenpac</strong> :<br>recommandé si tu cherches un catalogue large sans prise de tête.</li>
+<li><strong>Retif</strong> :<br>pensé pour le commerce de détail qui veut aussi du mobilier pro.</li>
+<li><strong>Manutan</strong> :<br>pratique pour centraliser emballages et fournitures industrielles en un seul endroit.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs d’emballages professionnels</h2>
@@ -535,11 +535,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prix compétitifs sur les emballages standards</td></tr><tr><td>Catalogue épuré, facile à parcourir</td></tr><tr><td>Bon choix pour les commandes récurrentes en volume</td></tr><tr><td>Délais de livraison corrects pour une boutique en ligne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Minimum de commande parfois bloquant sur certaines références</td></tr><tr><td>Peu adapté si tu veux du packaging personnalisé ou esthétique</td></tr><tr><td>Support client pas toujours réactif selon les retours que j'ai croisés</td></tr></tbody>
         </table>
       </div>
@@ -563,11 +563,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue ciblé emballage pro, facile à parcourir</td></tr><tr><td>Commandes en petites quantités sans surcoût excessif</td></tr><tr><td>Fiches produits précises et fiables</td></tr><tr><td>Délais de livraison globalement respectés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune gestion des commandes récurrentes automatisées</td></tr><tr><td>Zéro intégration avec des outils de gestion ou ERP</td></tr><tr><td>Support client pas toujours réactif par email</td></tr></tbody>
         </table>
       </div>
@@ -591,11 +591,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue très large couvrant emballages et fournitures en un seul endroit</td></tr><tr><td>Gestion de compte pro avec commandes récurrentes et téléchargement factures</td></tr><tr><td>Interface claire et filtres produits efficaces</td></tr><tr><td>Plusieurs adresses de livraison gérables depuis le même compte</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix unitaires peu compétitifs sur les petites quantités</td></tr><tr><td>Délais de livraison parfois non respectés malgré un stock affiché disponible</td></tr></tbody>
         </table>
       </div>
@@ -619,11 +619,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue très large couvrant tous types d'emballages professionnels</td></tr><tr><td>Commandes possibles en petites quantités, sans passer par des palettes entières</td></tr><tr><td>Outils en ligne pratiques pour choisir le bon format selon le produit</td></tr><tr><td>Option emballages personnalisés avec logo disponible directement sur le site</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Service client lent en cas de litige ou de livraison endommagée</td></tr><tr><td>Prix unitaires peu compétitifs pour les très petits volumes, la dégressivité ne joue vraiment qu'à partir d'un certain seuil</td></tr></tbody>
         </table>
       </div>
@@ -647,11 +647,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue très large : emballages, stockage, mobilier, bureau</td></tr><tr><td>Site e-commerce clair et commandes rapides</td></tr><tr><td>Livraisons fiables sur des délais courts</td></tr><tr><td>Pratique pour centraliser plusieurs types d'achats</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix moins compétitifs que les spécialistes emballage sur les gros volumes</td></tr><tr><td>Pas de solutions d'emballage sur-mesure ou premium</td></tr><tr><td>Service client parfois long à répondre par téléphone</td></tr></tbody>
         </table>
       </div>
@@ -675,11 +675,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue spécialisé emballage avec des références techniques difficiles à trouver ailleurs</td></tr><tr><td>Commande en ligne fluide avec filtres par format et matière</td></tr><tr><td>Délais de livraison tenus la plupart du temps</td></tr><tr><td>Bon interlocuteur pour les besoins récurrents en PME</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Remises volume peu lisibles sur le site avant validation du panier</td></tr><tr><td>Support client réactif mais pas proactif en cas d'incident de livraison</td></tr></tbody>
         </table>
       </div>
@@ -703,11 +703,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Conseil technique réel, pas juste de la vente</td></tr><tr><td>Gamme d'emballages sur mesure adaptée aux contraintes spécifiques</td></tr><tr><td>Offre éco-responsable concrète et variée</td></tr><tr><td>Interlocuteurs qui connaissent vraiment les produits</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de commande en ligne peu intuitive, prise en main lente</td></tr><tr><td>Moins adapté si tu cherches juste à commander vite en petit volume</td></tr><tr><td>Tarifs pas toujours transparents sans demande de devis</td></tr></tbody>
         </table>
       </div>
@@ -731,11 +731,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Catalogue très large : carton, calage, films, solutions éco-responsables</td></tr><tr><td>Possibilité de commander des échantillons avant d'engager un volume</td></tr><tr><td>Un seul interlocuteur pour des besoins d'emballage variés</td></tr><tr><td>Support client réactif sur les questions techniques et réglementaires</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs élevés en petites quantités, l'intérêt se voit surtout sur des volumes</td></tr><tr><td>Navigation dans le catalogue en ligne un peu dense au départ</td></tr></tbody>
         </table>
       </div>
@@ -903,7 +903,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparateur des meilleurs logiciels de cold emailing parmi 8 outils</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Instantly.ai</strong> : startups qui veulent automatiser massivement sans se prendre la tête</li>
-<li><strong>Smartlead.ai</strong> : équipes commerciales cherchant performance et suivi détaillé des campagnes</li>
-<li><strong>Saleshandy</strong> : freelances et consultants avec budget serré mais besoins complets</li>
-<li><strong>Lemlist</strong> : créatifs voulant personnaliser leurs séquences avec vidéos et images</li>
-<li><strong>Waalaxy</strong> : prospecteurs LinkedIn privilégiant l'approche réseau social avant tout autre canal</li>
+<li><strong>Instantly.ai</strong> :<br>startups qui veulent automatiser massivement sans se prendre la tête</li>
+<li><strong>Smartlead.ai</strong> :<br>équipes commerciales cherchant performance et suivi détaillé des campagnes</li>
+<li><strong>Saleshandy</strong> :<br>freelances et consultants avec budget serré mais besoins complets</li>
+<li><strong>Lemlist</strong> :<br>créatifs voulant personnaliser leurs séquences avec vidéos et images</li>
+<li><strong>Waalaxy</strong> :<br>prospecteurs LinkedIn privilégiant l'approche réseau social avant tout autre canal</li>
 </ul>
   </div>
 
@@ -539,11 +539,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Personnalisation avancée avec images et vidéos dynamiques</td></tr><tr><td>Séquences multicanaux email + LinkedIn + appels intégrées</td></tr><tr><td>Taux de délivrabilité élevés avec warm-up automatique</td></tr><tr><td>Templates visuels qui sortent vraiment du lot</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé pour les petites entreprises (79€/mois minimum)</td></tr><tr><td>Courbe d'apprentissage pour maîtriser toutes les fonctionnalités</td></tr><tr><td>Limitation du nombre de comptes email connectés sur les plans de base</td></tr></tbody>
         </table>
       </div>
@@ -567,11 +567,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface en français avec support réactif</td></tr><tr><td>Intégration native Gmail/Outlook sans configuration technique</td></tr><tr><td>Réchauffement de domaine inclus dans tous les plans</td></tr><tr><td>Prix accessible pour débuter en cold emailing</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités d'automatisation limitées comparé à la concurrence</td></tr><tr><td>Pas d'intégration CRM native avec les gros acteurs</td></tr><tr><td>Analytics basiques sans scoring de leads avancé</td></tr></tbody>
         </table>
       </div>
@@ -595,11 +595,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Pool d'IPs partagées pour améliorer la réputation email</td></tr><tr><td>Warming automatique des nouvelles boîtes mail</td></tr><tr><td>Base de données intégrée avec verification en temps réel</td></tr><tr><td>Interface simple qui évite la surcharge cognitive</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Templates email assez basiques comparé à Lemlist</td></tr><tr><td>Support client parfois lent sur les questions techniques</td></tr><tr><td>Tarification qui peut grimper vite avec plusieurs utilisateurs</td></tr></tbody>
         </table>
       </div>
@@ -623,11 +623,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Séquences multi-canaux vraiment automatisées (LinkedIn + email + SMS)</td></tr><tr><td>Enrichissement automatique des données prospects</td></tr><tr><td>Intégration native avec les CRM les plus utilisés</td></tr><tr><td>Analytics détaillés par canal et par séquence</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface un peu confuse au démarrage, j'ai mis du temps à comprendre</td></tr><tr><td>Prix assez élevé pour les petites équipes commerciales</td></tr><tr><td>Templates parfois rigides, peu de personnalisation avancée</td></tr></tbody>
         </table>
       </div>
@@ -651,11 +651,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Extension LinkedIn gratuite pour débuter sans investissement</td></tr><tr><td>Workflows automatisés qui mélangent LinkedIn et email</td></tr><tr><td>Interface française intuitive même pour les débutants</td></tr><tr><td>Détection automatique des adresses email depuis LinkedIn</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Volumes limités comparé aux solutions purement email</td></tr><tr><td>Dépendance totale aux règles changeantes de LinkedIn</td></tr><tr><td>Tarifs qui grimpent vite avec les fonctionnalités avancées</td></tr></tbody>
         </table>
       </div>
@@ -679,11 +679,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface simple et prise en main rapide</td></tr><tr><td>Intégration native avec Gmail très bien faite</td></tr><tr><td>Tarifs accessibles pour les petites équipes</td></tr><tr><td>Création de séquences automatisées sans complexité</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Analytics et reporting assez limités</td></tr><tr><td>Peu d'options avancées de segmentation</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
         </table>
       </div>
@@ -707,11 +707,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Vérification d'emails performante avec taux de bounce faible</td></tr><tr><td>Base de données fournie avec recherche par secteur et taille d'entreprise</td></tr><tr><td>Séquences automatisées flexibles avec conditions de suivi personnalisées</td></tr><tr><td>Intégration native avec les CRM populaires (HubSpot, Pipedrive, Salesforce)</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lourde avec trop d'options qui perdent les débutants</td></tr><tr><td>Support client lent à répondre, surtout en français</td></tr><tr><td>Prix qui grimpe vite avec les options avancées et volumes importants</td></tr></tbody>
         </table>
       </div>
@@ -735,11 +735,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réchauffement automatique des boîtes email avec rotation intelligente</td></tr><tr><td>Lead scoring en temps réel qui optimise les séquences automatiquement</td></tr><tr><td>Intégrations CRM poussées avec synchronisation bidirectionnelle</td></tr><tr><td>Analytics détaillés avec tracking précis des performances par campagne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage assez raide pour exploiter toutes les fonctionnalités</td></tr><tr><td>Prix élevé qui peut freiner les petites structures (à partir de 94$/mois)</td></tr><tr><td>Support client parfois lent, surtout pour les questions techniques pointues</td></tr></tbody>
         </table>
       </div>
@@ -1007,7 +1007,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

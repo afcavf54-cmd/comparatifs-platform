@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -509,11 +509,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>BNP Paribas Leasing Solutions</strong> : idéal pour les PME qui veulent financer du matériel lourd rapidement.</li>
-<li><strong>BPCE Lease</strong> : parfait pour les pros déjà clients Banque Populaire ou Caisse d'Épargne.</li>
-<li><strong>SG Equipment Finance</strong> : adapté aux entreprises cherchant des solutions flexibles sur équipements technologiques.</li>
-<li><strong>Crédit Agricole Leasing & Factoring</strong> : recommandé pour les TPE agricoles ou rurales avec besoin global.</li>
-<li><strong>CIC Leasing</strong> : convient aux petites structures qui veulent un interlocuteur bancaire de proximité.</li>
+    <li><strong>BNP Paribas Leasing Solutions</strong> :<br>idéal pour les PME qui veulent financer du matériel lourd rapidement.</li>
+<li><strong>BPCE Lease</strong> :<br>parfait pour les pros déjà clients Banque Populaire ou Caisse d'Épargne.</li>
+<li><strong>SG Equipment Finance</strong> :<br>adapté aux entreprises cherchant des solutions flexibles sur équipements technologiques.</li>
+<li><strong>Crédit Agricole Leasing & Factoring</strong> :<br>recommandé pour les TPE agricoles ou rurales avec besoin global.</li>
+<li><strong>CIC Leasing</strong> :<br>convient aux petites structures qui veulent un interlocuteur bancaire de proximité.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs sociétés de crédit-bail mobilier professionnel</h2>
@@ -535,11 +535,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Appui direct du conseiller bancaire en agence, pas un interlocuteur inconnu</td></tr><tr><td>Large gamme de matériels éligibles : IT, véhicules, équipements métiers</td></tr><tr><td>Centralisation possible avec les autres produits financiers CIC</td></tr><tr><td>Relation de confiance facilitée si tu es déjà client du réseau</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Process encore très peu digitalisé, les échanges papier traînent</td></tr><tr><td>Délais de traitement plus longs que chez des acteurs spécialisés indépendants</td></tr><tr><td>Offre moins lisible si tu n'as pas de compte pro dans le groupe</td></tr></tbody>
         </table>
       </div>
@@ -563,11 +563,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau d'agences CA partout en France, interlocuteur local accessible</td></tr><tr><td>Capacité à financer des montants élevés sans complexité contractuelle excessive</td></tr><tr><td>Offre adaptée à des secteurs spécifiques comme l'agro ou le médical</td></tr><tr><td>Conditions tarifaires stables et lisibles dès la signature</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais de traitement longs, peu compatible avec un besoin urgent</td></tr><tr><td>Accès difficile pour les très jeunes structures avec peu d'historique financier</td></tr><tr><td>Peu de flexibilité si ton activité sort des secteurs traditionnellement financés par CA</td></tr></tbody>
         </table>
       </div>
@@ -591,11 +591,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Adossé au réseau Société Générale, ce qui facilite les discussions si tu es déjà client de la banque</td></tr><tr><td>Large couverture de types d'équipements : informatique, industriel, médical, véhicules</td></tr><tr><td>Flexibilité sur les durées de contrat et les options de rachat en fin de bail</td></tr><tr><td>Interlocuteur unique via ton conseiller bancaire habituel, pratique pour les petites structures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas d'interface digitale autonome : tout passe par le conseiller, ce qui ralentit certaines démarches</td></tr><tr><td>La qualité du suivi dépend beaucoup du conseiller attribué, ce qui crée des inégalités de service</td></tr><tr><td>Tarifs pas toujours compétitifs face à des acteurs spécialisés indépendants, surtout sur les petits tickets</td></tr></tbody>
         </table>
       </div>
@@ -619,11 +619,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Dossiers traités rapidement, même pour les très petites structures</td></tr><tr><td>Contrats adaptés aux faibles montants, idéal TPE</td></tr><tr><td>Gestion à distance sans passer par une agence physique</td></tr><tr><td>Flexibilité en fin de bail : renouvellement ou rachat du matériel possible</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Support client lent sur les questions contractuelles précises</td></tr><tr><td>Moins adapté pour les gros montants ou matériels très spécifiques</td></tr><tr><td>Peu de marge de négociation sur les conditions si tu n'as pas encore d'historique avec eux</td></tr></tbody>
         </table>
       </div>
@@ -647,11 +647,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Large choix d'équipements finançables (IT, véhicules, industrie, médical)</td></tr><tr><td>Interlocuteurs compétents et disponibles</td></tr><tr><td>Contrats lisibles avec options de fin de bail bien définies</td></tr><tr><td>Adossé à un groupe bancaire solide, ce qui facilite les relations fournisseurs</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Processus d'approbation lent pour les petites structures ou dossiers atypiques</td></tr><tr><td>Pas forcément adapté aux très jeunes entreprises ou aux micro-entreprises avec peu d'ancienneté</td></tr><tr><td>La relation reste très bancaire : peu de flexibilité si ton besoin sort des cases standard</td></tr></tbody>
         </table>
       </div>
@@ -675,11 +675,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réactivité commerciale vraiment au-dessus de la moyenne</td></tr><tr><td>Financement multi-équipements sur un seul contrat possible</td></tr><tr><td>Suivi des échéances clair et accessible en ligne</td></tr><tr><td>Gamme couvrant beaucoup de types de matériels professionnels</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Accès difficile pour les très jeunes entreprises sans historique solide</td></tr><tr><td>Support client standard (hors interlocuteur dédié) peu réactif</td></tr><tr><td>Interface de gestion en ligne fonctionnelle mais vieillissante</td></tr></tbody>
         </table>
       </div>
@@ -703,11 +703,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau Banque Populaire et Caisse d'Épargne : interlocuteur de proximité déjà connu</td></tr><tr><td>Large palette d'équipements finançables en un seul contrat</td></tr><tr><td>Intégration naturelle avec les services bancaires pro existants</td></tr><tr><td>Dossiers traités en interne, sans intermédiaire externe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Vraiment accessible surtout si tu es déjà client du groupe BPCE</td></tr><tr><td>Délais et qualité de traitement très variables selon l'agence locale</td></tr></tbody>
         </table>
       </div>
@@ -731,11 +731,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Financement de petits montants que les banques refusent souvent</td></tr><tr><td>Montage de dossier très rapide via le réseau revendeur</td></tr><tr><td>Bon niveau d'automatisation dans la gestion des contrats</td></tr><tr><td>Adapté aux TPE et startups avec des besoins équipement modestes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de relation directe simple avec Locam en cas de litige ou question</td></tr><tr><td>Offre limitée si ton projet dépasse les équipements bureautiques ou IT courants</td></tr><tr><td>Dépendance totale au réseau revendeur, donc qualité variable selon l'intermédiaire</td></tr></tbody>
         </table>
       </div>

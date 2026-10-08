@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 18 logiciels de comptabilité : comparatif complet</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 18 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 18 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -511,11 +511,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Pennylane</strong> : startups qui veulent automatiser comptabilité et pilotage financier</li>
-<li><strong>Indy</strong> : freelances et micro-entrepreneurs cherchant simplicité et accompagnement humain</li>
-<li><strong>Tiime</strong> : TPE commerce qui ont besoin d'encaissement et comptabilité</li>
-<li><strong>Fizen</strong> : entrepreneurs pressés voulant déléguer complètement leur comptabilité administrative</li>
-<li><strong>Axonaut</strong> : petites entreprises recherchant CRM, facturation et comptabilité intégrés</li>
+<li><strong>Pennylane</strong> :<br>startups qui veulent automatiser comptabilité et pilotage financier</li>
+<li><strong>Indy</strong> :<br>freelances et micro-entrepreneurs cherchant simplicité et accompagnement humain</li>
+<li><strong>Tiime</strong> :<br>TPE commerce qui ont besoin d'encaissement et comptabilité</li>
+<li><strong>Fizen</strong> :<br>entrepreneurs pressés voulant déléguer complètement leur comptabilité administrative</li>
+<li><strong>Axonaut</strong> :<br>petites entreprises recherchant CRM, facturation et comptabilité intégrés</li>
 </ul>
   </div>
 
@@ -538,11 +538,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gratuit et open source, aucun coût de licence</td></tr><tr><td>ERP complet qui évite de jongler entre plusieurs outils</td></tr><tr><td>Personnalisation possible grâce au code source ouvert</td></tr><tr><td>Communauté active pour le support et les développements</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillotte qui peut rebuter les nouveaux utilisateurs</td></tr><tr><td>Configuration initiale complexe et chronophage</td></tr><tr><td>Module comptable moins avancé que les solutions spécialisées</td></tr></tbody>
         </table>
       </div>
@@ -566,11 +566,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Support client réactif avec des vrais humains au téléphone</td></tr><tr><td>Interface claire sans surcharge de fonctionnalités inutiles</td></tr><tr><td>Rapprochement bancaire automatique fiable</td></tr><tr><td>Prix transparent sans frais cachés ni engagement</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Manque de fonctions avancées pour les grosses structures</td></tr><tr><td>Pas d'application mobile native vraiment aboutie</td></tr><tr><td>Quelques lenteurs lors des pics de connexion en fin de mois</td></tr></tbody>
         </table>
       </div>
@@ -594,11 +594,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>OCR très performant pour extraire automatiquement les données des factures</td></tr><tr><td>Rapprochement bancaire automatique avec connexion directe aux banques</td></tr><tr><td>Module de relance clients paramétrable avec envoi automatique</td></tr><tr><td>Interface moderne avec tableaux de bord personnalisables pour piloter la trésorerie</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prise en main complexe avec peu d'accompagnement pour débuter</td></tr><tr><td>Interface parfois surchargée qui peut dérouter les novices</td></tr><tr><td>Tarification qui augmente vite selon le nombre d'utilisateurs et de fonctionnalités</td></tr></tbody>
         </table>
       </div>
@@ -622,11 +622,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion commerciale et comptabilité dans un seul outil</td></tr><tr><td>Synchronisation automatique devis-factures-écritures</td></tr><tr><td>Interface intuitive pour les non-comptables</td></tr><tr><td>Rapprochement bancaire simplifié</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée pour les gros volumes</td></tr><tr><td>Quelques lenteurs sur les imports de données</td></tr><tr><td>Support parfois long à répondre en période de rush</td></tr></tbody>
         </table>
       </div>
@@ -650,11 +650,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>OCR performant qui reconnaît automatiquement les factures fournisseurs</td></tr><tr><td>Synchronisation bancaire en temps réel avec la plupart des banques françaises</td></tr><tr><td>Interface française intuitive même pour les non-comptables</td></tr><tr><td>Workflows collaboratifs avec validation expert-comptable intégrée</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration TVA complexe qui demande des connaissances comptables solides</td></tr><tr><td>Reporting limité comparé aux solutions plus avancées du marché</td></tr><tr><td>Quelques bugs d'affichage sur mobile qui ralentissent la saisie nomade</td></tr></tbody>
         </table>
       </div>
@@ -678,11 +678,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Reconnaissance automatique des factures par IA</td></tr><tr><td>Synchronisation bancaire en temps réel</td></tr><tr><td>Interface intuitive et formation rapide</td></tr><tr><td>Automatisation des relances clients</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées pour grosses structures</td></tr><tr><td>Support client parfois lent en période de pointe</td></tr><tr><td>Personnalisation des rapports assez basique</td></tr></tbody>
         </table>
       </div>
@@ -706,11 +706,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réconciliation bancaire automatique très efficace</td></tr><tr><td>Interface intuitive même pour les non-comptables</td></tr><tr><td>Apprentissage automatique des écritures récurrentes</td></tr><tr><td>Support client réactif avec vraies réponses</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées pour grandes entreprises</td></tr><tr><td>Personnalisation des états comptables assez restreinte</td></tr><tr><td>Pas d'intégration native avec certains logiciels métier</td></tr></tbody>
         </table>
       </div>
@@ -734,11 +734,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion multi-entités et consolidation automatique</td></tr><tr><td>Workflows de validation personnalisables</td></tr><tr><td>Module immobilisations très détaillé</td></tr><tr><td>Support multi-devises natif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface complexe pour les non-experts</td></tr><tr><td>Coût élevé avec les modules</td></tr><tr><td>Paramétrage initial long et technique</td></tr></tbody>
         </table>
       </div>
@@ -762,11 +762,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive qui rassure les non-experts</td></tr><tr><td>Automatisation efficace des écritures récurrentes</td></tr><tr><td>Rapprochement bancaire bien pensé</td></tr><tr><td>Export direct vers expert-comptable intégré</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas adapté aux entreprises multi-devises</td></tr><tr><td>Gestion des stocks très basique</td></tr><tr><td>Support technique parfois lent à répondre</td></tr></tbody>
         </table>
       </div>
@@ -790,11 +790,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Rapprochement bancaire automatique très efficace</td></tr><tr><td>Gestion multi-sociétés native avec consolidation</td></tr><tr><td>États réglementaires générés automatiquement</td></tr><tr><td>Module analytique avancé pour le pilotage</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Paramétrage initial complexe nécessitant une formation</td></tr><tr><td>Interface peu intuitive pour les nouveaux utilisateurs</td></tr><tr><td>Coût global élevé avec les modules complémentaires</td></tr></tbody>
         </table>
       </div>
@@ -818,11 +818,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les débutants en comptabilité</td></tr><tr><td>Relances automatiques des factures impayées</td></tr><tr><td>Synchronisation bancaire pour le rapprochement automatique</td></tr><tr><td>Support client français réactif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées pour les moyennes entreprises</td></tr><tr><td>Personnalisation des rapports assez restreinte</td></tr><tr><td>Pas d'application mobile vraiment aboutie</td></tr></tbody>
         </table>
       </div>
@@ -846,11 +846,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation bancaire automatique avec catégorisation intelligente</td></tr><tr><td>Scanner de reçus et factures avec OCR très performant</td></tr><tr><td>Interface pensée pour les non-comptables, vraiment intuitive</td></tr><tr><td>Gestion automatisée des déclarations TVA et fiscales</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Limité aux micro-entreprises et indépendants uniquement</td></tr><tr><td>Pas de gestion des stocks ou de la paie</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -874,11 +874,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive adaptée aux non-experts comptables</td></tr><tr><td>Synchronisation bancaire automatique fiable</td></tr><tr><td>Module CRM intégré pour gérer prospects et clients</td></tr><tr><td>Tarification transparente sans frais cachés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour la comptabilité analytique</td></tr><tr><td>Pas d'API pour intégrer d'autres outils métier</td></tr><tr><td>Support client parfois lent en période de pointe</td></tr></tbody>
         </table>
       </div>
@@ -902,11 +902,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment accessible aux débutants</td></tr><tr><td>Service expert-comptable inclus dans certaines formules</td></tr><tr><td>Automatisation des rappels de paiement</td></tr><tr><td>Synchronisation bancaire fonctionnelle pour les banques principales</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées pour les entreprises en croissance</td></tr><tr><td>Coût élevé si on prend l'accompagnement comptable</td></tr><tr><td>Personnalisation des documents assez restreinte</td></tr></tbody>
         </table>
       </div>
@@ -930,11 +930,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Totalement gratuit et open source</td></tr><tr><td>Comptabilité en partie double rigoureuse</td></tr><tr><td>Import/export de formats bancaires standards</td></tr><tr><td>Rapports financiers complets et personnalisables</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillotte et peu intuitive</td></tr><tr><td>Courbe d'apprentissage très raide</td></tr><tr><td>Support uniquement communautaire</td></tr></tbody>
         </table>
       </div>
@@ -958,11 +958,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Approche tout-en-un évitant la multiplication des outils</td></tr><tr><td>Modules additionnels disponibles sans changer de plateforme</td></tr><tr><td>Automatisation avancée des processus comptables</td></tr><tr><td>Version communautaire gratuite pour débuter</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage assez raide pour les débutants</td></tr><tr><td>Interface parfois lourde pour de simples tâches comptables</td></tr><tr><td>Nécessite souvent une formation pour exploiter le potentiel</td></tr></tbody>
         </table>
       </div>
@@ -986,11 +986,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion des stocks intégrée avec valorisation FIFO/LIFO</td></tr><tr><td>Rapprochement bancaire automatique fiable</td></tr><tr><td>Comptabilité analytique détaillée par projet</td></tr><tr><td>Support technique réactif en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface vieillissante peu intuitive</td></tr><tr><td>Onboarding long et fastidieux</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -1014,11 +1014,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation bancaire fiable avec la plupart des banques françaises</td></tr><tr><td>Interface en français avec support client réactif</td></tr><tr><td>Intégration facturation et comptabilité dans un seul outil</td></tr><tr><td>Prix abordable pour les petites structures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Ergonomie vieillissante qui manque de modernité</td></tr><tr><td>Fonctionnalités limitées pour les entreprises en croissance</td></tr><tr><td>Personnalisation des rapports assez rigide</td></tr></tbody>
         </table>
       </div>
@@ -1344,7 +1344,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

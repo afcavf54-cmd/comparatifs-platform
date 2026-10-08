@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 17 logiciels de data visualisation : comparatif complet</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 17 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 17 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Looker Studio (Google)</strong> : petites équipes qui veulent du gratuit et simple</li>
-<li><strong>Power BI Pro (Microsoft)</strong> : PME sous écosystème Microsoft avec budget serré</li>
-<li><strong>Tableau Explorer</strong> : entreprises moyennes cherchant puissance sans complexité technique</li>
-<li><strong>Qlik Sense (Business)</strong> : organisations avancées voulant exploration data interactive performante</li>
-<li><strong>Zoho Analytics</strong> : startups budget limité mais besoins reporting complets</li>
+<li><strong>Looker Studio (Google)</strong> :<br>petites équipes qui veulent du gratuit et simple</li>
+<li><strong>Power BI Pro (Microsoft)</strong> :<br>PME sous écosystème Microsoft avec budget serré</li>
+<li><strong>Tableau Explorer</strong> :<br>entreprises moyennes cherchant puissance sans complexité technique</li>
+<li><strong>Qlik Sense (Business)</strong> :<br>organisations avancées voulant exploration data interactive performante</li>
+<li><strong>Zoho Analytics</strong> :<br>startups budget limité mais besoins reporting complets</li>
 </ul>
   </div>
 
@@ -539,11 +539,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive accessible sans formation technique</td></tr><tr><td>Large bibliothèque de templates professionnels</td></tr><tr><td>Export facile vers différents formats (PNG, PDF, HTML)</td></tr><tr><td>Intégration fluide avec les réseaux sociaux</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités d'analyse limitées pour du reporting complexe</td></tr><tr><td>Options de personnalisation graphique restreintes</td></tr><tr><td>Tarifs qui grimpent vite avec les fonctionnalités avancées</td></tr></tbody>
         </table>
       </div>
@@ -567,11 +567,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native excellente avec l'écosystème Zoho</td></tr><tr><td>Interface utilisateur accessible aux non-experts</td></tr><tr><td>Tarification compétitive pour les PME</td></tr><tr><td>Fonctionnalités de partage et collaboration bien pensées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Connecteurs limités hors écosystème Zoho</td></tr><tr><td>Options de personnalisation graphique assez basiques</td></tr><tr><td>Performance qui ralentit sur de gros volumes de données</td></tr></tbody>
         </table>
       </div>
@@ -595,11 +595,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Solution 100% gratuite et open source, idéale pour les budgets serrés</td></tr><tr><td>Connexions multiples : PostgreSQL, MySQL, BigQuery, Elasticsearch en natif</td></tr><tr><td>Interface épurée qui permet de se concentrer sur l'essentiel</td></tr><tr><td>Partage de dashboards simple avec système d'alertes automatiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Nécessite impérativement de savoir écrire du SQL pour exploiter l'outil</td></tr><tr><td>Options de personnalisation graphique très limitées comparé aux solutions payantes</td></tr><tr><td>Pas de support officiel, on dépend de la communauté pour résoudre les bugs</td></tr></tbody>
         </table>
       </div>
@@ -623,11 +623,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main ultra-rapide même pour des non-techniciens</td></tr><tr><td>Templates et thèmes graphiques vraiment soignés</td></tr><tr><td>Collaboration en temps réel sur les tableaux de bord</td></tr><tr><td>Support client réactif avec accompagnement personnalisé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités d'analyse avancée très limitées</td></tr><tr><td>Tarifs élevés pour les petites équipes (à partir de 50€/utilisateur/mois)</td></tr><tr><td>Connecteurs de données moins nombreux que la concurrence</td></tr></tbody>
         </table>
       </div>
@@ -651,11 +651,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native parfaite avec l'écosystème Microsoft 365</td></tr><tr><td>Interface intuitive pour les utilisateurs d'Excel</td></tr><tr><td>Connecteurs vers plus de 100 sources de données</td></tr><tr><td>Collaboration en temps réel et partage simplifié dans Teams</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation graphique limitée par rapport à Tableau</td></tr><tr><td>Performance dégradée sur de très gros volumes de données</td></tr><tr><td>Courbe d'apprentissage pour les formules DAX avancées</td></tr></tbody>
         </table>
       </div>
@@ -679,11 +679,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Moteur associatif unique qui révèle des liens cachés entre les données</td></tr><tr><td>Interface libre permettant l'exploration intuitive sans contraintes de navigation</td></tr><tr><td>Création collaborative de tableaux de bord par les utilisateurs métier</td></tr><tr><td>Gestion native des gros volumes avec performances solides</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage marquée pour maîtriser toutes les fonctionnalités</td></tr><tr><td>Tarification élevée qui peut freiner les petites structures</td></tr><tr><td>Interface parfois déroutante pour les habitués des outils BI classiques</td></tr></tbody>
         </table>
       </div>
@@ -707,11 +707,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Connecteurs natifs pour plus de 50 sources de données différentes</td></tr><tr><td>Interface intuitive qui ne nécessite pas de formation technique approfondie</td></tr><tr><td>Système d'alertes configurable avec notifications multi-canaux</td></tr><tr><td>Performance stable même avec des volumes de données importants</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Les coûts peuvent s'envoler rapidement avec l'augmentation du volume de métriques</td></tr><tr><td>Courbe d'apprentissage importante pour créer des requêtes complexes</td></tr><tr><td>Support technique parfois lent sur les problèmes spécifiques aux connecteurs</td></tr></tbody>
         </table>
       </div>
@@ -735,11 +735,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gratuit avec compte Google, aucun coût caché</td></tr><tr><td>Connexion directe aux outils Google (Analytics, Ads, Sheets)</td></tr><tr><td>Interface intuitive, prise en main en quelques heures</td></tr><tr><td>Partage et collaboration temps réel simplifiés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation limitées par rapport aux outils premium</td></tr><tr><td>Performance dégradée sur les gros volumes de données</td></tr><tr><td>Connecteurs tiers parfois instables ou payants</td></tr></tbody>
         </table>
       </div>
@@ -763,11 +763,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive accessible aux non-techniciens</td></tr><tr><td>Templates prêts à l'emploi de qualité professionnelle</td></tr><tr><td>Export web et print sans problème technique</td></tr><tr><td>Rendu visuel propre adapté à la presse et communication</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée comparée aux outils avancés</td></tr><tr><td>Pas de dashboards interactifs complexes</td></tr><tr><td>Fonctionnalités d'analyse de données basiques</td></tr></tbody>
         </table>
       </div>
@@ -791,11 +791,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Installation vraiment simple, même sur un serveur personnel</td></tr><tr><td>Connexion directe à plus de 20 bases de données différentes</td></tr><tr><td>Interface intuitive pour créer des graphiques sans formation</td></tr><tr><td>Partage de dashboards par lien public ou privé</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Options de personnalisation graphique très limitées</td></tr><tr><td>Pas de fonctionnalités avancées comme les calculs complexes</td></tr><tr><td>Support communautaire uniquement, pas d'assistance dédiée</td></tr></tbody>
         </table>
       </div>
@@ -819,11 +819,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gratuit et open source avec communauté active</td></tr><tr><td>Compatible avec 30+ sources de données</td></tr><tr><td>Interface moderne et intuitive proche de Tableau</td></tr><tr><td>Performances correctes même sur gros volumes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Installation et maintenance techniques obligatoires</td></tr><tr><td>Pas de version cloud hébergée officielle</td></tr><tr><td>Documentation parfois incomplète sur certaines fonctionnalités</td></tr></tbody>
         </table>
       </div>
@@ -847,11 +847,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Capacité de traitement dédiée qui évite les ralentissements</td></tr><tr><td>Datasets partagés entre équipes avec gestion des droits granulaire</td></tr><tr><td>Rafraîchissement des données jusqu'à 48 fois par jour</td></tr><tr><td>Rapports paginés pour distribuer des analyses formatées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif prohibitif pour les petites structures</td></tr><tr><td>Interface d'administration complexe à maîtriser</td></tr><tr><td>Nécessite des compétences techniques pour exploiter tout le potentiel</td></tr></tbody>
         </table>
       </div>
@@ -875,11 +875,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Connecteurs nombreux vers bases de données et fichiers Excel</td></tr><tr><td>Automatisation des envois de rapports par email</td></tr><tr><td>Interface accessible sans formation technique</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation graphique limitée par rapport à Power BI</td></tr><tr><td>Performance parfois lente sur gros volumes de données</td></tr><tr><td>Options de collaboration basiques pour le travail en équipe</td></tr></tbody>
         </table>
       </div>
@@ -903,11 +903,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment accessible aux non-techniciens</td></tr><tr><td>Connecteurs natifs avec les ERP français populaires</td></tr><tr><td>Support client réactif en français</td></tr><tr><td>Tarification transparente sans frais cachés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées face à Tableau ou Power BI</td></tr><tr><td>Customisation graphique moins poussée que les leaders</td></tr><tr><td>Écosystème de plugins restreint</td></tr></tbody>
         </table>
       </div>
@@ -931,11 +931,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Installation et prise en main immédiate</td></tr><tr><td>Interface intuitive même pour les non-techniciens</td></tr><tr><td>Plus de 20 connecteurs de bases de données natifs</td></tr><tr><td>Version gratuite complète pour petites équipes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation graphique limitée comparé à Tableau</td></tr><tr><td>Performances ralenties sur gros volumes de données</td></tr><tr><td>Options d'export restreintes en version gratuite</td></tr></tbody>
         </table>
       </div>
@@ -959,11 +959,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Entièrement gratuit pour consulter les dashboards Tableau</td></tr><tr><td>Interface identique à Tableau Desktop, aucun apprentissage</td></tr><tr><td>Export PDF et images haute qualité intégré</td></tr><tr><td>Gestion complète des filtres et interactions</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Impossible de modifier ou créer des visualisations</td></tr><tr><td>Limité aux fichiers locaux, pas de connexion Tableau Server</td></tr><tr><td>Nécessite d'avoir des fichiers .twb créés ailleurs</td></tr></tbody>
         </table>
       </div>
@@ -987,11 +987,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Connexions natives à plus de 100 sources de données différentes</td></tr><tr><td>Visualisations interactives très poussées avec drill-down automatique</td></tr><tr><td>Communauté active et galerie publique pour s'inspirer</td></tr><tr><td>Performances correctes même sur de gros volumes de données</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix élevé qui peut vite exploser avec plusieurs utilisateurs</td></tr><tr><td>Formation obligatoire pour exploiter le potentiel réel</td></tr><tr><td>Interface parfois lourde pour des besoins simples de reporting</td></tr></tbody>
         </table>
       </div>
@@ -1271,7 +1271,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

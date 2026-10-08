@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai comparé 5 services de création d'entreprise en ligne : mon classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 5 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 5 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -512,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>LegalPlace</strong> : startup qui veut créer son entreprise rapidement sans paperasse</li>
-<li><strong>Legal Start</strong> : entrepreneur solo cherchant accompagnement juridique complet et personnalisé</li>
-<li><strong>Dougs</strong> : dirigeant TPE voulant déléguer entièrement sa comptabilité à experts</li>
-<li><strong>Qonto</strong> : entreprise moderne privilégiant banque digitale avec outils gestion intégrés</li>
-<li><strong>Swapn</strong> : freelance recherchant solution simple pour gérer factures et paiements</li>
+<li><strong>LegalPlace</strong> :<br>startup qui veut créer son entreprise rapidement sans paperasse</li>
+<li><strong>Legal Start</strong> :<br>entrepreneur solo cherchant accompagnement juridique complet et personnalisé</li>
+<li><strong>Dougs</strong> :<br>dirigeant TPE voulant déléguer entièrement sa comptabilité à experts</li>
+<li><strong>Qonto</strong> :<br>entreprise moderne privilégiant banque digitale avec outils gestion intégrés</li>
+<li><strong>Swapn</strong> :<br>freelance recherchant solution simple pour gérer factures et paiements</li>
 </ul>
   </div>
 
@@ -539,11 +539,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Ouverture de compte 100% digitale en 48h maximum</td></tr><tr><td>Interface comptable intuitive avec catégorisation automatique</td></tr><tr><td>Synchronisation native avec la plupart des logiciels comptables</td></tr><tr><td>Cartes virtuelles instantanées pour les achats en ligne</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs plus élevés qu'une banque traditionnelle (à partir de 9€/mois)</td></tr><tr><td>Pas de création d'entreprise intégrée, juste la partie bancaire</td></tr><tr><td>Support client parfois débordé aux heures de pointe</td></tr></tbody>
         </table>
       </div>
@@ -567,11 +567,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface guidée qui évite le jargon juridique complexe</td></tr><tr><td>Accompagnement bancaire intégré avec des partenaires négociés</td></tr><tr><td>Suivi en temps réel de l'avancement des formalités administratives</td></tr><tr><td>Support humain disponible pour les cas particuliers</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs moins transparents que la concurrence sur certaines prestations</td></tr><tr><td>Délais parfois plus longs pour les statuts juridiques complexes</td></tr><tr><td>Moins d'options de personnalisation pour les entrepreneurs expérimentés</td></tr></tbody>
         </table>
       </div>
@@ -595,11 +595,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Vérification humaine des statuts par des juristes qualifiés</td></tr><tr><td>Interface intuitive avec questions guidées pour éviter les erreurs</td></tr><tr><td>Forfaits transparents sans frais cachés</td></tr><tr><td>Support téléphonique réactif et compétent</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais plus longs que la concurrence automatisée</td></tr><tr><td>Tarifs supérieurs aux plateformes low-cost</td></tr><tr><td>Services complémentaires qui font vite monter l'addition</td></tr></tbody>
         </table>
       </div>
@@ -623,11 +623,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Accompagnement par de vrais avocats spécialisés</td></tr><tr><td>Vérification juridique systématique des dossiers</td></tr><tr><td>Support client réactif par téléphone et email</td></tr><tr><td>Accès permanent aux conseils juridiques après création</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Plus cher que les solutions 100% automatisées</td></tr><tr><td>Délais légèrement plus longs à cause des vérifications</td></tr><tr><td>Interface parfois confuse pour les modifications</td></tr></tbody>
         </table>
       </div>
@@ -651,11 +651,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Expert-comptable attitré dès la création de l'entreprise</td></tr><tr><td>Questionnaire intelligent pour choisir le bon statut juridique</td></tr><tr><td>Gestion comptable incluse dans l'offre de création</td></tr><tr><td>Interface claire qui guide les débutants étape par étape</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarifs plus élevés que les plateformes de création pure</td></tr><tr><td>Pas de création express en 24h comme chez certains concurrents</td></tr><tr><td>Obligation de prendre l'abonnement comptable même si on a déjà un comptable</td></tr></tbody>
         </table>
       </div>
@@ -924,7 +924,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

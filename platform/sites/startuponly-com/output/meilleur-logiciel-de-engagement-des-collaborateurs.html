@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 6 logiciels d'engagement des collaborateurs : mon classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 6 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 6 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="hero-author-avatar">
     <span>Rédigé par Thomas Bertrand</span>
@@ -514,11 +514,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>Zest</strong> : pour les startups qui veulent des sondages rapides sans se compliquer la vie</li>
-<li><strong>Officevibe</strong> : équipes moyennes cherchant un outil complet avec tableaux de bord visuels intuitifs</li>
-<li><strong>Lattice</strong> : entreprises tech qui misent sur l'engagement collaborateur et la performance individuelle</li>
-<li><strong>Culture Amp</strong> : grands groupes voulant analyser en profondeur leurs données RH et culture d'entreprise</li>
-<li><strong>Honestly</strong> : PME privilégiant la simplicité et des feedbacks anonymes pour améliorer l'ambiance</li>
+<li><strong>Zest</strong> :<br>pour les startups qui veulent des sondages rapides sans se compliquer la vie</li>
+<li><strong>Officevibe</strong> :<br>équipes moyennes cherchant un outil complet avec tableaux de bord visuels intuitifs</li>
+<li><strong>Lattice</strong> :<br>entreprises tech qui misent sur l'engagement collaborateur et la performance individuelle</li>
+<li><strong>Culture Amp</strong> :<br>grands groupes voulant analyser en profondeur leurs données RH et culture d'entreprise</li>
+<li><strong>Honestly</strong> :<br>PME privilégiant la simplicité et des feedbacks anonymes pour améliorer l'ambiance</li>
 </ul>
   </div>
 
@@ -541,11 +541,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Enquêtes micro-dosées qui évitent la fatigue des sondages</td></tr><tr><td>Analytics prédictifs pour anticiper les départs</td></tr><tr><td>Plans d'action générés automatiquement par équipe</td></tr><tr><td>Benchmarks sectoriels intégrés en temps réel</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale longue et technique</td></tr><tr><td>Tarification élevée pour les PME</td></tr><tr><td>Dépendance forte à l'écosystème Workday pour exploiter tout le potentiel</td></tr></tbody>
         </table>
       </div>
@@ -569,11 +569,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Sondages micro-pulse très faciles à déployer</td></tr><tr><td>Feedback anonyme qui libère vraiment la parole</td></tr><tr><td>Suggestions d'actions automatiques selon les résultats</td></tr><tr><td>Interface moderne qui plaît aux jeunes équipes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées hors sondages et feedback</td></tr><tr><td>Intégrations RH encore perfectibles avec certains SIRH</td></tr><tr><td>Prix qui monte vite avec les options avancées</td></tr></tbody>
         </table>
       </div>
@@ -597,11 +597,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Anonymat garanti qui encourage les retours sincères</td></tr><tr><td>Interface intuitive que les équipes adoptent vite</td></tr><tr><td>Analytics simples pour identifier les problèmes par service</td></tr><tr><td>Prix abordable pour les PME en croissance</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités limitées comparé aux plateformes enterprise</td></tr><tr><td>Pas d'intégration native avec les SIRH existants</td></tr><tr><td>Support client parfois lent à répondre aux demandes techniques</td></tr></tbody>
         </table>
       </div>
@@ -625,11 +625,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Templates d'entretiens prêts à l'emploi qui font gagner du temps</td></tr><tr><td>Feedback 360° intégré avec notifications automatiques</td></tr><tr><td>Tableau de bord unifié pour suivre objectifs et performances</td></tr><tr><td>Onboarding rapide, équipes opérationnelles en 2 semaines</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification qui grimpe vite avec les utilisateurs</td></tr><tr><td>Rapports d'analyse limités comparés à des spécialistes</td></tr><tr><td>Quelques bugs sur la synchronisation mobile</td></tr></tbody>
         </table>
       </div>
@@ -653,11 +653,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>IA prédictive qui anticipe réellement les démissions</td></tr><tr><td>Interface intuitive que les jeunes adoptent instantanément</td></tr><tr><td>Tableaux de bord personnalisables pour chaque manager</td></tr><tr><td>Intégration native avec Slack et Microsoft Teams</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Prix assez élevé pour les petites structures</td></tr><tr><td>Courbe d'apprentissage longue pour les managers seniors</td></tr><tr><td>Fonctionnalités limitées sans les modules premium</td></tr></tbody>
         </table>
       </div>
@@ -681,11 +681,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Analytics avancées avec prédiction des départs</td></tr><tr><td>Benchmarking sectoriel intégré pour se situer</td></tr><tr><td>Templates d'enquêtes scientifiquement validés</td></tr><tr><td>Recommandations d'actions automatiques par équipe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée pour les PME de moins de 50 personnes</td></tr><tr><td>Interface parfois lourde avec trop d'options</td></tr><tr><td>Courbe d'apprentissage importante pour les débutants</td></tr></tbody>
         </table>
       </div>
@@ -967,7 +967,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 7 octobre 2026
+        © 2026 startuponly.com — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>
