@@ -143,9 +143,20 @@ jobs:
       # écrit directement → skip_enrich=true), les comparateurs sont produits
       # par build_comparators pendant le build → skip_enrich=false. Le mode
       # comparators_daily=true fait rédiger N au hasard (rythme du site).
-      - name: Comparateurs — détection des non rédigés
+      # Le cron tourne toutes les heures (pour le blog/avis). Mais le rythme des
+      # comparateurs est PAR JOUR : on ne déclenche leur rédaction qu'UNE fois
+      # par jour, à 05h UTC (07h Paris). Sinon « 2/jour » deviendrait « 2 par
+      # passage horaire ». Changer COMPARATORS_HOUR pour décaler l'heure.
+      - name: Comparateurs — détection des non rédigés (1×/jour)
         id: detect_comparators
-        run: python platform/scripts/comparators_cron.py
+        env:
+          COMPARATORS_HOUR: "05"
+        run: |
+          if [ "$(date -u +%H)" != "$COMPARATORS_HOUR" ]; then
+            echo "⏭ Hors de l'heure quotidienne des comparateurs (${COMPARATORS_HOUR}h UTC) — on saute."
+            exit 0
+          fi
+          python platform/scripts/comparators_cron.py
       - name: Comparateurs — déclenchement du build (rythme quotidien)
         if: steps.detect_comparators.outputs.sites_to_deploy != ''
         env:
