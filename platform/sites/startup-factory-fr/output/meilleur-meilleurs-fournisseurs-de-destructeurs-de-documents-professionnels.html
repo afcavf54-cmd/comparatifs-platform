@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -509,11 +509,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Leitz</strong> : idéal pour les petites équipes qui veulent fiabilité et simplicité.</li>
-<li><strong>Kobra</strong> : parfait si tu détruis des volumes importants chaque jour.</li>
-<li><strong>intimus</strong> : recommandé pour les environnements sensibles avec exigences de sécurité élevées.</li>
-<li><strong>IDEAL</strong> : conçu pour les grandes structures avec des besoins industriels réguliers.</li>
-<li><strong>Dahle</strong> : bon choix pour les bureaux recherchant un équilibre prix-performance solide.</li>
+    <li><strong>Leitz</strong> :<br>idéal pour les petites équipes qui veulent fiabilité et simplicité.</li>
+<li><strong>Kobra</strong> :<br>parfait si tu détruis des volumes importants chaque jour.</li>
+<li><strong>intimus</strong> :<br>recommandé pour les environnements sensibles avec exigences de sécurité élevées.</li>
+<li><strong>IDEAL</strong> :<br>conçu pour les grandes structures avec des besoins industriels réguliers.</li>
+<li><strong>Dahle</strong> :<br>bon choix pour les bureaux recherchant un équilibre prix-performance solide.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs de destructeurs de documents professionnels</h2>
@@ -535,11 +535,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Destruction en continu sans surchauffe, idéale pour les gros volumes</td></tr><tr><td>Niveaux de sécurité élevés jusqu'au P-7 pour les documents sensibles</td></tr><tr><td>Auto-inversion en cas de bourrage, zéro intervention manuelle</td></tr><tr><td>Fabrication robuste, pensée pour un usage professionnel intensif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif plus élevé que la concurrence, difficile à justifier pour un petit budget</td></tr><tr><td>Interface physique minimaliste, peu intuitive pour les non-initiés</td></tr><tr><td>Peu de modèles d'entrée de gamme disponibles pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -563,11 +563,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Alimentation automatique très pratique pour les volumes importants</td></tr><tr><td>Détection des agrafes et trombones incluse, sans tri préalable</td></tr><tr><td>Bon rapport qualité/prix sur les gammes intermédiaires</td></tr><tr><td>Machines robustes, adaptées à un usage quotidien intensif</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Niveau sonore élevé sur les modèles entrée de gamme, problématique en open space</td></tr><tr><td>Documentation technique parfois insuffisante pour les réglages avancés</td></tr></tbody>
         </table>
       </div>
@@ -591,11 +591,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Lames acier trempé très résistantes, zéro bourrage en usage intensif</td></tr><tr><td>Cycles continus longs sans surchauffe, idéal pour les équipes</td></tr><tr><td>Niveau de sécurité de coupe élevé, conforme aux exigences pro</td></tr><tr><td>Robustesse globale sur la durée, peu de maintenance nécessaire</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Design vieillot sur certains modèles, l'ergonomie du panneau de contrôle reste basique</td></tr><tr><td>Prix un cran au-dessus des marques entrée de gamme, ce qui peut piquer avec un budget serré</td></tr></tbody>
         </table>
       </div>
@@ -638,11 +638,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Fiabilité mécanique reconnue, peu de pannes ou bourrages au quotidien</td></tr><tr><td>Niveau de coupe élevé sur les modèles pro (micro-coupes disponibles)</td></tr><tr><td>Prise en main immédiate, zéro formation nécessaire</td></tr><tr><td>Large gamme de modèles adaptés à différents volumes d'équipe</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune fonctionnalité de traçabilité ou de reporting de destruction</td></tr><tr><td>Support client parfois lent à répondre sur les demandes SAV techniques</td></tr></tbody>
         </table>
       </div>
@@ -666,11 +666,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main immédiate, zéro formation pour l'équipe</td></tr><tr><td>Détection automatique et mode veille intégré</td></tr><tr><td>Coupe croisée de qualité, sécurité niveau professionnel</td></tr><tr><td>Robustesse sur des sessions d'utilisation prolongées</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif plus élevé que les marques concurrentes sur la même gamme</td></tr><tr><td>Risque d'enrayement si les trombones ou agrafes ne sont pas retirés avant destruction</td></tr></tbody>
         </table>
       </div>
@@ -694,11 +694,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Robustesse mécanique réelle, même en usage intensif</td></tr><tr><td>Niveaux de coupe élevés adaptés aux documents sensibles</td></tr><tr><td>Bon rapport qualité/prix sur la durée</td></tr><tr><td>Pas de surchauffe constatée sur des sessions longues</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Ergonomie basique et notice peu claire au démarrage</td></tr><tr><td>Bac de récupération parfois trop petit pour un usage en volume</td></tr></tbody>
         </table>
       </div>
@@ -722,11 +722,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Niveau sonore très bas, idéal pour open space</td></tr><tr><td>Fiabilité reconnue, peu de pannes et de bourrages</td></tr><tr><td>Niveau de sécurité élevé avec la micro-coupe</td></tr><tr><td>Grande capacité de corbeille, moins de vidages fréquents</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune connectivité ni intégration numérique possible</td></tr><tr><td>Gamme de prix plus élevée que les alternatives basiques</td></tr><tr><td>Prise en main de certains modèles pro un peu lourde au démarrage</td></tr></tbody>
         </table>
       </div>

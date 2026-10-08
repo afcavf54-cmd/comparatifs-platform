@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -494,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciels d’onboarding 2026 : Top 10</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Léa Petit" class="hero-author-avatar">
     <span>Rédigé par Léa Petit</span>
@@ -508,11 +508,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
     <ul>
-<li><strong>HeyTeam</strong> : idéal pour automatiser l'onboarding sans compétences techniques particulières.</li>
-<li><strong>Workelo</strong> : parfait si tu veux centraliser tout le parcours collaborateur facilement.</li>
-<li><strong>Lucca</strong> : recommandé pour les équipes qui veulent gérer RH sans galère.</li>
-<li><strong>Welcom'App</strong> : conçu pour les startups qui accueillent des nouveaux arrivants régulièrement.</li>
-<li><strong>Teelt</strong> : adapté aux entreprises qui cherchent un outil simple et abordable.</li>
+<li><strong>HeyTeam</strong> :<br>idéal pour automatiser l'onboarding sans compétences techniques particulières.</li>
+<li><strong>Workelo</strong> :<br>parfait si tu veux centraliser tout le parcours collaborateur facilement.</li>
+<li><strong>Lucca</strong> :<br>recommandé pour les équipes qui veulent gérer RH sans galère.</li>
+<li><strong>Welcom'App</strong> :<br>conçu pour les startups qui accueillent des nouveaux arrivants régulièrement.</li>
+<li><strong>Teelt</strong> :<br>adapté aux entreprises qui cherchent un outil simple et abordable.</li>
 </ul>
   </div>
 
@@ -539,11 +539,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Configuration rapide des parcours sans développement</td></tr><tr><td>Suivi en temps réel de l'avancement des nouvelles recrues</td></tr><tr><td>Templates d'onboarding prêts à utiliser par métier</td></tr><tr><td>Notifications automatiques qui réduisent la charge RH</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation limitée hors des modèles proposés</td></tr><tr><td>Tarification qui monte vite avec le nombre d'utilisateurs</td></tr><tr><td>Quelques bugs sur les notifications push mobiles</td></tr></tbody>
         </table>
       </div>
@@ -571,11 +571,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation complète des parcours d'intégration par poste</td></tr><tr><td>Suivi en temps réel de l'avancement de chaque nouvelle recrue</td></tr><tr><td>Intégrations natives avec les principaux SIRH du marché</td></tr><tr><td>Gestion centralisée des documents et signatures électroniques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale complexe et chronophage</td></tr><tr><td>Interface parfois lente avec beaucoup d'utilisateurs connectés</td></tr><tr><td>Tarification qui grimpe vite selon le nombre de collaborateurs</td></tr></tbody>
         </table>
       </div>
@@ -603,11 +603,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive même pour les non-techniciens</td></tr><tr><td>Automatisation poussée des relances et notifications</td></tr><tr><td>Intégration native avec la plupart des SIRH français</td></tr><tr><td>Suivi détaillé du parcours en temps réel</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation graphique limitée</td></tr><tr><td>Support client parfois lent à répondre</td></tr><tr><td>Quelques bugs sur les notifications push</td></tr></tbody>
         </table>
       </div>
@@ -635,11 +635,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Vision 360° du collaborateur dès son arrivée</td></tr><tr><td>Signature électronique native des contrats</td></tr><tr><td>Synchronisation automatique avec la paie et formation</td></tr><tr><td>Interface moderne appréciée des nouveaux salariés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration complexe pour les petites structures</td></tr><tr><td>Tarification élevée si on n'utilise que l'onboarding</td></tr><tr><td>Courbe d'apprentissage importante pour les équipes RH</td></tr></tbody>
         </table>
       </div>
@@ -667,11 +667,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows automatisés très poussés avec déclencheurs personnalisables</td></tr><tr><td>Tableau de bord manager avec suivi temps réel des progressions</td></tr><tr><td>Templates différents selon les postes et départements</td></tr><tr><td>Intégration native avec les SIRH principaux du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois lourde pour les petites équipes</td></tr><tr><td>Nécessite un paramétrage initial assez long</td></tr><tr><td>Prix élevé pour les TPE avec peu d'embauches</td></tr></tbody>
         </table>
       </div>
@@ -699,11 +699,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface mobile native qui engage vraiment les nouveaux arrivants</td></tr><tr><td>Système de gamification efficace avec points et badges</td></tr><tr><td>Notifications push intelligentes qui relancent automatiquement</td></tr><tr><td>Analytics détaillés sur la progression de chaque collaborateur</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Configuration initiale chronophage et peu intuitive</td></tr><tr><td>Prix élevé pour les petites structures</td></tr><tr><td>Personnalisation limitée des parcours complexes</td></tr></tbody>
         </table>
       </div>
@@ -731,11 +731,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface vraiment accessible même pour les non-techniciens</td></tr><tr><td>Templates d'onboarding prêts à l'emploi et personnalisables</td></tr><tr><td>Suivi automatisé des étapes avec relances intelligentes</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées pour les grandes structures</td></tr><tr><td>Personnalisation graphique assez basique</td></tr><tr><td>Support client parfois lent à répondre en français</td></tr></tbody>
         </table>
       </div>
@@ -763,11 +763,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows d'onboarding personnalisables avec embranchements conditionnels</td></tr><tr><td>Gestion documentaire intégrée avec validation automatique</td></tr><tr><td>Synchronisation native avec les principaux SIRH du marché</td></tr><tr><td>Tableau de bord en temps réel pour suivre l'avancement des intégrations</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface un peu datée qui manque de modernité</td></tr><tr><td>Paramétrage initial assez lourd pour les petites structures</td></tr><tr><td>Support client parfois lent à répondre en période de pic</td></tr></tbody>
         </table>
       </div>
@@ -795,11 +795,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native avec Slack et Microsoft Teams</td></tr><tr><td>Création automatique de liens sociaux entre collaborateurs</td></tr><tr><td>Mise en place très rapide sans contenu à produire</td></tr><tr><td>Excellent pour réduire le stress des premiers jours</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de suivi des formations obligatoires</td></tr><tr><td>Analytics limités comparé aux LMS classiques</td></tr><tr><td>Ne convient pas aux entreprises avec besoins de conformité stricts</td></tr></tbody>
         </table>
       </div>
@@ -827,11 +827,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Workflows d'intégration automatisés par métier</td></tr><tr><td>Suivi temps réel des étapes d'onboarding</td></tr><tr><td>Interface intuitive pour les managers</td></tr><tr><td>Intégration native avec les SIRH classiques</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation graphique très limitée</td></tr><tr><td>Ralentissements fréquents aux heures de pointe</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr></tbody>
         </table>
       </div>
@@ -1102,7 +1102,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startup-factory.fr — Données actualisées le 7 octobre 2026
+        © 2026 startup-factory.fr — Données actualisées le 8 octobre 2026
       </div>
     </div>
   </div>

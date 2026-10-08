@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -509,11 +509,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>LPR</strong> : idéal pour les entreprises agroalimentaires cherchant un réseau fiable et structuré.</li>
-<li><strong>France Palettes</strong> : parfait si tu veux acheter ou louer sans te prendre la tête.</li>
-<li><strong>Rotom</strong> : pensé pour les boîtes qui veulent externaliser toute la gestion palette.</li>
-<li><strong>CHEP</strong> : le bon choix pour les grandes structures avec des volumes importants.</li>
-<li><strong>Burban Palettes</strong> : adapté aux PME qui cherchent des palettes reconditionnées pas chères.</li>
+    <li><strong>LPR</strong> :<br>idéal pour les entreprises agroalimentaires cherchant un réseau fiable et structuré.</li>
+<li><strong>France Palettes</strong> :<br>parfait si tu veux acheter ou louer sans te prendre la tête.</li>
+<li><strong>Rotom</strong> :<br>pensé pour les boîtes qui veulent externaliser toute la gestion palette.</li>
+<li><strong>CHEP</strong> :<br>le bon choix pour les grandes structures avec des volumes importants.</li>
+<li><strong>Burban Palettes</strong> :<br>adapté aux PME qui cherchent des palettes reconditionnées pas chères.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs fournisseurs de palettes pour entreprises</h2>
@@ -535,11 +535,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Modèle mutualisé qui réduit les immobilisations financières</td></tr><tr><td>Collecte des palettes vides organisée par Epalia, sans logistique supplémentaire de ton côté</td></tr><tr><td>Réseau de dépôts couvrant une bonne partie du territoire</td></tr><tr><td>Système de traçabilité par bons d'échange pour suivre les flux</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Moins adapté aux entreprises avec des volumes faibles ou très irréguliers</td></tr><tr><td>Flexibilité limitée si tu as besoin de palettes aux dimensions très spécifiques</td></tr><tr><td>L'intégration des bons d'échange demande un temps d'adaptation pour les équipes non habituées</td></tr></tbody>
         </table>
       </div>
@@ -563,11 +563,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Délais de livraison courts, même sur des commandes de dernière minute</td></tr><tr><td>Palettes reconditionnées classées par catégorie, pas de surprise sur la qualité</td></tr><tr><td>Interlocuteur commercial joignable et réactif</td></tr><tr><td>Bon rapport qualité/prix sur les formats EUR standards</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Suivi de commande en ligne très limité, peu de visibilité après confirmation</td></tr><tr><td>Pas d'intégration ERP ou EDI, tout passe par mail ou téléphone</td></tr><tr><td>Catalogue moins large que les acteurs nationaux sur les formats spéciaux</td></tr></tbody>
         </table>
       </div>
@@ -591,11 +591,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Location en pool : zéro gestion des retours et de la revente</td></tr><tr><td>Traçabilité des palettes dans la chaîne logistique</td></tr><tr><td>Réseau européen solide pour les expéditions hors France</td></tr><tr><td>Réduction des achats de palettes neuves sur le long terme</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas adapté aux petits volumes ou aux entreprises avec des flux irréguliers</td></tr><tr><td>L'onboarding terrain demande une vraie rigueur de scan, sinon la traçabilité flanche</td></tr><tr><td>Tarification parfois complexe à anticiper selon les flux réels</td></tr></tbody>
         </table>
       </div>
@@ -619,11 +619,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Gestion automatisée des commandes récurrentes et des seuils de réapprovisionnement</td></tr><tr><td>Suivi des palettes consignées intégré, sans ressaisie manuelle</td></tr><tr><td>Interlocuteur unique pour la livraison, les retours et la facturation</td></tr><tr><td>Bon rapport qualité-prix sur les palettes standard EUR</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de suivi en ligne peu ergonomique, prise en main longue pour une équipe non technique</td></tr><tr><td>Délais parfois tendus en période de forte demande, avec peu de visibilité en temps réel sur les stocks disponibles</td></tr></tbody>
         </table>
       </div>
@@ -647,11 +647,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau logistique très large, couvre toute la France et l'Europe</td></tr><tr><td>Portail digital avec suivi des mouvements et reporting intégré</td></tr><tr><td>Pas d'achat de palettes, ça libère du capital</td></tr><tr><td>Palettes en bon état et standardisées, contrôle qualité sérieux</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Frais de détention élevés si les palettes restent immobilisées trop longtemps</td></tr><tr><td>Modèle peu adapté aux petits volumes ou aux besoins irréguliers</td></tr><tr><td>Contrats parfois rigides, difficiles à renégocier à la baisse</td></tr></tbody>
         </table>
       </div>
@@ -675,11 +675,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Pas de volume minimum imposé, idéal pour les PME</td></tr><tr><td>Mix possible entre palettes neuves et reconditionnées selon les besoins</td></tr><tr><td>Relation commerciale directe, sans contrat cadre contraignant</td></tr><tr><td>Bonne disponibilité téléphonique pour les urgences</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Suivi de commande en ligne très limité, on revient vite au téléphone</td></tr><tr><td>Offre peu adaptée si tu cherches un système de pooling ou de retour géré</td></tr><tr><td>Couverture géographique à vérifier selon ta région</td></tr></tbody>
         </table>
       </div>
@@ -703,11 +703,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau régional bien implanté, livraisons rapides sans surcoût excessif</td></tr><tr><td>Commandes mixtes neuf/reconditionné sans minimum abusif</td></tr><tr><td>Flexibilité sur les volumes de commande sans renégociation</td></tr><tr><td>Service client réactif, réponse généralement en quelques heures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface de commande en ligne vieillissante, prise en main pas intuitive</td></tr><tr><td>Peu d'options d'automatisation ou d'intégration avec des outils de gestion de stock</td></tr></tbody>
         </table>
       </div>
@@ -731,11 +731,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Réseau très implanté dans la grande distribution alimentaire</td></tr><tr><td>Traçabilité des flux intégrée, lisible même sans compétences techniques</td></tr><tr><td>Supprime la gestion physique des retours de palettes</td></tr><tr><td>Compatible avec les exigences logistiques des grandes enseignes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Réseau fermé : inutilisable hors partenaires affiliés LPR</td></tr><tr><td>Support lent en cas de litige sur les comptages de palettes</td></tr><tr><td>Peu de flexibilité si ton activité sort du circuit alimentaire classique</td></tr></tbody>
         </table>
       </div>
@@ -814,11 +814,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 
 
-  <aside class="backlink-note">
-    <p>Pour approfondir le sujet, découvrez également
-<a href="https://www.burban-palettes.com" target="_blank" rel="noopener">Burban Palettes</a>,
-un acteur reconnu de ce secteur.</p>
-  </aside>
 
 
   <section class="maillage-section">

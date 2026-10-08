@@ -77,13 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
 .en-bref li:last-child{border-bottom:none}
-.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
-.en-bref li strong{white-space:nowrap}
+.en-bref li strong{color:var(--ink)}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
@@ -509,11 +509,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Saxoprint</strong> : idéal pour les startups qui veulent commander vite sans se ruiner.</li>
-<li><strong>COPYTOP</strong> : parfait si tu as besoin d'affiches urgentes avec retrait en boutique.</li>
-<li><strong>Onlineprinters</strong> : fait pour les équipes qui commandent en gros volumes régulièrement.</li>
-<li><strong>Easyflyer</strong> : conçu pour les débutants qui veulent un outil simple et guidé.</li>
-<li><strong>Exaprint</strong> : recommandé pour les pros qui exigent une qualité d'impression irréprochable.</li>
+    <li><strong>Saxoprint</strong> :<br>idéal pour les startups qui veulent commander vite sans se ruiner.</li>
+<li><strong>COPYTOP</strong> :<br>parfait si tu as besoin d'affiches urgentes avec retrait en boutique.</li>
+<li><strong>Onlineprinters</strong> :<br>fait pour les équipes qui commandent en gros volumes régulièrement.</li>
+<li><strong>Easyflyer</strong> :<br>conçu pour les débutants qui veulent un outil simple et guidé.</li>
+<li><strong>Exaprint</strong> :<br>recommandé pour les pros qui exigent une qualité d'impression irréprochable.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs sites d’impression d’affiches</h2>
@@ -535,11 +535,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Configurateur ultra simple, idéal pour une équipe non technique</td></tr><tr><td>Prix compétitifs, surtout sur les petites quantités d'affiches</td></tr><tr><td>Rendu fidèle à l'aperçu en ligne sur les commandes standards</td></tr><tr><td>Prise en main rapide, <strong>sans formation longue</strong></td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Support client lent, problématique en cas d'urgence</td></tr><tr><td>Options de personnalisation limitées pour les formats ou finitions hors standards</td></tr><tr><td>Catalogue moins étendu que certains concurrents sur les formats spéciaux</td></tr></tbody>
         </table>
       </div>
@@ -563,11 +563,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Vérification automatique des fichiers avant impression</td></tr><tr><td>Rendu couleur fidèle et qualité papier solide</td></tr><tr><td>Interface de commande claire avec prix en temps réel</td></tr><tr><td>Bon rapport qualité/prix sur les gros volumes</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais standard longs, l'option express coûte cher</td></tr><tr><td>Interface mobile peu pratique, à éviter sur téléphone</td></tr></tbody>
         </table>
       </div>
@@ -591,11 +591,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Vérification automatique des fichiers avant impression (résolution, fonds perdus, marges)</td></tr><tr><td>Qualité d'impression constante et reproductible commande après commande</td></tr><tr><td>Configurateur avec calcul de prix instantané selon format et quantité</td></tr><tr><td>Large choix de grammages et finitions pour les affiches</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais parfois longs sur certaines options tarifaires, surtout hors urgence</td></tr><tr><td>Interface moins intuitive pour les profils non techniques, l'onboarding est quasi inexistant</td></tr><tr><td>Formats très atypiques peu ou pas disponibles dans le configurateur standard</td></tr></tbody>
         </table>
       </div>
@@ -619,11 +619,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Configurateur en ligne intuitif, prix visible sans inscription</td></tr><tr><td>Vérification automatique des fichiers avant impression</td></tr><tr><td>Qualité d'impression fiable, couleurs fidèles au rendu prévu</td></tr><tr><td>Large choix de formats, grammages et finitions</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais de livraison standard assez longs, option express onéreuse</td></tr><tr><td>Support client par téléphone pas toujours réactif selon les périodes</td></tr><tr><td>Interface en français correcte mais certaines options techniques restent floues pour un non-initié</td></tr></tbody>
         </table>
       </div>
@@ -647,11 +647,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Retrait en boutique le jour même dans plusieurs villes</td></tr><tr><td>Qualité d'impression fiable sur différents supports</td></tr><tr><td>Bon choix de formats pour les affiches</td></tr><tr><td>Interlocuteur humain disponible si besoin</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Site web peu intuitif, l'expérience en ligne est moins soignée que la concurrence</td></tr><tr><td>Moins compétitif sur les prix pour les gros volumes</td></tr><tr><td>Réseau de boutiques limité hors grandes villes</td></tr></tbody>
         </table>
       </div>
@@ -675,11 +675,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Configurateur en ligne intuitif, prise en main immédiate même sans formation</td></tr><tr><td>Bonne palette de finitions (pelliculage, coins arrondis) à prix compétitifs</td></tr><tr><td>Alertes automatiques sur la qualité des fichiers uploadés</td></tr><tr><td>Livraison fiable sur les délais annoncés</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Catalogue limité : peu de formats atypiques ou de grand format</td></tr><tr><td>Réactivité du support parfois lente selon les périodes de rush</td></tr></tbody>
         </table>
       </div>
@@ -703,11 +703,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Qualité d'impression constante, même sur les grands formats</td></tr><tr><td>Outil de prévisualisation intuitif, sans besoin d'expertise technique</td></tr><tr><td>Large choix de supports : papier couché, bâche, adhésif...</td></tr><tr><td>Bon rapport qualité/prix sur les commandes en volume</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais de livraison parfois longs si on ne prend pas l'option express</td></tr><tr><td>Tarifs moins intéressants sur les petites quantités d'affiches</td></tr></tbody>
         </table>
       </div>
@@ -731,11 +731,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface simple et configurateur produit lisible dès la première visite</td></tr><tr><td>Options de finition bien présentées sans navigation compliquée</td></tr><tr><td>Qualité d'impression correcte sur les visuels colorés</td></tr><tr><td>Tarifs accessibles pour des commandes ponctuelles en petite quantité</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Délais de livraison parfois dépassés en période de forte demande</td></tr><tr><td>Peu adapté aux grosses commandes récurrentes, pas de suivi commercial dédié</td></tr><tr><td>Pas de retour clair sur les options d'expédition express dans toutes les configurations</td></tr></tbody>
         </table>
       </div>
@@ -759,11 +759,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Tarifs dégressifs très compétitifs sur les grands tirages</td></tr><tr><td>Vérification automatique des fichiers avant impression</td></tr><tr><td>Qualité d'impression constante et fiable</td></tr><tr><td>Livraison rapide sur les formats standards</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Support client lent par email, peu adapté à l'urgence</td></tr><tr><td>Catalogue limité : peu de formats ou finitions hors standard</td></tr><tr><td>Interface un peu datée, navigation pas toujours intuitive</td></tr></tbody>
         </table>
       </div>
@@ -787,11 +787,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="av-inc-wrap">
         <table class="avantages-table">
-          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <thead><tr><th>✅ Avantages</th></tr></thead>
           <tbody><tr><td>Interface intuitive avec prévisualisation en temps réel du rendu</td></tr><tr><td>Tarifs clairs et affichés sans frais cachés avant la validation</td></tr><tr><td>Suivi de commande automatisé avec notifications à chaque étape</td></tr><tr><td>Quantités minimales accessibles, adapté aux petites structures</td></tr></tbody>
         </table>
         <table class="avantages-table">
-          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <thead><tr><th>❌ Inconvénients</th></tr></thead>
           <tbody><tr><td>Support client lent, parfois plus de 48h pour une réponse</td></tr><tr><td>Options de finitions limitées pour des besoins très spécifiques</td></tr><tr><td>Moins adapté si tu as des contraintes techniques complexes sur les fichiers</td></tr></tbody>
         </table>
       </div>
