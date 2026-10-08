@@ -56,6 +56,23 @@ site:
     meta_description: "Retrouvez mes codes promo et parrainages exclusifs sur les plateformes d'investissement que j'utilise et recommande. Offre du moment : 75€ offerts chez Linxea (assurance-vie) à saisir à l'inscription, valables en carte cadeau Carrefour, Amazon ou Decathlon."
     # disclaimer: "..."  # optionnel, sinon texte par défaut
     categories:
+      - name: "Banque & Bourse"
+        items:
+          - name: "Parrainage Boursobank 320€"
+            desc: "Jusqu'à 320€ offerts pour l'ouverture d'un compte Boursobank. Code parrainage : MAVA4983"
+            url: "https://clikme.xyz/BoursoBank-parrainage"
+            color: "#dc1377"
+            logo: "/boursobank.png"
+          - name: "Parrainage Trade Republic 100€"
+            desc: "100€ offerts pour l'ouverture d'un compte Trade Republic via mon lien de parrainage."
+            url: "https://refnocode.trade.re/vv8fp9xz"
+            color: "#000000"
+            logo: "/traderepublic.png"
+          - name: "Deblock — Offre exclusive"
+            desc: "Offre de bienvenue exclusive à l'ouverture d'un compte Deblock."
+            url: "https://www.financeads.net/tc.php?t=74753C5262122608T"
+            color: "#000000"
+            logo: "/deblock.png"
       - name: "Assurance-vie"
         items:
           - name: "Parrainage Linxea 75€"
@@ -68,23 +85,6 @@ site:
             url: "https://www.financeads.net/tc.php?t=74753C432496072T&subid=S-monelor-Bons-Plans"
             color: "#000921"
             logo: "/linxea-bon-plan.png"
-      - name: "Banque & Bourse"
-        items:
-          - name: "Parrainage Trade Republic 100€"
-            desc: "100€ offerts pour l'ouverture d'un compte Trade Republic via mon lien de parrainage."
-            url: "https://refnocode.trade.re/vv8fp9xz"
-            color: "#000000"
-            logo: "/traderepublic.png"
-          - name: "Parrainage Boursobank 150€"
-            desc: "Jusqu'à 150€ offerts pour l'ouverture d'un compte Boursobank. Code parrainage : MAVA4983"
-            url: "https://clikme.xyz/BoursoBank-parrainage"
-            color: "#dc1377"
-            logo: "/boursobank.png"
-          - name: "Deblock — Offre exclusive"
-            desc: "Offre de bienvenue exclusive à l'ouverture d'un compte Deblock."
-            url: "https://www.financeads.net/tc.php?t=74753C5262122608T"
-            color: "#000000"
-            logo: "/deblock.png"
 
 page_types:
   blog: finances-personnelles
