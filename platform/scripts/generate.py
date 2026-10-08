@@ -1730,6 +1730,17 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         return t.strip()
     env.filters["cleanhtml"] = _clean_html
 
+    def _enbref_split(t):
+        """« En bref » : passe la marque et son descriptif sur DEUX lignes
+        (Marque : <br> Texte). Sur mobile, « Marque : texte » sur une seule
+        ligne écrasait le texte dans une colonne étroite. À appliquer APRÈS
+        cleanhtml (qui transforme les <br> en espaces)."""
+        if not t or not isinstance(t, str):
+            return t
+        # Après chaque </strong> suivi de « : », on passe le texte à la ligne.
+        return _re.sub(r"</strong>\s*:\s*", "</strong> :<br>", t)
+    env.filters["enbref_split"] = _enbref_split
+
     env.filters["md_to_html"] = lambda s: s
 
     MOIS_FR = ["janvier","février","mars","avril","mai","juin",
