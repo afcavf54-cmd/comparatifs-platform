@@ -114,7 +114,7 @@ def normalize_table_html(html: str) -> str:
     def wrap_unwrapped_tables(html_in: str) -> str:
         out = []
         pos = 0
-        for m in _re_t.finditer(r"<table\b[^>]*>.*?</table>", html_in, flags=_re_t.IGNORECASE | _re_t.DOTALL):
+        for m in _re_t.finditer(r"<table\b[^>]*>(?:(?!<table\b).)*?</table>", html_in, flags=_re_t.IGNORECASE | _re_t.DOTALL):
             out.append(html_in[pos:m.start()])
             # Regarde les 100 caractères avant pour détecter un wrap existant
             before_window = html_in[max(0, m.start() - 100):m.start()]
@@ -167,7 +167,7 @@ def normalize_table_html(html: str) -> str:
         return opening + new_first + rest_before_close + closing
 
     html = _re_t.sub(
-        r"<table\b[^>]*>.*?</table>",
+        r"<table\b[^>]*>(?:(?!<table\b).)*?</table>",
         promote_first_row,
         html,
         flags=_re_t.IGNORECASE | _re_t.DOTALL,
