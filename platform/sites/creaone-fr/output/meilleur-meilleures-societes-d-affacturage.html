@@ -77,9 +77,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
+.en-bref li{list-style:none;padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2)}
+.en-bref li::marker{content:""}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→ ";color:var(--accent);font-weight:700}
+/* Saut de ligne marque/texte : masqué par défaut => PC sur UNE ligne.
+   Affiché uniquement sur mobile (cf. media query max-width:768px). */
+.en-bref .eb-br{display:none}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
    Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
    wrap si nécessaire. */
@@ -153,6 +157,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
   .nav-burger{display:flex}
   .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
+  .en-bref .eb-br{display:inline}
 }
 </style>
 
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé les 8 sociétés d’affacturage, mon analyse</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-08 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-09 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -507,11 +512,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    <li><strong>Finexkap</strong> :<br>idéal pour les TPE qui veulent céder leurs factures ponctuellement.</li>
-<li><strong>Bibby Factor France</strong> :<br>adapté aux PME cherchant un accompagnement terrain personnalisé.</li>
-<li><strong>Edebex</strong> :<br>parfait pour les entreprises qui préfèrent une place de marché flexible.</li>
-<li><strong>Eurofactor</strong> :<br>conçu pour les ETI avec des volumes de facturation importants et réguliers.</li>
-<li><strong>Crédit Agricole Leasing & Factoring</strong> :<br>recommandé aux entreprises déjà clientes du réseau Crédit Agricole.</li>
+    <li><strong>Finexkap</strong> :<br class="eb-br">idéal pour les TPE qui veulent céder leurs factures ponctuellement.</li>
+<li><strong>Bibby Factor France</strong> :<br class="eb-br">adapté aux PME cherchant un accompagnement terrain personnalisé.</li>
+<li><strong>Edebex</strong> :<br class="eb-br">parfait pour les entreprises qui préfèrent une place de marché flexible.</li>
+<li><strong>Eurofactor</strong> :<br class="eb-br">conçu pour les ETI avec des volumes de facturation importants et réguliers.</li>
+<li><strong>Crédit Agricole Leasing & Factoring</strong> :<br class="eb-br">recommandé aux entreprises déjà clientes du réseau Crédit Agricole.</li>
   </div>
 
   <h2 class="section-title">Mon classement des meilleurs sociétés d’affacturage</h2>
@@ -978,7 +983,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 8 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 9 octobre 2026
       </div>
     </div>
   </div>
