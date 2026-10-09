@@ -151,12 +151,51 @@ jobs:
         id: detect_comparators
         env:
           COMPARATORS_HOUR: "05"
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "$(date -u +%H)" != "$COMPARATORS_HOUR" ]; then
-            echo "⏭ Hors de l'heure quotidienne des comparateurs (${COMPARATORS_HOUR}h UTC) — on saute."
+          # Rythme PAR JOUR. Le cron GitHub (0 * * * *) est souvent RETARDÉ : le
+          # run « de 05:00 UTC » arrive parfois à 05:40, voire 06:xx. L'ancien
+          # test d'heure EXACTE (== 05) ratait alors la journée ENTIÈRE (aucun
+          # comparateur rédigé ce jour-là).
+          # Nouveau gate robuste : on déclenche au PREMIER passage de la journée
+          # à partir de l'heure cible, puis on marque le jour comme traité via un
+          # fichier committé → les passages horaires suivants ne re-déclenchent
+          # pas. Un seul déclenchement par jour UTC, insensible aux retards.
+          HOUR=$(date -u +%H)
+          TODAY=$(date -u +%Y-%m-%d)
+          STATE="platform/.comparators_last_run"
+          LAST="$(cat "$STATE" 2>/dev/null || true)"
+          if [ "$((10#$HOUR))" -lt "$((10#$COMPARATORS_HOUR))" ]; then
+            echo "⏭ Avant ${COMPARATORS_HOUR}h UTC (il est ${HOUR}h) — on saute."
+            exit 0
+          fi
+          if [ "$LAST" = "$TODAY" ]; then
+            echo "⏭ Comparateurs déjà déclenchés aujourd'hui ($TODAY) — on saute."
             exit 0
           fi
           python platform/scripts/comparators_cron.py
+          # Marque le jour comme traité et le persiste (commit + push) pour que
+          # les runs horaires suivants voient que c'est fait. [skip ci] : ce
+          # commit ne doit déclencher aucun autre workflow.
+          echo "$TODAY" > "$STATE"
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+          git add "$STATE"
+          if ! git diff --cached --quiet; then
+            git commit -m "Cron comparateurs : marqueur quotidien $TODAY [skip ci]"
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if ! git rebase -X theirs --autostash origin/main; then
+                git rebase --abort || true
+                echo "⚠ rebase marqueur impossible — abandon du marqueur"
+                break
+              fi
+              if git push; then echo "✓ marqueur quotidien poussé"; break; fi
+              echo "⚠ push marqueur rejeté (tentative $attempt), retry..."
+              sleep $((attempt * 5))
+            done
+          fi
       - name: Comparateurs — déclenchement du build (rythme quotidien)
         if: steps.detect_comparators.outputs.sites_to_deploy != ''
         env:
