@@ -65,7 +65,7 @@ historique_12_mois:
   - mois: 2026-10
     valeur: 50
 historique_unite: €
-status: draft
+status: published
 meta_title: "Code promo Linxea : 200€ de bonus en {mois_annee}"
 h1_custom: Code promo Linxea et codes de réduction en {mois_annee}
 date_creation: "2026-10-13"
