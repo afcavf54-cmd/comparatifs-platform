@@ -49,14 +49,6 @@ faq:
   - question: Que faire si mon code promo Octopus Energy ne fonctionne pas ?
     reponse: "Première chose à vérifier : la date d'expiration du code. Ensuite, assure-toi que tu es bien un nouveau client, car la plupart des codes sont réservés aux premières souscriptions. Si tout semble correct, contacte le service client Octopus Energy directement. Ils sont assez réactifs et peuvent appliquer le crédit manuellement si le code était valide."
 historique_12_mois:
-  - mois: 2025-07
-    valeur: 80
-  - mois: 2025-08
-    valeur: 80
-  - mois: 2025-09
-    valeur: 80
-  - mois: 2025-10
-    valeur: 80
   - mois: 2025-11
     valeur: 80
   - mois: 2025-12
@@ -73,6 +65,14 @@ historique_12_mois:
     valeur: 80
   - mois: 2026-06
     valeur: 80
+  - mois: 2026-07
+    valeur: 0
+  - mois: 2026-08
+    valeur: 0
+  - mois: 2026-09
+    valeur: 0
+  - mois: 2026-10
+    valeur: 0
 historique_unite: €
 content_libre: |-
   <h2>Les tarifs</h2>
@@ -97,10 +97,10 @@ content_libre: |-
 
   <p>Et le service client ? Élu meilleur service client dans l'énergie, et basé en France. Ça change vraiment : quand j'ai eu une question sur ma facture, j'ai eu quelqu'un de compétent en ligne en moins de cinq minutes. Pas de script robotique, une vraie conversation.</p>
 status: published
-meta_title: Parrainage Octopus Energy code promo 80€ de réductions {Mois_annee}
-h1_custom: "Code Parrainage Octopus Energy {Mois_annee} : 80€"
+meta_title: "Code Promo & Parrainage Octopus Energy ({Mois_annee}) : 80€ Offerts"
+h1_custom: "Code Promo et Parrainage Octopus Energy {Mois_annee} : 80€ de réduction"
 date_creation: "2026-06-16"
-date_maj: "2026-06-17"
+date_maj: "2026-10-13"
 ---
 
 # Comment utiliser un code promo Octopus Energy
@@ -116,6 +116,7 @@ Lors du processus d'inscription ou de souscription, cherche le champ prévu pour
 
 ## Étape 4
 Colle ton code dans le champ correspondant et valide pour voir la remise ou le bonus s'appliquer directement à ton contrat d'énergie.
+
 
 
 
