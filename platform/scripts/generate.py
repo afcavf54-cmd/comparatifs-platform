@@ -3488,6 +3488,32 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 except Exception as _e:
                     print(f"  ⚠ Codes promo : render listing échec : {_e}")
 
+        # ── Nettoyage des pages marque DÉPUBLIÉES (orphelines) ───────────
+        # Supprimer une marque dans l'admin retire son .md mais PAS la page
+        # déjà générée sous output/codes-promo/<slug>/. Et Cloudflare Pages
+        # CONSERVE les fichiers des anciens déploiements : effacer le fichier
+        # ne suffit pas (Pages ressert l'ancienne version). On ÉCRASE donc
+        # chaque page marque non publiée par la 404 — même méthode que le blog
+        # et les avis. Tourne même si plus aucune marque n'est publiée.
+        cp_root_clean = output_dir / "codes-promo"
+        if cp_root_clean.exists():
+            _cp_pub_slugs = {b.get("slug") for b in cp_brands if b.get("slug")}
+            try:
+                _cp_404 = (output_dir / "404.html").read_text(encoding="utf-8")
+            except Exception:
+                _cp_404 = ("<!DOCTYPE html><html><head><meta charset='UTF-8'>"
+                           "<title>Page introuvable</title></head><body>"
+                           "<h1>Page introuvable</h1></body></html>")
+            _cp_orphans = 0
+            for _child in cp_root_clean.iterdir():
+                if _child.is_dir() and _child.name not in _cp_pub_slugs:
+                    _idx = _child / "index.html"
+                    if _idx.exists():
+                        _idx.write_text(_cp_404, encoding="utf-8")
+                        _cp_orphans += 1
+            if _cp_orphans:
+                print(f"  🧹 Codes promo : {_cp_orphans} page(s) marque dépubliée(s) écrasée(s) avec 404")
+
     # ───────────────────────────────────────────────────────────────────────
     # ── PAGE À PROPOS (template a-propos.html.j2) ─────────────────────────
     # Page statique simple. Générée si le template existe pour ce site.
