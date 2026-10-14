@@ -14,10 +14,10 @@ link_anchors:
 - text: noces de porcelaine
   max: 5
 related_posts:
+- noces-de-cuir-2-ans-de-mariage
+- noces-de-faience-idees-cadeaux-9-ans-de-mariage
 - noces-de-froment-3-ans-de-mariage
-- noces-de-bois-5-ans-de-mariage
-- noces-de-laine-7-ans-de-mariage
-- noces-de-rose-30-cadeaux-17-ans-de-mariage
+- noces-d-etain-idees-cadeaux-10-ans-de-mariage
 ---
 <h2>20 ans de mariage, et alors, on fait quoi ?</h2>
 

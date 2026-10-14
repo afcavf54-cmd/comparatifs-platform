@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau originale pour une grand-mère
   max: 5
 related_posts:
-- les-meilleurs-cadeaux-originaux-pour-sa-meilleure-amie
-- les-meilleurs-cadeaux-originaux-pour-un-jardinier
-- les-meilleurs-cadeaux-pour-une-femme-de-60-ans
-- calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel
+- cadeau-homme-43-ans
+- cadeau-saint-valentin
+- cadeau-femme-saint-valentin
+- cadeau-femme-40-ans
 ---
 <p>Trouver un cadeau pour une grand-mère, c'est souvent plus compliqué qu'on ne le croit. On tourne en rond entre le parfum classique, la boîte de chocolats et le foulard qu'elle a déjà en cinq exemplaires. J'ai moi-même vécu cette galère pendant des années, jusqu'à ce que je prenne le temps de vraiment réfléchir à ce qui lui ferait plaisir, pas juste à ce qui est "correct" à offrir.</p>
 

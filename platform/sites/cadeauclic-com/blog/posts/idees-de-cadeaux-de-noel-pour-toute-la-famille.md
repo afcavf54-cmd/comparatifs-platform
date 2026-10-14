@@ -14,10 +14,10 @@ link_anchors:
 - text: 20 idées de cadeaux de noël pour toute la famille
   max: 5
 related_posts:
-- cadeau-homme-saint-valentin
-- cadeau-homme
+- cadeau-femme-80-ans
+- calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel
 - cadeau-homme-73-ans
-- comment-faire-plaisir-a-sa-mere-sans-argent
+- cadeau-femme-50-ans
 ---
 <h2>Mes 20 coups de cœur pour un Noël réussi</h2>
 

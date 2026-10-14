@@ -13,10 +13,10 @@ link_anchors:
 - text: idée de cadeau pour un homme de 30 ans
   max: 5
 related_posts:
-- cadeau-homme-57-ans
-- les-cadeaux-qui-touchent-vraiment-un-homme
-- quel-cadeau-offrir-pour-un-emmenagement
-- cadeau-homme-95-ans
+- cadeau-homme-51-ans
+- cadeau-femme-saint-valentin
+- calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel
+- cadeau-homme-60-ans
 ---
 <p>Trouver un cadeau pour un homme de 30 ans, c'est souvent plus compliqué qu'on ne le pense. Trop jeune pour les trucs "classiques vieillissants", trop adulte pour les gadgets sans intérêt. J'ai cherché, comparé, parfois raté, et j'ai fini par construire une vraie liste qui tient la route. Voilà ce que j'ai retenu.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau originale pour un voyageur
   max: 5
 related_posts:
-- robot-kenwood-ou-kitchenaid
-- liste-de-noel
-- cadeau-homme-saint-valentin
-- les-meilleurs-cadeaux-pour-un-ado-garcon
+- les-meilleurs-cadeaux-originaux-pour-une-grand-mere
+- 25-idees-de-cadeaux-originaux-et-bien-etre-pour-la-fete-des-peres
+- cadeau-femme-80-ans
+- carte-cadeau-pour-voyager-une-bonne-idee-cadeau
 ---
 <p>Trouver un cadeau pour quelqu'un qui voyage tout le temps, c'est à la fois simple et compliqué. Simple, parce que l'univers du voyage offre des tonnes d'idées. Compliqué, parce que les grands voyageurs ont souvent déjà tout le nécessaire, et qu'un cadeau raté peut finir au fond d'un tiroir sans jamais partir en bagage. J'ai eu ce défi plusieurs fois, notamment pour mon beau-frère qui passe la moitié de l'année à l'étranger. Et franchement, j'ai appris à force de tâtonnements ce qui fait vraiment plaisir à ce profil de personne.</p>
 

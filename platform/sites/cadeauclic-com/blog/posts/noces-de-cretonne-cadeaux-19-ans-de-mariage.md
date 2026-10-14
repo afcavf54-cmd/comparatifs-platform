@@ -14,10 +14,10 @@ link_anchors:
 - text: noces de cretonne
   max: 5
 related_posts:
-- bapteme-mariage-anniversaire-le-gobelet-reutilisable
-- noces-de-chypre-6-ans-de-mariage
-- noces-de-coquelicot-8-ans-de-mariage
-- noces-de-muguet-idees-13-ans-de-mariage
+- noces-de-bois-5-ans-de-mariage
+- noces-de-froment-3-ans-de-mariage
+- noces-de-soie-idees-12-ans-de-mariage
+- les-meilleurs-cadeaux-de-saint-valentin-pas-chers
 ---
 <p>Dix-neuf ans. C'est à la fois beaucoup et tellement vite passé. Les noces de crétonne, c'est cet anniversaire de mariage un peu méconnu, souvent oublié entre les noces de porcelaine à 20 ans et les noces de coton à 1 an. Et pourtant, 19 ans ensemble, ça mérite vraiment d'être fêté. J'ai cherché des idées pour mes propres parents l'an dernier, et franchement, j'ai galéré avant de trouver des pistes vraiment sympas. Alors je partage tout ici pour te faire gagner du temps.</p>
 

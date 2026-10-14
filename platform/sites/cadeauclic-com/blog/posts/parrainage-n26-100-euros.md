@@ -1,33 +1,34 @@
 ---
-title: "Parrainage N26 {Month} {year} : 100€ offerts"
+title: 'Parrainage N26 {Month} {year} : 100€ offerts'
 slug: parrainage-n26-100-euros
-date: 2026-06-15T21:44:18+02:00
-updated: 2026-09-21T20:15:40
+date: 2026-06-15 21:44:18+02:00
+updated: 2026-09-21 20:15:40
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
-meta_title: "Parrainage N26 : 100€ offerts {Month} {year}"
-meta_description: "Utilisez un lien de parrainage N26 pour obtenir jusqu'à 100€ offerts à l'ouverture de votre compte. Conditions simples, prime rapide : on vous explique tout étape…"
+meta_title: 'Parrainage N26 : 100€ offerts {Month} {year}'
+meta_description: 'Utilisez un lien de parrainage N26 pour obtenir jusqu''à 100€ offerts
+  à l''ouverture de votre compte. Conditions simples, prime rapide : on vous explique
+  tout étape…'
 featured_image: /blog/parrainage-n26-100-euros.jpg
 status: published
 min_words: 1000
 show_toc: false
 related_posts:
-- boursobank-220-euros
-- parrainage-qonto
+- boursobank-150-euros
+- parrainage-n26-60-euros
 - parrainage-n26-80-euros
-- parrainage-qonto-200-euros
+- code-promo-linxea-spirit-2-existe-t-il-une-offre-en-2026
 link_anchors:
 - text: parrainage n26 100€
   max: 5
 cta_enabled: true
-cta_text: "Parrainage N26 : Bonus exclusif"
-cta_color: "#0f1a2d"
+cta_text: 'Parrainage N26 : Bonus exclusif'
+cta_color: '#0f1a2d'
 cta_link: https://clikme.xyz/N26-parrainage
 cta_button: En profiter
-cta_btn_color: "#ff8181"
+cta_btn_color: '#ff8181'
 ---
-
 <p>💳 Si N26 t'intéresse,&nbsp;<a href="https://clikme.xyz/N26-parrainage" target="_blank" rel="noopener noreferrer nofollow">je te recommande de passer par ce lien</a>&nbsp;afin de consulter <b>les conditions de parrainage actuellement en vigueur</b>.&nbsp;</p><p>Les offres et avantages peuvent évoluer au fil du temps. Un rapide coup d'œil te permettra de connaître les modalités applicables au moment où tu ouvriras ton compte.&nbsp;</p><p>Je vais être directe : quand j'ai ouvert mon compte N26 il y a quelques années, je n'avais pas fait attention au système de parrainage. Grosse erreur. J'ai laissé passer une belle opportunité de récupérer de l'argent gratuit. Depuis, j'ai changé mes habitudes, et aujourd'hui je partage tout ce que j'ai appris pour que toi, tu ne rates pas cette chance.</p>
 
 <p>En ce moment, le parrainage N26 permet de toucher <strong>100€</strong> en cumulant la prime de bienvenue et la récompense de parrainage. C'est concret, c'est vérifiable, et ça vaut vraiment le coup de prendre cinq minutes pour comprendre comment ça fonctionne.</p>

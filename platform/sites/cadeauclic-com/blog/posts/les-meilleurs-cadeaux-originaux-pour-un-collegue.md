@@ -13,10 +13,10 @@ link_anchors:
 - text: idée de cadeau originale pour un collègue
   max: 5
 related_posts:
-- idees-cadeau-d-anniversaire-pour-maman-les-plus-belles-inspirations-en-2026
+- les-meilleures-idees-cadeau-pour-un-anniversaire-de-18-ans
 - bougies-parfumees-cadeau-intemporel
-- cadeau-homme-21-ans
-- idees-de-cadeaux-de-noel-pour-toute-la-famille
+- idees-cadeau-d-anniversaire-pour-un-couple-les-meilleures-idees
+- idees-cadeaux-pour-un-homme-qui-aime-les-jeux
 ---
 <p>Trouver un cadeau pour un collègue, c'est souvent le casse-tête qu'on s'impose en dernière minute. Trop personnel, ça fait bizarre. Pas assez original, ça fait peine. Et puis il y a cette peur universelle d'offrir quelque chose de complètement raté devant tout le bureau. J'ai vécu ça des dizaines de fois, et j'ai fini par développer quelques réflexes qui m'évitent les mauvaises surprises.</p>
 

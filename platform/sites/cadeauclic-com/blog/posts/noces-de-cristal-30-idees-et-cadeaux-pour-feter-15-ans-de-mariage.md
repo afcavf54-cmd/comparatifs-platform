@@ -13,10 +13,10 @@ link_anchors:
 - text: noces de saphir
   max: 5
 related_posts:
-- noces-de-coton-1-an-de-mariage
-- noces-de-coquelicot-8-ans-de-mariage
-- noces-de-rose-30-cadeaux-17-ans-de-mariage
 - liste-de-mariage
+- bapteme-mariage-anniversaire-le-gobelet-reutilisable
+- noces-de-cire-4-ans-de-mariage
+- noces-d-etain-idees-cadeaux-10-ans-de-mariage
 ---
 <h2>15 ans de mariage, ça se fête vraiment</h2>
 

@@ -1,33 +1,34 @@
 ---
-title: "BoursoBank 150€ : profitez de cette prime parrainage"
+title: 'BoursoBank 150€ : profitez de cette prime parrainage'
 slug: boursobank-150-euros
-date: 2026-06-15T21:19:25+02:00
-updated: 2026-09-21T20:10:40
+date: 2026-06-15 21:19:25+02:00
+updated: 2026-09-21 20:10:40
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
-meta_title: "BoursoBank 150€ {Month} {year} : recevez cette prime parrainage"
-meta_description: "Obtenez 150 euros grâce au parrainage BoursoBank : découvrez comment fonctionne ce bon plan, les conditions à remplir et nos conseils pour ne pas rater votre prime."
+meta_title: 'BoursoBank 150€ {Month} {year} : recevez cette prime parrainage'
+meta_description: 'Obtenez 150 euros grâce au parrainage BoursoBank : découvrez comment
+  fonctionne ce bon plan, les conditions à remplir et nos conseils pour ne pas rater
+  votre prime.'
 featured_image: /blog/boursobank-150-euros.jpg
 status: published
 min_words: 1000
 show_toc: false
 related_posts:
-- boursobank-80-euros
-- parrainage-qonto-300-euros
-- parrainage-qonto-200-euros
-- boursobank-220-euros
+- parrainage-n26-75-euros
+- carte-cadeau-prefere-salaries-noel
+- parrainage-n26-100-euros
+- parrainage-qonto-100e
 link_anchors:
 - text: boursobank 150€
   max: 5
 cta_enabled: true
-cta_text: "Parrainage BoursoBank : Bonus de 150€"
-cta_color: "#0f1a2d"
+cta_text: 'Parrainage BoursoBank : Bonus de 150€'
+cta_color: '#0f1a2d'
 cta_link: https://clikme.xyz/BoursoBank-parrainage
 cta_button: En profiter
-cta_btn_color: "#ff8181"
+cta_btn_color: '#ff8181'
 ---
-
 <p>🎁 Jusqu'à 150 € offerts lors de l'ouverture de votre compte Boursobank.&nbsp;</p><p>Pour profiter de cette offre, cliquez simplement sur&nbsp;<a href="https://clikme.xyz/BoursoBank-parrainage" target="_blank" rel="noopener noreferrer nofollow">ce lien</a>&nbsp;ou renseignez le&nbsp;<a href="https://clikme.xyz/BoursoBank-parrainage" target="_blank" rel="noopener noreferrer nofollow">code parrainage MAVA4983</a>&nbsp;lors de votre inscription.&nbsp;</p><p>Cela ne prend que quelques secondes et peut vous permettre de bénéficier de la prime de bienvenue actuellement proposée par Boursobank.&nbsp;</p>
 <h2>BoursoBank et sa prime de 150€ : c'est vraiment aussi simple que ça ?</h2>
 

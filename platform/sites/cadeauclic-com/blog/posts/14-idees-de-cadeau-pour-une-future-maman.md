@@ -14,10 +14,10 @@ link_anchors:
 - text: idée cadeau pour une future maman
   max: 5
 related_posts:
-- exemple-liste-de-naissance
+- liste-de-naissance-amazon
+- liste-de-naissance-listedenaissance-fr
 - babyphone-philips-avent-ou-babymoov
-- chaise-haute-cybex-ou-stokke
-- comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver
+- les-cadeaux-de-naissance-les-plus-originaux
 ---
 <p>Trouver un cadeau pour une future maman, c'est tout sauf évident. Tu veux faire plaisir, tu veux que ça soit utile, et si possible que ça ne finisse pas au fond d'un placard trois semaines après la naissance. Je suis passée par là des dizaines de fois, que ce soit pour des amies, des cousines, ma belle-sœur... et j'ai appris à la dure que les chaussons brodés à la main, aussi mignons soient-ils, ne sont pas toujours ce dont une maman épuisée a besoin.</p>
 

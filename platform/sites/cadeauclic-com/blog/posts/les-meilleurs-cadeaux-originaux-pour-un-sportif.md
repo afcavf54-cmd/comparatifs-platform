@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau originale pour un sportif
   max: 5
 related_posts:
-- cadeau-homme-saint-valentin
-- les-meilleurs-cadeaux-pour-une-femme-de-60-ans
-- idees-cadeaux-de-noel-pour-un-jeune-couple
-- playmobil-valeur-sure-cadeau-reussi
+- les-meilleurs-cadeaux-originaux-pour-un-voyageur
+- cadeau-homme-73-ans
+- comment-souhaiter-un-joyeux-anniversaire-a-un-homme-avec-originalite
+- les-meilleurs-cadeaux-originaux-pour-une-grand-mere
 ---
 <p>Trouver un cadeau pour un sportif, ça paraît simple au premier abord. Et pourtant, c'est souvent là qu'on se retrouve à tourner en rond pendant des heures entre une gourde générique et une paire de chaussettes de sport. J'en suis la première victime. Mon mari est passionné de running, et pendant des années, je lui ai offert des trucs tellement prévisibles qu'il les utilisait à peine. Depuis, j'ai changé d'approche. Et franchement, les résultats sont incomparables.</p>
 

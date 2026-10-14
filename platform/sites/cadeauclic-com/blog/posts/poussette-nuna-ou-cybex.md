@@ -14,10 +14,10 @@ link_anchors:
 - text: poussette nuna ou cybex
   max: 5
 related_posts:
-- liste-de-naissance-listedenaissance-fr
-- mon-avis-sur-le-babyphone-babymoov-yoo-yoov
-- pourquoi-faire-une-liste-de-naissance
-- liste-de-naissance-amazon
+- liste-de-naissance-mes-envies
+- babyphone-philips-avent-ou-babymoov
+- liste-de-naissance-berceau-magique
+- liste-de-naissance-orchestra
 ---
 <h2>Nuna ou Cybex : comment j'ai tranché après des semaines de comparaison</h2>
 

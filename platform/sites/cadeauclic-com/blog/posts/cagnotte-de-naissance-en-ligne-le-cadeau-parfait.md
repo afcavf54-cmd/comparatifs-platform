@@ -15,10 +15,10 @@ link_anchors:
 - text: cagnotte de naissance en ligne
   max: 5
 related_posts:
-- comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver
-- quels-sont-les-differents-types-de-baignoires-pour-bebe
-- quel-site-pour-faire-une-liste-de-naissance
-- liste-de-naissance-berceau-magique
+- liste-de-naissance-aubert
+- liste-de-naissance-milirose
+- liste-de-naissance-amazon
+- liste-de-naissance-listedenaissance-fr
 ---
 <h2>Leetchi pour organiser une cagnotte de naissance : mon retour d'expérience</h2>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: cadeau de Saint-Valentin à petit prix
   max: 5
 related_posts:
-- noces-de-cire-4-ans-de-mariage
-- idees-de-cadeaux-originaux-pour-la-fete-des-peres
-- noces-de-rose-30-cadeaux-17-ans-de-mariage
-- noces-de-cuir-2-ans-de-mariage
+- noces-de-froment-3-ans-de-mariage
+- liste-de-mariage
+- noces-de-cretonne-cadeaux-19-ans-de-mariage
+- noces-d-etain-idees-cadeaux-10-ans-de-mariage
 ---
 <p>La Saint-Valentin, c'est souvent le même scénario. Tu cherches une idée, tu tombes sur les mêmes fleurs, le même coffret de chocolats, la même bougie parfumée vue cent fois. Et tu te demandes si tu ne peux pas faire mieux, sans pour autant dépenser une fortune. Bonne nouvelle : oui, c'est possible. J'ai passé un bon moment à fouiller, comparer et tester des idées, et je vais te partager celles qui m'ont vraiment convaincue.</p>
 

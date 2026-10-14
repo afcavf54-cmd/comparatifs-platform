@@ -14,10 +14,10 @@ link_anchors:
 - text: pourquoi la carte cadeau est le cadeau préféré des salariés à noël
   max: 5
 related_posts:
-- code-promo-qonto
-- boursobank-220-euros
-- boursobank-150-euros
-- boursobank-80-euros
+- parrainage-qonto-200-euros
+- parrainage-trade-republic-500-euros
+- parrainage-n26-120-euros
+- parrainage-n26-100-euros
 ---
 <h2>Ma découverte qui a changé ma façon d'offrir en entreprise</h2>
 

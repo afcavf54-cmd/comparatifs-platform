@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau pour des noces d'argent
   max: 5
 related_posts:
-- quel-cadeau-offrir-pour-des-noces-de-cuir
-- quel-cadeau-offrir-pour-des-noces-de-muguet
+- quel-cadeau-offrir-pour-des-noces-de-faience
 - quel-cadeau-offrir-pour-des-noces-de-bois
-- quel-cadeau-offrir-pour-des-noces-de-perle
+- quel-cadeau-offrir-pour-des-noces-de-muguet
+- quel-cadeau-offrir-pour-des-noces-de-coquelicot
 ---
 <h2>25 ans de mariage, et maintenant on offre quoi ?</h2>
 

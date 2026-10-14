@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau pour des noces de lin
   max: 5
 related_posts:
+- quel-cadeau-offrir-pour-des-noces-d-argent
 - quel-cadeau-offrir-pour-des-noces-de-muguet
-- quel-cadeau-offrir-pour-des-noces-de-coton
-- quel-cadeau-offrir-pour-des-noces-de-perle
-- quel-cadeau-offrir-pour-des-noces-d-or
+- quel-cadeau-offrir-pour-des-noces-de-coquelicot
+- quel-cadeau-offrir-pour-des-noces-de-faience
 ---
 <p>Les noces de lin, ça marque 12 ans de mariage. Pas encore la grande étape des 20 ou 25 ans, mais déjà une belle décennie derrière eux. Et franchement, trouver un cadeau qui colle vraiment à cette occasion, c'est moins évident qu'il n'y paraît. Le lin, comme matière, ça ouvre des pistes sympas, à condition de ne pas tomber dans le piège des idées trop génériques.</p>
 

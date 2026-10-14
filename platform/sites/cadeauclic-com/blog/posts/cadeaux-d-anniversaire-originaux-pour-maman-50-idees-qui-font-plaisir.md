@@ -14,10 +14,10 @@ link_anchors:
 - text: cadeau d'anniversaire original pour une maman
   max: 5
 related_posts:
-- comment-faire-plaisir-a-sa-mere-sans-argent
-- cadeau-homme-51-ans
-- idees-cadeaux-de-noel-pour-un-jeune-couple
 - carte-cadeau-pour-voyager-une-bonne-idee-cadeau
+- 5-idees-de-cadeaux-pour-prendre-soins-dun-visage
+- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
+- cadeau-saint-valentin-derniere-minute
 ---
 <p>Trouver un cadeau d'anniversaire pour sa maman, c'est souvent bien plus compliqué qu'on ne le pense. On veut faire quelque chose de bien, quelque chose qui la touche vraiment, et on finit par se retrouver devant une bougie parfumée générique ou un peignoir qu'elle n'utilisera jamais. Je suis passée par là des dizaines de fois. Alors j'ai décidé de compiler tout ce qui m'a vraiment marché, ce que j'ai offert, ce que j'ai vu offrir, et quelques idées que j'aurais aimé avoir avant.</p>
 

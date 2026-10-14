@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau de Noël pour un gourmand
   max: 5
 related_posts:
-- idees-cadeau-de-noel-pour-une-ado-fille
-- les-cadeaux-de-noel-les-plus-originaux
-- idees-cadeau-de-noel-pour-bebe
-- idees-cadeau-de-noel-pour-un-ado-garcon
+- idees-cadeau-de-noel-pour-geek
+- idees-cadeau-de-noel-pas-cheres
+- idees-cadeau-de-noel-a-petit-budget
+- idees-de-cadeaux-de-noel-originaux-pour-femme
 ---
 <p>Trouver un cadeau de Noël pour un gourmand, c'est une des choses qui me fait vraiment plaisir chaque année. Parce que la nourriture, c'est universel. Tout le monde mange, tout le monde a ses petits péchés mignons, et offrir quelque chose de délicieux c'est offrir un moment. Pas juste un objet qui va traîner dans un placard.</p>
 

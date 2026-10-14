@@ -15,10 +15,10 @@ status: published
 min_words: 1100
 show_toc: true
 related_posts:
-- les-meilleurs-cadeaux-pour-un-homme-de-40-ans
-- les-meilleurs-cadeaux-pour-un-homme-de-30-ans
-- cadeau-pour-femme-qui-a-tout-idees-cadeaux-originales-a-tous-prix
-- cadeau-homme-55-ans
+- cadeau-saint-valentin
+- cadeaux-d-anniversaire-originaux-pour-maman-50-idees-qui-font-plaisir
+- cadeau-femme
+- cadeau-femme-saint-valentin
 ---
 <p>Chaque année, c'est la même histoire. Tu reçois l'invitation pour le réveillon de Noël chez des amis, ta belle-famille ou tes cousins, et la première question qui te vient c'est : mais qu'est-ce que j'apporte ? Pas question d'arriver les mains vides, c'est une règle que j'applique depuis toujours. Mais pas question non plus de débarquer avec un cadeau générique qui finira au fond d'un placard avant janvier. Tu vois le truc.</p>
 

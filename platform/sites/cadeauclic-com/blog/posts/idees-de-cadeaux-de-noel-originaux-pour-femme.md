@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau de Noël originale pour une femme
   max: 5
 related_posts:
-- les-cadeaux-de-noel-les-plus-originaux
-- idees-cadeau-de-noel-pour-un-couple
-- idees-cadeau-de-noel-pour-ado-les-meilleures-idees
 - idees-cadeau-de-noel-a-petit-budget
+- idees-cadeau-de-noel-pour-les-gourmands
+- idees-cadeau-de-noel-pas-cheres
+- idees-cadeau-de-noel-pour-geek
 ---
 <h2>Trouver le cadeau de Noël parfait pour une femme : par où commencer ?</h2>
 

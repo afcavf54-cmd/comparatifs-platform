@@ -13,9 +13,9 @@ link_anchors:
 - text: idée de cadeau pour des noces de cuivre
   max: 5
 related_posts:
-- quel-cadeau-offrir-pour-des-noces-de-soie
+- quel-cadeau-offrir-pour-des-noces-de-faience
 - quel-cadeau-offrir-pour-des-noces-de-muguet
-- quel-cadeau-offrir-pour-des-noces-de-perle
+- quel-cadeau-offrir-pour-des-noces-d-argent
 - quel-cadeau-offrir-pour-des-noces-de-bois
 ---
 <p>Sept ans de mariage. C'est à la fois peu et beaucoup. Assez pour avoir traversé des galères ensemble, assez pour que les petites habitudes deviennent des grandes complicités. Et c'est exactement ce que les noces de cuivre célèbrent. Si tu cherches un cadeau pour marquer cette étape, tu es au bon endroit. Je t'aide à trouver quelque chose qui va vraiment faire plaisir, sans t'y perdre.</p>

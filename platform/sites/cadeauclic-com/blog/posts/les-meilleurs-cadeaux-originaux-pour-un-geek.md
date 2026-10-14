@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau originale pour un geek
   max: 5
 related_posts:
-- idees-cadeau-d-anniversaire-pour-sa-copine-surprenez-la-en-2026
+- idees-cadeau-d-anniversaire-pour-un-couple-les-meilleures-idees
+- 15-livres-a-offrir-en-cadeau-a-une-maman
+- cadeau-homme-43-ans
 - 25-idees-de-cadeaux-originaux-et-bien-etre-pour-la-fete-des-peres
-- cadeau-homme-70-ans
-- cadeaux-d-anniversaire-originaux-pour-maman-50-idees-qui-font-plaisir
 ---
 <p>Trouver un cadeau pour un geek, ça peut paraître facile. Et pourtant, c'est souvent là qu'on se plante le plus. Trop banal, déjà acheté, pas à la bonne plateforme... J'ai vécu ça tellement de fois que j'ai fini par construire ma propre liste de références. Voilà ce que j'ai retenu après des années à chercher, comparer et parfois rater mes coups.</p>
 

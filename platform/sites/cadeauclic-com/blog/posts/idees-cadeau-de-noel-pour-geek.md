@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau de Noël pour un passionné de high-tech
   max: 5
 related_posts:
+- idees-cadeau-de-noel-pas-cheres
 - idees-cadeau-de-noel-pour-les-gourmands
-- idees-cadeau-de-noel-pour-ado-les-meilleures-idees
-- idees-cadeau-de-noel-pour-un-couple
 - idees-cadeau-de-noel-a-petit-budget
+- idees-de-cadeaux-de-noel-originaux-pour-femme
 ---
 <p>Trouver le cadeau parfait pour un geek à Noël, c'est à la fois hyper simple et complètement casse-tête. Simple, parce qu'un geek a toujours une liste de trucs qu'il veut. Compliqué, parce que soit il a déjà tout acheté lui-même, soit tu ne comprends pas la moitié de ses envies. Je connais le problème par coeur : mon mari est geek, mon fils de 14 ans l'est encore plus, et chaque année je me retrouve à écumer les sites à la recherche de l'idée qui fera vraiment l'effet d'une bonne surprise.</p>
 

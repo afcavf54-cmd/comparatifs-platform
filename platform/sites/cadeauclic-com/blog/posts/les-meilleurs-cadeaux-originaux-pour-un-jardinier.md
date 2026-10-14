@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau originale pour un jardinier
   max: 5
 related_posts:
-- 15-livres-a-offrir-en-cadeau-a-une-maman
-- idees-cadeau-d-anniversaire-pour-sa-copine-surprenez-la-en-2026
-- comment-faire-plaisir-a-sa-mere-sans-argent
-- cadeau-femme-saint-valentin
+- cadeau-homme-21-ans
+- cadeau-femme-40-ans
+- calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel
+- cadeau-saint-valentin-derniere-minute
 ---
 <p>Trouver un cadeau pour un passionné de jardin, c'est à la fois facile et compliqué. Facile, parce que les idées ne manquent pas. Compliqué, parce qu'un jardinier a souvent déjà tout ce qu'il faut. J'ai vécu cette galère plusieurs fois, notamment pour l'anniversaire de ma belle-mère qui passe ses week-ends entiers les mains dans la terre. Et à force de chercher, j'ai fini par trouver des options vraiment chouettes, originales, sans forcément exploser mon budget.</p>
 

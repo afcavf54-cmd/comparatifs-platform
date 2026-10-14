@@ -14,9 +14,9 @@ link_anchors:
 - text: idées cadeau pour la fête des pères
   max: 5
 related_posts:
+- les-meilleures-idees-cadeau-pour-un-anniversaire-de-18-ans
+- robot-kenwood-ou-kitchenaid
 - cadeau-saint-valentin
-- cadeau-pour-femme-qui-a-tout-idees-cadeaux-originales-a-tous-prix
-- comment-faire-plaisir-a-sa-mere-sans-argent
 - cadeau-homme-57-ans
 ---
 <p>Chaque année, c'est le même casse-tête. La fête des Pères approche, et là, panique. Qu'est-ce qu'on lui offre cette fois ? Pas encore une cravate, pas encore un coffret de bières génériques. Cette année, j'avais envie de faire différemment, de trouver quelque chose qui lui ferait vraiment plaisir, pas juste un cadeau qu'on pose sur la table et qu'on oublie deux jours après. J'ai cherché, comparé, et j'ai sélectionné pour toi 25 idées qui misent sur l'originalité et le bien-être, avec des budgets pour tous les portefeuilles.</p>

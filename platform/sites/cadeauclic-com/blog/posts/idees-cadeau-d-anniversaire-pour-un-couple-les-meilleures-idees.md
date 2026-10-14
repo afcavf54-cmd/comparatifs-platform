@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau d'anniversaire pour un couple
   max: 5
 related_posts:
-- cadeau-saint-valentin-derniere-minute
-- 25-idees-de-cadeaux-originaux-et-bien-etre-pour-la-fete-des-peres
-- idees-cadeau-d-anniversaire-pour-papa-notre-selection-en-2026
-- cadeau-homme-70-ans
+- cadeau-femme-50-ans
+- cadeau-femme-80-ans
+- cadeau-homme-21-ans
+- atelier-creation-de-parfum-l-idee-de-cadeau-parfaite
 ---
 <p>Trouver un cadeau pour un couple, c'est une de ces situations où on se retrouve vite à tourner en rond. Un truc pour elle, un truc pour lui, ou quelque chose qui leur appartient à tous les deux ? J'ai passé des années à chercher LA bonne idée, à offrir des cadeaux qui ont atterri dans un placard, et parfois, à tomber sur quelque chose qui a vraiment fait mouche. Voilà ce que j'ai retenu de tout ça.</p>
 

@@ -14,9 +14,9 @@ link_anchors:
 - text: idée de cadeau pour des noces de coquelicot
   max: 5
 related_posts:
-- quel-cadeau-offrir-pour-des-noces-de-cuivre
+- quel-cadeau-offrir-pour-des-noces-de-faience
+- quel-cadeau-offrir-pour-des-noces-d-argent
 - quel-cadeau-offrir-pour-des-noces-de-bois
-- quel-cadeau-offrir-pour-des-noces-de-cuir
 - quel-cadeau-offrir-pour-des-noces-de-muguet
 ---
 <p>Les noces de coquelicot, c'est la première année de mariage. Un an déjà. Pour certains couples, ça passe à toute vitesse. Pour d'autres, c'est une année bien chargée entre les remerciements, le tri des photos, et les premières vraies habitudes de vie commune. Offrir un cadeau pour cette occasion, c'est une belle façon de marquer le coup sans attendre les grandes étapes.</p>

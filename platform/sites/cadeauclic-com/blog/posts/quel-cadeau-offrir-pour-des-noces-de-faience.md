@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau pour des noces de faïence
   max: 5
 related_posts:
-- quel-cadeau-offrir-pour-des-noces-de-perle
-- quel-cadeau-offrir-pour-des-noces-d-or
+- quel-cadeau-offrir-pour-des-noces-de-lin
 - quel-cadeau-offrir-pour-des-noces-d-argent
-- quel-cadeau-offrir-pour-des-noces-de-cristal
+- quel-cadeau-offrir-pour-des-noces-de-cuivre
+- quel-cadeau-offrir-pour-des-noces-de-muguet
 ---
 <h2>Les noces de faïence, c'est quoi exactement ?</h2>
 

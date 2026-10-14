@@ -14,10 +14,10 @@ link_anchors:
 - text: idée de cadeau originale pour la fête des Pères
   max: 5
 related_posts:
+- noces-de-cire-4-ans-de-mariage
+- bapteme-mariage-anniversaire-le-gobelet-reutilisable
 - noces-de-cuir-2-ans-de-mariage
-- noces-de-plomb-idees-cadeaux-14-ans-de-mariage
-- noces-de-muguet-idees-13-ans-de-mariage
-- noces-de-cretonne-cadeaux-19-ans-de-mariage
+- noces-de-turquoise-30-cadeaux-18-ans-de-mariage
 ---
 <p>La fête des Pères arrive toujours trop vite. On se retrouve à chercher une idée le week-end d'avant, on tourne en rond sur les mêmes sites, et au final on commande une énième cravate ou une boîte de chocolats. Cette année, j'avais vraiment envie de faire mieux. Et franchement, après pas mal de recherches et quelques achats testés sur mon propre mari et mon beau-père, j'ai des choses concrètes à te partager.</p>
 
