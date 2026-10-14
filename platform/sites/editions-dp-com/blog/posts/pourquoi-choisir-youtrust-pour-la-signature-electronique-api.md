@@ -2,7 +2,7 @@
 title: Pourquoi choisir youtrust pour la signature électronique API ?
 slug: pourquoi-choisir-youtrust-pour-la-signature-electronique-api
 date: 2026-10-14 08:33:17+02:00
-updated: 2026-10-14T08:33:17
+updated: 2026-10-14T08:33:22
 categorie: "Gestion d'entreprise"
 categories:
 - "Gestion d'entreprise"
@@ -44,3 +44,4 @@ show_toc: true
 <h3>Le suivi et automatisation des relances</h3>
 <p>Le suivi des documents envoyés est une fonctionnalité clé qui peut améliorer l’efficacité de votre processus de signature. Grâce aux <strong>webhooks</strong> fournis par Youtrust, vous pouvez recevoir des notifications en temps réel sur l'état des signatures.&nbsp;</p><p>Cela vous permet d’automatiser les relances auprès des signataires qui n'ont pas encore complété le processus. En intégrant ces relances automatiques dans vos workflows, vous pouvez réduire le temps d'attente et accélérer les conversions. De plus, l'archivage automatique des documents signés garantit que vous disposez toujours d'une trace des transactions, ce qui est indispensable pour des raisons de <strong>conformité</strong> et de <strong>sécurité</strong>.</p>
                             
+
