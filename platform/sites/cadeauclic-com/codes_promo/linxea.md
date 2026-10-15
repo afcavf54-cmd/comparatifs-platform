@@ -97,7 +97,7 @@ date_maj: "2026-10-15"
 
 <h2>Étape 3 : applique le code au moment de souscrire</h2>
 
-<p>Sur Linxea, le champ pour entrer un code promo apparaît pendant le tunnel de souscription, généralement à l'étape récapitulative avant la validation de ton dossier. Ce n'est pas un panier classique comme sur un site e-commerce, donc ne cherche pas un bouton "panier" en haut à droite. Colle ton code dans le champ prévu, souvent libellé "code parrain" ou "code avantage", puis valide. Si tu souscris par téléphone avec un conseiller Linxea, pense à lui mentionner le code dès le début de l'appel.</p>
+<p>Sur Linxea, il n'est pas necessaire d'indiquer un code promo lors du parcous de souscription. Pour profiter d'une offre promotionnelle en cours, il suffit de cliquer sur le lien correspondant à l'offre, et de faire la souscription à une assurance vie ou PER directement sur le site de Linxea. Pour profiter de l'offre de parrainage, il faut suivre le lien indiqué plus haut et d'indiquer votre adresse e-mail.</p>
 
 <h2>Étape 4 : vérifie que la remise est bien prise en compte</h2>
 
