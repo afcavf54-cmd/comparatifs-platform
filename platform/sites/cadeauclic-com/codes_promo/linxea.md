@@ -9,12 +9,19 @@ description_marque: |-
 
   Elle s'adresse aux particuliers qui souhaitent gérer leur épargne de façon autonome, avec des frais réduits par rapport aux réseaux bancaires traditionnels. Son positionnement est clairement orienté vers une clientèle à l'aise avec le digital et attentive aux coûts de gestion.
 avis_sophie: |-
-  Linxea, c'est une de ces marques que j'ai découvertes un peu par hasard, en cherchant comment faire fructifier un peu l'argent de côté sans me retrouver noyée sous les frais. Ce qui m'a convaincue, c'est leur transparence sur les frais de gestion, vraiment bas comparés à ce qu'on voit ailleurs sur l'assurance vie ou le PER. J'ai sélectionné 0 code promo actif ce mois-ci, ce qui est un peu dommage, mais honnêtement sur ce type de produit financier, c'est surtout la qualité de la plateforme et les conditions du contrat qui comptent.
+  Linxea, c'est une de ces marques que j'ai découvertes un peu par hasard, en cherchant comment faire fructifier un peu l'argent de côté sans me retrouver noyée sous les frais. 
 
-  Je recommande Linxea à toute personne qui veut placer de l'argent pour un projet à moyen terme, préparer sa retraite ou simplement épargner de façon plus rentable que sur un Livret A. C'est aussi une option sérieuse si tu envisages d'ouvrir un contrat d'assurance vie pour tes enfants. La gestion en ligne est claire, et l'équipe conseils répond plutôt bien aux questions, même quand on n'y connaît pas grand chose.
+  Ce qui m'a convaincue, c'est leur transparence sur les frais de gestion, vraiment bas comparés à ce qu'on voit ailleurs sur l'assurance vie ou le PER. 
+
+  Je recommande Linxea à toute personne qui veut placer de l'argent pour un projet à moyen terme, préparer sa retraite ou simplement épargner de façon plus rentable que sur un Livret A. 
+
+  C'est aussi une option sérieuse si tu envisages d'ouvrir un contrat d'assurance vie pour tes enfants. La gestion en ligne est claire, et l'équipe conseils répond plutôt bien aux questions, même quand on n'y connaît pas grand chose.
 
   Mon conseil pratique : avant d'ouvrir un contrat, prends le temps de comparer les supports d'investissement proposés. Tous les contrats Linxea n'offrent pas exactement les mêmes fonds, donc choisis bien celui qui correspond à ton profil et à ton horizon de placement.
-conseil_sophie: Profite du parrainage Linxea avant d'ouvrir ton contrat. Tu reçois une prime, ton filleul aussi, et ça ne te coûte rien de plus. Combine ça avec la newsletter pour récupérer les offres de bienvenue dès ton inscription. C'est le combo le plus simple pour gratter quelques euros sans effort sur un placement long terme.
+conseil_sophie: |-
+  Avant d'ouvrir votre contrat chez Linxea, pensez à vérifier les offres disponibles. Vous pouvez notamment profiter d'une carte cadeau de 50 €, valable lors de votre première souscription, ou bénéficier d'une offre promotionnelle du moment, parfois encore plus avantageuse. 
+
+  L'objectif est simple : récupérer le meilleur bonus possible dès l'ouverture de votre assurance-vie ou de votre PER Linxea. Attention, ces offres ne sont généralement pas cumulables.
 rating:
   value: 5
   count: 498
@@ -37,11 +44,13 @@ codes:
     cta_text: ""
 faq:
   - question: Comment utiliser un code promo Linxea ?
-    reponse: Linxea est une plateforme d'épargne en ligne, pas un site e-commerce classique. Il n'y a donc pas de panier d'achat avec un champ code promo. Si tu disposes d'un code, il est généralement à saisir lors de l'ouverture de ton contrat, à l'étape d'inscription. Lis bien les conditions associées avant de te lancer.
+    reponse: |-
+      Pour profiter de la carte cadeau, il suffit de suivre le lien indiqué plus haut et d'indiquer son mail.
+      Pour les offres promotionnelles temporaires, il suffit de passer par un des liens plus haut, aucun code promo n'est demandé.
   - question: Les codes promo Linxea sont-ils cumulables avec d'autres offres ?
-    reponse: En général, les offres Linxea ne sont pas cumulables entre elles. Un code de bienvenue ne se cumule pas avec une offre de taux boosté ou un autre avantage en cours. Côté cashback, c'est à vérifier au cas par cas selon la plateforme utilisée. Mieux vaut choisir l'offre la plus avantageuse pour ta situation.
+    reponse: "En général, les offres Linxea ne sont pas cumulables entre elles. Un code de bienvenue ne se cumule pas avec une offre de taux boosté ou un autre avantage en cours. "
   - question: Linxea propose-t-elle un code de parrainage ou une offre nouveau client ?
-    reponse: Oui, Linxea dispose d'un programme de parrainage. Si un client existant te recommande, vous pouvez tous les deux bénéficier d'un avantage, souvent sous forme de prime ou de frais offerts. Il n'existe pas à ce jour d'offre spécifique étudiant. Vérifie les conditions sur le site Linxea, les offres changent régulièrement.
+    reponse: Oui, Linxea dispose d'un programme de parrainage. Si un client existant te recommande, vous pouvez tous les deux bénéficier d'un avantage,sous forme de carte cadeau de 50 euros pour le filleul et le parrain.
   - question: Que faire si mon code promo Linxea ne fonctionne pas ?
     reponse: Commence par vérifier la date d'expiration et les conditions d'éligibilité du code. Certaines offres sont réservées aux nouveaux clients ou à un produit précis. Si tout semble correct, contacte directement le service client Linxea par mail ou téléphone. Ils sont généralement réactifs et peuvent régulariser la situation sans trop de complications.
 historique_12_mois:
