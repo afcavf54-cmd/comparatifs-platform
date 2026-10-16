@@ -633,7 +633,7 @@
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════════════════ -->
 <script>
 const COUPONS = {
-{% for c in brand.codes %}  "{{ c.id }}": { code: {{ c.code | tojson }}, accroche: {{ c.accroche | tojson }}, detail: {{ (c.detail or '') | tojson }}, valeur: {{ c.valeur | tojson }}, unite: {{ c.unite | tojson }}, type: {{ c.type | tojson }} },
+{% for c in brand.codes %}  "{{ c.id }}": { code: {{ c.code | tojson }}, accroche: {{ c.accroche | tojson }}, detail: {{ (c.detail or '') | tojson }}, valeur: {{ c.valeur | tojson }}, unite: {{ c.unite | tojson }}, type: {{ c.type | tojson }}, url: {{ (c.cta_url or '') | tojson }} },
 {% endfor %}};
 const URL_AFFILIATION = {{ brand.url_cta | tojson }};
 const MARQUE = {{ brand.marque | tojson }};
@@ -712,14 +712,18 @@ document.querySelectorAll('.faq-q').forEach(q => {
       codeBox.style.display = 'none';
       subEl.style.display = 'none';
     }
-    detailEl.textContent = c.detail || '';
+    detailEl.innerHTML = c.detail || '';
     detailEl.style.display = c.detail ? 'block' : 'none';
+    // Lien d'affiliation : celui propre à l'offre s'il est renseigné, sinon le général.
+    const dest = (c.url || '').trim() || URL_AFFILIATION;
+    const ctaEl = document.getElementById('modalCta');
+    if (ctaEl && dest) ctaEl.href = dest;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     modal.querySelectorAll('.modal-feedback button').forEach(b => b.classList.remove('active'));
     copyBtn.classList.remove('copied');
     copyBtn.textContent = 'COPIER';
-    if (URL_AFFILIATION) window.open(URL_AFFILIATION, '_blank', 'noopener,noreferrer');
+    if (dest) window.open(dest, '_blank', 'noopener,noreferrer');
   }
   function closeModal() {
     modal.classList.remove('active');
