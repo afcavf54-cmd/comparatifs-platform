@@ -477,10 +477,16 @@
       .trust-item { font-size: .82rem; gap: 7px; }
       .trust .tick { width: 20px; height: 20px; font-size: .64rem; }
 
-      /* Tabs mobile : compactes pour tenir sur une ligne (avec wrap si vraiment trop) */
-      .tabs { margin-top: 16px; gap: 6px; padding-bottom: 0; }
-      .tab { padding: 7px 11px; font-size: .82rem; }
+      /* Filtres mobile : onglets sur UNE ligne (défilement horizontal),
+         puis « Filtrer par produit » sur UNE ligne (label + select côte à côte). */
+      .filterbar { flex-direction: column; align-items: stretch; gap: 10px; }
+      .filterbar .tabs, .tabs { margin: 0; gap: 6px; padding-bottom: 2px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .tabs::-webkit-scrollbar { display: none; }
+      .tab { padding: 7px 11px; font-size: .82rem; flex: 0 0 auto; }
       .tab .count { padding: 1px 6px; font-size: .72rem; }
+      .pdrop { flex-direction: row; align-items: center; gap: 8px; width: 100%; min-width: 0; }
+      .pdrop label { flex: 0 0 auto; }
+      .pdrop select { flex: 1 1 auto; min-width: 0; }
 
       /* ─── Cards codes promo mobile : layout vertical compact ─── */
       .coupon {
@@ -490,7 +496,8 @@
         padding: 16px;
         margin-bottom: 12px;
       }
-      .coupon[data-best="1"]::before { left: 16px; }
+      /* Badge « Meilleure remise » : au-dessus de la carte, centré (mobile). */
+      .coupon[data-best="1"]::before { left: 50%; transform: translateX(-50%); }
       /* Bloc valeur + accroche sur la même ligne, en haut */
       .coupon .val {
         display: flex;
