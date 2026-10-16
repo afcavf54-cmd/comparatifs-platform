@@ -337,17 +337,21 @@
        vérifiée + badges de confiance à droite. Les filtres (onglets + produits)
        sont rendus SOUS le bandeau, sur fond blanc. */
     .hero-banner {
-      display: flex;
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      grid-template-areas: "logo head" "logo trust";
       align-items: center;
-      gap: 32px;
+      column-gap: 32px;
+      row-gap: 16px;
       background: var(--rose-100);
       border-radius: 28px;
       padding: 28px 36px;
       margin: 24px 0;
     }
-    .hero-text { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+    .brandbox { grid-area: logo; align-self: center; }
+    .hero-head { grid-area: head; display: flex; flex-direction: column; min-width: 0; }
     .hero-banner h1 { font-size: 2.4rem; line-height: 1.15; margin-bottom: 8px; }
-    .trust { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 18px; }
+    .trust { grid-area: trust; display: flex; flex-wrap: wrap; gap: 14px 28px; }
     .trust-item { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); font-size: .95rem; }
     .trust .tick { width: 24px; height: 24px; border-radius: 50%; background: var(--grad); color: var(--white); display: inline-flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; flex-shrink: 0; }
     .pink { color: var(--rose-600); }
@@ -578,15 +582,22 @@
       .layout { grid-template-columns: 1fr; }
       .layout > aside { order: 0; }   /* mobile : codes d'abord, sidebar ensuite */
 
-      /* ─── Bandeau d'en-tête mobile : logo + texte en ligne, badges dessous ─── */
-      .hero-banner { gap: 14px; padding: 18px; border-radius: 20px; margin: 14px 0 18px; align-items: center; }
-      .brandbox { width: 72px; height: 72px; padding: 8px; border-radius: 14px; margin: 0; align-self: center; }
-      .brandbox .ph { font-size: .7rem; }
-      .hero-text { gap: 4px; }
+      /* ─── Bandeau d'en-tête mobile : titre + ligne vérifiée sur TOUTE la
+         largeur, puis logo (50%) et badges (50%) sur la même ligne. ─── */
+      .hero-banner {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "head head" "logo trust";
+        column-gap: 14px; row-gap: 14px;
+        padding: 18px; border-radius: 20px; margin: 14px 0 18px;
+        align-items: center;
+      }
+      .brandbox { width: 100%; height: 120px; padding: 14px; border-radius: 16px; margin: 0; align-self: center; }
+      .brandbox .ph { font-size: .9rem; }
+      .hero-head { gap: 4px; }
       .hero-banner h1 { font-size: 1.3rem; line-height: 1.2; margin-bottom: 4px; }
       .updated { font-size: .8rem; gap: 6px; }
       .updated .dot { width: 6px; height: 6px; }
-      .trust { gap: 8px 16px; margin-top: 10px; }
+      .trust { flex-direction: column; gap: 10px; }
       .trust-item { font-size: .82rem; gap: 7px; }
       .trust .tick { width: 20px; height: 20px; font-size: .64rem; }
 
@@ -611,7 +622,8 @@
         margin-bottom: 12px;
       }
       /* Badge « Meilleure remise » : au-dessus de la carte, centré (mobile). */
-      .coupon[data-best="1"]::before { left: 50%; transform: translateX(-50%); }
+      .coupon[data-best="1"]::before { left: 50%; transform: translateX(-50%); top: -13px; }
+      .coupon[data-best="1"] { padding-top: 28px; }   /* décolle le badge du 50€ */
       /* Bloc valeur + accroche sur la même ligne, en haut */
       .coupon .val {
         display: flex;
@@ -834,14 +846,14 @@
       <img src="/codes-promo/linxea/logo.png" alt="Logo Linxea" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="ph" style="display:none">Linxea</div>
     </div>
-    <div class="hero-text">
+    <div class="hero-head">
       <h1>Code promo Linxea et codes de réduction en octobre 2026</h1>
       <span class="updated"><span class="dot"></span>6 codes promo Linxea vérifiés le 16 octobre 2026</span>
-      <div class="trust">
-        <span class="trust-item"><span class="tick">✓</span> Offres vérifiées</span>
-        <span class="trust-item"><span class="tick">✓</span> Codes testés régulièrement</span>
-        <span class="trust-item"><span class="tick">✓</span> Économisez chez Linxea</span>
-      </div>
+    </div>
+    <div class="trust">
+      <span class="trust-item"><span class="tick">✓</span> Offres vérifiées</span>
+      <span class="trust-item"><span class="tick">✓</span> Codes testés régulièrement</span>
+      <span class="trust-item"><span class="tick">✓</span> Économisez chez Linxea</span>
     </div>
   </div>
 
