@@ -87,7 +87,7 @@
   }
 
   /* Colonnes (CadeauClic, Légal) */
-  .cdc-foot h5 {
+  .cdc-foot .cdc-foot-title {
     font-family: "Poppins", system-ui, sans-serif;
     font-weight: 700;
     color: #fff;
@@ -179,7 +179,7 @@
 
       {# ── Colonne 2 : Plan du site (sections internes) ──────────────── #}
       <div class="cdc-foot-col">
-        <h5>{{ site.name | default('CadeauClic') }}</h5>
+        <div class="cdc-foot-title">Informations</div>
         {% if site.has_a_propos is defined and site.has_a_propos %}
         <a href="/a-propos/">À propos</a>
         {% endif %}
@@ -192,7 +192,7 @@
 
       {# ── Colonne 3 : Légal ─────────────────────────────────────────── #}
       <div class="cdc-foot-col">
-        <h5>Légal</h5>
+        <div class="cdc-foot-title">Légal</div>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Politique de confidentialité</a>
         <a href="/plan-du-site">Plan du site</a>
