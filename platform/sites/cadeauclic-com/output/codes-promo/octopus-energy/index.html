@@ -252,7 +252,11 @@
     .tab.active .count { background: rgba(255,255,255,.15); color: var(--white); }
 
     /* ═══ LAYOUT 2 COLS ════════════════════════════════════════════════════ */
-    .layout { display: grid; grid-template-columns: 1fr 340px; gap: 36px; padding-bottom: 56px; }
+    .layout { display: grid; grid-template-columns: 340px 1fr; gap: 36px; padding-bottom: 56px; }
+    /* Disposition inversée : sidebar à GAUCHE, liste des codes à DROITE.
+       L'ordre du DOM reste (codes puis sidebar) → sur mobile les codes
+       s'empilent en premier (voir reset dans la media query). */
+    .layout > aside { order: -1; }
 
     /* ═══ COUPON CARD ══════════════════════════════════════════════════════ */
     .coupon { background: var(--white); border-radius: var(--r); padding: 22px; margin-bottom: 16px; display: grid; grid-template-columns: 110px 1fr 160px; gap: 22px; align-items: center; box-shadow: var(--shadow-sm); border: 1px solid var(--line); transition: all .2s; }
@@ -436,6 +440,7 @@
       .nav-right .btn { width: 100%; justify-content: center; }
       .hamburger { display: block; z-index: 100; }
       .layout { grid-template-columns: 1fr; }
+      .layout > aside { order: 0; }   /* mobile : codes d'abord, sidebar ensuite */
 
       /* ─── Page head mobile : grid 60px / 1fr / tabs pleine largeur ─── */
       .page-head {
@@ -1077,8 +1082,8 @@
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════════════════ -->
 <script>
 const COUPONS = {
-  "cmqhz0aj5bod2": { code: "", accroche: "B\u00e9n\u00e9ficiez de 80\u20ac de prime \u00e0 partager en cliquant sur notre lien.", detail: "", valeur: 80, unite: "\u20ac", type: "code" },
-  "cmqi2qgcjupvd": { code: "", accroche: "40\u20ac OFFERTS A VOTRE INSCRIPTION !", detail: "", valeur: 40, unite: "\u20ac", type: "code" },
+  "cmqhz0aj5bod2": { code: "", accroche: "B\u00e9n\u00e9ficiez de 80\u20ac de prime \u00e0 partager en cliquant sur notre lien.", detail: "", valeur: 80, unite: "\u20ac", type: "code", url: "" },
+  "cmqi2qgcjupvd": { code: "", accroche: "40\u20ac OFFERTS A VOTRE INSCRIPTION !", detail: "", valeur: 40, unite: "\u20ac", type: "code", url: "" },
 };
 const URL_AFFILIATION = "https://clikme.xyz/octopus";
 const MARQUE = "Octopus Energy";
@@ -1157,14 +1162,18 @@ document.querySelectorAll('.faq-q').forEach(q => {
       codeBox.style.display = 'none';
       subEl.style.display = 'none';
     }
-    detailEl.textContent = c.detail || '';
+    detailEl.innerHTML = c.detail || '';
     detailEl.style.display = c.detail ? 'block' : 'none';
+    // Lien d'affiliation : celui propre à l'offre s'il est renseigné, sinon le général.
+    const dest = (c.url || '').trim() || URL_AFFILIATION;
+    const ctaEl = document.getElementById('modalCta');
+    if (ctaEl && dest) ctaEl.href = dest;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     modal.querySelectorAll('.modal-feedback button').forEach(b => b.classList.remove('active'));
     copyBtn.classList.remove('copied');
     copyBtn.textContent = 'COPIER';
-    if (URL_AFFILIATION) window.open(URL_AFFILIATION, '_blank', 'noopener,noreferrer');
+    if (dest) window.open(dest, '_blank', 'noopener,noreferrer');
   }
   function closeModal() {
     modal.classList.remove('active');
