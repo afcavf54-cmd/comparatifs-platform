@@ -40,7 +40,7 @@ codes:
     expire_le: "2027-10-10"
     nb_utilisations: 658
     teste_par_sophie: ""
-    meilleure_remise: false
+    meilleure_remise: true
     expired: false
     cta_text: ""
   - id: cmvanj1e1jdjv
@@ -173,5 +173,6 @@ date_maj: "2026-10-16"
 <h2>Étape 4 : vérifie que la remise est bien prise en compte</h2>
 
 <p>Avant de finaliser ta souscription, regarde attentivement le récapitulatif de ton contrat. La remise ou l'avantage lié au code doit apparaître clairement, que ce soit une réduction sur les frais d'entrée, un geste commercial ou un autre avantage selon l'offre du moment. Si tu ne vois rien de mentionné, ne valide pas encore. Contacte le service client Linxea pour signaler le problème avant signature, car il est difficile de corriger ça après coup. Mieux vaut prendre deux minutes de plus que de rater l'avantage.</p>
+
 
 
