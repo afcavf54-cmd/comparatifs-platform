@@ -232,6 +232,9 @@
     .rich a { color: var(--rose-600); text-decoration: underline; }
     .rich strong, .rich b { font-weight: 700; }
     .rich blockquote { margin: 0 0 12px; padding-left: 12px; border-left: 3px solid var(--line); color: var(--ink-soft); }
+    /* « Lire l'avis complet » : avis tronqué + lien d'expansion. */
+    .avis-more { background: none; border: 0; color: var(--rose-600); font-weight: 700; font-size: .9rem; cursor: pointer; padding: 4px 0 0; text-decoration: underline; text-underline-offset: 2px; font-family: inherit; }
+    .avis-more:hover { color: var(--rose-500); }
     .side-card p { font-size: .92rem; color: var(--ink-soft); line-height: 1.6; }
     .avis-head { display: flex; align-items: center; gap: 10px; }
     .avis-head img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
@@ -502,14 +505,6 @@
       </div>
       {% endif %}
 
-      <!-- RATING -->
-      {% if brand.rating and brand.rating.value %}
-      <div class="rating">
-        <div class="stars">{% for i in range(5) %}{% if i < (brand.rating.value | round(0, 'floor') | int) %}★{% else %}☆{% endif %}{% endfor %}</div>
-        <span>{{ brand.marque }} a obtenu la note de <b>{{ brand.rating.value }}/5</b> de la part de nos lecteurs</span>
-      </div>
-      {% endif %}
-
       <!-- HOW TO -->
       {% if how_to_steps %}
       <div class="panel">
@@ -570,7 +565,7 @@
     <aside>
       {% if brand.description_marque %}
       <div class="side-card">
-        <h3>Qu'est-ce que {{ brand.marque }}&nbsp;?</h3>
+        <h3>{{ brand.description_titre or ('Qu\'est-ce que ' ~ brand.marque ~ ' ?') }}</h3>
         <div class="rich">{{ brand.description_marque | safe }}</div>
       </div>
       {% endif %}
@@ -584,7 +579,15 @@
           {% endif %}
           L'avis de {{ (author.name or 'Sophie').split(' ')[0] }}
         </h3>
-        <div class="rich">{{ (brand.avis_sophie or ('Je rassemble pour toi les meilleurs codes promo ' ~ brand.marque ~ '. Tous testés à la main.')) | safe }}</div>
+        {% set _avis_full = brand.avis_sophie or ('Je rassemble pour toi les meilleurs codes promo ' ~ brand.marque ~ '. Tous testés à la main.') %}
+        {% set _avis_words = (_avis_full | striptags).split() %}
+        {% if _avis_words | length > 100 %}
+        <div class="rich avis-preview">{{ _avis_words[:90] | join(' ') }}…</div>
+        <div class="rich avis-full" hidden>{{ _avis_full | safe }}</div>
+        <button type="button" class="avis-more">Lire l'avis complet</button>
+        {% else %}
+        <div class="rich">{{ _avis_full | safe }}</div>
+        {% endif %}
         <a href="{{ brand.url_cta }}" class="btn" target="_blank" rel="nofollow noopener sponsored" style="width:100%;justify-content:center;margin-top:16px">Aller sur {{ brand.marque }} →</a>
       </div>
 
@@ -720,6 +723,19 @@ const MARQUE = {{ brand.marque | tojson }};
     apply();
   });
 })();
+
+// « Lire l'avis complet » : remplace l'aperçu tronqué par l'avis complet.
+document.querySelectorAll('.avis-more').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.side-card');
+    if (!card) return;
+    const prev = card.querySelector('.avis-preview');
+    const full = card.querySelector('.avis-full');
+    if (prev) prev.hidden = true;
+    if (full) full.hidden = false;
+    btn.hidden = true;
+  });
+});
 
 document.querySelectorAll('.detail').forEach(btn => {
   btn.addEventListener('click', () => {
