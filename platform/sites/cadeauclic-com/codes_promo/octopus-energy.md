@@ -4,41 +4,64 @@ slug: octopus-energy
 categorie_marque: Energie
 url_affiliation: https://clikme.xyz/octopus
 logo_url: /codes-promo/octopus-energy/logo.png
-description_marque: Octopus Energy est un fournisseur d'électricité et de gaz qui s'adresse aux particuliers souhaitant une énergie d'origine renouvelable. La marque se positionne sur un segment accessible avec une approche transparente sur les tarifs et une gestion du contrat entièrement en ligne. Elle cible aussi bien les foyers soucieux de leur impact environnemental que ceux qui cherchent à simplifier la gestion de leur énergie au quotidien.
-avis_sophie: "J'ai passé du temps à rassembler et tester ces codes Octopus Energy à la main, parce que dans le secteur de l'énergie, les offres changent vite et certains codes expirés trainent encore sur des sites peu sérieux. Ce que j'ai remarqué, c'est que les codes de parrainage sont souvent les plus fiables et les plus généreux, alors privilégie-les si tu en trouves un actif sur cette page. Un petit piège à éviter : certains codes ne sont valables que pour une première souscription, donc si tu es déjà client Octopus Energy, vérifie bien les conditions avant de t'emballer. Dans l'ensemble, la marque joue plutôt le jeu de la transparence sur ses offres, ce qui est appréciable."
-conseil_sophie: Surveille les périodes de rentrée et de début d'hiver, Octopus Energy lance régulièrement des offres de bienvenue plus avantageuses à ces moments-là, c'est souvent le meilleur timing pour souscrire et cumuler un bon bonus de parrainage avec un tarif compétitif.
+description_marque: <p>Octopus Energy est un <b>fournisseur d'électricité et de gaz</b> qui s'adresse aux particuliers souhaitant une énergie d'origine renouvelable.&nbsp;</p><p>La marque se positionne sur un segment accessible avec une approche transparente sur les tarifs et une <b>gestion du contrat entièrement en ligne</b>.&nbsp;</p><p>Elle cible aussi bien les foyers soucieux de leur <b>impact environnemental</b> que ceux qui cherchent à simplifier la gestion de leur énergie au quotidien.</p>
+avis_sophie: "<p>J'ai passé du temps à rassembler et <b>tester ces codes Octopus Energy</b> à la main, parce que dans le secteur de l'énergie, les offres changent vite et certains codes expirés trainent encore sur des sites peu sérieux.&nbsp;</p><p>Ce que j'ai remarqué, c'est que <b>les codes de parrainage sont souvent les plus fiables</b> et les plus généreux, alors privilégie-les si tu en trouves un actif sur cette page.&nbsp;</p><p><b>Un petit piège à éviter</b> : certains codes ne sont valables que pour une première souscription, donc si tu es déjà client Octopus Energy, vérifie bien les conditions avant de t'emballer. Dans l'ensemble, la marque joue plutôt le jeu de la transparence sur ses offres, ce qui est appréciable.</p>"
+conseil_sophie: Surveille les périodes de rentrée et de début d'hiver, Octopus Energy lance régulièrement des offres de bienvenue <b>plus avantageuses</b> à ces moments-là, c'est souvent le meilleur timing pour souscrire et cumuler un bon bonus de parrainage avec un tarif compétitif.
 rating:
-  value: 5
+  value: 4.7
   count: 59
 codes:
   - id: cmqhz0aj5bod2
     type: code
-    valeur: 80
+    valeur: 40
     unite: €
     sous_type: Parrainage
-    accroche: Bénéficiez de 80€ de prime à partager en cliquant sur notre lien.
+    accroche: 40 € offerts avec le parrainage Octopus Energy
     code: ""
-    detail: ""
+    detail: Réservé aux nouveaux clients souscrivant un contrat via un lien ou un code de parrainage. Le filleul et son parrain reçoivent chacun 40 € dans leur cagnotte après activation du contrat.
     expire_le: "2028-12-31"
     nb_utilisations: 150
     teste_par_sophie: Testé par Sophie en {mois_annee}
     meilleure_remise: false
     expired: false
     cta_text: Activer l'offre
+    produits:
+      - Électricité
+      - Gaz
   - id: cmqi2qgcjupvd
     type: code
-    valeur: 40
+    valeur: 100
     unite: €
-    sous_type: Parrainage
-    accroche: 40€ OFFERTS A VOTRE INSCRIPTION !
-    code: ""
-    detail: ""
+    sous_type: Code promo
+    accroche: 100 € de bonus avec le code promo ENERGIE100 Octopus Energy
+    code: ENERGIE100
+    detail: Offre partenaire Selectra annoncée sous forme de bonus sur la cagnotte après souscription. Le montant et les conditions exactes doivent être confirmés auprès du partenaire. Cumul avec le parrainage non garanti.
     expire_le: "2026-12-31"
     nb_utilisations: 59
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
     cta_text: Profiter de la prime
+    produits:
+      - Électricité
+      - Gaz
+  - id: cmvayiw00sr68
+    type: code
+    valeur: 44.99
+    unite: €
+    sous_type: Bon plan
+    accroche: Recharge de voiture électrique à domicile à partir de 44,99 € par mois
+    code: ""
+    detail: Offre de service de recharge présentée sur Poulpeo. Prix de départ soumis aux équipements et conditions du contrat. Il ne s'agit pas d'une réduction sur l'abonnement d'électricité.
+    expire_le: ""
+    nb_utilisations: 0
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
+    cta_text: ""
+    cta_url: ""
+    produits:
+      - Électricité
 faq:
   - question: Comment utiliser un code promo Octopus Energy ?
     reponse: Pour utiliser un code promo Octopus Energy, commence par te rendre sur leur site et lance une simulation de contrat. Une fois arrivé à l'étape de souscription, cherche un champ intitulé "code de parrainage" ou "code promo". Colle ton code, valide, et vérifie que la réduction ou le crédit s'applique bien avant de finaliser ton inscription.
@@ -100,7 +123,7 @@ status: published
 meta_title: "Code Promo & Parrainage Octopus Energy ({Mois_annee}) : 80€ Offerts"
 h1_custom: "Code Promo et Parrainage Octopus Energy {Mois_annee} : 80€ de réduction"
 date_creation: "2026-06-16"
-date_maj: "2026-10-13"
+date_maj: "2026-10-16"
 ---
 
 # Comment utiliser un code promo Octopus Energy
@@ -116,6 +139,7 @@ Lors du processus d'inscription ou de souscription, cherche le champ prévu pour
 
 ## Étape 4
 Colle ton code dans le champ correspondant et valide pour voir la remise ou le bonus s'appliquer directement à ton contrat d'énergie.
+
 
 
 
