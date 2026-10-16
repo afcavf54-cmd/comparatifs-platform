@@ -273,6 +273,9 @@
 
     /* ═══ LAYOUT 2 COLS ════════════════════════════════════════════════════ */
     .layout { display: grid; grid-template-columns: 340px 1fr; gap: 36px; padding-bottom: 56px; }
+    /* Autorise les colonnes à rétrécir sous la taille de leur contenu : sinon
+       la rangée d'onglets (nowrap) élargit la colonne et déborde l'écran. */
+    .layout > main, .layout > aside { min-width: 0; }
     /* Disposition inversée : sidebar à GAUCHE, liste des codes à DROITE.
        L'ordre du DOM reste (codes puis sidebar) → sur mobile les codes
        s'empilent en premier (voir reset dans la media query). */
@@ -480,7 +483,8 @@
       /* Filtres mobile : onglets sur UNE ligne (défilement horizontal),
          puis « Filtrer par produit » sur UNE ligne (label + select côte à côte). */
       .filterbar { flex-direction: column; align-items: stretch; gap: 10px; }
-      .filterbar .tabs, .tabs { margin: 0; gap: 6px; padding-bottom: 2px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .filterbar { min-width: 0; max-width: 100%; }
+      .filterbar .tabs, .tabs { margin: 0; gap: 6px; padding-bottom: 2px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; min-width: 0; max-width: 100%; }
       .tabs::-webkit-scrollbar { display: none; }
       .tab { padding: 7px 11px; font-size: .82rem; flex: 0 0 auto; }
       .tab .count { padding: 1px 6px; font-size: .72rem; }
