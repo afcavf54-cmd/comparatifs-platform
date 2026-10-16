@@ -257,7 +257,7 @@
     .tab.active .count { background: rgba(255,255,255,.15); color: var(--white); }
     /* Barre de filtres : onglets (type) à gauche + liste déroulante des
        produits associés à droite, sur une MÊME ligne (gain de place). */
-    .filterbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px 20px; flex-wrap: wrap; margin: 0 0 20px; }
+    .filterbar { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin: 0 0 20px; }
     .filterbar .tabs { margin: 0; }
     .pdrop { display: flex; flex-direction: column; gap: 4px; min-width: 220px; }
     .pdrop label { font-size: .78rem; font-weight: 600; color: var(--ink-soft); }
@@ -723,20 +723,19 @@
     </div>
   </div>
 
-  <!-- FILTRES (sous le bandeau, sur fond blanc) : onglets + liste déroulante produits, même ligne -->
-  <div class="filterbar">
-    <div class="tabs" id="tabs">
-      <button class="tab active" data-filter="all">Tout <span class="count">2</span></button>
-      <button class="tab" data-filter="code">Codes promo <span class="count">2</span></button>
-      <button class="tab" data-filter="offer">Offres <span class="count">0</span></button>
-      <button class="tab" data-filter="best">Meilleure remise</button>
-    </div>
-  </div>
-
   <!-- LAYOUT -->
   <div class="layout">
     <!-- ===== MAIN ===== -->
     <main id="list">
+      <!-- FILTRES en tête de la colonne des codes : onglets, puis liste déroulante produits -->
+      <div class="filterbar">
+        <div class="tabs" id="tabs">
+          <button class="tab active" data-filter="all">Tout <span class="count">2</span></button>
+          <button class="tab" data-filter="code">Codes promo <span class="count">2</span></button>
+          <button class="tab" data-filter="offer">Offres <span class="count">0</span></button>
+          <button class="tab" data-filter="best">Meilleure remise</button>
+        </div>
+      </div>
       <article class="coupon" data-type="code" data-best="0" data-produits="">
         <div class="val">
           <div class="big">80€</div>
