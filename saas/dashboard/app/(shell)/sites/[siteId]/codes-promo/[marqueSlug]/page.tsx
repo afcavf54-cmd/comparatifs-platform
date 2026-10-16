@@ -24,6 +24,7 @@ interface Brand {
   marque: string; slug: string; categorie_marque?: string
   url_marchand?: string; url_affiliation?: string; logo_url?: string
   avantage?: string  // Avantage clé (3e badge du bandeau d'en-tête)
+  description_titre?: string  // Titre du bloc description (sidebar)
   description_marque?: string; avis_sophie?: string; conseil_sophie?: string
   rating?: BrandRating; codes?: CodePromo[]; faq?: BrandFaq[]
   historique_12_mois?: BrandHistoryMonth[]
@@ -640,6 +641,20 @@ export default function CodesPromoEditPage() {
               />
               <div style={{ fontSize: 11, color: '#999' }}>
                 Affiché en 3e badge du bandeau en haut de page. Vide → « Économisez chez {brand.marque || 'la marque'} ».
+              </div>
+            </div>
+
+            {/* Titre du bloc description (sidebar) */}
+            <div style={{ ...S.field, gridColumn: 'span 2' }}>
+              <label style={S.label}>Titre du bloc description (sidebar)</label>
+              <input
+                style={S.input}
+                value={brand.description_titre || ''}
+                onChange={e => update('description_titre', e.target.value)}
+                placeholder={`Qu'est-ce que ${brand.marque || 'la marque'} ?`}
+              />
+              <div style={{ fontSize: 11, color: '#999' }}>
+                Vide → « Qu'est-ce que {brand.marque || 'la marque'} ? ».
               </div>
             </div>
 
