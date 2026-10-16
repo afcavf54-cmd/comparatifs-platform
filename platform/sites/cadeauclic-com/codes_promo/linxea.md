@@ -32,7 +32,7 @@ codes:
     unite: €
     sous_type: Code promo
     accroche: 50€ en carte cadeau
-    code: 50EUROS
+    code: ""
     detail: |-
       Ce code promo permet de bénéficier de 50 euros en carte cadeau Carrefour, Decathlon, Leroy Merlin, Darty, Fnac ou Amazon. Pour l'appliquer, vous avez juste à suivre le lien et indiquer vote adresse e-mail d'inscription à Linxea. 
       Ce lien fonctionne également si vous avez déjà commencé le parcous de souscription à une assurance vie Linxea Spirit 2, Avenir 2, Zen, Vie ou un PER.
