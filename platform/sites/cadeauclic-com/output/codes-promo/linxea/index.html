@@ -360,22 +360,23 @@
 
     /* Tabs filtres — zone "tabs" du grid, à 40px sous .head-text */
     .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
-    .tab { background: var(--white); border: 1px solid var(--line); padding: 10px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .2s; }
+    .tab { background: var(--white); border: 1px solid var(--line); padding: 8px 12px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .82rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 5px; transition: all .2s; white-space: nowrap; }
     .tab .count { background: var(--rose-50); color: var(--rose-600); padding: 2px 8px; border-radius: 999px; font-size: .8rem; font-weight: 700; }
     .tab:hover { border-color: var(--rose-300); color: var(--ink); }
     .tab.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
     .tab.active .count { background: rgba(255,255,255,.15); color: var(--white); }
     /* Barre de filtres : onglets (type) à gauche + liste déroulante des
        produits associés à droite, sur une MÊME ligne (gain de place). */
-    .filterbar { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin: 0 0 20px; }
-    .filterbar .tabs { margin: 0; }
-    .pdrop { display: flex; flex-direction: column; gap: 4px; min-width: 220px; }
-    .pdrop label { font-size: .78rem; font-weight: 600; color: var(--ink-soft); }
+    /* Onglets (type) + liste déroulante produits sur UNE SEULE ligne. */
+    .filterbar { display: flex; align-items: center; justify-content: space-between; gap: 10px 14px; flex-wrap: wrap; margin: 0 0 20px; }
+    .filterbar .tabs { margin: 0; gap: 6px; }
+    .pdrop { display: flex; flex-direction: column; gap: 3px; min-width: 190px; flex-shrink: 0; }
+    .pdrop label { font-size: .72rem; font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
     .pdrop select {
       appearance: none; -webkit-appearance: none;
-      background: var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ec3f76' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 14px center;
-      border: 1px solid var(--line); border-radius: 999px; padding: 10px 38px 10px 16px;
-      font-size: .9rem; font-weight: 600; color: var(--ink); cursor: pointer; font-family: inherit;
+      background: var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ec3f76' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 12px center;
+      border: 1px solid var(--line); border-radius: 999px; padding: 8px 32px 8px 14px;
+      font-size: .82rem; font-weight: 600; color: var(--ink); cursor: pointer; font-family: inherit;
     }
     .pdrop select:hover { border-color: var(--rose-300); }
     .pdrop select:focus { outline: none; border-color: var(--rose-500); }
@@ -554,8 +555,6 @@
     .foot-bottom { max-width: 1200px; margin: 32px auto 0; padding: 20px 24px 0; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: rgba(255,255,255,.5); font-size: .85rem; }
 
     /* ═══ COPIED TOAST ═════════════════════════════════════════════════════ */
-    .copied-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(120%); background: var(--ink); color: var(--white); padding: 14px 22px; border-radius: 12px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,.2); z-index: 300; transition: transform .3s cubic-bezier(.4,0,.2,1); }
-    .copied-toast.show { transform: translateX(-50%) translateY(0); }
 
     /* ═══ RESPONSIVE ═══════════════════════════════════════════════════════ */
     @media (max-width: 980px) {
@@ -1310,9 +1309,6 @@ Je recommande Linxea à toute personne qui veut placer de l'argent pour un proje
   </div>
 </div>
 
-<!-- ═══ COPIED TOAST ═══════════════════════════════════════════════════ -->
-<div class="copied-toast" id="copiedToast">✓ Code copié dans le presse-papiers</div>
-
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════════════════ -->
 <script>
 const COUPONS = {
@@ -1463,7 +1459,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
     navigator.clipboard.writeText(code).then(() => {
       copyBtn.classList.add('copied');
       copyBtn.textContent = '✓ COPIÉ';
-      showToast();
       setTimeout(() => {
         copyBtn.classList.remove('copied');
         copyBtn.textContent = 'COPIER';
@@ -1478,12 +1473,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
     });
   });
 })();
-
-function showToast() {
-  const t = document.getElementById('copiedToast');
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2400);
-}
 </script>
 
 </body>
