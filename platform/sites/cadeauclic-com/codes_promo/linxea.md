@@ -7,19 +7,10 @@ logo_url: /codes-promo/linxea/logo.png
 description_titre: Pourquoi choisir Linxea ?
 description_marque: <p>Linxea est une société d'épargne en ligne qui propose des contrats d'<b>assurance-vie</b>, des <b>plans d'épargne retraite (PER</b>) et des <b>comptes-titres</b>, accessibles directement depuis internet sans intermédiaire physique.&nbsp;</p><p>Elle s'adresse <b>aux particuliers</b> qui souhaitent gérer leur épargne de façon <b>autonome</b>, avec des <b>frais réduits</b> par rapport aux réseaux bancaires traditionnels.&nbsp;</p>
 avis_sophie: |-
-  Linxea, c'est une de ces marques que j'ai découvertes un peu par hasard, en cherchant comment faire fructifier un peu l'argent de côté sans me retrouver noyée sous les frais. 
+  <p><b>Linxea</b>, c'est une de ces marques que j'ai découvertes un peu par hasard, en cherchant comment faire fructifier un peu l'argent de côté sans me retrouver noyée sous les frais.</p><p>Ce qui m'a convaincue, c'est leur <b>transparence sur les frais de gestion</b>, vraiment bas comparés à ce qu'on voit ailleurs sur l'<b>assurance vie ou le PER</b>. 
 
-  Ce qui m'a convaincue, c'est leur transparence sur les frais de gestion, vraiment bas comparés à ce qu'on voit ailleurs sur l'assurance vie ou le PER. 
-
-  Je recommande Linxea à toute personne qui veut placer de l'argent pour un projet à moyen terme, préparer sa retraite ou simplement épargner de façon plus rentable que sur un Livret A. 
-
-  C'est aussi une option sérieuse si tu envisages d'ouvrir un contrat d'assurance vie pour tes enfants. La gestion en ligne est claire, et l'équipe conseils répond plutôt bien aux questions, même quand on n'y connaît pas grand chose.
-
-  Mon conseil pratique : avant d'ouvrir un contrat, prends le temps de comparer les supports d'investissement proposés. Tous les contrats Linxea n'offrent pas exactement les mêmes fonds, donc choisis bien celui qui correspond à ton profil et à ton horizon de placement.
-conseil_sophie: |-
-  Avant d'ouvrir votre contrat chez Linxea, pensez à vérifier les offres disponibles. Vous pouvez notamment profiter d'une carte cadeau de 50 €, valable lors de votre première souscription, ou bénéficier d'une offre promotionnelle du moment, parfois encore plus avantageuse. 
-
-  L'objectif est simple : récupérer le meilleur bonus possible dès l'ouverture de votre assurance-vie ou de votre PER Linxea. Attention, ces offres ne sont généralement pas cumulables.
+  Je recommande Linxea à toute personne qui veut placer de l'argent pour un projet à moyen terme, <b>préparer sa retraite</b> ou simplement épargner de façon plus rentable que sur un Livret A.&nbsp;</p><p>C'est aussi une option sérieuse si tu envisages d'<b>ouvrir un contrat d'assurance vie pour tes enfants</b>. La gestion en ligne est claire, et l'équipe conseils répond plutôt bien aux questions, même quand on n'y connaît pas grand chose.&nbsp;</p><p><b>Mon conseil pratique</b> : avant d'ouvrir un contrat, prends le temps de comparer les supports d'investissement proposés. Tous les contrats Linxea n'offrent pas exactement les mêmes fonds, donc choisis bien celui qui correspond à ton profil et à ton horizon de placement.</p>
+conseil_sophie: "<p>Avant d'ouvrir votre contrat chez Linxea, <b>pensez à vérifier les offres disponibles</b>. Vous pouvez notamment <b>profiter d'une carte cadeau de 50 €</b>, valable lors de votre première souscription, ou bénéficier d'une offre promotionnelle du moment, parfois encore plus avantageuse.</p><p>&nbsp;L'objectif est simple : récupérer le meilleur bonus possible dès l'ouverture de votre assurance-vie ou de votre PER Linxea.&nbsp;</p><p><b>Attention, ces offres ne sont généralement pas cumulables.</b></p>"
 rating:
   value: 5
   count: 498
