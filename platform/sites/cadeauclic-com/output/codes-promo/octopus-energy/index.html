@@ -344,7 +344,18 @@
     /* ═══ SIDEBAR (ASIDE) ══════════════════════════════════════════════════ */
     aside { display: flex; flex-direction: column; gap: 16px; }
     .side-card { background: var(--white); border-radius: var(--r); padding: 22px; box-shadow: var(--shadow-sm); border: 1px solid var(--line); }
-    .side-card h4 { font-size: 1rem; margin-bottom: 12px; }
+    .side-card h3, .side-card h4 { font-size: 1rem; margin-bottom: 12px; }
+    /* Champs éditables en texte riche (avis, conseil, description, FAQ…) :
+       on rend le HTML de l'éditeur avec une mise en forme lisible. */
+    .rich > :first-child { margin-top: 0; }
+    .rich > :last-child { margin-bottom: 0; }
+    .rich p { margin: 0 0 12px; line-height: 1.65; }
+    .rich ul, .rich ol { margin: 0 0 12px; padding-left: 1.25em; }
+    .rich li { margin-bottom: 4px; }
+    .rich h1, .rich h2, .rich h3 { margin: 16px 0 8px; line-height: 1.3; }
+    .rich a { color: var(--rose-600); text-decoration: underline; }
+    .rich strong, .rich b { font-weight: 700; }
+    .rich blockquote { margin: 0 0 12px; padding-left: 12px; border-left: 3px solid var(--line); color: var(--ink-soft); }
     .side-card p { font-size: .92rem; color: var(--ink-soft); line-height: 1.6; }
     .avis-head { display: flex; align-items: center; gap: 10px; }
     .avis-head img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
@@ -677,7 +688,7 @@
   <div class="page-head">
     <div class="head-text">
       <h1>Code Promo et Parrainage Octopus Energy Octobre 2026 : 80€ de réduction</h1>
-      <span class="updated"><span class="dot"></span>2 codes promo Octopus Energy vérifiés le 15 octobre 2026</span>
+      <span class="updated"><span class="dot"></span>2 codes promo Octopus Energy vérifiés le 16 octobre 2026</span>
     </div>
     <div class="brandbox">
       <img src="/codes-promo/octopus-energy/logo.png" alt="Logo Octopus Energy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
@@ -703,7 +714,7 @@
         <div class="mid">
           <div class="coupon-title">Bénéficiez de 80€ de prime à partager en cliquant sur notre lien.</div>
           <div class="meta">
-            <span class="verif">✓ Vérifié le 15/10/2026</span>
+            <span class="verif">✓ Vérifié le 16/10/2026</span>
 <span>Utilisé 150 fois</span><span>Expire le 31/12/2028</span>          </div>
           <div class="tested">
             <img src="/author-photo.png" alt="" style="width:22px;height:22px;border-radius:50%;object-fit:cover" onerror="this.outerHTML='<span class=ava>S</span>'">
@@ -722,7 +733,7 @@
         <div class="mid">
           <div class="coupon-title">40€ OFFERTS A VOTRE INSCRIPTION !</div>
           <div class="meta">
-            <span class="verif">✓ Vérifié le 15/10/2026</span>
+            <span class="verif">✓ Vérifié le 16/10/2026</span>
 <span>Utilisé 59 fois</span><span>Expire le 31/12/2026</span>          </div>
         </div>
         <button class="reveal" data-type="code" data-code="" data-id="cmqi2qgcjupvd">
@@ -804,19 +815,19 @@
         <div id="faq">
           <div class="faq-item">
             <button class="faq-q">Comment utiliser un code promo Octopus Energy ? <span class="plus">+</span></button>
-            <div class="faq-a"><div class="inner">Pour utiliser un code promo Octopus Energy, commence par te rendre sur leur site et lance une simulation de contrat. Une fois arrivé à l'étape de souscription, cherche un champ intitulé "code de parrainage" ou "code promo". Colle ton code, valide, et vérifie que la réduction ou le crédit s'applique bien avant de finaliser ton inscription.</div></div>
+            <div class="faq-a"><div class="inner rich">Pour utiliser un code promo Octopus Energy, commence par te rendre sur leur site et lance une simulation de contrat. Une fois arrivé à l'étape de souscription, cherche un champ intitulé "code de parrainage" ou "code promo". Colle ton code, valide, et vérifie que la réduction ou le crédit s'applique bien avant de finaliser ton inscription.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q">Les codes promo Octopus Energy sont-ils cumulables ? <span class="plus">+</span></button>
-            <div class="faq-a"><div class="inner">En général, les codes promo Octopus Energy ne sont pas cumulables entre eux. Un seul code peut être utilisé par souscription. Côté cashback, certaines plateformes permettent de combiner les deux, mais ce n'est pas garanti. Vérifie les conditions du code et celles du site de cashback avant de souscrire pour éviter les mauvaises surprises.</div></div>
+            <div class="faq-a"><div class="inner rich">En général, les codes promo Octopus Energy ne sont pas cumulables entre eux. Un seul code peut être utilisé par souscription. Côté cashback, certaines plateformes permettent de combiner les deux, mais ce n'est pas garanti. Vérifie les conditions du code et celles du site de cashback avant de souscrire pour éviter les mauvaises surprises.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q">Octopus Energy propose-t-elle un code de parrainage, étudiant ou nouveau client ? <span class="plus">+</span></button>
-            <div class="faq-a"><div class="inner">Octopus Energy est connu pour son programme de parrainage : un client existant partage son lien ou son code, et les deux parties reçoivent un crédit sur leur compte. En revanche, il n'existe pas de tarif étudiant spécifique à ce jour. Les offres nouveau client passent essentiellement par ce système de parrainage ou via des partenaires.</div></div>
+            <div class="faq-a"><div class="inner rich">Octopus Energy est connu pour son programme de parrainage : un client existant partage son lien ou son code, et les deux parties reçoivent un crédit sur leur compte. En revanche, il n'existe pas de tarif étudiant spécifique à ce jour. Les offres nouveau client passent essentiellement par ce système de parrainage ou via des partenaires.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q">Que faire si mon code promo Octopus Energy ne fonctionne pas ? <span class="plus">+</span></button>
-            <div class="faq-a"><div class="inner">Première chose à vérifier : la date d'expiration du code. Ensuite, assure-toi que tu es bien un nouveau client, car la plupart des codes sont réservés aux premières souscriptions. Si tout semble correct, contacte le service client Octopus Energy directement. Ils sont assez réactifs et peuvent appliquer le crédit manuellement si le code était valide.</div></div>
+            <div class="faq-a"><div class="inner rich">Première chose à vérifier : la date d'expiration du code. Ensuite, assure-toi que tu es bien un nouveau client, car la plupart des codes sont réservés aux premières souscriptions. Si tout semble correct, contacte le service client Octopus Energy directement. Ils sont assez réactifs et peuvent appliquer le crédit manuellement si le code était valide.</div></div>
           </div>
         </div>
       </div>
@@ -825,30 +836,30 @@
     <!-- ===== ASIDE ===== -->
     <aside>
       <div class="side-card">
-        <h4 class="avis-head">
+        <h3>Qu'est-ce que Octopus Energy&nbsp;?</h3>
+        <div class="rich">Octopus Energy est un fournisseur d'électricité et de gaz qui s'adresse aux particuliers souhaitant une énergie d'origine renouvelable. La marque se positionne sur un segment accessible avec une approche transparente sur les tarifs et une gestion du contrat entièrement en ligne. Elle cible aussi bien les foyers soucieux de leur impact environnemental que ceux qui cherchent à simplifier la gestion de leur énergie au quotidien.</div>
+      </div>
+
+      <div class="side-card">
+        <h3 class="avis-head">
           <img src="/author-photo.png" alt="Sophie Martin" onerror="this.outerHTML='<span class=ph-avatar>S</span>'">
           L'avis de Sophie
-        </h4>
-        <p>J'ai passé du temps à rassembler et tester ces codes Octopus Energy à la main, parce que dans le secteur de l'énergie, les offres changent vite et certains codes expirés trainent encore sur des sites peu sérieux. Ce que j'ai remarqué, c'est que les codes de parrainage sont souvent les plus fiables et les plus généreux, alors privilégie-les si tu en trouves un actif sur cette page. Un petit piège à éviter : certains codes ne sont valables que pour une première souscription, donc si tu es déjà client Octopus Energy, vérifie bien les conditions avant de t'emballer. Dans l'ensemble, la marque joue plutôt le jeu de la transparence sur ses offres, ce qui est appréciable.</p>
+        </h3>
+        <div class="rich">J'ai passé du temps à rassembler et tester ces codes Octopus Energy à la main, parce que dans le secteur de l'énergie, les offres changent vite et certains codes expirés trainent encore sur des sites peu sérieux. Ce que j'ai remarqué, c'est que les codes de parrainage sont souvent les plus fiables et les plus généreux, alors privilégie-les si tu en trouves un actif sur cette page. Un petit piège à éviter : certains codes ne sont valables que pour une première souscription, donc si tu es déjà client Octopus Energy, vérifie bien les conditions avant de t'emballer. Dans l'ensemble, la marque joue plutôt le jeu de la transparence sur ses offres, ce qui est appréciable.</div>
         <a href="https://clikme.xyz/octopus" class="btn" target="_blank" rel="nofollow noopener sponsored" style="width:100%;justify-content:center;margin-top:16px">Aller sur Octopus Energy →</a>
       </div>
 
       <div class="side-card">
-        <h4>💡 Le conseil de Sophie</h4>
-        <p>Surveille les périodes de rentrée et de début d'hiver, Octopus Energy lance régulièrement des offres de bienvenue plus avantageuses à ces moments-là, c'est souvent le meilleur timing pour souscrire et cumuler un bon bonus de parrainage avec un tarif compétitif.</p>
+        <h3>💡 Le conseil de Sophie</h3>
+        <div class="rich">Surveille les périodes de rentrée et de début d'hiver, Octopus Energy lance régulièrement des offres de bienvenue plus avantageuses à ces moments-là, c'est souvent le meilleur timing pour souscrire et cumuler un bon bonus de parrainage avec un tarif compétitif.</div>
       </div>
 
       <div class="side-card">
-        <h4>Aussi par ici</h4>
+        <h3>Aussi par ici</h3>
         <div class="side-links">
           <a href="/blog/">Idées cadeau & guides</a>
           <a href="/codes-promo/">Tous les codes promo</a>
         </div>
-      </div>
-
-      <div class="side-card">
-        <h4>Qu'est-ce que Octopus Energy&nbsp;?</h4>
-        <p>Octopus Energy est un fournisseur d'électricité et de gaz qui s'adresse aux particuliers souhaitant une énergie d'origine renouvelable. La marque se positionne sur un segment accessible avec une approche transparente sur les tarifs et une gestion du contrat entièrement en ligne. Elle cible aussi bien les foyers soucieux de leur impact environnemental que ceux qui cherchent à simplifier la gestion de leur énergie au quotidien.</p>
       </div>
 
     </aside>
