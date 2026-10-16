@@ -44,6 +44,9 @@ export interface CodePromo {
   // tu veux un wording différent (ex : "Profite du parrainage", "Activer
   // le bonus 80€", etc.).
   cta_text?: string
+  // Lien d'affiliation propre à cette offre. S'il est renseigné, il prend le
+  // dessus sur le `url_affiliation` général de la marque pour ce code.
+  cta_url?: string
 }
 
 export interface BrandFaq {
@@ -180,6 +183,7 @@ export function emptyCode(): CodePromo {
     meilleure_remise: false,
     expired: false,
     cta_text: '',
+    cta_url: '',
   }
 }
 
