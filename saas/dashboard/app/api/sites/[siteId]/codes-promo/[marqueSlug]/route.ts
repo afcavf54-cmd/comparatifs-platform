@@ -130,6 +130,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
       url_affiliation: body.url_affiliation || '',
       logo_url: body.logo_url || '',
       avantage: body.avantage || '',
+      description_titre: body.description_titre || '',
       description_marque: body.description_marque || '',
       avis_sophie: body.avis_sophie || '',
       conseil_sophie: body.conseil_sophie || '',
