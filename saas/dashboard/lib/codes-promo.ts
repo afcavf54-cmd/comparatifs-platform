@@ -76,6 +76,8 @@ export interface BrandFrontmatter {
   logo_url?: string
   // Avantage clé affiché en 3e badge du bandeau d'en-tête (marketing).
   avantage?: string
+  // Titre du bloc description dans la sidebar. Vide → « Qu'est-ce que <marque> ? ».
+  description_titre?: string
   description_marque?: string
   avis_sophie?: string
   conseil_sophie?: string
@@ -131,7 +133,7 @@ const FIELD_ORDER: (keyof BrandFrontmatter)[] = [
   'marque', 'slug', 'categorie_marque',
   'url_marchand', 'url_affiliation', 'logo_url',
   'avantage',
-  'description_marque', 'avis_sophie', 'conseil_sophie',
+  'description_titre', 'description_marque', 'avis_sophie', 'conseil_sophie',
   'rating',
   'codes',
   'faq',
@@ -227,6 +229,7 @@ export function emptyBrand(marque: string, slug?: string): Brand {
     url_affiliation: '',
     logo_url: '',
     avantage: '',
+    description_titre: '',
     description_marque: '',
     avis_sophie: '',
     conseil_sophie: '',
