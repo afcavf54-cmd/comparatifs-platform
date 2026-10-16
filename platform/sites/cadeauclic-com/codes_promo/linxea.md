@@ -43,6 +43,14 @@ codes:
     meilleure_remise: true
     expired: false
     cta_text: ""
+    produits:
+      - Assurance vie Avenir 2+
+      - Assurance vie Spirit 2
+      - Assurance vie Vie
+      - Assurance vie Zen
+      - Suravenir PER
+      - Spirit PER
+      - Apicil PER
   - id: cmvanj1e1jdjv
     type: code
     valeur: 200
@@ -57,6 +65,8 @@ codes:
     meilleure_remise: false
     expired: false
     cta_text: ""
+    produits:
+      - Spirit PER
   - id: cmvank2vryfjg
     type: code
     valeur: 200
@@ -71,6 +81,8 @@ codes:
     meilleure_remise: false
     expired: false
     cta_text: ""
+    produits:
+      - Assurance vie Spirit 2
   - id: cmvanloo0d2jy
     type: code
     valeur: 100
@@ -85,6 +97,8 @@ codes:
     meilleure_remise: false
     expired: false
     cta_text: ""
+    produits:
+      - Suravenir PER
   - id: cmvanom9inasj
     type: code
     valeur: 100
@@ -99,6 +113,8 @@ codes:
     meilleure_remise: false
     expired: false
     cta_text: ""
+    produits:
+      - Assurance vie Vie
   - id: cmvanpsgjtlmf
     type: offer
     valeur: 50
@@ -173,6 +189,7 @@ date_maj: "2026-10-16"
 <h2>Étape 4 : vérifie que la remise est bien prise en compte</h2>
 
 <p>Avant de finaliser ta souscription, regarde attentivement le récapitulatif de ton contrat. La remise ou l'avantage lié au code doit apparaître clairement, que ce soit une réduction sur les frais d'entrée, un geste commercial ou un autre avantage selon l'offre du moment. Si tu ne vois rien de mentionné, ne valide pas encore. Contacte le service client Linxea pour signaler le problème avant signature, car il est difficile de corriger ça après coup. Mieux vaut prendre deux minutes de plus que de rater l'avantage.</p>
+
 
 
 
