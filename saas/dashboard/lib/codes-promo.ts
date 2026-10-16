@@ -47,6 +47,9 @@ export interface CodePromo {
   // Lien d'affiliation propre à cette offre. S'il est renseigné, il prend le
   // dessus sur le `url_affiliation` général de la marque pour ce code.
   cta_url?: string
+  // Produits associés à cette offre (ex. "Spirit 2", "Avenir 2"). Servent de
+  // barre de filtre en haut de page, avec le nombre d'offres par produit.
+  produits?: string[]
 }
 
 export interface BrandFaq {
@@ -184,6 +187,7 @@ export function emptyCode(): CodePromo {
     expired: false,
     cta_text: '',
     cta_url: '',
+    produits: [],
   }
 }
 
