@@ -3387,7 +3387,8 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
 
                     # Champs textuels du brand (niveau racine)
                     for _k in ('meta_title', 'meta_description', 'description_marque',
-                               'avis_sophie', 'conseil_sophie', 'content_libre', 'content_md'):
+                               'avis_sophie', 'conseil_sophie', 'content_libre', 'content_md',
+                               'avantage'):
                         if b.get(_k):
                             b[_k] = _sub(b[_k], b, _cp_site_ctx, _build_ctx)
 
