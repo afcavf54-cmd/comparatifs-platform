@@ -36,8 +36,79 @@ codes:
     detail: |-
       Ce code promo permet de bénéficier de 50 euros en carte cadeau Carrefour, Decathlon, Leroy Merlin, Darty, Fnac ou Amazon. Pour l'appliquer, vous avez juste à suivre le lien et indiquer vote adresse e-mail d'inscription à Linxea. 
       Ce lien fonctionne également si vous avez déjà commencé le parcous de souscription à une assurance vie Linxea Spirit 2, Avenir 2, Zen, Vie ou un PER.
+      Première souscription via le lien dédié. Contrat validé et délai de renonciation expiré. Offre non cumulable avec les autres promotions Linxea.
     expire_le: "2027-10-10"
     nb_utilisations: 658
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
+    cta_text: ""
+  - id: cmvanj1e1jdjv
+    type: code
+    valeur: 200
+    unite: €
+    sous_type: Code promo
+    accroche: 200 € de remise sur Linxea Spirit PER avec un code promo
+    code: PER26SPIRIT
+    detail: ""
+    expire_le: "2026-12-26"
+    nb_utilisations: 56
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
+    cta_text: ""
+  - id: cmvank2vryfjg
+    type: code
+    valeur: 200
+    unite: €
+    sous_type: Code promo
+    accroche: 200 € offerts pour l'ouverture d'une assurance-vie Linxea Spirit 2
+    code: WELCOME200
+    detail: Offre de bienvenue pour une première souscription éligible. Versement minimum, répartition en unités de compte et durée de conservation à confirmer.
+    expire_le: "2026-11-11"
+    nb_utilisations: 123
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
+    cta_text: ""
+  - id: cmvanloo0d2jy
+    type: code
+    valeur: 100
+    unite: €
+    sous_type: Code promo
+    accroche: 100 € de remise sur Linxea Suravenir PER avec un code promo
+    code: PER26SURAVENIR
+    detail: Offre soumise aux conditions promotionnelles de souscription. Premier versement, part en unités de compte et éventuelle durée de conservation à vérifier.
+    expire_le: "2026-12-26"
+    nb_utilisations: 49
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
+    cta_text: ""
+  - id: cmvanom9inasj
+    type: code
+    valeur: 100
+    unite: €
+    sous_type: Code promo
+    accroche: 100 € de bienvenue sur le contrat Linxea Vie
+    code: WELCOME100
+    detail: Offre de bienvenue annoncée pour une souscription éligible. Montant du versement initial et conditions de validation à confirmer.
+    expire_le: "2026-11-10"
+    nb_utilisations: 54
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
+    cta_text: ""
+  - id: cmvanpsgjtlmf
+    type: offer
+    valeur: 50
+    unite: €
+    sous_type: Cashback
+    accroche: Jusqu'à 50 € de cashback Linxea + 3 € de bienvenue avec iGraal
+    code: ""
+    detail: Passage obligatoire par iGraal et respect des conditions de suivi du cashback. Les 3 € de bienvenue sont soumis aux conditions iGraal. Cumul à vérifier.
+    expire_le: ""
+    nb_utilisations: 159
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
@@ -84,7 +155,7 @@ meta_title: "Code promo Linxea : 200€ de réduction en {mois_annee}"
 meta_description: Faîtes des économies avec nos meilleurs codes promo Linxea vérifiés sur Cadeauclic en {mois_annee}.
 h1_custom: Code promo Linxea et codes de réduction en {mois_annee}
 date_creation: "2026-10-13"
-date_maj: "2026-10-15"
+date_maj: "2026-10-16"
 ---
 
 <h2>Étape 1 : repère le bon code pour ton cas</h2>
@@ -102,4 +173,5 @@ date_maj: "2026-10-15"
 <h2>Étape 4 : vérifie que la remise est bien prise en compte</h2>
 
 <p>Avant de finaliser ta souscription, regarde attentivement le récapitulatif de ton contrat. La remise ou l'avantage lié au code doit apparaître clairement, que ce soit une réduction sur les frais d'entrée, un geste commercial ou un autre avantage selon l'offre du moment. Si tu ne vois rien de mentionné, ne valide pas encore. Contacte le service client Linxea pour signaler le problème avant signature, car il est difficile de corriger ça après coup. Mieux vaut prendre deux minutes de plus que de rater l'avantage.</p>
+
 
