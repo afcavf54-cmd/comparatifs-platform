@@ -236,6 +236,8 @@
     /* « Lire l'avis complet » : avis tronqué + lien d'expansion. */
     .avis-more { background: none; border: 0; color: var(--rose-600); font-weight: 700; font-size: .9rem; cursor: pointer; padding: 4px 0 0; text-decoration: underline; text-underline-offset: 2px; font-family: inherit; }
     .avis-more:hover { color: var(--rose-500); }
+    /* Aperçu tronqué par la hauteur, avec fondu bas ; déplié au clic. */
+    .avis-body.clamp { max-height: 13.5em; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); }
     .side-card p { font-size: .92rem; color: var(--ink-soft); line-height: 1.6; }
     .avis-head { display: flex; align-items: center; gap: 10px; }
     .avis-head img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
@@ -578,13 +580,13 @@
           L'avis de {{ (author.name or 'Sophie').split(' ')[0] }}
         </h3>
         {% set _avis_full = brand.avis_sophie or ('Je rassemble pour toi les meilleurs codes promo ' ~ brand.marque ~ '. Tous testés à la main.') %}
-        {% set _avis_words = (_avis_full | striptags).split() %}
-        {% if _avis_words | length > 100 %}
-        <div class="rich avis-preview">{{ _avis_words[:90] | join(' ') }}…</div>
-        <div class="rich avis-full" hidden>{{ _avis_full | safe }}</div>
+        {% set _avis_wc = (_avis_full | striptags).split() | length %}
+        {% if _avis_wc > 100 %}
+        {# Aperçu tronqué par la HAUTEUR (fondu) : on garde le HTML (gras, paragraphes). #}
+        <div class="rich avis-body clamp">{{ _avis_full | safe }}</div>
         <button type="button" class="avis-more">Lire l'avis complet</button>
         {% else %}
-        <div class="rich">{{ _avis_full | safe }}</div>
+        <div class="rich avis-body">{{ _avis_full | safe }}</div>
         {% endif %}
         <a href="{{ brand.url_cta }}" class="btn" target="_blank" rel="nofollow noopener sponsored" style="width:100%;justify-content:center;margin-top:16px">Aller sur {{ brand.marque }} →</a>
       </div>
@@ -719,15 +721,13 @@ const MARQUE = {{ brand.marque | tojson }};
   });
 })();
 
-// « Lire l'avis complet » : remplace l'aperçu tronqué par l'avis complet.
+// « Lire l'avis complet » : enlève la troncature (le HTML reste formaté).
 document.querySelectorAll('.avis-more').forEach(btn => {
   btn.addEventListener('click', () => {
     const card = btn.closest('.side-card');
     if (!card) return;
-    const prev = card.querySelector('.avis-preview');
-    const full = card.querySelector('.avis-full');
-    if (prev) prev.hidden = true;
-    if (full) full.hidden = false;
+    const body = card.querySelector('.avis-body.clamp');
+    if (body) body.classList.remove('clamp');
     btn.hidden = true;
   });
 });
