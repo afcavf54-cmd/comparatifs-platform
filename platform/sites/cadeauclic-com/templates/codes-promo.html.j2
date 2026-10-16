@@ -108,13 +108,20 @@
     .tab:hover { border-color: var(--rose-300); color: var(--ink); }
     .tab.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
     .tab.active .count { background: rgba(255,255,255,.15); color: var(--white); }
-    /* Barre de filtre « produits associés » (en haut de la liste des codes). */
-    .pbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
-    .pfilter { background: var(--white); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .85rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .2s; }
-    .pfilter .count { background: var(--rose-50); color: var(--rose-600); padding: 2px 8px; border-radius: 999px; font-size: .78rem; font-weight: 700; }
-    .pfilter:hover { border-color: var(--rose-300); color: var(--ink); }
-    .pfilter.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
-    .pfilter.active .count { background: rgba(255,255,255,.15); color: var(--white); }
+    /* Barre de filtres : onglets (type) à gauche + liste déroulante des
+       produits associés à droite, sur une MÊME ligne (gain de place). */
+    .filterbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px 20px; flex-wrap: wrap; margin: 0 0 20px; }
+    .filterbar .tabs { margin: 0; }
+    .pdrop { display: flex; flex-direction: column; gap: 4px; min-width: 220px; }
+    .pdrop label { font-size: .78rem; font-weight: 600; color: var(--ink-soft); }
+    .pdrop select {
+      appearance: none; -webkit-appearance: none;
+      background: var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ec3f76' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 14px center;
+      border: 1px solid var(--line); border-radius: 999px; padding: 10px 38px 10px 16px;
+      font-size: .9rem; font-weight: 600; color: var(--ink); cursor: pointer; font-family: inherit;
+    }
+    .pdrop select:hover { border-color: var(--rose-300); }
+    .pdrop select:focus { outline: none; border-color: var(--rose-500); }
 
     /* ═══ LAYOUT 2 COLS ════════════════════════════════════════════════════ */
     .layout { display: grid; grid-template-columns: 340px 1fr; gap: 36px; padding-bottom: 56px; }
@@ -413,22 +420,26 @@
     </div>
   </div>
 
-  <!-- FILTRES (sous le bandeau, sur fond blanc) -->
-  <div class="tabs" id="tabs">
-    <button class="tab active" data-filter="all">Tout <span class="count">{{ brand.n_total }}</span></button>
-    <button class="tab" data-filter="code">Codes promo <span class="count">{{ brand.n_codes }}</span></button>
-    <button class="tab" data-filter="offer">Offres <span class="count">{{ brand.n_offres }}</span></button>
-    <button class="tab" data-filter="best">Meilleure remise</button>
+  <!-- FILTRES (sous le bandeau, sur fond blanc) : onglets + liste déroulante produits, même ligne -->
+  <div class="filterbar">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-filter="all">Tout <span class="count">{{ brand.n_total }}</span></button>
+      <button class="tab" data-filter="code">Codes promo <span class="count">{{ brand.n_codes }}</span></button>
+      <button class="tab" data-filter="offer">Offres <span class="count">{{ brand.n_offres }}</span></button>
+      <button class="tab" data-filter="best">Meilleure remise</button>
+    </div>
+    {% if brand._products %}
+    <div class="pdrop">
+      <label for="prodSelect">Filtrer par produit {{ brand.marque }}</label>
+      <select id="prodSelect" aria-label="Filtrer par produit {{ brand.marque }}">
+        <option value="">Tous les produits ({{ brand.n_total }})</option>
+        {% for p in brand._products %}
+        <option value="{{ p.slug }}">{{ p.name }} ({{ p.count }})</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endif %}
   </div>
-
-  {% if brand._products %}
-  <div class="pbar" id="pbar">
-    <button class="pfilter active" data-product="">Tous les produits</button>
-    {% for p in brand._products %}
-    <button class="pfilter" data-product="{{ p.slug }}">{{ p.name }} <span class="count">{{ p.count }}</span></button>
-    {% endfor %}
-  </div>
-  {% endif %}
 
   <!-- LAYOUT -->
   <div class="layout">
@@ -681,7 +692,7 @@ const MARQUE = {{ brand.marque | tojson }};
 
 (function(){
   const tabs = document.querySelectorAll('.tab');
-  const pfilters = document.querySelectorAll('.pfilter');
+  const prodSelect = document.getElementById('prodSelect');
   const coupons = document.querySelectorAll('main#list > .coupon, main#list > .expired .coupon');
   let activeType = 'all';
   let activeProduct = '';   // '' = tous les produits
@@ -704,12 +715,10 @@ const MARQUE = {{ brand.marque | tojson }};
     activeType = t.dataset.filter;
     apply();
   }));
-  pfilters.forEach(p => p.addEventListener('click', () => {
-    pfilters.forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    activeProduct = p.dataset.product || '';
+  if (prodSelect) prodSelect.addEventListener('change', () => {
+    activeProduct = prodSelect.value || '';
     apply();
-  }));
+  });
 })();
 
 document.querySelectorAll('.detail').forEach(btn => {
