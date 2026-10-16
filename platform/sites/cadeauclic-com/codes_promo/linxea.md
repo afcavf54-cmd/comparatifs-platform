@@ -224,23 +224,4 @@ date_creation: "2026-10-13"
 date_maj: "2026-10-16"
 ---
 
-<h2>Étape 1 : repère le bon code pour ton cas</h2>
-
-<p>Sur CadeauClic, tu vas voir plusieurs codes promo Linxea affichés. Avant de cliquer sur le premier venu, prends trente secondes pour lire les conditions. Certains codes sont réservés aux nouveaux clients, d'autres fonctionnent uniquement sur un produit précis comme l'assurance vie ou le PER. J'ai déjà perdu du temps à copier un code qui ne s'appliquait pas à mon contrat, donc vérifie bien la mention "valable sur" avant tout. Note aussi la date d'expiration, certains codes ont une durée très courte.</p>
-
-<h2>Étape 2 : copie le code et accède au site Linxea</h2>
-
-<p>Une fois que tu as repéré le code qui correspond à ta situation, clique sur le bouton "Voir le code" ou "Copier". Le code s'affiche en clair et se copie automatiquement dans ton presse-papiers selon ton navigateur. Tu es ensuite redirigé directement vers le site Linxea, ce qui t'évite de chercher la bonne page toi-même. Garde l'onglet CadeauClic ouvert en parallèle, juste au cas où tu aurais besoin de revenir vérifier les conditions exactes du code.</p>
-
-<h2>Étape 3 : applique le code au moment de souscrire</h2>
-
-<p>Sur Linxea, il n'est pas necessaire d'indiquer un code promo lors du parcous de souscription. Pour profiter d'une offre promotionnelle en cours, il suffit de cliquer sur le lien correspondant à l'offre, et de faire la souscription à une assurance vie ou PER directement sur le site de Linxea. Pour profiter de l'offre de parrainage, il faut suivre le lien indiqué plus haut et d'indiquer votre adresse e-mail.</p>
-
-<h2>Étape 4 : vérifie que la remise est bien prise en compte</h2>
-
-<p>Avant de finaliser ta souscription, regarde attentivement le récapitulatif de ton contrat. La remise ou l'avantage lié au code doit apparaître clairement, que ce soit une réduction sur les frais d'entrée, un geste commercial ou un autre avantage selon l'offre du moment. Si tu ne vois rien de mentionné, ne valide pas encore. Contacte le service client Linxea pour signaler le problème avant signature, car il est difficile de corriger ça après coup. Mieux vaut prendre deux minutes de plus que de rater l'avantage.</p>
-
-
-
-
 
