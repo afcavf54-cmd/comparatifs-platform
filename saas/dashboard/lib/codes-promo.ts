@@ -74,6 +74,8 @@ export interface BrandFrontmatter {
   url_marchand?: string
   url_affiliation?: string
   logo_url?: string
+  // Avantage clé affiché en 3e badge du bandeau d'en-tête (marketing).
+  avantage?: string
   description_marque?: string
   avis_sophie?: string
   conseil_sophie?: string
@@ -128,6 +130,7 @@ export function parseBrandFile(raw: string): { fm: BrandFrontmatter; body: strin
 const FIELD_ORDER: (keyof BrandFrontmatter)[] = [
   'marque', 'slug', 'categorie_marque',
   'url_marchand', 'url_affiliation', 'logo_url',
+  'avantage',
   'description_marque', 'avis_sophie', 'conseil_sophie',
   'rating',
   'codes',
@@ -223,6 +226,7 @@ export function emptyBrand(marque: string, slug?: string): Brand {
     url_marchand: '',
     url_affiliation: '',
     logo_url: '',
+    avantage: '',
     description_marque: '',
     avis_sophie: '',
     conseil_sophie: '',
