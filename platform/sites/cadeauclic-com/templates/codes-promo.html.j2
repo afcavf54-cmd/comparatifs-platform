@@ -445,7 +445,6 @@
           <button class="tab active" data-filter="all">Tout <span class="count">{{ brand.n_total }}</span></button>
           <button class="tab" data-filter="code">Codes promo <span class="count">{{ brand.n_codes }}</span></button>
           <button class="tab" data-filter="offer">Offres <span class="count">{{ brand.n_offres }}</span></button>
-          <button class="tab" data-filter="best">Meilleure remise</button>
         </div>
         {% if brand._products %}
         <div class="pdrop">
@@ -712,7 +711,6 @@ const MARQUE = {{ brand.marque | tojson }};
       let show = true;
       if (activeType === 'code') show = c.dataset.type === 'code';
       else if (activeType === 'offer') show = c.dataset.type === 'offer';
-      else if (activeType === 'best') show = c.dataset.best === '1';
       if (show && activeProduct) {
         const list = (c.dataset.produits || '').split('|').filter(Boolean);
         show = list.indexOf(activeProduct) !== -1;
