@@ -771,7 +771,6 @@
           <button class="tab active" data-filter="all">Tout <span class="count">3</span></button>
           <button class="tab" data-filter="code">Codes promo <span class="count">3</span></button>
           <button class="tab" data-filter="offer">Offres <span class="count">0</span></button>
-          <button class="tab" data-filter="best">Meilleure remise</button>
         </div>
         <div class="pdrop">
           <label for="prodSelect">Filtrer par produit Octopus Energy</label>
@@ -1197,7 +1196,6 @@ const MARQUE = "Octopus Energy";
       let show = true;
       if (activeType === 'code') show = c.dataset.type === 'code';
       else if (activeType === 'offer') show = c.dataset.type === 'offer';
-      else if (activeType === 'best') show = c.dataset.best === '1';
       if (show && activeProduct) {
         const list = (c.dataset.produits || '').split('|').filter(Boolean);
         show = list.indexOf(activeProduct) !== -1;

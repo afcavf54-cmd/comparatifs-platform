@@ -855,7 +855,6 @@
           <button class="tab active" data-filter="all">Tout <span class="count">6</span></button>
           <button class="tab" data-filter="code">Codes promo <span class="count">5</span></button>
           <button class="tab" data-filter="offer">Offres <span class="count">1</span></button>
-          <button class="tab" data-filter="best">Meilleure remise</button>
         </div>
         <div class="pdrop">
           <label for="prodSelect">Filtrer par produit Linxea</label>
@@ -1352,7 +1351,6 @@ const MARQUE = "Linxea";
       let show = true;
       if (activeType === 'code') show = c.dataset.type === 'code';
       else if (activeType === 'offer') show = c.dataset.type === 'offer';
-      else if (activeType === 'best') show = c.dataset.best === '1';
       if (show && activeProduct) {
         const list = (c.dataset.produits || '').split('|').filter(Boolean);
         show = list.indexOf(activeProduct) !== -1;
