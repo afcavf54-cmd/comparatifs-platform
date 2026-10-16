@@ -110,7 +110,7 @@
     .tab.active .count { background: rgba(255,255,255,.15); color: var(--white); }
     /* Barre de filtres : onglets (type) à gauche + liste déroulante des
        produits associés à droite, sur une MÊME ligne (gain de place). */
-    .filterbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px 20px; flex-wrap: wrap; margin: 0 0 20px; }
+    .filterbar { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin: 0 0 20px; }
     .filterbar .tabs { margin: 0; }
     .pdrop { display: flex; flex-direction: column; gap: 4px; min-width: 220px; }
     .pdrop label { font-size: .78rem; font-weight: 600; color: var(--ink-soft); }
@@ -423,31 +423,30 @@
     </div>
   </div>
 
-  <!-- FILTRES (sous le bandeau, sur fond blanc) : onglets + liste déroulante produits, même ligne -->
-  <div class="filterbar">
-    <div class="tabs" id="tabs">
-      <button class="tab active" data-filter="all">Tout <span class="count">{{ brand.n_total }}</span></button>
-      <button class="tab" data-filter="code">Codes promo <span class="count">{{ brand.n_codes }}</span></button>
-      <button class="tab" data-filter="offer">Offres <span class="count">{{ brand.n_offres }}</span></button>
-      <button class="tab" data-filter="best">Meilleure remise</button>
-    </div>
-    {% if brand._products %}
-    <div class="pdrop">
-      <label for="prodSelect">Filtrer par produit {{ brand.marque }}</label>
-      <select id="prodSelect" aria-label="Filtrer par produit {{ brand.marque }}">
-        <option value="">Tous les produits ({{ brand.n_total }})</option>
-        {% for p in brand._products %}
-        <option value="{{ p.slug }}">{{ p.name }} ({{ p.count }})</option>
-        {% endfor %}
-      </select>
-    </div>
-    {% endif %}
-  </div>
-
   <!-- LAYOUT -->
   <div class="layout">
     <!-- ===== MAIN ===== -->
     <main id="list">
+      <!-- FILTRES en tête de la colonne des codes : onglets, puis liste déroulante produits -->
+      <div class="filterbar">
+        <div class="tabs" id="tabs">
+          <button class="tab active" data-filter="all">Tout <span class="count">{{ brand.n_total }}</span></button>
+          <button class="tab" data-filter="code">Codes promo <span class="count">{{ brand.n_codes }}</span></button>
+          <button class="tab" data-filter="offer">Offres <span class="count">{{ brand.n_offres }}</span></button>
+          <button class="tab" data-filter="best">Meilleure remise</button>
+        </div>
+        {% if brand._products %}
+        <div class="pdrop">
+          <label for="prodSelect">Filtrer par produit {{ brand.marque }}</label>
+          <select id="prodSelect" aria-label="Filtrer par produit {{ brand.marque }}">
+            <option value="">Tous les produits ({{ brand.n_total }})</option>
+            {% for p in brand._products %}
+            <option value="{{ p.slug }}">{{ p.name }} ({{ p.count }})</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+      </div>
       {% for c in brand.codes_actifs %}
       <article class="coupon" data-type="{{ c.type }}" data-best="{{ '1' if c.meilleure_remise else '0' }}" data-produits="{{ c._prod_slugs | default('') }}">
         <div class="val">
