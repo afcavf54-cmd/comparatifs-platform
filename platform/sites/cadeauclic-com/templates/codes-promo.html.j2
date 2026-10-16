@@ -103,6 +103,13 @@
     .tab:hover { border-color: var(--rose-300); color: var(--ink); }
     .tab.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
     .tab.active .count { background: rgba(255,255,255,.15); color: var(--white); }
+    /* Barre de filtre « produits associés » (en haut de la liste des codes). */
+    .pbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+    .pfilter { background: var(--white); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .85rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .2s; }
+    .pfilter .count { background: var(--rose-50); color: var(--rose-600); padding: 2px 8px; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+    .pfilter:hover { border-color: var(--rose-300); color: var(--ink); }
+    .pfilter.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .pfilter.active .count { background: rgba(255,255,255,.15); color: var(--white); }
 
     /* ═══ LAYOUT 2 COLS ════════════════════════════════════════════════════ */
     .layout { display: grid; grid-template-columns: 340px 1fr; gap: 36px; padding-bottom: 56px; }
@@ -411,8 +418,16 @@
   <div class="layout">
     <!-- ===== MAIN ===== -->
     <main id="list">
+      {% if brand._products %}
+      <div class="pbar" id="pbar">
+        <button class="pfilter active" data-product="">Tous les produits</button>
+        {% for p in brand._products %}
+        <button class="pfilter" data-product="{{ p.slug }}">{{ p.name }} <span class="count">{{ p.count }}</span></button>
+        {% endfor %}
+      </div>
+      {% endif %}
       {% for c in brand.codes_actifs %}
-      <article class="coupon" data-type="{{ c.type }}" data-best="{{ '1' if c.meilleure_remise else '0' }}">
+      <article class="coupon" data-type="{{ c.type }}" data-best="{{ '1' if c.meilleure_remise else '0' }}" data-produits="{{ c._prod_slugs | default('') }}">
         <div class="val">
           <div class="big">{% if c.valeur %}{% if c.unite == '%' %}{{ c.valeur | int }}%{% elif c.unite == '€' %}{{ c.valeur | int }}€{% else %}{{ c.valeur }}{% endif %}{% else %}🎁{% endif %}</div>
           <span class="kind">{{ c.sous_type }}</span>
@@ -658,18 +673,34 @@ const MARQUE = {{ brand.marque | tojson }};
 
 (function(){
   const tabs = document.querySelectorAll('.tab');
+  const pfilters = document.querySelectorAll('.pfilter');
   const coupons = document.querySelectorAll('main#list > .coupon, main#list > .expired .coupon');
+  let activeType = 'all';
+  let activeProduct = '';   // '' = tous les produits
+  function apply() {
+    coupons.forEach(c => {
+      let show = true;
+      if (activeType === 'code') show = c.dataset.type === 'code';
+      else if (activeType === 'offer') show = c.dataset.type === 'offer';
+      else if (activeType === 'best') show = c.dataset.best === '1';
+      if (show && activeProduct) {
+        const list = (c.dataset.produits || '').split('|').filter(Boolean);
+        show = list.indexOf(activeProduct) !== -1;
+      }
+      c.style.display = show ? '' : 'none';
+    });
+  }
   tabs.forEach(t => t.addEventListener('click', () => {
     tabs.forEach(x => x.classList.remove('active'));
     t.classList.add('active');
-    const f = t.dataset.filter;
-    coupons.forEach(c => {
-      let show = true;
-      if (f === 'code') show = c.dataset.type === 'code';
-      else if (f === 'offer') show = c.dataset.type === 'offer';
-      else if (f === 'best') show = c.dataset.best === '1';
-      c.style.display = show ? '' : 'none';
-    });
+    activeType = t.dataset.filter;
+    apply();
+  }));
+  pfilters.forEach(p => p.addEventListener('click', () => {
+    pfilters.forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    activeProduct = p.dataset.product || '';
+    apply();
   }));
 })();
 
