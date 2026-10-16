@@ -67,6 +67,7 @@ codes:
     cta_text: ""
     produits:
       - Spirit PER
+    cta_url: https://www.financeads.net/tc.php?t=74753C432495618T
   - id: cmvank2vryfjg
     type: code
     valeur: 200
@@ -83,6 +84,7 @@ codes:
     cta_text: ""
     produits:
       - Assurance vie Spirit 2
+    cta_url: https://www.financeads.net/tc.php?t=74753C432495608T
   - id: cmvanloo0d2jy
     type: code
     valeur: 100
@@ -99,6 +101,7 @@ codes:
     cta_text: ""
     produits:
       - Suravenir PER
+    cta_url: https://www.financeads.net/tc.php?t=74753C432495614T
   - id: cmvanom9inasj
     type: code
     valeur: 100
@@ -115,6 +118,7 @@ codes:
     cta_text: ""
     produits:
       - Assurance vie Vie
+    cta_url: https://www.financeads.net/tc.php?t=74753C432495614T
   - id: cmvanpsgjtlmf
     type: offer
     valeur: 50
@@ -129,6 +133,15 @@ codes:
     meilleure_remise: false
     expired: false
     cta_text: ""
+    cta_url: https://fr.igraal.com/parrainage?parrain=AG_68f8b3b62a0a2&utm_medium=raf&utm_source=refer_friend
+    produits:
+      - Assurance vie Avenir 2+
+      - Assurance vie Spirit 2
+      - Assurance vie Vie
+      - Assurance vie Zen
+      - Suravenir PER
+      - Spirit PER
+      - Apicil PER
 faq:
   - question: Comment utiliser un code promo Linxea ?
     reponse: |-
