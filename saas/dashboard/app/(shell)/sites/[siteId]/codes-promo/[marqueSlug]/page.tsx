@@ -1056,11 +1056,11 @@ export default function CodesPromoEditPage() {
           {/* HTML résultat */}
           <div style={{ ...S.field, marginTop: 12 }}>
             <label style={S.label}>HTML du contenu (édite directement si besoin)</label>
-            <textarea
-              style={{ ...S.textarea, minHeight: 280, fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace', fontSize: 13 }}
+            <RichEditor
               value={brand.content_md}
-              onChange={e => update('content_md', e.target.value)}
-              placeholder={`<h2>Étape 1 : Repère le code</h2>\n<p>...</p>\n<h2>Étape 2 : Copie le code</h2>\n<p>...</p>`}
+              onChange={(html) => update('content_md', html)}
+              placeholder="Étape 1, 2, 3, 4… (utilise les titres pour chaque étape, puis des paragraphes)"
+              height={340}
             />
           </div>
         </div>
