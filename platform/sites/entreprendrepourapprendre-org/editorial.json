@@ -81,8 +81,22 @@
       "malibou",
       "paggabylucca",
       "openpaye",
-      "factorial"
-    ]
+      "factorial",
+      "Puncto-logiciel-de-paie"
+    ],
+    "products_order": {
+      "payfit": 1,
+      "mysilae": 2,
+      "sagebusinesscloudpaie": 3,
+      "cegidpayroll": 4,
+      "ebppaie": 5,
+      "Puncto-logiciel-de-paie": 6,
+      "adp": 7,
+      "malibou": 8,
+      "paggabylucca": 9,
+      "openpaye": 10,
+      "factorial": 11
+    }
   },
   "classement-logiciel-de-systeme-d-information-rh-sirh": {
     "intro": "<p>Choisir un <strong>logiciel de système d'information RH</strong> adapté à votre TPE n'est pas évident quand on jongle entre la paie, les congés et le suivi des performances. Je le sais bien : gérer les RH manuellement fait perdre un temps précieux qu'on pourrait consacrer au développement commercial.</p>\n\n<p>Après avoir testé plusieurs solutions, j'ai analysé PayFit, Lucca, Factorial, Eurécia, Sage Business Cloud, Personio, Rippling et BambooHR. Vous découvrirez mon classement basé sur des critères qui comptent vraiment pour une petite structure : simplicité, gain de temps et rapport qualité-prix.</p>",
@@ -12834,5 +12848,17 @@
       "Minimum de commande élevé, peu compatible avec les petites séries ou les tests",
       "Délais plus longs qu'une plateforme automatisée, à anticiper impérativement"
     ]
+  },
+  "classement-prod-Puncto-logiciel-de-paie": {
+    "nom": "Puncto",
+    "marque": "Puncto",
+    "description": "<p><strong>Puncto</strong> est un logiciel de paie français conçu pour simplifier et automatiser la gestion de la paie des TPE et PME. Développé pour répondre aux exigences du droit du travail français, Puncto propose une solution intuitive permettant aux gestionnaires de paie et aux dirigeants de générer des bulletins de salaire conformes en quelques clics.&nbsp;</p><p>La plateforme intègre les dernières mises à jour légales et conventionnelles, garantissant ainsi une conformité permanente avec la législation en vigueur. Grâce à son interface ergonomique et ses fonctionnalités automatisées, <strong>Puncto</strong> réduit considérablement le temps consacré aux tâches administratives liées à la paie, tout en minimisant les risques d'erreurs. Le logiciel facilite également la gestion des déclarations sociales nominatives (DSN) et s'intègre facilement avec d'autres outils de gestion d'entreprise.</p>",
+    "points_forts": [
+      "Mise à jour automatique des règles légales et conventionnelles pour une conformité garantie en permanence",
+      "Interface intuitive et ergonomique permettant une prise en main rapide, même sans expertise comptable approfondie",
+      "Gestion simplifiée de la DSN avec envoi automatique aux organismes sociaux compétents"
+    ],
+    "points_faibles": [],
+    "url_affiliation": "https://puncto.fr/"
   }
 }
