@@ -105,7 +105,11 @@
     .tab.active .count { background: rgba(255,255,255,.15); color: var(--white); }
 
     /* ═══ LAYOUT 2 COLS ════════════════════════════════════════════════════ */
-    .layout { display: grid; grid-template-columns: 1fr 340px; gap: 36px; padding-bottom: 56px; }
+    .layout { display: grid; grid-template-columns: 340px 1fr; gap: 36px; padding-bottom: 56px; }
+    /* Disposition inversée : sidebar à GAUCHE, liste des codes à DROITE.
+       L'ordre du DOM reste (codes puis sidebar) → sur mobile les codes
+       s'empilent en premier (voir reset dans la media query). */
+    .layout > aside { order: -1; }
 
     /* ═══ COUPON CARD ══════════════════════════════════════════════════════ */
     .coupon { background: var(--white); border-radius: var(--r); padding: 22px; margin-bottom: 16px; display: grid; grid-template-columns: 110px 1fr 160px; gap: 22px; align-items: center; box-shadow: var(--shadow-sm); border: 1px solid var(--line); transition: all .2s; }
@@ -289,6 +293,7 @@
       .nav-right .btn { width: 100%; justify-content: center; }
       .hamburger { display: block; z-index: 100; }
       .layout { grid-template-columns: 1fr; }
+      .layout > aside { order: 0; }   /* mobile : codes d'abord, sidebar ensuite */
 
       /* ─── Page head mobile : grid 60px / 1fr / tabs pleine largeur ─── */
       .page-head {
