@@ -197,7 +197,18 @@
     /* ═══ SIDEBAR (ASIDE) ══════════════════════════════════════════════════ */
     aside { display: flex; flex-direction: column; gap: 16px; }
     .side-card { background: var(--white); border-radius: var(--r); padding: 22px; box-shadow: var(--shadow-sm); border: 1px solid var(--line); }
-    .side-card h4 { font-size: 1rem; margin-bottom: 12px; }
+    .side-card h3, .side-card h4 { font-size: 1rem; margin-bottom: 12px; }
+    /* Champs éditables en texte riche (avis, conseil, description, FAQ…) :
+       on rend le HTML de l'éditeur avec une mise en forme lisible. */
+    .rich > :first-child { margin-top: 0; }
+    .rich > :last-child { margin-bottom: 0; }
+    .rich p { margin: 0 0 12px; line-height: 1.65; }
+    .rich ul, .rich ol { margin: 0 0 12px; padding-left: 1.25em; }
+    .rich li { margin-bottom: 4px; }
+    .rich h1, .rich h2, .rich h3 { margin: 16px 0 8px; line-height: 1.3; }
+    .rich a { color: var(--rose-600); text-decoration: underline; }
+    .rich strong, .rich b { font-weight: 700; }
+    .rich blockquote { margin: 0 0 12px; padding-left: 12px; border-left: 3px solid var(--line); color: var(--ink-soft); }
     .side-card p { font-size: .92rem; color: var(--ink-soft); line-height: 1.6; }
     .avis-head { display: flex; align-items: center; gap: 10px; }
     .avis-head img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
@@ -508,7 +519,7 @@
           {% for q in brand.faq %}
           <div class="faq-item">
             <button class="faq-q">{{ q.question }} <span class="plus">+</span></button>
-            <div class="faq-a"><div class="inner">{{ q.reponse }}</div></div>
+            <div class="faq-a"><div class="inner rich">{{ q.reponse | safe }}</div></div>
           </div>
           {% endfor %}
         </div>
@@ -518,40 +529,40 @@
 
     <!-- ===== ASIDE ===== -->
     <aside>
+      {% if brand.description_marque %}
       <div class="side-card">
-        <h4 class="avis-head">
+        <h3>Qu'est-ce que {{ brand.marque }}&nbsp;?</h3>
+        <div class="rich">{{ brand.description_marque | safe }}</div>
+      </div>
+      {% endif %}
+
+      <div class="side-card">
+        <h3 class="avis-head">
           {% if author.photo %}
           <img src="{{ author.photo }}" alt="{{ author.name or 'Sophie' }}" onerror="this.outerHTML='<span class=ph-avatar>{{ (author.name or 'S')[0] }}</span>'">
           {% else %}
           <span class="ph-avatar">{{ (author.name or 'S')[0] }}</span>
           {% endif %}
           L'avis de {{ (author.name or 'Sophie').split(' ')[0] }}
-        </h4>
-        <p>{{ brand.avis_sophie or ('Je rassemble pour toi les meilleurs codes promo ' ~ brand.marque ~ '. Tous testés à la main.') }}</p>
+        </h3>
+        <div class="rich">{{ (brand.avis_sophie or ('Je rassemble pour toi les meilleurs codes promo ' ~ brand.marque ~ '. Tous testés à la main.')) | safe }}</div>
         <a href="{{ brand.url_cta }}" class="btn" target="_blank" rel="nofollow noopener sponsored" style="width:100%;justify-content:center;margin-top:16px">Aller sur {{ brand.marque }} →</a>
       </div>
 
       {% if brand.conseil_sophie %}
       <div class="side-card">
-        <h4>💡 Le conseil de {{ (author.name or 'Sophie').split(' ')[0] }}</h4>
-        <p>{{ brand.conseil_sophie }}</p>
+        <h3>💡 Le conseil de {{ (author.name or 'Sophie').split(' ')[0] }}</h3>
+        <div class="rich">{{ brand.conseil_sophie | safe }}</div>
       </div>
       {% endif %}
 
       <div class="side-card">
-        <h4>Aussi par ici</h4>
+        <h3>Aussi par ici</h3>
         <div class="side-links">
           <a href="/blog/">Idées cadeau & guides</a>
           <a href="/codes-promo/">Tous les codes promo</a>
         </div>
       </div>
-
-      {% if brand.description_marque %}
-      <div class="side-card">
-        <h4>Qu'est-ce que {{ brand.marque }}&nbsp;?</h4>
-        <p>{{ brand.description_marque }}</p>
-      </div>
-      {% endif %}
 
       {% if related_brands %}
       <div class="side-card">
