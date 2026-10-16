@@ -142,6 +142,54 @@ codes:
       - Suravenir PER
       - Spirit PER
       - Apicil PER
+  - id: cmvapykcwdvb3
+    type: offer
+    valeur: 200
+    unite: €
+    sous_type: Code promo
+    accroche: 200 € de remise sur Linxea Avenir 2
+    code: ""
+    detail: ""
+    expire_le: ""
+    nb_utilisations: 0
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: true
+    cta_text: ""
+    cta_url: ""
+    produits: []
+  - id: cmvapz9ghrcu0
+    type: code
+    valeur: 150
+    unite: €
+    sous_type: Code promo
+    accroche: 150 € offerts sur Linxea Spirit PER
+    code: ""
+    detail: ""
+    expire_le: ""
+    nb_utilisations: 0
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: true
+    cta_text: ""
+    cta_url: ""
+    produits: []
+  - id: cmvapzm95cyp0
+    type: offer
+    valeur: 100
+    unite: €
+    sous_type: Code promo
+    accroche: 100 € offerts sur une assurance-vie Enfant Linxea
+    code: ""
+    detail: ""
+    expire_le: ""
+    nb_utilisations: 0
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: true
+    cta_text: ""
+    cta_url: ""
+    produits: []
 faq:
   - question: Comment utiliser un code promo Linxea ?
     reponse: |-
