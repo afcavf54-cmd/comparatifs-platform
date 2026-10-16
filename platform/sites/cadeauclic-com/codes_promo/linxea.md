@@ -56,7 +56,7 @@ codes:
     sous_type: Code promo
     accroche: 200 € de remise sur Linxea Spirit PER avec un code promo
     code: PER26SPIRIT
-    detail: ""
+    detail: Premier versement de 4 000 € minimum, dont au moins 30 % en unités de compte non garanties en capital. Gestion libre, pilotée ou à horizon. Valable uniquement pour un premier PER.
     expire_le: "2026-12-26"
     nb_utilisations: 56
     teste_par_sophie: ""
