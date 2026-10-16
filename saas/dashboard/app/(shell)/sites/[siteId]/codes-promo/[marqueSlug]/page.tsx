@@ -15,6 +15,7 @@ interface CodePromo {
   meilleure_remise: boolean; expired: boolean
   cta_text?: string  // Override du texte du bouton CTA (sinon défaut selon type)
   cta_url?: string   // Lien d'affiliation propre à cette offre (prioritaire sur le lien général)
+  produits?: string[] // Produits associés à cette offre (filtre en haut de page)
 }
 interface BrandFaq { question: string; reponse: string }
 interface BrandHistoryMonth { mois: string; valeur: number }
@@ -247,7 +248,7 @@ export default function CodesPromoEditPage() {
       sous_type: type === 'code' ? 'Code promo' : 'Bon plan',
       accroche: '', code: '', detail: '',
       expire_le: '', nb_utilisations: 0, teste_par_sophie: '',
-      meilleure_remise: false, expired: false, cta_text: '', cta_url: '',
+      meilleure_remise: false, expired: false, cta_text: '', cta_url: '', produits: [],
     }
     setBrand({ ...brand, codes: [...(brand.codes || []), newCode] })
   }
@@ -818,6 +819,18 @@ export default function CodesPromoEditPage() {
                 />
                 <div style={{ fontSize: 11, color: '#999' }}>
                   Laisse vide pour utiliser le lien d'affiliation général de la marque.
+                </div>
+              </div>
+              <div style={{ ...S.field, marginTop: 10 }}>
+                <label style={S.label}>Produits associés (séparés par des virgules)</label>
+                <input
+                  style={S.input}
+                  value={(c.produits || []).join(', ')}
+                  onChange={e => updateCode(idx, { produits: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })}
+                  placeholder="Ex : Spirit 2, Avenir 2"
+                />
+                <div style={{ fontSize: 11, color: '#999' }}>
+                  Ces produits apparaissent en filtre en haut de la page, avec le nombre d'offres associées.
                 </div>
               </div>
               <div style={{ ...S.grid3, marginTop: 10 }}>
