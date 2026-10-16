@@ -23,6 +23,7 @@ interface BrandRating { value: number; count: number }
 interface Brand {
   marque: string; slug: string; categorie_marque?: string
   url_marchand?: string; url_affiliation?: string; logo_url?: string
+  avantage?: string  // Avantage clé (3e badge du bandeau d'en-tête)
   description_marque?: string; avis_sophie?: string; conseil_sophie?: string
   rating?: BrandRating; codes?: CodePromo[]; faq?: BrandFaq[]
   historique_12_mois?: BrandHistoryMonth[]
@@ -626,6 +627,20 @@ export default function CodesPromoEditPage() {
                   <div style={{ fontSize: 11, color: '#888', wordBreak: 'break-all' }}>{brand.logo_url}</div>
                 </div>
               )}
+            </div>
+
+            {/* Avantage clé — 3e badge du bandeau d'en-tête */}
+            <div style={{ ...S.field, gridColumn: 'span 2' }}>
+              <label style={S.label}>Avantage clé (badge en-tête, optionnel)</label>
+              <input
+                style={S.input}
+                value={brand.avantage || ''}
+                onChange={e => update('avantage', e.target.value)}
+                placeholder="Ex : Économisez sur votre assurance-vie, PER et placements"
+              />
+              <div style={{ fontSize: 11, color: '#999' }}>
+                Affiché en 3e badge du bandeau en haut de page. Vide → « Économisez chez {brand.marque || 'la marque'} ».
+              </div>
             </div>
 
             {/* Description marque + bouton générer */}
