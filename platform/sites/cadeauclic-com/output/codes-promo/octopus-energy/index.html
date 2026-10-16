@@ -258,7 +258,7 @@
     /* Barre de filtres : onglets (type) à gauche + liste déroulante des
        produits associés à droite, sur une MÊME ligne (gain de place). */
     /* Onglets (type) + liste déroulante produits sur UNE SEULE ligne. */
-    .filterbar { display: flex; align-items: center; justify-content: space-between; gap: 10px 14px; flex-wrap: wrap; margin: 0 0 20px; }
+    .filterbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px 14px; flex-wrap: wrap; margin: 0 0 20px; }
     .filterbar .tabs { margin: 0; gap: 6px; }
     .pdrop { display: flex; flex-direction: column; gap: 3px; min-width: 190px; flex-shrink: 0; }
     .pdrop label { font-size: .72rem; font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
@@ -383,6 +383,8 @@
     /* « Lire l'avis complet » : avis tronqué + lien d'expansion. */
     .avis-more { background: none; border: 0; color: var(--rose-600); font-weight: 700; font-size: .9rem; cursor: pointer; padding: 4px 0 0; text-decoration: underline; text-underline-offset: 2px; font-family: inherit; }
     .avis-more:hover { color: var(--rose-500); }
+    /* Aperçu tronqué par la hauteur, avec fondu bas ; déplié au clic. */
+    .avis-body.clamp { max-height: 13.5em; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); }
     .side-card p { font-size: .92rem; color: var(--ink-soft); line-height: 1.6; }
     .avis-head { display: flex; align-items: center; gap: 10px; }
     .avis-head img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
@@ -868,8 +870,7 @@
           <img src="/author-photo.png" alt="Sophie Martin" onerror="this.outerHTML='<span class=ph-avatar>S</span>'">
           L'avis de Sophie
         </h3>
-        <div class="rich avis-preview">J'ai passé du temps à rassembler et tester ces codes Octopus Energy à la main, parce que dans le secteur de l'énergie, les offres changent vite et certains codes expirés trainent encore sur des sites peu sérieux. Ce que j'ai remarqué, c'est que les codes de parrainage sont souvent les plus fiables et les plus généreux, alors privilégie-les si tu en trouves un actif sur cette page. Un petit piège à éviter : certains codes ne sont valables que pour une première souscription, donc si tu es déjà client Octopus…</div>
-        <div class="rich avis-full" hidden>J'ai passé du temps à rassembler et tester ces codes Octopus Energy à la main, parce que dans le secteur de l'énergie, les offres changent vite et certains codes expirés trainent encore sur des sites peu sérieux. Ce que j'ai remarqué, c'est que les codes de parrainage sont souvent les plus fiables et les plus généreux, alors privilégie-les si tu en trouves un actif sur cette page. Un petit piège à éviter : certains codes ne sont valables que pour une première souscription, donc si tu es déjà client Octopus Energy, vérifie bien les conditions avant de t'emballer. Dans l'ensemble, la marque joue plutôt le jeu de la transparence sur ses offres, ce qui est appréciable.</div>
+        <div class="rich avis-body clamp">J'ai passé du temps à rassembler et tester ces codes Octopus Energy à la main, parce que dans le secteur de l'énergie, les offres changent vite et certains codes expirés trainent encore sur des sites peu sérieux. Ce que j'ai remarqué, c'est que les codes de parrainage sont souvent les plus fiables et les plus généreux, alors privilégie-les si tu en trouves un actif sur cette page. Un petit piège à éviter : certains codes ne sont valables que pour une première souscription, donc si tu es déjà client Octopus Energy, vérifie bien les conditions avant de t'emballer. Dans l'ensemble, la marque joue plutôt le jeu de la transparence sur ses offres, ce qui est appréciable.</div>
         <button type="button" class="avis-more">Lire l'avis complet</button>
         <a href="https://clikme.xyz/octopus" class="btn" target="_blank" rel="nofollow noopener sponsored" style="width:100%;justify-content:center;margin-top:16px">Aller sur Octopus Energy →</a>
       </div>
@@ -1149,15 +1150,13 @@ const MARQUE = "Octopus Energy";
   });
 })();
 
-// « Lire l'avis complet » : remplace l'aperçu tronqué par l'avis complet.
+// « Lire l'avis complet » : enlève la troncature (le HTML reste formaté).
 document.querySelectorAll('.avis-more').forEach(btn => {
   btn.addEventListener('click', () => {
     const card = btn.closest('.side-card');
     if (!card) return;
-    const prev = card.querySelector('.avis-preview');
-    const full = card.querySelector('.avis-full');
-    if (prev) prev.hidden = true;
-    if (full) full.hidden = false;
+    const body = card.querySelector('.avis-body.clamp');
+    if (body) body.classList.remove('clamp');
     btn.hidden = true;
   });
 });
