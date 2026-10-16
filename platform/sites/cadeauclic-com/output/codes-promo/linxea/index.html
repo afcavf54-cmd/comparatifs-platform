@@ -365,13 +365,20 @@
     .tab:hover { border-color: var(--rose-300); color: var(--ink); }
     .tab.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
     .tab.active .count { background: rgba(255,255,255,.15); color: var(--white); }
-    /* Barre de filtre « produits associés » (en haut de la liste des codes). */
-    .pbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
-    .pfilter { background: var(--white); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .85rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .2s; }
-    .pfilter .count { background: var(--rose-50); color: var(--rose-600); padding: 2px 8px; border-radius: 999px; font-size: .78rem; font-weight: 700; }
-    .pfilter:hover { border-color: var(--rose-300); color: var(--ink); }
-    .pfilter.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
-    .pfilter.active .count { background: rgba(255,255,255,.15); color: var(--white); }
+    /* Barre de filtres : onglets (type) à gauche + liste déroulante des
+       produits associés à droite, sur une MÊME ligne (gain de place). */
+    .filterbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px 20px; flex-wrap: wrap; margin: 0 0 20px; }
+    .filterbar .tabs { margin: 0; }
+    .pdrop { display: flex; flex-direction: column; gap: 4px; min-width: 220px; }
+    .pdrop label { font-size: .78rem; font-weight: 600; color: var(--ink-soft); }
+    .pdrop select {
+      appearance: none; -webkit-appearance: none;
+      background: var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ec3f76' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 14px center;
+      border: 1px solid var(--line); border-radius: 999px; padding: 10px 38px 10px 16px;
+      font-size: .9rem; font-weight: 600; color: var(--ink); cursor: pointer; font-family: inherit;
+    }
+    .pdrop select:hover { border-color: var(--rose-300); }
+    .pdrop select:focus { outline: none; border-color: var(--rose-500); }
 
     /* ═══ LAYOUT 2 COLS ════════════════════════════════════════════════════ */
     .layout { display: grid; grid-template-columns: 340px 1fr; gap: 36px; padding-bottom: 56px; }
@@ -482,6 +489,9 @@
     .rich a { color: var(--rose-600); text-decoration: underline; }
     .rich strong, .rich b { font-weight: 700; }
     .rich blockquote { margin: 0 0 12px; padding-left: 12px; border-left: 3px solid var(--line); color: var(--ink-soft); }
+    /* « Lire l'avis complet » : avis tronqué + lien d'expansion. */
+    .avis-more { background: none; border: 0; color: var(--rose-600); font-weight: 700; font-size: .9rem; cursor: pointer; padding: 4px 0 0; text-decoration: underline; text-underline-offset: 2px; font-family: inherit; }
+    .avis-more:hover { color: var(--rose-500); }
     .side-card p { font-size: .92rem; color: var(--ink-soft); line-height: 1.6; }
     .avis-head { display: flex; align-items: center; gap: 10px; }
     .avis-head img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
@@ -823,23 +833,27 @@
     </div>
   </div>
 
-  <!-- FILTRES (sous le bandeau, sur fond blanc) -->
-  <div class="tabs" id="tabs">
-    <button class="tab active" data-filter="all">Tout <span class="count">6</span></button>
-    <button class="tab" data-filter="code">Codes promo <span class="count">5</span></button>
-    <button class="tab" data-filter="offer">Offres <span class="count">1</span></button>
-    <button class="tab" data-filter="best">Meilleure remise</button>
-  </div>
-
-  <div class="pbar" id="pbar">
-    <button class="pfilter active" data-product="">Tous les produits</button>
-    <button class="pfilter" data-product="assurance-vie-avenir-2">Assurance vie Avenir 2+ <span class="count">2</span></button>
-    <button class="pfilter" data-product="assurance-vie-spirit-2">Assurance vie Spirit 2 <span class="count">3</span></button>
-    <button class="pfilter" data-product="assurance-vie-vie">Assurance vie Vie <span class="count">3</span></button>
-    <button class="pfilter" data-product="assurance-vie-zen">Assurance vie Zen <span class="count">2</span></button>
-    <button class="pfilter" data-product="suravenir-per">Suravenir PER <span class="count">3</span></button>
-    <button class="pfilter" data-product="spirit-per">Spirit PER <span class="count">3</span></button>
-    <button class="pfilter" data-product="apicil-per">Apicil PER <span class="count">2</span></button>
+  <!-- FILTRES (sous le bandeau, sur fond blanc) : onglets + liste déroulante produits, même ligne -->
+  <div class="filterbar">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-filter="all">Tout <span class="count">6</span></button>
+      <button class="tab" data-filter="code">Codes promo <span class="count">5</span></button>
+      <button class="tab" data-filter="offer">Offres <span class="count">1</span></button>
+      <button class="tab" data-filter="best">Meilleure remise</button>
+    </div>
+    <div class="pdrop">
+      <label for="prodSelect">Filtrer par produit Linxea</label>
+      <select id="prodSelect" aria-label="Filtrer par produit Linxea">
+        <option value="">Tous les produits (6)</option>
+        <option value="assurance-vie-avenir-2">Assurance vie Avenir 2+ (2)</option>
+        <option value="assurance-vie-spirit-2">Assurance vie Spirit 2 (3)</option>
+        <option value="assurance-vie-vie">Assurance vie Vie (3)</option>
+        <option value="assurance-vie-zen">Assurance vie Zen (2)</option>
+        <option value="suravenir-per">Suravenir PER (3)</option>
+        <option value="spirit-per">Spirit PER (3)</option>
+        <option value="apicil-per">Apicil PER (2)</option>
+      </select>
+    </div>
   </div>
 
   <!-- LAYOUT -->
@@ -990,12 +1004,6 @@
         </article>
       </div>
 
-      <!-- RATING -->
-      <div class="rating">
-        <div class="stars">★★★★★</div>
-        <span>Linxea a obtenu la note de <b>5/5</b> de la part de nos lecteurs</span>
-      </div>
-
       <!-- HOW TO -->
       <div class="panel">
         <h2>Comment utiliser un code promo Linxea&nbsp;?</h2>
@@ -1062,10 +1070,8 @@ Pour les offres promotionnelles temporaires, il suffit de passer par un des lien
     <!-- ===== ASIDE ===== -->
     <aside>
       <div class="side-card">
-        <h3>Qu'est-ce que Linxea&nbsp;?</h3>
-        <div class="rich">Linxea est une société d'épargne en ligne qui propose des contrats d'assurance-vie, des plans d'épargne retraite (PER) et des comptes-titres, accessibles directement depuis internet sans intermédiaire physique. 
-
-Elle s'adresse aux particuliers qui souhaitent gérer leur épargne de façon autonome, avec des frais réduits par rapport aux réseaux bancaires traditionnels. Son positionnement est clairement orienté vers une clientèle à l'aise avec le digital et attentive aux coûts de gestion.</div>
+        <h3>Qu'est-ce que Linxea ?</h3>
+        <div class="rich"><p>Linxea est une société d'épargne en ligne qui propose des contrats d'<b>assurance-vie</b>, des <b>plans d'épargne retraite (PER</b>) et des <b>comptes-titres</b>, accessibles directement depuis internet sans intermédiaire physique.&nbsp;</p><p>Elle s'adresse <b>aux particuliers</b> qui souhaitent gérer leur épargne de façon <b>autonome</b>, avec des <b>frais réduits</b> par rapport aux réseaux bancaires traditionnels.&nbsp;</p></div>
       </div>
 
       <div class="side-card">
@@ -1073,7 +1079,8 @@ Elle s'adresse aux particuliers qui souhaitent gérer leur épargne de façon au
           <img src="/author-photo.png" alt="Sophie Martin" onerror="this.outerHTML='<span class=ph-avatar>S</span>'">
           L'avis de Sophie
         </h3>
-        <div class="rich">Linxea, c'est une de ces marques que j'ai découvertes un peu par hasard, en cherchant comment faire fructifier un peu l'argent de côté sans me retrouver noyée sous les frais. 
+        <div class="rich avis-preview">Linxea, c'est une de ces marques que j'ai découvertes un peu par hasard, en cherchant comment faire fructifier un peu l'argent de côté sans me retrouver noyée sous les frais. Ce qui m'a convaincue, c'est leur transparence sur les frais de gestion, vraiment bas comparés à ce qu'on voit ailleurs sur l'assurance vie ou le PER. Je recommande Linxea à toute personne qui veut placer de l'argent pour un projet à moyen terme, préparer sa retraite ou simplement épargner de façon plus rentable que sur un Livret A. C'est aussi…</div>
+        <div class="rich avis-full" hidden>Linxea, c'est une de ces marques que j'ai découvertes un peu par hasard, en cherchant comment faire fructifier un peu l'argent de côté sans me retrouver noyée sous les frais. 
 
 Ce qui m'a convaincue, c'est leur transparence sur les frais de gestion, vraiment bas comparés à ce qu'on voit ailleurs sur l'assurance vie ou le PER. 
 
@@ -1082,6 +1089,7 @@ Je recommande Linxea à toute personne qui veut placer de l'argent pour un proje
 C'est aussi une option sérieuse si tu envisages d'ouvrir un contrat d'assurance vie pour tes enfants. La gestion en ligne est claire, et l'équipe conseils répond plutôt bien aux questions, même quand on n'y connaît pas grand chose.
 
 Mon conseil pratique : avant d'ouvrir un contrat, prends le temps de comparer les supports d'investissement proposés. Tous les contrats Linxea n'offrent pas exactement les mêmes fonds, donc choisis bien celui qui correspond à ton profil et à ton horizon de placement.</div>
+        <button type="button" class="avis-more">Lire l'avis complet</button>
         <a href="https://clikme.xyz/parrainage-linxea" class="btn" target="_blank" rel="nofollow noopener sponsored" style="width:100%;justify-content:center;margin-top:16px">Aller sur Linxea →</a>
       </div>
 
@@ -1343,7 +1351,7 @@ const MARQUE = "Linxea";
 
 (function(){
   const tabs = document.querySelectorAll('.tab');
-  const pfilters = document.querySelectorAll('.pfilter');
+  const prodSelect = document.getElementById('prodSelect');
   const coupons = document.querySelectorAll('main#list > .coupon, main#list > .expired .coupon');
   let activeType = 'all';
   let activeProduct = '';   // '' = tous les produits
@@ -1366,13 +1374,24 @@ const MARQUE = "Linxea";
     activeType = t.dataset.filter;
     apply();
   }));
-  pfilters.forEach(p => p.addEventListener('click', () => {
-    pfilters.forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    activeProduct = p.dataset.product || '';
+  if (prodSelect) prodSelect.addEventListener('change', () => {
+    activeProduct = prodSelect.value || '';
     apply();
-  }));
+  });
 })();
+
+// « Lire l'avis complet » : remplace l'aperçu tronqué par l'avis complet.
+document.querySelectorAll('.avis-more').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.side-card');
+    if (!card) return;
+    const prev = card.querySelector('.avis-preview');
+    const full = card.querySelector('.avis-full');
+    if (prev) prev.hidden = true;
+    if (full) full.hidden = false;
+    btn.hidden = true;
+  });
+});
 
 document.querySelectorAll('.detail').forEach(btn => {
   btn.addEventListener('click', () => {
