@@ -3409,6 +3409,36 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                         for _ck in ('accroche', 'detail', 'teste_par_sophie', 'cta_text'):
                             if _c.get(_ck):
                                 _c[_ck] = _sub(_c[_ck], b, _cp_site_ctx, _build_ctx)
+
+                    # ── Produits associés ───────────────────────────────────
+                    # Chaque code peut porter une liste `produits` (ex. Spirit 2,
+                    # Avenir 2 / gaz, électricité). On pose un `_prod_slugs` par
+                    # code (data-attribute pour le filtre JS) et on agrège au
+                    # niveau marque {name, slug, count} pour la barre de filtre
+                    # en haut de page. Le compteur ne porte que sur les codes
+                    # NON expirés.
+                    import re as _re_cp, unicodedata as _ud_cp
+                    def _prod_slug(_s):
+                        _c2 = _ud_cp.normalize('NFD', str(_s or '')).encode('ascii', 'ignore').decode('ascii')
+                        return _re_cp.sub(r'[^a-z0-9]+', '-', _c2.lower()).strip('-')
+                    _prod_counts: dict = {}
+                    for _c in b.get('codes') or []:
+                        _slugs = []
+                        for _p in (_c.get('produits') or []):
+                            _name = str(_p or '').strip()
+                            if not _name:
+                                continue
+                            _sl = _prod_slug(_name)
+                            if not _sl:
+                                continue
+                            _slugs.append(_sl)
+                            if not _c.get('expired'):
+                                if _sl not in _prod_counts:
+                                    _prod_counts[_sl] = {'name': _name, 'slug': _sl, 'count': 0}
+                                _prod_counts[_sl]['count'] += 1
+                        _c['_prod_slugs'] = '|'.join(dict.fromkeys(_slugs))
+                    b['_products'] = list(_prod_counts.values())
+
                     # Re-séparer codes_actifs / codes_expires après mutation
                     # (parse_brand a déjà fait le split, mais les références
                     # pointent sur les mêmes objets donc la mutation propage)
