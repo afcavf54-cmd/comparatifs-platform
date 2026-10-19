@@ -74,13 +74,18 @@ p{color:var(--ink2);margin-bottom:12px;font-size:16px}
   <h2>1. Éditeur du site</h2>
   <p>Le site <strong>{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') }}</strong> est édité par :</p>
   <p>
-    <strong>{{ site.name }}</strong><br>
+    <strong>{{ site.legal_editor_name if site.legal_editor_name is defined and site.legal_editor_name else site.name }}</strong><br>
+    {% if site.legal_editor_address is defined and site.legal_editor_address %}{{ site.legal_editor_address | replace('\n', '<br>') | safe }}<br>{% endif %}
     Site web : <a href="{{ site.domain }}">{{ site.domain }}</a><br>
     Email : contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') }}
   </p>
 
   <h2>2. Directeur de la publication</h2>
+  {% if site.legal_publication_director is defined and site.legal_publication_director %}
+  <p>Le responsable de la publication est <strong>{{ site.legal_publication_director }}</strong>.</p>
+  {% else %}
   <p>Le directeur de la publication est le représentant légal de {{ site.name }}.</p>
+  {% endif %}
 
   <h2>3. Hébergement</h2>
   <p>
