@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julien GUIGNARD : créateur de Monelor et investisseur</title>
+<meta name="description" content="Julien GUIGNARD, créateur de Monelor et investisseur particulier. Son parcours, sa démarche pédagogique, ses contenus sur l'investissement et sa chaîne YouTube « Julien - Monelor ».">
+<link rel="canonical" href="{{ site.url }}/auteur/julien-guignard/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<meta property="og:title" content="Julien GUIGNARD : créateur de Monelor">
+<meta property="og:description" content="Le parcours et la démarche de Julien GUIGNARD, créateur de Monelor et investisseur particulier.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="{{ site.url }}/auteur/julien-guignard/">
+<meta property="og:image" content="{{ site.url }}/apropos-julien.jpg">
+
+{% set _org_id = schema.org_id | default(site.url ~ '/#organization') %}
+{% set _website_id = schema.website_id | default(site.url ~ '/#website') %}
+{% set _person_id = schema.person_id | default(site.url ~ '/#julien-guignard') %}
+{% set _brand = schema.brand_name | default(site.name) | default('Monelor') %}
+{% set _author_page = site.url ~ '/auteur/julien-guignard/' %}
+{% set _person_img = site.url ~ '/apropos-julien.jpg' %}
+{% set _yt_name = schema.youtube_channel_name | default('Julien - Monelor') %}
+{% set _yt_url = schema.youtube_channel_url | default(site.youtube_url) %}
+{% set _job = schema.founder_is_author and ('Créateur de ' ~ _brand) or (author.job_title | default('Créateur de contenu')) %}
+<!-- JSON-LD : ProfilePage + Person (@graph). Person = mainEntity, @id partagé avec tout le site. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": {{ (_author_page ~ '#webpage') | tojson }},
+      "url": {{ _author_page | tojson }},
+      "name": {{ ((author.name | default('Julien GUIGNARD')) ~ ' - Auteur de ' ~ _brand) | tojson }},
+      "inLanguage": "fr-FR",
+      "isPartOf": { "@id": {{ _website_id | tojson }} },
+      "mainEntity": { "@id": {{ _person_id | tojson }} }
+    },
+    {
+      "@type": "Person",
+      "@id": {{ _person_id | tojson }},
+      "name": {{ (author.name | default('Julien GUIGNARD')) | tojson }},
+      "givenName": "Julien",
+      "familyName": "GUIGNARD",
+      "alternateName": "Julien",
+      "url": {{ _author_page | tojson }},
+      "image": {{ _person_img | tojson }},
+      "description": {{ (author.bio | default("Créateur de Monelor, passionné de finances personnelles, il vulgarise l'investissement et l'épargne.")) | tojson }},
+      "jobTitle": {{ _job | tojson }},
+      "worksFor": { "@id": {{ _org_id | tojson }} },
+      "affiliation": { "@id": {{ _org_id | tojson }} },
+      {% if _yt_url %}{% if schema.person_sameas %}"sameAs": {{ (schema.person_sameas + [_yt_url]) | unique | list | tojson }},{% else %}"sameAs": {{ [_yt_url] | tojson }},{% endif %}{% elif schema.person_sameas %}"sameAs": {{ schema.person_sameas | tojson }},{% endif %}
+      "knowsAbout": ["Investissement", "Épargne", "Bourse", "Dividendes", "PEA", "Assurance-vie", "ETF", "SCPI", "Immobilier locatif", "Fiscalité", "Gestion de patrimoine"]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:{{ theme.bg | default('#F4F6FB') }};
+    --surface:{{ theme.surface | default('#FFFFFF') }};
+    --ink:{{ theme.ink | default('#000921') }};
+    --ink2:#5b6478;
+    --accent:{{ theme.accent | default('#1B4FD8') }};
+    --accent2:{{ theme.accent2 | default('#E8410A') }};
+    --border:#e6e9f0;
+    --r:14px;--r2:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'{{ theme.font_body | default('Outfit') }}',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .author-hero{display:flex;gap:30px;align-items:center;flex-wrap:wrap;padding:52px 20px 24px}
+  .author-hero img.ph{width:160px;height:160px;border-radius:24px;object-fit:cover;flex-shrink:0;border:1px solid var(--border)}
+  .author-hero .intro{flex:1;min-width:260px}
+  .eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  h1{font-family:'{{ theme.font_title | default('DM Serif Display') }}',serif;font-size:clamp(32px,5vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.02em}
+  .role{color:var(--accent2);font-weight:600;margin-top:4px}
+  .lead{color:var(--ink2);font-size:1.05rem;margin:14px 0 0}
+  main{padding:20px 0 60px}
+  section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px 32px;margin:0 0 20px}
+  h2{font-family:'{{ theme.font_title | default('DM Serif Display') }}',serif;font-size:clamp(24px,3vw,30px);font-weight:400;letter-spacing:-.01em;margin:0 0 14px;color:var(--ink)}
+  p{margin:0 0 14px}
+  p:last-child{margin-bottom:0}
+  ul{margin:0 0 14px;padding-left:1.3em}
+  li{margin-bottom:6px}
+  strong{font-weight:600}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-weight:600;padding:11px 20px;border-radius:999px;font-size:.95rem}
+  .btn:hover{filter:brightness(1.07);text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+  .posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:4px}
+  .post-card{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;color:inherit;background:#fff}
+  .post-card:hover{border-color:var(--accent);text-decoration:none}
+  .post-card .ph{width:100%;aspect-ratio:16/9;object-fit:cover;background:#eef1f7}
+  .post-card .body{padding:14px 16px}
+  .post-card .ttl{font-weight:600;color:var(--ink);line-height:1.35;display:block}
+  .post-card .meta{color:var(--ink2);font-size:.82rem;margin-top:6px}
+  .disclaimer{font-size:.82rem;color:var(--ink2);line-height:1.6;background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r);padding:14px 16px;margin-top:4px}
+  @media(max-width:600px){section{padding:22px 18px}.posts-grid{grid-template-columns:1fr}.author-hero{padding-top:40px}}
+</style>
+</head>
+<body>
+
+{% include "base/_nav.html.j2" %}
+
+<div class="author-hero wrap">
+  <img class="ph" src="/apropos-julien.jpg" alt="{{ author.name | default('Julien GUIGNARD') }}" onerror="this.src='/author-photo.jpg'">
+  <div class="intro">
+    <span class="eyebrow">Auteur</span>
+    <h1>{{ author.name | default('Julien GUIGNARD') }}</h1>
+    <div class="role">{{ _job }} · investisseur particulier</div>
+    <p class="lead">Julien GUIGNARD est le créateur de Monelor. En investisseur particulier, il partage ce qu'il apprend sur la bourse, l'épargne et la gestion de patrimoine, avec un objectif : rendre l'investissement clair et accessible à tous.</p>
+    {% if _yt_url %}<div class="btn-row"><a class="btn ghost" href="{{ _yt_url }}" target="_blank" rel="noopener">Chaîne « {{ _yt_name }} » →</a></div>{% endif %}
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section>
+    <h2>Qui est Julien GUIGNARD ?</h2>
+    <p>Julien GUIGNARD est le créateur de <strong>Monelor</strong>, un média francophone consacré à l'investissement, à l'épargne et aux finances personnelles. Investisseur particulier avant tout, il a d'abord appris en gérant son propre argent : comprendre les produits, comparer les offres, éviter les pièges et les frais inutiles.</p>
+    <p>C'est de ce parcours personnel qu'est née l'envie de créer Monelor. Julien a constaté qu'une grande partie de l'information financière restait trop technique, trop théorique ou trop orientée pour être réellement utile à un particulier qui débute. Son approche est l'inverse : partir de questions concrètes et y répondre avec des mots simples, des exemples et des cas pratiques.</p>
+    <p>À travers ses guides, ses comparatifs et ses vidéos, il vulgarise des sujets comme la bourse, les ETF, le PEA, l'assurance-vie, les SCPI ou le choix d'un courtier. Il assume un ton direct et donne son avis, tout en rappelant systématiquement que Monelor est un média <strong>pédagogique</strong> et non un conseiller financier réglementé.</p>
+  </section>
+
+  <section>
+    <h2>Mon parcours d'investisseur</h2>
+    <p>L'approche de Julien repose sur une conviction simple : un particulier n'a pas besoin de devenir expert pour bien investir. Il privilégie des stratégies lisibles, des frais réduits et le long terme plutôt que les paris risqués.</p>
+    <p>Les classes d'actifs qu'il suit et documente le plus souvent :</p>
+    <ul>
+      <li><strong>Actions &amp; dividendes</strong> : construire un portefeuille et comprendre les revenus passifs.</li>
+      <li><strong>ETF</strong> : investir simplement et à moindre coût sur les grands indices.</li>
+      <li><strong>Assurance-vie &amp; PEA</strong> : les enveloppes fiscales adaptées au particulier.</li>
+      <li><strong>SCPI &amp; immobilier</strong> : s'exposer à l'immobilier sans gestion directe.</li>
+    </ul>
+    <p>Ce qu'il partage relève d'une <strong>expérience personnelle documentée</strong> : ses choix, ses raisonnements et ses erreurs. Ce ne sont pas des recommandations personnalisées ni une expertise financière réglementée.</p>
+  </section>
+
+  <section>
+    <h2>Mon rôle chez Monelor</h2>
+    <p>Julien est à l'origine de l'ensemble des contenus de Monelor : il rédige les guides et les comparatifs, conçoit les outils du média et réalise les vidéos de la chaîne YouTube. Chaque contenu suit la même logique : expliquer, comparer, puis aider à décider.</p>
+    <p>Il veille aussi à la ligne éditoriale du média : vérification des informations, mise à jour des contenus quand les offres ou les règles évoluent, et transparence sur les éventuels liens d'affiliation.</p>
+    <div class="btn-row">
+      <a class="btn" href="/a-propos/">À propos de Monelor →</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Retrouvez-moi sur YouTube</h2>
+    <p>La chaîne <strong>« {{ _yt_name }} »</strong> est le prolongement vidéo de Monelor. Julien y publie des tutoriels, des explications et des comparatifs sur l'investissement et l'épargne — le même contenu pédagogique, en format vidéo.</p>
+    {% if _yt_url %}<div class="btn-row"><a class="btn" href="{{ _yt_url }}" target="_blank" rel="noopener">Voir la chaîne « {{ _yt_name }} » →</a></div>{% endif %}
+  </section>
+
+  {% if posts %}
+  <section>
+    <h2>Mes derniers articles</h2>
+    <div class="posts-grid">
+      {% for post in posts %}
+      <a class="post-card" href="/{{ post.slug }}/">
+        {% if post.featured_image %}<img class="ph" src="{{ post.featured_image }}" alt="{{ post.title }}" loading="lazy">{% endif %}
+        <div class="body">
+          <span class="ttl">{{ post.title }}</span>
+          {% if post.date_display %}<div class="meta">{{ post.date_display }}</div>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="btn-row"><a class="btn ghost" href="/blog/">Tous les articles →</a></div>
+  </section>
+  {% endif %}
+
+  <section>
+    <h2>Transparence et avertissement</h2>
+    <p>Les contenus publiés par Julien GUIGNARD sur Monelor sont <strong>informatifs et pédagogiques</strong>. Ils ne constituent pas une recommandation personnalisée d'investissement au sens de la réglementation.</p>
+    <p>Pour rester gratuit, Monelor peut percevoir une commission d'affiliation lorsqu'un lecteur souscrit via certains liens partenaires, sans surcoût et sans influence sur les analyses.</p>
+    <div class="btn-row">
+      <a class="btn ghost" href="/a-propos/">Notre méthode éditoriale</a>
+      <a class="btn ghost" href="/mentions-legales/">Liens d'affiliation &amp; mentions légales</a>
+    </div>
+    <div class="disclaimer">Investir comporte un risque de perte en capital. Avant toute décision, faites vos propres recherches ou consultez un professionnel agréé.</div>
+  </section>
+
+</main>
+
+{% include "base/_footer.html.j2" %}
+
+</body>
+</html>
