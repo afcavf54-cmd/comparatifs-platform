@@ -3571,6 +3571,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 site={**site, "url": _apropos_site_url, "seo": config.get("seo", {})},
                 theme=theme,
                 author=_apropos_author,
+                schema=config.get("schema", {}) or {},
                 year=date.today().year,
                 build_date=date.today().isoformat(),
             )
