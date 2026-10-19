@@ -2,7 +2,7 @@
 title: "Fichier clients Excel ou logiciel : comment structurer sa base de données clients en PME"
 slug: fichier-clients-excel-ou-logiciel-comment-structurer-sa-base-de-donnees-clients
 date: 2026-10-19 18:46:37+02:00
-updated: 2026-10-19T18:46:37
+updated: 2026-10-19T18:46:42
 categorie: "Gestion d'entreprise"
 categories:
 - "Gestion d'entreprise"
@@ -59,4 +59,5 @@ show_toc: true
 <p>La troisième : que voulez-vous mesurer ? Délai de réponse, nombre de demandes par client, motifs de contact qui reviennent souvent. Fixer deux ou trois indicateurs dès le départ évite de se retrouver avec un tableau de bord que personne ne consulte.</p>
 
 <p>Passer du tableur à un vrai logiciel n'a rien d'un saut dans l'inconnu. Pour la plupart des PME, c'est surtout une manière de ne plus dépendre de la mémoire d'une seule personne ou d'un fichier qui circule par mail. Le bon moment, en général, c'est un peu avant celui où l'on se dit qu'on aurait dû le faire plus tôt.</p>
+
 
