@@ -47,6 +47,10 @@ site:
   blog_cta_link: ""
   newsletter_signup: true
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+  # ── Mentions légales (coordonnées éditeur) ──
+  legal_editor_name: "VISEOWEB"
+  legal_editor_address: "31 rue du coteau\n54510 Art sur Meurthe"
+  legal_publication_director: "Julien GUIGNARD"
   # ── Page /bons-plans (linktree : réseaux sociaux + codes promo / parrainages) ──
   linktree:
     enabled: true
@@ -215,7 +219,7 @@ persona_prompt: |
   Le contenu doit donner l'impression de lire la retranscription d'une vidéo YouTube de Monelor.
 author:
   name: "Julien GUIGNARD"
-  bio: "Julien est le créateur de Monelor. Passionné par les finances personnelles, il vulgarise l'investissement, l'épargne et la gestion de patrimoine à travers des guides, des comparatifs et des vidéos YouTube pensés pour aider chacun à prendre de meilleures décisions avec son argent."
+  bio: "Julien GUIGNARD est le créateur de Monelor. Passionné par les finances personnelles, il vulgarise l'investissement, l'épargne et la gestion de patrimoine à travers des guides, des comparatifs et des vidéos YouTube pensés pour aider chacun à prendre de meilleures décisions avec son argent."
   job_title: "Investisseur"
   photo: "/author-photo.jpg"
   socials:
@@ -227,10 +231,10 @@ author:
 # propos, auteur, articles…). Ne renseigner que des informations vérifiées.
 schema:
   brand_name: "Monelor"
-  org_id: "https://monelor.com/#organization"
-  website_id: "https://monelor.com/#website"
-  person_id: "https://monelor.com/#julien-guignard"
-  logo: "https://monelor.com/logo-monelor.png"
+  org_id: "https://www.monelor.com/#organization"
+  website_id: "https://www.monelor.com/#website"
+  person_id: "https://www.monelor.com/#julien-guignard"
+  logo: "https://www.monelor.com/logo-monelor.png"
   founding_year: 2025
   founder_is_author: true          # Julien GUIGNARD est le fondateur de Monelor
   youtube_channel_name: "Julien - Monelor"
