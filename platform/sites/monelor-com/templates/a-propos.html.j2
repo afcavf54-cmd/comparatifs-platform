@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos de Monelor : notre média sur l'investissement</title>
+<meta name="description" content="Découvrez Monelor, notre média dédié à l'investissement, à l'épargne et aux finances personnelles, ses contenus, ses outils et son auteur.">
+<link rel="canonical" href="{{ site.url }}/a-propos/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<meta property="og:title" content="À propos de Monelor">
+<meta property="og:description" content="Le média Monelor : investissement, épargne et finances personnelles, ses contenus, ses outils et son auteur Julien GUIGNARD.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}/a-propos/">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
+
+{% set _org_id = schema.org_id | default(site.url ~ '/#organization') %}
+{% set _website_id = schema.website_id | default(site.url ~ '/#website') %}
+{% set _person_id = schema.person_id | default(site.url ~ '/#julien-guignard') %}
+{% set _brand = schema.brand_name | default(site.name) | default('Monelor') %}
+{% set _org_sameas = [site.social_youtube, site.social_instagram, site.social_tiktok, site.social_x, site.social_facebook, site.social_linkedin] | select | unique | list %}
+{% set _author_page = site.url ~ '/auteur/julien-guignard/' %}
+{% set _person_img = site.url ~ '/apropos-julien.jpg' %}
+<!-- JSON-LD : Organization + WebSite + Person + AboutPage (@graph) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": {{ _org_id | tojson }},
+      "name": {{ _brand | tojson }},
+      "url": {{ (site.url ~ '/') | tojson }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ (schema.logo | default(site.url ~ '/logo-monelor.png')) | tojson }}
+      },
+      "description": {{ (schema.org_description | default("Média francophone consacré à l'investissement, à l'épargne et aux finances personnelles.")) | tojson }},
+      {% if schema.founding_year %}"foundingDate": {{ (schema.founding_year | string) | tojson }},{% endif %}
+      {% if schema.founder_is_author %}"founder": { "@id": {{ _person_id | tojson }} },{% endif %}
+      "sameAs": {{ _org_sameas | tojson }}
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ _website_id | tojson }},
+      "url": {{ (site.url ~ '/') | tojson }},
+      "name": {{ _brand | tojson }},
+      "publisher": { "@id": {{ _org_id | tojson }} },
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "Person",
+      "@id": {{ _person_id | tojson }},
+      "name": {{ (author.name | default('Julien GUIGNARD')) | tojson }},
+      "givenName": "Julien",
+      "familyName": "GUIGNARD",
+      "url": {{ _author_page | tojson }},
+      "image": {{ _person_img | tojson }},
+      "description": {{ (author.bio | default('Créateur de Monelor, passionné de finances personnelles.')) | tojson }},
+      "jobTitle": {{ (schema.founder_is_author and ('Fondateur de ' ~ _brand) or (author.job_title | default('Créateur de contenu'))) | tojson }},
+      "worksFor": { "@id": {{ _org_id | tojson }} },
+      {% if schema.person_sameas %}"sameAs": {{ schema.person_sameas | tojson }},{% endif %}
+      "knowsAbout": ["Investissement", "Épargne", "Bourse", "Dividendes", "PEA", "Assurance-vie", "ETF", "SCPI", "Courtiers en ligne", "Fiscalité", "Gestion de patrimoine"]
+    },
+    {
+      "@type": "AboutPage",
+      "@id": {{ (site.url ~ '/a-propos/#webpage') | tojson }},
+      "url": {{ (site.url ~ '/a-propos/') | tojson }},
+      "name": "À propos de Monelor",
+      "isPartOf": { "@id": {{ _website_id | tojson }} },
+      "mainEntity": { "@id": {{ _org_id | tojson }} },
+      "inLanguage": "fr-FR"
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:{{ theme.bg | default('#F4F6FB') }};
+    --surface:{{ theme.surface | default('#FFFFFF') }};
+    --ink:{{ theme.ink | default('#000921') }};
+    --ink2:#5b6478;
+    --accent:{{ theme.accent | default('#1B4FD8') }};
+    --accent2:{{ theme.accent2 | default('#E8410A') }};
+    --border:#e6e9f0;
+    --r:14px;--r2:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'{{ theme.font_body | default('Outfit') }}',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .apropos-hero{text-align:center;padding:56px 20px 24px}
+  .apropos-hero img.brand{height:54px;width:auto;object-fit:contain;margin-bottom:22px}
+  h1{font-family:'{{ theme.font_title | default('DM Serif Display') }}',serif;font-size:clamp(34px,5vw,52px);font-weight:400;line-height:1.1;letter-spacing:-.02em}
+  .lead{color:var(--ink2);font-size:1.15rem;max-width:620px;margin:16px auto 0}
+  main{padding:20px 0 60px}
+  section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px 32px;margin:0 0 20px}
+  h2{font-family:'{{ theme.font_title | default('DM Serif Display') }}',serif;font-size:clamp(24px,3vw,30px);font-weight:400;letter-spacing:-.01em;margin:0 0 14px;color:var(--ink)}
+  h3{font-family:'{{ theme.font_title | default('DM Serif Display') }}',serif;font-size:1.25rem;font-weight:400;margin:18px 0 8px}
+  p{margin:0 0 14px}
+  p:last-child{margin-bottom:0}
+  ul{margin:0 0 14px;padding-left:1.3em}
+  li{margin-bottom:6px}
+  strong{font-weight:600}
+  .author-card{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+  .author-card img{width:150px;height:150px;border-radius:18px;object-fit:cover;flex-shrink:0;border:1px solid var(--border)}
+  .author-card .bio{flex:1;min-width:240px}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-weight:600;padding:11px 20px;border-radius:999px;font-size:.95rem}
+  .btn:hover{filter:brightness(1.07);text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+  .tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:4px}
+  .tool-card{display:block;border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;color:inherit}
+  .tool-card:hover{border-color:var(--accent);text-decoration:none}
+  .tool-card b{display:block;color:var(--ink)}
+  .tool-card span{color:var(--ink2);font-size:.9rem}
+  .disclaimer{font-size:.82rem;color:var(--ink2);line-height:1.6;background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r);padding:14px 16px;margin-top:4px}
+  @media(max-width:600px){section{padding:22px 18px}.tools-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+{% include "base/_nav.html.j2" %}
+
+<div class="apropos-hero wrap">
+  {% if schema.logo or site.logo_img %}<img class="brand" src="{{ site.logo_img | default('/logo-monelor.png') }}" alt="Logo {{ site.name | default('Monelor') }}" onerror="this.style.display='none'">{% endif %}
+  <h1>À propos de Monelor</h1>
+  <p class="lead">Monelor est un média indépendant qui rend l'investissement et la gestion de son argent clairs, accessibles et actionnables.</p>
+</div>
+
+<main class="wrap">
+
+  <section>
+    <h2>Qu'est-ce que Monelor ?</h2>
+    <p><strong>Monelor</strong> est un média francophone dédié à l'investissement, à l'épargne et aux finances personnelles. Notre objectif est simple : aider chacun à mieux comprendre les produits financiers et à prendre des décisions plus éclairées avec son argent, sans jargon inutile.</p>
+    <p>Nous couvrons les grands sujets qui comptent pour un particulier : actions et dividendes, PEA, assurance-vie, ETF, SCPI, choix d'un courtier en ligne, fiscalité de l'épargne et gestion de patrimoine.</p>
+    <p>Monelor est un média <strong>pédagogique et informatif</strong>. Nous ne sommes pas un conseiller financier réglementé et nos contenus ne constituent pas un conseil en investissement personnalisé.</p>
+  </section>
+
+  <section>
+    <h2>Notre mission</h2>
+    <p>Aider nos lecteurs à <strong>comprendre</strong> les produits financiers, à <strong>comparer</strong> les solutions disponibles et à <strong>décider</strong> en connaissance de cause.</p>
+    <p>Trois principes guident tout ce que nous publions :</p>
+    <ul>
+      <li><strong>Pédagogie</strong> : expliquer simplement, même les sujets complexes.</li>
+      <li><strong>Transparence</strong> : dire comment nous travaillons et comment nous nous finançons.</li>
+      <li><strong>Accessibilité</strong> : des contenus utiles, que l'on débute ou que l'on investisse déjà.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Qui se cache derrière Monelor ?</h2>
+    <div class="author-card">
+      <img src="/apropos-julien.jpg" alt="{{ author.name | default('Julien GUIGNARD') }}, créateur de Monelor" onerror="this.src='/author-photo.jpg'">
+      <div class="bio">
+        <p>{{ author.bio | default("Julien GUIGNARD est le créateur de Monelor. Passionné de finances personnelles, il vulgarise l'investissement, l'épargne et la gestion de patrimoine à travers des guides, des comparatifs et des vidéos YouTube.") }}</p>
+        <p>Ses domaines de prédilection : la bourse et les dividendes, les enveloppes comme le PEA et l'assurance-vie, les ETF, les SCPI et le choix d'un courtier adapté à chaque profil.</p>
+        <div class="btn-row">
+          <a class="btn" href="/auteur/julien-guignard/">La page de Julien GUIGNARD →</a>
+          {% if schema.youtube_channel_url %}<a class="btn ghost" href="{{ schema.youtube_channel_url }}" target="_blank" rel="noopener">Chaîne « {{ schema.youtube_channel_name | default('Julien - Monelor') }} »</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Nos contenus et nos outils</h2>
+    <p>Monelor regroupe des guides pratiques, des analyses et des comparatifs pour choisir vos placements et vos courtiers, ainsi que des outils gratuits.</p>
+    <div class="tools-grid">
+      {% for o in site.outils_menu | default([]) %}
+      <a class="tool-card" href="{{ o.url }}"><b>{{ o.label }}</b><span>Outil Monelor</span></a>
+      {% endfor %}
+      {% if site.has_blog %}<a class="tool-card" href="/blog/"><b>Guides &amp; articles</b><span>Investissement, épargne, patrimoine</span></a>{% endif %}
+    </div>
+    <p style="margin-top:14px">Notre <strong>simulateur de dividendes</strong> permet d'estimer les revenus d'un portefeuille d'actions à dividendes — un outil maison, pensé pour visualiser simplement l'effet du réinvestissement dans la durée.</p>
+  </section>
+
+  <section>
+    <h2>Notre chaîne YouTube</h2>
+    <p>La chaîne <strong>« {{ schema.youtube_channel_name | default('Julien - Monelor') }} »</strong> est le prolongement vidéo du média Monelor. Julien GUIGNARD y présente des tutoriels, des explications et des comparatifs en lien avec l'investissement et l'épargne.</p>
+    {% if schema.youtube_channel_url %}<div class="btn-row"><a class="btn" href="{{ schema.youtube_channel_url }}" target="_blank" rel="noopener">Voir la chaîne YouTube →</a></div>{% endif %}
+  </section>
+
+  <section>
+    <h2>Notre méthode éditoriale</h2>
+    <p>Nos engagements pour des contenus fiables :</p>
+    <ul>
+      <li>Recherche et vérification des informations avant publication.</li>
+      <li>Consultation de sources officielles (sociétés de gestion, courtiers, administration fiscale, AMF).</li>
+      <li>Mise à jour des contenus lorsque les offres, frais ou règles évoluent.</li>
+      <li>Transparence sur les liens affiliés lorsqu'ils sont présents.</li>
+      <li>Distinction claire entre information générale et conseil financier personnalisé.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Transparence et indépendance</h2>
+    <p>Pour rester gratuit, Monelor peut percevoir une commission d'<strong>affiliation</strong> lorsqu'un lecteur ouvre un compte ou souscrit via certains liens partenaires. Cela n'entraîne aucun surcoût pour vous.</p>
+    <p>Ces partenariats sont signalés et <strong>n'influencent pas</strong> nos analyses : nos comparatifs reposent sur des critères objectifs, et un lien partenaire ne garantit jamais une meilleure note ou une meilleure place.</p>
+    <div class="disclaimer">Monelor publie des informations à but pédagogique. Investir comporte un risque de perte en capital. Ces contenus ne constituent pas un conseil en investissement personnalisé : avant toute décision, faites vos propres recherches ou consultez un professionnel agréé.</div>
+  </section>
+
+  <section>
+    <h2>Contacter Monelor</h2>
+    <p>Une question, une remarque, une proposition de partenariat ? Écrivez-nous via la page contact.</p>
+    <div class="btn-row">
+      <a class="btn" href="/contact/">Nous contacter</a>
+      <a class="btn ghost" href="/mentions-legales/">Mentions légales</a>
+    </div>
+  </section>
+
+</main>
+
+{% include "base/_footer.html.j2" %}
+
+</body>
+</html>
