@@ -953,6 +953,9 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
         if (site_dir / "templates" / "a-propos.html.j2").exists() or (TEMPLATES_DIR / "a-propos.html.j2").exists():
             has_apropos = True
             lines.append(url(f"{domain}/a-propos/", "0.6", "monthly"))
+        # ── Page auteur (si template auteur.html.j2 existe pour ce site)
+        if (site_dir / "templates" / "auteur.html.j2").exists() or (TEMPLATES_DIR / "auteur.html.j2").exists():
+            lines.append(url(f"{domain}/auteur/julien-guignard/", "0.6", "monthly"))
 
     lines += [
         url(f"{domain}/mentions-legales", "0.3", "yearly"),
@@ -3581,6 +3584,36 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             print(f"  ✓ /a-propos/ (page À propos)")
         except Exception as _e:
             print(f"  ⚠ À propos : render échec : {_e}")
+
+    # ───────────────────────────────────────────────────────────────────────
+    # ── PAGE AUTEUR (template auteur.html.j2) ─────────────────────────────
+    # Page de référence de l'auteur (ProfilePage + Person). Générée si le
+    # template existe pour ce site. URL : /auteur/julien-guignard/index.html
+    # ───────────────────────────────────────────────────────────────────────
+    auteur_tpl = None
+    try:
+        auteur_tpl = env.get_template("auteur.html.j2")
+    except Exception:
+        pass
+    if auteur_tpl is not None:
+        _auteur_author = config.get("author", {}) or {}
+        _auteur_site_url = _normalize_site_url(config.get("site", {}), config)
+        try:
+            html = auteur_tpl.render(
+                site={**site, "url": _auteur_site_url, "seo": config.get("seo", {})},
+                theme=theme,
+                author=_auteur_author,
+                schema=config.get("schema", {}) or {},
+                posts=(blog_posts[:6] if blog_posts else []),
+                year=date.today().year,
+                build_date=date.today().isoformat(),
+            )
+            auteur_dir = output_dir / "auteur" / "julien-guignard"
+            auteur_dir.mkdir(parents=True, exist_ok=True)
+            (auteur_dir / "index.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ /auteur/julien-guignard/ (page auteur)")
+        except Exception as _e:
+            print(f"  ⚠ Page auteur : render échec : {_e}")
 
     # ───────────────────────────────────────────────────────────────────────
     # ── AVIS (template avis-post.html.j2) ─────────────────────────────────
