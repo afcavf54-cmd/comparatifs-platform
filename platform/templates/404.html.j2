@@ -68,14 +68,18 @@ p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:au
   <div>
     <div class="code">404</div>
     <h1>Page introuvable</h1>
-    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
+    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour continuer votre navigation.</p>
     <a href="/" class="btn">← Retour à l'accueil</a>
     <div class="links">
       {% if page_types is defined and 'classement' in page_types %}
       <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
-      {% else %}
+      {% elif products %}
       <a href="/comparatifs-scpi" class="link-sec">Comparatifs</a>
       <a href="/avis-scpi" class="link-sec">Avis</a>
+      {% else %}
+      {% if posts %}<a href="/blog/" class="link-sec">Blog</a>{% endif %}
+      {% for m in site.custom_menu | default([]) %}<a href="{{ m.url }}" class="link-sec">{{ m.label }}</a>{% endfor %}
+      <a href="/contact" class="link-sec">Contact</a>
       {% endif %}
     </div>
   </div>
