@@ -221,3 +221,21 @@ author:
   socials:
   - label: ""
     url: ""
+
+# ── Données d'entités Schema.org ──────────────────────────────────────────
+# Source de vérité des @id et facts réutilisés par les templates (page À
+# propos, auteur, articles…). Ne renseigner que des informations vérifiées.
+schema:
+  brand_name: "Monelor"
+  org_id: "https://monelor.com/#organization"
+  website_id: "https://monelor.com/#website"
+  person_id: "https://monelor.com/#julien-guignard"
+  logo: "https://monelor.com/logo-monelor.png"
+  founding_year: 2025
+  founder_is_author: true          # Julien GUIGNARD est le fondateur de Monelor
+  youtube_channel_name: "Julien - Monelor"
+  youtube_channel_url: "https://www.youtube.com/@monelor-com"
+  org_description: "Média francophone indépendant consacré à l'investissement, à l'épargne et aux finances personnelles : guides, comparatifs, outils et vidéos pour aider chacun à mieux gérer son argent."
+  # Profils EXTERNES de la PERSONNE Julien (sameAs de l'entité Person).
+  # Distincts des comptes de la marque (social_*). À compléter quand dispo.
+  person_sameas: []
