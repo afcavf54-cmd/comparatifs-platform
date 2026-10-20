@@ -2034,8 +2034,19 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             site["author_bio"] = author_cfg_main.get("bio", "") or site.get("author_bio", "")
             site["author_job"] = author_cfg_main.get("job_title", "") or site.get("author_job", "")
             site["author_photo"] = _photo_clean_main or site.get("author_photo", "")
-            # Lien vers la page auteur dédiée (ProfilePage), si configurée.
-            site["author_page"] = author_cfg_main.get("page_url", "") or site.get("author_page", "")
+            # Lien vers la page auteur dédiée (ProfilePage).
+            # Priorité : author.page_url explicite ; sinon dérivé automatiquement
+            # (/auteur/<slug-du-nom>/) dès qu'un template auteur.html.j2 existe
+            # pour le site. Le dérivé est nécessaire car l'admin réécrit le bloc
+            # author à chaque save et supprime les champs custom comme page_url.
+            _author_page = author_cfg_main.get("page_url", "") or site.get("author_page", "")
+            if not _author_page:
+                _has_auteur_tpl = ((site_dir / "templates" / "auteur.html.j2").exists()
+                                   or (TEMPLATES_DIR / "auteur.html.j2").exists())
+                _author_nm = author_cfg_main.get("name", "")
+                if _has_auteur_tpl and _author_nm:
+                    _author_page = f"/auteur/{slugify_cat(_author_nm)}/"
+            site["author_page"] = _author_page
         # Liens sociaux de la box auteur : author.socials si défini, sinon on
         # reprend les réseaux sociaux du site (social_*, saisis dans les réglages).
         _SOCIAL_LABELS = [("social_youtube", "YouTube"), ("social_x", "X"),
