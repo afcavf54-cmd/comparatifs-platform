@@ -2034,6 +2034,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             site["author_bio"] = author_cfg_main.get("bio", "") or site.get("author_bio", "")
             site["author_job"] = author_cfg_main.get("job_title", "") or site.get("author_job", "")
             site["author_photo"] = _photo_clean_main or site.get("author_photo", "")
+            # Lien vers la page auteur dédiée (ProfilePage), si configurée.
+            site["author_page"] = author_cfg_main.get("page_url", "") or site.get("author_page", "")
         # Liens sociaux de la box auteur : author.socials si défini, sinon on
         # reprend les réseaux sociaux du site (social_*, saisis dans les réglages).
         _SOCIAL_LABELS = [("social_youtube", "YouTube"), ("social_x", "X"),
