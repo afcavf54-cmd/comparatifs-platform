@@ -1,15 +1,15 @@
 ---
 title: Quelles idées de cadeaux originales et utiles pour un nouveau-né ?
 slug: quelles-idees-de-cadeaux-originales-et-utiles-pour-un-nouveau-ne
-date: 2026-10-19 06:57:46+02:00
-updated: 2026-10-20T13:29:44
+date: 2026-10-20 13:29:45+02:00
+updated: 2026-10-20T13:29:45
 categorie: Bébé & Naissance
 categories:
 - Bébé & Naissance
 meta_title: "Cadeau nouveau-né : 24 idées originales et vraiment utiles"
 meta_description: "Découvrez des idées de cadeaux originales et utiles pour un nouveau-né : accessoires de puériculture, linge de lit et indispensables pour les jeunes parents."
 featured_image: /blog/quelles-idees-de-cadeaux-originales-et-utiles-pour-un-nouveau-ne/featured-79665.jpg
-status: draft
+status: published
 min_words: 1200
 show_toc: true
 ---
