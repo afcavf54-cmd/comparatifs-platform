@@ -3600,12 +3600,14 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
     if auteur_tpl is not None:
         _auteur_author = config.get("author", {}) or {}
         _auteur_site_url = _normalize_site_url(config.get("site", {}), config)
+        _auteur_videos = _fetch_youtube_videos(site) if (site.get("youtube_url") or site.get("youtube_channel_id")) else []
         try:
             html = auteur_tpl.render(
                 site={**site, "url": _auteur_site_url, "seo": config.get("seo", {})},
                 theme=theme,
                 author=_auteur_author,
                 schema=config.get("schema", {}) or {},
+                youtube_videos=_auteur_videos,
                 posts=(blog_posts[:6] if blog_posts else []),
                 year=date.today().year,
                 build_date=date.today().isoformat(),
