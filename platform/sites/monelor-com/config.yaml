@@ -217,15 +217,6 @@ persona_prompt: |
   Le niveau de détail est approfondi, mais toujours expliqué avec des mots simples. Le lecteur doit pouvoir comprendre chaque notion sans connaissance préalable en finance.
   
   Le contenu doit donner l'impression de lire la retranscription d'une vidéo YouTube de Monelor.
-author:
-  name: "Julien GUIGNARD"
-  bio: "Julien GUIGNARD est le créateur de Monelor. Passionné par les finances personnelles, il vulgarise l'investissement, l'épargne et la gestion de patrimoine à travers des guides, des comparatifs et des vidéos YouTube pensés pour aider chacun à prendre de meilleures décisions avec son argent."
-  job_title: "Investisseur"
-  photo: "/author-photo.jpg"
-  socials:
-  - label: ""
-    url: ""
-
 # ── Données d'entités Schema.org ──────────────────────────────────────────
 # Source de vérité des @id et facts réutilisés par les templates (page À
 # propos, auteur, articles…). Ne renseigner que des informations vérifiées.
@@ -243,3 +234,11 @@ schema:
   # Profils EXTERNES de la PERSONNE Julien (sameAs de l'entité Person).
   # Distincts des comptes de la marque (social_*). À compléter quand dispo.
   person_sameas: []
+author:
+  name: "Julien GUIGNARD"
+  bio: "Julien GUIGNARD est le créateur de Monelor. Passionné par les finances personnelles, il vulgarise l'investissement, l'épargne et la gestion de patrimoine à travers des guides, des comparatifs et des vidéos YouTube pensés pour aider chacun à prendre de meilleures décisions avec son argent."
+  job_title: "Investisseur"
+  photo: "/author-photo.jpg"
+  socials:
+  - label: "Linkedin"
+    url: "https://www.linkedin.com/in/julien-guignard-0ba91711a/"
