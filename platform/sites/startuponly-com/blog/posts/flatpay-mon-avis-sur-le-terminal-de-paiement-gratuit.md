@@ -1,19 +1,20 @@
 ---
-title: "Flatpay : mon avis sur le terminal de paiement gratuit"
+title: 'Flatpay : mon avis sur le terminal de paiement gratuit'
 slug: flatpay-mon-avis-sur-le-terminal-de-paiement-gratuit
 date: 2026-10-21 19:50:23+02:00
-updated: 2026-10-21T19:50:23
+updated: 2026-10-21 19:50:23
 categorie: Finances
 categories:
 - Finances
-meta_title: "Flatpay Avis : Le TPE gratuit est-il vraiment intéressant ?"
-meta_description: "J'ai analysé l'offre Flatpay et son TPE gratuit. Je vous explique son fonctionnement, ses frais et les conditions à connaître avant de choisir."
+meta_title: 'Flatpay Avis : Le TPE gratuit est-il vraiment intéressant ?'
+meta_description: J'ai analysé l'offre Flatpay et son TPE gratuit. Je vous explique
+  son fonctionnement, ses frais et les conditions à connaître avant de choisir.
 featured_image: /blog/3969-avis-flatpay/featured-78093.jpg
 status: published
 min_words: 2600
 show_toc: true
+related_posts: []
 ---
-
 <p>J'ai découvert Flatpay un peu par hasard, en cherchant une alternative à ma solution de paiement habituelle qui commençait à me coûter trop cher. Un ami gérant une boutique à Lyon m'en avait parlé, j'ai regardé ça un soir, et j'ai fini par tester. Voilà comment ça commence, souvent.</p>
 
 <p>Flatpay, c'est une solution de paiement par carte pensée pour les petits commerces, les indépendants, les boîtes comme la mienne. Le concept est simple : <strong>un seul taux de commission fixe</strong>, peu importe la carte utilisée par le client. Visa, Mastercard, carte premium, carte étrangère... tu paies toujours le même pourcentage. C'est le truc qui m'a attiré en premier.</p>
