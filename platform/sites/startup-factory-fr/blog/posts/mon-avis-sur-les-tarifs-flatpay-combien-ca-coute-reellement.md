@@ -1,19 +1,20 @@
 ---
-title: "Mon avis sur les tarifs Flatpay : combien ça coûte réellement ?"
+title: 'Mon avis sur les tarifs Flatpay : combien ça coûte réellement ?'
 slug: mon-avis-sur-les-tarifs-flatpay-combien-ca-coute-reellement
 date: 2026-10-21 19:50:15+02:00
-updated: 2026-10-21T19:50:15
+updated: 2026-10-21 19:50:15
 categorie: Finances
 categories:
 - Finances
-meta_title: "Flatpay Avis  : Mon analyse des tarifs et commissions"
-meta_description: Je décrypte les tarifs Flatpay, les commissions sur les paiements et les conditions commerciales pour vous aider à comprendre le coût réel.
+meta_title: 'Flatpay Avis  : Mon analyse des tarifs et commissions'
+meta_description: Je décrypte les tarifs Flatpay, les commissions sur les paiements
+  et les conditions commerciales pour vous aider à comprendre le coût réel.
 featured_image: /blog/5462-avis-flatpay/featured-68185.jpg
 status: published
 min_words: 2300
 show_toc: true
+related_posts: []
 ---
-
 <p>J'ai découvert Flatpay un peu par hasard, en cherchant une solution de paiement qui ne me prendrait pas la tête. On avait des problèmes récurrents avec notre prestataire d'alors : des frais opaques, un terminal qui ramait, et un support client qui répondait en 48h. Pas viable quand tu gères une boîte en croissance.</p>
 
 <p>J'ai testé Flatpay sur deux de nos points de vente pendant trois mois. Voilà ce que j'en pense vraiment.</p>
