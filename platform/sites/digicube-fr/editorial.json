@@ -157,7 +157,17 @@
     "meta_title": "J'ai comparé {count} logiciels de paie pour trouver le meilleur",
     "meta_description": "J'ai évalué {count} logiciels de paie pour identifier les outils les plus simples et les plus complets.",
     "products_order": {
-      "malibou": 1
+      "malibou": 1,
+      "payfit": 2,
+      "mysilae": 3,
+      "sagebusinesscloudpaie": 4,
+      "cegidpayroll": 5,
+      "Puncto-logiciel-de-paie": 6,
+      "ebppaie": 7,
+      "adp": 8,
+      "paggabylucca": 9,
+      "openpaye": 10,
+      "factorial": 11
     },
     "autonome": true,
     "products_snapshot": [
@@ -170,7 +180,8 @@
       "malibou",
       "paggabylucca",
       "openpaye",
-      "factorial"
+      "factorial",
+      "Puncto-logiciel-de-paie"
     ]
   },
   "classement-prod-legalplace": {
@@ -14296,5 +14307,20 @@
       "Onboarding qui nécessite un accompagnement, pas toujours fluide en autonomie",
       "Offre parfois surdimensionnée pour les très petites structures aux besoins simples"
     ]
+  },
+  "classement-prod-Puncto-logiciel-de-paie": {
+    "nom": "Puncto",
+    "marque": "Puncto",
+    "description": "<p><b>Puncto</b> ne joue pas sur le même terrain que les autres solutions de ce comparatif : il ne traite qu’une convention collective, la Syntec. ESN, cabinets de conseil, bureaux d’études, startups du numérique. Si vous êtes dans ce cas, les forfaits jours, les minima par position et coefficient, la prime de vacances et les congés d’ancienneté sont <b>déjà dans le moteur de calcul</b>. Rien à paramétrer, rien à recalculer à la main.&nbsp;</p><p>Ce qui m’a marqué ? Le suivi des avenants de la convention est assuré par l’éditeur. Chaque révision de la branche est répercutée sans que vous ayez à surveiller quoi que ce soit. Pour le reste, on est sur du complet : bulletins, virements, <b>DSN mensuelles et événementielles</b>. La plateforme réunit aussi les modules SIRH nécessaires à la paie, congés, absences, notes de frais, suivi du temps, avec un espace personnel pour chaque salarié.&nbsp;</p><p>Côté tarif, <b>10 € par bulletin édité</b>, et c’est tout. Pas de frais de mise en service, pas d’abonnement de base, pas d’engagement. La reprise de votre historique est prise en charge par leurs équipes, ce qui évite la ligne « import des données » que beaucoup facturent 100 à 300 €. Je le recommande aux entreprises Syntec qui veulent gérer leur paie en interne.</p>",
+    "points_forts": [
+      "Convention Syntec appliquée nativement, sans paramétrage à l’installation",
+      "10 € par bulletin, sans frais de mise en service ni engagement",
+      "Congés, absences, notes de frais et suivi du temps dans la même interface",
+      "Reprise des données et première paie accompagnées par un expert paie Puncto"
+    ],
+    "points_faibles": [
+      "Cette solution est utilisable exclusivement par les entreprises de la convention Syntec"
+    ],
+    "url_affiliation": "https://puncto.fr/"
   }
 }
