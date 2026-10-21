@@ -1,19 +1,20 @@
 ---
-title: "J'ai analysé la caisse enregistreuse Flatpay : mon avis"
+title: 'J''ai analysé la caisse enregistreuse Flatpay : mon avis'
 slug: j-ai-analyse-la-caisse-enregistreuse-flatpay-mon-avis
 date: 2026-10-21 19:49:50+02:00
-updated: 2026-10-21T19:50:31
+updated: 2026-10-21 19:50:31
 categorie: Finances
 categories:
 - Finances
-meta_title: "Flatpay Avis  : Que vaut sa caisse enregistreuse ?"
-meta_description: Je vous présente mon avis sur la caisse enregistreuse Flatpay, ses fonctionnalités, ses tarifs et ses limites pour les professionnels.
+meta_title: 'Flatpay Avis  : Que vaut sa caisse enregistreuse ?'
+meta_description: Je vous présente mon avis sur la caisse enregistreuse Flatpay, ses
+  fonctionnalités, ses tarifs et ses limites pour les professionnels.
 featured_image: /blog/5660-a/featured-27941.jpg
 status: published
 min_words: 1900
 show_toc: true
+related_posts: []
 ---
-
 <p>J'ai découvert Flatpay un peu par hasard, en cherchant à simplifier les paiements par carte pour mes clients. À cette période, j'utilisais un terminal loué à ma banque, avec des frais que je ne comprenais pas vraiment, une grille tarifaire illisible, et un service client qui décrochait rarement. Une amie gérante d'une boutique physique m'a parlé de Flatpay. J'ai regardé, j'ai été sceptique au départ, puis j'ai testé.</p>
 
 <p>Voilà ce que j'en pense, après plusieurs mois d'utilisation réelle.</p>
