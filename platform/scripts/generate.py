@@ -1477,6 +1477,114 @@ def _normalize_site_url(site_config: dict, parent_config: dict | None = None) ->
     return f"https://{cleaned_no_www}"
 
 
+def generate_search_index(output_dir: Path, site: dict, config: dict) -> None:
+    """Construit output/search-index.json : un index JSON client (loupe du
+    header) couvrant TOUT le contenu généré (blog, classements, comparatifs,
+    avis, pages). Pensé notamment pour qu'un annonceur vérifie la présence de
+    sa marque sur le site.
+
+    Approche : on parse le HTML déjà généré (robuste, type-agnostique) et on
+    déduplique par URL canonique (les versions /slug.html et /slug/index.html
+    se rejoignent). Pour chaque page : titre, description, type (inféré) et un
+    « blob » de mots uniques du contenu visible (hors nav/footer/scripts) pour
+    permettre une recherche plein-texte légère côté client."""
+    import re as _re_si, json as _json_si, html as _html_si
+
+    site_name = (site.get("name") or "").strip()
+    # Pages utilitaires exclues de l'index.
+    SKIP_STEMS = {"404", "plan-du-site", "mentions-legales",
+                  "politique-confidentialite", "contact", "recherche"}
+    # Petits mots vides FR/EN pour alléger le blob (présence de marque = mot
+    # porteur, jamais un mot vide).
+    STOP = set("""au aux avec ce ces dans de des du elle en et eux il je la le
+        les leur lui ma mais me meme mes moi mon ne nos notre nous on ou par pas
+        pour qu que qui sa se ses son sur ta te tes toi ton tu un une vos votre
+        vous c d j l m n s t y a the and or for with your you our are was des
+        est son ses plus tout tous toute toutes cette cet ont été être avoir
+        fait faire comme sans sous entre vers chez donc car si oui non aussi
+        alors ainsi peut peuvent dont leurs """.split())
+
+    def _infer_type(url_path: str, raw: str) -> str:
+        u = url_path.lower()
+        slug = u.strip("/").split("/")[-1]
+        if "/avis" in u or slug.startswith("avis-") or slug.startswith("avis"):
+            return "Avis"
+        if ("meilleur" in slug or "-vs-" in slug or "comparatif" in slug
+                or "classement" in slug or slug == "nos-comparateurs"):
+            return "Comparatif"
+        if slug in ("a-propos", "outils-pratiques", "blog") or u == "/":
+            return "Page"
+        return "Article"
+
+    entries: dict = {}
+    for htmlfile in sorted(output_dir.rglob("*.html")):
+        stem = htmlfile.stem
+        if stem in SKIP_STEMS:
+            continue
+        try:
+            raw = htmlfile.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        # Exclure les pages noindex (404, tombstones, pagination secondaire…).
+        if _re_si.search(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', raw, _re_si.I):
+            continue
+        # URL canonique → chemin relatif (dédup .html / dossier).
+        m = _re_si.search(r'<link[^>]+rel=["\']canonical["\'][^>]*href=["\']([^"\']+)["\']', raw, _re_si.I)
+        if m:
+            url_path = _re_si.sub(r'^https?://[^/]+', '', m.group(1).strip()) or "/"
+        else:
+            rel = str(htmlfile.relative_to(output_dir)).replace("\\", "/")
+            rel = rel[:-len("index.html")] if rel.endswith("index.html") else rel
+            rel = rel[:-len(".html")] if rel.endswith(".html") else rel
+            url_path = "/" + rel.strip("/")
+        key = (url_path.rstrip("/") or "/")
+        if key == "/" or key in entries:
+            continue
+        # Exclure les pages de LISTING / pagination (non pertinentes comme
+        # destination, et polluantes car elles agrègent beaucoup d'extraits) :
+        # /blog, /blog/<n>, /blog/<cat>, /avis, /avis/<cat>, /nos-comparateurs,
+        # /categorie-*. Les articles (/<slug>), comparatifs (/meilleur-*) et
+        # avis détaillés (/avis-<slug>) ne matchent pas ces motifs.
+        if (key == "/blog" or key.startswith("/blog/")
+                or key == "/avis" or key.startswith("/avis/")
+                or key == "/nos-comparateurs"
+                or key.startswith("/categorie-")):
+            continue
+        # Titre (sans le suffixe « | site »).
+        tm = _re_si.search(r"<title[^>]*>(.*?)</title>", raw, _re_si.S)
+        title = _html_si.unescape(tm.group(1).strip()) if tm else ""
+        if site_name:
+            title = _re_si.sub(r"\s*[|–—-]\s*" + _re_si.escape(site_name) + r"\s*$", "", title).strip()
+        # Description.
+        dm = _re_si.search(r'<meta[^>]+name=["\']description["\'][^>]*content=["\']([^"\']*)["\']', raw, _re_si.I)
+        desc = _html_si.unescape(dm.group(1).strip()) if dm else ""
+        # Contenu principal (préfère <main>), hors nav/footer/scripts/styles.
+        mm = _re_si.search(r"<main[^>]*>(.*?)</main>", raw, _re_si.S)
+        body = mm.group(1) if mm else raw
+        body = _re_si.sub(r"<(script|style|nav|footer)[^>]*>.*?</\1>", " ", body, flags=_re_si.S | _re_si.I)
+        text = _html_si.unescape(_re_si.sub(r"<[^>]+>", " ", body))
+        low = (title + " " + desc + " " + text).lower()
+        words = _re_si.findall(r"[a-zà-ÿ0-9][a-zà-ÿ0-9+._&-]*", low)
+        seen: set = set()
+        uniq = []
+        for w in words:
+            if len(w) < 2 or len(w) > 25 or w in STOP or w in seen or w.isdigit():
+                continue
+            seen.add(w)
+            uniq.append(w)
+        entries[key] = {
+            "t": title,
+            "u": url_path,
+            "ty": _infer_type(url_path, raw),
+            "d": desc[:170],
+            "w": " ".join(uniq),
+        }
+    data = sorted(entries.values(), key=lambda e: e["t"].lower())
+    (output_dir / "search-index.json").write_text(
+        _json_si.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print(f"  ✓ search-index.json ({len(data)} pages indexées)")
+
+
 def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = None) -> None:
     # ⚠⚠⚠ DEBUG MARKER v15 — au TOUT DÉBUT de generate_site ⚠⚠⚠
     # Si tu vois cette ligne dans le log : v11 est bien exécuté, on peut
@@ -3853,6 +3961,15 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
         print(f"  📁 Output : {output_dir}")
+        # ── Index de recherche client (loupe header) ──────────────────────
+        # Couvre tout le contenu généré (blog, classements, comparatifs, avis).
+        # Activé par site.search_enabled. Doit tourner ICI : toutes les pages
+        # (home comprise) sont écrites à ce stade.
+        if (config.get("site", {}) or {}).get("search_enabled"):
+            try:
+                generate_search_index(output_dir, site, config)
+            except Exception as _e_si:
+                print(f"  ⚠ Index de recherche : {_e_si}")
         # ── DEBUG : liste les fichiers avis-*.html présents juste avant le
         # deploy Cloudflare. Permet de vérifier qu'un avis attendu (.md dans
         # posts_avis/) a bien été RENDU et est PHYSIQUEMENT là, pas écrasé.
