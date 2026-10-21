@@ -1,15 +1,15 @@
 ---
 title: "Mon avis sur Flatpay : est-ce une bonne solution de paiement ?"
 slug: mon-avis-sur-flatpay-est-ce-une-bonne-solution-de-paiement
-date: 2026-10-21 19:50:27+02:00
-updated: 2026-10-21T20:02:57
+date: 2026-10-21 20:06:20+02:00
+updated: 2026-10-21T20:06:20
 categorie: Finances
 categories:
 - Finances
 meta_title: "Flatpay Avis  : Ce que je pense vraiment de cette solution"
 meta_description: "Je partage mon avis sur Flatpay : tarifs, terminal de paiement, commissions et services. Découvrez les avantages et inconvénients que j'ai relevés."
 featured_image: /blog/5108-avis-flatpay/featured-86919.jpg
-status: draft
+status: published
 min_words: 2400
 show_toc: true
 link_anchors:
