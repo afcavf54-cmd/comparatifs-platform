@@ -2,7 +2,7 @@
 title: "J'ai analysé la caisse enregistreuse Flatpay : mon avis"
 slug: j-ai-analyse-la-caisse-enregistreuse-flatpay-mon-avis
 date: 2026-10-21 19:49:50+02:00
-updated: 2026-10-21T19:49:50
+updated: 2026-10-21T19:50:31
 categorie: Finances
 categories:
 - Finances
@@ -160,3 +160,4 @@ show_toc: true
 <p>Les limites existent, je les ai mentionnées. Pas d'intégration comptable directe, pas de paiement en ligne. Si ce sont des points bloquants pour vous, Flatpay ne suffira pas seul. Mais dans mon cas, ces manques ne remettent pas en cause l'outil. Je complète avec ce que j'ai déjà, et Flatpay fait ce qu'il fait bien, sans s'éparpiller.</p>
 
 <p><strong>Je le recommande clairement</strong> pour les TPE qui encaissent en présentiel et qui veulent un outil simple, transparent, sans mauvaises surprises. Pour mon agence de six personnes, c'est le bon choix, et je ne regrette pas d'être passée dessus.</p>
+
