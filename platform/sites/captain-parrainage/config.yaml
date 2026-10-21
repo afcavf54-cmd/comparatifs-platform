@@ -1,0 +1,131 @@
+# ============================================================
+# CONFIG SITE -- captain-parrainage
+# Thématique     : cadeau-code-promo
+# Types activés  : avis, blog
+# Templates HTML : comparatif-vs-scpi.html.j2 (pages) / index-scpi.html.j2 (home)
+# Généré par le wizard HUB le 2026-10-21
+# ============================================================
+
+site:
+  slug: captain-parrainage
+  name: "Captain parrainage"
+  domain: "https://captain-parrainage.com"
+  base_path: ""
+  logo_text: "Captain"
+  logo_accent: "parrainage"
+  tagline: "Comparatifs Captain parrainage 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "www"
+  blog_slug_format: "clean"
+  author_name: "Chloé Petit"
+  home_title: "Captain parrainage | Comparatifs 2026"
+  home_description: ""
+  template: "comparatif-vs-scpi.html.j2"
+  index_template: "index-scpi.html.j2"
+  analytics_clicky: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+
+page_types:
+  avis: cadeau-code-promo
+  blog: cadeau-code-promo
+
+theme:
+  accent: "#1B4FD8"
+  accent2: "#E8410A"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+  cta_color: "#E8410A"
+  cta_text_color: "#ffffff"
+
+criteria:
+  - label: "TD 2026"
+    field: td
+    type: text
+    suffix: "%"
+  - label: "TRI"
+    field: tri
+    type: text
+    suffix: "%"
+  - label: "Prix de la part"
+    field: prix_achat
+    type: text
+    suffix: "EUR"
+  - label: "Prix de retrait"
+    field: prix_retrait
+    type: text
+    suffix: "EUR"
+  - label: "Investissement min."
+    field: investissement_min
+    type: text
+  - label: "Frais de souscription"
+    field: frais_souscription
+    type: text
+    suffix: "%"
+  - label: "Frais de gestion"
+    field: frais_gestion
+    type: text
+    suffix: "% TTC"
+  - label: "TOF"
+    field: tof
+    type: text
+    suffix: "%"
+  - label: "Endettement"
+    field: endettement
+    type: text
+    suffix: "%"
+  - label: "Delai de jouissance"
+    field: delai_jouissance
+    type: text
+    suffix: " mois"
+  - label: "Pays"
+    field: pays
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis {site_name} {year} : analyses indépendantes"
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complete."
+  category_label: "Comparatifs"
+  category_url: "index.html#comparatifs"
+
+persona_prompt: |
+  Tu écris en tant que **Alex Martin, 34 ans, expert en bons plans, primes de bienvenue et offres de parrainage**, basé à Lyon. Passionné par les économies du quotidien et les astuces pour gagner de l'argent, tu disposes de 8 ans d'expérience dans la recherche et la comparaison d'offres promotionnelles. Tu incarnes **Captain Parrainage**, un guide malin qui déniche les meilleures primes pour ses lecteurs.
+  
+  **Tutoie le lecteur.** Ton : direct, enthousiaste, accessible et légèrement complice. Phrases courtes. Vocabulaire simple. Niveau pédagogique : élevé. Positionnement : expert des bons plans et chasseur de primes. Niveau d'opinion : tranché. Angle éditorial prioritaire : **maximiser les gains avec un minimum d'effort et de dépenses**.
+  
+  Critères de classement par ordre de priorité : Montant de la prime, Absence de dépôt obligatoire, Facilité d'obtention, Rapidité de versement, Conditions d'éligibilité, Fiabilité de l'offre. Scoring : note /5, avec une meilleure offre clairement désignée et des conditions transparentes.
+  
+  Objectifs du lecteur cible : **Gagner de l'argent facilement, Profiter des meilleures primes de parrainage, Obtenir des bonus sans dépôt, Découvrir les offres exceptionnelles avant leur expiration, Cumuler plusieurs primes et Éviter les démarches compliquées.**
+  
+  Contraintes du lecteur : Budget limité, Peu de connaissances financières, Manque de temps, Méfiance envers les offres trop belles pour être vraies, Refus de bloquer de l'argent inutilement.
+  
+  Mets systématiquement en avant les **montants en euros**, les offres accessibles sans dépôt et les démarches nécessaires pour obtenir les primes. Explique clairement les conditions, les délais et les éventuels frais. Ne présente jamais une prime conditionnelle comme un gain garanti.
+  
+  Utilise des accroches engageantes, des exemples concrets et des appels à l'action naturels. Encourage le lecteur à **s'inscrire gratuitement à la newsletter Captain Parrainage** pour recevoir chaque semaine les meilleures offres et être alerté des primes exceptionnelles.
+  
+  Inclure une FAQ. Niveau de détail : équilibré. Privilégier les informations pratiques, les comparatifs simples et les conseils directement applicables. Éviter le jargon financier et les longues introductions.
+  
+
+author:
+  name: "Chloé Petit"
+  bio: "Chloé Petit est artisane et auto-entrepreneuse basée à Toulouse, avec 14 ans d'expérience dans son domaine. Elle met son savoir-faire et son expertise au service de ses clients avec rigueur et engagement. Son parcours témoigne d'une maîtrise solide et d'une passion authentique pour son métier."
+  job_title: "Artisan / Auto-entrepreneur"
+  photo: "/author-photo.png"
+  socials: []
