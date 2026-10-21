@@ -84,13 +84,13 @@ nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px
 nav.site-nav .nav-cta:hover{opacity:.88}
 nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
-nav.site-nav .nav-search-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;flex-shrink:0;transition:.15s;padding:0}
-nav.site-nav .nav-search-btn:hover{background:rgba(255,255,255,.14)}
-nav.site-nav .nav-search-btn svg{width:17px;height:17px}
+nav.site-nav .nav-search-inline{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin-left:2px;border-radius:50%;border:0;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;flex-shrink:0;transition:.15s;padding:0}
+nav.site-nav .nav-search-inline:hover{color:#fff;background:rgba(255,255,255,.12)}
+nav.site-nav .nav-search-inline svg{width:16px;height:16px}
 nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
 nav.site-nav .nav-mobile.open{display:flex}
 nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta,nav.site-nav .nav-search-btn{display:none}nav.site-nav .nav-burger{display:flex}}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
 </style>
 
 <nav class="site-nav">
@@ -101,10 +101,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <a href="/avis">Avis</a>
         <a href="/blog/">Blog</a>
           <a href="/outils-pratiques">Outils pratiques</a>
+      <button type="button" class="nav-search-inline site-search-trigger" onclick="openSiteSearch()" aria-label="Rechercher sur le site" title="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
     </div>
-    <button type="button" class="nav-search-btn site-search-trigger" onclick="openSiteSearch()" aria-label="Rechercher sur le site" title="Rechercher">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-    </button>
     <a href="/contact" class="nav-cta">Contact</a>
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -430,14 +430,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Comment choisir un logiciel GEPP pour votre entreprise ?</h2>
 <p class="blog-card-excerpt">Qu'est-ce que la GEPP et pourquoi j'en ai entendu parler ? On m'a parlé de GEPP pour la première fois il y a deux ans. Je dirigeais alors une équipe de 45 personnes et je me…</p><div class="blog-card-meta">20 mai 2026</div>      </div>
     </a>
-    <a href="/2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines/featured-6915.jpg" alt="Qu’est-ce que la gestion des talents en ressources humaines ?" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Qu’est-ce que la gestion des talents en ressources humaines ?</h2>
-<p class="blog-card-excerpt">Une définition simple du talent management Je me souviens encore de mes débuts comme dirigeant il y a onze ans. Ma priorité ? Recruter les bonnes personnes et les garder le plus…</p><div class="blog-card-meta">19 mai 2026</div>      </div>
-    </a>
     <a href="/8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace/" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace/featured-94234.jpg" alt="Comment mettre en place une gestion des talents RH efficace ?" loading="lazy">
@@ -445,6 +437,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <div class="blog-card-body">
 <span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Comment mettre en place une gestion des talents RH efficace ?</h2>
 <p class="blog-card-excerpt">Pourquoi votre TPE a besoin d'une vraie stratégie RH ? Je dirige une entreprise de 150 salariés depuis 11 ans maintenant. Au début, on gérait les talents "à la bonne franquette".…</p><div class="blog-card-meta">19 mai 2026</div>      </div>
+    </a>
+    <a href="/2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines/featured-6915.jpg" alt="Qu’est-ce que la gestion des talents en ressources humaines ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Qu’est-ce que la gestion des talents en ressources humaines ?</h2>
+<p class="blog-card-excerpt">Une définition simple du talent management Je me souviens encore de mes débuts comme dirigeant il y a onze ans. Ma priorité ? Recruter les bonnes personnes et les garder le plus…</p><div class="blog-card-meta">19 mai 2026</div>      </div>
     </a>
     <a href="/6883-quels-avantages-propose-le-comite-d-entreprise-airbus-helicopters/" class="blog-card">
       <div class="blog-card-img">

@@ -84,13 +84,13 @@ nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px
 nav.site-nav .nav-cta:hover{opacity:.88}
 nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
-nav.site-nav .nav-search-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;flex-shrink:0;transition:.15s;padding:0}
-nav.site-nav .nav-search-btn:hover{background:rgba(255,255,255,.14)}
-nav.site-nav .nav-search-btn svg{width:17px;height:17px}
+nav.site-nav .nav-search-inline{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin-left:2px;border-radius:50%;border:0;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;flex-shrink:0;transition:.15s;padding:0}
+nav.site-nav .nav-search-inline:hover{color:#fff;background:rgba(255,255,255,.12)}
+nav.site-nav .nav-search-inline svg{width:16px;height:16px}
 nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
 nav.site-nav .nav-mobile.open{display:flex}
 nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta,nav.site-nav .nav-search-btn{display:none}nav.site-nav .nav-burger{display:flex}}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
 </style>
 
 <nav class="site-nav">
@@ -101,10 +101,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <a href="/avis">Avis</a>
         <a href="/blog/">Blog</a>
           <a href="/outils-pratiques">Outils pratiques</a>
+      <button type="button" class="nav-search-inline site-search-trigger" onclick="openSiteSearch()" aria-label="Rechercher sur le site" title="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
     </div>
-    <button type="button" class="nav-search-btn site-search-trigger" onclick="openSiteSearch()" aria-label="Rechercher sur le site" title="Rechercher">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-    </button>
     <a href="/contact" class="nav-cta">Contact</a>
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -382,29 +382,13 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Rupture de CDD à l’initiative du salarié : règles, conditions et conséquences</h2>
 <p class="blog-card-excerpt">Pourquoi un salarié en CDD peut-il rompre son contrat ? Je vois souvent cette question dans mon entreprise. Un salarié en CDD peut effectivement quitter son poste avant la fin…</p><div class="blog-card-meta">13 mai 2026</div>      </div>
     </a>
-    <a href="/2138-comptabiliser-une-provision-pour-depreciation-des-stocks/" class="blog-card">
+    <a href="/7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir/" class="blog-card">
       <div class="blog-card-img">
-        <img src="/blog/2138-comptabiliser-une-provision-pour-depreciation-des-stocks/featured-60109.jpg" alt="Comptabiliser une provision pour dépréciation des stocks" loading="lazy">
+        <img src="/blog/7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir/featured-65459.jpg" alt="Comprendre la mise au rebut en comptabilité : Tout savoir" loading="lazy">
       </div>
       <div class="blog-card-body">
-<span class="blog-card-cat">Comptabilité</span>        <h2 class="blog-card-title">Comptabiliser une provision pour dépréciation des stocks</h2>
-<p class="blog-card-excerpt">Pourquoi prévoir une dépréciation de stock dans sa comptabilité On a tous des produits qui traînent dans nos entrepôts. Certains depuis des mois. Je me souviens d'un stock de…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
-    </a>
-    <a href="/6353-comite-d-entreprise-sncf-les-avantages/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/6353-comite-d-entreprise-sncf-les-avantages/featured-26154.jpg" alt="Comité d'entreprise sncf : les avantages" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Comité d'entreprise sncf : les avantages</h2>
-<p class="blog-card-excerpt">Ce que j'ai découvert sur le comité d'entreprise SNCF Quand je me suis penché sur les avantages du comité d'entreprise SNCF, j'ai été surpris par l'ampleur des bénéfices proposés.…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
-    </a>
-    <a href="/8532-guichet-unique-inpi-vs-legalstart-comparatif-complet/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/8532-guichet-unique-inpi-vs-legalstart-comparatif-complet/featured-80339.jpg" alt="Guichet Unique INPI vs Legalstart : comparatif complet" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">Guichet Unique INPI vs Legalstart : comparatif complet</h2>
-<p class="blog-card-excerpt">Mon retour d'expérience après avoir testé les deux solutions Quand j'ai créé ma société en 2019, j'ai hésité entre passer par le Guichet Unique INPI ou déléguer à Legalstart.…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
+<span class="blog-card-cat">Comptabilité</span>        <h2 class="blog-card-title">Comprendre la mise au rebut en comptabilité : Tout savoir</h2>
+<p class="blog-card-excerpt">La mise au rebut : quand l'entreprise dit adieu à ses équipements J'ai eu affaire à la mise au rebut plusieurs fois dans mon entreprise. Une machine qui tombe en panne définitive,…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
     </a>
     <a href="/8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart/" class="blog-card">
       <div class="blog-card-img">
@@ -414,13 +398,29 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">Tout savoir sur la création d’une SAS avec Legalstart</h2>
 <p class="blog-card-excerpt">Pourquoi j'ai choisi Legalstart pour créer ma SAS Quand j'ai dû créer ma SAS il y a trois ans, j'avais une contrainte majeure : un budget serré et pas envie de passer des semaines…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
     </a>
-    <a href="/7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir/" class="blog-card">
+    <a href="/2138-comptabiliser-une-provision-pour-depreciation-des-stocks/" class="blog-card">
       <div class="blog-card-img">
-        <img src="/blog/7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir/featured-65459.jpg" alt="Comprendre la mise au rebut en comptabilité : Tout savoir" loading="lazy">
+        <img src="/blog/2138-comptabiliser-une-provision-pour-depreciation-des-stocks/featured-60109.jpg" alt="Comptabiliser une provision pour dépréciation des stocks" loading="lazy">
       </div>
       <div class="blog-card-body">
-<span class="blog-card-cat">Comptabilité</span>        <h2 class="blog-card-title">Comprendre la mise au rebut en comptabilité : Tout savoir</h2>
-<p class="blog-card-excerpt">La mise au rebut : quand l'entreprise dit adieu à ses équipements J'ai eu affaire à la mise au rebut plusieurs fois dans mon entreprise. Une machine qui tombe en panne définitive,…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
+<span class="blog-card-cat">Comptabilité</span>        <h2 class="blog-card-title">Comptabiliser une provision pour dépréciation des stocks</h2>
+<p class="blog-card-excerpt">Pourquoi prévoir une dépréciation de stock dans sa comptabilité On a tous des produits qui traînent dans nos entrepôts. Certains depuis des mois. Je me souviens d'un stock de…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
+    </a>
+    <a href="/8532-guichet-unique-inpi-vs-legalstart-comparatif-complet/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8532-guichet-unique-inpi-vs-legalstart-comparatif-complet/featured-80339.jpg" alt="Guichet Unique INPI vs Legalstart : comparatif complet" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">Guichet Unique INPI vs Legalstart : comparatif complet</h2>
+<p class="blog-card-excerpt">Mon retour d'expérience après avoir testé les deux solutions Quand j'ai créé ma société en 2019, j'ai hésité entre passer par le Guichet Unique INPI ou déléguer à Legalstart.…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
+    </a>
+    <a href="/6353-comite-d-entreprise-sncf-les-avantages/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/6353-comite-d-entreprise-sncf-les-avantages/featured-26154.jpg" alt="Comité d'entreprise sncf : les avantages" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Comité d'entreprise sncf : les avantages</h2>
+<p class="blog-card-excerpt">Ce que j'ai découvert sur le comité d'entreprise SNCF Quand je me suis penché sur les avantages du comité d'entreprise SNCF, j'ai été surpris par l'ampleur des bénéfices proposés.…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
     </a>
     <a href="/2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise/" class="blog-card">
       <div class="blog-card-img">
@@ -430,13 +430,13 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <span class="blog-card-cat">Entreprenariat</span>        <h2 class="blog-card-title">Pappers : Où puis-je trouver le RCS d'une entreprise ?</h2>
 <p class="blog-card-excerpt">Le RCS, cette référence dont vous avez besoin En tant que dirigeant, je tombe régulièrement sur cette situation : je dois récupérer le numéro RCS d'une entreprise pour finaliser…</p><div class="blog-card-meta">11 mai 2026</div>      </div>
     </a>
-    <a href="/7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers/" class="blog-card">
+    <a href="/4342-pappers-comment-rechercher-le-siret-d-une-entreprise/" class="blog-card">
       <div class="blog-card-img">
-        <img src="/blog/7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers/featured-82927.png" alt="Peut-on récupérer son Kbis gratuitement sur Pappers ?" loading="lazy">
+        <img src="/blog/4342-pappers-comment-rechercher-le-siret-d-une-entreprise/featured-75575.png" alt="Pappers : comment rechercher le siret d'une entreprise ?" loading="lazy">
       </div>
       <div class="blog-card-body">
-<span class="blog-card-cat">Entreprenariat</span>        <h2 class="blog-card-title">Peut-on récupérer son Kbis gratuitement sur Pappers ?</h2>
-<p class="blog-card-excerpt">La vérité sur la gratuité du Kbis chez Pappers Je vais être direct avec vous : non, vous ne pouvez pas récupérer votre Kbis gratuitement sur Pappers . Après avoir testé la…</p><div class="blog-card-meta">11 mai 2026</div>      </div>
+<span class="blog-card-cat">Entreprenariat</span>        <h2 class="blog-card-title">Pappers : comment rechercher le siret d'une entreprise ?</h2>
+<p class="blog-card-excerpt">Qu'est-ce que Pappers exactement ? Je vais être direct : Pappers, c'est le service gratuit que j'utilise le plus souvent pour trouver des informations sur les entreprises. Pas…</p><div class="blog-card-meta">11 mai 2026</div>      </div>
     </a>
     <a href="/1905-comment-rechercher-un-dirigeant-sur-pappers/" class="blog-card">
       <div class="blog-card-img">
@@ -446,13 +446,13 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <span class="blog-card-cat">Entreprenariat</span>        <h2 class="blog-card-title">Comment rechercher un dirigeant sur Pappers ?</h2>
 <p class="blog-card-excerpt">Pappers : mon outil quotidien pour traquer les dirigeants Quand j'ai découvert Pappers il y a trois ans, je cherchais désespérément à identifier le bon interlocuteur chez un gros…</p><div class="blog-card-meta">11 mai 2026</div>      </div>
     </a>
-    <a href="/4342-pappers-comment-rechercher-le-siret-d-une-entreprise/" class="blog-card">
+    <a href="/7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers/" class="blog-card">
       <div class="blog-card-img">
-        <img src="/blog/4342-pappers-comment-rechercher-le-siret-d-une-entreprise/featured-75575.png" alt="Pappers : comment rechercher le siret d'une entreprise ?" loading="lazy">
+        <img src="/blog/7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers/featured-82927.png" alt="Peut-on récupérer son Kbis gratuitement sur Pappers ?" loading="lazy">
       </div>
       <div class="blog-card-body">
-<span class="blog-card-cat">Entreprenariat</span>        <h2 class="blog-card-title">Pappers : comment rechercher le siret d'une entreprise ?</h2>
-<p class="blog-card-excerpt">Qu'est-ce que Pappers exactement ? Je vais être direct : Pappers, c'est le service gratuit que j'utilise le plus souvent pour trouver des informations sur les entreprises. Pas…</p><div class="blog-card-meta">11 mai 2026</div>      </div>
+<span class="blog-card-cat">Entreprenariat</span>        <h2 class="blog-card-title">Peut-on récupérer son Kbis gratuitement sur Pappers ?</h2>
+<p class="blog-card-excerpt">La vérité sur la gratuité du Kbis chez Pappers Je vais être direct avec vous : non, vous ne pouvez pas récupérer votre Kbis gratuitement sur Pappers . Après avoir testé la…</p><div class="blog-card-meta">11 mai 2026</div>      </div>
     </a>
     <a href="/4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise/" class="blog-card">
       <div class="blog-card-img">
