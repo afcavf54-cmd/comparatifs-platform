@@ -245,8 +245,29 @@
       "page_types": {
         "blog": "numismatique"
       }
+    },
+    {
+      "id": "captain-parrainage",
+      "name": "Captain parrainage",
+      "niche": "cadeau-code-promo",
+      "domain": "captain-parrainage.com",
+      "sheet_csv_url": "",
+      "description": "",
+      "status": "pending_generation",
+      "thematic": "cadeau-code-promo",
+      "active_page_types": [
+        "avis",
+        "blog"
+      ],
+      "site_type": "comparatif",
+      "blog_slug_format": "clean",
+      "created_at": "2026-10-21T14:07:43.844Z",
+      "page_types": {
+        "avis": "cadeau-code-promo",
+        "blog": "cadeau-code-promo"
+      }
     }
   ],
   "version": "2.0",
-  "updated_at": "2026-10-21T13:39:03.911Z"
+  "updated_at": "2026-10-21T14:07:43.844Z"
 }
