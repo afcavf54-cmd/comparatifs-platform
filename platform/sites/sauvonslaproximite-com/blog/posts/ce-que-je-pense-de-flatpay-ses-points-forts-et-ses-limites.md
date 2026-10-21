@@ -1,19 +1,24 @@
 ---
-title: "Ce que je pense de Flatpay : ses points forts et ses limites"
+title: 'Ce que je pense de Flatpay : ses points forts et ses limites'
 slug: ce-que-je-pense-de-flatpay-ses-points-forts-et-ses-limites
 date: 2026-10-21 19:50:11+02:00
-updated: 2026-10-21T19:50:11
+updated: 2026-10-21 19:50:11
 categorie: Finance & Comptabilité
 categories:
 - Finance & Comptabilité
-meta_title: "Flatpay Avis : Les avantages et inconvénients selon moi"
-meta_description: Je passe en revue les avantages et les inconvénients de Flatpay. Voici mon analyse de son terminal, de ses tarifs et de ses services.
+meta_title: 'Flatpay Avis : Les avantages et inconvénients selon moi'
+meta_description: Je passe en revue les avantages et les inconvénients de Flatpay.
+  Voici mon analyse de son terminal, de ses tarifs et de ses services.
 featured_image: /blog/3744-avis-flatpay/featured-59155.jpg
 status: published
 min_words: 2100
 show_toc: true
+related_posts:
+- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
+- 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
+- 8253-bordereau-fiscal-modele-p-237-utilite-obtention-et-demarches-administratives
+- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 ---
-
 <p>Je gère la comptabilité d'une entreprise de distribution basée à Lyon depuis une vingtaine d'années. On a vu passer pas mal d'outils de paiement, de terminaux bancaires capricieux, de solutions prometteuses qui finissaient par coûter trois fois ce qu'on avait prévu. Quand j'ai entendu parler de Flatpay il y a environ un an, j'ai été curieuse, mais clairement pas emballée d'emblée. Un nouvel entrant sur le marché du paiement en point de vente... j'en avais trop vu.</p>
 
 <p>J'ai quand même décidé de tester. Et franchement, je ne m'attendais pas à ce que ce soit aussi simple à mettre en place.</p>
