@@ -1,15 +1,15 @@
 ---
 title: Comment choisir ses boucles d’oreilles selon son style et ses envies ?
 slug: comment-choisir-ses-boucles-d-oreilles-selon-son-style-et-ses-envies
-date: 2026-10-16 13:57:33+02:00
-updated: 2026-10-21T09:35:00
+date: 2026-10-21 09:35:02+02:00
+updated: 2026-10-21T09:35:02
 categorie: Mode & Personnalisation
 categories:
 - Mode & Personnalisation
 meta_title: "Créoles, puces ou pendantes : quelles boucles d'oreilles choisir ?"
 meta_description: "Créoles, puces ou boucles d'oreilles pendantes ? Découvrez comment choisir le modèle idéal selon votre visage, votre style et vos envies."
 featured_image: /blog/comment-choisir-ses-boucles-d-oreilles-selon-son-style-et-ses-envies/featured-93968.jpg
-status: draft
+status: published
 min_words: 1200
 show_toc: true
 ---
