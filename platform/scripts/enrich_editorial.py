@@ -1060,8 +1060,24 @@ def main():
             # Site classement SaaS — les produits viennent des keyword sheets, pas d'un sheet global
             products = []  # generate_classement chargera les produits via load_schema_keywords
         else:
-            print("❌ Aucun produit chargé")
-            sys.exit(1)
+            # Pas de produits chargés : deux cas très différents.
+            # 1) Site comparatif/SCPI qui ATTEND des produits (sheet_csv_url
+            #    renseigné, products.yaml présent, ou page_types vs/comparatif) :
+            #    c'est un vrai échec de chargement → on bloque.
+            # 2) Site blog/avis UNIQUEMENT (aucune source de produits) : il n'y
+            #    a simplement rien à enrichir ici (le contenu blog/avis est
+            #    généré ailleurs). On sort proprement (exit 0) pour ne PAS
+            #    bloquer la suite du pipeline (generate.py + deploy Cloudflare).
+            _has_product_source = (bool(site_config.get("sheet_csv_url"))
+                                   or (site_dir / "products.yaml").exists())
+            _needs_products = (_has_product_source
+                               or bool(page_types.get("vs"))
+                               or bool(page_types.get("comparatif")))
+            if _needs_products:
+                print("❌ Aucun produit chargé")
+                sys.exit(1)
+            print("ℹ Aucun produit (site blog/avis uniquement) — rien à enrichir, étape ignorée.")
+            sys.exit(0)
 
     only = args.only
     page_types = config.get("page_types", {})
