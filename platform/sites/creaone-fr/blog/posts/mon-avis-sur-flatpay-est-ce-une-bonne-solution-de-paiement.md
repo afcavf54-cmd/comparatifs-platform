@@ -1,13 +1,14 @@
 ---
-title: "Mon avis sur Flatpay : est-ce une bonne solution de paiement ?"
+title: 'Mon avis sur Flatpay : est-ce une bonne solution de paiement ?'
 slug: mon-avis-sur-flatpay-est-ce-une-bonne-solution-de-paiement
 date: 2026-10-21 20:06:20+02:00
-updated: 2026-10-21T20:06:20
+updated: 2026-10-21 20:06:20
 categorie: Finances
 categories:
 - Finances
-meta_title: "Flatpay Avis  : Ce que je pense vraiment de cette solution"
-meta_description: "Je partage mon avis sur Flatpay : tarifs, terminal de paiement, commissions et services. Découvrez les avantages et inconvénients que j'ai relevés."
+meta_title: 'Flatpay Avis  : Ce que je pense vraiment de cette solution'
+meta_description: 'Je partage mon avis sur Flatpay : tarifs, terminal de paiement,
+  commissions et services. Découvrez les avantages et inconvénients que j''ai relevés.'
 featured_image: /blog/5108-avis-flatpay/featured-86919.jpg
 status: published
 min_words: 2400
@@ -19,8 +20,8 @@ cta_enabled: true
 cta_text: Tester gratuitement Flatpay
 cta_link: https://t.co/IEvAuJZNNv
 cta_button: En profiter
+related_posts: []
 ---
-
 <p>J'ai découvert Flatpay un peu par hasard, à l'occasion d'une recherche sur les solutions de paiement pour les commerces physiques. À l'époque, je travaillais sur un dossier pour un client de ma boîte, un commerçant qui cherchait à remplacer son terminal de paiement vieillissant et à simplifier sa gestion des encaissements. Je ne m'attendais pas à tomber sur quelque chose d'aussi bien pensé pour ce type de besoin.</p>
 
 <p>Franchement, le marché des terminaux de paiement, c'est un vrai maquis. Entre SumUp, Square, Stripe Terminal, iZettle et les offres bancaires traditionnelles, difficile de savoir vers quoi s'orienter sans y passer des heures. Flatpay, c'est une solution danoise, relativement jeune, qui commence à se faire connaître en France et dans d'autres pays européens. Et après avoir passé plusieurs mois à suivre son déploiement de près, j'ai un avis assez clair.</p>
