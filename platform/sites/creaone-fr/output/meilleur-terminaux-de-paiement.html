@@ -429,6 +429,9 @@ nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px
 nav.site-nav .nav-cta:hover{opacity:.88}
 nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-search-inline{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin-left:2px;border-radius:50%;border:0;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;flex-shrink:0;transition:.15s;padding:0}
+nav.site-nav .nav-search-inline:hover{color:#fff;background:rgba(255,255,255,.12)}
+nav.site-nav .nav-search-inline svg{width:16px;height:16px}
 nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
 nav.site-nav .nav-mobile.open{display:flex}
 nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
@@ -441,6 +444,9 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <div class="nav-links">
         <a href="/nos-comparateurs">Nos comparateurs</a>
         <a href="/blog/">Blog</a>
+      <button type="button" class="nav-search-inline site-search-trigger" onclick="openSiteSearch()" aria-label="Rechercher sur le site" title="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
@@ -450,6 +456,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="nav-mobile" id="nav-mobile">
       <a href="/nos-comparateurs">Nos comparateurs</a>
       <a href="/blog/">Blog</a>
+    <a href="#" class="site-search-trigger" onclick="openSiteSearch();return false;">🔍 Rechercher</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
@@ -495,9 +502,146 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   });
 })();
 </script>
+
+<style>
+.site-search-overlay{position:fixed;inset:0;z-index:1000;display:none;background:rgba(5,9,20,.55);backdrop-filter:blur(2px);padding:72px 16px 24px}
+.site-search-overlay.open{display:block}
+.site-search-modal{max-width:640px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.28);overflow:hidden;font-family:'Outfit',system-ui,sans-serif}
+.site-search-bar{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #e6e9f0}
+.site-search-bar svg{width:20px;height:20px;flex:none;color:#8a93a6}
+.site-search-input{flex:1;border:0;outline:0;font-size:16px;color:#0F1A2E;background:none;font-family:inherit}
+.site-search-close{border:0;background:none;font-size:26px;line-height:1;color:#8a93a6;cursor:pointer;padding:0 4px}
+.site-search-close:hover{color:#0F1A2E}
+.site-search-filters{display:flex;gap:6px;flex-wrap:wrap;padding:10px 16px 0}
+.site-search-chip{font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid #e6e9f0;background:#fff;color:#5b6478;cursor:pointer}
+.site-search-chip.active{background:var(--accent,#1B4FD8);border-color:var(--accent,#1B4FD8);color:#fff}
+.site-search-hint{padding:14px 16px;color:#8a93a6;font-size:13.5px}
+.site-search-results{max-height:min(60vh,520px);overflow-y:auto;padding:6px 8px 10px}
+.site-search-res{display:block;padding:11px 12px;border-radius:10px;color:inherit;text-decoration:none;border:1px solid transparent}
+.site-search-res:hover,.site-search-res:focus{background:#f4f6fb;border-color:#e6e9f0}
+.site-search-res-top{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.site-search-badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:5px;background:#eef1f7;color:#5b6478;flex:none}
+.site-search-badge[data-ty="Comparatif"]{background:#e7efff;color:#1B4FD8}
+.site-search-badge[data-ty="Avis"]{background:#fff0e7;color:#E8410A}
+.site-search-badge[data-ty="Article"]{background:#eafaf1;color:#1A7A4A}
+.site-search-res-title{font-weight:600;font-size:14.5px;color:#0F1A2E;line-height:1.35}
+.site-search-res-desc{font-size:12.8px;color:#6b7280;line-height:1.5;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.site-search-res mark{background:#fff2b8;color:inherit;padding:0 1px;border-radius:2px}
+.site-search-count{padding:4px 16px 8px;font-size:12px;color:#8a93a6}
+@media(max-width:600px){.site-search-overlay{padding-top:16px}}
+</style>
+
+<div class="site-search-overlay" id="siteSearchOverlay" aria-hidden="true" onclick="if(event.target===this)closeSiteSearch()">
+  <div class="site-search-modal" role="dialog" aria-modal="true" aria-label="Recherche sur le site">
+    <div class="site-search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="search" class="site-search-input" id="siteSearchInput" placeholder="Rechercher une marque, un logiciel, un article…" autocomplete="off" aria-label="Rechercher sur le site">
+      <button type="button" class="site-search-close" onclick="closeSiteSearch()" aria-label="Fermer la recherche">&times;</button>
+    </div>
+    <div class="site-search-filters" id="siteSearchFilters">
+      <button type="button" class="site-search-chip active" data-f="">Tout</button>
+      <button type="button" class="site-search-chip" data-f="Article">Articles</button>
+      <button type="button" class="site-search-chip" data-f="Comparatif">Comparatifs</button>
+      <button type="button" class="site-search-chip" data-f="Avis">Avis</button>
+    </div>
+    <div class="site-search-hint" id="siteSearchHint">Tapez au moins 2 caractères pour lancer la recherche.</div>
+    <div class="site-search-count" id="siteSearchCount" style="display:none"></div>
+    <div class="site-search-results" id="siteSearchResults"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var idx=null, loading=false, curFilter="", lastQ="";
+  var overlay=document.getElementById('siteSearchOverlay');
+  var input=document.getElementById('siteSearchInput');
+  var results=document.getElementById('siteSearchResults');
+  var hint=document.getElementById('siteSearchHint');
+  var countEl=document.getElementById('siteSearchCount');
+  if(!overlay) return;
+
+  function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+  function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function hl(text,toks){
+    var out=esc(text);
+    toks.forEach(function(t){
+      if(t.length<2) return;
+      var re=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
+      out=out.replace(re,'<mark>$1</mark>');
+    });
+    return out;
+  }
+  window.openSiteSearch=function(){
+    overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    setTimeout(function(){input.focus();},40);
+    loadIndex();
+  };
+  window.closeSiteSearch=function(){
+    overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  };
+  function loadIndex(){
+    if(idx||loading) return; loading=true;
+    fetch('/search-index.json').then(function(r){return r.json();}).then(function(d){
+      idx=d;loading=false; if(input.value) run();
+    }).catch(function(){loading=false;hint.textContent='Recherche momentanément indisponible.';hint.style.display='block';});
+  }
+  function run(){
+    var q=norm(input.value.trim()); lastQ=q;
+    countEl.style.display='none';
+    if(q.length<2){results.innerHTML='';hint.textContent='Tapez au moins 2 caractères pour lancer la recherche.';hint.style.display='block';return;}
+    if(!idx){hint.textContent='Chargement de l’index…';hint.style.display='block';return;}
+    var toks=q.split(/\s+/).filter(Boolean);
+    var out=[];
+    for(var i=0;i<idx.length;i++){
+      var e=idx[i];
+      if(curFilter && e.ty!==curFilter) continue;
+      var hay=norm(e.t+' '+e.d+' '+e.w);
+      var ok=true;
+      for(var k=0;k<toks.length;k++){if(hay.indexOf(toks[k])<0){ok=false;break;}}
+      if(!ok) continue;
+      var nt=norm(e.t), nd=norm(e.d), sc=0;
+      for(var k=0;k<toks.length;k++){if(nt.indexOf(toks[k])>=0)sc+=5; else if(nd.indexOf(toks[k])>=0)sc+=2;}
+      out.push([sc,e]);
+    }
+    out.sort(function(a,b){return b[0]-a[0];});
+    if(!out.length){
+      hint.style.display='none';results.innerHTML='';
+      countEl.style.display='block';countEl.textContent='Aucun résultat pour « '+input.value.trim()+' ».';
+      return;
+    }
+    hint.style.display='none';
+    countEl.style.display='block';
+    countEl.textContent=out.length+' résultat'+(out.length>1?'s':'')+(out.length>60?' (60 affichés)':'');
+    var html='';
+    out.slice(0,60).forEach(function(p){
+      var e=p[1];
+      html+='<a class="site-search-res" href="'+esc(e.u)+'">'
+        +'<div class="site-search-res-top"><span class="site-search-badge" data-ty="'+esc(e.ty)+'">'+esc(e.ty)+'</span>'
+        +'<span class="site-search-res-title">'+hl(e.t,toks)+'</span></div>'
+        +(e.d?'<div class="site-search-res-desc">'+hl(e.d,toks)+'</div>':'')
+        +'</a>';
+    });
+    results.innerHTML=html;
+  }
+  var deb;
+  input.addEventListener('input',function(){clearTimeout(deb);deb=setTimeout(run,120);});
+  document.getElementById('siteSearchFilters').addEventListener('click',function(ev){
+    var b=ev.target.closest('.site-search-chip'); if(!b) return;
+    curFilter=b.getAttribute('data-f')||'';
+    this.querySelectorAll('.site-search-chip').forEach(function(c){c.classList.remove('active');});
+    b.classList.add('active'); run();
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Escape'&&overlay.classList.contains('open'))closeSiteSearch();
+    if((ev.key==='k'||ev.key==='K')&&(ev.metaKey||ev.ctrlKey)){ev.preventDefault();openSiteSearch();}
+  });
+})();
+</script>
 <div class="hero">
   <h1>Meilleur Terminaux de paiement 2026 : Top 7</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-09 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-21 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -1080,7 +1224,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 9 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 21 octobre 2026
       </div>
     </div>
   </div>
