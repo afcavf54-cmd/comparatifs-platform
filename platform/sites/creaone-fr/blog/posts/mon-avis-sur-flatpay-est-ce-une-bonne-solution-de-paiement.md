@@ -2,7 +2,7 @@
 title: "Mon avis sur Flatpay : est-ce une bonne solution de paiement ?"
 slug: mon-avis-sur-flatpay-est-ce-une-bonne-solution-de-paiement
 date: 2026-10-21 19:50:27+02:00
-updated: 2026-10-21T19:50:27
+updated: 2026-10-21T20:02:57
 categorie: Finances
 categories:
 - Finances
@@ -12,6 +12,13 @@ featured_image: /blog/5108-avis-flatpay/featured-86919.jpg
 status: draft
 min_words: 2400
 show_toc: true
+link_anchors:
+- text: flatpay
+  max: 1
+cta_enabled: true
+cta_text: Tester gratuitement Flatpay
+cta_link: https://t.co/IEvAuJZNNv
+cta_button: En profiter
 ---
 
 <p>J'ai découvert Flatpay un peu par hasard, à l'occasion d'une recherche sur les solutions de paiement pour les commerces physiques. À l'époque, je travaillais sur un dossier pour un client de ma boîte, un commerçant qui cherchait à remplacer son terminal de paiement vieillissant et à simplifier sa gestion des encaissements. Je ne m'attendais pas à tomber sur quelque chose d'aussi bien pensé pour ce type de besoin.</p>
@@ -275,3 +282,4 @@ show_toc: true
 <h3>Peut-on gérer plusieurs terminaux avec un seul compte Flatpay ?</h3>
 
 <p>Oui, le tableau de bord permet de gérer plusieurs points de vente ou plusieurs terminaux. Pour un commerçant avec deux caisses ou une petite chaîne de boutiques, c'est une vraie commodité. Les transactions de chaque terminal sont visibles séparément, ce qui facilite le suivi par point de vente.</p>
+
