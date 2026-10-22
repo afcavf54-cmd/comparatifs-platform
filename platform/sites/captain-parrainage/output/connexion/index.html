@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Connexion — Captain Parrainage</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="/assets/cp.css" rel="stylesheet">
+</head>
+<body>
+<nav class="cp-nav"><div class="wrap cp-nav-in">
+  <a href="/" class="cp-logo"><span class="mascotte">CP</span>Captain <b>Parrainage</b></a>
+  <div class="cp-nav-cta"><a href="/#inscription" class="btn btn-gold">S'inscrire</a></div>
+</div></nav>
+
+<div class="auth-wrap"><div class="auth-card">
+  <div id="loginBox">
+    <h1>Connexion</h1>
+    <p class="sub">Accédez à votre espace membre et à toutes les offres de parrainage.</p>
+    <form id="loginForm" novalidate>
+      <div class="form-row"><label for="email">Email</label><input type="email" class="field" id="email" autocomplete="email" required></div>
+      <div class="form-row"><label for="pw">Mot de passe</label><input type="password" class="field" id="pw" autocomplete="current-password" required></div>
+      <div id="err" class="form-err hidden"></div>
+      <button type="submit" class="btn btn-gold btn-block btn-lg" id="btn" style="margin-top:6px">Se connecter</button>
+    </form>
+    <p class="form-note" style="margin-top:16px"><a href="#" id="forgot" style="color:var(--navy);text-decoration:underline">Mot de passe oublié ?</a></p>
+    <p class="form-note">Pas encore de compte ? <a href="/#inscription" style="color:var(--navy);text-decoration:underline">Inscrivez-vous gratuitement</a></p>
+  </div>
+  <div id="resetOk" class="form-ok hidden">
+    <div class="ok-ico">✉️</div>
+    <h1 style="font-size:22px">Email envoyé</h1>
+    <p class="sub">Un lien de réinitialisation vient d'être envoyé. Cliquez dessus pour choisir un nouveau mot de passe.</p>
+    <a href="/connexion/" class="btn btn-ghost btn-block">Retour</a>
+  </div>
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/assets/cp.js"></script>
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  // déjà connecté → espace membre
+  (async function(){ try{ var s=await CP.getSession(); if(s) window.location.href='/membre/'; }catch(e){} })();
+
+  $('loginForm').addEventListener('submit', async function(ev){
+    ev.preventDefault();
+    var email=$('email').value.trim(), pw=$('pw').value, err=$('err'); err.classList.add('hidden');
+    var btn=$('btn'); btn.disabled=true; btn.textContent='Connexion…';
+    try{ await CP.login(email, pw); window.location.href='/membre/'; }
+    catch(e){
+      var m=(e&&e.message)||'';
+      err.textContent=/Invalid login/i.test(m)?'Email ou mot de passe incorrect.':(m||'Erreur, réessayez.');
+      err.classList.remove('hidden'); btn.disabled=false; btn.textContent='Se connecter';
+    }
+  });
+
+  $('forgot').addEventListener('click', async function(ev){
+    ev.preventDefault();
+    var email=$('email').value.trim(), err=$('err'); err.classList.add('hidden');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent='Saisissez d’abord votre email ci-dessus.'; err.classList.remove('hidden'); return; }
+    try{
+      await CP.sb.auth.resetPasswordForEmail(email, { redirectTo: CP.site + '/confirmer/' });
+      $('loginBox').classList.add('hidden'); $('resetOk').classList.remove('hidden');
+    }catch(e){ err.textContent=(e&&e.message)||'Erreur, réessayez.'; err.classList.remove('hidden'); }
+  });
+})();
+</script>
+</body>
+</html>

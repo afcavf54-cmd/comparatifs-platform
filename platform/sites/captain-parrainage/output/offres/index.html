@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Créez votre mot de passe — Captain Parrainage</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="/assets/cp.css" rel="stylesheet">
+</head>
+<body>
+<nav class="cp-nav"><div class="wrap cp-nav-in">
+  <a href="/" class="cp-logo"><span class="mascotte">CP</span>Captain <b>Parrainage</b></a>
+</div></nav>
+
+<div class="auth-wrap"><div class="auth-card">
+  <!-- Chargement -->
+  <div id="loading"><h1>Un instant…</h1><p class="sub">Vérification de votre lien de confirmation.</p></div>
+
+  <!-- Création mot de passe -->
+  <div id="setpw" class="hidden">
+    <h1>Créez votre mot de passe</h1>
+    <p class="sub">Votre email est confirmé ✅. Choisissez un mot de passe pour accéder à votre espace et débloquer toutes les offres.</p>
+    <form id="pwForm" novalidate>
+      <div class="form-row">
+        <label for="pw">Mot de passe</label>
+        <input type="password" class="field" id="pw" autocomplete="new-password" placeholder="8 caractères minimum" required>
+        <div class="pw-bar"><i id="pwBar"></i></div>
+        <div class="pw-hint" id="pwHint">Au moins 8 caractères, avec lettres et chiffres.</div>
+      </div>
+      <div class="form-row">
+        <label for="pw2">Confirmez le mot de passe</label>
+        <input type="password" class="field" id="pw2" autocomplete="new-password" required>
+      </div>
+      <div id="pwErr" class="form-err hidden"></div>
+      <button type="submit" class="btn btn-gold btn-block btn-lg" id="pwBtn" style="margin-top:6px">Créer mon compte et débloquer les offres</button>
+    </form>
+  </div>
+
+  <!-- Lien invalide -->
+  <div id="invalid" class="hidden">
+    <h1>Lien expiré ou invalide</h1>
+    <p class="sub">Ce lien de confirmation n'est plus valable. Recommencez votre inscription pour en recevoir un nouveau.</p>
+    <a href="/#inscription" class="btn btn-navy btn-block btn-lg">Recevoir un nouveau lien</a>
+  </div>
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/assets/cp.js"></script>
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  function show(id){['loading','setpw','invalid'].forEach(function(x){$(x).classList.toggle('hidden', x!==id);});}
+
+  function strength(pw){
+    var s=0; if(pw.length>=8)s++; if(/[A-Za-z]/.test(pw)&&/[0-9]/.test(pw))s++; if(pw.length>=12)s++; if(/[^A-Za-z0-9]/.test(pw))s++;
+    return Math.min(s,4);
+  }
+  var pw=$('pw');
+  if(pw){ pw.addEventListener('input',function(){
+    var s=strength(pw.value); var bar=$('pwBar');
+    var cols=['#FF2E3F','#FF2E3F','#F9BD43','#13BFA6','#0B7F6F'];
+    bar.style.width=(s*25)+'%'; bar.style.background=cols[s];
+  });}
+
+  async function boot(){
+    // detectSessionInUrl (cp.js) consomme le hash du lien → session dispo
+    var session=null; try{ session=await CP.getSession(); }catch(e){}
+    if(session){ show('setpw'); }
+    else {
+      // laisse une chance au traitement du hash puis re-teste
+      setTimeout(async function(){
+        var s2=null; try{ s2=await CP.getSession(); }catch(e){}
+        show(s2 ? 'setpw' : 'invalid');
+      }, 800);
+    }
+  }
+
+  var form=$('pwForm');
+  if(form){ form.addEventListener('submit', async function(ev){
+    ev.preventDefault();
+    var a=$('pw').value, b=$('pw2').value, err=$('pwErr'); err.classList.add('hidden');
+    if(a.length<8){ err.textContent='Le mot de passe doit faire au moins 8 caractères.'; err.classList.remove('hidden'); return; }
+    if(!(/[A-Za-z]/.test(a)&&/[0-9]/.test(a))){ err.textContent='Ajoutez au moins des lettres et des chiffres.'; err.classList.remove('hidden'); return; }
+    if(a!==b){ err.textContent='Les deux mots de passe ne correspondent pas.'; err.classList.remove('hidden'); return; }
+    var btn=$('pwBtn'); btn.disabled=true; btn.textContent='Création…';
+    try{ await CP.setPassword(a); window.location.href='/membre/'; }
+    catch(e){ err.textContent=(e&&e.message)||'Erreur, réessayez.'; err.classList.remove('hidden'); btn.disabled=false; btn.textContent='Créer mon compte et débloquer les offres'; }
+  });}
+
+  if(window.CP){ boot(); } else { show('invalid'); }
+})();
+</script>
+</body>
+</html>

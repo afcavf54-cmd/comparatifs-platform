@@ -1,459 +1,213 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>Captain parrainage — parrainages & codes promo</title>
-<meta name="description" content="Captain parrainage : les meilleures offres de parrainage, codes promo et bons plans pour profiter de réductions et de primes de bienvenue.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Captain Parrainage — parrainages & primes de bienvenue</title>
+<meta name="description" content="Captain Parrainage : les meilleures offres de parrainage et primes de bienvenue, dont certaines sans dépôt. Inscris-toi gratuitement pour débloquer la liste complète.">
 <link rel="canonical" href="https://www.captain-parrainage.com/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<meta property="og:title" content="Captain Parrainage — parrainages & primes de bienvenue">
+<meta property="og:description" content="Captain Parrainage : les meilleures offres de parrainage et primes de bienvenue, dont certaines sans dépôt. Inscris-toi gratuitement pour débloquer la liste complète.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Captain parrainage — parrainages & codes promo">
-<meta property="og:description" content="Captain parrainage : les meilleures offres de parrainage, codes promo et bons plans pour profiter de réductions et de primes de bienvenue.">
 <meta property="og:url" content="https://www.captain-parrainage.com/">
-<style>
-:root {
-  --accent: #1B4FD8;
-  --accent2: #E8410A;
-  --bg: #F4F6FB;
-  --ink: #0F1A2E;
-  --ink2: #4A5568;
-  --ink3: #8B9CB0;
-  --surface: #FFFFFF;
-  --border: rgba(15, 26, 46, 0.08);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-  font-family: Outfit;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.65;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* ── Hero ─────────────────────────────────────────────────────── */
-.hero {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 64px 5vw 48px;
-  text-align: left;
-}
-.hero h1 {
-  font-family: DM Serif Display;
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-  color: var(--ink);
-}
-.hero h1 .accent { color: var(--accent); }
-.hero .tagline {
-  font-size: clamp(16px, 2vw, 20px);
-  color: var(--ink2);
-  max-width: 720px;
-  line-height: 1.55;
-}
-
-/* ── Section articles récents ─────────────────────────────────── */
-.section-articles {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 24px 5vw 64px;
-}
-.section-title {
-  font-family: DM Serif Display;
-  font-size: clamp(24px, 3.5vw, 32px);
-  font-weight: 400;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
-.section-subtitle {
-  font-size: 14px;
-  color: var(--ink3);
-  margin-bottom: 32px;
-}
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px;
-}
-.article-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  display: flex;
-  flex-direction: column;
-}
-.article-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(15, 26, 46, 0.08);
-}
-.article-card a.card-link {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.article-card .image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  position: relative;
-  overflow: hidden;
-}
-.article-card .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.article-card .content {
-  padding: 20px 22px 22px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.article-card .meta {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 12px;
-  color: var(--ink3);
-  margin-bottom: 10px;
-}
-.article-card .meta .cat {
-  background: rgba(0, 0, 0, 0.04);
-  padding: 3px 10px;
-  border-radius: 20px;
-  color: var(--accent);
-  font-weight: 600;
-}
-.article-card h3 {
-  font-family: DM Serif Display;
-  font-size: 19px;
-  font-weight: 400;
-  line-height: 1.3;
-  margin-bottom: 10px;
-  color: var(--ink);
-}
-.article-card .excerpt {
-  font-size: 14px;
-  color: var(--ink2);
-  line-height: 1.55;
-  flex: 1;
-}
-
-/* ── Section catégories ───────────────────────────────────────── */
-.section-categories {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 5vw 80px;
-}
-.cats-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.cat-pill {
-  padding: 8px 18px;
-  border-radius: 30px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.15s;
-}
-.cat-pill:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-  text-decoration: none;
-}
-
-/* ── CTA voir tous les articles ───────────────────────────────── */
-.all-articles-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  background: var(--ink);
-  color: #fff;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  transition: background 0.15s;
-}
-.all-articles-cta:hover {
-  background: var(--accent);
-  text-decoration: none;
-  color: #fff;
-}
-
-/* ── Empty state ──────────────────────────────────────────────── */
-.empty-state {
-  background: var(--surface);
-  border: 1px dashed var(--border);
-  border-radius: 14px;
-  padding: 48px 24px;
-  text-align: center;
-  color: var(--ink3);
-}
-
-@media (max-width: 640px) {
-  .hero { padding: 40px 5vw 24px; }
-  .section-articles { padding: 16px 5vw 40px; }
-  .articles-grid { grid-template-columns: 1fr; gap: 20px; }
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="/assets/cp.css" rel="stylesheet">
 </head>
 <body>
 
-<style>
-nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
-nav.site-nav .nav-logo span{color:var(--accent2)}
-nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
-nav.site-nav .nav-cta:hover{opacity:.88}
-nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
-nav.site-nav .nav-search-inline{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin-left:2px;border-radius:50%;border:0;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;flex-shrink:0;transition:.15s;padding:0}
-nav.site-nav .nav-search-inline:hover{color:#fff;background:rgba(255,255,255,.12)}
-nav.site-nav .nav-search-inline svg{width:16px;height:16px}
-nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-nav.site-nav .nav-mobile.open{display:flex}
-nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
-</style>
+<!-- ── NAV ───────────────────────────────────────────────────────────────── -->
+<nav class="cp-nav"><div class="wrap cp-nav-in">
+  <a href="/" class="cp-logo"><span class="mascotte">CP</span>Captain <b>Parrainage</b></a>
+  <div class="cp-nav-links">
+    <a href="/">Accueil</a>
+    <a href="/offres/">Meilleures offres</a>
+    <a href="/#comment">Comment ça marche</a>
+  </div>
+  <div class="cp-nav-cta" id="navCta">
+    <a href="/connexion/" class="btn btn-ghost">Connexion</a>
+    <a href="/#inscription" class="btn btn-gold">S'inscrire</a>
+  </div>
+  <button class="cp-burger" aria-label="Menu" onclick="document.getElementById('navM').classList.toggle('hidden')"><span></span><span></span><span></span></button>
+</div>
+<div class="wrap hidden" id="navM" style="padding-bottom:14px">
+  <a href="/" style="display:block;padding:8px 0">Accueil</a>
+  <a href="/offres/" style="display:block;padding:8px 0">Meilleures offres</a>
+  <a href="/#comment" style="display:block;padding:8px 0">Comment ça marche</a>
+  <a href="/connexion/" style="display:block;padding:8px 0">Connexion</a>
+</div></nav>
 
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/logo.png" alt="Captain parrainage" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
-    <div class="nav-links">
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<header class="hero" id="inscription"><div class="wrap">
+  <div>
+    <span class="eyebrow">🎁 Primes de parrainage vérifiées</span>
+    <h1>Jusqu'à <em id="totalLabel">…</em> de primes à récupérer grâce aux parrainages&nbsp;!</h1>
+    <p class="lead">BoursoBank, Hello&nbsp;bank!, Revolut, Trade&nbsp;Republic… Retrouvez les offres de parrainage et de bienvenue les plus intéressantes. Inscrivez-vous gratuitement pour débloquer la liste complète et recevoir les nouvelles primes chaque semaine.</p>
+    <div class="brands">
+      <span>BoursoBank</span><span>Hello bank!</span><span>Revolut</span><span>Trade Republic</span><span>+ d'autres</span>
     </div>
-    <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="trust">✅ Gratuit • Une sélection chaque semaine • Désinscription en 1 clic</div>
   </div>
-  <div class="nav-mobile" id="nav-mobile">
-    <a href="/contact" class="nav-cta">Contact</a>
-  </div>
-</nav>
 
-<script>
-/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
-   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
-   devoir redéfinir la fonction côté template parent.
-
-   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
-   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
-   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
-   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
-   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
-   qui est actif et le parent réécrit derrière s'il en a un.
-
-   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
-   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
-   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
-   ne faisait rien. */
-(function(){
-  if (typeof window.toggleMenu === 'function') return;
-  window.toggleMenu = function(){
-    var menu = document.getElementById('nav-mobile');
-    if (menu) menu.classList.toggle('open');
-  };
-  // UX bonus : fermer le menu mobile en cliquant en dehors
-  document.addEventListener('click', function(e){
-    var menu = document.getElementById('nav-mobile');
-    var burger = document.getElementById('burger');
-    if (!menu || !burger) return;
-    if (!menu.classList.contains('open')) return;
-    if (menu.contains(e.target) || burger.contains(e.target)) return;
-    menu.classList.remove('open');
-  });
-  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
-  document.addEventListener('DOMContentLoaded', function(){
-    var menu = document.getElementById('nav-mobile');
-    if (!menu) return;
-    menu.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){ menu.classList.remove('open'); });
-    });
-  });
-})();
-</script>
-
-
-<section class="hero">
-  <h1>
-      Captain<span class="accent"> parrainage</span>
-  </h1>
-    <p class="tagline">Captain parrainage : les meilleures offres de parrainage, codes promo et bons plans pour profiter de réductions et de primes de bienvenue.</p>
-</section>
-
-<section class="section-articles">
-  <h2 class="section-title">Derniers articles</h2>
-  <p class="section-subtitle">Explorez nos guides, conseils et analyses</p>
-
-  <div class="empty-state">
-    <div style="font-size: 32px; margin-bottom: 12px; opacity: 0.4;">📝</div>
-    <div>Les premiers articles arrivent bientôt</div>
-  </div>
-</section>
-
-
-<style>
-.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
-.footer-inner{max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
-.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
-.footer-brand .footer-logo span{color:var(--accent2)}
-.footer-brand p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;max-width:380px;margin:0;padding:0}
-.footer-socials{display:flex;gap:12px;margin-top:20px}
-.footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .15s,color .15s}
-.footer-socials a:hover{background:rgba(255,255,255,.13);color:#fff}
-.footer-socials svg{width:19px;height:19px;fill:currentColor;display:block}
-/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
-.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
-.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
-.footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
-.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
-@media(max-width:768px){
-  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
-  .footer-brand{grid-column:1/-1}
-}
-</style>
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="Captain parrainage" style="height:36px;width:auto;object-fit:contain"></a>
-        <p>Parrainages, codes promo et bons plans</p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Navigation</div>
-        <a href="/plan-du-site">Plan du site</a>
-        <a href="/mentions-legales">Mentions légales</a>
-        <a href="/politique-confidentialite">Confidentialité</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">À propos</div>
-        <a href="/contact">Nous contacter</a>
-      </div>
+  <!-- Carte capture -->
+  <div class="capture" id="captureCard">
+    <div id="capForm">
+      <div class="cap-top"><span class="badge badge-teal">💸 <span id="noDepositLabel">…</span> sans dépôt</span></div>
+      <div class="cap-amount"><span id="count">…</span> offres à débloquer</div>
+      <p class="cap-sub">Accédez gratuitement à notre sélection des primes du moment, dont certaines <strong>sans dépôt initial</strong>.</p>
+      <form id="signupForm" novalidate>
+        <input type="email" class="field" id="email" placeholder="Votre adresse email" autocomplete="email" required>
+        <label class="consent">
+          <input type="checkbox" id="consent" checked>
+          <span>J'accepte de recevoir la newsletter hebdomadaire et des alertes ponctuelles sur les offres de parrainage. <a href="/politique-confidentialite" target="_blank">Politique de confidentialité</a>.</span>
+        </label>
+        <div id="formErr" class="form-err hidden"></div>
+        <button type="submit" class="btn btn-gold btn-block btn-lg" id="signupBtn" style="margin-top:14px">Débloquer les <span id="countBtn">…</span> offres</button>
+        <p class="form-note">Gratuit • Désinscription en 1 clic</p>
+      </form>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-bottom-left">
-        © 2026 captain-parrainage.com — Données actualisées le 22 octobre 2026
-      </div>
+    <!-- Succès : confirmer email -->
+    <div id="capSuccess" class="form-ok hidden">
+      <div class="ok-ico">✉️</div>
+      <h3 style="margin-bottom:8px">Plus qu'une étape : confirmez votre email</h3>
+      <p class="cap-sub">Nous venons d'envoyer un lien de confirmation à <strong id="sentEmail"></strong>. Cliquez dessus pour créer votre mot de passe et débloquer la liste complète.</p>
+      <p class="form-note">Pensez à vérifier vos spams. Le lien expire après quelques minutes.</p>
+    </div>
+    <!-- Déjà membre -->
+    <div id="capMember" class="form-ok hidden">
+      <div class="ok-ico" style="background:var(--gold-soft);color:var(--gold-ink)">🔓</div>
+      <h3 style="margin-bottom:8px">Vous êtes connecté</h3>
+      <p class="cap-sub">Votre sélection complète vous attend.</p>
+      <a href="/membre/" class="btn btn-navy btn-block btn-lg">Voir la liste complète</a>
     </div>
   </div>
-</footer>
+</div></header>
 
-<button type="button"
-        class="scroll-top-btn"
-        id="scroll-top-btn"
-        aria-label="Remonter en haut de la page"
-        title="Remonter en haut">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-       stroke="currentColor" stroke-width="2.5"
-       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <line x1="12" y1="19" x2="12" y2="5"></line>
-    <polyline points="5 12 12 5 19 12"></polyline>
-  </svg>
-</button>
+<!-- ── POURQUOI ──────────────────────────────────────────────────────────── -->
+<section><div class="wrap">
+  <div class="section-head center">
+    <span class="eyebrow">Pourquoi Captain Parrainage</span>
+    <h2>Les meilleures primes, triées et vérifiées</h2>
+  </div>
+  <div class="grid grid-4">
+    <div class="card"><div class="ico">🎯</div><h3>Des offres sélectionnées</h3><p>On ne garde que les parrainages réellement intéressants, avec les conditions clairement affichées.</p></div>
+    <div class="card"><div class="ico">⚡</div><h3>Soyez informé en premier</h3><p>Chaque nouvelle prime vous est envoyée par email, dès qu'elle est disponible.</p></div>
+    <div class="card"><div class="ico">💶</div><h3>Des gains concrets</h3><p>Des dizaines d'euros à récupérer, parfois <strong>sans aucun dépôt</strong> de votre part.</p></div>
+    <div class="card"><div class="ico">🆓</div><h3>100 % gratuit</h3><p>Aucun paiement, aucun engagement. Désinscription en un clic quand vous voulez.</p></div>
+  </div>
+</div></section>
 
-<style>
-.scroll-top-btn{
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  z-index:9999;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background:var(--ink, #0F1419);
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
-  box-shadow:0 4px 14px rgba(0,0,0,.18);
-  padding:0;
-  font-family:inherit;
-}
-.scroll-top-btn.visible{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-.scroll-top-btn:hover{
-  background:var(--accent, #C9A961);
-}
-.scroll-top-btn:focus-visible{
-  outline:2px solid var(--accent, #C9A961);
-  outline-offset:3px;
-}
-@media (max-width:600px){
-  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
-}
-@media (prefers-reduced-motion: reduce){
-  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
-}
-</style>
+<!-- ── OFFRES TEASÉES ────────────────────────────────────────────────────── -->
+<section style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="wrap">
+  <div class="section-head center">
+    <span class="eyebrow">🔥 Les primes du moment</span>
+    <h2>Débloquez la liste complète des meilleures primes de parrainage</h2>
+    <p class="lead" style="margin-top:12px">Voici un aperçu. Inscrivez-vous gratuitement pour voir toutes les offres, leurs conditions et les liens.</p>
+  </div>
+  <div class="grid grid-3" id="teaserGrid"></div>
+  <div class="lock-cta" id="lockCta" style="margin-top:24px">
+    <div class="big"><span id="lockedTotal">…</span> offres</div>
+    <p>à débloquer gratuitement, dont certaines sans dépôt</p>
+    <a href="/#inscription" class="btn btn-gold btn-lg">Débloquer les offres</a>
+  </div>
+</div></section>
 
+<!-- ── COMMENT ÇA MARCHE ─────────────────────────────────────────────────── -->
+<section id="comment"><div class="wrap">
+  <div class="section-head center"><span class="eyebrow">Comment ça marche</span><h2>3 étapes, 2 minutes</h2></div>
+  <div class="grid grid-3 steps">
+    <div class="card"><div class="step"><div class="num"></div><div><h3>Inscrivez-vous</h3><p>Indiquez votre email et confirmez-le en un clic.</p></div></div></div>
+    <div class="card"><div class="step"><div class="num"></div><div><h3>Créez votre mot de passe</h3><p>Le lien reçu par email vous permet de sécuriser votre accès.</p></div></div></div>
+    <div class="card"><div class="step"><div class="num"></div><div><h3>Débloquez les offres</h3><p>Accédez à toute la sélection et recevez les nouvelles primes chaque semaine.</p></div></div></div>
+  </div>
+</div></section>
+
+<!-- ── FAQ ───────────────────────────────────────────────────────────────── -->
+<section style="background:#fff;border-top:1px solid var(--border)"><div class="wrap" style="max-width:760px">
+  <div class="section-head center"><span class="eyebrow">FAQ</span><h2>Questions fréquentes</h2></div>
+  <details class="faq-item"><summary class="faq-q">C'est vraiment gratuit ?<span class="chev">+</span></summary><div class="faq-a">Oui, à 100 %. Captain Parrainage est rémunéré par les plateformes via les liens de parrainage, sans aucun surcoût ni paiement de votre part.</div></details>
+  <details class="faq-item"><summary class="faq-q">Qu'est-ce qu'une offre « sans dépôt » ?<span class="chev">+</span></summary><div class="faq-a">Certaines primes sont versées sans que vous ayez à déposer d'argent (simple ouverture de compte ou action gratuite). Elles sont signalées par le badge « Sans dépôt ».</div></details>
+  <details class="faq-item"><summary class="faq-q">Pourquoi dois-je m'inscrire ?<span class="chev">+</span></summary><div class="faq-a">L'inscription (gratuite) débloque la liste complète et nous permet de vous envoyer les nouvelles primes dès leur sortie. Vous pouvez vous désinscrire en un clic.</div></details>
+  <details class="faq-item"><summary class="faq-q">Mes données sont-elles protégées ?<span class="chev">+</span></summary><div class="faq-a">Votre email sert uniquement à votre accès membre et à la newsletter. Aucune revente à des tiers. Voir notre <a href="/politique-confidentialite">politique de confidentialité</a>.</div></details>
+</div></section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer class="cp-footer"><div class="wrap">
+  <div class="cp-footer-grid">
+    <div class="fbrand">
+      <div class="cp-logo"><span class="mascotte">CP</span>Captain Parrainage</div>
+      <p>Les meilleures offres de parrainage et primes de bienvenue, sélectionnées et vérifiées. Contenu informatif — les conditions de chaque offre sont fixées par les plateformes partenaires.</p>
+    </div>
+    <div><div class="fcol-h">Navigation</div><a href="/">Accueil</a><a href="/offres/">Meilleures offres</a><a href="/connexion/">Espace membre</a></div>
+    <div><div class="fcol-h">Légal</div><a href="/mentions-legales">Mentions légales</a><a href="/politique-confidentialite">Confidentialité</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="cp-footer-bot">© 2026 captain-parrainage.com — Toutes les offres sont susceptibles d'évoluer selon les conditions des partenaires.</div>
+</div></footer>
+
+<script>window.CP_CONFIG={url:"https://mwdvflviamvagftpotgx.supabase.co",key:"sb_publishable_hEyZDIt6QnDLn89HVrGUpw_AkvBdnuR",site:"https://www.captain-parrainage.com"};</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/assets/cp.js"></script>
 <script>
 (function(){
-  'use strict';
-  var btn = document.getElementById('scroll-top-btn');
-  if (!btn) return;
+  function $(id){return document.getElementById(id);}
+  function setText(id,v){var e=$(id);if(e)e.textContent=v;}
 
-  var THRESHOLD = 400; // px de scroll avant apparition
-  var ticking = false;
-
-  function update(){
-    if (window.scrollY > THRESHOLD) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
+  async function boot(){
+    // Membre déjà connecté ?
+    var session=null; try{ session=await CP.getSession(); }catch(e){}
+    if(session){
+      $('capForm').classList.add('hidden');
+      $('capMember').classList.remove('hidden');
+      var nav=$('navCta'); if(nav) nav.innerHTML='<a href="/membre/" class="btn btn-gold">Mon espace</a>';
     }
-    ticking = false;
+    // Stats
+    var s=null; try{ s=await CP.getStats(); }catch(e){}
+    if(s){
+      setText('totalLabel', CP.fmtEUR(s.total_montant));
+      setText('noDepositLabel', CP.fmtEUR(s.total_sans_depot_montant));
+      setText('count', s.total_offres);
+      setText('countBtn', s.total_offres);
+      setText('lockedTotal', s.verrouillees || s.total_offres);
+    }
+    // Teaser : offres en accès libre (anon) + cartes verrouillées
+    var grid=$('teaserGrid'); if(grid){
+      var offers=[]; try{ offers=await CP.getOffers(); }catch(e){}
+      var html='';
+      offers.slice(0,3).forEach(function(o){ html+=CP.offerCardHTML(o); });
+      var free=offers.length;
+      var fill=Math.max(0, 3-free);
+      for(var i=0;i<fill;i++){ html+=CP.lockedCardHTML(); }
+      grid.innerHTML=html || (CP.lockedCardHTML()+CP.lockedCardHTML()+CP.lockedCardHTML());
+    }
   }
 
-  function onScroll(){
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(update);
+  // Inscription
+  var form=document.getElementById('signupForm');
+  if(form){
+    form.addEventListener('submit', async function(ev){
+      ev.preventDefault();
+      var email=$('email').value.trim();
+      var consent=$('consent').checked;
+      var err=$('formErr'); err.classList.add('hidden');
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent='Adresse email invalide.'; err.classList.remove('hidden'); return; }
+      if(!consent){ err.textContent='Merci d’accepter de recevoir les offres pour continuer.'; err.classList.remove('hidden'); return; }
+      var btn=$('signupBtn'); btn.disabled=true; var old=btn.innerHTML; btn.textContent='Envoi en cours…';
+      try{
+        await CP.signup(email, consent);
+        $('capForm').classList.add('hidden');
+        setText('sentEmail', email);
+        $('capSuccess').classList.remove('hidden');
+      }catch(e){
+        err.textContent=(e && e.message) ? e.message : 'Une erreur est survenue, réessayez.';
+        err.classList.remove('hidden');
+        btn.disabled=false; btn.innerHTML=old;
+      }
+    });
   }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  btn.addEventListener('click', function(){
-    var prefersReduced = window.matchMedia
-      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
-  });
-
-  // Check immédiat (au cas où la page est rechargée déjà scrollée)
-  update();
+  if(window.CP){ boot(); }
 })();
-</script>
-<script>
-// Cache buster build_date : 2026-10-22
 </script>
 <!-- build:20260504122856 --></body>
 </html>

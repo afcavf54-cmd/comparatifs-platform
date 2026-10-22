@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les meilleures offres de parrainage du moment — Captain Parrainage</title>
+<meta name="description" content="Découvrez les primes de bienvenue et parrainages les plus intéressants, dont certains sans dépôt. Inscrivez-vous gratuitement pour débloquer la liste complète.">
+<link rel="canonical" href="https://www.captain-parrainage.com/offres/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="/assets/cp.css" rel="stylesheet">
+</head>
+<body>
+<nav class="cp-nav"><div class="wrap cp-nav-in">
+  <a href="/" class="cp-logo"><span class="mascotte">CP</span>Captain <b>Parrainage</b></a>
+  <div class="cp-nav-links"><a href="/">Accueil</a><a href="/offres/">Meilleures offres</a><a href="/#comment">Comment ça marche</a></div>
+  <div class="cp-nav-cta"><a href="/connexion/" class="btn btn-ghost">Connexion</a><a href="/#inscription" class="btn btn-gold">S'inscrire</a></div>
+</div></nav>
+
+<section style="padding:36px 0 18px"><div class="wrap">
+  <p style="font-size:13px;color:var(--ink3);margin-bottom:12px"><a href="/" style="color:var(--ink3)">Accueil</a> / Meilleures offres</p>
+  <h1 style="font-size:clamp(26px,4vw,40px)">Les meilleures offres de parrainage du moment</h1>
+  <p class="lead" style="margin-top:10px">Comparez les montants, les conditions et les offres accessibles <strong>sans dépôt</strong>.</p>
+  <div class="stats" style="margin-top:26px">
+    <div class="stat"><div class="v" id="sTotal">…</div><div class="l">de bonus disponibles</div></div>
+    <div class="stat"><div class="v teal" id="sNodep">…</div><div class="l">accessibles sans dépôt</div></div>
+    <div class="stat"><div class="v" id="sCount">…</div><div class="l">offres sélectionnées</div></div>
+  </div>
+</div></section>
+
+<section style="padding:10px 0 72px"><div class="wrap">
+  <div class="grid grid-3" id="list"><p style="color:var(--ink3)">Chargement…</p></div>
+  <div class="lock-cta" id="lockCta" style="margin-top:28px">
+    <div class="big"><span id="lockedTotal">…</span> offres</div>
+    <p>encore verrouillées — débloquez-les gratuitement en 1 minute</p>
+    <a href="/#inscription" class="btn btn-gold btn-lg">S'inscrire gratuitement</a>
+  </div>
+</div></section>
+
+<footer class="cp-footer"><div class="wrap"><div class="cp-footer-bot" style="border:0;padding-top:0">© <span id="yr"></span> captain-parrainage.com — <a href="/mentions-legales" style="display:inline">Mentions légales</a> · <a href="/politique-confidentialite" style="display:inline">Confidentialité</a></div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/assets/cp.js"></script>
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  $('yr').textContent=new Date().getFullYear();
+  async function boot(){
+    // membre connecté → liste complète
+    var session=null; try{ session=await CP.getSession(); }catch(e){}
+    if(session){ window.location.href='/membre/'; return; }
+    var s=null; try{ s=await CP.getStats(); }catch(e){}
+    if(s){ $('sTotal').textContent=CP.fmtEUR(s.total_montant); $('sNodep').textContent=CP.fmtEUR(s.total_sans_depot_montant); $('sCount').textContent=s.total_offres; $('lockedTotal').textContent=(s.verrouillees||s.total_offres); }
+    var offers=[]; try{ offers=await CP.getOffers(); }catch(e){}
+    var html=offers.map(function(o){return CP.offerCardHTML(o);}).join('');
+    var locked = s ? (s.verrouillees||0) : 0;
+    var teasers=Math.min(locked, Math.max(3, 6-offers.length));
+    for(var i=0;i<teasers;i++){ html+=CP.lockedCardHTML(); }
+    $('list').innerHTML = html || (CP.lockedCardHTML()+CP.lockedCardHTML()+CP.lockedCardHTML());
+    if(!locked){ $('lockCta').classList.add('hidden'); }
+  }
+  if(window.CP){ boot(); }
+})();
+</script>
+</body>
+</html>
