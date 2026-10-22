@@ -286,23 +286,24 @@ export async function POST(req: NextRequest) {
   const hasClassement = activeTypes.includes('classement')
   const hasVs = activeTypes.includes('vs')
   const hasAvis = activeTypes.includes('avis')
-  const onlyBlog = activeTypes.length === 1 && activeTypes[0] === 'blog'
   const tplMain = hasClassement ? 'classement-saas.html.j2' : 'comparatif-vs-scpi.html.j2'
 
   // tplIndex est utilisé pour la page d'accueil du site.
   // Priorité (top-down) :
-  //   - UNIQUEMENT blog activé → 'index-blog.html.j2' (neutre, créé juin
-  //     2026 pour la migration cadeauclic.com et autres sites blog-only)
   //   - Classement activé → 'index-saas.html.j2' (home SaaS legacy)
-  //   - Sinon (vs/avis seuls) → 'index-scpi.html.j2' (home SCPI legacy)
+  //   - Comparateur (vs) activé → 'index-scpi.html.j2' (home comparateur SCPI
+  //     legacy : pertinente UNIQUEMENT quand il y a des pages VS/produits)
+  //   - Sinon (blog et/ou avis, sans comparateur) → 'index-blog.html.j2'
+  //     (home neutre : SEO basé sur le nom du site, sans contenu SCPI).
+  //     Corrige le défaut où un site avis+blog (ex. captain-parrainage)
+  //     héritait de la home SCPI vide « 0 SCPI analysées ».
   // Note : si un index custom 'index-<id>.html.j2' existe dans
   // platform/templates/, il peut être référencé manuellement dans le
-  // config.yaml après création (cf. backlog homes personnalisées par
-  // site, notamment cadeauclic.com prévu en design custom plus tard).
+  // config.yaml après création (cf. backlog homes personnalisées par site).
   let tplIndex: string
-  if (onlyBlog) tplIndex = 'index-blog.html.j2'
-  else if (hasClassement) tplIndex = 'index-saas.html.j2'
-  else tplIndex = 'index-scpi.html.j2'
+  if (hasClassement) tplIndex = 'index-saas.html.j2'
+  else if (hasVs) tplIndex = 'index-scpi.html.j2'
+  else tplIndex = 'index-blog.html.j2'
 
   // ── Construction dynamique de page_types ─────────────────────────────
   // À partir des types activés, on génère un mapping <type>: <thematic>
