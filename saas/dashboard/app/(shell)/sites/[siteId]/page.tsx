@@ -165,6 +165,7 @@ export default function SiteDetailPage() {
               { icon: '✍️', label: "Gérer l'éditorial", href: `/sites/${siteId}/editorial` },
               ...(pageTypes.classement ? [{ icon: '📊', label: 'Gérer les classements', href: `/sites/${siteId}/classements` }] : []),
               { icon: '📝', label: 'Gérer le blog', href: `/sites/${siteId}/blog` },
+              ...(siteId === 'captain-parrainage' ? [{ icon: '🎁', label: 'Offres de parrainage', href: `/sites/${siteId}/parrainages` }] : []),
               ...(siteId === 'monelor-com' ? [{ icon: '💰', label: 'Simulation de dividendes', href: `/sites/${siteId}/dividendes` }, { icon: '✉️', label: 'Newsletter', href: `/sites/${siteId}/newsletter` }, { icon: '💶', label: "Chiffre d'affaires", href: `/sites/${siteId}/revenues` }] : []),
               { icon: '⚙️', label: 'Paramètres du site', href: `/sites/${siteId}/settings` },
             ].map(action => (
