@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mon espace — Captain Parrainage</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="/assets/cp.css" rel="stylesheet">
+</head>
+<body>
+<nav class="cp-nav"><div class="wrap cp-nav-in">
+  <a href="/" class="cp-logo"><span class="mascotte">CP</span>Captain <b>Parrainage</b></a>
+  <div class="cp-nav-cta">
+    <span id="who" style="font-size:13px;color:var(--ink3)"></span>
+    <button class="btn btn-ghost" id="logout">Déconnexion</button>
+  </div>
+</div></nav>
+
+<section style="padding:40px 0 20px"><div class="wrap">
+  <span class="eyebrow">🔓 Accès débloqué</span>
+  <h1 style="font-size:clamp(26px,4vw,38px)">Toutes les offres de parrainage</h1>
+  <p class="lead" style="margin-top:10px">Voici la sélection complète, conditions et liens inclus. De nouvelles primes sont ajoutées chaque semaine.</p>
+  <div class="stats" style="margin-top:26px">
+    <div class="stat"><div class="v" id="sCount">…</div><div class="l">offres disponibles</div></div>
+    <div class="stat"><div class="v" id="sTotal">…</div><div class="l">de primes cumulées</div></div>
+    <div class="stat"><div class="v teal" id="sNodep">…</div><div class="l">accessibles sans dépôt</div></div>
+  </div>
+</div></section>
+
+<section style="padding:10px 0 72px"><div class="wrap">
+  <div id="filters" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px"></div>
+  <div class="grid grid-3" id="list"><p style="color:var(--ink3)">Chargement des offres…</p></div>
+  <p id="empty" class="hidden" style="text-align:center;color:var(--ink3);padding:30px">Aucune offre pour ce filtre.</p>
+</div></section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/assets/cp.js"></script>
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  var ALL=[], cur='Toutes';
+
+  $('logout').addEventListener('click', async function(){ await CP.logout(); window.location.href='/'; });
+
+  function render(){
+    var list=$('list');
+    var items = cur==='Toutes' ? ALL : ALL.filter(function(o){return (o.categorie||'Autres')===cur;});
+    if(!items.length){ list.innerHTML=''; $('empty').classList.remove('hidden'); return; }
+    $('empty').classList.add('hidden');
+    list.innerHTML=items.map(function(o){return CP.offerCardHTML(o);}).join('');
+  }
+  function buildFilters(){
+    var cats={}; ALL.forEach(function(o){var c=o.categorie||'Autres'; cats[c]=(cats[c]||0)+1;});
+    var html='<button class="badge badge-navy" data-c="Toutes" style="cursor:pointer;padding:8px 14px">Toutes ('+ALL.length+')</button>';
+    Object.keys(cats).forEach(function(c){ html+='<button class="badge" data-c="'+CP.esc(c)+'" style="cursor:pointer;padding:8px 14px;background:#EEF2F7;color:var(--ink2)">'+CP.esc(c)+' ('+cats[c]+')</button>'; });
+    var f=$('filters'); f.innerHTML=html;
+    f.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){
+      cur=b.getAttribute('data-c');
+      f.querySelectorAll('button').forEach(function(x){ x.className='badge'; x.style.background='#EEF2F7'; x.style.color='var(--ink2)'; });
+      b.className='badge badge-navy'; b.style.background=''; b.style.color='';
+      render();
+    });});
+  }
+
+  async function boot(){
+    var session=null; try{ session=await CP.getSession(); }catch(e){}
+    if(!session){ window.location.href='/connexion/'; return; }
+    var u=session.user; if(u&&u.email) $('who').textContent=u.email;
+
+    var s=null; try{ s=await CP.getStats(); }catch(e){}
+    if(s){ $('sCount').textContent=s.total_offres; $('sTotal').textContent=CP.fmtEUR(s.total_montant); $('sNodep').textContent=CP.fmtEUR(s.total_sans_depot_montant); }
+
+    try{ ALL=await CP.getOffers(); }catch(e){ ALL=[]; }
+    buildFilters(); render();
+  }
+  if(window.CP){ boot(); } else { window.location.href='/connexion/'; }
+})();
+</script>
+</body>
+</html>
