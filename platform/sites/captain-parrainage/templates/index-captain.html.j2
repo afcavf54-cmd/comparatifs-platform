@@ -1,0 +1,215 @@
+{% set _site = site.domain | replace('https://www.','https://') | replace('https://','https://www.') %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ home_title | default('Captain Parrainage — parrainages & primes de bienvenue') }}</title>
+<meta name="description" content="{{ home_description | default('Les meilleures offres de parrainage et primes de bienvenue, dont certaines sans dépôt.') }}">
+<link rel="canonical" href="{{ _site }}/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<meta property="og:title" content="{{ home_title | default('Captain Parrainage') }}">
+<meta property="og:description" content="{{ home_description | default('') }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ _site }}/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="/assets/cp.css" rel="stylesheet">
+{% if site.analytics_clicky %}{{ site.analytics_clicky | safe }}{% endif %}
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────────────────────── -->
+<nav class="cp-nav"><div class="wrap cp-nav-in">
+  <a href="/" class="cp-logo"><span class="mascotte">CP</span>Captain <b>Parrainage</b></a>
+  <div class="cp-nav-links">
+    <a href="/">Accueil</a>
+    <a href="/offres/">Meilleures offres</a>
+    <a href="/#comment">Comment ça marche</a>
+  </div>
+  <div class="cp-nav-cta" id="navCta">
+    <a href="/connexion/" class="btn btn-ghost">Connexion</a>
+    <a href="/#inscription" class="btn btn-gold">S'inscrire</a>
+  </div>
+  <button class="cp-burger" aria-label="Menu" onclick="document.getElementById('navM').classList.toggle('hidden')"><span></span><span></span><span></span></button>
+</div>
+<div class="wrap hidden" id="navM" style="padding-bottom:14px">
+  <a href="/" style="display:block;padding:8px 0">Accueil</a>
+  <a href="/offres/" style="display:block;padding:8px 0">Meilleures offres</a>
+  <a href="/#comment" style="display:block;padding:8px 0">Comment ça marche</a>
+  <a href="/connexion/" style="display:block;padding:8px 0">Connexion</a>
+</div></nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<header class="hero" id="inscription"><div class="wrap">
+  <div>
+    <span class="eyebrow">🎁 Primes de parrainage vérifiées</span>
+    <h1>Jusqu'à <em id="totalLabel">…</em> de primes à récupérer grâce aux parrainages&nbsp;!</h1>
+    <p class="lead">BoursoBank, Hello&nbsp;bank!, Revolut, Trade&nbsp;Republic… Retrouvez les offres de parrainage et de bienvenue les plus intéressantes. Inscrivez-vous gratuitement pour débloquer la liste complète et recevoir les nouvelles primes chaque semaine.</p>
+    <div class="brands">
+      <span>BoursoBank</span><span>Hello bank!</span><span>Revolut</span><span>Trade Republic</span><span>+ d'autres</span>
+    </div>
+    <div class="trust">✅ Gratuit • Une sélection chaque semaine • Désinscription en 1 clic</div>
+  </div>
+
+  <!-- Carte capture -->
+  <div class="capture" id="captureCard">
+    <div id="capForm">
+      <div class="cap-top"><span class="badge badge-teal">💸 <span id="noDepositLabel">…</span> sans dépôt</span></div>
+      <div class="cap-amount"><span id="count">…</span> offres à débloquer</div>
+      <p class="cap-sub">Accédez gratuitement à notre sélection des primes du moment, dont certaines <strong>sans dépôt initial</strong>.</p>
+      <form id="signupForm" novalidate>
+        <input type="email" class="field" id="email" placeholder="Votre adresse email" autocomplete="email" required>
+        <label class="consent">
+          <input type="checkbox" id="consent" checked>
+          <span>J'accepte de recevoir la newsletter hebdomadaire et des alertes ponctuelles sur les offres de parrainage. <a href="/politique-confidentialite" target="_blank">Politique de confidentialité</a>.</span>
+        </label>
+        <div id="formErr" class="form-err hidden"></div>
+        <button type="submit" class="btn btn-gold btn-block btn-lg" id="signupBtn" style="margin-top:14px">Débloquer les <span id="countBtn">…</span> offres</button>
+        <p class="form-note">Gratuit • Désinscription en 1 clic</p>
+      </form>
+    </div>
+    <!-- Succès : confirmer email -->
+    <div id="capSuccess" class="form-ok hidden">
+      <div class="ok-ico">✉️</div>
+      <h3 style="margin-bottom:8px">Plus qu'une étape : confirmez votre email</h3>
+      <p class="cap-sub">Nous venons d'envoyer un lien de confirmation à <strong id="sentEmail"></strong>. Cliquez dessus pour créer votre mot de passe et débloquer la liste complète.</p>
+      <p class="form-note">Pensez à vérifier vos spams. Le lien expire après quelques minutes.</p>
+    </div>
+    <!-- Déjà membre -->
+    <div id="capMember" class="form-ok hidden">
+      <div class="ok-ico" style="background:var(--gold-soft);color:var(--gold-ink)">🔓</div>
+      <h3 style="margin-bottom:8px">Vous êtes connecté</h3>
+      <p class="cap-sub">Votre sélection complète vous attend.</p>
+      <a href="/membre/" class="btn btn-navy btn-block btn-lg">Voir la liste complète</a>
+    </div>
+  </div>
+</div></header>
+
+<!-- ── POURQUOI ──────────────────────────────────────────────────────────── -->
+<section><div class="wrap">
+  <div class="section-head center">
+    <span class="eyebrow">Pourquoi Captain Parrainage</span>
+    <h2>Les meilleures primes, triées et vérifiées</h2>
+  </div>
+  <div class="grid grid-4">
+    <div class="card"><div class="ico">🎯</div><h3>Des offres sélectionnées</h3><p>On ne garde que les parrainages réellement intéressants, avec les conditions clairement affichées.</p></div>
+    <div class="card"><div class="ico">⚡</div><h3>Soyez informé en premier</h3><p>Chaque nouvelle prime vous est envoyée par email, dès qu'elle est disponible.</p></div>
+    <div class="card"><div class="ico">💶</div><h3>Des gains concrets</h3><p>Des dizaines d'euros à récupérer, parfois <strong>sans aucun dépôt</strong> de votre part.</p></div>
+    <div class="card"><div class="ico">🆓</div><h3>100 % gratuit</h3><p>Aucun paiement, aucun engagement. Désinscription en un clic quand vous voulez.</p></div>
+  </div>
+</div></section>
+
+<!-- ── OFFRES TEASÉES ────────────────────────────────────────────────────── -->
+<section style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="wrap">
+  <div class="section-head center">
+    <span class="eyebrow">🔥 Les primes du moment</span>
+    <h2>Débloquez la liste complète des meilleures primes de parrainage</h2>
+    <p class="lead" style="margin-top:12px">Voici un aperçu. Inscrivez-vous gratuitement pour voir toutes les offres, leurs conditions et les liens.</p>
+  </div>
+  <div class="grid grid-3" id="teaserGrid"></div>
+  <div class="lock-cta" id="lockCta" style="margin-top:24px">
+    <div class="big"><span id="lockedTotal">…</span> offres</div>
+    <p>à débloquer gratuitement, dont certaines sans dépôt</p>
+    <a href="/#inscription" class="btn btn-gold btn-lg">Débloquer les offres</a>
+  </div>
+</div></section>
+
+<!-- ── COMMENT ÇA MARCHE ─────────────────────────────────────────────────── -->
+<section id="comment"><div class="wrap">
+  <div class="section-head center"><span class="eyebrow">Comment ça marche</span><h2>3 étapes, 2 minutes</h2></div>
+  <div class="grid grid-3 steps">
+    <div class="card"><div class="step"><div class="num"></div><div><h3>Inscrivez-vous</h3><p>Indiquez votre email et confirmez-le en un clic.</p></div></div></div>
+    <div class="card"><div class="step"><div class="num"></div><div><h3>Créez votre mot de passe</h3><p>Le lien reçu par email vous permet de sécuriser votre accès.</p></div></div></div>
+    <div class="card"><div class="step"><div class="num"></div><div><h3>Débloquez les offres</h3><p>Accédez à toute la sélection et recevez les nouvelles primes chaque semaine.</p></div></div></div>
+  </div>
+</div></section>
+
+<!-- ── FAQ ───────────────────────────────────────────────────────────────── -->
+<section style="background:#fff;border-top:1px solid var(--border)"><div class="wrap" style="max-width:760px">
+  <div class="section-head center"><span class="eyebrow">FAQ</span><h2>Questions fréquentes</h2></div>
+  <details class="faq-item"><summary class="faq-q">C'est vraiment gratuit ?<span class="chev">+</span></summary><div class="faq-a">Oui, à 100 %. Captain Parrainage est rémunéré par les plateformes via les liens de parrainage, sans aucun surcoût ni paiement de votre part.</div></details>
+  <details class="faq-item"><summary class="faq-q">Qu'est-ce qu'une offre « sans dépôt » ?<span class="chev">+</span></summary><div class="faq-a">Certaines primes sont versées sans que vous ayez à déposer d'argent (simple ouverture de compte ou action gratuite). Elles sont signalées par le badge « Sans dépôt ».</div></details>
+  <details class="faq-item"><summary class="faq-q">Pourquoi dois-je m'inscrire ?<span class="chev">+</span></summary><div class="faq-a">L'inscription (gratuite) débloque la liste complète et nous permet de vous envoyer les nouvelles primes dès leur sortie. Vous pouvez vous désinscrire en un clic.</div></details>
+  <details class="faq-item"><summary class="faq-q">Mes données sont-elles protégées ?<span class="chev">+</span></summary><div class="faq-a">Votre email sert uniquement à votre accès membre et à la newsletter. Aucune revente à des tiers. Voir notre <a href="/politique-confidentialite">politique de confidentialité</a>.</div></details>
+</div></section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer class="cp-footer"><div class="wrap">
+  <div class="cp-footer-grid">
+    <div class="fbrand">
+      <div class="cp-logo"><span class="mascotte">CP</span>Captain Parrainage</div>
+      <p>Les meilleures offres de parrainage et primes de bienvenue, sélectionnées et vérifiées. Contenu informatif — les conditions de chaque offre sont fixées par les plateformes partenaires.</p>
+    </div>
+    <div><div class="fcol-h">Navigation</div><a href="/">Accueil</a><a href="/offres/">Meilleures offres</a><a href="/connexion/">Espace membre</a></div>
+    <div><div class="fcol-h">Légal</div><a href="/mentions-legales">Mentions légales</a><a href="/politique-confidentialite">Confidentialité</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="cp-footer-bot">© {{ site.year | default(2026) }} captain-parrainage.com — Toutes les offres sont susceptibles d'évoluer selon les conditions des partenaires.</div>
+</div></footer>
+
+<script>window.CP_CONFIG={url:{{ site.supabase_url | default('') | tojson }},key:{{ site.supabase_anon_key | default('') | tojson }},site:{{ _site | tojson }}};</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/assets/cp.js"></script>
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  function setText(id,v){var e=$(id);if(e)e.textContent=v;}
+
+  async function boot(){
+    // Membre déjà connecté ?
+    var session=null; try{ session=await CP.getSession(); }catch(e){}
+    if(session){
+      $('capForm').classList.add('hidden');
+      $('capMember').classList.remove('hidden');
+      var nav=$('navCta'); if(nav) nav.innerHTML='<a href="/membre/" class="btn btn-gold">Mon espace</a>';
+    }
+    // Stats
+    var s=null; try{ s=await CP.getStats(); }catch(e){}
+    if(s){
+      setText('totalLabel', CP.fmtEUR(s.total_montant));
+      setText('noDepositLabel', CP.fmtEUR(s.total_sans_depot_montant));
+      setText('count', s.total_offres);
+      setText('countBtn', s.total_offres);
+      setText('lockedTotal', s.verrouillees || s.total_offres);
+    }
+    // Teaser : offres en accès libre (anon) + cartes verrouillées
+    var grid=$('teaserGrid'); if(grid){
+      var offers=[]; try{ offers=await CP.getOffers(); }catch(e){}
+      var html='';
+      offers.slice(0,3).forEach(function(o){ html+=CP.offerCardHTML(o); });
+      var free=offers.length;
+      var fill=Math.max(0, 3-free);
+      for(var i=0;i<fill;i++){ html+=CP.lockedCardHTML(); }
+      grid.innerHTML=html || (CP.lockedCardHTML()+CP.lockedCardHTML()+CP.lockedCardHTML());
+    }
+  }
+
+  // Inscription
+  var form=document.getElementById('signupForm');
+  if(form){
+    form.addEventListener('submit', async function(ev){
+      ev.preventDefault();
+      var email=$('email').value.trim();
+      var consent=$('consent').checked;
+      var err=$('formErr'); err.classList.add('hidden');
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent='Adresse email invalide.'; err.classList.remove('hidden'); return; }
+      if(!consent){ err.textContent='Merci d’accepter de recevoir les offres pour continuer.'; err.classList.remove('hidden'); return; }
+      var btn=$('signupBtn'); btn.disabled=true; var old=btn.innerHTML; btn.textContent='Envoi en cours…';
+      try{
+        await CP.signup(email, consent);
+        $('capForm').classList.add('hidden');
+        setText('sentEmail', email);
+        $('capSuccess').classList.remove('hidden');
+      }catch(e){
+        err.textContent=(e && e.message) ? e.message : 'Une erreur est survenue, réessayez.';
+        err.classList.remove('hidden');
+        btn.disabled=false; btn.innerHTML=old;
+      }
+    });
+  }
+  if(window.CP){ boot(); }
+})();
+</script>
+</body>
+</html>
