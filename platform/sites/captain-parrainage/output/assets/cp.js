@@ -48,6 +48,13 @@
     if (r.error) { console.error('[CP] stats', r.error); return null; }
     return r.data;
   }
+  // Offres teaser (anon) : montant/catégorie visibles, marque+lien masqués.
+  async function getOffersPublic() {
+    if (!sb) return [];
+    var r = await sb.rpc('get_offers_public');
+    if (r.error) { console.error('[CP] offers_public', r.error); return []; }
+    return r.data || [];
+  }
   // RLS décide : anon → seulement acces_libre ; membre connecté → tout.
   async function getOffers() {
     if (!sb) return [];
@@ -134,6 +141,7 @@
     fmtEUR: fmtEUR, esc: esc, initials: initials, fmtDate: fmtDate,
     getStats: getStats, getOffers: getOffers,
     getSession: getSession, signup: signup, setPassword: setPassword, login: login, logout: logout,
+    getOffersPublic: getOffersPublic,
     offerCardHTML: offerCardHTML, lockedCardHTML: lockedCardHTML
   };
 })();
