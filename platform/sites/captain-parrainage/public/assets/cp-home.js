@@ -90,15 +90,14 @@
         else if (/^Sans dépôt ·/.test(t)) b.textContent = 'Sans dépôt · ' + nodep;
         else if (/^Avec dépôt ·/.test(t)) b.textContent = 'Avec dépôt · ' + dep;
       });
-      // Bannière "+ N offres débloquées après inscription" = offres NON visibles
-      // dans l'aperçu (qui affiche jusqu'à 6 offres). Masquée si tout est déjà
-      // affiché (sinon on annoncerait des offres cachées qui n'existent pas).
-      var hiddenCount = Math.max(0, total - 6);
+      // Bannière "+ N offres débloquées après inscription" : nombre TOTAL
+      // d'offres de la liste complète (accessible après inscription). Toujours
+      // visible.
       all('span').forEach(function (sp) {
         if (sp.textContent === 'offres débloquées') {
-          var p = sp.previousElementSibling; if (p) p.textContent = hiddenCount;
+          var p = sp.previousElementSibling; if (p) p.textContent = total;
           var overlay = sp.parentElement;
-          if (overlay) overlay.style.display = hiddenCount > 0 ? '' : 'none';
+          if (overlay) overlay.style.display = '';
         }
       });
     }
