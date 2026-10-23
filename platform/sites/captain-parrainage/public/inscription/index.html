@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscription gratuite — Captain Parrainage</title>
+<meta name="description" content="Inscrivez-vous gratuitement pour débloquer toutes les offres de parrainage, dont les primes récupérables sans dépôt.">
+<link rel="canonical" href="https://www.captain-parrainage.com/inscription/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}html,body{margin:0}body{background:#082044;font-family:Lexend,system-ui,sans-serif;color:#142B4F}a{text-decoration:none}</style>
+</head><body>
+<header style="background:#082044;border-bottom:1px solid rgba(255,255,255,0.08)">
+  <div style="max-width:1000px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between">
+    <a href="/" style="display:flex;flex-direction:column;font:600 20px/1.02 Lexend,sans-serif;color:#fff;letter-spacing:-0.01em">Captain<span style="color:#13BFA6">Parrainage</span></a>
+    <a href="/connexion/" style="color:#C9D4E5;font:500 13px/1 Lexend,sans-serif">Déjà inscrit ? Se connecter</a>
+  </div>
+</header>
+
+<main style="min-height:calc(100vh - 72px);display:flex;align-items:center;justify-content:center;padding:40px 20px;background:linear-gradient(165deg,#142B4F 0%,#082044 100%)">
+  <div style="width:100%;max-width:520px;background:#fff;border-radius:28px;padding:clamp(24px,5vw,44px);box-shadow:0 30px 70px rgba(0,0,0,0.4)">
+
+    <span style="display:inline-block;padding:6px 14px;border-radius:999px;background:#E3F7F3;color:#0B7F6F;font:600 12px/1 Lexend,sans-serif;letter-spacing:0.04em">GRATUIT · SANS ENGAGEMENT</span>
+    <h1 style="margin:16px 0 8px;font:600 clamp(24px,5vw,32px)/1.15 Lexend,sans-serif;letter-spacing:-0.02em">Débloquez toutes les offres de parrainage</h1>
+    <p style="margin:0 0 20px;font:400 15px/1.55 Lexend,sans-serif;color:#5B6B84">Inscrivez-vous pour afficher la sélection complète avec ses conditions, et recevoir les nouvelles primes chaque semaine.</p>
+
+    <!-- Rappel dynamique des primes -->
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+      <div style="flex:1 1 180px;background:#F4F7FB;border:1px solid #E6ECF4;border-radius:18px;padding:16px 18px">
+        <p style="margin:0;font:700 clamp(26px,6vw,34px)/1 Lexend,sans-serif;color:#142B4F;letter-spacing:-0.02em"><span class="cp-total">…</span></p>
+        <p style="margin:6px 0 0;font:500 13px/1.3 Lexend,sans-serif;color:#5B6B84">de primes à récupérer</p>
+      </div>
+      <div style="flex:1 1 180px;background:linear-gradient(135deg,#FF2E3F 0%,#D90F22 100%);border-radius:18px;padding:16px 18px;color:#fff;box-shadow:0 16px 36px rgba(255,30,50,0.35)">
+        <p style="margin:0;font:700 clamp(26px,6vw,34px)/1 Lexend,sans-serif;letter-spacing:-0.02em"><span class="cp-nodep">…</span></p>
+        <p style="margin:6px 0 0;font:600 13px/1.3 Lexend,sans-serif">récupérables sans dépôt !</p>
+      </div>
+    </div>
+
+    <form novalidate id="cpForm" aria-label="Inscription" style="display:flex;flex-direction:column;gap:12px">
+      <label for="cpEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Votre adresse email</label>
+      <input id="cpEmail" type="email" name="email" autocomplete="email" placeholder="Votre adresse email" value="" style="height:56px;border:1.5px solid #B9CBE3;border-radius:14px;padding:0 18px;background:#F4F7FB;font:400 16px Lexend,sans-serif;color:#142B4F">
+      <button type="submit" style="min-height:56px;border:0;border-radius:14px;background:#F9BD43;color:#082044;text-transform:uppercase;letter-spacing:0.06em;font:600 15px/1.2 Lexend,sans-serif;cursor:pointer;box-shadow:0 10px 24px rgba(249,189,67,0.45)">Débloquer les <span class="cp-count">…</span> offres</button>
+      <label style="display:flex;gap:10px;align-items:flex-start;font:400 13px/1.45 Lexend,sans-serif;color:#3D4F6B;cursor:pointer">
+        <input id="cpConsent" type="checkbox" style="flex:0 0 auto;width:18px;height:18px;margin:1px 0 0;accent-color:#13BFA6">
+        <span>J'accepte de recevoir la newsletter hebdomadaire et des alertes ponctuelles sur les offres de parrainage. <a href="/politique-confidentialite" style="color:#0B7F6F">Politique de confidentialité</a></span>
+      </label>
+    </form>
+    <p style="margin:16px 0 0;font:500 13px/1.4 Lexend,sans-serif;color:#0B7F6F">Gratuit • Une sélection chaque semaine • Désinscription en 1 clic</p>
+  </div>
+</main>
+
+<script>window.CP_CONFIG={url:'https://mwdvflviamvagftpotgx.supabase.co',key:'sb_publishable_hEyZDIt6QnDLn89HVrGUpw_AkvBdnuR',site:'https://www.captain-parrainage.com'};</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/assets/cp.js?v=3"></script>
+<script src="/assets/cp-inscription.js?v=1"></script>
+</body></html>
