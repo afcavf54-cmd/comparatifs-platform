@@ -17,6 +17,8 @@ export async function PUT(req: NextRequest, { params }: { params: { siteId: stri
     'conditions', 'lien', 'code_parrainage', 'logo_url', 'couleur', 'nouveau', 'en_avant', 'acces_libre', 'ordre', 'actif', 'verifie_le']
   fields.forEach(f => { if (body[f] !== undefined) (patch as any)[f] = body[f] })
   if (body.slug !== undefined) patch.slug = slugify(body.slug || body.marque || '')
+  // Un montant sans dépôt > 0 implique une offre "sans dépôt".
+  if (patch.montant_sans_depot != null && Number(patch.montant_sans_depot) > 0) patch.sans_depot = true
   const { data, error } = await captain.from('parrainages').update(patch).eq('id', params.id).select().single()
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   return NextResponse.json({ offer: data })
