@@ -28,6 +28,26 @@
       '</div></li>';
   }
 
+  // Carte verrouillée compacte (hero) : montant + catégorie visibles, marque masquée
+  function lockedHeroCard(o) {
+    var dep = o.sans_depot
+      ? '<span style="padding:3px 8px;border-radius:999px;background:#E3F7F3;color:#0B7F6F;font:500 11px/1.2 Lexend,sans-serif">Sans dépôt</span>'
+      : '<span style="padding:3px 8px;border-radius:999px;background:#FFF3DA;color:#7A5300;font:500 11px/1.2 Lexend,sans-serif">Dépôt requis</span>';
+    return '<li style="position:relative;flex:0 0 auto;height:104px;background:#fff;border-radius:18px;padding:14px 16px;border:1px solid #E6ECF4;display:flex;flex-direction:column;gap:10px;overflow:hidden">' +
+      '<div style="display:flex;align-items:center;gap:12px">' +
+        '<span style="flex:0 0 auto;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#9fb2cf,#c9d6e8);color:#fff;display:grid;place-items:center;font:600 15px/1 Lexend,sans-serif">★</span>' +
+        '<div style="flex:1 1 0%;min-width:0">' +
+          '<p style="margin:0;font:500 15px/1.2 Lexend,sans-serif;color:#8A99B1">Offre à débloquer</p>' +
+          '<p style="margin:2px 0 0;font:400 12px/1.2 Lexend,sans-serif;color:#9CA9BE">' + CP.esc(o.categorie || '') + '</p>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">' +
+          '<span style="font:600 24px/1 Lexend,sans-serif;letter-spacing:-0.02em;color:#142B4F">' + (o.montant ? CP.fmtEUR(o.montant) : '') + '</span>' + dep +
+        '</div>' +
+      '</div>' +
+      '<span style="position:absolute;top:10px;right:12px;font-size:14px">🔒</span>' +
+    '</li>';
+  }
+
   function successPanel(email) {
     return '<div style="text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;padding:8px 0">' +
       '<span style="width:56px;height:56px;border-radius:50%;background:#E3F7F3;color:#0B7F6F;display:grid;place-items:center;font-size:26px">✉️</span>' +
@@ -53,25 +73,33 @@
       setAll('.cp-nodep', CP.fmtEUR(s.total_sans_depot_montant));
       var total = s.total_offres, nodep = s.total_sans_depot_offres || 0, dep = Math.max(0, total - nodep),
           locked = (s.verrouillees != null ? s.verrouillees : total);
-      var btn = $('#cpBtn'); if (btn) btn.textContent = 'Débloquer les ' + total + ' offres';
-      // onglets + compteurs de la carte aperçu
+      // Compteur "N offres" (header aperçu + bouton) via hook explicite,
+      // ce qui préserve l'icône SVG du bouton.
+      setAll('.cp-count-total', total);
+      // Onglets de la carte aperçu
       all('button').forEach(function (b) {
         var t = (b.textContent || '').trim();
         if (/^Toutes les offres/.test(t)) b.textContent = 'Toutes les offres · ' + total;
         else if (/^Sans dépôt ·/.test(t)) b.textContent = 'Sans dépôt · ' + nodep;
         else if (/^Avec dépôt ·/.test(t)) b.textContent = 'Avec dépôt · ' + dep;
       });
+      // "+ N offres débloquées après inscription"
       all('span').forEach(function (sp) {
         if (sp.textContent === 'offres débloquées') { var p = sp.previousElementSibling; if (p) p.textContent = locked; }
-        else if (!sp.querySelector('*') && /^\d+\s*offres?$/.test((sp.textContent || '').trim())) sp.textContent = total + ' offres';
       });
     }
 
-    // Offres aperçu (hero)
+    // Offres aperçu (hero) : vraies données. Les offres en accès libre
+    // s'affichent avec leur marque (appât) ; les autres en teaser masqué
+    // (montant + catégorie visibles, marque cachée) pour créer la frustration.
     var ul = $('#cpHeroOffers');
     if (ul) {
-      var offers = []; try { offers = await CP.getOffers(); } catch (e) {}
-      if (offers.length) ul.innerHTML = offers.slice(0, 6).map(heroCard).join('');
+      var free = [], pub = [];
+      try { free = await CP.getOffers(); } catch (e) {}
+      try { pub = await CP.getOffersPublic(); } catch (e) {}
+      var lockedOffers = pub.filter(function (o) { return !o.acces_libre; });
+      var cards = free.map(heroCard).concat(lockedOffers.map(lockedHeroCard));
+      if (cards.length) ul.innerHTML = cards.slice(0, 6).join('');
     }
 
     // Form
