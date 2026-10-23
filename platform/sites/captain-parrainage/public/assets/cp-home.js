@@ -10,7 +10,7 @@
   // Ligne "dont X € sans dépôt" sous le montant (si un montant sans dépôt est défini)
   function dontLine(o) {
     var m = Number(o.montant_sans_depot) || 0;
-    return m > 0 ? '<span style="font:500 11px/1.2 Lexend,sans-serif;color:#0B7F6F;white-space:nowrap">dont ' + CP.fmtEUR(m) + ' sans dépôt</span>' : '';
+    return m > 0 ? '<span style="font:700 12px/1.2 Lexend,sans-serif;color:#D90F22;white-space:nowrap">dont ' + CP.fmtEUR(m) + ' sans dépôt</span>' : '';
   }
 
   // Carte offre compacte (markup identique à la maquette — aperçu hero)
