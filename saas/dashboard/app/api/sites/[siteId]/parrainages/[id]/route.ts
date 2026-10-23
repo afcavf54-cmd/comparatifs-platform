@@ -13,7 +13,7 @@ export async function PUT(req: NextRequest, { params }: { params: { siteId: stri
   const g = guard(params.siteId); if (g) return g
   const body = (await req.json()) as Parrainage
   const patch: Partial<Parrainage> = {}
-  const fields: (keyof Parrainage)[] = ['marque', 'categorie', 'montant', 'sans_depot', 'montant_sans_depot',
+  const fields: (keyof Parrainage)[] = ['marque', 'categorie', 'type_prime', 'montant', 'sans_depot', 'montant_sans_depot',
     'conditions', 'lien', 'code_parrainage', 'logo_url', 'couleur', 'nouveau', 'en_avant', 'acces_libre', 'ordre', 'actif', 'verifie_le']
   fields.forEach(f => { if (body[f] !== undefined) (patch as any)[f] = body[f] })
   if (body.slug !== undefined) patch.slug = slugify(body.slug || body.marque || '')
