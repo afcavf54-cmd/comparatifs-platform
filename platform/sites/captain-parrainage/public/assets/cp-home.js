@@ -21,8 +21,8 @@
     var logo = o.logo_url
       ? '<span style="flex:0 0 auto;width:40px;height:40px;border-radius:12px;overflow:hidden;display:block"><img src="' + CP.esc(o.logo_url) + '" alt="" style="width:100%;height:100%;object-fit:cover"></span>'
       : '<span style="flex:0 0 auto;width:40px;height:40px;border-radius:12px;background:' + CP.esc(logoBg(o)) + ';color:#fff;display:grid;place-items:center;font:600 13px/1 Lexend,sans-serif"><span>' + CP.esc(CP.initials(o.marque)) + '</span></span>';
-    return '<li style="flex:0 0 auto;height:104px;background:#fff;border-radius:18px;padding:14px 16px;border:1px solid #E6ECF4;display:flex;flex-direction:column;gap:10px">' +
-      '<div style="display:flex;align-items:center;gap:12px">' + logo +
+    return '<li style="flex:0 0 auto;background:#fff;border-radius:16px;padding:12px 16px;border:1px solid #E6ECF4;display:flex;align-items:center">' +
+      '<div style="flex:1 1 0%;display:flex;align-items:center;gap:12px">' + logo +
         '<div style="flex:1 1 0%;min-width:0">' +
           '<p style="margin:0;font:500 15px/1.2 Lexend,sans-serif">' + CP.esc(o.marque) + '</p>' +
           '<p style="margin:2px 0 0;font:400 12px/1.2 Lexend,sans-serif;color:#5B6B84">' + CP.esc(o.categorie || '') + '</p>' +
@@ -38,8 +38,8 @@
     var dep = o.sans_depot
       ? '<span style="padding:3px 8px;border-radius:999px;background:#E3F7F3;color:#0B7F6F;font:500 11px/1.2 Lexend,sans-serif">Sans dépôt</span>'
       : '<span style="padding:3px 8px;border-radius:999px;background:#FFF3DA;color:#7A5300;font:500 11px/1.2 Lexend,sans-serif">Dépôt requis</span>';
-    return '<li style="position:relative;flex:0 0 auto;height:104px;background:#fff;border-radius:18px;padding:14px 16px;border:1px solid #E6ECF4;display:flex;flex-direction:column;gap:10px;overflow:hidden">' +
-      '<div style="display:flex;align-items:center;gap:12px">' +
+    return '<li style="position:relative;flex:0 0 auto;background:#fff;border-radius:16px;padding:12px 16px;border:1px solid #E6ECF4;display:flex;align-items:center;overflow:hidden">' +
+      '<div style="flex:1 1 0%;display:flex;align-items:center;gap:12px">' +
         // logo flouté avec cadenas centré par-dessus
         '<span style="position:relative;flex:0 0 auto;width:40px;height:40px">' +
           '<span style="position:absolute;inset:0;border-radius:12px;background:linear-gradient(135deg,#9fb2cf,#c9d6e8);color:#fff;display:grid;place-items:center;font:600 15px/1 Lexend,sans-serif;filter:blur(5px)">★</span>' +
