@@ -1,83 +1,63 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="fr"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Mon espace — Captain Parrainage</title>
+<title>Créez votre mot de passe — Captain Parrainage</title>
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="/assets/cp.css" rel="stylesheet">
-</head>
-<body>
-<nav class="cp-nav"><div class="wrap cp-nav-in">
-  <a href="/" class="cp-logo"><span class="mascotte">CP</span>Captain <b>Parrainage</b></a>
-  <div class="cp-nav-cta">
-    <span id="who" style="font-size:13px;color:var(--ink3)"></span>
-    <button class="btn btn-ghost" id="logout">Déconnexion</button>
-  </div>
-</div></nav>
+<style>*{box-sizing:border-box}html,body{margin:0}body{background:#F4F7FB;font-family:Lexend,system-ui,sans-serif;color:#142B4F}a{text-decoration:none}
+.fld{width:100%;height:52px;border:1.5px solid #B9CBE3;border-radius:12px;padding:0 16px;background:#fff;font:400 15px Lexend,sans-serif;color:#142B4F}
+.fld:focus{outline:none;border-color:#142B4F}
+.btn{width:100%;height:54px;border:0;border-radius:999px;background:#F9BD43;color:#082044;font:700 15px Lexend,sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
+.btn:disabled{opacity:.6}
+.hidden{display:none}</style>
+</head><body>
+<header style="background:#fff;border-bottom:1px solid #E3E9F2"><div style="max-width:1120px;margin:0 auto;padding:0 20px;height:68px;display:flex;align-items:center">
+  <a href="/" style="display:flex;align-items:center;gap:10px;font:700 18px Lexend,sans-serif;color:#142B4F"><span style="width:38px;height:38px;border-radius:50%;background:#142B4F;color:#F9BD43;display:grid;place-items:center;font:800 15px Lexend,sans-serif">CP</span>Captain <b style="color:#7A5300">Parrainage</b></a>
+</div></header>
 
-<section style="padding:40px 0 20px"><div class="wrap">
-  <span class="eyebrow">🔓 Accès débloqué</span>
-  <h1 style="font-size:clamp(26px,4vw,38px)">Toutes les offres de parrainage</h1>
-  <p class="lead" style="margin-top:10px">Voici la sélection complète, conditions et liens inclus. De nouvelles primes sont ajoutées chaque semaine.</p>
-  <div class="stats" style="margin-top:26px">
-    <div class="stat"><div class="v" id="sCount">…</div><div class="l">offres disponibles</div></div>
-    <div class="stat"><div class="v" id="sTotal">…</div><div class="l">de primes cumulées</div></div>
-    <div class="stat"><div class="v teal" id="sNodep">…</div><div class="l">accessibles sans dépôt</div></div>
-  </div>
-</div></section>
+<main style="min-height:calc(100vh - 68px);display:grid;place-items:center;padding:40px 20px"><div style="width:100%;max-width:440px;background:#fff;border:1px solid #E3E9F2;border-radius:24px;padding:34px;box-shadow:0 10px 24px rgba(8,32,68,.08)">
+  <div id="loading"><h1 style="margin:0 0 6px;font:700 24px Lexend,sans-serif">Un instant…</h1><p style="margin:0;font:400 14px Lexend,sans-serif;color:#5B6B84">Vérification de votre lien de confirmation.</p></div>
 
-<section style="padding:10px 0 72px"><div class="wrap">
-  <div id="filters" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px"></div>
-  <div class="grid grid-3" id="list"><p style="color:var(--ink3)">Chargement des offres…</p></div>
-  <p id="empty" class="hidden" style="text-align:center;color:var(--ink3);padding:30px">Aucune offre pour ce filtre.</p>
-</div></section>
+  <div id="setpw" class="hidden">
+    <div style="width:52px;height:52px;border-radius:50%;background:#E3F7F3;color:#0B7F6F;display:grid;place-items:center;font-size:24px;margin-bottom:14px">✅</div>
+    <h1 style="margin:0 0 6px;font:700 26px Lexend,sans-serif">Créez votre mot de passe</h1>
+    <p style="margin:0 0 20px;font:400 14px/1.5 Lexend,sans-serif;color:#5B6B84">Votre email est confirmé. Choisissez un mot de passe pour accéder à votre espace et débloquer toutes les offres.</p>
+    <form id="pwForm" novalidate>
+      <label style="display:block;font:600 13px Lexend,sans-serif;color:#4A5B76;margin-bottom:6px">Mot de passe</label>
+      <input type="password" class="fld" id="pw" autocomplete="new-password" placeholder="8 caractères minimum" required>
+      <div style="height:5px;border-radius:999px;background:#E3E9F2;margin:8px 0 6px;overflow:hidden"><i id="pwBar" style="display:block;height:100%;width:0;background:#FF2E3F;transition:.25s"></i></div>
+      <div style="font:400 12px Lexend,sans-serif;color:#7A89A1;margin-bottom:12px">Au moins 8 caractères, avec lettres et chiffres.</div>
+      <label style="display:block;font:600 13px Lexend,sans-serif;color:#4A5B76;margin-bottom:6px">Confirmez le mot de passe</label>
+      <input type="password" class="fld" id="pw2" autocomplete="new-password" required style="margin-bottom:14px">
+      <div id="err" style="display:none;font:500 13px Lexend,sans-serif;color:#D90F22;background:#FDE7E8;border-radius:12px;padding:10px 12px;margin-bottom:12px"></div>
+      <button type="submit" class="btn" id="pwBtn">Créer mon compte et débloquer les offres</button>
+    </form>
+  </div>
+
+  <div id="invalid" class="hidden">
+    <h1 style="margin:0 0 6px;font:700 24px Lexend,sans-serif">Lien expiré ou invalide</h1>
+    <p style="margin:0 0 20px;font:400 14px Lexend,sans-serif;color:#5B6B84">Ce lien n'est plus valable. Recommencez votre inscription pour en recevoir un nouveau.</p>
+    <a href="/inscription/" class="btn" style="display:grid;place-items:center;text-decoration:none">Recevoir un nouveau lien</a>
+  </div>
+</div></main>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script src="/assets/cp.js"></script>
+<script src="/assets/cp.js?v=3"></script>
 <script>
-(function(){
-  function $(id){return document.getElementById(id);}
-  var ALL=[], cur='Toutes';
-
-  $('logout').addEventListener('click', async function(){ await CP.logout(); window.location.href='/'; });
-
-  function render(){
-    var list=$('list');
-    var items = cur==='Toutes' ? ALL : ALL.filter(function(o){return (o.categorie||'Autres')===cur;});
-    if(!items.length){ list.innerHTML=''; $('empty').classList.remove('hidden'); return; }
-    $('empty').classList.add('hidden');
-    list.innerHTML=items.map(function(o){return CP.offerCardHTML(o);}).join('');
-  }
-  function buildFilters(){
-    var cats={}; ALL.forEach(function(o){var c=o.categorie||'Autres'; cats[c]=(cats[c]||0)+1;});
-    var html='<button class="badge badge-navy" data-c="Toutes" style="cursor:pointer;padding:8px 14px">Toutes ('+ALL.length+')</button>';
-    Object.keys(cats).forEach(function(c){ html+='<button class="badge" data-c="'+CP.esc(c)+'" style="cursor:pointer;padding:8px 14px;background:#EEF2F7;color:var(--ink2)">'+CP.esc(c)+' ('+cats[c]+')</button>'; });
-    var f=$('filters'); f.innerHTML=html;
-    f.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){
-      cur=b.getAttribute('data-c');
-      f.querySelectorAll('button').forEach(function(x){ x.className='badge'; x.style.background='#EEF2F7'; x.style.color='var(--ink2)'; });
-      b.className='badge badge-navy'; b.style.background=''; b.style.color='';
-      render();
-    });});
-  }
-
-  async function boot(){
-    var session=null; try{ session=await CP.getSession(); }catch(e){}
-    if(!session){ window.location.href='/connexion/'; return; }
-    var u=session.user; if(u&&u.email) $('who').textContent=u.email;
-
-    var s=null; try{ s=await CP.getStats(); }catch(e){}
-    if(s){ $('sCount').textContent=s.total_offres; $('sTotal').textContent=CP.fmtEUR(s.total_montant); $('sNodep').textContent=CP.fmtEUR(s.total_sans_depot_montant); }
-
-    try{ ALL=await CP.getOffers(); }catch(e){ ALL=[]; }
-    buildFilters(); render();
-  }
-  if(window.CP){ boot(); } else { window.location.href='/connexion/'; }
+(function(){function $(i){return document.getElementById(i);}
+function show(id){['loading','setpw','invalid'].forEach(function(x){$(x).classList.toggle('hidden',x!==id);});}
+function strength(p){var s=0;if(p.length>=8)s++;if(/[A-Za-z]/.test(p)&&/[0-9]/.test(p))s++;if(p.length>=12)s++;if(/[^A-Za-z0-9]/.test(p))s++;return Math.min(s,4);}
+var pw=$('pw');if(pw)pw.addEventListener('input',function(){var s=strength(pw.value),c=['#FF2E3F','#FF2E3F','#F9BD43','#13BFA6','#0B7F6F'];$('pwBar').style.width=(s*25)+'%';$('pwBar').style.background=c[s];});
+(async function(){var se=null;try{se=await CP.getSession();}catch(e){}
+ if(se){show('setpw');}else{setTimeout(async function(){var s2=null;try{s2=await CP.getSession();}catch(e){}show(s2?'setpw':'invalid');},900);}})();
+$('pwForm').addEventListener('submit',async function(ev){ev.preventDefault();var a=$('pw').value,b=$('pw2').value,err=$('err');err.style.display='none';
+ if(a.length<8){err.textContent='Au moins 8 caractères.';err.style.display='block';return;}
+ if(!(/[A-Za-z]/.test(a)&&/[0-9]/.test(a))){err.textContent='Ajoutez des lettres et des chiffres.';err.style.display='block';return;}
+ if(a!==b){err.textContent='Les deux mots de passe ne correspondent pas.';err.style.display='block';return;}
+ var bt=$('pwBtn');bt.disabled=true;bt.textContent='Création…';
+ try{await CP.setPassword(a);location.href='/membre/';}catch(e){err.textContent=(e&&e.message)||'Erreur, réessayez.';err.style.display='block';bt.disabled=false;bt.textContent='Créer mon compte et débloquer les offres';}});
 })();
 </script>
-</body>
-</html>
+</body></html>

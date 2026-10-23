@@ -132,7 +132,7 @@
           '<div class="offer-badges"><span class="badge badge-teal">Sans dépôt</span></div>' +
         '</div>' +
         '<div class="lock-overlay"><div class="lock-ico">🔒</div><strong>Offre à débloquer</strong>' +
-          '<a class="btn btn-navy" href="/#inscription">S\'inscrire gratuitement</a></div>' +
+          '<a class="btn btn-navy" href="/inscription/">S\'inscrire gratuitement</a></div>' +
       '</div>';
   }
 
