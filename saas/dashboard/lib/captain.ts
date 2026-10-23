@@ -25,6 +25,7 @@ export type Parrainage = {
   marque: string
   slug: string
   categorie?: string | null
+  type_prime?: string | null
   montant?: number | null
   sans_depot?: boolean
   montant_sans_depot?: number | null
