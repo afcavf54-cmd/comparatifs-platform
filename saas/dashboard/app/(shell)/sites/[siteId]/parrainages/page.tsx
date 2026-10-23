@@ -9,8 +9,10 @@ type Offer = {
   conditions?: string | null; lien: string; code_parrainage?: string | null
   logo_url?: string | null; couleur?: string | null; nouveau?: boolean
   en_avant?: boolean; acces_libre?: boolean; ordre?: number; actif?: boolean; verifie_le?: string | null
+  type_prime?: string | null
 }
-const BLANK: Offer = { marque: '', slug: '', categorie: '', montant: null, sans_depot: false, montant_sans_depot: null, conditions: '', lien: '', code_parrainage: '', logo_url: '', couleur: '', nouveau: false, en_avant: false, acces_libre: false, ordre: 0, actif: true }
+const TYPES_PRIME = ['Cash', 'Carte cadeau', 'Cashback', "Bon d'achat", 'Crypto', 'Points fidélité', 'Autre']
+const BLANK: Offer = { marque: '', slug: '', categorie: '', montant: null, sans_depot: false, montant_sans_depot: null, conditions: '', lien: '', code_parrainage: '', logo_url: '', couleur: '', nouveau: false, en_avant: false, acces_libre: false, ordre: 0, actif: true, type_prime: '' }
 
 const card = { background: '#0F1724', border: '1px solid #1E2D3D', borderRadius: 12, padding: 18 }
 const input = { width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13 } as const
@@ -55,10 +57,7 @@ export default function ParrainagesAdmin() {
       <Link href={`/sites/${siteId}`} style={{ color: '#8B9CB0', textDecoration: 'none', fontSize: 13 }}>← {siteId}</Link>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '12px 0 20px', gap: 12 }}>
         <h1 style={{ fontSize: 22, margin: 0 }}>🎁 Offres de parrainage</h1>
-        <div style={{ display: 'flex', gap: 10 }}>
-          <Link href={`/sites/${siteId}/parrainages-newsletter`} style={{ ...btn('#1E2D3D'), textDecoration: 'none', display: 'inline-block' }}>✉️ Newsletter</Link>
-          <button onClick={() => setEditing({ ...BLANK })} style={btn('linear-gradient(135deg,#00D4AA,#0090FF)')}>+ Ajouter une offre</button>
-        </div>
+        <button onClick={() => setEditing({ ...BLANK })} style={btn('linear-gradient(135deg,#00D4AA,#0090FF)')}>+ Ajouter une offre</button>
       </div>
 
       {editing && <OfferForm key={editing.id || 'new'} offer={editing} siteId={siteId} onCancel={() => setEditing(null)} onSave={save} />}
@@ -74,7 +73,7 @@ export default function ParrainagesAdmin() {
                 : <div style={{ width: 40, height: 40, borderRadius: 10, background: o.couleur || '#142B4F', display: 'grid', placeItems: 'center', fontWeight: 700, flexShrink: 0 }}>{(o.marque || '?').slice(0, 2).toUpperCase()}</div>}
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontWeight: 600 }}>{o.marque} {o.nouveau && <span style={{ fontSize: 10, color: '#F59E0B' }}>NOUVEAU</span>} {o.en_avant && <span style={{ fontSize: 10, color: '#00D4AA' }}>★</span>}</div>
-                <div style={{ fontSize: 12, color: '#8B9CB0' }}>{o.categorie} · {o.montant ? o.montant + '€' : '—'} · {o.sans_depot ? 'sans dépôt' : 'dépôt requis'} · {o.acces_libre ? 'accès libre' : 'verrouillée'}</div>
+                <div style={{ fontSize: 12, color: '#8B9CB0' }}>{o.categorie}{o.type_prime ? ' · ' + o.type_prime : ''} · {o.montant ? o.montant + '€' : '—'} · {o.sans_depot ? 'sans dépôt' : 'dépôt requis'} · {o.acces_libre ? 'accès libre' : 'verrouillée'}</div>
               </div>
               <button onClick={() => setEditing(editing && editing.id === o.id ? null : o)} style={btn('#1E2D3D')}>{editing && editing.id === o.id ? 'Fermer' : 'Éditer'}</button>
               <button onClick={() => del(o.id)} style={btn('#3a1215')}>Supprimer</button>
@@ -113,6 +112,7 @@ function OfferForm({ offer, siteId, onCancel, onSave }: { offer: Offer; siteId: 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         <div><label style={label}>Marque *</label><input style={input} value={o.marque} onChange={e => set('marque', e.target.value)} /></div>
         <div><label style={label}>Catégorie</label><input style={input} value={o.categorie || ''} onChange={e => set('categorie', e.target.value)} placeholder="Banque, Néobanque, Bourse…" /></div>
+        <div><label style={label}>Type de prime</label><select style={input} value={o.type_prime || ''} onChange={e => set('type_prime', e.target.value)}><option value="">—</option>{TYPES_PRIME.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
         <div><label style={label}>Montant (€)</label><input style={input} type="number" value={o.montant ?? ''} onChange={e => set('montant', num(e.target.value))} /></div>
         <div><label style={label}>Montant sans dépôt (€)</label><input style={input} type="number" value={o.montant_sans_depot ?? ''} onChange={e => set('montant_sans_depot', num(e.target.value))} /></div>
         <div style={{ gridColumn: '1 / -1' }}><label style={label}>Lien d'affiliation *</label><input style={input} value={o.lien} onChange={e => set('lien', e.target.value)} /></div>
