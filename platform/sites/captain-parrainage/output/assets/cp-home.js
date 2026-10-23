@@ -7,6 +7,11 @@
 
   function hue(str) { var h = 0, s = String(str || ''); for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360; return h; }
   function logoBg(o) { return o.couleur || ('oklch(0.5 0.13 ' + hue(o.marque) + ')'); }
+  // Ligne "dont X € sans dépôt" sous le montant (si un montant sans dépôt est défini)
+  function dontLine(o) {
+    var m = Number(o.montant_sans_depot) || 0;
+    return m > 0 ? '<span style="font:500 11px/1.2 Lexend,sans-serif;color:#0B7F6F;white-space:nowrap">dont ' + CP.fmtEUR(m) + ' sans dépôt</span>' : '';
+  }
 
   // Carte offre compacte (markup identique à la maquette — aperçu hero)
   function heroCard(o) {
@@ -23,7 +28,7 @@
           '<p style="margin:2px 0 0;font:400 12px/1.2 Lexend,sans-serif;color:#5B6B84">' + CP.esc(o.categorie || '') + '</p>' +
         '</div>' +
         '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">' +
-          '<span style="font:600 24px/1 Lexend,sans-serif;letter-spacing:-0.02em">' + (o.montant ? CP.fmtEUR(o.montant) : '') + '</span>' + dep +
+          '<span style="font:600 24px/1 Lexend,sans-serif;letter-spacing:-0.02em">' + (o.montant ? CP.fmtEUR(o.montant) : '') + '</span>' + dontLine(o) + dep +
         '</div>' +
       '</div></li>';
   }
@@ -35,16 +40,19 @@
       : '<span style="padding:3px 8px;border-radius:999px;background:#FFF3DA;color:#7A5300;font:500 11px/1.2 Lexend,sans-serif">Dépôt requis</span>';
     return '<li style="position:relative;flex:0 0 auto;height:104px;background:#fff;border-radius:18px;padding:14px 16px;border:1px solid #E6ECF4;display:flex;flex-direction:column;gap:10px;overflow:hidden">' +
       '<div style="display:flex;align-items:center;gap:12px">' +
-        '<span style="flex:0 0 auto;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#9fb2cf,#c9d6e8);color:#fff;display:grid;place-items:center;font:600 15px/1 Lexend,sans-serif;filter:blur(5px)">★</span>' +
+        // logo flouté avec cadenas centré par-dessus
+        '<span style="position:relative;flex:0 0 auto;width:40px;height:40px">' +
+          '<span style="position:absolute;inset:0;border-radius:12px;background:linear-gradient(135deg,#9fb2cf,#c9d6e8);color:#fff;display:grid;place-items:center;font:600 15px/1 Lexend,sans-serif;filter:blur(5px)">★</span>' +
+          '<span style="position:absolute;inset:0;display:grid;place-items:center;font-size:17px">🔒</span>' +
+        '</span>' +
         '<div style="flex:1 1 0%;min-width:0;filter:blur(5px);user-select:none">' +
           '<p style="margin:0;font:500 15px/1.2 Lexend,sans-serif;color:#5B6B84">Banque Partenaire</p>' +
           '<p style="margin:2px 0 0;font:400 12px/1.2 Lexend,sans-serif;color:#8A99B1">' + CP.esc(o.categorie || '') + '</p>' +
         '</div>' +
         '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">' +
-          '<span style="font:600 24px/1 Lexend,sans-serif;letter-spacing:-0.02em;color:#142B4F">' + (o.montant ? CP.fmtEUR(o.montant) : '') + '</span>' + dep +
+          '<span style="font:600 24px/1 Lexend,sans-serif;letter-spacing:-0.02em;color:#142B4F">' + (o.montant ? CP.fmtEUR(o.montant) : '') + '</span>' + dontLine(o) + dep +
         '</div>' +
       '</div>' +
-      '<span style="position:absolute;top:10px;right:12px;font-size:14px">🔒</span>' +
     '</li>';
   }
 
