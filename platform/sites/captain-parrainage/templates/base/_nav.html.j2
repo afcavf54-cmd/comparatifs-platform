@@ -1,0 +1,23 @@
+{# Override captain-parrainage : header maquette (navy, logo, menu + CTA),
+   remplace le _nav global pour toutes les pages générées (mentions, contact,
+   blog, avis, 404…). Cohérent avec la home et cp-chrome.js. #}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');
+nav.cp-nav{background:#082044;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08);font-family:Lexend,system-ui,sans-serif}
+nav.cp-nav .cp-inner{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px);height:76px;display:flex;align-items:center;gap:clamp(16px,3vw,40px)}
+nav.cp-nav .cp-links{flex:0 0 auto;white-space:nowrap;display:flex;gap:32px;font:600 13px/1 Lexend,sans-serif;text-transform:uppercase;letter-spacing:0.08em}
+nav.cp-nav .cp-links a{color:#fff;text-decoration:none;padding:10px 0;border-bottom:3px solid transparent}
+nav.cp-nav .cp-cta{margin-left:auto;flex:0 0 auto;display:inline-flex;align-items:center;height:44px;padding:0 clamp(14px,3vw,20px);border-radius:999px;background:#F9BD43;color:#082044;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;font:600 13px/1 Lexend,sans-serif;white-space:nowrap}
+@media(max-width:820px){nav.cp-nav .cp-links{display:none}}
+</style>
+<nav class="cp-nav" aria-label="Navigation principale">
+  <div class="cp-inner">
+    <a href="/" aria-label="Captain Parrainage" style="display:flex;align-items:center;gap:10px;text-decoration:none">{% if site.logo_img is defined and site.logo_img %}<img src="{{ site.logo_img }}" alt="{{ site.name | default('Captain Parrainage') }}" style="height:42px;width:auto;object-fit:contain;display:block">{% else %}<span style="font:600 20px/1.02 Lexend,sans-serif;color:#fff;letter-spacing:-0.01em">Captain<span style="color:#13BFA6">Parrainage</span></span>{% endif %}</a>
+    <div class="cp-links">
+      <a href="/">Accueil</a>
+      <a href="/offres/">Meilleures offres</a>
+      <a href="/#comment-ca-marche">Comment ça marche</a>
+    </div>
+    <a href="/inscription/" class="cp-cta">Recevoir les offres gratuites</a>
+  </div>
+</nav>
