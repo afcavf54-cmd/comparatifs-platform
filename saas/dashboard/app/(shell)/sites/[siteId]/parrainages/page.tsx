@@ -18,6 +18,10 @@ const card = { background: '#0F1724', border: '1px solid #1E2D3D', borderRadius:
 const input = { width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13 } as const
 const label = { display: 'block', fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }
 const btn = (bg: string) => ({ padding: '9px 16px', borderRadius: 8, background: bg, color: '#fff', border: 0, fontSize: 13, fontWeight: 600, cursor: 'pointer' } as const)
+// Les logos uploadés ont une URL relative au SITE (/offres-logos/…). Dans le
+// dashboard (autre domaine), on la préfixe par le domaine du site pour l'aperçu.
+const SITE_BASE = 'https://www.captain-parrainage.com'
+const logoSrc = (u?: string | null) => (u ? (u.startsWith('/') ? SITE_BASE + u : u) : '')
 
 export default function ParrainagesAdmin() {
   const { siteId } = useParams<{ siteId: string }>()
@@ -69,7 +73,7 @@ export default function ParrainagesAdmin() {
           {offers.map(o => (
             <div key={o.id} style={{ ...card, display: 'flex', alignItems: 'center', gap: 14, opacity: o.actif ? 1 : 0.5, outline: editing && editing.id === o.id ? '2px solid #0090FF' : 'none' }}>
               {o.logo_url
-                ? <img src={o.logo_url} alt="" style={{ width: 40, height: 40, borderRadius: 10, objectFit: 'cover', flexShrink: 0, background: '#0A0E1A' }} />
+                ? <img src={logoSrc(o.logo_url)} alt="" style={{ width: 40, height: 40, borderRadius: 10, objectFit: 'cover', flexShrink: 0, background: '#0A0E1A' }} />
                 : <div style={{ width: 40, height: 40, borderRadius: 10, background: o.couleur || '#142B4F', display: 'grid', placeItems: 'center', fontWeight: 700, flexShrink: 0 }}>{(o.marque || '?').slice(0, 2).toUpperCase()}</div>}
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontWeight: 600 }}>{o.marque} {o.nouveau && <span style={{ fontSize: 10, color: '#F59E0B' }}>NOUVEAU</span>} {o.en_avant && <span style={{ fontSize: 10, color: '#00D4AA' }}>★</span>}</div>
@@ -145,7 +149,7 @@ function OfferForm({ offer, siteId, onCancel, onSave }: { offer: Offer; siteId: 
           <label style={label}>Logo</label>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
             {o.logo_url
-              ? <img src={o.logo_url} alt="" style={{ width: 44, height: 44, borderRadius: 10, objectFit: 'cover', background: '#0A0E1A', flexShrink: 0 }} />
+              ? <img src={logoSrc(o.logo_url)} alt="" style={{ width: 44, height: 44, borderRadius: 10, objectFit: 'cover', background: '#0A0E1A', flexShrink: 0 }} />
               : <div style={{ width: 44, height: 44, borderRadius: 10, background: o.couleur || '#142B4F', display: 'grid', placeItems: 'center', fontWeight: 700, flexShrink: 0 }}>{(o.marque || '?').slice(0, 2).toUpperCase()}</div>}
             <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={e => { const f = e.target.files?.[0]; if (f) uploadLogo(f) }} />
             <button type="button" onClick={() => fileRef.current?.click()} style={btn('#1E2D3D')} disabled={uploading}>{uploading ? 'Upload…' : 'Choisir un logo'}</button>
