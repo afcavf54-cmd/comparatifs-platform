@@ -76,8 +76,8 @@
     all('.cp-count').forEach(function (e) { e.textContent = total; });
     all('.cp-free').forEach(function (e) { e.textContent = free; });
     all('.cp-locked').forEach(function (e) { e.textContent = locked; });
-    // Section "offres à débloquer" masquée s'il n'y a aucune offre verrouillée.
-    var deb = $('#debloquer'); if (deb) deb.style.display = locked > 0 ? '' : 'none';
+    // Section "débloquer la liste" : affichée dès qu'il y a au moins une offre.
+    var deb = $('#debloquer'); if (deb) deb.style.display = total > 0 ? '' : 'none';
   }
 
   function renderFilters(offers, onPick) {
