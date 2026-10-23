@@ -29,7 +29,7 @@
     h.innerHTML =
       '<div style="max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px);height:76px;display:flex;align-items:center;gap:clamp(16px,3vw,40px)">' +
         logoHTML(42) +
-        '<nav class="cp-chrome-nav" aria-label="Navigation principale" style="flex:0 0 auto;white-space:nowrap;display:flex;gap:32px;font:600 13px/1 Lexend,sans-serif;text-transform:uppercase;letter-spacing:0.08em">' + nav + '</nav>' +
+        '<nav class="cp-chrome-nav" aria-label="Navigation principale" style="flex:0 0 auto;white-space:nowrap;display:flex;gap:32px;font:600 13px/1 Lexend,sans-serif;text-transform:uppercase;letter-spacing:0.08em;background:transparent;position:static;height:auto;padding:0;top:auto">' + nav + '</nav>' +
         '<a href="/inscription/" style="margin-left:auto;flex:0 0 auto;display:inline-flex;align-items:center;height:44px;padding:0 clamp(14px,3vw,20px);border-radius:999px;background:#F9BD43;color:#082044;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;font:600 13px/1 Lexend,sans-serif;white-space:nowrap">Recevoir les offres gratuites</a>' +
       '</div>';
     return h;
@@ -45,7 +45,7 @@
           '<div style="margin-bottom:12px">' + logoHTML(40) + '</div>' +
           '<p style="margin:0;max-width:340px;font:400 13px/1.6 Lexend,sans-serif;color:#8FA2BE">Les meilleures offres de parrainage et primes de bienvenue, sélectionnées chaque semaine. Certaines récupérables sans dépôt.</p>' +
         '</div>' +
-        '<nav aria-label="Pied de page" style="display:flex;gap:40px;flex-wrap:wrap">' +
+        '<nav aria-label="Pied de page" style="display:flex;gap:40px;flex-wrap:wrap;background:transparent;position:static;height:auto;padding:0;top:auto;z-index:auto;align-items:flex-start">' +
           '<div style="display:flex;flex-direction:column;gap:10px;font:400 14px/1 Lexend,sans-serif">' +
             '<span style="font:600 12px/1 Lexend,sans-serif;text-transform:uppercase;letter-spacing:0.08em;color:#6E809C;margin-bottom:2px">Navigation</span>' +
             '<a href="/" style="color:#C9D4E5;text-decoration:none">Accueil</a>' +
