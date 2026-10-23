@@ -30,7 +30,9 @@ export async function POST(req: NextRequest, { params }: { params: { siteId: str
     slug: body.slug && body.slug.trim() ? slugify(body.slug) : slugify(body.marque),
     categorie: body.categorie || null,
     montant: body.montant ?? null,
-    sans_depot: !!body.sans_depot,
+    // Un montant sans dépôt > 0 implique une offre "sans dépôt" (évite d'avoir
+    // à cocher la case en plus de saisir le montant).
+    sans_depot: !!body.sans_depot || Number(body.montant_sans_depot) > 0,
     montant_sans_depot: body.montant_sans_depot ?? null,
     conditions: body.conditions || null,
     lien: body.lien,
