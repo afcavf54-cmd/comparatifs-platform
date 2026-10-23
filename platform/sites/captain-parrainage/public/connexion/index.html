@@ -1,72 +1,56 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="fr"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Connexion — Captain Parrainage</title>
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="/assets/cp.css" rel="stylesheet">
-</head>
-<body>
-<nav class="cp-nav"><div class="wrap cp-nav-in">
-  <a href="/" class="cp-logo"><span class="mascotte">CP</span>Captain <b>Parrainage</b></a>
-  <div class="cp-nav-cta"><a href="/#inscription" class="btn btn-gold">S'inscrire</a></div>
-</div></nav>
+<style>*{box-sizing:border-box}html,body{margin:0}body{background:#F4F7FB;font-family:Lexend,system-ui,sans-serif;color:#142B4F}a{text-decoration:none}
+.fld{width:100%;height:52px;border:1.5px solid #B9CBE3;border-radius:12px;padding:0 16px;background:#fff;font:400 15px Lexend,sans-serif;color:#142B4F}
+.fld:focus{outline:none;border-color:#142B4F}
+.btn{width:100%;height:54px;border:0;border-radius:999px;background:#F9BD43;color:#082044;font:700 15px Lexend,sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
+.btn:disabled{opacity:.6}</style>
+</head><body>
+<header style="background:#fff;border-bottom:1px solid #E3E9F2"><div style="max-width:1120px;margin:0 auto;padding:0 20px;height:68px;display:flex;align-items:center;justify-content:space-between">
+  <a href="/" style="display:flex;align-items:center;gap:10px;font:700 18px Lexend,sans-serif;color:#142B4F"><span style="width:38px;height:38px;border-radius:50%;background:#142B4F;color:#F9BD43;display:grid;place-items:center;font:800 15px Lexend,sans-serif">CP</span>Captain <b style="color:#7A5300">Parrainage</b></a>
+  <a href="/inscription/" style="padding:10px 18px;border-radius:999px;background:#F9BD43;color:#082044;font:700 13px Lexend,sans-serif;text-transform:uppercase;letter-spacing:.04em">S'inscrire</a>
+</div></header>
 
-<div class="auth-wrap"><div class="auth-card">
-  <div id="loginBox">
-    <h1>Connexion</h1>
-    <p class="sub">Accédez à votre espace membre et à toutes les offres de parrainage.</p>
-    <form id="loginForm" novalidate>
-      <div class="form-row"><label for="email">Email</label><input type="email" class="field" id="email" autocomplete="email" required></div>
-      <div class="form-row"><label for="pw">Mot de passe</label><input type="password" class="field" id="pw" autocomplete="current-password" required></div>
-      <div id="err" class="form-err hidden"></div>
-      <button type="submit" class="btn btn-gold btn-block btn-lg" id="btn" style="margin-top:6px">Se connecter</button>
-    </form>
-    <p class="form-note" style="margin-top:16px"><a href="#" id="forgot" style="color:var(--navy);text-decoration:underline">Mot de passe oublié ?</a></p>
-    <p class="form-note">Pas encore de compte ? <a href="/#inscription" style="color:var(--navy);text-decoration:underline">Inscrivez-vous gratuitement</a></p>
+<main style="min-height:calc(100vh - 68px);display:grid;place-items:center;padding:40px 20px">
+  <div style="width:100%;max-width:440px;background:#fff;border:1px solid #E3E9F2;border-radius:24px;padding:34px;box-shadow:0 10px 24px rgba(8,32,68,.08)">
+    <div id="loginBox">
+      <h1 style="margin:0 0 6px;font:700 26px Lexend,sans-serif">Connexion</h1>
+      <p style="margin:0 0 22px;font:400 14px/1.5 Lexend,sans-serif;color:#5B6B84">Accédez à votre espace membre et à toutes les offres de parrainage.</p>
+      <form id="loginForm" novalidate>
+        <label style="display:block;font:600 13px Lexend,sans-serif;color:#4A5B76;margin-bottom:6px">Email</label>
+        <input type="email" class="fld" id="email" autocomplete="email" required style="margin-bottom:14px">
+        <label style="display:block;font:600 13px Lexend,sans-serif;color:#4A5B76;margin-bottom:6px">Mot de passe</label>
+        <input type="password" class="fld" id="pw" autocomplete="current-password" required style="margin-bottom:14px">
+        <div id="err" style="display:none;font:500 13px Lexend,sans-serif;color:#D90F22;background:#FDE7E8;border-radius:12px;padding:10px 12px;margin-bottom:12px"></div>
+        <button type="submit" class="btn" id="btn">Se connecter</button>
+      </form>
+      <p style="margin:16px 0 0;text-align:center;font:400 13px Lexend,sans-serif;color:#7A89A1"><a href="#" id="forgot" style="color:#142B4F;text-decoration:underline">Mot de passe oublié ?</a></p>
+      <p style="margin:6px 0 0;text-align:center;font:400 13px Lexend,sans-serif;color:#7A89A1">Pas de compte ? <a href="/inscription/" style="color:#142B4F;text-decoration:underline">Inscrivez-vous gratuitement</a></p>
+    </div>
+    <div id="resetOk" style="display:none;text-align:center">
+      <div style="width:56px;height:56px;border-radius:50%;background:#E3F7F3;color:#0B7F6F;display:grid;place-items:center;font-size:26px;margin:0 auto 14px">✉️</div>
+      <h1 style="margin:0 0 6px;font:700 22px Lexend,sans-serif">Email envoyé</h1>
+      <p style="margin:0 0 18px;font:400 14px Lexend,sans-serif;color:#5B6B84">Un lien de réinitialisation vient d'être envoyé. Cliquez dessus pour choisir un nouveau mot de passe.</p>
+    </div>
   </div>
-  <div id="resetOk" class="form-ok hidden">
-    <div class="ok-ico">✉️</div>
-    <h1 style="font-size:22px">Email envoyé</h1>
-    <p class="sub">Un lien de réinitialisation vient d'être envoyé. Cliquez dessus pour choisir un nouveau mot de passe.</p>
-    <a href="/connexion/" class="btn btn-ghost btn-block">Retour</a>
-  </div>
-</div></div>
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script src="/assets/cp.js"></script>
+<script src="/assets/cp.js?v=3"></script>
 <script>
-(function(){
-  function $(id){return document.getElementById(id);}
-  // déjà connecté → espace membre
-  (async function(){ try{ var s=await CP.getSession(); if(s) window.location.href='/membre/'; }catch(e){} })();
-
-  $('loginForm').addEventListener('submit', async function(ev){
-    ev.preventDefault();
-    var email=$('email').value.trim(), pw=$('pw').value, err=$('err'); err.classList.add('hidden');
-    var btn=$('btn'); btn.disabled=true; btn.textContent='Connexion…';
-    try{ await CP.login(email, pw); window.location.href='/membre/'; }
-    catch(e){
-      var m=(e&&e.message)||'';
-      err.textContent=/Invalid login/i.test(m)?'Email ou mot de passe incorrect.':(m||'Erreur, réessayez.');
-      err.classList.remove('hidden'); btn.disabled=false; btn.textContent='Se connecter';
-    }
-  });
-
-  $('forgot').addEventListener('click', async function(ev){
-    ev.preventDefault();
-    var email=$('email').value.trim(), err=$('err'); err.classList.add('hidden');
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent='Saisissez d’abord votre email ci-dessus.'; err.classList.remove('hidden'); return; }
-    try{
-      await CP.sb.auth.resetPasswordForEmail(email, { redirectTo: CP.site + '/confirmer/' });
-      $('loginBox').classList.add('hidden'); $('resetOk').classList.remove('hidden');
-    }catch(e){ err.textContent=(e&&e.message)||'Erreur, réessayez.'; err.classList.remove('hidden'); }
-  });
+(function(){function $(i){return document.getElementById(i);}
+(async function(){try{var s=await CP.getSession();if(s)location.href='/membre/';}catch(e){}})();
+$('loginForm').addEventListener('submit',async function(ev){ev.preventDefault();var email=$('email').value.trim(),pw=$('pw').value,err=$('err');err.style.display='none';var b=$('btn');b.disabled=true;b.textContent='Connexion…';
+ try{await CP.login(email,pw);location.href='/membre/';}catch(e){var m=(e&&e.message)||'';err.textContent=/Invalid login/i.test(m)?'Email ou mot de passe incorrect.':(m||'Erreur, réessayez.');err.style.display='block';b.disabled=false;b.textContent='Se connecter';}});
+$('forgot').addEventListener('click',async function(ev){ev.preventDefault();var email=$('email').value.trim(),err=$('err');err.style.display='none';
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){err.textContent='Saisissez d’abord votre email ci-dessus.';err.style.display='block';return;}
+ try{await CP.sb.auth.resetPasswordForEmail(email,{redirectTo:CP.site+'/confirmer/'});$('loginBox').style.display='none';$('resetOk').style.display='block';}catch(e){err.textContent=(e&&e.message)||'Erreur, réessayez.';err.style.display='block';}});
 })();
 </script>
-</body>
-</html>
+</body></html>
