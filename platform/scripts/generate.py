@@ -1376,6 +1376,17 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
     # journal. Les anciens records (date seule) sont conservés tels quels.
     now_iso_min = datetime.now().strftime("%Y-%m-%dT%H:%M")
 
+    # Version de l'algo de hash. Quand on la fait évoluer (ex. neutraliser
+    # toutes les dates), le hash de chaque page change SANS que le contenu ait
+    # bougé. Pour ne PAS re-dater tout le site « aujourd'hui » lors du premier
+    # deploy qui suit, on passe en mode migration : on garde la date stockée et
+    # on ne met à jour que le hash. Les deploys suivants retrouvent un
+    # comportement normal.
+    ALGO_VERSION = 2
+    stored_algo = dates_db.get("__meta__", {}).get("algo", 1) if isinstance(dates_db.get("__meta__"), dict) else 1
+    migrating = bool(dates_db) and stored_algo != ALGO_VERSION
+    migrated = 0
+
     for html_file in sorted(output_dir.rglob("*.html")):
         rel = str(html_file.relative_to(output_dir))
         # On exclut les vraies pages dynamiques où la date "build_date" est un
@@ -1386,11 +1397,20 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
         # Hash stable : on neutralise tout ce qui change SANS que le contenu
         # éditorial ait bougé, pour que la date ne soit mise à jour que sur une
         # vraie modif :
-        #   - la date du jour (ISO + FR),
+        #   - TOUTES les dates (ISO + FR), pas seulement celle du jour. Crucial :
+        #     une page ne doit PAS être re-datée parce qu'une AUTRE page citée
+        #     dans son maillage/backlink a changé de date. Sinon une date qui
+        #     bouge en entraîne des dizaines d'autres (cascade), et comme un
+        #     build CI ne tourne qu'une fois, le système ne converge jamais →
+        #     toutes les pages finissent datées « aujourd'hui » à chaque deploy.
         #   - le bloc <style> (changement de CSS/template),
         #   - les anti-cache ?v=… des images,
         #   - le bloc backlink + maillage (rotation backlink, siblings qui bougent).
-        cleaned = html.replace(today_iso, "<<DATE_ISO>>").replace(today_fr, "<<DATE_FR>>")
+        cleaned = _re.sub(r"\d{4}-\d{2}-\d{2}", "<<DATE_ISO>>", html)
+        cleaned = _re.sub(
+            r"\b\d{1,2}\s+(?:janvier|février|mars|avril|mai|juin|juillet|août|"
+            r"septembre|octobre|novembre|décembre)\s+\d{4}",
+            "<<DATE_FR>>", cleaned, flags=_re.I)
         cleaned = _re.sub(r"<style[^>]*>.*?</style>", "<<STYLE>>", cleaned, flags=_re.S)
         cleaned = _re.sub(r"\?v=[0-9a-fA-F]+", "?v=X", cleaned)
         cleaned = _re.sub(
@@ -1411,6 +1431,22 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
                 html_file.write_text(new_html, encoding="utf-8")
                 patched += 1
             new_db[rel] = rec  # on conserve le record tel quel
+        elif rec and migrating:
+            # Migration de l'algo : seule la FORMULE du hash a changé, pas le
+            # contenu. On conserve la date stockée (pas de re-datage), on
+            # remet l'ancienne date dans le HTML, et on enregistre le nouveau
+            # hash pour que les prochains builds matchent directement.
+            old_iso = rec.get("date") or today_iso
+            old_fr = fr_date_fn(old_iso)
+            new_html = html.replace(today_iso, old_iso).replace(today_fr, old_fr)
+            if new_html != html:
+                html_file.write_text(new_html, encoding="utf-8")
+                patched += 1
+            created = rec.get("created") or rec.get("datetime") or rec.get("date")
+            new_db[rel] = {"date": old_iso,
+                           "datetime": rec.get("datetime") or (old_iso + "T00:00"),
+                           "created": created, "hash": h}
+            migrated += 1
         else:
             # Contenu nouveau ou modifié → today devient la nouvelle dateModified.
             # `created` = date de PREMIÈRE publication, figée pour toujours : une
@@ -1424,14 +1460,21 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
             else:
                 new_pages += 1
 
+    # Marqueur de version de l'algo (sert à la migration ci-dessus).
+    new_db["__meta__"] = {"algo": ALGO_VERSION}
+
     # Écriture finale : on sauvegarde le NOUVEAU dict (les pages supprimées
     # disparaissent automatiquement).
     dates_file.write_text(
         json.dumps(new_db, indent=2, sort_keys=True, ensure_ascii=False),
         encoding="utf-8",
     )
-    removed = max(0, len(dates_db) - len(new_db))
+    old_pages = sum(1 for k in dates_db if k != "__meta__")
+    new_pages_count = sum(1 for k in new_db if k != "__meta__")
+    removed = max(0, old_pages - new_pages_count)
     msg_parts = []
+    if migrated:
+        msg_parts.append(f"{migrated} migrée(s) (date conservée)")
     if patched:
         msg_parts.append(f"{patched} datée(s) préservée(s)")
     if updated_pages:
