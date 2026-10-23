@@ -25,7 +25,7 @@
       '<div style="flex:1 1 0%;display:flex;align-items:center;gap:12px">' + logo +
         '<div style="flex:1 1 0%;min-width:0">' +
           '<p style="margin:0;font:500 15px/1.2 Lexend,sans-serif">' + CP.esc(o.marque) + '</p>' +
-          '<p style="margin:2px 0 0;font:400 12px/1.2 Lexend,sans-serif;color:#5B6B84">' + CP.esc(o.categorie || '') + '</p>' +
+          '<p style="margin:2px 0 0;font:400 12px/1.2 Lexend,sans-serif;color:#5B6B84">' + CP.esc(o.categorie || '') + (o.type_prime ? ' · ' + CP.esc(o.type_prime) : '') + '</p>' +
         '</div>' +
         '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">' +
           '<span style="font:600 24px/1 Lexend,sans-serif;letter-spacing:-0.02em">' + (o.montant ? CP.fmtEUR(o.montant) : '') + '</span>' + dontLine(o) + dep +
@@ -47,7 +47,7 @@
         '</span>' +
         '<div style="flex:1 1 0%;min-width:0;filter:blur(5px);user-select:none">' +
           '<p style="margin:0;font:500 15px/1.2 Lexend,sans-serif;color:#5B6B84">Banque Partenaire</p>' +
-          '<p style="margin:2px 0 0;font:400 12px/1.2 Lexend,sans-serif;color:#8A99B1">' + CP.esc(o.categorie || '') + '</p>' +
+          '<p style="margin:2px 0 0;font:400 12px/1.2 Lexend,sans-serif;color:#8A99B1">' + CP.esc(o.categorie || '') + (o.type_prime ? ' · ' + CP.esc(o.type_prime) : '') + '</p>' +
         '</div>' +
         '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">' +
           '<span style="font:600 24px/1 Lexend,sans-serif;letter-spacing:-0.02em;color:#142B4F">' + (o.montant ? CP.fmtEUR(o.montant) : '') + '</span>' + dontLine(o) + dep +
@@ -79,8 +79,7 @@
     if (s) {
       setAll('.cp-total', CP.fmtEUR(s.total_montant));
       setAll('.cp-nodep', CP.fmtEUR(s.total_sans_depot_montant));
-      var total = s.total_offres, nodep = s.total_sans_depot_offres || 0, dep = Math.max(0, total - nodep),
-          locked = (s.verrouillees != null ? s.verrouillees : total);
+      var total = s.total_offres, nodep = s.total_sans_depot_offres || 0, dep = Math.max(0, total - nodep);
       // Compteur "N offres" (header aperçu + bouton) via hook explicite,
       // ce qui préserve l'icône SVG du bouton.
       setAll('.cp-count-total', total);
@@ -91,9 +90,16 @@
         else if (/^Sans dépôt ·/.test(t)) b.textContent = 'Sans dépôt · ' + nodep;
         else if (/^Avec dépôt ·/.test(t)) b.textContent = 'Avec dépôt · ' + dep;
       });
-      // "+ N offres débloquées après inscription"
+      // Bannière "+ N offres débloquées après inscription" = offres NON visibles
+      // dans l'aperçu (qui affiche jusqu'à 6 offres). Masquée si tout est déjà
+      // affiché (sinon on annoncerait des offres cachées qui n'existent pas).
+      var hiddenCount = Math.max(0, total - 6);
       all('span').forEach(function (sp) {
-        if (sp.textContent === 'offres débloquées') { var p = sp.previousElementSibling; if (p) p.textContent = locked; }
+        if (sp.textContent === 'offres débloquées') {
+          var p = sp.previousElementSibling; if (p) p.textContent = hiddenCount;
+          var overlay = sp.parentElement;
+          if (overlay) overlay.style.display = hiddenCount > 0 ? '' : 'none';
+        }
       });
     }
 
