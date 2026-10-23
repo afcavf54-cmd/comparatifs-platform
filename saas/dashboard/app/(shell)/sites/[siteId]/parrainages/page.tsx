@@ -92,17 +92,40 @@ function OfferForm({ offer, siteId, onCancel, onSave }: { offer: Offer; siteId: 
   const set = (k: keyof Offer, v: any) => setO({ ...o, [k]: v })
   const num = (v: string) => (v === '' ? null : Number(v))
 
+  function slugify(s: string) {
+    return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+  }
+  // Upload façon blog/codes-promo : commit du fichier dans le repo
+  // (public/offres-logos/<slug>/) via /api/github/upload. L'URL est servie
+  // depuis le NDD du site (/offres-logos/...). Nécessite un redéploiement du
+  // site pour que l'image soit en ligne.
   async function uploadLogo(file: File) {
+    const base = slugify(o.slug || o.marque || '')
+    if (!base) { alert("Renseigne d'abord la marque avant d'uploader un logo."); if (fileRef.current) fileRef.current.value = ''; return }
     setUploading(true)
     try {
-      const fd = new FormData()
-      fd.append('logo', file)
-      if (o.slug || o.marque) fd.append('slug', (o.slug || o.marque) as string)
-      const r = await fetch(`/api/sites/${siteId}/parrainages/logo`, { method: 'POST', body: fd })
-      const d = await r.json()
-      if (!r.ok) { alert(d.error || 'Upload échoué'); return }
-      setO({ ...o, logo_url: d.url })
-    } catch { alert('Upload échoué') }
+      const ext = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '') || 'png'
+      const filename = `logo.${ext}`
+      const path = `platform/sites/${siteId}/public/offres-logos/${base}/${filename}`
+      const content: string = await new Promise((resolve, reject) => {
+        const rd = new FileReader()
+        rd.onload = () => resolve(String(rd.result).split(',')[1])
+        rd.onerror = reject
+        rd.readAsDataURL(file)
+      })
+      let sha: string | undefined
+      try {
+        const ex = await fetch(`/api/github?path=${encodeURIComponent(path)}`)
+        if (ex.ok) { const ed = await ex.json(); if (ed.sha) sha = ed.sha }
+      } catch { /* création */ }
+      const r = await fetch('/api/github/upload', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path, content, sha, message: `HUB: Upload logo offre ${o.marque} (${base})` }),
+      })
+      if (!r.ok) { const e = await r.json().catch(() => ({})); throw new Error(e.error || `HTTP ${r.status}`) }
+      setO({ ...o, logo_url: `/offres-logos/${base}/${filename}?v=${Date.now().toString(36)}` })
+      alert("Logo uploadé ✓ — enregistre l'offre, puis relance un déploiement du site pour l'afficher.")
+    } catch (e: any) { alert('Upload échoué : ' + (e?.message || 'inconnue')) }
     finally { setUploading(false); if (fileRef.current) fileRef.current.value = '' }
   }
 
