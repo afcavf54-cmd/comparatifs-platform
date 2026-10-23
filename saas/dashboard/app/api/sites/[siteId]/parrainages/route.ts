@@ -39,6 +39,7 @@ export async function POST(req: NextRequest, { params }: { params: { siteId: str
     code_parrainage: body.code_parrainage || null,
     logo_url: body.logo_url || null,
     couleur: body.couleur || null,
+    type_prime: body.type_prime || null,
     nouveau: !!body.nouveau,
     en_avant: !!body.en_avant,
     acces_libre: !!body.acces_libre,
