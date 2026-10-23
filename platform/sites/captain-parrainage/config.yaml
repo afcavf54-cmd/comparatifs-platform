@@ -7,16 +7,6 @@
 # ============================================================
 
 site:
-  comparators_per_day: 2
-  comparators_sheet_csv_url: ""
-  social_tiktok: ""
-  social_instagram: ""
-  social_youtube: ""
-  social_x: ""
-  social_linkedin: ""
-  social_facebook: ""
-  footer_description: ""
-  home_h1: ""
   slug: captain-parrainage
   name: "Captain parrainage"
   domain: "https://captain-parrainage.com"
@@ -31,7 +21,7 @@ site:
   supabase_anon_key: "sb_publishable_hEyZDIt6QnDLn89HVrGUpw_AkvBdnuR"
   blog_slug_format: "clean"
   author_name: "Chloé Petit"
-  home_title: "Captain Parrainage - Les meilleures offres de parrainage"
+  home_title: "Captain Parrainage — parrainages & primes de bienvenue"
   home_description: "Captain Parrainage : les meilleures offres de parrainage et primes de bienvenue, dont certaines sans dépôt. Inscris-toi gratuitement pour débloquer la liste complète."
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index-captain.html.j2"
@@ -128,7 +118,7 @@ persona_prompt: |
   
   Contraintes du lecteur : Budget limité, Peu de connaissances financières, Manque de temps, Méfiance envers les offres trop belles pour être vraies, Refus de bloquer de l'argent inutilement.
   
-  Mets systématiquement en avant les **montants en euros**, les offres accessibles sans dépôt et les démarches nécessaires pour obtenir les primes. Explique clairement les conditions, les délais et les éventuels frais. Ne présente jamais une prime conditionnelle comme un gain garanti.
+  Mets systématiquement en avant les **montants en euros**, les offres récupérables sans dépôt et les démarches nécessaires pour obtenir les primes. Explique clairement les conditions, les délais et les éventuels frais. Ne présente jamais une prime conditionnelle comme un gain garanti.
   
   Utilise des accroches engageantes, des exemples concrets et des appels à l'action naturels. Encourage le lecteur à **s'inscrire gratuitement à la newsletter Captain Parrainage** pour recevoir chaque semaine les meilleures offres et être alerté des primes exceptionnelles.
   
