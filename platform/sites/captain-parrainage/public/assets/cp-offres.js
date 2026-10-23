@@ -73,7 +73,7 @@
         '<div style="display:flex;gap:6px;flex-wrap:wrap">' + badges(o) + '</div></div>' +
       '<div style="padding:14px 0 0;border-top:1px solid #EEF2F7;display:flex;flex-direction:column;gap:8px;filter:blur(3px);user-select:none">' +
         '<span style="height:10px;border-radius:6px;background:#EEF2F7;width:85%"></span><span style="height:10px;border-radius:6px;background:#EEF2F7;width:65%"></span></div>' +
-      '<a href="/#inscription" style="margin-top:auto;text-align:center;padding:11px 20px;border-radius:999px;background:#142B4F;color:#fff;text-transform:uppercase;letter-spacing:0.06em;font:600 13px/1 Lexend,sans-serif">🔒 Débloquer l\'offre</a></li>';
+      '<a href="/inscription/" style="margin-top:auto;text-align:center;padding:11px 20px;border-radius:999px;background:#142B4F;color:#fff;text-transform:uppercase;letter-spacing:0.06em;font:600 13px/1 Lexend,sans-serif">🔒 Débloquer l\'offre</a></li>';
   }
 
   function setStats(s) {
