@@ -92,41 +92,85 @@
     // Offres aperçu (hero) : vraies données. Les offres en accès libre
     // s'affichent avec leur marque (appât) ; les autres en teaser masqué
     // (montant + catégorie visibles, marque cachée) pour créer la frustration.
+    // Les onglets Toutes / Sans dépôt / Avec dépôt filtrent la liste.
     var ul = $('#cpHeroOffers');
     if (ul) {
       var free = [], pub = [];
       try { free = await CP.getOffers(); } catch (e) {}
       try { pub = await CP.getOffersPublic(); } catch (e) {}
       var lockedOffers = pub.filter(function (o) { return !o.acces_libre; });
-      var cards = free.map(heroCard).concat(lockedOffers.map(lockedHeroCard));
-      if (cards.length) ul.innerHTML = cards.slice(0, 6).join('');
+      // Repli : si la RPC teaser ne renvoie rien mais que les stats indiquent
+      // des offres verrouillées, on affiche des cartes verrouillées génériques
+      // (sans montant) pour que la frustration reste visible.
+      if (!lockedOffers.length && s && s.verrouillees > 0) {
+        for (var i = 0; i < s.verrouillees; i++) lockedOffers.push({ _generic: true });
+      }
+      // Liste unifiée {offre, verrouillée, sans_dépôt} pour le filtrage par onglet.
+      var items = free.map(function (o) { return { o: o, locked: false, nodep: !!o.sans_depot }; })
+        .concat(lockedOffers.map(function (o) { return { o: o, locked: true, nodep: !!o.sans_depot }; }));
+
+      function renderHero(filter) {
+        if (!items.length) return;
+        var list = items.filter(function (x) {
+          return filter === 'nodep' ? x.nodep : filter === 'dep' ? !x.nodep : true;
+        });
+        ul.innerHTML = list.length
+          ? list.slice(0, 6).map(function (x) { return x.locked ? lockedHeroCard(x.o) : heroCard(x.o); }).join('')
+          : '<li style="flex:0 0 auto;padding:28px 16px;text-align:center;color:#8A99B1;font:400 14px/1.4 Lexend,sans-serif">Aucune offre dans cette catégorie pour le moment.</li>';
+      }
+
+      // Onglets cliquables (Toutes / Sans dépôt / Avec dépôt)
+      var tabs = [];
+      all('button').forEach(function (b) {
+        var t = (b.textContent || '').trim();
+        if (/^Toutes les offres/.test(t)) tabs.push({ b: b, f: 'all' });
+        else if (/^Sans dépôt/.test(t)) tabs.push({ b: b, f: 'nodep' });
+        else if (/^Avec dépôt/.test(t)) tabs.push({ b: b, f: 'dep' });
+      });
+      function activate(f) {
+        tabs.forEach(function (t) {
+          var on = t.f === f;
+          t.b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          t.b.style.background = on ? 'rgb(20, 43, 79)' : 'rgb(255, 255, 255)';
+          t.b.style.color = on ? 'rgb(255, 255, 255)' : 'rgb(20, 43, 79)';
+          t.b.style.borderColor = on ? 'rgb(20, 43, 79)' : 'rgb(216, 225, 238)';
+        });
+        renderHero(f);
+      }
+      tabs.forEach(function (t) { t.b.addEventListener('click', function () { activate(t.f); }); });
+
+      renderHero('all');
     }
 
-    // Form
-    var form = $('#cpForm');
-    if (form) {
+    // Formulaires d'inscription : on câble TOUS les <form> contenant un champ
+    // email (hero + section basse), de façon générique — sans dépendre des id,
+    // ce qui évite les id dupliqués de la maquette (#cpEmail était cassé).
+    all('form').forEach(function (form) {
+      var email = form.querySelector('input[type="email"]');
+      if (!email) return;
+      var consent = form.querySelector('input[type="checkbox"]');
+      var btn = form.querySelector('button[type="submit"]') || form.querySelector('button');
       form.addEventListener('submit', async function (ev) {
         ev.preventDefault();
-        var email = ($('#cpEmail').value || '').trim();
-        var consent = $('#cpConsent') ? $('#cpConsent').checked : true;
-        var btn = $('#cpBtn');
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { flash('Saisissez une adresse email valide.'); return; }
-        if (!consent) { flash('Cochez la case pour accepter de recevoir nos emails.'); return; }
+        var val = (email.value || '').trim();
+        var ok = consent ? consent.checked : true;
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) { flashIn(form, 'Saisissez une adresse email valide.'); return; }
+        if (!ok) { flashIn(form, 'Cochez la case pour accepter de recevoir nos emails.'); return; }
         var old = btn ? btn.textContent : '';
         if (btn) { btn.disabled = true; btn.textContent = 'Envoi en cours…'; }
         try {
-          await CP.signup(email, consent);
-          form.innerHTML = ''; form.insertAdjacentHTML('afterbegin', successPanel(email));
+          await CP.signup(val, ok);
+          form.innerHTML = ''; form.insertAdjacentHTML('afterbegin', successPanel(val));
         } catch (e) {
-          flash((e && e.message) || 'Une erreur est survenue, réessayez.');
+          flashIn(form, (e && e.message) || 'Une erreur est survenue, réessayez.');
           if (btn) { btn.disabled = false; btn.textContent = old; }
         }
       });
-    }
+    });
   }
 
-  function flash(msg) {
-    var form = document.getElementById('cpForm'); if (!form) { alert(msg); return; }
+  function flashIn(form, msg) {
+    if (!form) { alert(msg); return; }
     var el = form.querySelector('.cp-flash');
     if (!el) { el = document.createElement('div'); el.className = 'cp-flash'; el.style.cssText = 'font:500 13px/1.4 Lexend,sans-serif;color:#D90F22;background:#FDE7E8;border-radius:12px;padding:10px 12px'; form.appendChild(el); }
     el.textContent = msg;
