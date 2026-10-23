@@ -52,20 +52,28 @@
       '</div></li>';
   }
 
-  // Carte "verrouillée" façon maquette : catégorie + montant visibles, marque+lien masqués.
+  // Carte "verrouillée" : vraie carte avec marque + logo + conditions FLOUTÉS
+  // (on n'a pas la marque/le lien côté anonyme), montant/catégorie/badges nets.
+  // Se "défloute" automatiquement une fois connecté : la page affiche alors la
+  // carte complète (fullCard) à la place.
   function lockedTeaser(o) {
-    var lock = '<span aria-hidden="true" style="flex:0 0 auto;width:48px;height:48px;border-radius:50%;background:#EEF2F7;color:#5B6B84;display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>';
-    return '<li style="background:#fff;border-radius:24px;padding:22px;border:1px solid #E6ECF4;box-shadow:0 8px 24px rgba(8,32,68,0.06);display:flex;flex-direction:column;gap:16px;opacity:.92">' +
-      '<div style="display:flex;align-items:center;gap:12px">' + lock +
-        '<div style="flex:1 1 0%;min-width:0"><p style="margin:0;font:500 16px/1.25 Lexend,sans-serif;color:#4A5B76">Offre visible après inscription</p>' +
-        '<p style="margin:3px 0 0;font:400 13px/1.3 Lexend,sans-serif;color:#5B6B84">' + CP.esc(o.categorie || '') + typeTag(o) + '</p></div></div>' +
+    var logo = '<span style="position:relative;flex:0 0 auto;width:48px;height:48px;display:block">' +
+        '<span style="position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,#9fb2cf,#c9d6e8);filter:blur(6px)"></span>' +
+        '<span style="position:absolute;inset:0;display:grid;place-items:center;color:#142B4F"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>' +
+      '</span>';
+    return '<li data-cat="' + CP.esc(o.categorie || 'Autres') + '" style="background:#fff;border-radius:24px;padding:22px;border:1px solid #E6ECF4;box-shadow:0 8px 24px rgba(8,32,68,0.06);display:flex;flex-direction:column;gap:16px">' +
+      '<div style="display:flex;align-items:center;gap:12px">' + logo +
+        '<div style="flex:1 1 0%;min-width:0">' +
+          '<h2 style="margin:0;font:500 17px/1.25 Lexend,sans-serif;color:#8A99B1;filter:blur(5px);user-select:none">Banque Partenaire</h2>' +
+          '<p style="margin:3px 0 0;font:400 13px/1.3 Lexend,sans-serif;color:#5B6B84">' + CP.esc(o.categorie || '') + typeTag(o) + '</p></div>' +
+      '</div>' +
       '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap">' +
         '<div><p style="margin:0 0 4px;font:400 13px/1.3 Lexend,sans-serif;color:#5B6B84">Prime jusqu\'à</p>' +
         '<p style="margin:0;font:500 40px/1 Lexend,sans-serif;letter-spacing:-0.02em">' + (o.montant ? CP.fmtEUR(o.montant) : '•••') + '</p>' + dontLine(o) + '</div>' +
         '<div style="display:flex;gap:6px;flex-wrap:wrap">' + badges(o) + '</div></div>' +
-      '<div style="padding:14px 0 0;border-top:1px solid #EEF2F7;display:flex;flex-direction:column;gap:8px">' +
+      '<div style="padding:14px 0 0;border-top:1px solid #EEF2F7;display:flex;flex-direction:column;gap:8px;filter:blur(3px);user-select:none">' +
         '<span style="height:10px;border-radius:6px;background:#EEF2F7;width:85%"></span><span style="height:10px;border-radius:6px;background:#EEF2F7;width:65%"></span></div>' +
-      '<a href="/#inscription" style="margin-top:auto;text-align:center;padding:11px 20px;border-radius:999px;border:1.5px solid #142B4F;background:#fff;color:#142B4F;text-transform:uppercase;letter-spacing:0.06em;font:600 13px/1 Lexend,sans-serif">Débloquer l\'offre</a></li>';
+      '<a href="/#inscription" style="margin-top:auto;text-align:center;padding:11px 20px;border-radius:999px;background:#142B4F;color:#fff;text-transform:uppercase;letter-spacing:0.06em;font:600 13px/1 Lexend,sans-serif">🔒 Débloquer l\'offre</a></li>';
   }
 
   function setStats(s) {
@@ -76,8 +84,6 @@
     all('.cp-count').forEach(function (e) { e.textContent = total; });
     all('.cp-free').forEach(function (e) { e.textContent = free; });
     all('.cp-locked').forEach(function (e) { e.textContent = locked; });
-    // Section "offres à débloquer" masquée s'il n'y a aucune offre verrouillée.
-    var deb = $('#debloquer'); if (deb) deb.style.display = locked > 0 ? '' : 'none';
   }
 
   function renderFilters(offers, onPick) {
@@ -100,8 +106,9 @@
   async function boot() {
     if (!window.CP) return;
     var session = null; try { session = await CP.getSession(); } catch (e) {}
+    // L'espace membre exige une connexion. La page publique NE redirige PLUS :
+    // elle affiche tout et "défloute" sur place dès qu'on est connecté.
     if (MODE === 'member' && !session) { window.location.href = '/connexion/'; return; }
-    if (MODE !== 'member' && session) { window.location.href = '/membre/'; return; }
 
     var s = null; try { s = await CP.getStats(); } catch (e) {}
     setStats(s);
@@ -109,13 +116,17 @@
     var grid = $('#cpOffresList');
     var lockedGrid = $('#cpLockedList');
     var offers = [], teasers = [];
-    if (MODE === 'member') {
+    if (session) {
+      // Connecté : accès complet, toutes les offres en clair (RLS : authenticated voit tout).
       try { offers = await CP.getOffers(); } catch (e) {}
     } else {
       try { offers = await CP.getOffers(); } catch (e) {}            // acces_libre (complètes)
-      try { teasers = await CP.getOffersPublic(); } catch (e) {}      // toutes (teaser), on garde les verrouillées
+      try { teasers = await CP.getOffersPublic(); } catch (e) {}      // toutes (teaser), on garde les verrouillées → floutées
       teasers = teasers.filter(function (o) { return !o.acces_libre; });
     }
+    // Section "débloquer la liste" : seulement pour les visiteurs non connectés
+    // ayant des offres verrouillées à débloquer.
+    var deb = $('#debloquer'); if (deb) deb.style.display = (!session && teasers.length > 0) ? '' : 'none';
     var cats = offers.concat(teasers);
     function paint(filter) {
       if (grid) {
