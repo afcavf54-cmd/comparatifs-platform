@@ -47,7 +47,7 @@ export default function MembresPage() {
 
   return (
     <div style={{ maxWidth: 900, margin: '0 auto', padding: '20px 24px', color: '#fff' }}>
-      <Link href={`/sites/${siteId}/parrainages`} style={{ color: '#8B9CB0', textDecoration: 'none', fontSize: 13 }}>← Offres de parrainage</Link>
+      <Link href={`/sites/${siteId}`} style={{ color: '#8B9CB0', textDecoration: 'none', fontSize: 13 }}>← {siteId}</Link>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '12px 0 20px', gap: 12, flexWrap: 'wrap' }}>
         <h1 style={{ fontSize: 22, margin: 0 }}>👤 Membres inscrits</h1>
         <button onClick={exportCsv} style={btn('#1E2D3D')} disabled={!members.length}>⬇ Exporter CSV</button>
