@@ -33,7 +33,7 @@ export default function ParrainagesNewsletter() {
 
   return (
     <div style={{ maxWidth: 760, margin: '0 auto', padding: '20px 24px', color: '#fff' }}>
-      <Link href={`/sites/${siteId}/parrainages`} style={{ color: '#8B9CB0', textDecoration: 'none', fontSize: 13 }}>← Offres de parrainage</Link>
+      <Link href={`/sites/${siteId}`} style={{ color: '#8B9CB0', textDecoration: 'none', fontSize: 13 }}>← {siteId}</Link>
       <h1 style={{ fontSize: 22, margin: '12px 0 20px' }}>✉️ Newsletter parrainage</h1>
 
       <div style={card}>
