@@ -18,6 +18,13 @@
     '</a>';
   }
 
+  function icon(href, label, paths) {
+    return '<a href="' + href + '" title="' + label + '" aria-label="' + label + '" style="display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;color:#fff;border:1px solid rgba(255,255,255,0.22);text-decoration:none;flex:0 0 auto">' +
+      '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + paths + '</svg></a>';
+  }
+  var ICON_LOGIN = '<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line>';
+  var ICON_SIGNUP = '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="16" y1="11" x2="22" y2="11"></line>';
+
   function header() {
     var nav = LINKS.map(function (l) {
       var active = (l.href.replace(/\/+$/, '') || '/') === path;
@@ -30,7 +37,11 @@
       '<div style="max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px);height:76px;display:flex;align-items:center;gap:clamp(16px,3vw,40px)">' +
         logoHTML(42) +
         '<nav class="cp-chrome-nav" aria-label="Navigation principale" style="flex:0 0 auto;white-space:nowrap;display:flex;gap:32px;font:600 13px/1 Lexend,sans-serif;text-transform:uppercase;letter-spacing:0.08em;background:transparent;position:static;height:auto;padding:0;top:auto">' + nav + '</nav>' +
-        '<a href="/inscription/" style="margin-left:auto;flex:0 0 auto;display:inline-flex;align-items:center;height:44px;padding:0 clamp(14px,3vw,20px);border-radius:999px;background:#F9BD43;color:#082044;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;font:600 13px/1 Lexend,sans-serif;white-space:nowrap">Recevoir les offres gratuites</a>' +
+        '<div style="margin-left:auto;flex:0 0 auto;display:flex;align-items:center;gap:10px">' +
+          '<a href="/inscription/" style="display:inline-flex;align-items:center;height:44px;padding:0 clamp(14px,3vw,20px);border-radius:999px;background:#F9BD43;color:#082044;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;font:600 13px/1 Lexend,sans-serif;white-space:nowrap">Recevoir les offres gratuites</a>' +
+          icon('/inscription/', 'S\'inscrire', ICON_SIGNUP) +
+          icon('/connexion/', 'Se connecter', ICON_LOGIN) +
+        '</div>' +
       '</div>';
     return h;
   }
