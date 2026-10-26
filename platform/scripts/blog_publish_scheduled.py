@@ -41,6 +41,10 @@ Format attendu du CSV (colonnes) :
     nombre_mots_minimum  (optionnel, défaut 750, plage 300-3000)
     link_anchors       (optionnel)
     mots_imposes       (optionnel)
+    lien_affiliation   (optionnel) — si renseigné, active automatiquement le
+                       sticky CTA de l'article avec ce lien (rel nofollow
+                       sponsored). Colonne vide = sticky CTA désactivé.
+                       Alias acceptés : cta_link, lien_cta, lien_affilie.
 
 Format de slug : cf. blog_slug_format dans config.yaml ('prefix' | 'clean').
 Global prompt : cf. thematic | blog_global_prompt | schema fallback.
@@ -708,6 +712,22 @@ def _save_processed(processed_file: Path, processed: list) -> None:
     )
 
 
+def _cta_link_from_row(row: dict) -> tuple[bool, str]:
+    """Lien d'affiliation / CTA d'une ligne de sheet.
+    Retourne (colonne_presente, lien). `colonne_presente` est True seulement si
+    une des colonnes CTA existe dans la sheet (pour ne pas toucher les sites qui
+    n'ont pas la colonne). `lien` est la 1re valeur non vide trouvée."""
+    keys = ("lien_affiliation", "cta_link", "lien_cta", "lien_affilie", "lien_affiliate", "affiliation")
+    present = any(k in row for k in keys)
+    link = ""
+    for k in keys:
+        v = (row.get(k) or "").strip()
+        if v:
+            link = v
+            break
+    return present, link
+
+
 def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
     if not posts_dir.exists() or not rows:
         return 0
@@ -762,6 +782,21 @@ def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
         if new_meta_title and fm.get('meta_title') != new_meta_title:
             fm['meta_title'] = new_meta_title
             changed = True
+        # Lien d'affiliation → sticky CTA. On n'agit que si la colonne existe
+        # dans la sheet (sinon on ne touche pas aux CTA des autres sites).
+        cta_present, cta_val = _cta_link_from_row(row)
+        if cta_present:
+            if cta_val:
+                if fm.get('cta_link') != cta_val or not fm.get('cta_enabled'):
+                    fm['cta_link'] = cta_val
+                    fm['cta_enabled'] = True
+                    changed = True
+            else:
+                # Colonne présente mais vide → on désactive le sticky CTA.
+                if fm.get('cta_enabled') or fm.get('cta_link'):
+                    fm['cta_enabled'] = False
+                    fm.pop('cta_link', None)
+                    changed = True
         if changed:
             write_post(md_path, fm, body)
             n_synced += 1
@@ -1001,6 +1036,11 @@ def process_site(site_id: str, site_dir: Path, config: dict,
             anchors_parsed = _parse_anchors_csv(link_anchors_raw)
             if anchors_parsed:
                 fm["link_anchors"] = anchors_parsed
+        # Lien d'affiliation (colonne sheet) → active automatiquement le sticky CTA.
+        _, _cta_link_val = _cta_link_from_row(row)
+        if _cta_link_val:
+            fm["cta_link"] = _cta_link_val
+            fm["cta_enabled"] = True
         write_post(posts_dir / f"{slug}.md", fm, html)
         existing_slugs.add(slug)
         existing_titles_normalized.add(title_normalized)  # évite un doublon si le même titre revient dans le même run
