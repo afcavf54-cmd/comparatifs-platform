@@ -19,6 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 featured_image: /blog/5941-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto.jpg
+related_posts:
+- 2366-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
+- 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
 ---
 <p>Je vais vous parler de Waltio. Pas parce que j'ai reçu une invitation à tester la plateforme gratuitement, pas parce que quelqu'un me l'a recommandé lors d'un webinaire. Mais parce que j'ai passé deux saisons fiscales à chercher un outil qui me permette de ne pas passer mes nuits à reconstruire des historiques de transactions à la main. Et que j'ai fini par atterrir dessus après avoir testé plusieurs alternatives.</p>
 
