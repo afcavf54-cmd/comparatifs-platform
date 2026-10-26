@@ -108,6 +108,13 @@ def slugify(text: str) -> str:
     return s or "article"
 
 
+def _strip_year(text: str) -> str:
+    """Retire TOUS les placeholders ({year}, {Month}, {month_num}, ...) du texte
+    servant à construire le slug : on ne veut JAMAIS de date dans l'URL (le titre
+    affiché, lui, garde ses placeholders une fois substitués)."""
+    return re.sub(r"\{[^}]*\}", " ", text or "")
+
+
 def assign_slug(slug: str, existing: set[str], use_prefix: bool = True) -> str:
     if not use_prefix:
         if slug not in existing:
@@ -976,7 +983,10 @@ def process_site(site_id: str, site_dir: Path, config: dict,
             continue
 
         manual_slug = row.get("slug", "").strip()
-        slug = assign_slug(slugify(manual_slug or title), existing_slugs, use_prefix=use_prefix)
+        # Jamais d'année dans l'URL : on construit le slug depuis le titre BRUT
+        # (row 'titre', avant substitution de {year}) en retirant {year}.
+        slug_src = _strip_year(manual_slug or row.get("titre", "").strip())
+        slug = assign_slug(slugify(slug_src), existing_slugs, use_prefix=use_prefix)
 
         min_words = 750
         try:
