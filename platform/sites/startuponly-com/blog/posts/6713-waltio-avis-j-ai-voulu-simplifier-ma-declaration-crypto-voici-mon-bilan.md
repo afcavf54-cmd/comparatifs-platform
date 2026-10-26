@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
+- 9148-waltio-avis-j-ai-voulu-simplifier-ma-declaration-crypto-voici-mon-bilan
 - 3523-waltio-avis-j-ai-voulu-simplifier-ma-declaration-crypto-voici-mon-bilan
 ---
 <p>J'utilise des cryptos depuis un moment. Pas de manière intense, mais assez pour que la déclaration fiscale devienne une vraie source de stress chaque année. Entre les exchanges multiples, les wallets, les swaps et les staking rewards, reconstituer l'historique de toutes mes opérations à la main... c'est une perte de temps colossale.</p>
