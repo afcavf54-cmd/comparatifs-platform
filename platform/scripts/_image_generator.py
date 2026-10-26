@@ -130,18 +130,17 @@ def _build_prompt(site_name: str, primary_color: str, secondary_color: str,
  labels, no captions, no watermarks. Pure visual illustration only."""
 
 
-def _call_openai_gpt_image(prompt: str) -> bytes:
-    """Appelle OpenAI gpt-image-1 en quality 'low' et retourne les bytes PNG.
-    Lève RuntimeError en cas d'erreur API."""
+def _call_openai_image(model: str, prompt: str, size: str, quality: str) -> bytes:
+    """Appelle l'API images d'OpenAI pour un modèle donné et retourne les bytes
+    PNG. Lève RuntimeError en cas d'erreur API."""
     if not OPENAI_API_KEY:
         raise RuntimeError("OPENAI_API_KEY manquante")
-    body = json.dumps({
-        "model": OPENAI_MODEL,
-        "prompt": prompt,
-        "size": "1536x1024",   # paysage, idéal featured image
-        "quality": "medium",   # bon compromis qualité/coût (~$0.042/image)
-        "n": 1,
-    }).encode("utf-8")
+    payload = {"model": model, "prompt": prompt, "size": size, "quality": quality, "n": 1}
+    # gpt-image-1 renvoie toujours du b64 et REFUSE response_format ; les autres
+    # modèles (dall-e-3) ont besoin de response_format=b64_json.
+    if model != "gpt-image-1":
+        payload["response_format"] = "b64_json"
+    body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         "https://api.openai.com/v1/images/generations",
         data=body,
@@ -152,16 +151,15 @@ def _call_openai_gpt_image(prompt: str) -> bytes:
         method="POST",
     )
     try:
-        # Timeout généreux : gpt-image-1 peut prendre 30-60s
         with urllib.request.urlopen(req, timeout=180) as resp:
-            payload = json.loads(resp.read().decode("utf-8"))
+            data_resp = json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         err_body = e.read().decode("utf-8", errors="replace")
         raise RuntimeError(f"OpenAI HTTP {e.code} : {err_body[:300]}")
     except Exception as e:
         raise RuntimeError(f"OpenAI appel échoué : {e}")
 
-    data = payload.get("data") or []
+    data = data_resp.get("data") or []
     if not data:
         raise RuntimeError("OpenAI : réponse sans 'data'")
     b64 = data[0].get("b64_json")
@@ -214,17 +212,27 @@ def generate_featured_image(
         return None
     prompt = _build_prompt(site_name, primary_color, secondary_color,
                            cta_color, article_title)
-    # Retry : un échec transitoire (timeout, rate limit, 5xx) ne doit pas
-    # laisser l'article sans image. 3 tentatives avec backoff.
+    # Stratégie de repli : on tente d'abord gpt-image-1 (meilleur rendu). S'il
+    # échoue de façon répétée — cas le plus fréquent : l'organisation OpenAI
+    # n'est pas "vérifiée" et gpt-image-1 renvoie un 403 systématique — on
+    # bascule sur dall-e-3, qui ne demande pas de vérification d'organisation.
+    # Chaque modèle a 2 tentatives (gère aussi les timeouts/rate limits/5xx).
+    models = [
+        ("gpt-image-1", "1536x1024", "medium"),
+        ("dall-e-3",    "1792x1024", "standard"),
+    ]
     last_err = None
-    for attempt in range(3):
-        try:
-            png_bytes = _call_openai_gpt_image(prompt)
-            return _png_to_jpg_with_exif(png_bytes)
-        except Exception as e:
-            last_err = e
-            if attempt < 2:
-                print(f"   ⚠ Image : tentative {attempt + 1}/3 échouée ({e}) — nouvel essai…")
-                time.sleep(4 * (attempt + 1))
-    print(f"   ⚠ Image : génération échouée après 3 tentatives : {last_err}")
+    for model, size, quality in models:
+        for attempt in range(2):
+            try:
+                png_bytes = _call_openai_image(model, prompt, size, quality)
+                if model != OPENAI_MODEL:
+                    print(f"   ℹ Image : générée via {model} (repli)")
+                return _png_to_jpg_with_exif(png_bytes)
+            except Exception as e:
+                last_err = e
+                print(f"   ⚠ Image : {model} tentative {attempt + 1}/2 échouée ({e})")
+                if attempt < 1:
+                    time.sleep(4 * (attempt + 1))
+    print(f"   ⚠ Image : génération échouée (tous modèles) : {last_err}")
     return None
