@@ -76,8 +76,20 @@ import yaml
 try:
     sys.path.insert(0, str(Path(__file__).parent))
     from _image_generator import generate_featured_image  # type: ignore
-except Exception:
+except Exception as _img_import_err:
     generate_featured_image = None  # type: ignore
+    # Un échec d'import (dépendance pillow/piexif manquante p.ex.) désactive la
+    # génération d'image sur TOUS les articles, silencieusement. On le rend
+    # visible : log + résumé du run GitHub Actions.
+    _msg = f"Image : module _image_generator non importé ({_img_import_err}) — AUCUNE image ne sera générée. Vérifier que pillow + piexif sont installés dans le workflow."
+    print(f"⚠ {_msg}")
+    _gh_summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    if _gh_summary:
+        try:
+            with open(_gh_summary, "a", encoding="utf-8") as _fh:
+                _fh.write(f"- 🖼️ {_msg}\n")
+        except Exception:
+            pass
 
 ROOT = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
