@@ -19,6 +19,7 @@ cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
 - 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
+- 2308-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
 ---
 <p>Je vais être honnête avec vous : j'avais une certaine méfiance vis-à-vis des outils dédiés à la fiscalité crypto. Après huit ans à gérer une agence, j'ai vu défiler des dizaines de logiciels qui promettent de "simplifier" quelque chose, pour finalement vous obliger à passer trois heures avec votre expert-comptable à expliquer ce que le logiciel a généré. Waltio, je l'ai testé parce qu'on m'en a parlé dans un groupe de dirigeants. Pas parce que j'y croyais particulièrement.</p>
 
