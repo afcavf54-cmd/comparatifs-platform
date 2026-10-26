@@ -144,16 +144,34 @@ def _build_prompt(site_name: str, primary_color: str, secondary_color: str,
  labels, no captions, no watermarks. Pure visual illustration only."""
 
 
+class _OpenAIImageError(RuntimeError):
+    """Erreur d'appel image OpenAI, portant le code HTTP (ou None pour une
+    erreur réseau) afin de distinguer un échec DÉFINITIF (400/401/403/404 :
+    modèle indispo, clé invalide, paramètre refusé — inutile de réessayer) d'un
+    échec TRANSITOIRE (429, 5xx, timeout — à réessayer)."""
+    def __init__(self, status, message):
+        super().__init__(message)
+        self.status = status
+
+
+def _http_get_bytes(url: str, timeout: int = 120) -> bytes:
+    """Télécharge le contenu binaire d'une URL (image renvoyée par dall-e-3)."""
+    req = urllib.request.Request(url, method="GET")
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.read()
+
+
 def _call_openai_image(model: str, prompt: str, size: str, quality: str) -> bytes:
     """Appelle l'API images d'OpenAI pour un modèle donné et retourne les bytes
-    PNG. Lève RuntimeError en cas d'erreur API."""
+    de l'image. Gère les deux formats de réponse :
+      - gpt-image-1 : renvoie TOUJOURS du b64_json (pas de response_format).
+      - dall-e-3    : renvoie une URL par défaut → on télécharge l'image.
+    On n'envoie JAMAIS 'response_format' : dall-e-3 le refuse sur ce compte
+    (erreur 400 'Unknown parameter'), et gpt-image-1 ne l'accepte pas non plus.
+    Lève _OpenAIImageError (avec code HTTP) en cas d'erreur."""
     if not OPENAI_API_KEY:
-        raise RuntimeError("OPENAI_API_KEY manquante")
+        raise _OpenAIImageError(None, "OPENAI_API_KEY manquante")
     payload = {"model": model, "prompt": prompt, "size": size, "quality": quality, "n": 1}
-    # gpt-image-1 renvoie toujours du b64 et REFUSE response_format ; les autres
-    # modèles (dall-e-3) ont besoin de response_format=b64_json.
-    if model != "gpt-image-1":
-        payload["response_format"] = "b64_json"
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         "https://api.openai.com/v1/images/generations",
@@ -169,17 +187,24 @@ def _call_openai_image(model: str, prompt: str, size: str, quality: str) -> byte
             data_resp = json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         err_body = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"OpenAI HTTP {e.code} : {err_body[:300]}")
+        raise _OpenAIImageError(e.code, f"HTTP {e.code} : {err_body[:300]}")
     except Exception as e:
-        raise RuntimeError(f"OpenAI appel échoué : {e}")
+        raise _OpenAIImageError(None, f"appel échoué : {e}")
 
     data = data_resp.get("data") or []
     if not data:
-        raise RuntimeError("OpenAI : réponse sans 'data'")
-    b64 = data[0].get("b64_json")
-    if not b64:
-        raise RuntimeError("OpenAI : pas de b64_json dans data[0]")
-    return base64.b64decode(b64)
+        raise _OpenAIImageError(None, "réponse sans 'data'")
+    item = data[0]
+    b64 = item.get("b64_json")
+    if b64:
+        return base64.b64decode(b64)
+    url = item.get("url")
+    if url:
+        try:
+            return _http_get_bytes(url)
+        except Exception as e:
+            raise _OpenAIImageError(None, f"téléchargement de l'image échoué : {e}")
+    raise _OpenAIImageError(None, "ni b64_json ni url dans data[0]")
 
 
 def _png_to_jpg_with_exif(png_bytes: bytes, jpeg_quality: int = 85) -> bytes:
@@ -226,27 +251,42 @@ def generate_featured_image(
         return None
     prompt = _build_prompt(site_name, primary_color, secondary_color,
                            cta_color, article_title)
-    # Stratégie de repli : on tente d'abord gpt-image-1 (meilleur rendu). S'il
-    # échoue de façon répétée — cas le plus fréquent : l'organisation OpenAI
-    # n'est pas "vérifiée" et gpt-image-1 renvoie un 403 systématique — on
-    # bascule sur dall-e-3, qui ne demande pas de vérification d'organisation.
-    # Chaque modèle a 2 tentatives (gère aussi les timeouts/rate limits/5xx).
-    models = [
-        ("gpt-image-1", "1536x1024", "medium"),
-        ("dall-e-3",    "1792x1024", "standard"),
-    ]
+    # Liste des modèles tentés, dans l'ordre. gpt-image-1 donne le meilleur
+    # rendu MAIS exige une organisation OpenAI "vérifiée" (sinon "model does
+    # not exist") ; dall-e-3 fonctionne sans vérification. On tente donc
+    # gpt-image-1 puis dall-e-3 en repli. Pilotable sans toucher au code via
+    # l'env OPENAI_IMAGE_MODELS (ex: "dall-e-3" pour sauter gpt-image-1, ou
+    # "gpt-image-1,dall-e-3"). Un échec DÉFINITIF (400/401/403/404) passe
+    # immédiatement au modèle suivant, sans réessayer inutilement.
+    _params = {
+        "gpt-image-1": ("1536x1024", "medium"),
+        "dall-e-3":    ("1792x1024", "standard"),
+    }
+    _env_models = os.environ.get("OPENAI_IMAGE_MODELS", "").strip()
+    if _env_models:
+        names = [m.strip() for m in _env_models.split(",") if m.strip()]
+    else:
+        names = ["gpt-image-1", "dall-e-3"]
+    models = [(n, *_params.get(n, ("1024x1024", "standard"))) for n in names]
+
+    PERMANENT = {400, 401, 403, 404}
     last_err = None
     for model, size, quality in models:
         for attempt in range(2):
             try:
                 png_bytes = _call_openai_image(model, prompt, size, quality)
-                if model != OPENAI_MODEL:
+                if model != names[0]:
                     print(f"   ℹ Image : générée via {model} (repli)")
                 return _png_to_jpg_with_exif(png_bytes)
             except Exception as e:
                 last_err = e
-                print(f"   ⚠ Image : {model} tentative {attempt + 1}/2 échouée ({e})")
+                status = getattr(e, "status", None)
+                print(f"   ⚠ Image : {model} échec ({e})")
+                if status in PERMANENT:
+                    # Indispo / clé / paramètre refusé : inutile de réessayer
+                    # ce modèle, on passe au suivant.
+                    break
                 if attempt < 1:
                     time.sleep(4 * (attempt + 1))
-    _report_diag(f"Image : génération échouée (gpt-image-1 ET dall-e-3). Dernière erreur OpenAI : {last_err}")
+    _report_diag(f"Image : génération échouée sur tous les modèles ({', '.join(names)}). Dernière erreur OpenAI : {last_err}")
     return None
