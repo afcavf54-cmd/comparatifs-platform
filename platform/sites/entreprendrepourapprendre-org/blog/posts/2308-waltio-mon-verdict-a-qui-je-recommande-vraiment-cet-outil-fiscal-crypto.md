@@ -18,6 +18,9 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 featured_image: /blog/2308-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto.jpg
+related_posts:
+- 9774-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
+- 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
 ---
 <p>J'avoue que je n'avais pas vraiment prévu de tester Waltio sérieusement. Au départ, c'était juste un outil qu'une connaissance m'avait mentionné lors d'un déjeuner professionnel, entre deux conversations sur la gestion de trésorerie. Et puis la période fiscale est arrivée, avec ses lots de questions auxquelles je ne savais pas vraiment répondre : comment déclarer les quelques opérations crypto que j'avais faites à titre personnel ? Est-ce que mon comptable pouvait s'en charger facilement ? Est-ce que j'avais gardé les bons justificatifs ?</p>
 
