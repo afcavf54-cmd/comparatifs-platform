@@ -19,6 +19,7 @@ import base64
 import io
 import json
 import os
+import time
 import urllib.request
 import urllib.error
 from datetime import datetime, timedelta
@@ -211,12 +212,19 @@ def generate_featured_image(
     if not OPENAI_API_KEY:
         print("   ⚠ Image : OPENAI_API_KEY manquante, skip")
         return None
-    try:
-        prompt = _build_prompt(site_name, primary_color, secondary_color,
-                                cta_color, article_title)
-        png_bytes = _call_openai_gpt_image(prompt)
-        jpg_bytes = _png_to_jpg_with_exif(png_bytes)
-        return jpg_bytes
-    except Exception as e:
-        print(f"   ⚠ Image : génération échouée : {e}")
-        return None
+    prompt = _build_prompt(site_name, primary_color, secondary_color,
+                           cta_color, article_title)
+    # Retry : un échec transitoire (timeout, rate limit, 5xx) ne doit pas
+    # laisser l'article sans image. 3 tentatives avec backoff.
+    last_err = None
+    for attempt in range(3):
+        try:
+            png_bytes = _call_openai_gpt_image(prompt)
+            return _png_to_jpg_with_exif(png_bytes)
+        except Exception as e:
+            last_err = e
+            if attempt < 2:
+                print(f"   ⚠ Image : tentative {attempt + 1}/3 échouée ({e}) — nouvel essai…")
+                time.sleep(4 * (attempt + 1))
+    print(f"   ⚠ Image : génération échouée après 3 tentatives : {last_err}")
+    return None
