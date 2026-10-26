@@ -18,11 +18,7 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5295123365T&subid=editions-d
 cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
-related_posts:
-- 1015-bordereau-de-situation-fiscale-modele-p-237-a-quoi-sert-il-et-comment-l-obtenir
-- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
-- 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
-- 6786-waltio-avis-les-difficultes-que-j-ai-identifiees-avant-de-declarer-mes-cryptos
+featured_image: /blog/7348-waltio-avis-les-difficultes-que-j-ai-identifiees-avant-de-declarer-mes-cryptos.jpg
 ---
 <p>J'ai mis plusieurs semaines à tester Waltio sérieusement avant de valider quoi que ce soit pour ma déclaration fiscale. Pas par plaisir, mais parce que j'avais besoin d'un outil fiable, simple, et pas trop cher. Mon équipe n'a pas de compétences comptables avancées, et moi-même je ne suis pas expert en crypto. Autant dire que j'ai abordé ça sans filet.</p>
 
@@ -270,3 +266,4 @@ related_posts:
 <p>L'outil a une vraie utilité pour les profils simples. <strong>Pour 49€ à 99€ par an</strong>, c'est un investissement qui se justifie si ça vous évite plusieurs heures de calcul manuel et des erreurs de déclaration. Sur ce critère-là, le rapport qualité/prix tient la route.</p>
 
 <p>Mais gardez les yeux ouverts sur ce que l'outil ne fait pas. C'est souvent ça qui fait la différence entre une déclaration sereine et une nuit blanche en avril.</p>
+

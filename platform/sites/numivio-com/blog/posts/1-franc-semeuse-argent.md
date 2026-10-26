@@ -2,13 +2,13 @@
 title: 1 Franc Semeuse argent
 slug: 1-franc-semeuse-argent
 date: 2026-08-10 16:06:51+02:00
-updated: 2026-08-10T16:06:51
+updated: 2026-08-10 16:06:51
 categorie: blog
 categories:
 - blog
-meta_title: ""
+meta_title: ''
 meta_description: Découvrez la 1 Franc Semeuse argent, pièce emblématique de la numismatique française gravée par Roty. Histoire, variantes et valeur de ce trésor républicain.
-featured_image: ""
+featured_image: /blog/1-franc-semeuse-argent.jpg
 status: draft
 min_words: 800
 show_toc: true
@@ -62,3 +62,4 @@ show_toc: true
 </ul>
 
 <p>Pour le suivi de mes positions en 1 Franc Semeuse argent, j'utilise Numivio, qui me permet de connaître à tout moment la valeur réelle de mes pièces en fonction du cours spot de l'argent, mon prix de revient moyen et la performance globale de cette ligne de mon portefeuille. C'est précisément ce type de pièce, accessible, liquide localement et porteuse d'histoire, qui mérite d'être suivie rigoureusement plutôt que sous-estimée dans un patrimoine de métaux précieux.</p>
+

@@ -1,14 +1,14 @@
 ---
-title: "Entretien professionnel : obligations, fréquence et déroulement"
+title: 'Entretien professionnel : obligations, fréquence et déroulement'
 slug: entretien-professionnel-obligations-frequence-et-deroulement
 date: 2026-09-11 13:47:40+02:00
-updated: 2026-09-11T13:47:40
+updated: 2026-09-11 13:47:40
 categorie: Ressources Humaines
 categories:
 - Ressources Humaines
-meta_title: ""
-meta_description: "Entretien professionnel obligatoire tous les 2 ans : découvrez les règles, le déroulement et les sanctions encourues en cas de non-respect pour votre entreprise."
-featured_image: ""
+meta_title: ''
+meta_description: 'Entretien professionnel obligatoire tous les 2 ans : découvrez les règles, le déroulement et les sanctions encourues en cas de non-respect pour votre entreprise.'
+featured_image: /blog/entretien-professionnel-obligations-frequence-et-deroulement.jpg
 status: draft
 min_words: 1400
 show_toc: true
@@ -171,3 +171,4 @@ show_toc: true
 <p>Le dernier point est souvent le point faible. On sait que l'entretien a eu lieu. On ne sait plus ce qui en est sorti six mois plus tard.</p>
 
 <p>C'est un travail de fond, pas spectaculaire, mais qui compte vraiment quand vient l'heure du bilan des six ans, ou quand un salarié conteste son évolution de carrière devant les prud'hommes. La rigueur administrative n'est pas glamour. Mais elle protège l'entreprise, et elle protège aussi les salariés.</p>
+

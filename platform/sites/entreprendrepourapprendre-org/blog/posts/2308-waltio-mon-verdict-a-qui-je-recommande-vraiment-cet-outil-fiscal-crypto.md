@@ -17,9 +17,7 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5295123365T&subid=entreprend
 cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
-related_posts:
-- 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
-- 9774-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
+featured_image: /blog/2308-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto.jpg
 ---
 <p>J'avoue que je n'avais pas vraiment prévu de tester Waltio sérieusement. Au départ, c'était juste un outil qu'une connaissance m'avait mentionné lors d'un déjeuner professionnel, entre deux conversations sur la gestion de trésorerie. Et puis la période fiscale est arrivée, avec ses lots de questions auxquelles je ne savais pas vraiment répondre : comment déclarer les quelques opérations crypto que j'avais faites à titre personnel ? Est-ce que mon comptable pouvait s'en charger facilement ? Est-ce que j'avais gardé les bons justificatifs ?</p>
 
@@ -229,3 +227,4 @@ related_posts:
 <p>Ce que je n'aime pas, c'est devoir payer pour "voir" le montant calculé avant de finaliser l'abonnement. Sur certains plans, l'accès au document généré est verrouillé tant que vous n'avez pas souscrit. C'est une pratique un peu frustrante quand on veut vérifier la cohérence des calculs avant de s'engager. Pas rédhibitoire, mais à noter.</p>
 
 <p>Globalement, je reste sur une recommandation positive pour les profils que j'ai décrits. Et je pense que pour 2026, avec la réglementation crypto qui continue d'évoluer en France, avoir un outil qui suit ces évolutions et génère les bons formulaires vaut vraiment la peine d'être considéré sérieusement.</p>
+

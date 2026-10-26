@@ -18,9 +18,7 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5295123365T&subid=laboxentre
 cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
-related_posts:
-- 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
-- 2366-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
+featured_image: /blog/5941-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto.jpg
 ---
 <p>Je vais vous parler de Waltio. Pas parce que j'ai reçu une invitation à tester la plateforme gratuitement, pas parce que quelqu'un me l'a recommandé lors d'un webinaire. Mais parce que j'ai passé deux saisons fiscales à chercher un outil qui me permette de ne pas passer mes nuits à reconstruire des historiques de transactions à la main. Et que j'ai fini par atterrir dessus après avoir testé plusieurs alternatives.</p>
 
@@ -303,3 +301,4 @@ related_posts:
 <p>"Un bon logiciel n'est pas celui qui propose le plus de fonctionnalités. C'est celui qui vous fait gagner du temps dès la première semaine d'utilisation."</p>
 
 <p>Waltio coche cette case pour la fiscalité crypto en France. Ce n'est pas parfait, mais c'est ce qui se fait de plus opérationnel aujourd'hui pour un résident fiscal français qui veut être en règle sans y laisser trop d'heures.</p>
+

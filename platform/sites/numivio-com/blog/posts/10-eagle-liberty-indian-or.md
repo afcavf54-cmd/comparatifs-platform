@@ -2,13 +2,13 @@
 title: $10 Eagle (Liberty / Indian) or
 slug: 10-eagle-liberty-indian-or
 date: 2026-08-31 05:52:49+02:00
-updated: 2026-08-31T05:52:49
+updated: 2026-08-31 05:52:49
 categorie: blog
 categories:
 - blog
-meta_title: ""
-meta_description: "Découvrez le $10 Eagle or en deux séries iconiques : le Liberty Head de Gobrecht et l'Indian Head de Saint-Gaudens, deux chefs-d'oeuvre de la numismatique…"
-featured_image: ""
+meta_title: ''
+meta_description: 'Découvrez le $10 Eagle or en deux séries iconiques : le Liberty Head de Gobrecht et l''Indian Head de Saint-Gaudens, deux chefs-d''oeuvre de la numismatique…'
+featured_image: /blog/10-eagle-liberty-indian-or.jpg
 status: draft
 min_words: 1500
 show_toc: true
@@ -72,3 +72,4 @@ show_toc: true
 </ul>
 
 <p>Au final, l'Eagle en or américain s'adresse davantage à un investisseur déjà familier des métaux précieux, qui apprécie la dimension historique et numismatique autant que l'exposition à l'or. Pour un portefeuille principalement orienté métal, les pièces d'investissement modernes à faible prime resteront généralement plus efficaces. Mais pour celui qui souhaite <strong>combiner patrimoine en or et histoire monétaire américaine</strong>, l'Eagle représente un choix cohérent et défendable, à condition d'en maîtriser les subtilités de conservation, de millésime et de fiscalité.</p>
+

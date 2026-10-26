@@ -2,13 +2,13 @@
 title: 1 Ducat François-Joseph en or
 slug: 1-ducat-francois-joseph-en-or
 date: 2026-08-10 16:07:46+02:00
-updated: 2026-08-10T16:07:46
+updated: 2026-08-10 16:07:46
 categorie: blog
 categories:
 - blog
-meta_title: ""
+meta_title: ''
 meta_description: Découvrez le 1 Ducat François-Joseph en or, une pièce de collection austro-hongroise aux multiples variantes de bustes, prisée des numismates du monde entier.
-featured_image: ""
+featured_image: /blog/1-ducat-francois-joseph-en-or.jpg
 status: draft
 min_words: 800
 show_toc: true
@@ -67,3 +67,4 @@ show_toc: true
 <p>Sur le plan fiscal, les pièces d'or répondant aux critères de l'or d'investissement au sens européen sont soumises en France au régime de la taxe forfaitaire sur les métaux précieux (11,5 % sur le prix de cession) ou sur option à la taxe sur les plus-values. Le 1 Ducat François-Joseph répond généralement à ces critères, mais je vous recommande de vérifier ce point précis auprès d'un conseiller fiscal, notamment pour les exemplaires de collection en frappe d'époque dont la valeur est largement supérieure à la valeur métal.</p>
 
 <p>Pour le suivi de votre portefeuille, j'enregistre systématiquement mes achats de ducats dans Numivio, en distinguant bien les refrappes des pièces d'époque. Cela me permet de suivre ma performance réelle, mon prix de revient moyen et l'évolution de la valeur de mes ducats au cours de l'or en temps réel, sans avoir à recalculer manuellement à chaque variation de cours.</p>
+

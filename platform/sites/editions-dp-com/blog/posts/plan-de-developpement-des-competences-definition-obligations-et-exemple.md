@@ -1,14 +1,14 @@
 ---
-title: "Plan de développement des compétences : définition, obligations et exemple"
+title: 'Plan de développement des compétences : définition, obligations et exemple'
 slug: plan-de-developpement-des-competences-definition-obligations-et-exemple
 date: 2026-09-11 13:43:36+02:00
-updated: 2026-09-11T13:43:36
+updated: 2026-09-11 13:43:36
 categorie: Ressources Humaines
 categories:
 - Ressources Humaines
-meta_title: ""
-meta_description: "Découvrez ce qu'est un plan de développement des compétences, vos obligations légales et un exemple concret pour le construire efficacement en tant que RH."
-featured_image: ""
+meta_title: ''
+meta_description: Découvrez ce qu'est un plan de développement des compétences, vos obligations légales et un exemple concret pour le construire efficacement en tant que RH.
+featured_image: /blog/plan-de-developpement-des-competences-definition-obligations-et-exemple.jpg
 status: draft
 min_words: 1500
 show_toc: true
@@ -196,3 +196,4 @@ show_toc: true
 <p>Parlez leur langage. Montrez le coût d'un licenciement pour manquement à l'obligation de formation (rappel à l'emploi, indemnités, contentieux). Montrez le coût d'un accident lié à une habilitation non renouvelée. Et chiffrez ce que vous avez obtenu via les co-financements OPCO l'année précédente. Un retour concret sur les euros récupérés, c'est souvent plus efficace que n'importe quel discours sur la valeur de la formation.</p>
 
 <p>Construire un plan de développement des compétences qui tient la route, ça prend du temps. Mais une fois que le processus est en place, que les managers jouent le jeu, que le suivi est structuré, ça devient un vrai outil de gestion RH. Pas juste un document pour le CSE.</p>
+

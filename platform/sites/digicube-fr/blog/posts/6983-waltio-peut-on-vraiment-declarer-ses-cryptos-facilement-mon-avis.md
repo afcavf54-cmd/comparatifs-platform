@@ -17,11 +17,7 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5295123365T&subid=digicube.f
 cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
-related_posts:
-- 3508-waltio-peut-on-vraiment-declarer-ses-cryptos-facilement-mon-avis
-- 5075-waltio-peut-on-vraiment-declarer-ses-cryptos-facilement-mon-avis
-- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
-- 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
+featured_image: /blog/6983-waltio-peut-on-vraiment-declarer-ses-cryptos-facilement-mon-avis.jpg
 ---
 <p>Je vais être honnête avec vous : avant de tester Waltio, je pensais que déclarer ses cryptomonnaies allait me prendre des semaines. J'ai une cinquantaine de transactions sur différentes plateformes, pas des milliers, mais suffisamment pour que ça devienne vite un casse-tête si on s'y prend mal. Et puis la fiscalité crypto en France, c'est pas exactement simple à comprendre quand on n'a pas de formation comptable.</p>
 
@@ -284,3 +280,4 @@ related_posts:
 <p>Un dernier point que je voulais mentionner : Waltio propose aussi un accompagnement par des experts fiscaux partenaires si vous avez des situations complexes. Je n'ai pas testé cette option, elle représente un coût supplémentaire, mais ça peut valoir le coup si votre situation dépasse ce que le logiciel gère bien en automatique.</p>
 
 <p>Si vous hésitez encore, mon conseil pratique : créez un compte gratuit, importez vos transactions, et regardez ce que le logiciel détecte comme incohérences avant de payer quoi que ce soit. Vous aurez déjà une idée précise de si l'outil vous convient ou non.</p>
+
