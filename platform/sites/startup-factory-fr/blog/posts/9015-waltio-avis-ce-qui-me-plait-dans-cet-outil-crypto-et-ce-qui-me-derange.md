@@ -19,6 +19,7 @@ cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
 - 4573-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
+- 9075-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
 ---
 <p>J'utilise Waltio depuis plusieurs mois maintenant, et j'ai une opinion assez tranchée. Pas le genre d'outil qu'on oublie dans un coin. Quand tu gères des cryptos pour ta boîte ou à titre perso, la fiscalité ça devient vite un cauchemar. Waltio, c'est censé régler ça. Est-ce que ça marche vraiment ? Voilà ce que j'en pense, sans filtre.</p>
 
