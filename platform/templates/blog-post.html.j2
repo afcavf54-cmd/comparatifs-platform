@@ -424,10 +424,12 @@ a:hover{text-decoration:underline}
 {% set _cta_link = post.cta_link or site.blog_cta_link %}
 {% if post.cta_enabled and _cta_link %}
 {% set _cta_text  = post.cta_text  or site.blog_cta_text  or '' %}
-{% set _cta_color = post.cta_color or site.blog_cta_color or '#1a4fd6' %}
+{# Défauts : bandeau = couleur principale du site (theme.accent), bouton =
+   couleur des boutons CTA du site (theme.cta_color). #}
+{% set _cta_color = post.cta_color or site.blog_cta_color or theme.accent or '#1a4fd6' %}
 {% set _cta_btn   = post.cta_button or site.blog_cta_button or 'En profiter' %}
-{% set _cta_btn_color = post.cta_btn_color or site.blog_cta_btn_color or '#ffffff' %}
-{% set _cta_btn_txt = _cta_color if _cta_btn_color|lower in ['#fff','#ffffff','white'] else '#ffffff' %}
+{% set _cta_btn_color = post.cta_btn_color or site.blog_cta_btn_color or theme.cta_color or '#ffffff' %}
+{% set _cta_btn_txt = _cta_color if _cta_btn_color|lower in ['#fff','#ffffff','white'] else (theme.cta_text_color or '#ffffff') %}
 <div class="sticky-cta" style="background:{{ _cta_color }}">
   <button class="sticky-cta-close" type="button" aria-label="Fermer"
           onclick="var b=this.closest('.sticky-cta');b.parentNode.removeChild(b);document.body.style.paddingBottom='0'">&times;</button>
