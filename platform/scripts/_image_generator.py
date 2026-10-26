@@ -30,6 +30,20 @@ from PIL import Image
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 OPENAI_MODEL = "gpt-image-1"
 
+
+def _report_diag(msg: str) -> None:
+    """Loggue un diagnostic image ET, si on tourne dans GitHub Actions, l'écrit
+    dans le résumé du run (GITHUB_STEP_SUMMARY) pour qu'il soit visible en haut
+    de la page du run, sans avoir à fouiller les logs d'étape."""
+    print(msg)
+    summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary:
+        try:
+            with open(summary, "a", encoding="utf-8") as fh:
+                fh.write(f"- 🖼️ {msg.strip()}\n")
+        except Exception:
+            pass
+
 # Coordonnées GPS de Paris (centre, près de Notre-Dame). Plausibles pour une
 # photo prise par un photographe pro en mission éditoriale.
 PARIS_LAT = 48.8566
@@ -208,7 +222,7 @@ def generate_featured_image(
     image si on retourne None).
     """
     if not OPENAI_API_KEY:
-        print("   ⚠ Image : OPENAI_API_KEY manquante, skip")
+        _report_diag("Image : OPENAI_API_KEY manquante dans l'environnement du run — aucune image générée.")
         return None
     prompt = _build_prompt(site_name, primary_color, secondary_color,
                            cta_color, article_title)
@@ -234,5 +248,5 @@ def generate_featured_image(
                 print(f"   ⚠ Image : {model} tentative {attempt + 1}/2 échouée ({e})")
                 if attempt < 1:
                     time.sleep(4 * (attempt + 1))
-    print(f"   ⚠ Image : génération échouée (tous modèles) : {last_err}")
+    _report_diag(f"Image : génération échouée (gpt-image-1 ET dall-e-3). Dernière erreur OpenAI : {last_err}")
     return None
