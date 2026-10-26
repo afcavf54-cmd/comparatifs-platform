@@ -17,7 +17,8 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5295123365T&subid=entreprend
 cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 9774-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
 ---
 <p>Je vais être honnête : quand j'ai entendu parler de Waltio pour la première fois, c'était dans un groupe Facebook de dirigeants de TPE. Quelqu'un avait posé une question sur la déclaration fiscale de ses cryptos, et plusieurs personnes avaient mentionné ce nom. J'avais des cryptos depuis 2021, quelques transactions éparpillées sur Binance, Coinbase et un portefeuille personnel, et chaque année la déclaration me donnait des sueurs froides.</p>
 
