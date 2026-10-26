@@ -18,6 +18,11 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 featured_image: /blog/6983-waltio-peut-on-vraiment-declarer-ses-cryptos-facilement-mon-avis.jpg
+related_posts:
+- 3508-waltio-peut-on-vraiment-declarer-ses-cryptos-facilement-mon-avis
+- 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
+- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
+- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
 ---
 <p>Je vais être honnête avec vous : avant de tester Waltio, je pensais que déclarer ses cryptomonnaies allait me prendre des semaines. J'ai une cinquantaine de transactions sur différentes plateformes, pas des milliers, mais suffisamment pour que ça devienne vite un casse-tête si on s'y prend mal. Et puis la fiscalité crypto en France, c'est pas exactement simple à comprendre quand on n'a pas de formation comptable.</p>
 
