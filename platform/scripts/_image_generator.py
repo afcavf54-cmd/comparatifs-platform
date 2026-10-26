@@ -1,15 +1,21 @@
 """
-_image_generator.py — Génération d'image à la une via OpenAI gpt-image-1.
+_image_generator.py — Génération d'image à la une via OpenAI gpt-image-2.
 
 Pipeline :
 1. Construit le prompt depuis site name + theme colors + article title
-2. Appelle OpenAI gpt-image-1 (quality='low', taille 1536x1024)
+2. Appelle OpenAI gpt-image-2 (quality='medium', taille 1536x1024)
 3. Décode le PNG base64
 4. Convertit PNG → JPG quality 85 (réduction ~80% de la taille)
 5. Injecte EXIF "photo Canon EOS R5 prise à Paris" pour effacer les traces IA
 6. Retourne les bytes JPG prêts à écrire
 
-Coût estimé : ~$0.011 par image en quality low.
+Historique des modèles OpenAI (IMPORTANT — ils changent) :
+  - dall-e-2 / dall-e-3 : RETIRÉS le 12/05/2026.
+  - gpt-image-1         : RETIRÉ le 23/10/2026 (remplacé par gpt-image-2).
+  - Actuels (API)       : gpt-image-2 (flagship), gpt-image-1.5, gpt-image-1-mini.
+Toute la famille gpt-image renvoie du base64 (jamais de 'response_format').
+Le modèle est pilotable sans toucher au code via l'env OPENAI_IMAGE_MODELS
+(liste séparée par des virgules, ex: "gpt-image-2,gpt-image-1-mini").
 
 Dépendances : pillow, piexif (à ajouter au requirements.txt / workflow).
 """
@@ -28,7 +34,7 @@ import piexif
 from PIL import Image
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
-OPENAI_MODEL = "gpt-image-1"
+OPENAI_MODEL = "gpt-image-2"
 
 
 def _report_diag(msg: str) -> None:
@@ -251,23 +257,25 @@ def generate_featured_image(
         return None
     prompt = _build_prompt(site_name, primary_color, secondary_color,
                            cta_color, article_title)
-    # Liste des modèles tentés, dans l'ordre. gpt-image-1 donne le meilleur
-    # rendu MAIS exige une organisation OpenAI "vérifiée" (sinon "model does
-    # not exist") ; dall-e-3 fonctionne sans vérification. On tente donc
-    # gpt-image-1 puis dall-e-3 en repli. Pilotable sans toucher au code via
-    # l'env OPENAI_IMAGE_MODELS (ex: "dall-e-3" pour sauter gpt-image-1, ou
-    # "gpt-image-1,dall-e-3"). Un échec DÉFINITIF (400/401/403/404) passe
-    # immédiatement au modèle suivant, sans réessayer inutilement.
+    # Liste des modèles tentés, dans l'ordre. gpt-image-2 est le modèle phare
+    # actuel (remplace gpt-image-1, retiré le 23/10/2026) ; gpt-image-1-mini
+    # sert de repli (moins cher, même famille). dall-e-2/3 et gpt-image-1 sont
+    # RETIRÉS → ne pas les remettre. Pilotable sans toucher au code via l'env
+    # OPENAI_IMAGE_MODELS (ex: "gpt-image-1-mini" seul, ou
+    # "gpt-image-2,gpt-image-1.5"). Toute la famille gpt-image renvoie du
+    # base64 (pas de response_format). Un échec DÉFINITIF (400/401/403/404)
+    # passe immédiatement au modèle suivant, sans réessayer inutilement.
     _params = {
-        "gpt-image-1": ("1536x1024", "medium"),
-        "dall-e-3":    ("1792x1024", "standard"),
+        "gpt-image-2":      ("1536x1024", "medium"),
+        "gpt-image-1.5":    ("1536x1024", "medium"),
+        "gpt-image-1-mini": ("1536x1024", "medium"),
     }
     _env_models = os.environ.get("OPENAI_IMAGE_MODELS", "").strip()
     if _env_models:
         names = [m.strip() for m in _env_models.split(",") if m.strip()]
     else:
-        names = ["gpt-image-1", "dall-e-3"]
-    models = [(n, *_params.get(n, ("1024x1024", "standard"))) for n in names]
+        names = ["gpt-image-2", "gpt-image-1-mini"]
+    models = [(n, *_params.get(n, ("1536x1024", "medium"))) for n in names]
 
     PERMANENT = {400, 401, 403, 404}
     last_err = None
