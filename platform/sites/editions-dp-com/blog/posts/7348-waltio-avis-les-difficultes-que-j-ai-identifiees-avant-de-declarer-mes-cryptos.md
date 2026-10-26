@@ -19,6 +19,11 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 featured_image: /blog/7348-waltio-avis-les-difficultes-que-j-ai-identifiees-avant-de-declarer-mes-cryptos.jpg
+related_posts:
+- 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
+- 6786-waltio-avis-les-difficultes-que-j-ai-identifiees-avant-de-declarer-mes-cryptos
+- 2484-trimbox-fonctionnalites-tarifs-et-retours-d-experience-sur-cet-outil-de-gestion
+- 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
 ---
 <p>J'ai mis plusieurs semaines à tester Waltio sérieusement avant de valider quoi que ce soit pour ma déclaration fiscale. Pas par plaisir, mais parce que j'avais besoin d'un outil fiable, simple, et pas trop cher. Mon équipe n'a pas de compétences comptables avancées, et moi-même je ne suis pas expert en crypto. Autant dire que j'ai abordé ça sans filet.</p>
 
