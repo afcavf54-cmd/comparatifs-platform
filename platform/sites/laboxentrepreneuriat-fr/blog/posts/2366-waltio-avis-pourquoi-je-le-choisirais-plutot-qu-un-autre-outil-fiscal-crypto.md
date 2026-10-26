@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
+- 5941-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
 - 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
 ---
 <p>Chaque année, la période de déclaration fiscale revient comme un mauvais souvenir pour beaucoup d'investisseurs crypto. On se retrouve à trier des dizaines de transactions sur plusieurs plateformes, à calculer des plus-values à la main, à se demander si on n'a pas oublié un échange fait six mois plus tôt. J'ai accompagné pas mal d'entrepreneurs et d'indépendants dans cette situation. Et j'ai testé plusieurs outils sur le marché.</p>
