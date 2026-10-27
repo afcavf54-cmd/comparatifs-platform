@@ -90,7 +90,7 @@
     {% else %}<div class="logo-fallback" style="background:{{ acc }}">{{ it.name[:1] | upper }}</div>{% endif %}
     <div class="card-body">
       <div class="card-name" style="color:{{ acc }}">{{ it.name }}</div>
-      {% if it.desc %}<div class="card-desc">{{ it.desc }}</div>{% endif %}
+      {% if it.desc %}<div class="card-desc">{{ it.desc | safe }}</div>{% endif %}
       {% if it.code %}
       <div class="code-row">MON CODE :
         <button class="code-chip" style="color:{{ acc }}" data-code="{{ it.code }}" onclick="copyCode(this)">{{ it.code }}
