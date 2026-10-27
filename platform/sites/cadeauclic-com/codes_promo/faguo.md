@@ -54,8 +54,9 @@ historique_12_mois:
     valeur: 15
 historique_unite: €
 status: published
-meta_title: Code promo Faguo - Parrainage {best_remise} de réduction
+meta_title: Code promo Faguo - Parrainage {best_remise} de réduction {Mois_annee}
 meta_description: Profitez du meilleur code promo Faguo et de l'offre de parrainage pour obtenir jusqu'à {best_remise} de réduction sur vos achats. Offres vérifiées et à jour !
+h1_custom: "Code promo de parraine Faguo "
 date_creation: "2026-10-27"
 date_maj: "2026-10-27"
 ---
