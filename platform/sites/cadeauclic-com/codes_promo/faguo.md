@@ -2,36 +2,60 @@
 marque: Faguo
 slug: faguo
 categorie_marque: Mode
+url_affiliation: https://par1.fr/760XZ
+logo_url: /codes-promo/faguo/logo.png
+description_marque: <p>Faguo est une <b>marque française de mode créée en 2009</b>, spécialisée dans les vêtements, chaussures et accessoires pour hommes et femmes.&nbsp;</p><p>Elle se positionne sur un segment intermédiaire, <b>entre accessible et premium</b>, avec une forte identité engagée autour de l'écologie et de la réduction de l'empreinte carbone.&nbsp;</p><p>Elle s'adresse principalement aux urbains sensibles aux questions environnementales, qui cherchent un <b>style casual et soigné</b> sans sacrifier leurs convictions.</p>
+avis_sophie: "<p>Faguo, c'est une marque que j'ai découverte il y a quelques années en cherchant des sneakers éco-responsables pour mon mari. Ce qui m'a tout de suite plu, c'est leur engagement concret : pour chaque produit vendu, <b>ils plantent un arbre</b>.&nbsp;</p><p>Ce n'est pas juste un argument de vente affiché en vitrine, ça fait partie de leur ADN depuis le début. J'aime aussi leur style, <b>sobre et bien pensé</b>, qui s'adapte facilement à plein de profils.&nbsp;</p><p>J'ai aussi offert une paire de leurs chaussures à mon frère pour son anniversaire, et le résultat était parfait : un cadeau utile, bien fabriqué, avec une vraie histoire derrière.&nbsp;</p><p>Les vêtements et accessoires fonctionnent bien dans ce registre aussi.</p>"
+conseil_sophie: <p>Surveille les soldes de fin de saison chez Faguo, c'est là que les remises sont les plus intéressantes, souvent entre 30 et 50% sur les sneakers et les vêtements.&nbsp;</p><p>En plus de ça, inscris-toi à leur newsletter dès ton arrivée sur le site pour récupérer un code de bienvenue, et cumule avec un cashback via une appli dédiée. Petit combo qui fait vraiment la différence.</p>
 rating:
-  value: 0
+  value: 5
   count: 0
+codes:
+  - id: cmvqc3xx3oi16
+    type: code
+    valeur: 15
+    unite: €
+    sous_type: Parrainage
+    accroche: "Parrainage FAGUO : 15 € de réduction sur votre première commande !"
+    code: ""
+    detail: Le parrainage FAGUO permet au parrain et au filleul de recevoir chacun un bon d’achat de 15 €, valable dès 100 € d’achats sur le site. Le filleul bénéficie de sa réduction sur sa première commande, avec un bon valable 3 mois. Le parrain doit avoir déjà effectué un achat chez FAGUO et reçoit sa récompense après la première commande du filleul. Offre non valable sur les produits déjà remisés et codes de parrainage non cumulables.
+    expire_le: "2027-12-31"
+    nb_utilisations: 879
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
+    cta_text: ""
+    cta_url: https://par1.fr/760XZ
+    produits: []
 historique_12_mois:
   - mois: 2025-11
-    valeur: 0
+    valeur: 15
   - mois: 2025-12
-    valeur: 0
+    valeur: 15
   - mois: 2026-01
-    valeur: 0
+    valeur: 15
   - mois: 2026-02
-    valeur: 0
+    valeur: 15
   - mois: 2026-03
-    valeur: 0
+    valeur: 15
   - mois: 2026-04
-    valeur: 0
+    valeur: 15
   - mois: 2026-05
-    valeur: 0
+    valeur: 15
   - mois: 2026-06
-    valeur: 0
+    valeur: 15
   - mois: 2026-07
-    valeur: 0
+    valeur: 15
   - mois: 2026-08
-    valeur: 0
+    valeur: 15
   - mois: 2026-09
-    valeur: 0
+    valeur: 15
   - mois: 2026-10
-    valeur: 0
-historique_unite: "%"
+    valeur: 15
+historique_unite: €
 status: draft
+meta_title: Code promo Faguo - Parrainage {best_remise} de réduction
+meta_description: Profitez du meilleur code promo Faguo et de l'offre de parrainage pour obtenir jusqu'à {best_remise} de réduction sur vos achats. Offres vérifiées et à jour !
 date_creation: "2026-10-27"
 date_maj: "2026-10-27"
 ---
