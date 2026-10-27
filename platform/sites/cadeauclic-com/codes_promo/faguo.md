@@ -27,6 +27,17 @@ codes:
     cta_text: ""
     cta_url: https://par1.fr/760XZ
     produits: []
+faq:
+  - question: Comment obtenir 15 € de réduction avec le parrainage FAGUO ?
+    reponse: Pour profiter de 15 € offerts, vous devez être parrainé par un client FAGUO. Vous recevrez alors un code de réduction par email, à utiliser sur votre première commande d'au moins 100 €.
+  - question: Quel est le montant minimum pour utiliser un code parrainage FAGUO ?
+    reponse: Le bon d'achat de 15 € est valable dès 100 € d'achats sur le site officiel FAGUO, hors produits déjà remisés.
+  - question: Combien de temps est valable le code de parrainage FAGUO ?
+    reponse: Le filleul dispose de 3 mois après réception de son bon d'achat par email pour profiter de ses 15 € de réduction.
+  - question: Peut-on cumuler un code promo FAGUO avec le parrainage ?
+    reponse: Non, l'offre de parrainage FAGUO n'est pas applicable aux produits déjà remisés. Les codes de parrainage ne sont pas cumulables entre eux.
+  - question: Peut-on parrainer un proche chez FAGUO ?
+    reponse: Oui, à condition d'avoir déjà effectué au moins un achat chez FAGUO. Pour chaque filleul réalisant sa première commande, vous recevez un bon d'achat de 15 €, utilisable dès 100 € d'achats.
 historique_12_mois:
   - mois: 2025-11
     valeur: 15
