@@ -4,7 +4,9 @@ slug: 9410-klaviyo-mon-avis-sur-les-difficultes-et-les-depenses-a-prevoir
 date: '2026-10-27T08:00:00+01:00'
 categorie: Marketing
 meta_title: 'Klaviyo : les coûts et les difficultés à anticiper lors du déploiement'
-meta_description: 'Avis terrain sur Klaviyo après deux ans d''utilisation : coûts réels, difficultés de prise en main et résultats concrets expliqués par un dirigeant de PME lyonnaise.'
+meta_description: 'Avis terrain sur Klaviyo après deux ans d''utilisation : coûts
+  réels, difficultés de prise en main et résultats concrets expliqués par un dirigeant
+  de PME lyonnaise.'
 min_words: 3000
 status: published
 featured_image: /blog/9410-klaviyo-mon-avis-sur-les-difficultes-et-les-depenses-a-prevoir.jpg
@@ -15,8 +17,12 @@ cta_link: https://klaviyo.sjv.io/3koR3K
 cta_enabled: true
 cta_text: Offre exclusive Klaviyo
 cta_button: En profiter
+related_posts:
+- 4875-quel-logiciel-choisir-pour-envoyer-des-sms-professionnels
+- 6468-quelle-agence-seo-choisir-a-lyon-ma-selection-de-12-agences
+- 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 9394-newsletter-d-entreprise-comment-la-creer-et-la-gerer
 ---
-
 <p>J'utilise Klaviyo depuis un peu plus de deux ans dans mon entreprise à Lyon. On a une soixantaine de salariés, on vend des produits à une clientèle professionnelle, et on a voulu structurer notre marketing par email pour arrêter d'envoyer des newsletters à la main à la va-vite. Je ne suis pas développeur, je ne suis pas marketeur de formation. Je suis dirigeant. Donc mon avis ici, il est vraiment terrain.</p>
 
 <p>Je vais vous dire ce que ça coûte vraiment, ce qui m'a pris du temps, ce qui fonctionne, et ce que je referais différemment. Rien de théorique.</p>
