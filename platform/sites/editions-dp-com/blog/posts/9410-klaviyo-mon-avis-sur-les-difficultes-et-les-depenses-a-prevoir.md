@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Klaviyo
 cta_button: En profiter
 related_posts:
-- 4875-quel-logiciel-choisir-pour-envoyer-des-sms-professionnels
-- 6468-quelle-agence-seo-choisir-a-lyon-ma-selection-de-12-agences
-- 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
-- 9394-newsletter-d-entreprise-comment-la-creer-et-la-gerer
+- 4028-logiciel-emailing-et-sms-comment-combiner-les-deux-canaux
+- 3256-email-marketing-b2b-specificites-et-bonnes-pratiques
+- 3351-logiciel-d-emailing-professionnel-quelles-fonctionnalites-attendre
+- 7040-taux-de-clic-en-email-marketing-comment-l-ameliorer
 ---
 <p>J'utilise Klaviyo depuis un peu plus de deux ans dans mon entreprise à Lyon. On a une soixantaine de salariés, on vend des produits à une clientèle professionnelle, et on a voulu structurer notre marketing par email pour arrêter d'envoyer des newsletters à la main à la va-vite. Je ne suis pas développeur, je ne suis pas marketeur de formation. Je suis dirigeant. Donc mon avis ici, il est vraiment terrain.</p>
 
