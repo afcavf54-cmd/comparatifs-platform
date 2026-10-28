@@ -14,6 +14,7 @@ link_anchors:
 - text: comment configurer l'ERP DynaBiz Pro
   max: 5
 related_posts:
+- 2552-belermain-avis-j-ai-pese-le-pour-et-le-contre-voici-mon-analyse
 - 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
 ---
 <p>On m'a posé la question plusieurs fois ces derniers mois, alors autant y répondre clairement : est-ce qu'on configure DynaBiz Pro en interne, ou est-ce qu'on passe par un intégrateur ? J'ai vécu les deux situations. Et franchement, le choix n'est pas aussi évident qu'il y paraît.</p>
