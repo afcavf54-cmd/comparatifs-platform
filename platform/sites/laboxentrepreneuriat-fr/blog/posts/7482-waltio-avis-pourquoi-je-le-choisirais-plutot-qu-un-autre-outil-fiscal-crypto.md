@@ -19,8 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
-- 5941-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
-- 2366-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
+- 3355-enerfip-mon-avis-sur-cette-alternative-aux-placements-traditionnels
 featured_image: /blog/7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto.jpg
 ---
 <p>Je vais être honnête avec vous : quand j'ai commencé à accompagner des indépendants et des dirigeants qui investissent en crypto, la déclaration fiscale était systématiquement le moment le plus redouté de l'année. Pas parce que les gens n'avaient rien à déclarer, mais parce que personne ne savait vraiment comment le faire correctement. Les échanges entre plateformes, les conversions, les staking rewards... c'est un casse-tête réel.</p>

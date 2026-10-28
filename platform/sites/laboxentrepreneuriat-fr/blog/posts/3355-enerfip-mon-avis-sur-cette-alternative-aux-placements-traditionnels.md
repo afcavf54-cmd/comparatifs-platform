@@ -3,8 +3,11 @@ title: 'Enerfip : Mon avis 2026 sur cette alternative aux placements traditionne
 slug: 3355-enerfip-mon-avis-sur-cette-alternative-aux-placements-traditionnels
 date: '2026-10-28T08:00:00+01:00'
 categorie: Finance & Comptabilité
-meta_title: 'Enerfip face aux placements financiers classiques : quelle place dans un portefeuille ?'
-meta_description: 'Avis complet et honnête sur Enerfip en 2026 : rendements, risques et projets énergies renouvelables décryptés pour vous aider à décider si cette plateforme vaut…'
+meta_title: 'Enerfip face aux placements financiers classiques : quelle place dans
+  un portefeuille ?'
+meta_description: 'Avis complet et honnête sur Enerfip en 2026 : rendements, risques
+  et projets énergies renouvelables décryptés pour vous aider à décider si cette plateforme
+  vaut…'
 min_words: 3000
 status: published
 featured_image: /blog/3355-enerfip-mon-avis-sur-cette-alternative-aux-placements-traditionnels.jpg
@@ -15,8 +18,9 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4988118244T&subid=laboxentre
 cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
+related_posts:
+- 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
 ---
-
 <p>Je vais être honnête avec vous : quand un client m'a parlé d'Enerfip pour la première fois, j'ai levé les yeux au ciel. Encore une plateforme de financement participatif qui allait promettre des rendements mirobolants et livrer des résultats mitigés. J'avais tort. Pas complètement, mais j'avais tort sur l'essentiel.</p>
 
 <p>J'accompagne des dirigeants de TPE et PME depuis douze ans. Parmi eux, beaucoup cherchent des alternatives à l'assurance-vie en euros qui ne rapporte plus grand-chose, ou au livret A qui peine à couvrir l'inflation. Enerfip est revenu régulièrement dans mes conversations depuis 2022, et j'ai fini par y regarder de près, compte tenu notamment et tests sur mes propres euros investis.</p>
