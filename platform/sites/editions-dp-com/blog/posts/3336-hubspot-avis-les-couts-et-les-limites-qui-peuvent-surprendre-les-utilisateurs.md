@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive HubSpot
 cta_button: En profiter
 related_posts:
-- 9880-a-b-testing-en-email-marketing-comment-tester-et-optimiser-ses-campagnes
+- 6468-quelle-agence-seo-choisir-a-lyon-ma-selection-de-12-agences
 - 1500-meilleur-logiciel-affichage-dynamique
-- 4304-logiciels-d-envoi-d-emails-les-10-outils-que-j-ai-selectionnes
-- 9852-strategie-email-marketing-comment-la-construire-efficacement
+- 2434-automation-en-email-marketing-fonctionnement-et-cas-d-usage
+- 3100-email-marketing-pour-l-e-commerce-strategies-et-outils
 ---
 <p>On m'a recommandé HubSpot il y a quelques années. "C'est la référence", m'a dit un confrère. "Tout le monde l'utilise." J'ai donc testé, j'ai utilisé, et j'ai aussi découvert des choses que personne ne m'avait prévenu. Les coûts réels, les limites techniques, les petites frustrations du quotidien. Je vous donne mon retour honnête, sans chercher à vendre du rêve.</p>
 
