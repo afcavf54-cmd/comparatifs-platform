@@ -17,8 +17,7 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
-- 9015-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
-- 9075-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
+- 9918-homunity-mon-avis-entre-promesses-de-rendement-et-risques-de-retard
 ---
 <p>J'utilise Waltio depuis maintenant plusieurs mois pour gérer la fiscalité crypto de ma startup. Et franchement, j'ai eu des surprises, dans les deux sens. Des bonnes, des moins bonnes. Voilà mon retour honnête, sans filtre, pour 2026.</p>
 

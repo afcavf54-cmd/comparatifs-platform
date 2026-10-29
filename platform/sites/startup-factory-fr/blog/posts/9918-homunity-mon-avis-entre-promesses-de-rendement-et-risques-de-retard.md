@@ -3,8 +3,11 @@ title: 'Homunity : Mon avis 2026 entre promesses de rendement et risques de reta
 slug: 9918-homunity-mon-avis-entre-promesses-de-rendement-et-risques-de-retard
 date: '2026-10-29T08:00:00+01:00'
 categorie: Finance & Comptabilité
-meta_title: 'Homunity : les avantages du crowdfunding immobilier face aux risques de perte'
-meta_description: 'Mon avis complet sur Homunity en 2026 : rendements attractifs, adossement au Crédit Agricole, mais des retards de projets à ne pas sous-estimer avant d''investir.'
+meta_title: 'Homunity : les avantages du crowdfunding immobilier face aux risques
+  de perte'
+meta_description: 'Mon avis complet sur Homunity en 2026 : rendements attractifs,
+  adossement au Crédit Agricole, mais des retards de projets à ne pas sous-estimer
+  avant d''investir.'
 min_words: 3000
 status: published
 featured_image: /blog/9918-homunity-mon-avis-entre-promesses-de-rendement-et-risques-de-retard.jpg
@@ -15,8 +18,9 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4970117978T&subid=startup-fa
 cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
+related_posts:
+- 4573-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
 ---
-
 <p>J'ai commencé à regarder Homunity sérieusement il y a environ deux ans. Une collègue m'en avait parlé en passant, entre deux réunions, en disant que ça lui rapportait plus que son livret A. Bon. Ce genre de phrase, ça m'intrigue et ça m'agace en même temps. Alors j'ai creusé.</p>
 
 <p>Ce que je vais te partager ici, c'est mon retour d'expérience réel sur la plateforme, ce que j'ai observé en tant qu'investisseuse, et quelques points que je trouve franchement discutables. Pas une brochure commerciale. Un vrai avis.</p>
