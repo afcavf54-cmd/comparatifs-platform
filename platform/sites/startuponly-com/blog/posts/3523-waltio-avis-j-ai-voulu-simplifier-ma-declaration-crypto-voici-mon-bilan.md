@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
+- 3773-enky-invest-avis-investir-dans-le-mobilier-une-bonne-idee-selon-moi
 - 4603-enerfip-mon-avis-sur-cette-plateforme-d-investissement-participatif
 - 3773-enky-invest-avis-investir-dans-le-mobilier-une-bonne-idee-selon-moi
 ---
