@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
 related_posts:
-- 3401-comment-utiliser-crm-salesflow-evolution-pour-gerer-vos-prospects
-- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
-- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
-- 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
+- 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
+- 2575-strategie-corporate-qu-est-ce-que-c-est-et-comment-la-differencier-de-la-strategie-business
+- developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise
+- 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
 ---
 <p>J'utilise Indy depuis un peu plus de deux ans maintenant. Et franchement, pendant longtemps, j'ai été plutôt convaincu. Pour une petite structure comme la mienne, c'était simple, pas trop cher, et ça me faisait gagner du temps sur la compta. Mais avec le temps, j'ai commencé à voir les coutures. Des situations précises où l'outil coince. Où il faut bidouiller, contourner, ou tout simplement accepter de faire à la main ce qu'on espérait automatiser.</p>
 
