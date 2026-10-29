@@ -20,6 +20,7 @@ cta_text: Offre exclusive Enerfip
 cta_button: En profiter
 related_posts:
 - 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
+- 3899-enky-invest-avis-une-nouvelle-facon-d-investir-qui-m-interpelle
 ---
 <p>Je vais être honnête avec vous : quand un client m'a parlé d'Enerfip pour la première fois, j'ai levé les yeux au ciel. Encore une plateforme de financement participatif qui allait promettre des rendements mirobolants et livrer des résultats mitigés. J'avais tort. Pas complètement, mais j'avais tort sur l'essentiel.</p>
 
