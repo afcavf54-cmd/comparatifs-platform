@@ -3,8 +3,10 @@ title: 'Indy : Les situations où ce logiciel pourrait montrer ses limites, avis
 slug: 3113-indy-les-situations-ou-ce-logiciel-pourrait-montrer-ses-limites-avis
 date: '2026-10-29T08:00:00+01:00'
 categorie: Gestion d'entreprise
-meta_title: 'Indy : les obligations comptables que le logiciel ne permet pas forcément de déléguer'
-meta_description: 'Avis Indy 2026 basé sur 2 ans d''utilisation réelle : découvrez les limites concrètes du logiciel de compta avant de vous engager pour votre activité.'
+meta_title: 'Indy : les obligations comptables que le logiciel ne permet pas forcément
+  de déléguer'
+meta_description: 'Avis Indy 2026 basé sur 2 ans d''utilisation réelle : découvrez
+  les limites concrètes du logiciel de compta avant de vous engager pour votre activité.'
 min_words: 3000
 status: published
 featured_image: /blog/3113-indy-les-situations-ou-ce-logiciel-pourrait-montrer-ses-limites-avis.jpg
@@ -15,8 +17,12 @@ cta_link: https://c3po.link/QZrBCYjH2T
 cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
+related_posts:
+- 3401-comment-utiliser-crm-salesflow-evolution-pour-gerer-vos-prospects
+- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
+- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
+- 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
 ---
-
 <p>J'utilise Indy depuis un peu plus de deux ans maintenant. Et franchement, pendant longtemps, j'ai été plutôt convaincu. Pour une petite structure comme la mienne, c'était simple, pas trop cher, et ça me faisait gagner du temps sur la compta. Mais avec le temps, j'ai commencé à voir les coutures. Des situations précises où l'outil coince. Où il faut bidouiller, contourner, ou tout simplement accepter de faire à la main ce qu'on espérait automatiser.</p>
 
 <p>Cet article n'est pas un pamphlet contre Indy. C'est un retour honnête. Parce que je vois beaucoup de comparatifs en ligne qui listent les fonctionnalités sans jamais dire quand ça pose problème concrètement.</p>
