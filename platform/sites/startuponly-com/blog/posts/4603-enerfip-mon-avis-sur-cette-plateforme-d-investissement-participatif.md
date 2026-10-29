@@ -19,6 +19,7 @@ cta_text: Offre exclusive Enerfip
 cta_button: En profiter
 related_posts:
 - 3523-waltio-avis-j-ai-voulu-simplifier-ma-declaration-crypto-voici-mon-bilan
+- 3773-enky-invest-avis-investir-dans-le-mobilier-une-bonne-idee-selon-moi
 ---
 <p>J'ai testé pas mal de plateformes de financement participatif ces dernières années. Certaines pour diversifier mes revenus, d'autres par curiosité pure. <strong>Enerfip</strong>, je suis tombé dessus en 2022 quand je cherchais un moyen d'investir sur des projets énergétiques sans passer par les circuits classiques. Et franchement, j'ai été surpris par ce que j'ai trouvé.</p>
 
