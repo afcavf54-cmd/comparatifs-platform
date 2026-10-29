@@ -3,8 +3,10 @@ title: 'Klaviyo : Mon analyse des tarifs et du retour sur investissement, avis 2
 slug: 1719-klaviyo-mon-analyse-des-tarifs-et-du-retour-sur-investissement-avis
 date: '2026-10-29T08:00:00+01:00'
 categorie: Marketing
-meta_title: 'Klaviyo : analyser le coût de l''email marketing selon la taille de sa base de contacts'
-meta_description: Klaviyo vaut-il vraiment son prix en 2026 ? Analyse complète des tarifs, du ROI réel et des limites de cet outil d'email marketing, vue par une comptable.
+meta_title: 'Klaviyo : analyser le coût de l''email marketing selon la taille de sa
+  base de contacts'
+meta_description: Klaviyo vaut-il vraiment son prix en 2026 ? Analyse complète des
+  tarifs, du ROI réel et des limites de cet outil d'email marketing, vue par une comptable.
 min_words: 3000
 status: published
 featured_image: /blog/1719-klaviyo-mon-analyse-des-tarifs-et-du-retour-sur-investissement-avis.jpg
@@ -15,8 +17,8 @@ cta_link: https://klaviyo.sjv.io/3koR3K
 cta_enabled: true
 cta_text: Offre exclusive Klaviyo
 cta_button: En profiter
+related_posts: []
 ---
-
 <p>Ça fait maintenant plusieurs années que je gravite autour des outils de marketing automation dans mon environnement professionnel. Et Klaviyo, j'en entends parler depuis un moment, surtout de la part de collègues dans des boîtes e-commerce. Alors j'ai décidé de creuser sérieusement le sujet : les tarifs, ce qu'on en tire vraiment, les limites. Voici mon analyse complète pour 2026.</p>
 
 <p>Avant d'entrer dans le vif du sujet : je ne suis pas marketeuse. Je suis comptable. Et c'est précisément pour ça que mon regard sur Klaviyo est différent. Ce qui m'intéresse, c'est de savoir si la dépense est justifiée, si le retour est mesurable, et si une équipe non technique peut s'en sortir sans appeler le support tous les deux jours.</p>
