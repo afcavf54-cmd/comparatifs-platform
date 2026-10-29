@@ -17,7 +17,8 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5277123007T&subid=entreprend
 cta_enabled: true
 cta_text: Offre exclusive Vivid Business
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 4860-sumup-avis-a-quels-commercants-je-conseillerais-ces-terminaux
 ---
 <p>J'ai testé pas mal de comptes pro ces dernières années. Quelques-uns m'ont vraiment aidé, d'autres m'ont fait perdre un temps fou. Vivid Business, je l'ai découvert un peu par hasard via une conversation avec un autre dirigeant de petite structure. Son argument principal : "c'est simple et ça coûte pas grand-chose". Bon. J'ai creusé.</p>
 
