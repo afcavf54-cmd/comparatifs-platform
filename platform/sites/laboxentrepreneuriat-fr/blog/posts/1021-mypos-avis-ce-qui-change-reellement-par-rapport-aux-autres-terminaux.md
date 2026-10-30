@@ -18,7 +18,8 @@ cta_link: https://www.financeads.net/tc.php?t=74753C319660024T&subid=laboxentrep
 cta_enabled: true
 cta_text: Offre exclusive myPOS
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
 ---
 <p>Je vais être honnête avec vous : quand j'ai commencé à tester myPOS il y a quelques années, je n'avais pas d'attentes particulières. Il y a tellement de solutions de paiement sur le marché que j'avais un peu arrêté de croire aux promesses marketing. Et puis j'ai commencé à regarder les détails. Les vrais détails. Pas ceux du site commercial, mais ceux que vous découvrez après deux semaines d'utilisation quotidienne.</p>
 
