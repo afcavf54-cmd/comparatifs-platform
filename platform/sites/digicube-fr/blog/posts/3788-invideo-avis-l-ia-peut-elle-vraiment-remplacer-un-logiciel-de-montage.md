@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive InVideo
 cta_button: En profiter
 related_posts:
-- 7751-logiciel-d-affichage-dynamique-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
-- 8220-affichage-dynamique-en-point-de-vente-comment-booster-ses-ventes
-- 1978-10-agences-seo-parisiennes-pour-gagner-en-visibilite-sur-google
-- quel-logiciel-de-montage-video-choisir-pour-son-entreprise
+- 4399-comment-realiser-une-video-d-entreprise-avec-un-smartphone
+- 5526-affichage-dynamique-pour-restaurant-menu-promotions-et-mise-en-place
+- 4146-ecran-d-affichage-dynamique-en-vitrine-fonctionnement-et-avantages
+- 2311-affichage-dynamique-pour-hotel-usages-et-solutions
 ---
 <p>J'utilise InVideo depuis un peu moins d'un an maintenant. Pas en expert du montage vidéo, clairement. Je suis dirigeant d'une PME à Marseille, j'ai une équipe de communication interne réduite, et on cherchait un moyen de produire des vidéos sans passer par une agence à chaque fois. Le budget était serré. Le temps encore plus.</p>
 
