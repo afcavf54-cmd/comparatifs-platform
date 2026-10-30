@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
 related_posts:
+- 2250-cashbee-pro-avis-les-atouts-et-les-contraintes-pour-placer-sa-tresorerie
 - 4573-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
 - 2250-cashbee-pro-avis-les-atouts-et-les-contraintes-pour-placer-sa-tresorerie
 ---
