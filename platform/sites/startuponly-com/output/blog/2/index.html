@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<!-- 7158e79828c6a628 -->
-<meta name="publisuites-verify-code" content="aHR0cHM6Ly9zdGFydHVwb25seS5jb20=" />
-<meta name="verify" content="XzsngHxafIrUFfm9jHGrTVtmulVu2MNF" />
-
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page introuvable | startuponly.com</title>
-<meta name="robots" content="noindex">
+<title>Blog | startuponly.com — Page 2</title>
+<meta name="description" content="Articles, guides et conseils — startuponly.com">
+<link rel="canonical" href="https://startuponly.com/blog/2/">
+<link rel="prev" href="https://startuponly.com/blog/"><meta property="og:title" content="Blog | startuponly.com — Page 2">
+<meta property="og:description" content="Articles, guides et conseils — startuponly.com">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://startuponly.com/blog/2/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=startuponly-com" rel="stylesheet">
+
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#FAFAFC;
-  --surface:#fff;
-  --surface2:#F0ECE5;
-  --ink:#1E293B;
-  --ink2:#6B6560;
-  --ink3:#A09890;
-  --accent:#0F172A;
-  --accent2:#7C3AED;--cta:#10B981;--cta-text:#ffffff;
-  --border:#E2DDD6;
-  --r:12px;
-  --r2:20px;
-  --green:#1A7A4A;
+  --bg:#FAFAFC;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#1E293B;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#0F172A;--accent2:#7C3AED;--green:#3D7A4F;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+--cta:#10B981;--cta-text:#ffffff;}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+.blog-header{padding:32px 0 12px;text-align:center}
+.blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
+.blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
+.blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
+.blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;text-decoration:none;transition:.2s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-2px);text-decoration:none}
+.blog-card-img{aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.blog-card-img img{width:100%;height:100%;object-fit:cover}
+.blog-card-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:48px}
+.blog-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.blog-card-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;align-self:flex-start}
+.blog-card-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
+.blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
+.blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
+.blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
+.blog-page-numbers{display:flex;align-items:center;gap:4px}
+.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
+.blog-page-num:hover{color:var(--accent)}
+.blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
+.blog-page-current:hover{color:#fff}
+.blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
+.blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
+.blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
+.blog-page-link:hover{opacity:.6;background:transparent}
+.blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
+.blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
+.blog-page-disabled .blog-page-arrow{background:var(--ink3)}
+@media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  .blog-header{padding:20px 0 8px}
+  .blog-title{margin-bottom:8px}
+  .blog-filters{margin:10px 0 24px}
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{color:inherit;text-decoration:none}
-
-/* ── NAV ── */
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
-
-
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
-main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 5vw;text-align:center}
-.code{font-family:'DM Serif Display',serif;font-size:clamp(80px,15vw,160px);font-weight:400;color:var(--accent);line-height:1;margin-bottom:16px;opacity:.15}
-h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);font-weight:400;margin-bottom:12px}
-p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:.15s}
-.btn:hover{background:var(--cta,var(--accent2))}
-.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-.link-sec{color:var(--accent);font-size:14px;text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
-.link-sec:hover{background:var(--border)}
-
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 </style>
+<meta name="google-site-verification" content="dbUmlw7ya-ztcNiY47reWej6Kok2j-6f-gwUI89CSeY">
 </head>
 <body>
+
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
@@ -75,6 +83,9 @@ nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px
 nav.site-nav .nav-cta:hover{opacity:.88}
 nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-search-inline{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin-left:2px;border-radius:50%;border:0;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;flex-shrink:0;transition:.15s;padding:0}
+nav.site-nav .nav-search-inline:hover{color:#fff;background:rgba(255,255,255,.12)}
+nav.site-nav .nav-search-inline svg{width:16px;height:16px}
 nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
 nav.site-nav .nav-mobile.open{display:flex}
 nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
@@ -86,7 +97,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <a href="/" class="nav-logo"><img src="/logo.png" alt="startuponly.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
     <div class="nav-links">
         <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog/">Blog</a>
           <a href="/outils">Outils</a>
+      <button type="button" class="nav-search-inline site-search-trigger" onclick="openSiteSearch()" aria-label="Rechercher sur le site" title="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
@@ -95,7 +110,9 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
   <div class="nav-mobile" id="nav-mobile">
       <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/blog/">Blog</a>
         <a href="/outils">Outils</a>
+    <a href="#" class="site-search-trigger" onclick="openSiteSearch();return false;">🔍 Rechercher</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
@@ -140,17 +157,190 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     });
   });
 })();
-</script><main>
-  <div>
-    <div class="code">404</div>
-    <h1>Page introuvable</h1>
-    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
-    <a href="/" class="btn">← Retour à l'accueil</a>
-    <div class="links">
-      <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
+</script>
+
+<style>
+.site-search-overlay{position:fixed;inset:0;z-index:1000;display:none;background:rgba(5,9,20,.55);backdrop-filter:blur(2px);padding:72px 16px 24px}
+.site-search-overlay.open{display:block}
+.site-search-modal{max-width:640px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.28);overflow:hidden;font-family:'Outfit',system-ui,sans-serif}
+.site-search-bar{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #e6e9f0}
+.site-search-bar svg{width:20px;height:20px;flex:none;color:#8a93a6}
+.site-search-input{flex:1;border:0;outline:0;font-size:16px;color:#0F1A2E;background:none;font-family:inherit}
+.site-search-close{border:0;background:none;font-size:26px;line-height:1;color:#8a93a6;cursor:pointer;padding:0 4px}
+.site-search-close:hover{color:#0F1A2E}
+.site-search-filters{display:flex;gap:6px;flex-wrap:wrap;padding:10px 16px 0}
+.site-search-chip{font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid #e6e9f0;background:#fff;color:#5b6478;cursor:pointer}
+.site-search-chip.active{background:var(--accent,#1B4FD8);border-color:var(--accent,#1B4FD8);color:#fff}
+.site-search-hint{padding:14px 16px;color:#8a93a6;font-size:13.5px}
+.site-search-results{max-height:min(60vh,520px);overflow-y:auto;padding:6px 8px 10px}
+.site-search-res{display:block;padding:11px 12px;border-radius:10px;color:inherit;text-decoration:none;border:1px solid transparent}
+.site-search-res:hover,.site-search-res:focus{background:#f4f6fb;border-color:#e6e9f0}
+.site-search-res-top{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.site-search-badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:5px;background:#eef1f7;color:#5b6478;flex:none}
+.site-search-badge[data-ty="Comparatif"]{background:#e7efff;color:#1B4FD8}
+.site-search-badge[data-ty="Avis"]{background:#fff0e7;color:#E8410A}
+.site-search-badge[data-ty="Article"]{background:#eafaf1;color:#1A7A4A}
+.site-search-res-title{font-weight:600;font-size:14.5px;color:#0F1A2E;line-height:1.35}
+.site-search-res-desc{font-size:12.8px;color:#6b7280;line-height:1.5;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.site-search-res mark{background:#fff2b8;color:inherit;padding:0 1px;border-radius:2px}
+.site-search-count{padding:4px 16px 8px;font-size:12px;color:#8a93a6}
+@media(max-width:600px){.site-search-overlay{padding-top:16px}}
+</style>
+
+<div class="site-search-overlay" id="siteSearchOverlay" aria-hidden="true" onclick="if(event.target===this)closeSiteSearch()">
+  <div class="site-search-modal" role="dialog" aria-modal="true" aria-label="Recherche sur le site">
+    <div class="site-search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="search" class="site-search-input" id="siteSearchInput" placeholder="Rechercher une marque, un logiciel, un article…" autocomplete="off" aria-label="Rechercher sur le site">
+      <button type="button" class="site-search-close" onclick="closeSiteSearch()" aria-label="Fermer la recherche">&times;</button>
     </div>
+    <div class="site-search-filters" id="siteSearchFilters">
+      <button type="button" class="site-search-chip active" data-f="">Tout</button>
+      <button type="button" class="site-search-chip" data-f="Article">Articles</button>
+      <button type="button" class="site-search-chip" data-f="Comparatif">Comparatifs</button>
+      <button type="button" class="site-search-chip" data-f="Avis">Avis</button>
+    </div>
+    <div class="site-search-hint" id="siteSearchHint">Tapez au moins 2 caractères pour lancer la recherche.</div>
+    <div class="site-search-count" id="siteSearchCount" style="display:none"></div>
+    <div class="site-search-results" id="siteSearchResults"></div>
   </div>
+</div>
+
+<script>
+(function(){
+  var idx=null, loading=false, curFilter="", lastQ="";
+  var overlay=document.getElementById('siteSearchOverlay');
+  var input=document.getElementById('siteSearchInput');
+  var results=document.getElementById('siteSearchResults');
+  var hint=document.getElementById('siteSearchHint');
+  var countEl=document.getElementById('siteSearchCount');
+  if(!overlay) return;
+
+  function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+  function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function hl(text,toks){
+    var out=esc(text);
+    toks.forEach(function(t){
+      if(t.length<2) return;
+      var re=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
+      out=out.replace(re,'<mark>$1</mark>');
+    });
+    return out;
+  }
+  window.openSiteSearch=function(){
+    overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    setTimeout(function(){input.focus();},40);
+    loadIndex();
+  };
+  window.closeSiteSearch=function(){
+    overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  };
+  function loadIndex(){
+    if(idx||loading) return; loading=true;
+    fetch('/search-index.json').then(function(r){return r.json();}).then(function(d){
+      idx=d;loading=false; if(input.value) run();
+    }).catch(function(){loading=false;hint.textContent='Recherche momentanément indisponible.';hint.style.display='block';});
+  }
+  function run(){
+    var q=norm(input.value.trim()); lastQ=q;
+    countEl.style.display='none';
+    if(q.length<2){results.innerHTML='';hint.textContent='Tapez au moins 2 caractères pour lancer la recherche.';hint.style.display='block';return;}
+    if(!idx){hint.textContent='Chargement de l’index…';hint.style.display='block';return;}
+    var toks=q.split(/\s+/).filter(Boolean);
+    var out=[];
+    for(var i=0;i<idx.length;i++){
+      var e=idx[i];
+      if(curFilter && e.ty!==curFilter) continue;
+      var hay=norm(e.t+' '+e.d+' '+e.w);
+      var ok=true;
+      for(var k=0;k<toks.length;k++){if(hay.indexOf(toks[k])<0){ok=false;break;}}
+      if(!ok) continue;
+      var nt=norm(e.t), nd=norm(e.d), sc=0;
+      for(var k=0;k<toks.length;k++){if(nt.indexOf(toks[k])>=0)sc+=5; else if(nd.indexOf(toks[k])>=0)sc+=2;}
+      out.push([sc,e]);
+    }
+    out.sort(function(a,b){return b[0]-a[0];});
+    if(!out.length){
+      hint.style.display='none';results.innerHTML='';
+      countEl.style.display='block';countEl.textContent='Aucun résultat pour « '+input.value.trim()+' ».';
+      return;
+    }
+    hint.style.display='none';
+    countEl.style.display='block';
+    countEl.textContent=out.length+' résultat'+(out.length>1?'s':'')+(out.length>60?' (60 affichés)':'');
+    var html='';
+    out.slice(0,60).forEach(function(p){
+      var e=p[1];
+      html+='<a class="site-search-res" href="'+esc(e.u)+'">'
+        +'<div class="site-search-res-top"><span class="site-search-badge" data-ty="'+esc(e.ty)+'">'+esc(e.ty)+'</span>'
+        +'<span class="site-search-res-title">'+hl(e.t,toks)+'</span></div>'
+        +(e.d?'<div class="site-search-res-desc">'+hl(e.d,toks)+'</div>':'')
+        +'</a>';
+    });
+    results.innerHTML=html;
+  }
+  var deb;
+  input.addEventListener('input',function(){clearTimeout(deb);deb=setTimeout(run,120);});
+  document.getElementById('siteSearchFilters').addEventListener('click',function(ev){
+    var b=ev.target.closest('.site-search-chip'); if(!b) return;
+    curFilter=b.getAttribute('data-f')||'';
+    this.querySelectorAll('.site-search-chip').forEach(function(c){c.classList.remove('active');});
+    b.classList.add('active'); run();
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Escape'&&overlay.classList.contains('open'))closeSiteSearch();
+    if((ev.key==='k'||ev.key==='K')&&(ev.metaKey||ev.ctrlKey)){ev.preventDefault();openSiteSearch();}
+  });
+})();
+</script>
+<header class="container">
+  <div class="blog-header">
+    <h1 class="blog-title">Le Blog</h1>
+  </div>
+  <div class="blog-filters">
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(31)</span></a>
+    <a class="blog-filter" href="/categorie-ressources-humaines/">Ressources Humaines <span class="blog-filter-count">(25)</span></a>
+    <a class="blog-filter" href="/categorie-finance-comptabilite/">Finance & Comptabilité <span class="blog-filter-count">(3)</span></a>
+    <a class="blog-filter" href="/categorie-banque-paiement/">Banque & Paiement <span class="blog-filter-count">(2)</span></a>
+    <a class="blog-filter" href="/categorie-finances/">Finances <span class="blog-filter-count">(1)</span></a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="blog-grid">
+    <a href="/6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix.jpg" alt="Logiciel de pointage : fonctionnement, types et critères de choix" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Logiciel de pointage : fonctionnement, types et critères de choix</h2>
+<p class="blog-card-excerpt">J'ai mis du temps avant de prendre ça au sérieux. Pendant longtemps, on gérait les horaires de l'équipe sur un Google Sheet partagé. Chacun renseignait ses heures, on vérifiait à…</p><div class="blog-card-meta">23 juillet 2026</div>      </div>
+    </a>
+  </div>
+
+  <nav class="blog-pagination" aria-label="Pagination du blog">
+    <a href="/blog/" class="blog-page-link blog-page-prev" rel="prev">
+      <span class="blog-page-arrow" aria-hidden="true">‹</span>
+      <span>Précédent</span>
+    </a>
+
+<span class="blog-page-sep" aria-hidden="true"></span>
+    <div class="blog-page-numbers">
+          <a href="/blog/" class="blog-page-num">1</a>
+          <span class="blog-page-num blog-page-current" aria-current="page">2</span>
+    </div>
+
+<span class="blog-page-sep" aria-hidden="true"></span>
+    <span class="blog-page-disabled">
+      <span>Suivant</span>
+      <span class="blog-page-arrow" aria-hidden="true">›</span>
+    </span>
+  </nav>
+
 </main>
+
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
@@ -185,6 +375,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <div class="footer-col">
         <div class="footer-col-label">Navigation</div>
         <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog/">Blog</a>
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>
@@ -198,7 +389,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 21 juillet 2026
+        © 2026 startuponly.com — Données actualisées le 30 octobre 2026
       </div>
     </div>
   </div>
@@ -296,5 +487,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script></body>
+</script>
+</body>
 </html>
