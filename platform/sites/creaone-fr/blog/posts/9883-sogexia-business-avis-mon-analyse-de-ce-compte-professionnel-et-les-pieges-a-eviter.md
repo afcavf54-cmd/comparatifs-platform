@@ -1,10 +1,13 @@
 ---
-title: 'Sogexia Business Avis 2026 : Mon analyse de ce compte professionnel et les pièges à éviter'
+title: 'Sogexia Business Avis 2026 : Mon analyse de ce compte professionnel et les
+  pièges à éviter'
 slug: 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
 date: '2026-10-30T08:00:00+01:00'
 categorie: Banque & Paiement
 meta_title: 'Mon avis sur Sogexia Business : ce que vaut réellement ce compte professionnel'
-meta_description: 'Sogexia Business vaut-il vraiment le coup en 2026 ? Analyse terrain sans concessions : fonctionnalités, pièges concrets et comparatif pour choisir ce compte pro en…'
+meta_description: 'Sogexia Business vaut-il vraiment le coup en 2026 ? Analyse terrain
+  sans concessions : fonctionnalités, pièges concrets et comparatif pour choisir ce
+  compte pro en…'
 min_words: 2500
 status: published
 featured_image: /blog/9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter.jpg
@@ -15,8 +18,10 @@ cta_link: https://www.financeads.net/tc.php?t=74753C247346195T&subid=creaone.fr
 cta_enabled: true
 cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
+related_posts:
+- 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
+- 6808-vivid-business-avis-mon-experience-avec-ce-compte-pro-et-ce-que-j-en-pense-vraiment
 ---
-
 <p>J'ai testé Sogexia Business pendant plusieurs mois dans le cadre de ma gestion comptable chez un client TPE. Pas en tant que simple curieux, mais vraiment dans les tranchées : rapprochements bancaires, export de relevés, gestion des dépenses salariés. Autant vous dire que j'ai eu le temps de me faire une opinion bien précise.</p>
 
 <p>Spoiler : c'est loin d'être parfait. Mais ça n'est pas non plus à fuir. Tout dépend de ce que vous cherchez, et surtout de ce que vous êtes prêt à accepter comme compromis.</p>
