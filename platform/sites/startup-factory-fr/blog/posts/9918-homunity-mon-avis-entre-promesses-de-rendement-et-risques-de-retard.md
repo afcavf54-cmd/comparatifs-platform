@@ -20,6 +20,7 @@ cta_text: Offre exclusive Homunity
 cta_button: En profiter
 related_posts:
 - 4573-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
+- 2250-cashbee-pro-avis-les-atouts-et-les-contraintes-pour-placer-sa-tresorerie
 ---
 <p>J'ai commencé à regarder Homunity sérieusement il y a environ deux ans. Une collègue m'en avait parlé en passant, entre deux réunions, en disant que ça lui rapportait plus que son livret A. Bon. Ce genre de phrase, ça m'intrigue et ça m'agace en même temps. Alors j'ai creusé.</p>
 
