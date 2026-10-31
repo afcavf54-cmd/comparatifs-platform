@@ -19,8 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
 related_posts:
-- 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
 - 6808-vivid-business-avis-mon-experience-avec-ce-compte-pro-et-ce-que-j-en-pense-vraiment
+- 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
+- 3187-qonto-avis-apres-avoir-teste-cette-banque-pro-voici-ce-que-j-en-retiens
 ---
 <p>J'ai testé Sogexia Business pendant plusieurs mois dans le cadre de ma gestion comptable chez un client TPE. Pas en tant que simple curieux, mais vraiment dans les tranchées : rapprochements bancaires, export de relevés, gestion des dépenses salariés. Autant vous dire que j'ai eu le temps de me faire une opinion bien précise.</p>
 
