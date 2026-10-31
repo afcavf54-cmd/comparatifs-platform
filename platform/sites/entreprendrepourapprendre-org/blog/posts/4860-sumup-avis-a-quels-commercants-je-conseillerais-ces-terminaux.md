@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive SumUp
 cta_button: En profiter
 related_posts:
+- 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
 - 3642-vivid-business-avis-pour-quels-entrepreneurs-ce-compte-est-il-interessant
 - 2724-sogexia-business-mon-verdict-sur-cette-solution-bancaire-professionnelle
 ---
