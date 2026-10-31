@@ -2,7 +2,7 @@
 title: Parrainage BoursoBank
 slug: parrainage-boursobank
 date: 2026-10-31 07:09:16+02:00
-updated: 2026-10-31T07:09:16
+updated: 2026-10-31T07:19:36
 categorie: Banque
 categories:
 - Banque
@@ -15,15 +15,15 @@ show_toc: true
 ---
 
 <h2>Comprendre la prime BoursoBank en 1 minute</h2><p>📅 <b>Demande d’ouverture à réaliser avant le 4 novembre 2026 à 14 h</b>, sous réserve d’acceptation.</p>
-<table><thead><tr><th>Prime</th><th>Montant</th><th>Condition</th></tr></thead><tbody><tr><td><b>Ouverture du compte</b></td><td><b>20 €</b></td><td>Ouvrir un premier compte bancaire individuel éligible.</td></tr><tr><td><b>Premier dépôt</b></td><td><b>Jusqu’à 80 €</b></td><td>Déposer entre 1 et 49 € : <b>10 €</b>.<br>Entre 50 et 299 € : <b>40 €</b>.<br>Au moins 300 € : <b>80 €</b>.&nbsp;<br>Versement à effectuer pendant l’ouverture ou dans les 30 jours suivants.</td></tr><tr><td><b>Utilisation de la carte</b></td><td><b>Jusqu’à 80 €</b></td><td>Effectuer au moins un paiement ou retrait par période :&nbsp;<br><ul><li><b>20 €</b> pour les jours 1 à 30,&nbsp;</li></ul><b>30 €</b> pour les jours 31 à 60&nbsp;<br><b>30 €</b> pour les jours 61 à 90 après l’ouverture.</td></tr><tr><td><b>Mobilité bancaire EasyMove</b></td><td><b>80 €</b></td><td>Utiliser EasyMove pour la première fois, signer la demande dans le mois suivant l’ouverture et faire transférer au moins une opération récurrente éligible.</td></tr></tbody></table><p>20 € + 80 € + 80 € + 80 € = 260 € maximum, dont 180 € accessibles sans mobilité bancaire. Les 300 € déposés restent votre argent et peuvent être utilisés.</p><p>À retenir : offre réservée aux personnes majeures éligibles n’ayant jamais été clientes BoursoBank. Conservez le compte pendant 24 mois pour éviter une éventuelle reprise des primes. Avec EasyMove, maintenez également la domiciliation bancaire pendant 24 mois à compter de sa mise en place.</p><p><iframe class="video-embed" src="https://www.youtube.com/embed/Y6mvJhzTFYU" title="Vidéo YouTube" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen="" style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe></p><p><br>Tu as probablement vu passer l'offre de parrainage BoursoBank et tu te demandes si c'est vraiment intéressant ?<br><br>La réponse courte : oui, clairement. Mais comme souvent avec ce type d'offre, il y a des conditions à respecter pour ne pas passer à côté d'une partie des primes.</p>
+<table><thead><tr><th>Prime</th><th>Montant</th><th>Condition</th></tr></thead><tbody><tr><td><b>Ouverture du compte</b></td><td><b>20 €</b></td><td>Ouvrir un premier compte bancaire individuel éligible.</td></tr><tr><td><b>Premier dépôt</b></td><td><b>Jusqu’à 80 €</b></td><td>Déposer entre 1 et 49 € : <b>10 €</b>.<br>Entre 50 et 299 € : <b>40 €</b>.<br>Au moins 300 € : <b>80 €</b>.&nbsp;<br>Versement à effectuer pendant l’ouverture ou dans les 30 jours suivants.</td></tr><tr><td><b>Utilisation de la carte</b></td><td><b>Jusqu’à 80 €</b></td><td>Effectuer au moins un paiement ou retrait par période :&nbsp;<br><ul><li><b>20 €</b> pour les jours 1 à 30,&nbsp;</li></ul><b>30 €</b> pour les jours 31 à 60&nbsp;<br><b>30 €</b> pour les jours 61 à 90 après l’ouverture.</td></tr><tr><td><b>Mobilité bancaire EasyMove</b></td><td><b>80 €</b></td><td>Utiliser EasyMove pour la première fois, signer la demande dans le mois suivant l’ouverture et faire transférer au moins une opération récurrente éligible.</td></tr></tbody></table><p>20 € + 80 € + 80 € + 80 € = 260 € maximum, dont 180 € accessibles sans mobilité bancaire. Les 300 € déposés restent votre argent et peuvent être utilisés.</p><p>À retenir : offre réservée aux personnes majeures éligibles n’ayant jamais été clientes BoursoBank. Conservez le compte pendant 24 mois pour éviter une éventuelle reprise des primes. Avec EasyMove, maintenez également la domiciliation bancaire pendant 24 mois à compter de sa mise en place.</p><p><iframe class="video-embed" src="https://www.youtube.com/embed/Y6mvJhzTFYU" title="Vidéo YouTube" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen="" style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe></p><p>Tu as probablement vu passer l'offre de parrainage BoursoBank et tu te demandes si c'est vraiment intéressant ?<br><br>La réponse est oui, clairement. Mais comme souvent avec ce type d'offre, il y a des conditions à respecter pour ne pas passer à côté d'une partie des primes.</p>
 
 <p>Dans cet article, je vais tout te détailler, étape par étape. Combien tu peux recevoir, comment débloquer chaque prime, ce qu'il faut faire et ce qu'il vaut mieux éviter. À la fin, tu sauras exactement comment maximiser ton gain sans mauvaise surprise.</p>
 
 <p>Je précise que l'offre que je décris ici concerne les premières demandes d'ouverture réalisées avant le 4 novembre 2026 à 14 heures, sous réserve d'acceptation du dossier et du respect des conditions. L'offre peut évoluer, je mets les informations à jour régulièrement.</p>
 
-<h2>Comprendre les 260 € offerts : quatre primes, pas une seule</h2>
+<h2>Comprendre les 260 € offerts par BoursoBank : quatre primes, pas une seule</h2>
 
-<p>Première chose à savoir : BoursoBank ne te verse pas 260 € d'un seul coup simplement parce que tu ouvres un compte. Cette somme est en réalité composée de quatre primes distinctes, chacune liée à une condition précise.</p>
+<p>Première chose à savoir : BoursoBank (ex Boursorama) ne te verse pas 260 € d'un seul coup simplement parce que tu ouvres un compte. Cette somme est en réalité composée de quatre primes distinctes, chacune liée à une condition précise.</p>
 
 <p>Voilà comment ça se décompose :</p>
 
@@ -34,15 +34,15 @@ show_toc: true
   <li><strong>80 €</strong> supplémentaires si tu utilises le service de mobilité bancaire EasyMove</li>
 </ul>
 
-<p>Total : 20 + 80 + 80 + 80 = 260 €.</p>
+<p>Soit un total : 20 + 80 + 80 + 80 = 260 €.</p>
 
 <p>La bonne nouvelle, c'est que tu n'es pas obligé de remplir les quatre conditions pour toucher de l'argent. Si tu veux juste ouvrir un compte secondaire sans changer de banque, tu peux très bien t'arrêter à 100 € ou 180 €. Je t'explique tout ça dans les sections suivantes.</p>
 
-<h2>Les deux premières primes : jusqu'à 100 € à l'ouverture</h2>
+<h2>Les deux premières primes BoursoBank : jusqu'à 100 € à l'ouverture</h2>
 
 <h3>La prime d'ouverture de 20 €</h3>
 
-<p>Dès que tu ouvres ton premier compte bancaire individuel chez BoursoBank via un lien de parrainage, tu reçois 20 €. C'est automatique, il n'y a pas de condition particulière à remplir en dehors de l'ouverture effective du compte. Cette prime est versée au plus tard dans les deux mois suivant l'ouverture.</p>
+<p>Dès que tu ouvres ton premier compte bancaire individuel chez BoursoBank via un lien de parrainage, <b>tu reçois 20 €</b>. C'est automatique, il n'y a pas de condition particulière à remplir en dehors de l'ouverture effective du compte. Cette prime est versée au plus tard dans les deux mois suivant l'ouverture.</p>
 
 <h3>La prime liée au premier dépôt : entre 10 € et 80 €</h3>
 
@@ -54,15 +54,15 @@ show_toc: true
   <li>Tu déposes <strong>300 € ou plus</strong> : tu reçois <strong>80 €</strong> supplémentaires, soit 100 € au total</li>
 </ul>
 
-<p>Mon conseil : si tu en as la possibilité, dépose 300 €. C'est le seuil qui débloque la prime maximale, et ça fait une vraie différence, 70 € de plus par rapport à un dépôt de 50 €.</p>
+<p>Mon conseil : si tu en as la possibilité, <b>dépose 300 €</b>. C'est le seuil qui débloque la prime maximale, et ça fait une vraie différence, 70 € de plus par rapport à un dépôt de 50 €.</p>
 
-<p>Et je veux être clair sur un point qui peut prêter à confusion : les 300 € ne sont pas des frais. Ce n'est pas de l'argent que tu donnes à BoursoBank. C'est simplement ton argent, déposé sur ton nouveau compte bancaire. Tu peux l'utiliser comme bon te semble dès que ton compte est ouvert.</p>
+<p>Et je veux être clair sur un point qui peut prêter à confusion : les 300 € <b>ne sont pas des frais</b>. Ce n'est pas de l'argent que tu donnes à BoursoBank. C'est simplement ton argent, déposé sur ton nouveau compte bancaire. Tu peux l'utiliser comme bon te semble dès que ton compte est ouvert.</p>
 
 <p>Ce premier versement doit être réalisé pendant l'ouverture du compte ou dans les 30 jours suivants. La prime liée au dépôt est créditée dans les sept jours suivant ton premier versement, avec un délai maximal de deux mois prévu dans les conditions.</p>
 
-<h2>La troisième prime : 80 € avec ta carte bancaire en trois mois</h2>
+<h2>La troisième prime BoursoBank : 80 € avec ta carte bancaire en 3 mois</h2>
 
-<p>Une fois ton compte ouvert et ton premier dépôt effectué, tu peux débloquer 80 € supplémentaires en utilisant simplement ta carte bancaire. Et franchement, c'est la partie la plus simple de toute l'offre.</p>
+<p>Une fois ton compte ouvert et ton premier dépôt effectué, <b>tu peux débloquer 80 € supplémentaires</b> en utilisant simplement ta carte bancaire. Et franchement, c'est la partie la plus simple de toute l'offre.</p>
 
 <p>Le principe est le suivant : tu dois réaliser au moins une opération par carte bancaire (paiement ou retrait) à chacune des trois périodes de 30 jours suivant l'ouverture de ton compte.</p>
 
@@ -74,11 +74,11 @@ show_toc: true
 
 <p>Total : 20 + 30 + 30 = <strong>80 €</strong>.</p>
 
-<p>Pas besoin de dépenser des centaines d'euros chaque mois. Une seule opération suffit. Tu achètes un café, tu paies un abonnement, tu retires 20 € au distributeur : ça compte.</p>
+<p>Pas besoin de dépenser des centaines d'euros chaque mois. <b>Une seule opération suffit</b>. Tu achètes un café, tu paies un abonnement, tu retires 20 € au distributeur : ça compte.</p>
 
-<p>Mon conseil pratique : mets trois rappels dans ton téléphone dès l'ouverture de ton compte. Un pour le premier mois, un pour le deuxième, un pour le troisième. Comme ça, tu ne risques pas d'oublier et de perdre 30 € bêtement parce que tu n'as pas utilisé ta carte pendant une période.</p>
+<p><b>Mon conseil pratique</b> : mets trois rappels dans ton téléphone dès l'ouverture de ton compte. Un pour le premier mois, un pour le deuxième, un pour le troisième. Comme ça, tu ne risques pas d'oublier et de perdre 30 € bêtement parce que tu n'as pas utilisé ta carte pendant une période.</p>
 
-<p>Quelques précisions importantes : les opérations doivent être réalisées avec la carte associée à ce nouveau compte BoursoBank, et non avec une autre carte. Les primes sont versées dans les sept jours suivant la validation de chaque condition, avec un délai maximal d'un mois par tranche.</p>
+<p>Quelques précisions importantes : les opérations doivent être réalisées <b>avec la carte associée à ce nouveau compte BoursoBank</b>, et non avec une autre carte. Les primes sont versées dans les sept jours suivant la validation de chaque condition, avec un délai maximal d'un mois par tranche.</p>
 
 <p>Avec les 100 € de l'ouverture et ces 80 € de primes carte, tu arrives à <strong>180 € sans avoir besoin de changer de banque</strong>. C'est déjà très correct pour simplement ouvrir un compte secondaire.</p>
 
@@ -88,9 +88,9 @@ show_toc: true
 
 <h3>Comment fonctionne EasyMove ?</h3>
 
-<p>Imaginons que tu aies actuellement ton compte principal au Crédit Agricole ou à la BNP. Tu as probablement des prélèvements automatiques sur ce compte : ton abonnement Netflix, ta mutuelle, ton électricité, ton téléphone mobile. Changer de banque signifierait normalement contacter chacun de ces organismes pour leur communiquer tes nouvelles coordonnées bancaires. C'est long et fastidieux.</p>
+<p>Imaginons que tu aies actuellement ton compte principal au Crédit Agricole ou à la BNP. Tu as probablement des prélèvements automatiques sur ce compte : ton abonnement Netflix, ta mutuelle, ton électricité, ton téléphone mobile.&nbsp;</p><p>Changer de banque signifierait normalement contacter chacun de ces organismes pour leur communiquer tes nouvelles coordonnées bancaires. C'est long et fastidieux.</p>
 
-<p>EasyMove, c'est le service qui s'en occupe pour toi. BoursoBank contacte directement les organismes et leur transmet ton nouveau RIB. Tu n'as quasiment rien à faire. Et en échange, BoursoBank te verse 80 € supplémentaires.</p>
+<p>EasyMove, c'est le service qui s'en occupe pour toi. BoursoBank contacte directement les organismes et leur transmet ton nouveau RIB. Tu n'as quasiment rien à faire. Et en échange, <b>BoursoBank te verse 80 € supplémentaires</b>.</p>
 
 <h3>Les conditions de la prime EasyMove</h3>
 
@@ -105,17 +105,17 @@ show_toc: true
 
 <h3>La condition à ne pas ignorer</h3>
 
-<p>Il y a un point crucial que beaucoup de gens oublient : si tu n'utilises pas EasyMove uniquement pour décrocher les 80 €, réfléchis à deux fois. BoursoBank peut récupérer cette prime si tu ne maintiens pas ta domiciliation bancaire pendant les <strong>24 mois suivant sa mise en place</strong>.</p>
+<p>Il y a un point important que beaucoup de gens oublient : si tu souscris EasyMove uniquement pour décrocher les 80 €, réfléchis à deux fois. BoursoBank peut récupérer cette prime si tu ne maintiens pas ta domiciliation bancaire pendant les <strong>24 mois suivant sa mise en place</strong>.</p>
 
-<p>Concrètement, si tu transfères tes prélèvements chez BoursoBank et que tu décides de revenir dans ton ancienne banque ou de changer à nouveau dans les deux ans, tu risques de devoir rembourser ces 80 €.</p>
+<p>Concrètement, si tu transfères tes prélèvements chez BoursoBank et que tu décides de revenir dans ton ancienne banque ou de changer à nouveau dans les deux ans, <b>tu risques de devoir rembourser ces 80 €</b>.</p>
 
-<p>Mon avis là-dessus est clair : si tu veux vraiment changer de banque principale et que BoursoBank te convient, EasyMove est une excellente option. Tu simplifies la transition et tu touches 80 € en bonus. En revanche, si tu veux juste un compte secondaire, reste sur 180 €. C'est déjà un très bon deal et tu évites tout risque de remboursement.</p>
+<p>Mon avis là-dessus est clair : si tu veux vraiment changer de banque principale et que BoursoBank te convient, EasyMove est une excellente option. Tu simplifies la transition et tu touches 80 € en bonus.&nbsp;</p><p>En revanche, si tu veux juste un compte secondaire, <b>reste sur 180 €</b>. C'est déjà un très bon deal et tu évites tout risque de remboursement.</p>
 
 <h2>Comment ouvrir son compte BoursoBank avec le parrainage ?</h2>
 
 <h3>Le déroulement de l'ouverture</h3>
 
-<p>Pour profiter de l'offre de parrainage, tu dois passer par un lien de parrainage et non directement par le site de BoursoBank. Si tu ouvres ton compte sans lien de parrainage, tu ne bénéficies pas des primes de bienvenue. C'est une erreur classique, et elle coûte cher.</p>
+<p>Pour profiter de l'offre de parrainage, <b>tu dois passer par un lien de parrainage</b>, par exemple le mien et non directement par le site de BoursoBank. Si tu ouvres ton compte sans lien de parrainage, tu ne bénéficies pas des primes de bienvenue. C'est une erreur classique, et elle coûte cher.</p>
 
 <p>Une fois sur le formulaire d'ouverture, tu vas :</p>
 
@@ -127,13 +127,13 @@ show_toc: true
   <li>Effectuer ton premier versement</li>
 </ol>
 
-<p>À l'étape du premier versement, souviens-toi de ce qu'on a vu : si tu veux maximiser ta prime, dépose au moins 300 €.</p>
+<p>À l'étape du premier versement, souviens-toi de ce qu'on a vu : si tu veux maximiser ta prime, <b>dépose au moins 300 €</b>.</p>
 
 <h3>Les règles selon le parcours d'ouverture</h3>
 
 <p>Il y a deux façons d'ouvrir ton compte : via l'application BoursoBank ou via le parcours web classique. Les règles diffèrent légèrement.</p>
 
-<p>Si tu passes <strong>par l'application</strong> : ton dossier doit être complet et conforme pendant le parcours d'ouverture. Si ton dossier reste incomplet pendant cinq jours ouvrés, tu devras recommencer depuis le début. Attention, ce parcours ne concerne que les cartes à autorisation systématique.</p>
+<p>Si tu passes <strong>par l'application</strong> : ton dossier doit être complet et conforme pendant le parcours d'ouverture. Si ton dossier reste incomplet pendant cinq jours ouvrés, tu devras recommencer depuis le début.&nbsp;</p>
 
 <p>Si tu passes <strong>par le parcours web sans l'application</strong> : ton dossier doit être complet et conforme dans les deux mois suivant ta demande initiale. Tous les justificatifs doivent être fournis dans ce délai. Le premier versement reste soumis au délai de 30 jours que j'ai mentionné plus tôt.</p>
 
@@ -152,7 +152,7 @@ show_toc: true
 <h3>Qui peut en bénéficier ?</h3>
 
 <ul>
-  <li>Le parrain et le filleul doivent être des personnes physiques, majeures et juridiquement capables</li>
+  <li>Le parrain et le filleul doivent être <b>des personnes physiques, majeures et juridiquement capables</b></li>
   <li>Le filleul ne doit <strong>jamais avoir été client BoursoBank</strong> auparavant</li>
   <li>L'offre concerne uniquement l'ouverture d'un <strong>premier compte bancaire individuel éligible</strong>, pas un compte joint ni un compte professionnel</li>
   <li>L'offre est limitée à une seule offre par personne</li>
@@ -189,10 +189,11 @@ show_toc: true
 
 <p>Honnêtement, c'est l'une des meilleures offres de bienvenue disponibles sur le marché des banques en ligne en ce moment. Obtenir 100 € simplement en ouvrant un compte et en faisant un dépôt de 300 € (ton propre argent, rappelons-le), c'est déjà très bien. Et passer à 180 € avec trois paiements par carte en trois mois, c'est accessible à n'importe qui.</p>
 
-<p>BoursoBank est aussi l'une des banques en ligne les plus connues en France, avec une offre sérieuse, des frais parmi les plus bas du marché et une application bien conçue. Ce n'est pas juste une banque créée pour attirer des clients avec des primes et disparaître. C'est une vraie banque principale pour beaucoup de personnes.</p>
+<p>BoursoBank est aussi l'une des banques en ligne les plus connues en France (9 millions de clients), avec une offre sérieuse, des frais parmi les plus bas du marché et une application bien conçue. Ce n'est pas juste une banque créée pour attirer des clients avec des primes et disparaître. C'est une vraie banque principale pour beaucoup de personnes.</p>
 
 <p>Ma recommandation : si tu n'as jamais eu de compte chez BoursoBank, c'est le bon moment pour te lancer. Profite de l'offre, dépose 300 €, utilise ta carte une fois par mois pendant trois mois, et tu récupères 180 € sans effort particulier. Si tu veux vraiment changer de banque principale, EasyMove te permet d'atteindre 260 €, mais uniquement si tu es sûr de vouloir rester chez BoursoBank pendant au moins deux ans.</p>
 
 <p>En revanche, n'ouvre pas de compte juste pour toucher les primes si tu n'as aucune intention de le garder. Les 24 mois de conservation obligatoire sont une vraie condition, et BoursoBank peut récupérer les primes si tu ne la respectes pas.</p>
 
-<p>L'offre est valable pour les demandes d'ouverture réalisées avant le 4 novembre 2026 à 14 heures. Si tu as des questions sur l'ouverture du compte, les primes ou les délais de versement, laisse-les dans les commentaires, je prends le temps d'y répondre.</p>
+<p>L'offre est valable pour les demandes d'ouverture réalisées <b>avant le 4 novembre 2026 à 14 heures</b>. Si tu as des questions sur l'ouverture du compte, les primes ou les délais de versement, laisse-les dans les commentaires, je prends le temps d'y répondre.</p>
+
