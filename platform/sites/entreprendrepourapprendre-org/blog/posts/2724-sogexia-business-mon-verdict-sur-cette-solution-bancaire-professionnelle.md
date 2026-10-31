@@ -19,7 +19,6 @@ cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
 related_posts:
 - 4860-sumup-avis-a-quels-commercants-je-conseillerais-ces-terminaux
-- 3642-vivid-business-avis-pour-quels-entrepreneurs-ce-compte-est-il-interessant
 - 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
 ---
 <p>J'ai testé pas mal de solutions bancaires ces dernières années pour mon agence. Sogexia Business fait partie de celles que j'ai examinées de près, parce que la promesse était alléchante : un compte professionnel sans les lourdeurs d'une banque traditionnelle, accessible rapidement, avec une carte et des outils de gestion intégrés. Sur le papier, c'est exactement ce que je cherche.</p>

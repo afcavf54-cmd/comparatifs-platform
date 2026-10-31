@@ -21,6 +21,7 @@ related_posts:
 - 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
 - 3642-vivid-business-avis-pour-quels-entrepreneurs-ce-compte-est-il-interessant
 - 2724-sogexia-business-mon-verdict-sur-cette-solution-bancaire-professionnelle
+- 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
 ---
 <p>J'ai testé pas mal de solutions de paiement depuis que j'ai lancé mon agence. Et honnêtement, SumUp, je l'ai découvert un peu par hasard, lors d'un marché de créateurs où une artisane l'utilisait pour encaisser ses clients. Elle avait juste son téléphone et un petit lecteur. Ça m'a intriguée, parce que moi, pour mes événements pros ou mes salons, j'avais toujours galéré avec des solutions bancaires classiques qui demandaient un contrat de six mois minimum.</p>
 
