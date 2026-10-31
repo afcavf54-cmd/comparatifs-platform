@@ -1,15 +1,15 @@
 ---
 title: Parrainage BoursoBank
 slug: parrainage-boursobank
-date: 2026-10-31 07:09:16+02:00
-updated: 2026-10-31T07:43:05
+date: 2026-10-31 07:43:14+02:00
+updated: 2026-10-31T07:43:14
 categorie: Banque
 categories:
 - Banque
 meta_title: "Parrainage BoursoBank : Jusqu'à 260€ offerts (conditions offre en cours)"
 meta_description: "Obtenez jusqu'à 260 euros en ouvrant un compte BoursoBank via parrainage. Découvrez toutes les conditions pour profiter de cette offre et maximiser vos primes."
 featured_image: /blog/parrainage-boursobank/featured-55080.png
-status: draft
+status: published
 min_words: 1800
 show_toc: true
 cta_enabled: true
