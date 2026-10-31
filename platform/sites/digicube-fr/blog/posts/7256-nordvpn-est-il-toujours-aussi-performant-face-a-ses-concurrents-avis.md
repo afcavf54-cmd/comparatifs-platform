@@ -17,6 +17,8 @@ cta_enabled: true
 cta_text: Offre exclusive NordVPN
 cta_button: En profiter
 related_posts:
+- 8895-surfshark-est-ce-le-vpn-au-meilleur-rapport-qualite-prix-avis
+- 1603-hostinger-avis-peut-on-obtenir-un-hebergement-performant-a-bas-prix
 - 4067-o2switch-faut-il-lui-confier-son-site-internet-mon-avis
 - 8895-surfshark-est-ce-le-vpn-au-meilleur-rapport-qualite-prix-avis
 - 1603-hostinger-avis-peut-on-obtenir-un-hebergement-performant-a-bas-prix
