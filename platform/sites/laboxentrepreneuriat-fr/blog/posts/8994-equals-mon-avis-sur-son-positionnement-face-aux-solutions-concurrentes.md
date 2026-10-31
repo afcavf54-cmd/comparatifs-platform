@@ -20,6 +20,7 @@ cta_button: En profiter
 related_posts:
 - 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
 - 1021-mypos-avis-ce-qui-change-reellement-par-rapport-aux-autres-terminaux
+- 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
 ---
 <p>J'ai commencé à regarder Equals de près il y a environ un an, après qu'un client m'ait posé la question suivante : "Hugo, j'ai besoin d'un compte professionnel, mais aussi d'envoyer de l'argent à l'étranger régulièrement et de gérer des cartes pour mes équipes. Est-ce que je peux tout faire au même endroit ?" C'est exactement là où Equals entre en jeu. Et c'est aussi là où les choses deviennent intéressantes.</p>
 
