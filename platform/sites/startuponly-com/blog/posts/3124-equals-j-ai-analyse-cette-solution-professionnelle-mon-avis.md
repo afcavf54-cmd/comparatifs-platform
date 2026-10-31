@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive Equals
 cta_button: En profiter
 related_posts:
+- 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
 - 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
 ---
 <p>J'ai découvert Equals un peu par hasard, en cherchant une alternative à ce que j'utilisais pour centraliser les données financières de ma boîte. On m'en avait parlé dans un groupe Slack de fondateurs, et j'avoue que le pitch m'avait intrigué : un outil qui connecte tes comptes bancaires, tes données comptables et tes feuilles de calcul dans un seul endroit. Sur le papier, c'est exactement ce dont j'avais besoin.</p>
