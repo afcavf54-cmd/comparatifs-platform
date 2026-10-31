@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
 related_posts:
+- 3324-why-how-what-appliquer-le-golden-circle-pour-renforcer-votre-strategie
 - 5959-calcul-prix-de-vente-avec-taux-de-marge-methode-simple-et-exemples-detailles
 - 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
-- 4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable
-- 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
+- 5171-strategie-corporate-les-fondamentaux-pour-piloter-la-croissance-d-un-groupe
 ---
 <p>J'utilise des logiciels de comptabilité depuis plus de vingt ans. J'ai vu des solutions prometteuses arriver, décevoir, disparaître. Alors quand on m'a parlé d'Indy il y a quelques années, j'ai abordé ça avec mon scepticisme habituel de comptable lyonnaise qui en a vu d'autres.</p>
 
