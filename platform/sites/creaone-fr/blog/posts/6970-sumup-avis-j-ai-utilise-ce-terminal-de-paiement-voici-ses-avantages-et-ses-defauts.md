@@ -20,9 +20,9 @@ cta_enabled: true
 cta_text: Offre exclusive SumUp
 cta_button: En profiter
 related_posts:
+- 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
 - 6808-vivid-business-avis-mon-experience-avec-ce-compte-pro-et-ce-que-j-en-pense-vraiment
 - 3187-qonto-avis-apres-avoir-teste-cette-banque-pro-voici-ce-que-j-en-retiens
-- 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
 ---
 <p>Ça fait maintenant plusieurs années que je tourne avec des solutions de paiement mobile dans le cadre de mes missions en comptabilité. Quand on gère les flux financiers d'une entreprise de taille intermédiaire, le choix du terminal de paiement n'est pas anodin. Trop de gens sous-estiment l'impact que ça peut avoir sur la réconciliation bancaire, le reporting ou simplement la vie quotidienne des équipes terrain.</p>
 
