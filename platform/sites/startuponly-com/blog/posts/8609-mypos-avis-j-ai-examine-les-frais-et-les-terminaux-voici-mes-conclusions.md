@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive myPOS
 cta_button: En profiter
 related_posts:
+- 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
 - 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
 - 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
 ---
