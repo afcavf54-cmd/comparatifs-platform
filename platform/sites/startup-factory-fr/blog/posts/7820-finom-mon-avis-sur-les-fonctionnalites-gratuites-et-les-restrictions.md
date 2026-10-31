@@ -18,7 +18,8 @@ cta_link: https://www.financeads.net/tc.php?t=74753C385274278T&subid=startup-fac
 cta_enabled: true
 cta_text: Offre exclusive Finom
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 9186-bunq-pro-ce-que-j-aime-dans-cette-banque-et-ce-qui-me-freine-avis
 ---
 <p>J'utilise Finom depuis un moment maintenant. Pas pour tout, mais assez pour avoir un avis clair sur ce que ça vaut vraiment, surtout quand on parle du plan gratuit. Parce que oui, Finom propose un compte pro sans abonnement mensuel, et sur le papier, c'est tentant. Très tentant même quand tu gères une petite structure et que tu surveilles chaque euro qui sort.</p>
 
