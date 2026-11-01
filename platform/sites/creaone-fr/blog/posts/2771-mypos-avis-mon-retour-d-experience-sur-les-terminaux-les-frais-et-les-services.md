@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive myPOS
 cta_button: En profiter
 related_posts:
+- 6808-vivid-business-avis-mon-experience-avec-ce-compte-pro-et-ce-que-j-en-pense-vraiment
+- 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
 - 3187-qonto-avis-apres-avoir-teste-cette-banque-pro-voici-ce-que-j-en-retiens
 - 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
-- 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
-- 6808-vivid-business-avis-mon-experience-avec-ce-compte-pro-et-ce-que-j-en-pense-vraiment
 ---
 <p>Je vais être honnête : j'ai testé myPOS un peu par hasard. Un de nos prestataires indépendants utilisait leur terminal lors d'une intervention, j'ai regardé l'interface, posé deux ou trois questions, et j'ai fini par m'y intéresser pour notre propre usage en situation de mobilité. Ce qui suit, c'est ce que j'ai vraiment constaté après plusieurs mois d'utilisation, avec les bons et les moins bons côtés.</p>
 

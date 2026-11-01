@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Qonto
 cta_button: En profiter
 related_posts:
+- 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
+- 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
 - 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
 - 6808-vivid-business-avis-mon-experience-avec-ce-compte-pro-et-ce-que-j-en-pense-vraiment
-- 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
-- 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
 ---
 <p>J'utilise Qonto depuis maintenant trois ans dans mon quotidien de responsable comptable. Trois ans, c'est assez pour voir les bugs, les mises à jour, les promesses tenues et celles qui ne l'ont pas été. Ce n'est pas un test de quelques semaines, c'est du terrain.</p>
 

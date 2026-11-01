@@ -17,6 +17,8 @@ cta_enabled: true
 cta_text: Offre exclusive Vivid Business
 cta_button: En profiter
 related_posts:
+- 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
+- 3187-qonto-avis-apres-avoir-teste-cette-banque-pro-voici-ce-que-j-en-retiens
 - 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
 - 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
 - 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
