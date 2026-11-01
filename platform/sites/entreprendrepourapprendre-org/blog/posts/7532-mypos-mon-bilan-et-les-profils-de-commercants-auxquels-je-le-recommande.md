@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive myPOS
 cta_button: En profiter
 related_posts:
+- 2724-sogexia-business-mon-verdict-sur-cette-solution-bancaire-professionnelle
 - 3642-vivid-business-avis-pour-quels-entrepreneurs-ce-compte-est-il-interessant
 - 4860-sumup-avis-a-quels-commercants-je-conseillerais-ces-terminaux
 - 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
-- 2724-sogexia-business-mon-verdict-sur-cette-solution-bancaire-professionnelle
 ---
 <p>J'utilise myPOS depuis maintenant un bon moment dans mon agence, et à force d'en parler autour de moi avec d'autres dirigeants de petites structures, j'ai réalisé que les avis sont vraiment coupés en deux. Soit les gens adorent, soit ils trouvent que ça ne colle pas à leur activité. La vérité, c'est que les deux camps ont raison. Tout dépend du profil.</p>
 

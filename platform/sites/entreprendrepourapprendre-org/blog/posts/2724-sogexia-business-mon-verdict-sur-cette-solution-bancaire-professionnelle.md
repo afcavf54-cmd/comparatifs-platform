@@ -18,6 +18,8 @@ cta_enabled: true
 cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
 related_posts:
+- 3642-vivid-business-avis-pour-quels-entrepreneurs-ce-compte-est-il-interessant
+- 7532-mypos-mon-bilan-et-les-profils-de-commercants-auxquels-je-le-recommande
 - 4860-sumup-avis-a-quels-commercants-je-conseillerais-ces-terminaux
 - 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
 - 3642-vivid-business-avis-pour-quels-entrepreneurs-ce-compte-est-il-interessant
