@@ -1,23 +1,24 @@
 ---
-title: Parrainage BoursoBank,  profitez de jusqu'à 260€ offerts (tuto et conditions
+title: "Parrainage BoursoBank,  profitez de jusqu'à 260€ offerts (tuto et conditions)"
 slug: parrainage-boursobank
 date: 2026-10-31 07:43:14+02:00
-updated: 2026-11-01 06:51:18
+updated: 2026-11-01T06:54:52
 categorie: Banque
 categories:
 - Banque
-meta_title: 'Parrainage BoursoBank : Jusqu''à 260€ offerts (conditions offre en cours)'
-meta_description: Obtenez jusqu'à 260 euros en ouvrant un compte BoursoBank via parrainage.
+meta_title: "Parrainage BoursoBank : Jusqu'à 260€ offerts (conditions offre en cours)"
+meta_description: "Obtenez jusqu'à 260 euros en ouvrant un compte BoursoBank via parrainage."
 featured_image: /blog/parrainage-boursobank/featured-55080.png
 status: published
 min_words: 1800
 show_toc: false
 cta_enabled: true
-cta_text: 'BoursoBank : Jusqu''à 260€ offerts'
+cta_text: "BoursoBank : Jusqu'à 260€ offerts"
 cta_link: https://clikme.xyz/BoursoBank-parrainage
 cta_button: COPIER LE CODE
-related_posts: []
+cta_btn_color: "#e9169a"
 ---
+
 <h2>Comprendre la prime BoursoBank en 1 minute</h2><p>📅 <b>Demande d’ouverture à réaliser avant le 4 novembre 2026 à 14 h</b>, sous réserve d’acceptation.</p>
 <table><thead><tr><th>Prime</th><th>Montant</th><th>Condition</th></tr></thead><tbody><tr><td><b>Ouverture du compte</b></td><td><b>20 €</b></td><td>Ouvrir un premier compte bancaire individuel éligible.</td></tr><tr><td><b>Premier dépôt</b></td><td><b>Jusqu’à 80 €</b></td><td><ul><li>Déposer entre 1 et 49 € : <b>10 €</b>.&nbsp;</li><li>Entre 50 et 299 € : <b>40 €</b>.&nbsp;</li><li>Au moins 300 € : <b>80 €</b>.&nbsp;</li></ul>Versement à effectuer pendant l’ouverture ou dans les 30 jours suivants.</td></tr><tr><td><b>Utilisation de la carte</b></td><td><b>Jusqu’à 80 €</b></td><td>Effectuer au moins un paiement ou retrait par période :&nbsp;<br><ul><li><b>20 €</b> pour les jours 1 à 30,&nbsp;</li><li><b>30 €</b> pour les jours 31 à 60,&nbsp;</li><li><b>30 €</b> pour les jours 61 à 90 après l’ouverture.</li></ul></td></tr><tr><td><b>Mobilité bancaire EasyMove</b></td><td><b>80 €</b></td><td>Utiliser EasyMove pour la première fois, signer la demande dans le mois suivant l’ouverture et faire transférer <b>au moins une opération récurrente éligible</b>.</td></tr></tbody></table><p>20 € + 80 € + 80 € + 80 € = <b>260 € maximum</b>, dont 180 € accessibles sans mobilité bancaire. Les 300 € déposés restent votre argent et peuvent être utilisés.</p><p><b>À retenir</b> : offre réservée <b>aux personnes majeures éligibles</b> n’ayant <b>jamais été clientes BoursoBank</b>. Conservez le compte pendant 24 mois pour éviter une éventuelle reprise des primes. Avec EasyMove, maintenez également la domiciliation bancaire pendant 24 mois à compter de sa mise en place.</p><p><iframe class="video-embed" src="https://www.youtube.com/embed/Y6mvJhzTFYU" title="Vidéo YouTube" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen="" style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe></p><p>Tu as probablement vu passer l'offre de parrainage BoursoBank et <b>tu te demandes si c'est vraiment intéressant</b> ?<br><br>La réponse est oui, clairement. Mais comme souvent avec ce type d'offre, il y a <b>des conditions à respecter</b> pour ne pas passer à côté d'une partie des primes.</p>
 
@@ -200,6 +201,7 @@ related_posts: []
 <p>En revanche, n'ouvre pas de compte juste pour toucher les primes si tu n'as aucune intention de le garder. Les 24 mois de conservation obligatoire sont une vraie condition, et BoursoBank peut récupérer les primes si tu ne la respectes pas.</p>
 
 <p>L'offre est valable pour les demandes d'ouverture réalisées <b>avant le 4 novembre 2026 à 14 heures</b>. Si tu as des questions sur l'ouverture du compte, les primes ou les délais de versement, laisse-les dans les commentaires, je prends le temps d'y répondre.</p>
+
 
 
 
