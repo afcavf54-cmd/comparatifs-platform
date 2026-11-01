@@ -17,9 +17,10 @@ cta_enabled: true
 cta_text: Offre exclusive Vivid Business
 cta_button: En profiter
 related_posts:
-- 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
 - 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
+- 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
 - 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
+- 3187-qonto-avis-apres-avoir-teste-cette-banque-pro-voici-ce-que-j-en-retiens
 featured_image: /blog/6808-vivid-business-avis-mon-experience-avec-ce-compte-pro-et-ce-que-j-en-pense-vraiment.jpg
 ---
 <p>J'utilise Vivid Business depuis plusieurs mois maintenant, et je vais vous dire exactement ce que j'en pense, sans langue de bois. Pas de discours commercial, pas de liste à cocher façon fiche produit. Juste ce que j'ai vécu, ce qui m'a plu, et ce qui m'a franchement agacé.</p>
