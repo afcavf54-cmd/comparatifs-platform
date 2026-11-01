@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Hostinger
 cta_button: En profiter
 related_posts:
-- 3276-purevpn-avis-ce-fournisseur-merite-t-il-votre-confiance
 - 7256-nordvpn-est-il-toujours-aussi-performant-face-a-ses-concurrents-avis
 - 8895-surfshark-est-ce-le-vpn-au-meilleur-rapport-qualite-prix-avis
 - 4067-o2switch-faut-il-lui-confier-son-site-internet-mon-avis
+- 3276-purevpn-avis-ce-fournisseur-merite-t-il-votre-confiance
 ---
 <p>J'utilise Hostinger depuis un peu plus d'un an maintenant. Au départ, j'étais franchement sceptique. Un hébergement à 2€/mois, ça sentait le piège de loin. Et puis j'ai creusé, j'ai testé, j'ai migré deux sites dessus. Voilà ce que j'en pense vraiment, sans filtre.</p>
 
