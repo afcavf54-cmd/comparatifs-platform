@@ -182,8 +182,7 @@ content_libre: |-
   <p><strong>Prime débloquée : 20 €.</strong> Son versement est prévu au plus tard dans les 2 mois suivant l’ouverture effective.</p>
   <p>Conseil pratique : gardez le message de confirmation et créez une note avec la date d’ouverture, les opérations réalisées et les primes reçues.</p>
   <h2>Étape 2 : Réaliser le bon premier versement pour obtenir jusqu’à 80 €</h2>
-  <p>Le montant de cette prime dépend de <strong>votre premier versement</strong>. Il doit être réalisé pendant l’ouverture ou dans les 30 jours suivants, en respectant les instructions du parcours.</p><table><thead><tr><th>Premier versement</th><th>Prime correspondante</th><th>Total avec les 20 € d’ouverture</th></tr></thead><tbody><tr><td>De 1 à 49 €</td><td>10 €</td><td>—</td></tr><tr><td>De 50 à 299 €</td><td>—</td><td>—</td></tr><tr><td>300 € ou plus</td><td>—</td><td>—</td></tr></tbody></table><p><br><br></p><p><br></p>
-  <table>
+  <p>Le montant de cette prime dépend de <strong>votre premier versement</strong>. Il doit être réalisé pendant l’ouverture ou dans les 30 jours suivants, en respectant les instructions du parcours.</p><table>
   <thead><tr><th>Premier versement</th><th>Prime correspondante</th><th>Total avec les 20 € d’ouverture</th></tr></thead>
   <tbody><tr><td>De 1 à 49 €</td><td>10 €</td><td>30 €</td></tr><tr><td>De 50 à 299 €</td><td>40 €</td><td>60 €</td></tr><tr><td>300 € ou plus</td><td>80 €</td><td><strong>100 €</strong></td></tr></tbody>
   </table>
