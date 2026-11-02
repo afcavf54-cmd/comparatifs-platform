@@ -20,6 +20,7 @@ cta_text: Offre exclusive Vivid Business
 cta_button: En profiter
 related_posts:
 - 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
+- 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
 ---
 <p>J'ai ouvert un compte Vivid Business au début de l'année 2025. Pas par curiosité. Par nécessité. Mon ancienne banque professionnelle me faisait payer des frais à chaque virement international, et j'en avais assez. Un associé m'avait mentionné Vivid, j'ai regardé rapidement, et j'ai plongé.</p>
 
