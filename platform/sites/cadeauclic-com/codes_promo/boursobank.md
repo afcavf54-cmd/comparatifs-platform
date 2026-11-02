@@ -48,41 +48,9 @@ codes:
     valeur: 180
     unite: €
     sous_type: Code promo
-    accroche: Jusqu’à 180 € offerts avec la carte Welcome.
+    accroche: Jusqu’à 180 € offerts avec Welcome, Ultim ou Metal.
     code: ""
-    detail: Ouvrez votre premier compte bancaire BoursoBank avec Welcome, gratuite et sans condition de revenus. Les 180 € dépendent du premier versement, des opérations par carte et de la mobilité EasyMove. Commander une carte sur un compte existant ne donne pas droit à cette prime.
-    expire_le: ""
-    nb_utilisations: 0
-    teste_par_sophie: ""
-    meilleure_remise: false
-    expired: false
-    cta_text: VIPO0272
-    cta_url: https://bon-plan.eu/BoursoBank
-    produits: []
-  - id: cmvzahv62r6ad
-    type: code
-    valeur: 180
-    unite: €
-    sous_type: Code promo
-    accroche: Jusqu’à 180 € offerts avec la carte Ultim.
-    code: ""
-    detail: Profitez de l’offre en ouvrant votre premier compte bancaire BoursoBank avec Ultim. Premier versement, utilisation de la carte et mobilité EasyMove nécessaires pour obtenir le maximum. La carte physique est gratuite sous condition d’utilisation, sinon 9 € par mois.
-    expire_le: ""
-    nb_utilisations: 0
-    teste_par_sophie: ""
-    meilleure_remise: false
-    expired: false
-    cta_text: VIPO0272
-    cta_url: https://bon-plan.eu/BoursoBank
-    produits: []
-  - id: cmvzaig11z30p
-    type: code
-    valeur: 180
-    unite: €
-    sous_type: Code promo
-    accroche: Jusqu’à 180 € offerts avec la carte Metal.
-    code: ""
-    detail: "Ouvrez votre premier compte bancaire BoursoBank avec l’offre Metal et remplissez les conditions de versement, d’utilisation et de mobilité bancaire. L’abonnement Metal reste payant : 9,90 €/mois avec carte physique ou 5,90 €/mois en version dématérialisée."
+    detail: Ouvrez votre premier compte bancaire individuel BoursoBank. La prime comprend 20 € à l’ouverture, jusqu’à 40 € pour le premier versement, 40 € pour l’utilisation de la carte et 80 € avec EasyMove. Les conditions tarifaires de la carte choisie restent applicables.
     expire_le: ""
     nb_utilisations: 0
     teste_par_sophie: ""
@@ -120,23 +88,39 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: VIPO0272
+    cta_text: ""
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
-  - id: cmvzak5trewsz
+  - id: cmvzbeh1lq0j1
     type: code
-    valeur: null
-    unite: "%"
+    valeur: 180
+    unite: €
     sous_type: Code promo
-    accroche: ""
+    accroche: Jusqu’à 180 € offerts pour ouvrir votre compte et votre livret.
     code: ""
-    detail: ""
+    detail: Pour bénéficier des 180 €, ouvrez d’abord votre premier compte bancaire individuel BoursoBank et remplissez les conditions de versement, d’utilisation de la carte et de mobilité EasyMove. Vous pourrez ensuite ouvrir le produit d’épargne de votre choix, sous réserve d’éligibilité. Le livret seul ne déclenche pas la prime.
     expire_le: ""
     nb_utilisations: 0
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: VIPO0272
+    cta_text: ""
+    cta_url: https://bon-plan.eu/BoursoBank
+    produits: []
+  - id: cmvzbfac7szg3
+    type: code
+    valeur: 180
+    unite: €
+    sous_type: Code promo
+    accroche: Vos frais de transfert remboursés deux fois, jusqu’à 3 000 €.
+    code: ""
+    detail: Transférez intégralement un premier PEA, PEA-PME ou CTO éligible. BoursoBank rembourse deux fois les frais facturés par votre ancien établissement, dans les limites prévues. Justificatif à transmettre sous 3 mois ; conditions de dossier, de conservation et d’activité applicables.
+    expire_le: ""
+    nb_utilisations: 0
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
+    cta_text: ""
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
 faq:
