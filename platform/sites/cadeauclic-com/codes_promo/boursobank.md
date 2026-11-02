@@ -161,8 +161,8 @@ historique_unite: €
 related_brands:
   - linxea
 status: published
-meta_title: "Code Promo & Parrainage BoursoBank ({mois_annee}) : Jusqu'à {best_remise}€ Offerts"
-h1_custom: "Codes Promo et Parrainage BoursoBank {mois_annee} : {best_remise}€ de prime"
+meta_title: "Code Promo & Parrainage BoursoBank ({mois_annee}) : Jusqu'à {best_remise} Offerts"
+h1_custom: "Codes Promo et Parrainage BoursoBank {mois_annee} : {best_remise} de prime"
 date_creation: "2026-11-02"
 date_maj: "2026-11-02"
 ---
