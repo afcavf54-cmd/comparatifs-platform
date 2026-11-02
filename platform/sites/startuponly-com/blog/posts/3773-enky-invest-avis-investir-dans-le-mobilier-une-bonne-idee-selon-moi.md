@@ -20,9 +20,9 @@ cta_enabled: true
 cta_text: Offre exclusive Enky Invest
 cta_button: En profiter
 related_posts:
-- 3523-waltio-avis-j-ai-voulu-simplifier-ma-declaration-crypto-voici-mon-bilan
 - 3185-homunity-avis-j-ai-etudie-les-projets-immobiliers-et-leurs-risques
 - 4603-enerfip-mon-avis-sur-cette-plateforme-d-investissement-participatif
+- 3523-waltio-avis-j-ai-voulu-simplifier-ma-declaration-crypto-voici-mon-bilan
 ---
 <p>J'ai découvert Enky Invest un peu par hasard, en cherchant des alternatives aux placements classiques pour diversifier les revenus de ma boîte. Un pote entrepreneur m'en a parlé lors d'un afterwork à Bordeaux, et j'avoue que le concept m'a intrigué : investir dans du mobilier professionnel, toucher des loyers, et récupérer sa mise. Pas franchement ce à quoi je pensais en matière d'investissement.</p>
 
