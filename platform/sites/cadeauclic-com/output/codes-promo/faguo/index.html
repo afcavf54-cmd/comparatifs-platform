@@ -323,6 +323,18 @@
     .panel.content-libre strong { color: var(--ink); font-weight: 700; }
     .panel.content-libre a { color: var(--rose-600); border-bottom: 1px solid var(--rose-200); transition: border-color .2s; }
     .panel.content-libre a:hover { border-color: var(--rose-500); }
+    /* Tableaux saisis dans le contenu riche (barèmes de primes, calendriers…).
+       Sans ces règles, les <table> tombent sans style : colonnes tassées,
+       en-tête collé, aucune bordure. */
+    .panel.content-libre table, .rich table { width: 100%; border-collapse: collapse; margin: 4px 0 18px; font-size: .95rem; line-height: 1.5; background: var(--white); border: 1px solid var(--line); }
+    .panel.content-libre thead th, .rich thead th { background: var(--rose-50); color: var(--ink); font-weight: 700; text-align: left; padding: 11px 14px; border: 1px solid var(--line); }
+    .panel.content-libre td, .rich td { padding: 10px 14px; color: var(--ink-soft); border: 1px solid var(--line); vertical-align: top; }
+    .panel.content-libre tbody tr:nth-child(even), .rich tbody tr:nth-child(even) { background: #faf9fb; }
+    .panel.content-libre td strong, .rich td strong { color: var(--ink); }
+    @media (max-width: 560px) {
+      .panel.content-libre table, .rich table { font-size: .85rem; display: block; overflow-x: auto; }
+      .panel.content-libre th, .panel.content-libre td, .rich th, .rich td { padding: 8px 10px; }
+    }
 
     /* ═══ SIDEBAR (ASIDE) ══════════════════════════════════════════════════ */
     aside { display: flex; flex-direction: column; gap: 16px; }
