@@ -20,6 +20,7 @@ cta_text: Offre exclusive Trezor
 cta_button: En profiter
 related_posts:
 - 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
+- 7635-enerfip-avis-mon-verdict-sur-l-interet-d-investir-dans-cette-plateforme
 ---
 <p>Je vais être honnête : je ne suis pas une geek de la crypto. Je gère une agence de communication à Lyon, j'ai six personnes à faire tourner, et mon rapport aux finances, c'est plutôt "est-ce que le virement est passé" et "est-ce que la marge du mois est correcte". Alors quand on m'a parlé de Trezor pour la première fois, j'ai haussé les épaules. Un truc physique pour stocker des cryptomonnaies ? Sérieusement ?</p>
 

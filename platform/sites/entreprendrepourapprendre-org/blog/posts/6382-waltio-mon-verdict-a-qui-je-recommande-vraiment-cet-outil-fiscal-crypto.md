@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
+- 7635-enerfip-avis-mon-verdict-sur-l-interet-d-investir-dans-cette-plateforme
 - 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
 featured_image: /blog/6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto.jpg
 ---
