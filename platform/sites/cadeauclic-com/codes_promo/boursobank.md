@@ -167,4 +167,88 @@ date_creation: "2026-11-02"
 date_maj: "2026-11-02"
 ---
 
+<h1>Comment débloquer les primes BoursoBank, étape par étape ?</h1><p>Vous avez vu une offre BoursoBank annonçant <strong>jusqu’à 260 € offerts</strong> ? Cette somme ne tombe pas en une seule fois à l’ouverture. Elle correspond à plusieurs primes : certaines dépendent de votre premier versement, d’autres de l’utilisation de votre carte ou du transfert de vos opérations bancaires.</p>
+<p>Je vous explique ici quoi faire, dans quel ordre et dans quels délais. Ce guide concerne <strong>le nouveau client qui utilise une invitation de parrainage</strong>, et non les récompenses du parrain.</p>
 
+<h3>Le parcours pour obtenir le maximum</h3>
+<ul><li>Ouvrir le compte : <strong>20 €</strong></li><li>Effectuer un premier versement d’au moins 300 € : <strong>80 €</strong></li><li>Utiliser la carte sur 3 périodes : <strong>20 € + 30 € + 30 €</strong></li><li>Utiliser EasyMove dans les conditions de l’offre : <strong>80 €</strong></li></ul>
+<p><strong>Total : 260 €.</strong> Votre versement de 300 € reste votre argent : il ne fait pas partie de la prime et ne constitue pas des frais.</p>
+
+<h2>Avant de commencer : vérifier l’offre et préparer son inscription</h2>
+<p>Ce barème concerne une première ouverture effective de compte bancaire individuel, hors compte professionnel ou joint, avec parrainage et sous réserve d’acceptation du dossier. L’offre n’est pas cumulable avec une autre offre commerciale.</p>
+<ol>
+<li><strong>Ouvrez l’invitation de votre parrain.</strong> Vérifiez que le parrainage apparaît dans le parcours avant de valider. Ne démarrez pas une inscription indépendante en pensant ajouter le parrainage après.</li>
+<li><strong>Lisez les conditions affichées et conservez-en une copie.</strong> Les montants de ce guide correspondent à la campagne datée ci-dessus. Une autre campagne peut avoir des règles différentes.</li>
+<li><strong>Préparez les documents demandés</strong> et terminez les vérifications d’identité ainsi que la signature du contrat.</li>
+<li><strong>Prévoyez votre premier versement.</strong> Pour viser la prime maximale liée au dépôt, préparez au moins 300 € avant d’alimenter le nouveau compte.</li>
+</ol>
+<p>Dans le parcours par application, le dossier doit être complet et conforme : un dossier encore incomplet après 5 jours ouvrés doit être recommencé. Hors application, les conditions prévoient un dossier complet et conforme dans les 2 mois suivant la demande initiale. Suivez les instructions correspondant à votre parcours.</p>
+<h2>Étape 1 : Finaliser l’ouverture pour obtenir 20 €</h2>
+<p>Remplir un formulaire ne suffit pas : <strong>le compte doit être effectivement ouvert</strong>. Attendez la confirmation de BoursoBank et notez la date d’ouverture. Elle sert de point de départ à plusieurs délais.</p>
+<p><strong>Prime débloquée : 20 €.</strong> Son versement est prévu au plus tard dans les 2 mois suivant l’ouverture effective.</p>
+<p>Conseil pratique : gardez le message de confirmation et créez une note avec la date d’ouverture, les opérations réalisées et les primes reçues.</p>
+<h2>Étape 2 : Réaliser le bon premier versement pour obtenir jusqu’à 80 €</h2>
+<p>Le montant de cette prime dépend de <strong>votre premier versement</strong>. Il doit être réalisé pendant l’ouverture ou dans les 30 jours suivants, en respectant les instructions du parcours.</p>
+<table>
+<thead><tr><th>Premier versement</th><th>Prime correspondante</th><th>Total avec les 20 € d’ouverture</th></tr></thead>
+<tbody><tr><td>De 1 à 49 €</td><td>10 €</td><td>30 €</td></tr><tr><td>De 50 à 299 €</td><td>40 €</td><td>60 €</td></tr><tr><td>300 € ou plus</td><td>80 €</td><td><strong>100 €</strong></td></tr></tbody>
+</table>
+<ol>
+<li>Attendez l’étape où BoursoBank vous invite à alimenter le compte, après la signature électronique dans le parcours par application.</li>
+<li>Utilisez le moyen d’alimentation proposé et suivez les consignes affichées.</li>
+<li>Pour viser les 80 €, réalisez <strong>un premier versement d’au moins 300 €</strong>.</li>
+<li>Vérifiez que l’argent a bien été crédité et conservez le justificatif.</li>
+</ol>
+<p><strong>Évitez le petit virement de test.</strong></p><p>Un premier versement de 10 €, puis un second de 290 €, ne doit pas être considéré comme équivalent à un premier versement de 300 €. Le barème porte sur le premier versement : ne comptez pas sur un complément ultérieur pour changer de palier.</p>
+<p><strong>Délai de prime :</strong> les conditions annoncent un crédit sous 7 jours après le premier versement, avec un délai maximal prévu de 2 mois. Ne prévoyez donc pas une dépense urgente en supposant recevoir la prime immédiatement.</p>
+<p><strong>Les 300 € restent disponibles sur votre compte pour vos dépenses.</strong> Les conditions de cette campagne ne demandent pas de les immobiliser pendant 24 mois. Il faut distinguer cet argent du compte lui-même, que vous devez conserver pour éviter une reprise des primes.</p>
+<h2>Étape 3 : Utiliser la carte sur 3 périodes pour obtenir 80 € de plus</h2>
+<p>Ces 80 € sont répartis en <strong>3 primes distinctes</strong>. Il faut réaliser au moins 1 paiement ou 1 retrait avec la carte dans chacune des périodes suivantes.</p>
+<table>
+<thead><tr><th>Période après l’ouverture</th><th>Action</th><th>Prime</th></tr></thead>
+<tbody><tr><td>Les 30 premiers jours</td><td>Au moins 1 paiement ou retrait</td><td>20 €</td></tr><tr><td>Du 31e au 60e jour</td><td>Au moins 1 paiement ou retrait</td><td>30 €</td></tr><tr><td>Du 61e au 90e jour</td><td>Au moins 1 paiement ou retrait</td><td>30 €</td></tr></tbody>
+</table>
+<p>Le plus simple : utilisez la carte pour un achat habituel pendant chaque période. Puis vérifiez que l’opération apparaît dans votre compte.</p>
+<p><strong>3 achats le même jour ne débloquent pas les 3 primes.</strong> Il faut répartir les opérations sur les 3 périodes. Un virement ne remplace pas non plus un paiement ou un retrait par carte.</p>
+<p>Pour éviter les oublis, programmez des rappels vers le 10e, le 40e et le 70e jour après l’ouverture. Ce sont des repères pratiques, pas les dates imposées par la banque. N’attendez pas le dernier jour de chaque période.</p>
+<p>Chaque prime est annoncée sous 7 jours après réalisation de la condition, et au plus tard dans le mois suivant. Avec l’ouverture et le premier versement de 300 €, vous pouvez ainsi atteindre <strong>180 € au total</strong>.</p>
+<h2>Étape 4 : Demander EasyMove à temps pour obtenir les 80 € restants</h2>
+<p><strong>Cette étape doit être lancée dès le premier mois.</strong></p><p>N’attendez pas d’avoir obtenu les 3 primes d’utilisation de la carte : la demande EasyMove doit être signée dans le mois suivant l’ouverture.</p>
+<p>EasyMove est le service de mobilité bancaire de BoursoBank. Il sert à faire transmettre votre nouveau RIB aux organismes qui effectuent des prélèvements ou des virements récurrents sur votre ancien compte.</p>
+<ol>
+<li>Dans votre espace client ou votre application, recherchez le service <strong>EasyMove / mobilité bancaire</strong>.</li>
+<li>Préparez le RIB de l’ancien compte concerné et suivez le parcours proposé.</li>
+<li>Lisez les opérations et options présentées avant de valider le mandat.</li>
+<li><strong>Signez la demande dans le mois suivant l’ouverture</strong> du nouveau compte.</li>
+<li>Suivez son traitement : pour la prime, BoursoBank doit avoir pu transmettre vos nouvelles coordonnées à <strong>au moins 1 organisme de prélèvement ou de virement récurrent</strong>.</li>
+</ol>
+<p>Par exemple, un prélèvement régulier de fournisseur d’énergie peut être concerné, s’il est identifié et traité dans la mobilité. Un simple virement ponctuel entre vos comptes ne remplace pas cette démarche.</p>
+<p><strong>Signer un mandat sans aucune opération éligible à transférer ne suffit pas.</strong> Vérifiez le résultat de la mobilité. L’offre prévoit aussi la prise en compte de certains virements permanents remis en place automatiquement dans ce cadre.</p>
+<p>Les <strong>80 €</strong> sont versés au plus tard <strong>60 jours après la signature du mandat</strong>, sous réserve du respect des conditions. La domiciliation doit ensuite être maintenue pendant 24 mois pour éviter une reprise de cette prime.</p>
+<h2>Votre calendrier pour ne rien oublier</h2>
+<table>
+<thead><tr><th>Quand ?</th><th>À faire</th></tr></thead>
+<tbody>
+<tr><td>Avant l’inscription</td><td>Vérifier l’offre, utiliser l’invitation et préparer le premier versement.</td></tr>
+<tr><td>À l’ouverture</td><td>Noter la date de confirmation et sauvegarder les conditions.</td></tr>
+<tr><td>Pendant l’ouverture ou sous 30 jours</td><td>Effectuer le premier versement de 300 € pour viser les 80 €.</td></tr>
+<tr><td>Dans le premier mois</td><td>Signer EasyMove si vous souhaitez aussi obtenir la prime de mobilité.</td></tr>
+<tr><td>Sur chacune des 3 périodes</td><td>Faire au moins 1 paiement ou retrait par carte.</td></tr>
+<tr><td>Pendant 24 mois</td><td>Conserver le compte ; maintenir la domiciliation si vous avez reçu la prime EasyMove.</td></tr>
+</tbody></table>
+<h2>Comment éviter que BoursoBank reprenne les primes ?</h2>
+<p><strong>Conservez le compte au moins 24 mois.</strong> Si vous le clôturez avant, BoursoBank se réserve le droit de récupérer les primes commerciales versées. Les conditions prévoient aussi ce droit en cas de clôture par la banque pour comportement répréhensible.</p>
+<p>Si vous avez bénéficié d’EasyMove, maintenez également la domiciliation pendant 24 mois. Enfin, respectez les conditions tarifaires de la carte choisie : la prime de bienvenue et la gratuité de la carte sont deux sujets distincts.</p>
+<h2>Une prime manque : que vérifier ?</h2>
+<ul>
+<li>Le parrainage a-t-il bien été pris en compte à l’inscription ?</li>
+<li>Le compte est-il effectivement ouvert et le dossier validé ?</li>
+<li>Quel était le montant exact du premier versement, et quand a-t-il été crédité ?</li>
+<li>Chaque paiement ou retrait se trouve-t-il dans la bonne période ?</li>
+<li>EasyMove a-t-il été signé à temps et permis une transmission éligible ?</li>
+<li>Le délai maximal de versement de la prime est-il dépassé ?</li>
+</ul>
+<p>Si tout est conforme, contactez le service client avec le nom de l’offre, la date d’ouverture, les justificatifs et la prime concernée. Les primes étant versées séparément, l’arrivée d’une première somme ne signifie pas que les autres doivent arriver le même jour.</p>
+<h2>Peut-on se limiter à 100 € ?</h2>
+<p><strong>Oui : les 20 € d’ouverture et les 80 € liés au premier versement de 300 € représentent 100 €.</strong> Pour ces 2 primes, vous n’avez pas à réaliser EasyMove ni les opérations qui débloquent les bonus d’utilisation. La conservation du compte pendant 24 mois reste à respecter.</p>
+<p>Pour viser les 260 €, suivez l’ensemble du parcours, en lançant la mobilité dès le premier mois. Avant de vous inscrire, vérifiez toujours le barème de votre invitation : les montants de cet article ne s’appliquent pas automatiquement aux offres suivantes.</p>
