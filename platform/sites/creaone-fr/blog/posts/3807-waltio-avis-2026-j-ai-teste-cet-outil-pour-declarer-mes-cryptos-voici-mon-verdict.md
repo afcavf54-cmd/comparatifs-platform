@@ -24,6 +24,7 @@ cta_text: Offre exclusive Waltio
 cta_link: https://www.financeads.net/tc.php?t=74753C5295123365T&subid=creaone.fr
 related_posts:
 - 3767-trezor-avis-j-ai-teste-ce-portefeuille-crypto-est-il-aussi-securise-qu-on-le-dit
+- 6050-enerfip-avis-j-ai-etudie-les-rendements-et-les-risques-voici-ce-que-j-en-pense
 ---
 <p>Je vais être honnête : quand j'ai commencé à m'occuper des déclarations crypto de quelques collaborateurs de l'entreprise, j'avais zéro envie de passer des heures à croiser des fichiers Excel avec des historiques de transactions Binance. C'est là que j'ai mis le nez dans Waltio. Et après plusieurs mois d'utilisation, j'ai des choses précises à dire, en bien comme en mal.</p>
 
