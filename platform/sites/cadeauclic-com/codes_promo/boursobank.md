@@ -36,11 +36,11 @@ codes:
     code: ""
     detail: Ouvrez votre premier compte bancaire individuel BoursoBank. Recevez 20 € à l’ouverture, jusqu’à 40 € pour le premier versement, 40 € pour l’utilisation de la carte et 80 € avec EasyMove. Conditions de versement, d’activité et de conservation applicables.
     expire_le: ""
-    nb_utilisations: 0
+    nb_utilisations: 789
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: VIPO0272
+    cta_text: ""
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvzah67vuwi8
@@ -52,11 +52,11 @@ codes:
     code: ""
     detail: Ouvrez votre premier compte bancaire individuel BoursoBank. La prime comprend 20 € à l’ouverture, jusqu’à 40 € pour le premier versement, 40 € pour l’utilisation de la carte et 80 € avec EasyMove. Les conditions tarifaires de la carte choisie restent applicables.
     expire_le: ""
-    nb_utilisations: 0
+    nb_utilisations: 478
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: VIPO0272
+    cta_text: ""
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvzait8rmnq4
@@ -68,11 +68,11 @@ codes:
     code: ""
     detail: Ouvrez votre compte bancaire BoursoBank et signez votre première demande EasyMove dans le mois suivant l’ouverture. Un transfert éligible d’opérations récurrentes est nécessaire. Prime déjà comprise dans les offres de bienvenue ; domiciliation à maintenir 24 mois.
     expire_le: ""
-    nb_utilisations: 0
+    nb_utilisations: 587
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: VIPO0272
+    cta_text: ""
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvzajlbv80gw
@@ -84,7 +84,7 @@ codes:
     code: ""
     detail: Les 3 premières mensualités de 29 € sont offertes pour une première adhésion. L’abonnement comporte un engagement minimum de 12 mois, soit 261 € de cotisations sur la première année au tarif affiché.
     expire_le: ""
-    nb_utilisations: 0
+    nb_utilisations: 218
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
@@ -100,7 +100,7 @@ codes:
     code: ""
     detail: Pour bénéficier des 180 €, ouvrez d’abord votre premier compte bancaire individuel BoursoBank et remplissez les conditions de versement, d’utilisation de la carte et de mobilité EasyMove. Vous pourrez ensuite ouvrir le produit d’épargne de votre choix, sous réserve d’éligibilité. Le livret seul ne déclenche pas la prime.
     expire_le: ""
-    nb_utilisations: 0
+    nb_utilisations: 178
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
@@ -116,7 +116,7 @@ codes:
     code: ""
     detail: Transférez intégralement un premier PEA, PEA-PME ou CTO éligible. BoursoBank rembourse deux fois les frais facturés par votre ancien établissement, dans les limites prévues. Justificatif à transmettre sous 3 mois ; conditions de dossier, de conservation et d’activité applicables.
     expire_le: ""
-    nb_utilisations: 0
+    nb_utilisations: 148
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
