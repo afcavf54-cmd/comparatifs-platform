@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Trezor
 cta_button: En profiter
 related_posts:
-- ce-que-je-pense-de-flatpay-ses-points-forts-et-ses-limites
+- 9079-tva-sur-option-comment-fonctionne-l-assujettissement-volontaire
+- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
+- 8253-bordereau-fiscal-modele-p-237-utilite-obtention-et-demarches-administratives
 - 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
-- 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
-- 3874-waltio-avis-j-ai-examine-ses-tarifs-vaut-il-vraiment-son-prix
 ---
 <p>J'ai mis du temps avant de m'intéresser sérieusement au stockage de cryptomonnaies. Pendant longtemps, je laissais tout sur des exchanges, en me disant que "ça suffisait bien". Et puis un collègue a perdu l'accès à son compte Binance du jour au lendemain, sans explication, avec plusieurs milliers d'euros bloqués dedans. Ça m'a suffi pour creuser le sujet.</p>
 
