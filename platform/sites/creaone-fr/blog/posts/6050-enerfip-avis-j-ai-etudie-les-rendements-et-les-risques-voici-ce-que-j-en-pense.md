@@ -20,8 +20,8 @@ cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
 related_posts:
-- 3767-trezor-avis-j-ai-teste-ce-portefeuille-crypto-est-il-aussi-securise-qu-on-le-dit
 - 3807-waltio-avis-2026-j-ai-teste-cet-outil-pour-declarer-mes-cryptos-voici-mon-verdict
+- 3767-trezor-avis-j-ai-teste-ce-portefeuille-crypto-est-il-aussi-securise-qu-on-le-dit
 ---
 <p>J'ai regardé Enerfip de près il y a quelques mois, un peu par curiosité professionnelle, un peu parce que plusieurs collègues m'en avaient parlé. Dans mon métier, on voit passer beaucoup de produits financiers. Et les plateformes de financement participatif dans les énergies renouvelables, c'est un segment qui a vraiment grossi vite ces dernières années. Trop vite, parfois, pour que la rigueur suive.</p>
 
