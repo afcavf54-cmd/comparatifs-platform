@@ -4,7 +4,9 @@ slug: 3185-homunity-avis-j-ai-etudie-les-projets-immobiliers-et-leurs-risques
 date: '2026-11-02T08:00:00+01:00'
 categorie: Finance & Comptabilité
 meta_title: Mon analyse de Homunity et de ses projets de financement immobilier
-meta_description: Mon avis complet sur Homunity après plusieurs semaines d'analyse des projets, des bilans promoteurs et des risques réels avant d'investir ma propre trésorerie.
+meta_description: Mon avis complet sur Homunity après plusieurs semaines d'analyse
+  des projets, des bilans promoteurs et des risques réels avant d'investir ma propre
+  trésorerie.
 min_words: 3000
 status: published
 featured_image: /blog/3185-homunity-avis-j-ai-etudie-les-projets-immobiliers-et-leurs-risques.jpg
@@ -15,8 +17,11 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4970117978T&subid=Startuponl
 cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
+related_posts:
+- 3773-enky-invest-avis-investir-dans-le-mobilier-une-bonne-idee-selon-moi
+- 4603-enerfip-mon-avis-sur-cette-plateforme-d-investissement-participatif
+- 3523-waltio-avis-j-ai-voulu-simplifier-ma-declaration-crypto-voici-mon-bilan
 ---
-
 <p>J'ai passé plusieurs semaines à éplucher les projets disponibles sur Homunity, à lire les notices, les bilans promoteurs, et les conditions de sortie. Pas par curiosité intellectuelle. Parce que je cherchais un endroit où mettre une partie de ma trésorerie dormante sans bloquer du capital pendant 5 ans.</p>
 
 <p>Spoiler : j'ai investi. Mais pas les yeux fermés. Et je vais te dire exactement ce que j'ai vu, ce qui m'a convaincu, et ce qui m'a rendu méfiant.</p>
