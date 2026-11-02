@@ -19,6 +19,7 @@ cta_text: Offre exclusive Enky Invest
 cta_button: En profiter
 related_posts:
 - 3355-enerfip-mon-avis-sur-cette-alternative-aux-placements-traditionnels
+- 7835-homunity-avis-pourquoi-cette-plateforme-se-distingue-dans-le-crowdfunding
 - 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
 ---
 <p>J'ai découvert Enky Invest un peu par hasard, via un retour d'un client qui gérait une petite holding familiale à Lyon. Il cherchait une solution pour faire travailler sa trésorerie sans passer des heures à comparer des livrets et des SCPI. Il m'a envoyé le lien. J'ai regardé. Et franchement, j'ai eu envie d'en savoir plus.</p>
