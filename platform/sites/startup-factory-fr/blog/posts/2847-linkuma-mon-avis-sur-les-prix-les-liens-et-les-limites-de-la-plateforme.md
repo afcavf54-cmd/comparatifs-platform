@@ -3,8 +3,11 @@ title: 'Linkuma : Mon avis 2026 sur les prix, les liens et les limites de la pla
 slug: 2847-linkuma-mon-avis-sur-les-prix-les-liens-et-les-limites-de-la-plateforme
 date: '2026-11-02T08:00:00+01:00'
 categorie: Marketing
-meta_title: 'Linkuma : les qualités que je recherche dans ses backlinks et les points de vigilance'
-meta_description: 'Avis complet sur Linkuma après plusieurs semaines de tests réels : prix, qualité des liens, limites cachées et ce que la plateforme vaut vraiment pour votre…'
+meta_title: 'Linkuma : les qualités que je recherche dans ses backlinks et les points
+  de vigilance'
+meta_description: 'Avis complet sur Linkuma après plusieurs semaines de tests réels
+  : prix, qualité des liens, limites cachées et ce que la plateforme vaut vraiment
+  pour votre…'
 min_words: 2500
 status: published
 featured_image: /blog/2847-linkuma-mon-avis-sur-les-prix-les-liens-et-les-limites-de-la-plateforme.jpg
@@ -15,8 +18,8 @@ cta_link: https://app.linkuma.com/register?fpr=jgciw
 cta_enabled: true
 cta_text: Offre exclusive Linkuma
 cta_button: En profiter
+related_posts: []
 ---
-
 <p>J'ai testé Linkuma pendant plusieurs semaines. Pas en mode "je fais un tour rapide et j'écris un article", non. Je l'ai utilisé pour de vraies campagnes, avec de vrais budgets, pour ma startup à Nantes. Et je vais te dire exactement ce que j'en pense, sans filtre.</p>
 
 <p>Spoiler : c'est un outil intéressant. Mais avec des angles morts que personne ne mentionne vraiment. Je vais te les montrer.</p>
