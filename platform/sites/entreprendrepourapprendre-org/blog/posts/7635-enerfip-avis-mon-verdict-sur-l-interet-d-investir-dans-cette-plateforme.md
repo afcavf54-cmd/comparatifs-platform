@@ -19,8 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
 related_posts:
-- 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
 - 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
+- 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
+- 1939-enky-invest-a-qui-s-adresse-reellement-cet-investissement-mon-avis
 ---
 <p>Je vais être honnête avec vous : quand on gère une TPE, on ne passe pas ses soirées à éplucher des plateformes d'investissement participatif. Et pourtant, il y a un an et demi, une cliente de mon agence m'a parlé d'Enerfip. Elle plaçait une partie de sa trésorerie là-dedans depuis deux ans. Le terme "financement participatif dans les énergies renouvelables" m'a d'abord semblé lointain de mes préoccupations quotidiennes. Puis j'ai creusé.</p>
 
