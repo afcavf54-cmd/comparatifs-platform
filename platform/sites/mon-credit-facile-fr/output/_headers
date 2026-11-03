@@ -1,0 +1,41 @@
+# Headers HTTP custom pour Cloudflare Pages
+# Format Netlify-compatible : <pattern> puis indentation 2 espaces par header.
+#
+# Bug fix juin 2026 : par défaut, Cloudflare cachait les HTML jusqu'à 7 jours
+# (s-maxage=604800). On force donc un TTL CDN court.
+#
+# Bug fix juillet 2026 : l'ancienne règle ne ciblait que `/*.html`, ce qui
+# EXCLUAIT les URLs en dossier (`/mon-article/`, `/blog/`, pages catégories…)
+# servies via index.html. Ces pages héritaient donc du cache par défaut 7 jours
+# et restaient servies après suppression. On applique désormais le TTL court à
+# TOUTES les pages via `/*` ; les assets (règles plus spécifiques ci-dessous)
+# conservent leur long TTL.
+
+# TOUT (pages HTML, URLs dossier, racine) : TTL CDN court + revalidation.
+/*
+  Cache-Control: public, max-age=0, s-maxage=300, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+
+# Assets statiques immuables : long TTL (règles plus spécifiques -> priorité).
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
