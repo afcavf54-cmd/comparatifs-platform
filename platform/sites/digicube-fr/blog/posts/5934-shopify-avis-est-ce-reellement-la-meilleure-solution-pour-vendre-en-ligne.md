@@ -20,8 +20,8 @@ cta_enabled: true
 cta_text: Offre exclusive Shopify
 cta_button: En profiter
 related_posts:
-- 1148-coworking-a-lyon-ou-installer-son-bureau-en-2026
 - 8629-notre-selection-des-meilleurs-espaces-de-coworking-parisiens
+- 1148-coworking-a-lyon-ou-installer-son-bureau-en-2026
 ---
 <p>J'ai testé Shopify pendant plusieurs mois pour gérer la boutique en ligne de mon entreprise. Et honnêtement, j'ai eu des surprises, des bonnes et des moins bonnes. Avant de vous donner mon avis complet, je vais vous dire ce qui m'a poussé à regarder cette plateforme de près.</p>
 
