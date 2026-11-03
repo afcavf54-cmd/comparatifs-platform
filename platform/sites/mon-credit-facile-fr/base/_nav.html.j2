@@ -1,0 +1,79 @@
+{# ============================================================
+   PARTIAL NAV — mon-credit-facile-fr (surcharge locale)
+   Méga-menu crédit. CSS scopé à .mcf-nav pour ne rien casser.
+   Variables : site.logo_text, site.logo_accent, site.cta_label, site.cta_url
+============================================================ #}
+<style>
+.mcf-nav{background:var(--ink);position:sticky;top:0;z-index:200;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.mcf-nav .inner{max-width:1180px;margin:0 auto;padding:0 20px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.mcf-nav .logo{display:flex;align-items:center;font-family:'{{ theme.font_title }}',sans-serif;font-weight:700;font-size:19px;color:#fff;letter-spacing:-.01em;flex-shrink:0}
+.mcf-nav .logo span{color:var(--accent2)}
+.mcf-nav .menu{display:flex;align-items:center;gap:2px;margin-left:auto}
+.mcf-nav .item{position:relative}
+.mcf-nav .item>a,.mcf-nav .item>.lbl{display:flex;align-items:center;gap:5px;color:rgba(255,255,255,.82);font-size:14px;font-weight:500;padding:10px 13px;border-radius:9px;cursor:pointer;white-space:nowrap;transition:.15s}
+.mcf-nav .item>a:hover,.mcf-nav .item:hover>.lbl{color:#fff;background:rgba(255,255,255,.08)}
+.mcf-nav .caret{width:9px;height:9px;opacity:.7}
+.mcf-nav .drop{position:absolute;top:calc(100% - 4px);left:0;min-width:230px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 18px 44px rgba(14,39,66,.18);padding:8px;opacity:0;visibility:hidden;transform:translateY(6px);transition:.16s;z-index:210}
+.mcf-nav .item:hover>.drop{opacity:1;visibility:visible;transform:translateY(0)}
+.mcf-nav .drop a{display:block;padding:9px 12px;border-radius:8px;color:var(--ink2);font-size:13.5px;font-weight:500;white-space:nowrap;transition:.12s}
+.mcf-nav .drop a:hover{background:var(--surface2);color:var(--accent)}
+.mcf-nav .cta{display:inline-flex;align-items:center;gap:7px;background:var(--cta);color:var(--cta-text);font-weight:700;font-size:14px;padding:10px 18px;border-radius:10px;margin-left:8px;white-space:nowrap;transition:.15s}
+.mcf-nav .cta:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.mcf-nav .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.mcf-nav .burger span{width:24px;height:2px;background:#fff;border-radius:2px;display:block}
+@media(max-width:960px){
+  .mcf-nav .menu{display:none;position:absolute;top:66px;left:0;right:0;background:var(--ink);flex-direction:column;align-items:stretch;gap:0;padding:12px;max-height:calc(100vh - 66px);overflow:auto}
+  .mcf-nav .menu.open{display:flex}
+  .mcf-nav .item>a,.mcf-nav .item>.lbl{padding:13px 12px;font-size:15px}
+  .mcf-nav .caret{display:none}
+  .mcf-nav .drop{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:rgba(255,255,255,.04);padding:4px 4px 8px 16px;margin:2px 0 6px}
+  .mcf-nav .drop a{color:rgba(255,255,255,.78)}
+  .mcf-nav .drop a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .mcf-nav .cta{margin:8px 0 0;justify-content:center}
+  .mcf-nav .burger{display:flex}
+}
+</style>
+<nav class="mcf-nav">
+  <div class="inner">
+    <a href="/" class="logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
+    <div class="menu" id="mcfMenu">
+      <div class="item">
+        <span class="lbl">Crédit <svg class="caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <div class="drop">
+          <a href="/credit-consommation.html">Crédit consommation</a>
+          <a href="/credit-personnel.html">Crédit personnel</a>
+          <a href="/credit-rapide.html">Crédit rapide</a>
+          <a href="/credit-renouvelable.html">Crédit renouvelable</a>
+        </div>
+      </div>
+      <div class="item">
+        <span class="lbl">Projets <svg class="caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <div class="drop">
+          <a href="/credit-auto.html">Crédit auto</a>
+          <a href="/credit-travaux.html">Crédit travaux</a>
+          <a href="/credit-projet.html">Crédit projet</a>
+        </div>
+      </div>
+      <div class="item">
+        <span class="lbl">Solutions <svg class="caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <div class="drop">
+          <a href="/rachat-credit.html">Rachat de crédit</a>
+          <a href="/credit-renouvelable.html">Crédit renouvelable</a>
+        </div>
+      </div>
+      <div class="item">
+        <span class="lbl">Comparer <svg class="caret" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <div class="drop">
+          <a href="/credit-banque.html">Par banque</a>
+          <a href="/credit-marque-auto.html">Par marque auto</a>
+        </div>
+      </div>
+      <div class="item"><a href="/credit-montant.html">Par montant</a></div>
+      <a href="{{ site.cta_url | default('/simulation-credit.html') }}" class="cta">{{ site.cta_label | default('Simuler gratuitement') }}</a>
+    </div>
+    <button class="burger" onclick="mcfToggle()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<script>
+function mcfToggle(){var m=document.getElementById('mcfMenu');if(m)m.classList.toggle('open');}
+</script>
