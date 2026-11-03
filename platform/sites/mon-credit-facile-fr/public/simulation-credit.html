@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulateur de crédit — comparez les offres selon votre projet | Mon Crédit Facile</title>
+<meta name="description" content="Simulez votre crédit en quelques étapes et découvrez une sélection d'offres adaptées à votre projet. Gratuit, sans engagement.">
+<link rel="canonical" href="https://www.mon-credit-facile.fr/simulation-credit.html">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ====== CHARTE VERT / ORANGE (spec simulateur) ====== */
+:root{
+  --cream:#FAFBF5;--lime:#D9F2B0;--lime2:#EAF7D4;--orange:#FF8A3D;--orange-ink:#5A2D00;
+  --forest:#234B3C;--forest2:#2E6350;--ink:#1F2A26;--ink2:#53625B;--line:#E4EADF;
+  --white:#fff;--danger:#C0392B;--r:18px;--r2:14px;--shadow:0 12px 34px rgba(35,75,60,.10);
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:'Nunito',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;font-size:16px}
+a{color:inherit}
+.app{max-width:760px;margin:0 auto;padding:28px 18px 60px;min-height:100vh}
+.brand{display:flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:19px;color:var(--forest);margin-bottom:6px}
+.brand b{color:var(--orange)}
+.sub-top{text-align:center;color:var(--ink2);font-size:13px;margin-bottom:22px}
+/* card */
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(20px,4vw,34px)}
+h1{font-size:clamp(23px,4.4vw,30px);font-weight:800;color:var(--forest);margin:0 0 6px;letter-spacing:-.01em}
+.lead{color:var(--ink2);margin:0 0 22px;font-size:16px}
+label{display:block;font-weight:700;font-size:14px;color:var(--forest);margin:0 0 7px}
+.field{margin-bottom:18px}
+select,input[type=email],input[type=number],input[type=text]{width:100%;height:54px;border:1.6px solid var(--line);border-radius:var(--r2);padding:0 16px;font:600 16px 'Nunito',sans-serif;color:var(--ink);background:var(--white);transition:.15s}
+select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,138,61,.18)}
+.amount-wrap{position:relative}
+.amount-wrap .eur{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--forest);pointer-events:none}
+.amount-wrap input{padding-right:40px}
+.hint{font-size:12.5px;color:var(--ink2);margin:7px 0 0;display:flex;gap:6px;align-items:flex-start}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:56px;border:0;border-radius:var(--r2);background:var(--orange);color:#fff;font:800 16px 'Nunito',sans-serif;cursor:pointer;transition:.15s;box-shadow:0 10px 22px rgba(255,138,61,.3)}
+.btn:hover{filter:brightness(1.04);transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--forest);outline-offset:2px}
+.btn-ghost{background:var(--white);color:var(--forest);border:1.6px solid var(--line);box-shadow:none}
+.btn-ghost:hover{border-color:var(--forest)}
+.btn-row{display:flex;gap:12px}
+.center-note{text-align:center;color:var(--ink2);font-size:13px;margin:12px 0 0}
+.row-inline{display:grid;grid-template-columns:1.2fr .9fr auto;gap:12px;align-items:end}
+@media(max-width:620px){.row-inline{grid-template-columns:1fr}}
+/* progress + steps */
+.prog{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.prog .bar{flex:1;height:7px;background:var(--lime2);border-radius:99px;overflow:hidden}
+.prog .bar>i{display:block;height:100%;background:var(--forest);border-radius:99px;transition:width .35s ease}
+.prog .pc{font-size:12px;font-weight:700;color:var(--forest2)}
+.back{background:none;border:0;color:var(--forest2);font:700 13px 'Nunito';cursor:pointer;padding:6px 2px;margin-bottom:10px;display:inline-flex;gap:6px;align-items:center}
+.back:hover{text-decoration:underline}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:var(--white);border:1.6px solid var(--line);border-radius:var(--r2);padding:16px;cursor:pointer;font:700 15px 'Nunito';color:var(--ink);transition:.14s}
+.opt:hover{border-color:var(--orange);background:#FFF8F2}
+.opt:focus-visible{outline:3px solid var(--forest);outline-offset:2px}
+.opt .ic{width:38px;height:38px;border-radius:11px;background:var(--lime);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.opt.sel{border-color:var(--orange);background:#FFF4EA}
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(31,42,38,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:1000}
+.overlay.open{display:flex}
+.modal{background:var(--white);border-radius:22px;max-width:460px;width:100%;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.35);position:relative;max-height:92vh;overflow:auto}
+.modal h2{color:var(--forest);font-size:21px;margin:0 0 8px}
+.modal p{color:var(--ink2);font-size:14.5px;margin:0 0 14px}
+.modal .args{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:9px}
+.modal .args li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--ink)}
+.modal .args li::before{content:"✓";color:var(--forest2);font-weight:800}
+.modal .warn{background:var(--lime2);border-radius:12px;padding:11px 13px;font-size:12.5px;color:var(--forest);margin:0 0 18px}
+.modal .x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:var(--cream);color:var(--ink2);font-size:18px;cursor:pointer}
+.modal .x:hover{background:var(--line)}
+/* results */
+.res-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.res-head h1{margin:0}
+.sec-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--forest2);margin:26px 0 12px}
+.offer{display:flex;gap:16px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:var(--r2);padding:18px;margin-bottom:12px}
+.offer .logo{width:56px;height:56px;border-radius:12px;background:var(--lime2);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--forest);font-size:18px;flex-shrink:0}
+.offer .mid{flex:1;min-width:0}
+.offer .nm{font-weight:800;color:var(--ink);font-size:16px}
+.offer .ty{font-size:12.5px;color:var(--ink2);margin:2px 0 6px}
+.offer .feat{font-size:13px;color:var(--ink2)}
+.offer .cond{font-size:12.5px;color:var(--forest2);font-weight:700}
+.offer .go{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.offer .go .btn{width:auto;min-height:44px;padding:0 18px;font-size:14px;white-space:nowrap}
+.aff{font-size:11px;color:var(--ink2)}
+.parrain{background:#FFFDF8;border:1px dashed #F0C999}
+.parrain .logo{background:#FFE9D4;color:var(--orange-ink)}
+.disclaimer{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:12.5px;color:var(--ink2);line-height:1.6;margin:18px 0}
+.legal-foot{font-size:12px;color:var(--ink2);text-align:center;margin-top:30px;line-height:1.6}
+.legal-foot a{color:var(--forest2)}
+.demo-flag{display:inline-block;background:#FFE9D4;color:var(--orange-ink);font-size:11px;font-weight:800;padding:3px 10px;border-radius:99px;margin-left:8px}
+/* consent + email */
+.consent{display:flex;gap:11px;align-items:flex-start;font-size:13px;color:var(--ink2);margin:4px 0 16px;cursor:pointer;line-height:1.5}
+.consent input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--forest2);flex-shrink:0}
+.err{color:var(--danger);font-size:13px;font-weight:700;margin:8px 0 0;display:none}
+.err.show{display:block}
+.spinner{display:none;width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+.btn.loading .spinner{display:inline-block}
+.btn.loading span{opacity:.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hidden{display:none !important}
+@media(prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}.prog .bar>i{transition:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brand">Mon Crédit<b>Facile</b></div>
+  <div class="sub-top">🔒 Comparaison gratuite · sans engagement · vos données restent confidentielles</div>
+
+  <!-- ===== ÉCRAN 1 : ENTRÉE ===== -->
+  <section class="card" id="screen-entry">
+    <h1>Votre projet commence ici</h1>
+    <p class="lead">Découvrez les offres de crédit selon votre besoin.</p>
+    <form id="entryForm" novalidate>
+      <div class="row-inline">
+        <div class="field" style="margin:0">
+          <label for="project">Votre projet</label>
+          <select id="project" aria-describedby="projectHint">
+            <option value="sans-justificatif">Crédit sans justificatif</option>
+            <option value="personnel">Prêt personnel</option>
+            <option value="auto">Crédit auto</option>
+            <option value="moto">Crédit moto</option>
+            <option value="travaux">Crédit travaux</option>
+            <option value="autre">Autre projet</option>
+            <option value="regroupement">Regroupement de crédits</option>
+          </select>
+        </div>
+        <div class="field" style="margin:0">
+          <label for="amount">Montant</label>
+          <div class="amount-wrap">
+            <input id="amount" type="number" inputmode="numeric" min="500" step="100" value="500" aria-describedby="amountErr">
+            <span class="eur">€</span>
+          </div>
+        </div>
+        <div class="field" style="margin:0">
+          <button type="submit" class="btn" id="compareBtn"><span>Je compare</span></button>
+        </div>
+      </div>
+      <p class="hint" id="projectHint">ℹ️ Sans justificatif d'utilisation : des justificatifs d'identité et de revenus peuvent être demandés.</p>
+      <p class="err" id="amountErr">Indiquez un montant valide (à partir de 500 €).</p>
+      <p class="center-note">Votre email sera demandé pour recevoir votre sélection, aussi affichée à l'écran.</p>
+    </form>
+  </section>
+
+  <!-- ===== ÉCRAN 2 : ÉTAPES ===== -->
+  <section class="card hidden" id="screen-steps">
+    <button class="back" id="stepBack" type="button">← Retour</button>
+    <div class="prog"><div class="bar"><i id="progBar" style="width:33%"></i></div><span class="pc" id="progPc">Étape 1/2</span></div>
+    <div id="stepBody"></div>
+  </section>
+
+  <!-- ===== ÉCRAN 3 : EMAIL ===== -->
+  <section class="card hidden" id="screen-email">
+    <button class="back" id="emailBack" type="button">← Retour</button>
+    <h1>À quelle adresse vous envoyer votre sélection ?</h1>
+    <p class="lead">Recevez les offres sélectionnées et leurs liens pour les retrouver facilement. Elles s'affichent aussi sur la page suivante.</p>
+    <form id="emailForm" novalidate>
+      <div class="field">
+        <label for="email">Votre adresse email</label>
+        <input id="email" type="email" autocomplete="email" placeholder="vous@exemple.fr" aria-describedby="emailErr">
+        <p class="err" id="emailErr">Veuillez saisir une adresse email valide.</p>
+      </div>
+      <label class="consent"><input type="checkbox" id="optin"><span>Je souhaite aussi recevoir vos prochains bons plans et offres partenaires par email. (facultatif)</span></label>
+      <button type="submit" class="btn" id="emailBtn"><span>Voir et recevoir mes offres</span><span class="spinner" aria-hidden="true"></span></button>
+      <p class="center-note">Cet envoi contient votre sélection de crédits et les offres de parrainage du récapitulatif. <a href="/confidentialite.html">Politique de confidentialité</a>. Responsable : VISEOWEB.</p>
+    </form>
+  </section>
+
+  <!-- ===== ÉCRAN 4 : RÉSULTATS ===== -->
+  <section class="card hidden" id="screen-results" aria-live="polite"></section>
+
+  <p class="legal-foot">
+    Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.<br>
+    Ce comparateur oriente vers des offres partenaires et ne constitue ni une offre de crédit ni une évaluation de solvabilité. L'acceptation dépend de l'étude de votre dossier par l'organisme prêteur.
+  </p>
+</div>
+
+<!-- ===== MODALE REGROUPEMENT ===== -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+  <div class="modal" id="modal">
+    <button class="x" id="modalClose" aria-label="Fermer">✕</button>
+    <h2 id="modalTitle">Vous avez déjà des crédits en cours ?</h2>
+    <p id="modalDesc">Souhaitez-vous aussi étudier la possibilité de les regrouper en une seule mensualité ?</p>
+    <ul class="args">
+      <li>Regrouper plusieurs remboursements en un seul.</li>
+      <li>Étudier une mensualité adaptée à votre budget.</li>
+      <li>Examiner la possibilité d'intégrer votre nouveau projet.</li>
+    </ul>
+    <div class="warn">⚠️ Une baisse de mensualité peut s'accompagner d'une durée plus longue et d'un coût total plus élevé.</div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" id="consoNo" type="button">Non, continuer</button>
+      <button class="btn" id="consoYes" type="button">Oui, étudier le regroupement</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // ====== CONFIG (à brancher en production) ======
+  var SUBSCRIBE_ENDPOINT = "https://comparatifs-platform.vercel.app/api/newsletter/subscribe";
+  var NEWSLETTER_TAG = "Simulateur crédit";
+  var PARTNER_CONSOLIDATION_URL = "#"; // ← URL partenaire regroupement (configurable)
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ====== CATALOGUE D'OFFRES — MODE DÉMO ======
+  // Remplacé ensuite par les offres Supabase administrables (dashboard).
+  var DEMO = true;
+  var CREDIT_OFFERS = [
+    {nom:"Organisme A", type:"Prêt personnel", min:500, max:50000, feat:"Réponse de principe rapide, 100% en ligne", url:"#", cond:"Conditions à consulter chez le partenaire"},
+    {nom:"Organisme B", type:"Crédit affecté auto", min:3000, max:75000, feat:"Dédié au financement de véhicule", url:"#", cond:"Conditions à consulter chez le partenaire"},
+    {nom:"Organisme C", type:"Crédit sans justificatif", min:500, max:30000, feat:"Usage libre des fonds", url:"#", cond:"Conditions à consulter chez le partenaire"}
+  ];
+  var PARRAIN_OFFERS = [
+    {nom:"Banque en ligne D", prime:"Jusqu'à 150 € offerts", cond:"À l'ouverture d'un compte, voir conditions", depot:"Avec premier versement", url:"#"},
+    {nom:"Néobanque E", prime:"80 € offerts", cond:"Sous conditions d'activité", depot:"Sans dépôt requis", url:"#"}
+  ];
+
+  // ====== ÉTAT ======
+  var state = { project:"sans-justificatif", amount:500, duration:null, situation:null, consoOffered:false };
+  var PROJECT_LABEL = {"sans-justificatif":"Crédit sans justificatif","personnel":"Prêt personnel","auto":"Crédit auto","moto":"Crédit moto","travaux":"Crédit travaux","autre":"Autre projet","regroupement":"Regroupement de crédits"};
+
+  var $ = function(id){return document.getElementById(id);};
+  function show(id){["screen-entry","screen-steps","screen-email","screen-results"].forEach(function(s){$(s).classList.toggle("hidden", s!==id);});
+    if(!REDUCED){window.scrollTo({top:0,behavior:"smooth"});}else{window.scrollTo(0,0);}}
+  function fmt(n){return Number(n).toLocaleString('fr-FR');}
+
+  // ====== ÉTAPE 1 : ENTRÉE ======
+  $("project").addEventListener("change", function(){ state.project = this.value; });
+  $("entryForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var amt = parseInt($("amount").value, 10);
+    if(!amt || amt < 500 || isNaN(amt)){ $("amountErr").classList.add("show"); $("amount").focus(); return; }
+    $("amountErr").classList.remove("show");
+    state.amount = amt; state.project = $("project").value;
+    // Regroupement choisi d'entrée → accès direct partenaire, pas de modale
+    if(state.project === "regroupement"){ goPartner(); return; }
+    openConso();
+  });
+
+  // ====== MODALE REGROUPEMENT ======
+  var lastFocus=null;
+  function openConso(){
+    if(state.consoOffered){ startSteps(); return; }
+    state.consoOffered = true;
+    lastFocus = document.activeElement;
+    $("overlay").classList.add("open");
+    $("consoNo").focus();
+    document.addEventListener("keydown", modalKey);
+  }
+  function closeConso(cont){
+    $("overlay").classList.remove("open");
+    document.removeEventListener("keydown", modalKey);
+    if(lastFocus && lastFocus.focus){lastFocus.focus();}
+    if(cont !== false){ startSteps(); }
+  }
+  function modalKey(e){
+    if(e.key === "Escape"){ closeConso(true); return; }
+    if(e.key === "Tab"){ // focus trap
+      var f = $("modal").querySelectorAll('button');
+      var first=f[0], last=f[f.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  }
+  $("modalClose").addEventListener("click", function(){ closeConso(true); });   // fermer = continuer recherche
+  $("consoNo").addEventListener("click", function(){ closeConso(true); });
+  $("consoYes").addEventListener("click", function(){ goPartner(); });
+  $("overlay").addEventListener("click", function(e){ if(e.target===$("overlay")) closeConso(true); });
+  function goPartner(){
+    try{ sessionStorage.setItem("mcf_ctx", JSON.stringify({project:state.project, amount:state.amount})); }catch(_){}
+    if(PARTNER_CONSOLIDATION_URL && PARTNER_CONSOLIDATION_URL!=="#"){ window.location.href = PARTNER_CONSOLIDATION_URL; }
+    else { closeConso(false); startSteps(); } // pas d'URL configurée : on ne bloque pas le parcours
+  }
+
+  // ====== ÉTAPES ======
+  var STEPS = [
+    { key:"duration", q:"Sur combien de temps souhaitez-vous rembourser ?", auto:true, opts:[
+      {v:"12-24", ic:"⚡", t:"12 à 24 mois"},{v:"36-48", ic:"📅", t:"36 à 48 mois"},
+      {v:"60-84", ic:"🗓️", t:"60 à 84 mois"},{v:"ns", ic:"🤔", t:"Je ne sais pas encore"} ]},
+    { key:"situation", q:"Quelle est votre situation professionnelle ?", auto:true, opts:[
+      {v:"cdi", ic:"💼", t:"CDI / Titulaire"},{v:"cdd", ic:"📄", t:"CDD / Intérim"},
+      {v:"indep", ic:"🧑‍💻", t:"Indépendant"},{v:"retraite", ic:"🌿", t:"Retraité"},
+      {v:"autre", ic:"•", t:"Autre"} ]}
+  ];
+  var stepIdx = 0;
+  function startSteps(){ stepIdx = 0; show("screen-steps"); renderStep(); }
+  function renderStep(){
+    var st = STEPS[stepIdx];
+    var pct = Math.round(((stepIdx)/(STEPS.length))*100)+ (100/STEPS.length/2|0);
+    $("progBar").style.width = Math.round(((stepIdx+1)/(STEPS.length+1))*100)+"%";
+    $("progPc").textContent = "Étape "+(stepIdx+1)+"/"+STEPS.length;
+    var html = '<h1 style="font-size:22px">'+st.q+'</h1><div class="opts" role="group" aria-label="'+st.q+'">';
+    st.opts.forEach(function(o){
+      var sel = state[st.key]===o.v ? " sel" : "";
+      html += '<button type="button" class="opt'+sel+'" data-v="'+o.v+'"><span class="ic">'+o.ic+'</span>'+o.t+'</button>';
+    });
+    html += '</div>';
+    $("stepBody").innerHTML = html;
+    Array.prototype.forEach.call($("stepBody").querySelectorAll(".opt"), function(b){
+      b.addEventListener("click", function(){
+        state[st.key] = b.getAttribute("data-v");
+        if(stepIdx < STEPS.length-1){ stepIdx++; renderStep(); }
+        else { show("screen-email"); setTimeout(function(){$("email").focus();},150); }
+      });
+    });
+    var firstOpt = $("stepBody").querySelector(".opt"); if(firstOpt) firstOpt.focus();
+  }
+  $("stepBack").addEventListener("click", function(){
+    if(stepIdx>0){ stepIdx--; renderStep(); } else { show("screen-entry"); }
+  });
+
+  // ====== EMAIL ======
+  $("emailBack").addEventListener("click", function(){ show("screen-steps"); renderStep(); });
+  $("emailForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = $("email").value.trim().toLowerCase();
+    if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ $("emailErr").classList.add("show"); $("email").focus(); return; }
+    $("emailErr").classList.remove("show");
+    var btn = $("emailBtn"); btn.classList.add("loading"); btn.disabled = true;
+    // Inscription newsletter centrale (même principe que monelor) — tag simulateur.
+    // On n'inscrit à la liste marketing QUE si l'opt-in est coché (consentement).
+    var tags = [NEWSLETTER_TAG];
+    if($("optin").checked){ tags.push("Marketing"); }
+    subscribeAll(email, tags).then(function(){
+      renderResults(email);
+    }).catch(function(){
+      // Une erreur de capture ne bloque pas l'affichage des résultats.
+      renderResults(email, true);
+    });
+  });
+  function subscribeAll(email, tags){
+    return Promise.all(tags.map(function(tag){
+      return fetch(SUBSCRIBE_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({email:email, tag:tag})})
+        .then(function(r){ if(!r.ok) throw new Error("subscribe"); return r.json(); });
+    }));
+  }
+
+  // ====== RÉSULTATS ======
+  function renderResults(email, captureFailed){
+    var min = state.amount;
+    var credits = CREDIT_OFFERS.filter(function(o){ return min>=o.min && min<=o.max; });
+    if(credits.length===0){ credits = CREDIT_OFFERS.slice(); } // fallback : on ne laisse pas vide à tort
+    var html = '';
+    html += '<div class="res-head"><h1>Votre sélection pour un projet de '+fmt(state.amount)+' €'+(DEMO?'<span class="demo-flag">DÉMO</span>':'')+'</h1>';
+    html += '<button class="btn btn-ghost" style="width:auto;min-height:44px;padding:0 16px" id="editSearch">Modifier ma recherche</button></div>';
+    html += '<p class="lead">Projet : '+(PROJECT_LABEL[state.project]||state.project)+'.</p>';
+
+    html += '<div class="sec-label">Offres de crédit</div>';
+    credits.forEach(function(o){
+      html += offerCard(o, false);
+    });
+    html += '<div class="disclaimer">Les offres présentées proviennent de nos partenaires. L\'acceptation dépend de l\'étude de votre dossier par l\'organisme. Le classement n\'est pas un classement des meilleurs taux du marché.</div>';
+
+    html += '<div class="sec-label">À découvrir aussi : les offres de bienvenue</div>';
+    html += '<p class="lead" style="font-size:14px">Des offres indépendantes de votre recherche de crédit, soumises à leurs propres conditions. Ce ne sont pas des crédits ni une acceptation de prêt.</p>';
+    PARRAIN_OFFERS.forEach(function(o){ html += parrainCard(o); });
+
+    html += '<div class="disclaimer">';
+    if(captureFailed){ html += '⚠️ Votre sélection s\'affiche bien, mais l\'envoi par email n\'a pas pu aboutir. '; }
+    else { html += '✅ Un récapitulatif a été associé à <strong>'+escapeHtml(email)+'</strong>. '; }
+    html += 'Sans justificatif d\'utilisation ne signifie pas sans justificatifs d\'identité ou de revenus. Un crédit vous engage et doit être remboursé.</div>';
+
+    $("screen-results").innerHTML = html;
+    show("screen-results");
+    $("editSearch").addEventListener("click", function(){ state.consoOffered=false; show("screen-entry"); });
+  }
+  function offerCard(o, parrain){
+    return '<div class="offer'+(parrain?' parrain':'')+'">'+
+      '<div class="logo">'+initials(o.nom)+'</div>'+
+      '<div class="mid"><div class="nm">'+escapeHtml(o.nom)+'</div><div class="ty">'+escapeHtml(o.type||'')+'</div>'+
+      '<div class="feat">'+escapeHtml(o.feat||'')+'</div><div class="cond">'+escapeHtml(o.cond||'')+'</div></div>'+
+      '<div class="go"><a class="btn" href="'+(o.url||'#')+'" target="_blank" rel="nofollow noopener sponsored">Simuler →</a><span class="aff">Lien affilié</span></div></div>';
+  }
+  function parrainCard(o){
+    return '<div class="offer parrain">'+
+      '<div class="logo">'+initials(o.nom)+'</div>'+
+      '<div class="mid"><div class="nm">'+escapeHtml(o.nom)+'</div><div class="ty">'+escapeHtml(o.prime||'')+'</div>'+
+      '<div class="feat">'+escapeHtml(o.cond||'')+'</div><div class="cond">'+escapeHtml(o.depot||'')+'</div></div>'+
+      '<div class="go"><a class="btn" href="'+(o.url||'#')+'" target="_blank" rel="nofollow noopener sponsored">En profiter →</a><span class="aff">Lien affilié</span></div></div>';
+  }
+  function initials(s){ return (s||'?').split(/\s+/).map(function(w){return w[0];}).join('').slice(0,2).toUpperCase(); }
+  function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+})();
+</script>
+</body>
+</html>
