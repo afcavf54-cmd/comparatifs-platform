@@ -19,6 +19,8 @@ cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
 related_posts:
+- 1939-enky-invest-a-qui-s-adresse-reellement-cet-investissement-mon-avis
+- 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
 - 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
 - 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
 - 1939-enky-invest-a-qui-s-adresse-reellement-cet-investissement-mon-avis
