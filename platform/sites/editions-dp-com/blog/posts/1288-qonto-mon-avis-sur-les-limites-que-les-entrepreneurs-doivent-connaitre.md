@@ -3,8 +3,11 @@ title: 'Qonto : Mon avis 2026 sur les limites que les entrepreneurs doivent conn
 slug: 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
 date: '2026-11-03T08:00:00+01:00'
 categorie: Banque & Paiement
-meta_title: 'Qonto : les limites à anticiper selon la taille et l''activité de son entreprise'
-meta_description: Qonto est une bonne banque pro, mais avec des limites réelles. Mon avis 2026 après plusieurs années d'utilisation en TPE, pour choisir en connaissance de cause.
+meta_title: 'Qonto : les limites à anticiper selon la taille et l''activité de son
+  entreprise'
+meta_description: Qonto est une bonne banque pro, mais avec des limites réelles. Mon
+  avis 2026 après plusieurs années d'utilisation en TPE, pour choisir en connaissance
+  de cause.
 min_words: 3000
 status: published
 featured_image: /blog/1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre.jpg
@@ -15,8 +18,11 @@ cta_link: https://www.financeads.net/tc.php?t=74753C276650850T&subid=editions-dp
 cta_enabled: true
 cta_text: Offre exclusive Qonto
 cta_button: En profiter
+related_posts:
+- 6991-vivid-business-mon-avis-et-les-details-que-j-aurais-aime-connaitre-avant
+- 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
+- 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
 ---
-
 <p>J'utilise Qonto depuis maintenant un bon moment dans mon entreprise lyonnaise. Et je vais vous dire quelque chose : c'est une bonne banque pro. Mais "bonne" ne veut pas dire "parfaite". Avant d'ouvrir un compte, il y a des points que j'aurais aimé connaître. Des limites concrètes, pas les belles phrases du site marketing.</p>
 
 <p>Cet article, c'est mon retour d'expérience brut. Pas un catalogue de fonctionnalités. Pas du copier-coller de fiche produit. Je vous explique ce qui fonctionne, ce qui m'a frustré, et pour qui Qonto est vraiment fait.</p>

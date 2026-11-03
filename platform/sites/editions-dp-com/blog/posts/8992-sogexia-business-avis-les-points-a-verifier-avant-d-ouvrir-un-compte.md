@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
 related_posts:
+- 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
 - 6991-vivid-business-mon-avis-et-les-details-que-j-aurais-aime-connaitre-avant
 - 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
 ---
