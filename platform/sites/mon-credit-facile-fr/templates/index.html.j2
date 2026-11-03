@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ home_title or site.home_title }}</title>
+<meta name="description" content="{{ home_description or site.home_description }}">
+<link rel="canonical" href="{{ site.domain }}/">
+{% if theme.google_fonts %}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="{{ theme.google_fonts }}" rel="stylesheet">{% endif %}
+<style>
+:root{
+  --bg:{{ theme.bg }};--surface:{{ theme.surface }};--surface2:{{ theme.surface2 }};
+  --ink:{{ theme.ink }};--ink2:{{ theme.ink2 }};--ink3:{{ theme.ink3 }};
+  --accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--green:{{ theme.green }};
+  --border:{{ theme.border }};--cta:{{ theme.cta_color }};--cta-text:{{ theme.cta_text_color }};--r:14px;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:'{{ theme.font_body }}',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'{{ theme.font_title }}',sans-serif;letter-spacing:-.02em;margin:0}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:14px 26px;border-radius:12px;transition:.15s}
+.btn-cta{background:var(--cta);color:var(--cta-text);box-shadow:0 10px 24px rgba(255,122,26,.3)}
+.btn-cta:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--accent)}
+/* top reassurance bar */
+.topbar{background:var(--ink);color:rgba(255,255,255,.8);font-size:12.5px}
+.topbar .wrap{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;padding:8px 20px}
+.topbar b{color:#fff;font-weight:600}
+/* hero */
+.hero{background:linear-gradient(170deg,#fff 0%,var(--surface2) 100%);border-bottom:1px solid var(--border)}
+.hero .wrap{padding:60px 20px 54px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero .pill{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--border);color:var(--accent);font-weight:600;font-size:13px;padding:6px 14px;border-radius:999px}
+.hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.08;margin:18px 0 16px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:17px;color:var(--ink2);max-width:520px;margin:0 0 26px}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.stat .n{font-family:'{{ theme.font_title }}',sans-serif;font-weight:800;font-size:30px;color:var(--ink);line-height:1}
+.stat .l{font-size:13px;color:var(--ink2);margin-top:6px}
+/* sections */
+section{padding:56px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 38px}
+.sec-head h2{font-size:clamp(24px,3.4vw,32px)}
+.sec-head p{color:var(--ink2);margin:12px 0 0}
+.grid-sol{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sol{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:.15s;display:block}
+.sol:hover{border-color:var(--accent);box-shadow:0 12px 30px rgba(14,39,66,.08);transform:translateY(-2px)}
+.sol .ic{width:42px;height:42px;border-radius:11px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:14px}
+.sol h3{font-size:16px;font-family:'{{ theme.font_body }}',sans-serif;font-weight:700;letter-spacing:0}
+.sol p{font-size:13px;color:var(--ink2);margin:6px 0 0}
+.amounts{background:var(--surface2)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:820px;margin:0 auto}
+.chip{background:#fff;border:1px solid var(--border);border-radius:999px;padding:11px 20px;font-weight:600;font-size:15px;transition:.15s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feat .ic{width:46px;height:46px;border-radius:12px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+.feat h3{font-size:17px;font-family:'{{ theme.font_body }}',sans-serif;font-weight:700;letter-spacing:0}
+.feat p{font-size:14px;color:var(--ink2);margin:8px 0 0;line-height:1.6}
+.cta-band{background:linear-gradient(120deg,var(--accent) 0%,var(--ink) 100%);border-radius:20px;padding:46px;text-align:center;color:#fff}
+.cta-band h2{font-size:28px;color:#fff}
+.cta-band p{color:rgba(255,255,255,.85);margin:12px 0 24px}
+.legal-note{max-width:1180px;margin:30px auto 0;padding:16px 20px;font-size:12.5px;color:var(--ink3);line-height:1.6;text-align:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:30px}.grid-sol{grid-template-columns:1fr 1fr}.why{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.grid-sol,.why{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span>🔒 <b>Données sécurisées</b></span>
+  <span>✅ <b>Simulation gratuite</b></span>
+  <span>⚡ <b>Réponse rapide</b></span>
+  <span>🤝 <b>Sans engagement</b></span>
+</div></div>
+
+{% include "base/_nav.html.j2" %}
+
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="pill">💶 Comparateur de crédit à la consommation</span>
+    <h1>{{ site.home_h1 or "Votre crédit, <em>simple</em> et accessible en ligne" | safe }}</h1>
+    <p class="lead">Comparez les mensualités, choisissez votre durée et obtenez une réponse rapide. Simulation 100 % gratuite et sans engagement.</p>
+    <div class="cta-row">
+      <a href="{{ site.cta_url }}" class="btn btn-cta">{{ site.cta_label }} →</a>
+      <a href="/credit-montant.html" class="btn btn-ghost">Crédit par montant</a>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="n">200+</div><div class="l">guides crédit</div></div>
+    <div class="stat"><div class="n">50+</div><div class="l">organismes comparés</div></div>
+    <div class="stat"><div class="n">24h</div><div class="l">délai de réponse</div></div>
+    <div class="stat"><div class="n">0 €</div><div class="l">simulation gratuite</div></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="sec-head"><h2>Toutes nos solutions de crédit</h2><p>Trouvez le financement adapté à votre projet.</p></div>
+  <div class="grid-sol">
+    {% set sols = [
+      {"ic":"💳","t":"Crédit consommation","u":"/credit-consommation.html","d":"Le crédit conso, mode d'emploi."},
+      {"ic":"👤","t":"Crédit personnel","u":"/credit-personnel.html","d":"Sans justificatif d'utilisation."},
+      {"ic":"🚗","t":"Crédit auto","u":"/credit-auto.html","d":"Neuve, occasion ou électrique."},
+      {"ic":"🔨","t":"Crédit travaux","u":"/credit-travaux.html","d":"Rénovation et aménagement."},
+      {"ic":"🔁","t":"Crédit renouvelable","u":"/credit-renouvelable.html","d":"Une réserve d'argent disponible."},
+      {"ic":"📉","t":"Rachat de crédit","u":"/rachat-credit.html","d":"Regroupez vos mensualités."},
+      {"ic":"🎯","t":"Crédit projet","u":"/credit-projet.html","d":"Mariage, voyage, imprévus…"},
+      {"ic":"⚡","t":"Crédit rapide","u":"/credit-rapide.html","d":"Réponse express en ligne."}
+    ] %}
+    {% for s in sols %}
+    <a class="sol" href="{{ s.u }}"><div class="ic">{{ s.ic }}</div><h3>{{ s.t }}</h3><p>{{ s.d }}</p></a>
+    {% endfor %}
+  </div>
+</div></section>
+
+<section class="amounts"><div class="wrap">
+  <div class="sec-head"><h2>Crédit par montant</h2><p>De 500 € à 50 000 €, simulez le montant qui correspond à votre besoin.</p></div>
+  <div class="chips">
+    {% for m in [500,1000,2000,3000,5000,8000,10000,15000,20000,30000,50000] %}
+    <a class="chip" href="/credit-{{ m }}-euros.html">{{ "{:,}".format(m).replace(",", " ") }} €</a>
+    {% endfor %}
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head"><h2>Pourquoi choisir Mon Crédit Facile ?</h2></div>
+  <div class="why">
+    <div class="feat"><div class="ic">⚡</div><h3>Réponse rapide</h3><p>Une simulation en ligne et une réponse de principe sans attendre.</p></div>
+    <div class="feat"><div class="ic">🤝</div><h3>Sans engagement</h3><p>Comparer et simuler est libre et gratuit, vous décidez ensuite.</p></div>
+    <div class="feat"><div class="ic">🔍</div><h3>Transparence</h3><p>Des informations claires sur les taux, durées et conditions.</p></div>
+    <div class="feat"><div class="ic">📚</div><h3>Guides détaillés</h3><p>Plus de 200 guides pour comprendre et bien choisir.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="cta-band">
+    <h2>Prêt à simuler votre crédit ?</h2>
+    <p>Gratuit, rapide et sans engagement.</p>
+    <a href="{{ site.cta_url }}" class="btn btn-cta" style="background:#fff;color:var(--ink)">{{ site.cta_label }} →</a>
+  </div>
+  <p class="legal-note">Les informations fournies sont indicatives et ne constituent pas une offre de crédit. Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Toute demande est soumise à l'accord de l'organisme prêteur.</p>
+</div></section>
+
+{% include "base/_footer.html.j2" %}
+</body>
+</html>
