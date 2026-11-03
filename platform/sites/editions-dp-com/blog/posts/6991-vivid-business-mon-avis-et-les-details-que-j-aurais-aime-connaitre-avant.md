@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive Vivid Business
 cta_button: En profiter
 related_posts:
+- 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
 - 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
 - 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
 - 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre

@@ -21,6 +21,7 @@ related_posts:
 - 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
 - 6991-vivid-business-mon-avis-et-les-details-que-j-aurais-aime-connaitre-avant
 - 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
+- 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
 ---
 <p>J'ai ouvert un compte Sogexia Business il y a quelques mois. Pas par enthousiasme particulier, plutôt parce que j'avais besoin d'un compte séparé pour une activité secondaire, sans passer par les lourdeurs d'une banque classique. Ce que j'ai trouvé m'a surpris, parfois en bien, parfois beaucoup moins.</p>
 
