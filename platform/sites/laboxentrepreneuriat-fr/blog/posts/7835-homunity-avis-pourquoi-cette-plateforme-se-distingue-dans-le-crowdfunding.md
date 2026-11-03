@@ -19,9 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
 related_posts:
+- 3899-enky-invest-avis-une-nouvelle-facon-d-investir-qui-m-interpelle
 - 3355-enerfip-mon-avis-sur-cette-alternative-aux-placements-traditionnels
 - 2118-cashbee-pro-une-alternative-aux-placements-bancaires-classiques-avis
-- 3899-enky-invest-avis-une-nouvelle-facon-d-investir-qui-m-interpelle
 - 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
 ---
 <p>J'ai testé pas mal de plateformes de crowdfunding immobilier ces dernières années. Certaines m'ont déçu dès la première connexion, d'autres m'ont agréablement surpris. Homunity, je l'ai découverte un peu par hasard en 2021, via un client qui cherchait comment diversifier sa trésorerie sans immobiliser du capital sur du long terme.</p>

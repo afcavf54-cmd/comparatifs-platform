@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Cashbee Pro
 cta_button: En profiter
 related_posts:
+- 3899-enky-invest-avis-une-nouvelle-facon-d-investir-qui-m-interpelle
+- 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
 - 3355-enerfip-mon-avis-sur-cette-alternative-aux-placements-traditionnels
 - 7835-homunity-avis-pourquoi-cette-plateforme-se-distingue-dans-le-crowdfunding
-- 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
-- 3899-enky-invest-avis-une-nouvelle-facon-d-investir-qui-m-interpelle
 ---
 <h2>Ce que Cashbee Pro est vraiment (et ce qu'il n'est pas)</h2>
 
