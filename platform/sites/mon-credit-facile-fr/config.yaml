@@ -1,0 +1,83 @@
+# ============================================================
+# CONFIG SITE -- mon-credit-facile-fr
+# Thématique     : crédit à la consommation (comparateur + guides)
+# Types activés  : blog (= pages landing/guides pilotables depuis le dashboard)
+# Templates HTML : templates locaux (index.html.j2 + blog-post.html.j2)
+# Migration depuis l'ancien site statique mon-credit-facile.fr (URLs .html conservées)
+# ============================================================
+
+site:
+  slug: mon-credit-facile-fr
+  name: "Mon Crédit Facile"
+  domain: "https://www.mon-credit-facile.fr"
+  base_path: ""
+  www_preference: "www"
+  year: 2026
+
+  logo_text: "Mon Crédit"
+  logo_accent: " Facile"
+  tagline: "Comparateur de crédit à la consommation en ligne"
+
+  # Pas de pages comparateur/avis : site de guides + simulateur
+  has_comparateurs: false
+
+  home_title: "Mon Crédit Facile : comparateur de crédit à la consommation en ligne"
+  home_description: "Comparez et simulez votre crédit à la consommation en ligne : crédit personnel, auto, travaux, rapide. Simulation gratuite, réponse rapide, sans engagement."
+  home_h1: ""
+
+  # CTA principal (simulation). À brancher sur le partenaire quand prêt.
+  cta_label: "Simuler gratuitement"
+  cta_url: "/simulation-credit.html"
+
+  index_template: "index.html.j2"
+  template: "comparatif-vs-scpi.html.j2"   # neutre : aucun produit => aucune page VS générée
+
+  analytics_clicky: ""
+  contact_form_key: ""
+
+  # ── Mentions légales (éditeur) — à compléter ──
+  legal_editor_name: "VISEOWEB"
+  legal_editor_address: "31 rue du coteau\n54510 Art sur Meurthe"
+  legal_publication_director: "Julien GUIGNARD"
+
+page_types:
+  blog: credit-conso
+
+theme:
+  bg: "#F4F8FD"
+  surface: "#FFFFFF"
+  surface2: "#EAF2FB"
+  ink: "#0E2742"
+  ink2: "#44586F"
+  ink3: "#8699AD"
+  accent: "#1D6FB8"
+  accent2: "#2E86C1"
+  green: "#15965B"
+  border: "#DCE6F1"
+  cta_color: "#FF7A1A"
+  cta_text_color: "#FFFFFF"
+  font_title: "Poppins"
+  font_body: "Inter"
+  google_fonts: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+
+# ── Persona éditorial (génération de contenu : blog_publish / enrich) ──
+# Appliqué en couche avec le prompt général (thematic credit-conso) au moment
+# de la génération des articles.
+persona_prompt: |
+  Tu écris en tant qu'éditeur de Mon Crédit Facile, un comparateur indépendant de crédit à la consommation en ligne.
+
+  Tu t'adresses au lecteur en le vouvoyant.
+
+  Ton : clair, pédagogique, rassurant et factuel, sans jargon inutile.
+
+  Style : pragmatique et structuré. Phrases courtes, explications concrètes, exemples chiffrés quand c'est utile (mensualité, TAEG, coût total).
+
+  Positionnement : tu aides le lecteur à comprendre et à comparer les offres de crédit avant de s'engager. Tu es transparent sur les coûts et tu rappelles qu'un crédit engage l'emprunteur.
+
+  Règles impératives (conformité crédit à la consommation) :
+  • Ne jamais promettre un accord, un "crédit sans refus" ni une absence de conditions : toute demande est soumise à l'accord de l'organisme prêteur.
+  • Toujours présenter les chiffres comme indicatifs et inviter à comparer plusieurs offres (TAEG, pas seulement le taux nominal).
+  • Rappeler l'avertissement légal : "Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager."
+  • Rester neutre et informatif : aucune pression commerciale, aucune fausse urgence.
+
+  Angle éditorial prioritaire : aider à choisir le bon montant, la bonne durée et le bon type de crédit, au meilleur coût total.
