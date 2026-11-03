@@ -20,6 +20,7 @@ cta_button: En profiter
 related_posts:
 - 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 - 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
+- 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 ---
 <p>Ça fait maintenant un bon moment que je suis les néobanques professionnelles de près. Vingt ans dans la compta, ça vous forge des réflexes : les frais cachés, je les repère vite. Et quand une solution comme Vivid Business commence à faire parler d'elle dans certains réseaux de TPE et PME, j'ai envie de creuser.</p>
 

@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive Revolut Business
 cta_button: En profiter
 related_posts:
+- 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 - 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
 - 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 ---
