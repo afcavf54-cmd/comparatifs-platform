@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Waltio
 cta_button: En profiter
 related_posts:
-- 3773-enky-invest-avis-investir-dans-le-mobilier-une-bonne-idee-selon-moi
 - 4603-enerfip-mon-avis-sur-cette-plateforme-d-investissement-participatif
-- 2654-cashbee-pro-mon-avis-sur-cette-solution-de-placement-de-tresorerie
+- 3773-enky-invest-avis-investir-dans-le-mobilier-une-bonne-idee-selon-moi
 - 3185-homunity-avis-j-ai-etudie-les-projets-immobiliers-et-leurs-risques
+- 2654-cashbee-pro-mon-avis-sur-cette-solution-de-placement-de-tresorerie
 ---
 <p>Je vais être honnête : j'ai longtemps procrastiné sur ma déclaration crypto. Chaque année c'était la même chose, des heures à reconstituer mes trades sur plusieurs exchanges, à essayer de faire coller les chiffres, à stresser sur ce que j'allais déclarer exactement. En 2024, j'avais encore raté des plus-values parce que j'avais mal compté mes cessions sur Binance et Coinbase en même temps.</p>
 

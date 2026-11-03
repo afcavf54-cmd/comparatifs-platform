@@ -21,6 +21,7 @@ cta_text: Offre exclusive Enky Invest
 cta_button: En profiter
 related_posts:
 - 3185-homunity-avis-j-ai-etudie-les-projets-immobiliers-et-leurs-risques
+- 4603-enerfip-mon-avis-sur-cette-plateforme-d-investissement-participatif
 - 2654-cashbee-pro-mon-avis-sur-cette-solution-de-placement-de-tresorerie
 - 3523-waltio-avis-j-ai-voulu-simplifier-ma-declaration-crypto-voici-mon-bilan
 - 4603-enerfip-mon-avis-sur-cette-plateforme-d-investissement-participatif

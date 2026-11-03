@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Cashbee Pro
 cta_button: En profiter
 related_posts:
-- 3185-homunity-avis-j-ai-etudie-les-projets-immobiliers-et-leurs-risques
-- 4603-enerfip-mon-avis-sur-cette-plateforme-d-investissement-participatif
 - 3523-waltio-avis-j-ai-voulu-simplifier-ma-declaration-crypto-voici-mon-bilan
 - 3773-enky-invest-avis-investir-dans-le-mobilier-une-bonne-idee-selon-moi
+- 3185-homunity-avis-j-ai-etudie-les-projets-immobiliers-et-leurs-risques
+- 4603-enerfip-mon-avis-sur-cette-plateforme-d-investissement-participatif
 ---
 <p>J'ai testé pas mal d'outils pour gérer la trésorerie de ma startup ces dernières années. Et honnêtement, la plupart m'ont déçu. Soit trop complexes, soit trop chers, soit clairement pensés pour des DAF de grands groupes et pas pour un fondateur qui fait tout avec 3 personnes. Cashbee Pro, j'en avais entendu parler via une communauté de fondateurs bordelais. J'ai décidé de tester sérieusement. Voilà ce que j'en pense vraiment, sans filtre.</p>
 
