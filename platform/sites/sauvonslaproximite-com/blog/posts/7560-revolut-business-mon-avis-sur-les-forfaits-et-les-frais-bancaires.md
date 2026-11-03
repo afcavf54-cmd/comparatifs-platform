@@ -19,6 +19,7 @@ cta_text: Offre exclusive Revolut Business
 cta_button: En profiter
 related_posts:
 - 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
+- 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 ---
 <p>J'utilise des outils bancaires pour PME depuis une vingtaine d'années. J'ai vu passer des dizaines de solutions, des plus classiques aux plus modernes. Revolut Business, je l'ai testé sérieusement sur plusieurs mois, dans le cadre d'une structure de 40 personnes avec des flux réguliers en euros et en devises étrangères. Voici ce que j'en pense vraiment, sans langue de bois.</p>
 
