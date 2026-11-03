@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ post.meta_title or post.title }}</title>
+<meta name="description" content="{{ post.meta_description }}">
+<link rel="canonical" href="{{ site.domain }}/{{ post.slug }}/">
+<meta property="og:title" content="{{ post.meta_title or post.title }}">
+<meta property="og:description" content="{{ post.meta_description }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ site.domain }}/{{ post.slug }}/">
+{% if theme.google_fonts %}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="{{ theme.google_fonts }}" rel="stylesheet">{% endif %}
+{% if post.faq_items and post.faq_items | length >= 2 %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for item in post.faq_items %}{"@type":"Question","name":{{ item.question | tojson }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer | tojson }}}}{% if not loop.last %},{% endif %}{% endfor %}]}</script>
+{% endif %}
+<style>
+:root{
+  --bg:{{ theme.bg }};--surface:{{ theme.surface }};--surface2:{{ theme.surface2 }};
+  --ink:{{ theme.ink }};--ink2:{{ theme.ink2 }};--ink3:{{ theme.ink3 }};
+  --accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--green:{{ theme.green }};
+  --border:{{ theme.border }};--cta:{{ theme.cta_color }};--cta-text:{{ theme.cta_text_color }};--r:12px;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:'{{ theme.font_body }}',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:13px 24px;border-radius:11px;text-decoration:none;transition:.15s}
+.btn-cta{background:var(--cta);color:var(--cta-text);box-shadow:0 10px 22px rgba(255,122,26,.28)}
+.btn-cta:hover{filter:brightness(1.05);transform:translateY(-1px)}
+/* breadcrumb + hero */
+.crumb{font-size:12.5px;color:var(--ink3);padding:18px 0 0}
+.crumb a{color:var(--ink3);text-decoration:none}.crumb a:hover{color:var(--accent)}
+.phero{padding:14px 0 10px}
+.phero .cat{display:inline-block;background:var(--surface2);color:var(--accent);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.phero h1{font-family:'{{ theme.font_title }}',sans-serif;font-size:clamp(27px,4.4vw,40px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px}
+.phero .chapo{font-size:18px;color:var(--ink2);margin:0}
+/* simulator */
+.sim{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:0 14px 40px rgba(14,39,66,.08);padding:26px;margin:28px 0 10px}
+.sim h2{font-family:'{{ theme.font_title }}',sans-serif;font-size:21px;margin:0 0 4px}
+.sim .sub{font-size:13px;color:var(--ink3);margin:0 0 20px}
+.sim .ctrl{margin-bottom:18px}
+.sim label{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:600;color:var(--ink2);margin-bottom:8px}
+.sim label b{font-size:18px;color:var(--accent);font-family:'{{ theme.font_title }}',sans-serif}
+.sim input[type=range]{width:100%;accent-color:var(--accent);height:6px}
+.sim .out{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px;padding-top:22px;border-top:1px solid var(--border)}
+.sim .o{background:var(--surface2);border-radius:12px;padding:14px;text-align:center}
+.sim .o .v{font-family:'{{ theme.font_title }}',sans-serif;font-weight:800;font-size:22px;color:var(--ink);line-height:1}
+.sim .o.hl .v{color:var(--accent)}
+.sim .o .k{font-size:11.5px;color:var(--ink2);margin-top:6px}
+.sim .act{margin-top:20px;text-align:center}
+.sim .note{font-size:11.5px;color:var(--ink3);margin:14px 0 0;line-height:1.5}
+/* article body */
+.article-body{font-size:17px;color:var(--ink2);line-height:1.8;padding:8px 0 0}
+.article-body>:first-child{margin-top:0}
+.article-body h2{font-family:'{{ theme.font_title }}',sans-serif;font-size:26px;color:var(--ink);margin:40px 0 14px;letter-spacing:-.02em}
+.article-body h3{font-size:19px;font-weight:700;color:var(--ink);margin:30px 0 10px}
+.article-body p{margin:0 0 18px}
+.article-body ul,.article-body ol{margin:0 0 18px;padding-left:24px}
+.article-body li{margin-bottom:8px}
+.article-body strong{color:var(--ink);font-weight:700}
+.article-body a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.article-body blockquote{border-left:3px solid var(--accent);background:var(--surface2);padding:12px 18px;margin:22px 0;border-radius:0 8px 8px 0;color:var(--ink2)}
+/* tables */
+.article-body table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.article-body thead th{background:var(--surface2);color:var(--ink);text-align:left;font-weight:700;padding:12px 15px;font-size:14px;border-bottom:2px solid var(--border)}
+.article-body td{padding:11px 15px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.article-body td strong{color:var(--ink)}
+.article-body tbody tr:nth-child(even){background:#fafcff}
+@media(max-width:560px){.article-body table{display:block;overflow-x:auto}}
+/* faq */
+.faq{margin:40px 0 0}
+.faq h2{font-family:'{{ theme.font_title }}',sans-serif;font-size:26px;margin:0 0 18px}
+.faq details{background:#fff;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq summary{padding:16px 18px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;color:var(--accent);font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 18px 16px;color:var(--ink2);font-size:15px;line-height:1.7}
+/* cta band + legal */
+.cta-band{background:linear-gradient(120deg,var(--accent) 0%,var(--ink) 100%);border-radius:18px;padding:36px;text-align:center;color:#fff;margin:44px 0 0}
+.cta-band h2{font-family:'{{ theme.font_title }}',sans-serif;font-size:24px;color:#fff;margin:0 0 8px}
+.cta-band p{color:rgba(255,255,255,.85);margin:0 0 20px}
+.legal-note{font-size:12.5px;color:var(--ink3);line-height:1.6;margin:26px 0 0;padding:16px;background:var(--surface2);border-radius:10px}
+</style>
+</head>
+<body>
+
+{% include "base/_nav.html.j2" %}
+
+<div class="wrap">
+  <div class="crumb"><a href="/">Accueil</a> › {% if post.categorie %}<span>{{ post.categorie }}</span> › {% endif %}<span>{{ post.title }}</span></div>
+  <div class="phero">
+    {% if post.categorie %}<span class="cat">{{ post.categorie }}</span>{% endif %}
+    <h1>{{ post.h1 or post.title }}</h1>
+    {% if post.chapo or post.meta_description %}<p class="chapo">{{ post.chapo or post.meta_description }}</p>{% endif %}
+  </div>
+
+  {% if post.montant %}
+  {# ── Mini-simulateur fonctionnel (indicatif) ────────────────────────── #}
+  <div class="sim" id="sim" data-montant="{{ post.montant }}" data-taeg="{{ post.taeg | default(5.9) }}">
+    <h2>Mini-simulateur de crédit</h2>
+    <p class="sub">Estimation indicative pour un crédit de {{ "{:,}".format(post.montant).replace(",", " ") }} €.</p>
+    <div class="ctrl">
+      <label>Montant emprunté <b><span id="simM">{{ "{:,}".format(post.montant).replace(",", " ") }}</span> €</b></label>
+      <input type="range" id="rM" min="500" max="50000" step="500" value="{{ post.montant }}">
+    </div>
+    <div class="ctrl">
+      <label>Durée de remboursement <b><span id="simD">48</span> mois</b></label>
+      <input type="range" id="rD" min="12" max="84" step="6" value="48">
+    </div>
+    <div class="out">
+      <div class="o hl"><div class="v" id="oMens">–</div><div class="k">Mensualité</div></div>
+      <div class="o"><div class="v" id="oTot">–</div><div class="k">Coût total</div></div>
+      <div class="o"><div class="v" id="oInt">–</div><div class="k">Intérêts</div></div>
+      <div class="o"><div class="v" id="oTaeg">–</div><div class="k">TAEG indicatif</div></div>
+    </div>
+    <div class="act"><a href="{{ site.cta_url }}" class="btn btn-cta">{{ site.cta_label }} →</a></div>
+    <p class="note">⚠️ Simulation purement indicative, calculée sur un TAEG moyen constaté. Elle ne constitue pas une offre de crédit. Le taux réel dépend de l'organisme prêteur et de votre profil.</p>
+  </div>
+  {% endif %}
+
+  <article class="article-body">
+    {{ post.content_html | safe }}
+  </article>
+
+  {% if post.faq_items and post.faq_items | length >= 1 %}
+  <section class="faq">
+    <h2>Questions fréquentes</h2>
+    {% for item in post.faq_items %}
+    <details{% if loop.first %} open{% endif %}>
+      <summary>{{ item.question }}</summary>
+      <div class="ans">{{ item.answer | safe }}</div>
+    </details>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <div class="cta-band">
+    <h2>{{ post.cta_titre | default("Besoin de financer votre projet ?") }}</h2>
+    <p>Simulation gratuite, rapide et sans engagement.</p>
+    <a href="{{ site.cta_url }}" class="btn btn-cta" style="background:#fff;color:var(--ink)">{{ site.cta_label }} →</a>
+  </div>
+
+  <p class="legal-note">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Les informations présentées sont indicatives, ne constituent pas une offre de crédit et toute demande est soumise à l'accord de l'organisme prêteur.</p>
+</div>
+
+{% include "base/_footer.html.j2" %}
+
+<script>
+(function(){
+  var sim=document.getElementById('sim');if(!sim)return;
+  var taeg=parseFloat(sim.dataset.taeg)||5.9;
+  var rM=document.getElementById('rM'),rD=document.getElementById('rD');
+  var simM=document.getElementById('simM'),simD=document.getElementById('simD');
+  var oMens=document.getElementById('oMens'),oTot=document.getElementById('oTot'),oInt=document.getElementById('oInt'),oTaeg=document.getElementById('oTaeg');
+  function fmt(n){return Math.round(n).toLocaleString('fr-FR');}
+  function calc(){
+    var P=+rM.value, n=+rD.value, r=taeg/100/12;
+    var m = r>0 ? P*r/(1-Math.pow(1+r,-n)) : P/n;
+    var tot=m*n, interet=tot-P;
+    simM.textContent=fmt(P); simD.textContent=n;
+    oMens.textContent=fmt(m)+' €'; oTot.textContent=fmt(tot)+' €';
+    oInt.textContent=fmt(interet)+' €'; oTaeg.textContent=taeg.toLocaleString('fr-FR')+' %';
+  }
+  rM.addEventListener('input',calc); rD.addEventListener('input',calc); calc();
+})();
+</script>
+</body>
+</html>
