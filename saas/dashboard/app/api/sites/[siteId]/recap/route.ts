@@ -21,7 +21,7 @@ const CORS = {
 export async function OPTIONS() { return new NextResponse(null, { status: 204, headers: CORS }) }
 
 const PROJECT_LABEL: Record<string, string> = {
-  'sans-justificatif': 'Crédit sans justificatif', personnel: 'Prêt personnel', auto: 'Crédit auto',
+  'sans-justificatif': 'Crédit sans justificatif', personnel: 'Prêt personnel', etudiant: 'Prêt étudiant', auto: 'Crédit auto',
   moto: 'Crédit moto', travaux: 'Crédit travaux', autre: 'Autre projet', regroupement: 'Regroupement de crédits',
 }
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] as string))
@@ -46,8 +46,26 @@ function buildEmail(amount: number, project: string, credit: Offre[], parrain: O
   const section = (label: string, rows: string) => `
     <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#2E6350;margin:22px 0 10px">${label}</div>
     <table width="100%" cellpadding="0" cellspacing="0">${rows}</table>`
-  const creditRows = credit.length ? credit.map(o => offerRow(o, false)).join('') : `<tr><td style="color:#53625B;font-size:13px">Aucune offre ne correspond à ce montant pour le moment.</td></tr>`
-  const parrainBlock = parrain.length ? section('À découvrir aussi : offres de bienvenue', parrain.map(o => offerRow(o, true)).join('')) : ''
+  const note = (txt: string) => `<p style="color:#53625B;font-size:12px;margin:6px 0 0">${txt}</p>`
+
+  // Seuil 500 € : en dessous, les primes de bienvenue passent en premier.
+  const smallAmount = amount < 500
+
+  const creditRows = credit.length ? credit.map(o => offerRow(o, false)).join('') : `<tr><td style="color:#53625B;font-size:13px">Aucune offre de crédit ne correspond à ce montant${smallAmount ? ' : pour un montant aussi faible, un crédit est rarement avantageux.' : ' pour le moment.'}</td></tr>`
+  const creditBlock = section('Offres de crédit', creditRows) +
+    note("Les offres proviennent de nos partenaires. L'acceptation dépend de l'étude de votre dossier par l'organisme. Ce classement n'est pas un classement des meilleurs taux du marché.")
+
+  let parrainBlock = ''
+  if (parrain.length) {
+    const label = smallAmount ? 'Recommandé pour vous : offres de bienvenue' : 'À découvrir aussi : offres de bienvenue'
+    const intro = smallAmount
+      ? "Pour un montant inférieur à 500 €, les primes de bienvenue sont souvent plus avantageuses qu'un crédit : vous récupérez de l'argent sans frais et sans remboursement. Ce ne sont pas des crédits."
+      : "En complément de votre crédit, ces primes de bienvenue sont une bonne alternative : carte bancaire souvent gratuite, sans frais, et de l'argent récupérable sans remboursement. Ce ne sont pas des crédits."
+    parrainBlock = section(label, parrain.map(o => offerRow(o, true)).join('')) + note(intro)
+  }
+
+  const blocks = smallAmount ? (parrainBlock + creditBlock) : (creditBlock + parrainBlock)
+
   return `<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;background:#FAFBF5;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
 <div style="max-width:600px;margin:0 auto;background:#fff">
@@ -55,9 +73,7 @@ function buildEmail(amount: number, project: string, credit: Offre[], parrain: O
   <div style="padding:26px 28px;color:#1F2A26">
     <h1 style="font-size:20px;margin:0 0 6px;color:#234B3C">Votre sélection pour un projet de ${fmt(amount)} €</h1>
     <p style="color:#53625B;font-size:14px;margin:0 0 4px">Projet : ${esc(PROJECT_LABEL[project] || project)}.</p>
-    ${section('Offres de crédit', creditRows)}
-    <p style="color:#53625B;font-size:12px;margin:6px 0 0">Les offres proviennent de nos partenaires. L'acceptation dépend de l'étude de votre dossier par l'organisme. Ce classement n'est pas un classement des meilleurs taux du marché.</p>
-    ${parrainBlock}
+    ${blocks}
     <div style="margin-top:22px;padding:14px 16px;background:#FAFBF5;border-radius:10px;color:#53625B;font-size:12px;line-height:1.6">
       Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
       « Sans justificatif d'utilisation » ne signifie pas sans justificatifs d'identité ou de revenus.

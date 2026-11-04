@@ -35,6 +35,10 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
 .amount-wrap .eur{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--forest);pointer-events:none}
 .amount-wrap input{padding-right:40px}
 .hint{font-size:12.5px;color:var(--ink2);margin:7px 0 0;display:flex;gap:6px;align-items:flex-start}
+.incentive{background:linear-gradient(135deg,var(--lime2),var(--lime));border:1.6px solid #BBE38C;border-radius:var(--r2);padding:14px 16px;margin:0 0 18px;color:var(--forest);font-size:15px;line-height:1.5}
+.incentive strong{color:var(--orange-ink);font-weight:800}
+.incentive .big{display:block;font-size:22px;font-weight:800;color:var(--forest);margin-top:2px}
+.incentive.hidden{display:none}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:56px;border:0;border-radius:var(--r2);background:var(--orange);color:#fff;font:800 16px 'Nunito',sans-serif;cursor:pointer;transition:.15s;box-shadow:0 10px 22px rgba(255,138,61,.3)}
 .btn:hover{filter:brightness(1.04);transform:translateY(-1px)}
 .btn:focus-visible{outline:3px solid var(--forest);outline-offset:2px}
@@ -118,6 +122,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
           <select id="project" aria-describedby="projectHint">
             <option value="sans-justificatif">Crédit sans justificatif</option>
             <option value="personnel">Prêt personnel</option>
+            <option value="etudiant">Prêt étudiant</option>
             <option value="auto">Crédit auto</option>
             <option value="moto">Crédit moto</option>
             <option value="travaux">Crédit travaux</option>
@@ -128,7 +133,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
         <div class="field" style="margin:0">
           <label for="amount">Montant</label>
           <div class="amount-wrap">
-            <input id="amount" type="number" inputmode="numeric" min="500" step="100" value="500" aria-describedby="amountErr">
+            <input id="amount" type="number" inputmode="numeric" min="100" step="100" value="500" aria-describedby="amountErr">
             <span class="eur">€</span>
           </div>
         </div>
@@ -137,8 +142,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
         </div>
       </div>
       <p class="hint" id="projectHint">ℹ️ Sans justificatif d'utilisation : des justificatifs d'identité et de revenus peuvent être demandés.</p>
-      <p class="err" id="amountErr">Indiquez un montant valide (à partir de 500 €).</p>
-      <p class="center-note">Votre email sera demandé pour recevoir votre sélection, aussi affichée à l'écran.</p>
+      <p class="err" id="amountErr">Indiquez un montant valide (à partir de 100 €).</p>
     </form>
   </section>
 
@@ -153,6 +157,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
   <section class="card hidden" id="screen-email">
     <button class="back" id="emailBack" type="button">← Retour</button>
     <h1>À quelle adresse vous envoyer votre sélection ?</h1>
+    <div class="incentive hidden" id="emailIncentive"></div>
     <p class="lead">Recevez les offres sélectionnées et leurs liens pour les retrouver facilement. Elles s'affichent aussi sur la page suivante.</p>
     <form id="emailForm" novalidate>
       <div class="field">
@@ -180,11 +185,12 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
   <div class="modal" id="modal">
     <button class="x" id="modalClose" aria-label="Fermer">✕</button>
     <h2 id="modalTitle">Vous avez déjà des crédits en cours ?</h2>
-    <p id="modalDesc">Souhaitez-vous aussi étudier la possibilité de les regrouper en une seule mensualité ?</p>
+    <p id="modalDesc">Souhaitez-vous regrouper vos crédits en cours par la même occasion ?</p>
     <ul class="args">
-      <li>Regrouper plusieurs remboursements en un seul.</li>
-      <li>Étudier une mensualité adaptée à votre budget.</li>
-      <li>Examiner la possibilité d'intégrer votre nouveau projet.</li>
+      <li>Une seule mensualité à rembourser.</li>
+      <li>Jusqu'à <strong>-60%</strong> sur votre remboursement mensuel.</li>
+      <li>Possibilité de financer un nouveau projet.</li>
+      <li>Taux d'intérêts réduits.</li>
     </ul>
     <div class="warn">⚠️ Une baisse de mensualité peut s'accompagner d'une durée plus longue et d'un coût total plus élevé.</div>
     <div class="btn-row">
@@ -232,7 +238,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
 
   // ====== ÉTAT ======
   var state = { project:"sans-justificatif", amount:500, duration:null, situation:null, consoOffered:false };
-  var PROJECT_LABEL = {"sans-justificatif":"Crédit sans justificatif","personnel":"Prêt personnel","auto":"Crédit auto","moto":"Crédit moto","travaux":"Crédit travaux","autre":"Autre projet","regroupement":"Regroupement de crédits"};
+  var PROJECT_LABEL = {"sans-justificatif":"Crédit sans justificatif","personnel":"Prêt personnel","etudiant":"Prêt étudiant","auto":"Crédit auto","moto":"Crédit moto","travaux":"Crédit travaux","autre":"Autre projet","regroupement":"Regroupement de crédits"};
 
   var $ = function(id){return document.getElementById(id);};
   function show(id){["screen-entry","screen-steps","screen-email","screen-results"].forEach(function(s){$(s).classList.toggle("hidden", s!==id);});
@@ -244,7 +250,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
   $("entryForm").addEventListener("submit", function(e){
     e.preventDefault();
     var amt = parseInt($("amount").value, 10);
-    if(!amt || amt < 500 || isNaN(amt)){ $("amountErr").classList.add("show"); $("amount").focus(); return; }
+    if(!amt || amt < 100 || isNaN(amt)){ $("amountErr").classList.add("show"); $("amount").focus(); return; }
     $("amountErr").classList.remove("show");
     state.amount = amt; state.project = $("project").value;
     // Regroupement choisi d'entrée → accès direct partenaire, pas de modale
@@ -315,7 +321,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
       b.addEventListener("click", function(){
         state[st.key] = b.getAttribute("data-v");
         if(stepIdx < STEPS.length-1){ stepIdx++; renderStep(); }
-        else { show("screen-email"); setTimeout(function(){$("email").focus();},150); }
+        else { fillEmailIncentive(); show("screen-email"); setTimeout(function(){$("email").focus();},150); }
       });
     });
     var firstOpt = $("stepBody").querySelector(".opt"); if(firstOpt) firstOpt.focus();
@@ -323,6 +329,31 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
   $("stepBack").addEventListener("click", function(){
     if(stepIdx>0){ stepIdx--; renderStep(); } else { show("screen-entry"); }
   });
+
+  // ====== EMAIL : incitation dynamique (nb d'offres + montant parrainage récupérable) ======
+  function parseAmount(s){
+    var m = String(s||'').replace(/\s/g,'').replace(/ /g,'').match(/(\d+(?:[.,]\d+)?)/);
+    return m ? Math.round(parseFloat(m[1].replace(',','.'))) : 0;
+  }
+  function fillEmailIncentive(){
+    var box = $("emailIncentive"); if(!box) return;
+    offersPromise.then(function(){
+      if(!OFFERS_LOADED){ box.classList.add("hidden"); return; }
+      var amt = state.amount;
+      var nbCredits = CREDIT_OFFERS.filter(function(o){
+        return (o.montant_min==null || amt>=o.montant_min) && (o.montant_max==null || amt<=o.montant_max);
+      }).length;
+      var total = nbCredits + PARRAIN_OFFERS.length;
+      if(total<=0){ box.classList.add("hidden"); return; }
+      var parrainTotal = PARRAIN_OFFERS.reduce(function(sum,o){ return sum + parseAmount(o.prime); }, 0);
+      var h = '🎁 <strong>'+total+' offre'+(total>1?'s':'')+'</strong> vous attendent (crédit + offres de bienvenue).';
+      if(parrainTotal>0){
+        h += '<span class="big">'+fmt(parrainTotal)+' € accessibles sans faire de crédit et sans frais</span>via les primes de bienvenue de notre sélection.';
+      }
+      box.innerHTML = h;
+      box.classList.remove("hidden");
+    }).catch(function(){ box.classList.add("hidden"); });
+  }
 
   // ====== EMAIL ======
   $("emailBack").addEventListener("click", function(){ show("screen-steps"); renderStep(); });
@@ -368,21 +399,32 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
     html += '<button class="btn btn-ghost" style="width:auto;min-height:44px;padding:0 16px" id="editSearch">Modifier ma recherche</button></div>';
     html += '<p class="lead">Projet : '+(PROJECT_LABEL[state.project]||state.project)+'.</p>';
 
-    html += '<div class="sec-label">Offres de crédit</div>';
+    // Seuil 500 € : en dessous, le crédit est rarement pertinent → on met en avant
+    // les primes de bienvenue (argent sans crédit). Au-dessus, le crédit d'abord.
+    var smallAmount = amt < 500;
+
+    var creditBlock = '<div class="sec-label">Offres de crédit</div>';
     if(!OFFERS_LOADED){
-      html += '<div class="disclaimer">Impossible de charger les offres pour le moment. Vérifiez votre connexion et réessayez dans un instant.</div>';
+      creditBlock += '<div class="disclaimer">Impossible de charger les offres pour le moment. Vérifiez votre connexion et réessayez dans un instant.</div>';
     } else if(credits.length===0){
-      html += '<div class="disclaimer">Aucune offre ne correspond à un montant de '+fmt(amt)+' € pour le moment. <a href="#" id="editSearch2">Modifier ma recherche</a>.</div>';
+      creditBlock += '<div class="disclaimer">Aucune offre de crédit ne correspond à un montant de '+fmt(amt)+' €'+(smallAmount?' : pour un montant aussi faible, un crédit est rarement avantageux.':' pour le moment.')+' <a href="#" id="editSearch2">Modifier ma recherche</a>.</div>';
     } else {
-      credits.forEach(function(o){ html += creditCard(o); });
-      html += '<div class="disclaimer">Les offres présentées proviennent de nos partenaires. L\'acceptation dépend de l\'étude de votre dossier par l\'organisme. Le classement n\'est pas un classement des meilleurs taux du marché.</div>';
+      credits.forEach(function(o){ creditBlock += creditCard(o); });
+      creditBlock += '<div class="disclaimer">Les offres présentées proviennent de nos partenaires. L\'acceptation dépend de l\'étude de votre dossier par l\'organisme. Le classement n\'est pas un classement des meilleurs taux du marché.</div>';
     }
 
+    var parrainBlock = '';
     if(PARRAIN_OFFERS.length){
-      html += '<div class="sec-label">À découvrir aussi : les offres de bienvenue</div>';
-      html += '<p class="lead" style="font-size:14px">Des offres indépendantes de votre recherche de crédit, soumises à leurs propres conditions. Ce ne sont pas des crédits ni une acceptation de prêt.</p>';
-      PARRAIN_OFFERS.forEach(function(o){ html += parrainCard(o); });
+      var parrainLabel = smallAmount ? 'Recommandé pour vous : les offres de bienvenue' : 'À découvrir aussi : les offres de bienvenue';
+      var parrainIntro = smallAmount
+        ? 'Pour un montant inférieur à 500 €, les primes de bienvenue sont souvent <strong>plus avantageuses qu\'un crédit</strong> : vous récupérez de l\'argent <strong>sans frais et sans remboursement</strong>. Ce ne sont pas des crédits.'
+        : 'En complément de votre crédit, ces primes de bienvenue sont une <strong>bonne alternative</strong> : carte bancaire souvent <strong>gratuite</strong>, <strong>sans frais</strong>, et de l\'argent récupérable sans remboursement. Ce ne sont pas des crédits.';
+      parrainBlock += '<div class="sec-label">'+parrainLabel+'</div>';
+      parrainBlock += '<p class="lead" style="font-size:14px">'+parrainIntro+'</p>';
+      PARRAIN_OFFERS.forEach(function(o){ parrainBlock += parrainCard(o); });
     }
+
+    html += smallAmount ? (parrainBlock + creditBlock) : (creditBlock + parrainBlock);
 
     html += '<div class="disclaimer">';
     if(captureFailed){ html += '⚠️ Votre sélection s\'affiche bien, mais l\'envoi du récapitulatif par email n\'a pas pu aboutir. '; }
