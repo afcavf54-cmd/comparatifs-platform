@@ -57,6 +57,13 @@ site:
     title: "Mes codes promo & parrainages"
     subtitle: "Les plateformes que j'utilise, et leurs offres de bienvenue 🎁"
     meta_description: "Retrouvez mes codes promo et parrainages exclusifs sur les plateformes d'investissement que j'utilise et recommande. Offre du moment : 75€ offerts chez Linxea (assurance-vie) à saisir à l'inscription, valables en carte cadeau Carrefour, Amazon ou Decathlon."
+    # Encart mis en avant tout en haut (renvoi vers le simulateur de crédit)
+    hero:
+      icon: "€"
+      title: "Simulez votre crédit en 2 minutes"
+      subtitle: "Comparez les offres et trouvez le meilleur financement — gratuit et sans engagement."
+      btn: "SIMULEZ"
+      url: "https://www.mon-credit-facile.fr/simulation-credit.html"
     # disclaimer: "..."  # optionnel, sinon texte par défaut
     categories:
       - name: "Banque & Bourse"
