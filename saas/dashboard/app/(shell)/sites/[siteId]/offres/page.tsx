@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
@@ -16,6 +16,13 @@ const card = { background: '#0F1724', border: '1px solid #1E2D3D', borderRadius:
 const input = { width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13 } as const
 const label = { display: 'block', fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }
 const btn = (bg: string) => ({ padding: '9px 16px', borderRadius: 8, background: bg, color: '#fff', border: 0, fontSize: 13, fontWeight: 600, cursor: 'pointer' } as const)
+// Les logos uploadés ont une URL relative au SITE (/offres-logos/…). Dans le
+// dashboard (autre domaine), on la préfixe par le domaine du site pour l'aperçu.
+const SITE_BASE = 'https://www.mon-credit-facile.fr'
+const logoSrc = (u?: string | null) => (u ? (u.startsWith('/') ? SITE_BASE + u : u) : '')
+function slugify(s: string) {
+  return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+}
 
 export default function OffresAdmin() {
   const { siteId } = useParams<{ siteId: string }>()
@@ -85,7 +92,7 @@ export default function OffresAdmin() {
         </div>
       </div>
 
-      {editing && <OfferForm key={editing.id || 'new'} offer={editing} onCancel={() => setEditing(null)} onSave={save} />}
+      {editing && <OfferForm key={editing.id || 'new'} offer={editing} siteId={siteId} onCancel={() => setEditing(null)} onSave={save} />}
       {err && <div style={{ ...card, borderColor: '#5c2b2e', color: '#ff8a80', marginBottom: 16 }}>{err}</div>}
 
       {loading ? <div style={{ color: '#8B9CB0' }}>Chargement…</div> : (
@@ -107,6 +114,7 @@ function Section({ title, offers, onEdit, onDel }: { title: string; offers: Offr
       <div style={{ display: 'grid', gap: 10 }}>
         {offers.map(o => (
           <div key={o.id} style={{ ...card, display: 'flex', alignItems: 'center', gap: 14, opacity: o.actif ? 1 : 0.5 }}>
+            {o.logo_url ? <img src={logoSrc(o.logo_url)} alt="" style={{ width: 36, height: 36, borderRadius: 9, objectFit: 'cover', background: '#0A0E1A', flexShrink: 0 }} /> : null}
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontWeight: 700, fontSize: 15 }}>
                 {o.organisme}
@@ -130,11 +138,39 @@ function Section({ title, offers, onEdit, onDel }: { title: string; offers: Offr
   )
 }
 
-function OfferForm({ offer, onCancel, onSave }: { offer: Offre; onCancel: () => void; onSave: (o: Offre) => void }) {
+function OfferForm({ offer, siteId, onCancel, onSave }: { offer: Offre; siteId: string; onCancel: () => void; onSave: (o: Offre) => void }) {
   const [o, setO] = useState<Offre>({ ...offer })
   const set = (k: keyof Offre, v: any) => setO(prev => ({ ...prev, [k]: v }))
   const num = (v: string) => (v === '' ? null : Number(v))
   const isCredit = o.type === 'credit'
+  const [uploading, setUploading] = useState(false)
+  const fileRef = useRef<HTMLInputElement>(null)
+  // Upload façon blog/codes-promo : commit du fichier dans le repo
+  // (public/offres-logos/<slug>/) via /api/github/upload. L'URL est servie
+  // depuis le NDD du site. Nécessite un redéploiement du site pour l'afficher.
+  async function uploadLogo(file: File) {
+    const base = slugify(o.slug || o.organisme || '')
+    if (!base) { alert("Renseigne d'abord l'organisme avant d'uploader un logo."); if (fileRef.current) fileRef.current.value = ''; return }
+    setUploading(true)
+    try {
+      const ext = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '') || 'png'
+      const filename = `logo.${ext}`
+      const path = `platform/sites/${siteId}/public/offres-logos/${base}/${filename}`
+      const content: string = await new Promise((resolve, reject) => {
+        const rd = new FileReader(); rd.onload = () => resolve(String(rd.result).split(',')[1]); rd.onerror = reject; rd.readAsDataURL(file)
+      })
+      let sha: string | undefined
+      try { const ex = await fetch(`/api/github?path=${encodeURIComponent(path)}`); if (ex.ok) { const ed = await ex.json(); if (ed.sha) sha = ed.sha } } catch { /* création */ }
+      const r = await fetch('/api/github/upload', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path, content, sha, message: `HUB: Upload logo offre ${o.organisme} (${base})` }),
+      })
+      if (!r.ok) { const e = await r.json().catch(() => ({})); throw new Error(e.error || `HTTP ${r.status}`) }
+      setO(prev => ({ ...prev, logo_url: `/offres-logos/${base}/${filename}?v=${Date.now().toString(36)}` }))
+      alert("Logo uploadé ✓ — enregistre l'offre, puis relance un déploiement du site pour l'afficher.")
+    } catch (e: any) { alert('Upload échoué : ' + (e?.message || 'inconnue')) }
+    finally { setUploading(false); if (fileRef.current) fileRef.current.value = '' }
+  }
   return (
     <div style={{ ...card, marginBottom: 20, borderColor: '#FF8A3D' }}>
       <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 14 }}>{o.id ? 'Modifier' : 'Nouvelle'} offre</div>
@@ -159,7 +195,18 @@ function OfferForm({ offer, onCancel, onSave }: { offer: Offre; onCancel: () => 
 
         <div style={{ gridColumn: '1 / -1' }}><label style={label}>Description (caractéristiques, 1 ligne)</label><input style={input} value={o.description || ''} onChange={e => set('description', e.target.value)} /></div>
         <div style={{ gridColumn: '1 / -1' }}><label style={label}>Conditions (courtes)</label><input style={input} value={o.conditions || ''} onChange={e => set('conditions', e.target.value)} /></div>
-        <div><label style={label}>Logo (URL)</label><input style={input} value={o.logo_url || ''} onChange={e => set('logo_url', e.target.value)} /></div>
+        <div style={{ gridColumn: '1 / -1' }}>
+          <label style={label}>Logo</label>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            {o.logo_url
+              ? <img src={logoSrc(o.logo_url)} alt="" style={{ width: 44, height: 44, borderRadius: 10, objectFit: 'cover', background: '#0A0E1A', flexShrink: 0 }} />
+              : <div style={{ width: 44, height: 44, borderRadius: 10, background: '#234B3C', display: 'grid', placeItems: 'center', fontWeight: 700, flexShrink: 0 }}>{(o.organisme || '?').slice(0, 2).toUpperCase()}</div>}
+            <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={e => { const f = e.target.files?.[0]; if (f) uploadLogo(f) }} />
+            <button type="button" onClick={() => fileRef.current?.click()} style={btn('#1E2D3D')} disabled={uploading}>{uploading ? 'Upload…' : 'Choisir un logo'}</button>
+            {o.logo_url && <button type="button" onClick={() => set('logo_url', '')} style={btn('#3a1215')}>Retirer</button>}
+          </div>
+          <input style={{ ...input, marginTop: 8 }} value={o.logo_url || ''} onChange={e => set('logo_url', e.target.value)} placeholder="…ou colle une URL de logo" />
+        </div>
         <div><label style={label}>Ordre (priorité, asc)</label><input style={input} type="number" value={o.ordre ?? 0} onChange={e => set('ordre', Number(e.target.value))} /></div>
         <div><label style={label}>Valide du</label><input style={input} type="date" value={o.valide_du || ''} onChange={e => set('valide_du', e.target.value)} /></div>
         <div><label style={label}>Valide au</label><input style={input} type="date" value={o.valide_au || ''} onChange={e => set('valide_au', e.target.value)} /></div>
