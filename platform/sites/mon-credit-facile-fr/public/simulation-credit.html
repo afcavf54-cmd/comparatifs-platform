@@ -396,9 +396,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
     var demoMode = (SETTINGS.demo_mode === 'true') ||
                    CREDIT_OFFERS.concat(PARRAIN_OFFERS).some(function(o){ return o.demo; });
     var html = '';
-    html += '<div class="res-head"><h1>Votre sélection pour un projet de '+fmt(amt)+' €'+(demoMode?'<span class="demo-flag">DÉMO</span>':'')+'</h1>';
-    html += '<button class="btn btn-ghost" style="width:auto;min-height:44px;padding:0 16px" id="editSearch">Modifier ma recherche</button></div>';
-    html += '<p class="lead">Projet : '+(PROJECT_LABEL[state.project]||state.project)+'.</p>';
+    html += '<div class="res-head"><h1>Votre sélection pour un projet de '+fmt(amt)+' €</h1></div>';
 
     // Seuil 500 € : en dessous, le crédit est rarement pertinent → on met en avant
     // les primes de bienvenue (argent sans crédit). Au-dessus, le crédit d'abord.
@@ -408,7 +406,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
     if(!OFFERS_LOADED){
       creditBlock += '<div class="disclaimer">Impossible de charger les offres pour le moment. Vérifiez votre connexion et réessayez dans un instant.</div>';
     } else if(credits.length===0){
-      creditBlock += '<div class="disclaimer">Aucune offre de crédit ne correspond à un montant de '+fmt(amt)+' €'+(smallAmount?' : pour un montant aussi faible, un crédit est rarement avantageux.':' pour le moment.')+' <a href="#" id="editSearch2">Modifier ma recherche</a>.</div>';
+      creditBlock += '<div class="disclaimer">Aucune offre de crédit ne correspond à un montant de '+fmt(amt)+' €'+(smallAmount?' : pour un montant aussi faible, un crédit est rarement avantageux.':' pour le moment.')+'</div>';
     } else {
       credits.forEach(function(o){ creditBlock += creditCard(o); });
       creditBlock += '<div class="disclaimer">Les offres présentées proviennent de nos partenaires. L\'acceptation dépend de l\'étude de votre dossier par l\'organisme. Le classement n\'est pas un classement des meilleurs taux du marché.</div>';
@@ -420,7 +418,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
       var parrainIntro = smallAmount
         ? 'Pour un montant inférieur à 500 €, les primes de bienvenue sont souvent <strong>plus avantageuses qu\'un crédit</strong> : vous récupérez de l\'argent <strong>sans frais et sans remboursement</strong>. Ce ne sont pas des crédits.'
         : 'En complément de votre crédit, ces primes de bienvenue sont une <strong>bonne alternative</strong> : carte bancaire souvent <strong>gratuite</strong>, <strong>sans frais</strong>, et de l\'argent récupérable sans remboursement. Ce ne sont pas des crédits.';
-      parrainBlock += '<div class="sec-label">'+parrainLabel+'</div>';
+      parrainBlock += '<div class="sec-label"'+(smallAmount?' style="font-size:21px;color:var(--forest);margin-top:20px"':'')+'>'+parrainLabel+'</div>';
       parrainBlock += '<p class="lead" style="font-size:14px">'+parrainIntro+'</p>';
       PARRAIN_OFFERS.forEach(function(o){ parrainBlock += parrainCard(o); });
     }
@@ -438,7 +436,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
     if($("editSearch")) $("editSearch").addEventListener("click", edit);
     if($("editSearch2")) $("editSearch2").addEventListener("click", function(e){ e.preventDefault(); edit(); });
   }
-  function demoTag(o){ return o.demo ? ' <span class="demo-flag" style="margin-left:6px">démo</span>' : ''; }
+  function demoTag(o){ return ''; }
   function logoBox(o){
     if(o.logo_url){ return '<img src="'+escapeHtml(o.logo_url)+'" alt="'+escapeHtml(o.organisme||'')+'" style="width:100%;height:100%;object-fit:contain;border-radius:12px">'; }
     return initials(o.organisme);
@@ -450,14 +448,14 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
       '<div class="logo">'+logoBox(o)+'</div>'+
       '<div class="mid"><div class="nm">'+escapeHtml(o.organisme)+demoTag(o)+'</div><div class="ty">'+escapeHtml(o.categorie||'')+'</div>'+
       '<div class="feat">'+escapeHtml(o.description||'')+'</div>'+durees+'<div class="cond">'+cond+'</div></div>'+
-      '<div class="go"><a class="btn" href="'+(o.url||'#')+'" target="_blank" rel="nofollow noopener sponsored">Simuler →</a><span class="aff">Lien affilié</span></div></div>';
+      '<div class="go"><a class="btn" href="'+(o.url||'#')+'" target="_blank" rel="nofollow noopener sponsored">Simuler →</a></div></div>';
   }
   function parrainCard(o){
     return '<div class="offer parrain">'+
       '<div class="logo">'+logoBox(o)+'</div>'+
       '<div class="mid"><div class="nm">'+escapeHtml(o.organisme)+demoTag(o)+'</div><div class="ty">'+escapeHtml(o.prime||'')+'</div>'+
       '<div class="feat">'+escapeHtml(o.conditions||'')+'</div><div class="cond">'+escapeHtml(o.depot||'')+'</div></div>'+
-      '<div class="go"><a class="btn" href="'+(o.url||'#')+'" target="_blank" rel="nofollow noopener sponsored">En profiter →</a><span class="aff">Lien affilié</span></div></div>';
+      '<div class="go"><a class="btn" href="'+(o.url||'#')+'" target="_blank" rel="nofollow noopener sponsored">En profiter →</a></div></div>';
   }
   function initials(s){ return (s||'?').split(/\s+/).map(function(w){return w[0];}).join('').slice(0,2).toUpperCase(); }
   function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
