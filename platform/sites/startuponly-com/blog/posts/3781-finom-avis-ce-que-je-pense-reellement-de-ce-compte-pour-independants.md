@@ -18,6 +18,8 @@ cta_enabled: true
 cta_text: Offre exclusive Finom
 cta_button: En profiter
 related_posts:
+- 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
+- 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
 - 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
 - 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
 - 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent

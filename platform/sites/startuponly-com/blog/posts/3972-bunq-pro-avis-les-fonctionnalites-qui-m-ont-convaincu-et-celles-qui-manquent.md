@@ -18,9 +18,9 @@ cta_enabled: true
 cta_text: Offre exclusive Bunq pro
 cta_button: En profiter
 related_posts:
+- 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
 - 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
 - 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
-- 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
 ---
 <p>J'ai testé Bunq Pro pendant plusieurs mois pour gérer les finances de ma startup à Bordeaux. Honnêtement, j'avais des attentes élevées, parce que tout le monde en parle comme de la banque des freelances et des entrepreneurs modernes. La réalité, c'est plus nuancé que ça.</p>
 
