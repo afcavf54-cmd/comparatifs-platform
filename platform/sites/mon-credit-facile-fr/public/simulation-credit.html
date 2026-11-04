@@ -197,24 +197,37 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
 <script>
 (function(){
   "use strict";
-  // ====== CONFIG (à brancher en production) ======
+  // ====== CONFIG ======
   var SUBSCRIBE_ENDPOINT = "https://comparatifs-platform.vercel.app/api/newsletter/subscribe";
   var NEWSLETTER_TAG = "Simulateur crédit";
-  var PARTNER_CONSOLIDATION_URL = "#"; // ← URL partenaire regroupement (configurable)
+  // Supabase dédiée — clé PUBLIQUE (sans danger côté client, RLS en lecture seule).
+  var SUPABASE_URL = "https://wwvkjvvrwtrthlrqrquw.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_RugPupO_qZxkbzh2alQuAQ_xHiBoE5C";
   var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ====== CATALOGUE D'OFFRES — MODE DÉMO ======
-  // Remplacé ensuite par les offres Supabase administrables (dashboard).
-  var DEMO = true;
-  var CREDIT_OFFERS = [
-    {nom:"Organisme A", type:"Prêt personnel", min:500, max:50000, feat:"Réponse de principe rapide, 100% en ligne", url:"#", cond:"Conditions à consulter chez le partenaire"},
-    {nom:"Organisme B", type:"Crédit affecté auto", min:3000, max:75000, feat:"Dédié au financement de véhicule", url:"#", cond:"Conditions à consulter chez le partenaire"},
-    {nom:"Organisme C", type:"Crédit sans justificatif", min:500, max:30000, feat:"Usage libre des fonds", url:"#", cond:"Conditions à consulter chez le partenaire"}
-  ];
-  var PARRAIN_OFFERS = [
-    {nom:"Banque en ligne D", prime:"Jusqu'à 150 € offerts", cond:"À l'ouverture d'un compte, voir conditions", depot:"Avec premier versement", url:"#"},
-    {nom:"Néobanque E", prime:"80 € offerts", cond:"Sous conditions d'activité", depot:"Sans dépôt requis", url:"#"}
-  ];
+  // ====== OFFRES (chargées depuis Supabase : table "offres" + app_settings) ======
+  var CREDIT_OFFERS = [], PARRAIN_OFFERS = [], SETTINGS = {}, OFFERS_LOADED = false;
+  var PARTNER_CONSOLIDATION_URL = "#"; // rempli depuis app_settings.consolidation_partner_url
+
+  function sbGet(path){
+    return fetch(SUPABASE_URL + "/rest/v1/" + path, {
+      headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY }
+    }).then(function(r){ if(!r.ok) throw new Error("sb " + r.status); return r.json(); });
+  }
+  function loadOffers(){
+    return Promise.all([
+      sbGet("offres?select=*&order=mise_en_avant.desc,ordre.asc,montant_max.desc"),
+      sbGet("app_settings?select=key,value")
+    ]).then(function(res){
+      var offres = res[0] || [], settings = res[1] || [];
+      settings.forEach(function(s){ SETTINGS[s.key] = s.value; });
+      PARTNER_CONSOLIDATION_URL = SETTINGS.consolidation_partner_url || "#";
+      CREDIT_OFFERS  = offres.filter(function(o){ return o.type === 'credit'; });
+      PARRAIN_OFFERS = offres.filter(function(o){ return o.type === 'parrainage'; });
+      OFFERS_LOADED = true;
+    }).catch(function(e){ OFFERS_LOADED = false; });
+  }
+  var offersPromise = loadOffers(); // préchargement dès l'ouverture de la page
 
   // ====== ÉTAT ======
   var state = { project:"sans-justificatif", amount:500, duration:null, situation:null, consoOffered:false };
@@ -323,10 +336,10 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
     var tags = [NEWSLETTER_TAG];
     if($("optin").checked){ tags.push("Marketing"); }
     subscribeAll(email, tags).then(function(){
-      renderResults(email);
+      offersPromise.then(function(){ renderResults(email, false); });
     }).catch(function(){
       // Une erreur de capture ne bloque pas l'affichage des résultats.
-      renderResults(email, true);
+      offersPromise.then(function(){ renderResults(email, true); });
     });
   });
   function subscribeAll(email, tags){
@@ -338,23 +351,32 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
 
   // ====== RÉSULTATS ======
   function renderResults(email, captureFailed){
-    var min = state.amount;
-    var credits = CREDIT_OFFERS.filter(function(o){ return min>=o.min && min<=o.max; });
-    if(credits.length===0){ credits = CREDIT_OFFERS.slice(); } // fallback : on ne laisse pas vide à tort
+    var amt = state.amount;
+    var credits = CREDIT_OFFERS.filter(function(o){
+      return (o.montant_min==null || amt>=o.montant_min) && (o.montant_max==null || amt<=o.montant_max);
+    });
+    var demoMode = (SETTINGS.demo_mode === 'true') ||
+                   CREDIT_OFFERS.concat(PARRAIN_OFFERS).some(function(o){ return o.demo; });
     var html = '';
-    html += '<div class="res-head"><h1>Votre sélection pour un projet de '+fmt(state.amount)+' €'+(DEMO?'<span class="demo-flag">DÉMO</span>':'')+'</h1>';
+    html += '<div class="res-head"><h1>Votre sélection pour un projet de '+fmt(amt)+' €'+(demoMode?'<span class="demo-flag">DÉMO</span>':'')+'</h1>';
     html += '<button class="btn btn-ghost" style="width:auto;min-height:44px;padding:0 16px" id="editSearch">Modifier ma recherche</button></div>';
     html += '<p class="lead">Projet : '+(PROJECT_LABEL[state.project]||state.project)+'.</p>';
 
     html += '<div class="sec-label">Offres de crédit</div>';
-    credits.forEach(function(o){
-      html += offerCard(o, false);
-    });
-    html += '<div class="disclaimer">Les offres présentées proviennent de nos partenaires. L\'acceptation dépend de l\'étude de votre dossier par l\'organisme. Le classement n\'est pas un classement des meilleurs taux du marché.</div>';
+    if(!OFFERS_LOADED){
+      html += '<div class="disclaimer">Impossible de charger les offres pour le moment. Vérifiez votre connexion et réessayez dans un instant.</div>';
+    } else if(credits.length===0){
+      html += '<div class="disclaimer">Aucune offre ne correspond à un montant de '+fmt(amt)+' € pour le moment. <a href="#" id="editSearch2">Modifier ma recherche</a>.</div>';
+    } else {
+      credits.forEach(function(o){ html += creditCard(o); });
+      html += '<div class="disclaimer">Les offres présentées proviennent de nos partenaires. L\'acceptation dépend de l\'étude de votre dossier par l\'organisme. Le classement n\'est pas un classement des meilleurs taux du marché.</div>';
+    }
 
-    html += '<div class="sec-label">À découvrir aussi : les offres de bienvenue</div>';
-    html += '<p class="lead" style="font-size:14px">Des offres indépendantes de votre recherche de crédit, soumises à leurs propres conditions. Ce ne sont pas des crédits ni une acceptation de prêt.</p>';
-    PARRAIN_OFFERS.forEach(function(o){ html += parrainCard(o); });
+    if(PARRAIN_OFFERS.length){
+      html += '<div class="sec-label">À découvrir aussi : les offres de bienvenue</div>';
+      html += '<p class="lead" style="font-size:14px">Des offres indépendantes de votre recherche de crédit, soumises à leurs propres conditions. Ce ne sont pas des crédits ni une acceptation de prêt.</p>';
+      PARRAIN_OFFERS.forEach(function(o){ html += parrainCard(o); });
+    }
 
     html += '<div class="disclaimer">';
     if(captureFailed){ html += '⚠️ Votre sélection s\'affiche bien, mais l\'envoi par email n\'a pas pu aboutir. '; }
@@ -363,20 +385,29 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
 
     $("screen-results").innerHTML = html;
     show("screen-results");
-    $("editSearch").addEventListener("click", function(){ state.consoOffered=false; show("screen-entry"); });
+    var edit = function(){ state.consoOffered=false; show("screen-entry"); };
+    if($("editSearch")) $("editSearch").addEventListener("click", edit);
+    if($("editSearch2")) $("editSearch2").addEventListener("click", function(e){ e.preventDefault(); edit(); });
   }
-  function offerCard(o, parrain){
-    return '<div class="offer'+(parrain?' parrain':'')+'">'+
-      '<div class="logo">'+initials(o.nom)+'</div>'+
-      '<div class="mid"><div class="nm">'+escapeHtml(o.nom)+'</div><div class="ty">'+escapeHtml(o.type||'')+'</div>'+
-      '<div class="feat">'+escapeHtml(o.feat||'')+'</div><div class="cond">'+escapeHtml(o.cond||'')+'</div></div>'+
+  function demoTag(o){ return o.demo ? ' <span class="demo-flag" style="margin-left:6px">démo</span>' : ''; }
+  function logoBox(o){
+    if(o.logo_url){ return '<img src="'+escapeHtml(o.logo_url)+'" alt="'+escapeHtml(o.organisme||'')+'" style="width:100%;height:100%;object-fit:contain;border-radius:12px">'; }
+    return initials(o.organisme);
+  }
+  function creditCard(o){
+    var cond = o.taeg ? ('TAEG '+escapeHtml(o.taeg)) : escapeHtml(o.conditions || 'Conditions à consulter chez le partenaire');
+    var durees = o.durees ? '<div class="feat">'+escapeHtml(o.durees)+'</div>' : '';
+    return '<div class="offer">'+
+      '<div class="logo">'+logoBox(o)+'</div>'+
+      '<div class="mid"><div class="nm">'+escapeHtml(o.organisme)+demoTag(o)+'</div><div class="ty">'+escapeHtml(o.categorie||'')+'</div>'+
+      '<div class="feat">'+escapeHtml(o.description||'')+'</div>'+durees+'<div class="cond">'+cond+'</div></div>'+
       '<div class="go"><a class="btn" href="'+(o.url||'#')+'" target="_blank" rel="nofollow noopener sponsored">Simuler →</a><span class="aff">Lien affilié</span></div></div>';
   }
   function parrainCard(o){
     return '<div class="offer parrain">'+
-      '<div class="logo">'+initials(o.nom)+'</div>'+
-      '<div class="mid"><div class="nm">'+escapeHtml(o.nom)+'</div><div class="ty">'+escapeHtml(o.prime||'')+'</div>'+
-      '<div class="feat">'+escapeHtml(o.cond||'')+'</div><div class="cond">'+escapeHtml(o.depot||'')+'</div></div>'+
+      '<div class="logo">'+logoBox(o)+'</div>'+
+      '<div class="mid"><div class="nm">'+escapeHtml(o.organisme)+demoTag(o)+'</div><div class="ty">'+escapeHtml(o.prime||'')+'</div>'+
+      '<div class="feat">'+escapeHtml(o.conditions||'')+'</div><div class="cond">'+escapeHtml(o.depot||'')+'</div></div>'+
       '<div class="go"><a class="btn" href="'+(o.url||'#')+'" target="_blank" rel="nofollow noopener sponsored">En profiter →</a><span class="aff">Lien affilié</span></div></div>';
   }
   function initials(s){ return (s||'?').split(/\s+/).map(function(w){return w[0];}).join('').slice(0,2).toUpperCase(); }
