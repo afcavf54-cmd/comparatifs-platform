@@ -22,6 +22,7 @@ related_posts:
 - 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
 - 1021-mypos-avis-ce-qui-change-reellement-par-rapport-aux-autres-terminaux
 - 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
+- 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
 ---
 <p>J'ai testé pas mal de néobanques professionnelles ces dernières années. Qonto, Shine, Revolut Business, et quelques autres que j'ai abandonnés après deux semaines. Finom, je l'ai découvert un peu par hasard, via un client auto-entrepreneur qui me demandait si ça valait le coup d'y migrer depuis sa banque traditionnelle. J'ai creusé, j'ai testé, j'ai posé des questions à des utilisateurs réels. Voilà ce que j'en pense vraiment, sans la brochure commerciale.</p>
 
