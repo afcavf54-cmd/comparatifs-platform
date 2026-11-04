@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive Finom
 cta_button: En profiter
 related_posts:
+- 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
 - 1021-mypos-avis-ce-qui-change-reellement-par-rapport-aux-autres-terminaux
 - 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
 ---
