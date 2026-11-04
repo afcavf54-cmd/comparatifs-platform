@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Klaviyo
 cta_button: En profiter
 related_posts:
-- 1448-comparatif-emailing-quelle-plateforme-choisir-pour-vos-campagnes
-- 2709-affichage-dynamique-avec-raspberry-pi-comment-le-mettre-en-place
-- 7056-communication-video-quels-formats-utiliser-sur-les-reseaux-sociaux
-- 4618-ecran-d-affichage-dynamique-comment-le-choisir-et-l-installer
+- 4399-comment-realiser-une-video-d-entreprise-avec-un-smartphone
+- 4081-digital-signage-definition-fonctionnement-et-usages
+- 6984-seo-a-lyon-notre-comparatif-des-agences-a-qui-confier-votre-site
+- 2311-affichage-dynamique-pour-hotel-usages-et-solutions
 ---
 <p>J'ai testé pas mal d'outils d'email marketing ces deux dernières années. Mailchimp, Brevo, ActiveCampaign, et oui, Klaviyo. Chacun avec ses promesses, ses limites, et parfois ses mauvaises surprises. Klaviyo, j'ai mis du temps à m'y mettre. Le nom revenait souvent dans des discussions entre dirigeants de TPE, surtout dans le commerce en ligne. Alors j'ai fini par y aller.</p>
 
