@@ -4,7 +4,8 @@ slug: 4432-sogexia-business-avis-ce-que-coutent-reellement-ses-services-bancaire
 date: '2026-11-04T08:00:00+01:00'
 categorie: Banque & Paiement
 meta_title: 'Sogexia Business : mon analyse des frais et du rapport qualité-prix'
-meta_description: Sogexia Business vaut-il vraiment le coup pour votre PME ? Analyse complète des frais réels, limites et frais cachés d'un expert-comptable lyonnais.
+meta_description: Sogexia Business vaut-il vraiment le coup pour votre PME ? Analyse
+  complète des frais réels, limites et frais cachés d'un expert-comptable lyonnais.
 min_words: 2500
 status: published
 featured_image: /blog/4432-sogexia-business-avis-ce-que-coutent-reellement-ses-services-bancaires.jpg
@@ -15,8 +16,11 @@ cta_link: https://www.financeads.net/tc.php?t=74753C247346195T&subid=sauvonslapr
 cta_enabled: true
 cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
+related_posts:
+- 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
+- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
+- 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 ---
-
 <p>Quand on gère la comptabilité d'une PME à Lyon depuis plus de vingt ans, on finit par avoir un avis très tranché sur les néobanques professionnelles. J'en ai testé plusieurs ces dernières années, certaines pour mes clients, d'autres pour ma propre structure. Sogexia Business fait partie de celles qui reviennent régulièrement dans les discussions, souvent avec des avis très divergents.</p>
 
 <p>Alors j'ai pris le temps de regarder vraiment ce que ça coûte, pas juste le tarif affiché en gros sur la page d'accueil, mais le détail des frais, les limites, ce qu'on paie sans toujours s'en rendre compte au départ. Voici ce que j'ai trouvé.</p>
