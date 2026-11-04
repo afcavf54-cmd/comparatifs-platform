@@ -92,12 +92,24 @@ export async function POST(req: NextRequest, { params }: { params: { siteId: str
   const email = String(body.email || '').trim().toLowerCase()
   const project = String(body.project || '').trim()
   const amount = Math.round(Number(body.amount) || 0)
+  const situation = String(body.situation || '').trim().slice(0, 40) || null
+  const duration = String(body.duration || '').trim().slice(0, 40) || null
+  const optin = body.optin === true || body.optin === 'true'
   if (!email || email.length > 200 || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ error: 'Email invalide' }, { status: 400, headers: CORS })
   }
   if (!amount || amount < 1) return NextResponse.json({ error: 'Montant invalide' }, { status: 400, headers: CORS })
   if (!mcfConfigured) return NextResponse.json({ error: 'Supabase non configuré' }, { status: 503, headers: CORS })
   if (!RESEND_KEY) return NextResponse.json({ error: 'Envoi email indisponible' }, { status: 503, headers: CORS })
+
+  // Enregistre / met à jour le lead (type de crédit, montant, situation pro) dans
+  // la Supabase dédiée. Best-effort : un échec ici ne doit pas bloquer le récap.
+  try {
+    await mcf.rpc('upsert_lead', {
+      p_email: email, p_project: project || null, p_amount: amount,
+      p_situation: situation, p_duration: duration, p_optin: optin,
+    })
+  } catch { /* non bloquant */ }
 
   // Reconstruit la sélection côté serveur (même source que la page).
   const { data: offres } = await mcf.from('offres').select('*')

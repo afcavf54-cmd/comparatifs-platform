@@ -382,7 +382,8 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
   }
   function sendRecap(email){
     return fetch(RECAP_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({email:email, project:state.project, amount:state.amount})})
+      body:JSON.stringify({email:email, project:state.project, amount:state.amount,
+        situation:state.situation, duration:state.duration, optin: !!($("optin") && $("optin").checked)})})
       .then(function(r){ return r.ok; }).catch(function(){ return false; });
   }
 

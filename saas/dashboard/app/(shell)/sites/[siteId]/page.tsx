@@ -167,7 +167,7 @@ export default function SiteDetailPage() {
               { icon: '📝', label: 'Gérer le blog', href: `/sites/${siteId}/blog` },
               ...(siteId === 'captain-parrainage' ? [{ icon: '🎁', label: 'Offres de parrainage', href: `/sites/${siteId}/parrainages` }, { icon: '👤', label: 'Membres inscrits', href: `/sites/${siteId}/parrainages-membres` }, { icon: '✉️', label: 'Newsletter parrainage', href: `/sites/${siteId}/parrainages-newsletter` }] : []),
               ...(siteId === 'monelor-com' ? [{ icon: '💰', label: 'Simulation de dividendes', href: `/sites/${siteId}/dividendes` }, { icon: '✉️', label: 'Newsletter', href: `/sites/${siteId}/newsletter` }, { icon: '💶', label: "Chiffre d'affaires", href: `/sites/${siteId}/revenues` }] : []),
-              ...(siteId === 'mon-credit-facile-fr' ? [{ icon: '💳', label: 'Offres du simulateur', href: `/sites/${siteId}/offres` }] : []),
+              ...(siteId === 'mon-credit-facile-fr' ? [{ icon: '💳', label: 'Offres du simulateur', href: `/sites/${siteId}/offres` }, { icon: '✉️', label: 'Abonnés & newsletter', href: `/sites/${siteId}/abonnes` }] : []),
               { icon: '⚙️', label: 'Paramètres du site', href: `/sites/${siteId}/settings` },
             ].map(action => (
               <Link key={action.href} href={action.href} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', textDecoration: 'none', fontSize: 13, transition: 'all 0.15s' }}
