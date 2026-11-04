@@ -199,6 +199,7 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
   "use strict";
   // ====== CONFIG ======
   var SUBSCRIBE_ENDPOINT = "https://comparatifs-platform.vercel.app/api/newsletter/subscribe";
+  var RECAP_ENDPOINT = "https://comparatifs-platform.vercel.app/api/sites/mon-credit-facile-fr/recap";
   var NEWSLETTER_TAG = "Simulateur crédit";
   // Supabase dédiée — clé PUBLIQUE (sans danger côté client, RLS en lecture seule).
   var SUPABASE_URL = "https://wwvkjvvrwtrthlrqrquw.supabase.co";
@@ -335,11 +336,11 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
     // On n'inscrit à la liste marketing QUE si l'opt-in est coché (consentement).
     var tags = [NEWSLETTER_TAG];
     if($("optin").checked){ tags.push("Marketing"); }
-    subscribeAll(email, tags).then(function(){
-      offersPromise.then(function(){ renderResults(email, false); });
-    }).catch(function(){
-      // Une erreur de capture ne bloque pas l'affichage des résultats.
-      offersPromise.then(function(){ renderResults(email, true); });
+    // Capture newsletter (best-effort, non bloquant) + envoi du récap + chargement
+    // des offres. Le message « email envoyé » reflète le RÉCAP transactionnel.
+    subscribeAll(email, tags).catch(function(){});
+    Promise.all([ sendRecap(email), offersPromise ]).then(function(r){
+      renderResults(email, r[0] === false); // r[0] = récap envoyé ?
     });
   });
   function subscribeAll(email, tags){
@@ -347,6 +348,11 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
       return fetch(SUBSCRIBE_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({email:email, tag:tag})})
         .then(function(r){ if(!r.ok) throw new Error("subscribe"); return r.json(); });
     }));
+  }
+  function sendRecap(email){
+    return fetch(RECAP_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email:email, project:state.project, amount:state.amount})})
+      .then(function(r){ return r.ok; }).catch(function(){ return false; });
   }
 
   // ====== RÉSULTATS ======
@@ -379,8 +385,8 @@ select:focus,input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 
     }
 
     html += '<div class="disclaimer">';
-    if(captureFailed){ html += '⚠️ Votre sélection s\'affiche bien, mais l\'envoi par email n\'a pas pu aboutir. '; }
-    else { html += '✅ Un récapitulatif a été associé à <strong>'+escapeHtml(email)+'</strong>. '; }
+    if(captureFailed){ html += '⚠️ Votre sélection s\'affiche bien, mais l\'envoi du récapitulatif par email n\'a pas pu aboutir. '; }
+    else { html += '✅ Votre récapitulatif a été envoyé à <strong>'+escapeHtml(email)+'</strong>. '; }
     html += 'Sans justificatif d\'utilisation ne signifie pas sans justificatifs d\'identité ou de revenus. Un crédit vous engage et doit être remboursé.</div>';
 
     $("screen-results").innerHTML = html;
