@@ -19,8 +19,9 @@ cta_text: Offre exclusive SumUp
 cta_button: En profiter
 related_posts:
 - 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
+- 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
 - 6991-vivid-business-mon-avis-et-les-details-que-j-aurais-aime-connaitre-avant
-- 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
+- 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
 ---
 <p>J'utilise SumUp depuis presque trois ans dans mon entreprise. Au départ, c'était pour simplifier les paiements sur nos points de vente occasionnels, lors de salons professionnels à Lyon. Simple, compact, pas besoin de formation longue. Sur le papier, ça correspondait exactement à ce que je cherchais.</p>
 

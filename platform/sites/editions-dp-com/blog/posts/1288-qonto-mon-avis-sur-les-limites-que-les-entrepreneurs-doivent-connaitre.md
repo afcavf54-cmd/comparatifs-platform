@@ -20,8 +20,9 @@ cta_text: Offre exclusive Qonto
 cta_button: En profiter
 related_posts:
 - 6991-vivid-business-mon-avis-et-les-details-que-j-aurais-aime-connaitre-avant
-- 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
+- 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
 - 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
+- 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
 ---
 <p>J'utilise Qonto depuis maintenant un bon moment dans mon entreprise lyonnaise. Et je vais vous dire quelque chose : c'est une bonne banque pro. Mais "bonne" ne veut pas dire "parfaite". Avant d'ouvrir un compte, il y a des points que j'aurais aimé connaître. Des limites concrètes, pas les belles phrases du site marketing.</p>
 
