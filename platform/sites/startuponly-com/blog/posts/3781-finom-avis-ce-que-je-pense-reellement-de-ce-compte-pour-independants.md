@@ -19,7 +19,10 @@ cta_text: Offre exclusive Finom
 cta_button: En profiter
 related_posts:
 - 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
+- 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
 - 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
+- 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
+- 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
 ---
 <p>J'utilise Finom depuis quelques mois maintenant. Pas par hasard, j'en avais marre de payer des frais bancaires absurdes pour un compte pro qui faisait à peine ce que je lui demandais. Alors j'ai testé. Et voilà ce que j'en pense vraiment, sans langue de bois.</p>
 
