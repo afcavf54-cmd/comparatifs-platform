@@ -72,17 +72,6 @@
 <body>
 <div class="wrap">
 
-  {% if lt.hero and lt.hero.url %}
-  <a class="hero-cta" href="{{ lt.hero.url }}" target="_blank" rel="nofollow">
-    <span class="hero-icon">{{ lt.hero.icon | default('€') }}</span>
-    <span class="hero-txt">
-      <b>{{ lt.hero.title | default('Simulez votre crédit') }}</b>
-      {% if lt.hero.subtitle %}<small>{{ lt.hero.subtitle }}</small>{% endif %}
-    </span>
-    <span class="hero-btn">{{ lt.hero.btn | default('SIMULEZ') }} ›</span>
-  </a>
-  {% endif %}
-
   <div class="head">
     {% if site.logo_avatar is defined and site.logo_avatar %}<img class="avatar" src="{{ site.logo_avatar }}" alt="{{ site.name }}">
     {% elif site.favicon_file is defined and site.favicon_file %}<img class="avatar" src="{{ site.favicon_file }}" alt="{{ site.name }}">
@@ -100,6 +89,17 @@
       {% if site.social_linkedin %}<a href="{{ site.social_linkedin }}" target="_blank" rel="noopener nofollow" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34v-7.2H6v7.2h2.34zM7.17 10.1a1.36 1.36 0 1 0 0-2.72 1.36 1.36 0 0 0 0 2.72zM18 18.34v-3.95c0-2.1-1.12-3.08-2.62-3.08-1.21 0-1.75.67-2.05 1.13v-.97h-2.34c.03.66 0 7.2 0 7.2h2.34v-4.02c0-.21.01-.42.08-.57.18-.42.56-.85 1.22-.85.86 0 1.2.65 1.2 1.61v3.83H18z"/></svg></a>{% endif %}
     </div>
   </div>
+
+  {% if lt.hero and lt.hero.url %}
+  <a class="hero-cta" href="{{ lt.hero.url }}" target="_blank" rel="nofollow">
+    <span class="hero-icon">{{ lt.hero.icon | default('€') }}</span>
+    <span class="hero-txt">
+      <b>{{ lt.hero.title | default('Simulez votre crédit') }}</b>
+      {% if lt.hero.subtitle %}<small>{{ lt.hero.subtitle }}</small>{% endif %}
+    </span>
+    <span class="hero-btn">{{ lt.hero.btn | default('SIMULEZ') }} ›</span>
+  </a>
+  {% endif %}
 
   {% for cat in lt.categories | default([]) %}
   {% if cat.name %}<div class="cat-label">{{ cat.name }}</div>{% endif %}
