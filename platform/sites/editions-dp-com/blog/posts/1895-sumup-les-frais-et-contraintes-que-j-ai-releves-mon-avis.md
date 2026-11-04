@@ -18,8 +18,8 @@ cta_enabled: true
 cta_text: Offre exclusive SumUp
 cta_button: En profiter
 related_posts:
-- 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
 - 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
+- 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
 - 6991-vivid-business-mon-avis-et-les-details-que-j-aurais-aime-connaitre-avant
 - 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
 ---
