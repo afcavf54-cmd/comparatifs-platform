@@ -1,5 +1,5 @@
 'use client'
-import { Fragment, useEffect, useMemo, useState } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
@@ -24,6 +24,10 @@ const PROJECT_LABEL: Record<string, string> = {
 const SITUATION_LABEL: Record<string, string> = {
   cdi: 'CDI / Titulaire', cdd: 'CDD / Intérim', indep: 'Indépendant', retraite: 'Retraité', autre: 'Autre',
 }
+// Tag de l'audience du simulateur (cf. NEWSLETTER_TAG côté simulation-credit.html).
+// La liste d'abonnés est CENTRALE et partagée entre tous les sites : on cible ce
+// tag par défaut pour ne pas écrire à toute la base par accident.
+const SIM_TAG = 'Simulateur crédit'
 
 const wrap = { maxWidth: 1100, margin: '0 auto', padding: '20px 24px', color: '#fff' }
 const card = { background: '#0F1724', border: '1px solid #1E2D3D', borderRadius: 12, padding: 18 } as const
@@ -58,6 +62,7 @@ export default function AbonnesAdmin() {
   const [dTags, setDTags] = useState<string[]>([])
   const [newTag, setNewTag] = useState('')
   const [rowBusy, setRowBusy] = useState(false)
+  const tagsTouched = useRef(false)
 
   async function load() {
     setLoading(true); setErr('')
@@ -71,7 +76,13 @@ export default function AbonnesAdmin() {
       if (!rl.ok) setErr(dl.error || 'Erreur de chargement des leads')
       setLeads(dl.leads || [])
       setSubs(ds.subscribers || [])
-      setTags(dt.tags || [])
+      const tg: Tag[] = dt.tags || []
+      setTags(tg)
+      // Cible par défaut = audience du simulateur (liste centrale partagée).
+      if (!tagsTouched.current) {
+        const sim = tg.find(t => t.name.toLowerCase() === SIM_TAG.toLowerCase())
+        setSelTags(sim ? [sim.id] : [])
+      }
     } catch (e: any) { setErr(e.message || 'Erreur réseau') }
     setLoading(false)
   }
@@ -99,7 +110,7 @@ export default function AbonnesAdmin() {
     return subs.filter(s => s.status === 'active' && s.tags.some(t => set.has(t.id))).length
   }, [selTags, subs])
 
-  function toggleTag(id: string) { setSelTags(p => p.includes(id) ? p.filter(x => x !== id) : [...p, id]) }
+  function toggleTag(id: string) { tagsTouched.current = true; setSelTags(p => p.includes(id) ? p.filter(x => x !== id) : [...p, id]) }
 
   function exportCsv() {
     const head = ['email', 'statut', 'tags', 'type_credit', 'montant', 'situation', 'duree', 'optin', 'nb_simulations', 'date']
@@ -199,7 +210,12 @@ export default function AbonnesAdmin() {
           <span style={{ fontSize: 12, color: '#8B9CB0' }}>≈ {recipientEstimate} destinataire(s) actif(s)</span>
         </div>
         <div style={{ marginBottom: 12 }}>
-          <label style={label}>Cibler des tags (aucun = tous les abonnés actifs)</label>
+          <label style={label}>Cibler des tags (liste centrale partagée entre les sites)</label>
+          {selTags.length === 0 && (
+            <div style={{ background: '#2A1F10', border: '1px solid #5A3E18', color: '#F5C98A', borderRadius: 8, padding: '8px 12px', fontSize: 12, marginBottom: 8 }}>
+              ⚠️ Aucun tag sélectionné : l'envoi partira à <strong>tous les abonnés actifs, tous sites confondus</strong> ({recipientEstimate}). Pour ne viser que le simulateur, garde « {SIM_TAG} ».
+            </div>
+          )}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {tags.length === 0 && <span style={{ fontSize: 12, color: '#8B9CB0' }}>Aucun tag pour le moment.</span>}
             {tags.map(t => {
