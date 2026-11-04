@@ -20,9 +20,9 @@ cta_text: Offre exclusive Equals
 cta_button: En profiter
 related_posts:
 - 6808-vivid-business-avis-mon-experience-avec-ce-compte-pro-et-ce-que-j-en-pense-vraiment
-- 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
 - 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
 - 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
+- 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
 ---
 <p>J'utilise des outils financiers depuis près de dix ans. J'en ai testé beaucoup. Certains m'ont fait gagner un temps fou, d'autres m'ont coûté des heures de paramétrage pour un résultat médiocre. Equals fait partie des outils dont j'entends parler depuis quelques années dans les cercles de responsables comptables et de directeurs financiers, notamment pour la gestion des dépenses et les paiements en multi-devises. Alors j'ai décidé de creuser sérieusement le sujet pour vous donner un avis qui va au-delà des fiches produit.</p>
 
