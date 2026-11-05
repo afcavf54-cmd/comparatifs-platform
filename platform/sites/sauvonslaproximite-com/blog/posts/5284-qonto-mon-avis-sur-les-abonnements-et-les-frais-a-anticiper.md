@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Qonto
 cta_button: En profiter
 related_posts:
-- 4432-sogexia-business-avis-ce-que-coutent-reellement-ses-services-bancaires
-- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
-- 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 - 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
+- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
+- 4432-sogexia-business-avis-ce-que-coutent-reellement-ses-services-bancaires
+- 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 ---
 <p>Je vais être honnête : quand j'ai commencé à regarder Qonto sérieusement pour notre service comptabilité, j'avais des a priori. Une néobanque pour les professionnels, ça sonnait un peu comme un gadget pour startups parisiennes. Après vingt ans à gérer des comptes avec des établissements traditionnels, j'avais mes habitudes. Mes petites routines. Et une méfiance naturelle pour tout ce qui brille trop.</p>
 

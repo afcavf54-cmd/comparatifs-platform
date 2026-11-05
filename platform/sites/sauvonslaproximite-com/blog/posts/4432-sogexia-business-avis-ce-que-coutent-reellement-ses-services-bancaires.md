@@ -17,9 +17,9 @@ cta_enabled: true
 cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
 related_posts:
+- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
 - 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
 - 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
-- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
 - 5284-qonto-mon-avis-sur-les-abonnements-et-les-frais-a-anticiper
 ---
 <p>Quand on gère la comptabilité d'une PME à Lyon depuis plus de vingt ans, on finit par avoir un avis très tranché sur les néobanques professionnelles. J'en ai testé plusieurs ces dernières années, certaines pour mes clients, d'autres pour ma propre structure. Sogexia Business fait partie de celles qui reviennent régulièrement dans les discussions, souvent avec des avis très divergents.</p>
