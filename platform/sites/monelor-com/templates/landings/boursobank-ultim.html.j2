@@ -1,7 +1,7 @@
 {# ──────────────────────────────────────────────────────────────────────────
    Landing BoursoBank / Visa Ultim 180€ — clone fidèle (ads).
    Variables : lp.seo_title, lp.meta_description, lp.canonical, site.*, build_date
-   CTA : href="#" → à remplacer par le lien d'affiliation (dis-le-moi).
+   CTA : lien Awin de base (fonctionne sans JS) ; le script en bas ajoute le clickref d'attribution.
    noindex + hors sitemap + hors navigation (géré par le générateur).
 ────────────────────────────────────────────────────────────────────────── #}
 <!DOCTYPE html>
@@ -120,7 +120,7 @@
       <div class="cardwrap"><img class="cardimg float" src="/landings/boursobank-ultim/carte-ultim.webp" alt="Carte BoursoBank Visa Ultim" width="220"></div>
       <h1>180€ offerts avec la carte Ultim.</h1>
     <p>BoursoBank, élue <b>banque la moins chère depuis 18 ans</b>, lance une <b>offre de bienvenue exclusive</b> sur la <b>carte Visa Ultim</b> : jusqu'à 180€ offerts*, compte sans frais et carte gratuite sans condition de revenus.</p>
-    <a class="cta" href="#" rel="nofollow sponsored">Je récupère mes 180€</a>
+    <a class="cta" href="https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198" rel="nofollow sponsored">Je récupère mes 180€</a>
     <p class="cta-note">100% en ligne · Sans engagement</p>
     </section>
   </div>
@@ -141,7 +141,7 @@
         <li>Paiements &amp; retraits gratuits en euros, partout</li>
         <li>Assurances et assistance voyage incluses</li>
       </ul>
-      <a class="cta" href="#" rel="nofollow sponsored">J'ouvre mon compte Ultim</a>
+      <a class="cta" href="https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198" rel="nofollow sponsored">J'ouvre mon compte Ultim</a>
     </div>
 
     <!-- Guide -->
@@ -155,7 +155,7 @@
         <div class="step"><div class="e">💰</div><div class="t"><b>Encaisse</b> tes 180€</div></div>
       </div>
       <p>Clique sur le lien, télécharge l'appli BoursoBank, prends ta pièce d'identité en photo, signe ton contrat en ligne et effectue ton premier versement. Ta carte Ultim arrive ensuite directement chez toi.<br><span class="strong">C'est aussi simple que ça.</span></p>
-      <a class="cta" href="#" rel="nofollow sponsored">Ouvrir mon compte maintenant</a>
+      <a class="cta" href="https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198" rel="nofollow sponsored">Ouvrir mon compte maintenant</a>
     </div>
 
     <!-- Bénéfices -->
@@ -192,7 +192,7 @@
       <div><div class="n">0€</div><div class="l">Frais de tenue</div></div>
       <div><div class="n">18 ans</div><div class="l">N°1 sur les prix</div></div>
     </div>
-    <a class="cta" href="#" rel="nofollow sponsored" style="margin-top:22px">J'ouvre mon compte Ultim</a>
+    <a class="cta" href="https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198" rel="nofollow sponsored" style="margin-top:22px">J'ouvre mon compte Ultim</a>
     <p class="cta-note">Offre soumise à conditions*</p>
   </div>
 
@@ -202,5 +202,30 @@
   </div>
 
 </div>
+
+<script>
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const source = params.get("utm_source");
+  const creative = params.get("utm_content") || "";
+
+  // Accepte uniquement des références publicitaires simples.
+  const validCreative = /^[a-zA-Z0-9_-]{1,80}$/.test(creative);
+
+  const clickref =
+    source === "meta" && validCreative
+      ? `meta_bourso_${creative}`
+      : "lp_bourso_non_attribue";
+
+  document.querySelectorAll("a.cta").forEach((button) => {
+    const link = new URL(
+      "https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198"
+    );
+
+    link.searchParams.set("clickref", clickref);
+    button.href = link.toString();
+  });
+})();
+</script>
 </body>
 </html>
