@@ -4,7 +4,9 @@ slug: 1456-enerfip-les-risques-que-je-surveillerais-avant-d-investir-avis
 date: '2026-11-05T08:00:00+01:00'
 categorie: Finance & Comptabilité
 meta_title: 'Enerfip : les risques de perte et les précautions avant d''investir'
-meta_description: Enerfip séduit avec des rendements de 5 à 9 % par an dans les énergies renouvelables, mais quels risques surveiller avant d'investir ? Avis concret et sans filtre…
+meta_description: Enerfip séduit avec des rendements de 5 à 9 % par an dans les énergies
+  renouvelables, mais quels risques surveiller avant d'investir ? Avis concret et
+  sans filtre…
 min_words: 3000
 status: published
 featured_image: /blog/1456-enerfip-les-risques-que-je-surveillerais-avant-d-investir-avis.jpg
@@ -15,8 +17,12 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4988118244T&subid=editions-d
 cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
+related_posts:
+- 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
+- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
+- 1015-bordereau-de-situation-fiscale-modele-p-237-a-quoi-sert-il-et-comment-l-obtenir
+- 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
 ---
-
 <p>J'ai découvert Enerfip il y a environ deux ans, via un collègue qui investissait déjà dans les énergies renouvelables en crowdfunding. L'idée m'avait séduit : financer des projets solaires ou éoliens, récupérer des intérêts entre 4 et 9 % par an, et se sentir un peu utile au passage. Bon. La réalité est un peu plus nuancée que ça.</p>
 
 <p>Je ne suis pas un financier de formation. Je gère une entreprise de 150 personnes à Lyon, je m'occupe de paie, de trésorerie, de fournisseurs. L'investissement personnel, j'y viens avec ma logique de chef d'entreprise : surveiller le risque avant de regarder le rendement. Et sur Enerfip, j'ai eu quelques surprises.</p>
