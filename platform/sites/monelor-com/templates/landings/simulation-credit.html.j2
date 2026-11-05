@@ -70,6 +70,16 @@
     .disclaimer{color:var(--ink2);font-size:12px;margin:16px 0 0;line-height:1.5}
     .legal-foot{font-size:11.5px;color:var(--ink2);text-align:center;margin-top:28px;line-height:1.6}
     .hidden{display:none!important}
+    /* Popup regroupement de crédit */
+    .modal{position:fixed;inset:0;background:rgba(20,30,25,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+    .modal.show{display:flex}
+    .modal-card{background:#fff;border-radius:var(--r);max-width:440px;width:100%;padding:26px 22px 24px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+    .modal-x{position:absolute;top:8px;right:12px;background:none;border:0;font-size:28px;line-height:1;color:var(--ink2);cursor:pointer}
+    .modal-card h2{color:var(--forest);font-size:19px;margin:2px 0 8px;padding-right:20px}
+    .modal-card p{color:var(--ink2);font-size:14.5px;margin:0 0 14px}
+    .args{list-style:none;padding:0;margin:0 0 18px}
+    .args li{display:flex;gap:9px;font-size:14px;margin:9px 0;align-items:flex-start}
+    .args li::before{content:"✓";color:var(--forest2);font-weight:800;flex:none}
   </style>
 </head>
 <body>
@@ -129,6 +139,23 @@
   </section>
 </div>
 
+<!-- Popup regroupement de crédit -->
+<div class="modal" id="consoModal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-x" id="consoClose" type="button" aria-label="Fermer">&times;</button>
+    <h2>Vous avez déjà des crédits en cours ?</h2>
+    <p>Souhaitez-vous les regrouper en une seule mensualité ?</p>
+    <ul class="args">
+      <li>Une seule mensualité à rembourser</li>
+      <li>Jusqu'à <strong>-60%</strong> sur votre remboursement mensuel</li>
+      <li>Possibilité de financer un nouveau projet</li>
+      <li>Taux d'intérêts réduits</li>
+    </ul>
+    <a class="btn" id="consoYes" href="/lp-rachat-de-credit.html">Oui, étudier mon rachat de crédit →</a>
+    <button class="back" id="consoNo" type="button" style="display:block;margin:14px auto 0">Non merci, continuer ma simulation</button>
+  </div>
+</div>
+
 <script>
 (function(){
   var $=function(id){return document.getElementById(id);};
@@ -136,13 +163,10 @@
   var FORTUNEO_URL="#"; // lien d'affiliation Fortuneo à fournir
   var RACHAT_URL="/lp-rachat-de-credit.html";
 
-  var state={project:"tresorerie",amount:5000,hasCredits:null,situation:null};
+  var state={project:"tresorerie",amount:5000,situation:null};
 
   // Définition des étapes (questions). value stockée dans state[key].
   var STEPS=[
-    {key:"hasCredits",title:"Avez-vous un ou plusieurs crédits en cours ?",
-     lead:"Crédit conso, auto, renouvelable…",
-     opts:[{v:"oui",l:"Oui, j'ai des crédits en cours",e:"💳"},{v:"non",l:"Non, aucun crédit en cours",e:"🙅"}]},
     {key:"situation",title:"Quelle est votre situation professionnelle ?",lead:"",
      opts:[{v:"cdi",l:"CDI / Titulaire",e:"💼"},{v:"cdd",l:"CDD / Intérim",e:"📝"},
            {v:"indep",l:"Indépendant",e:"🧑‍💻"},{v:"retraite",l:"Retraité(e)",e:"🌴"},{v:"autre",l:"Autre",e:"•"}]},
@@ -161,8 +185,15 @@
     var amt=parseInt($("amount").value,10);
     if(!amt||amt<500||isNaN(amt)){$("amountErr").classList.add("show");$("amount").focus();return;}
     state.amount=amt;state.project=$("project").value;
-    stepIdx=0;renderStep();show("screen-steps");
+    openConso();
   });
+
+  // Popup regroupement : "Oui" → page rachat ; fermeture → suite du tunnel.
+  function openConso(){ $("consoModal").classList.add("show"); }
+  function closeConso(){ $("consoModal").classList.remove("show"); stepIdx=0; renderStep(); show("screen-steps"); }
+  $("consoClose").addEventListener("click",closeConso);
+  $("consoNo").addEventListener("click",closeConso);
+  // ("consoYes" est un lien <a> vers /lp-rachat-de-credit.html)
 
   function renderStep(){
     var s=STEPS[stepIdx];
@@ -215,12 +246,10 @@
   function renderResult(){
     $("resTitle").textContent="Résultat de votre simulation";
     $("resEligi").innerHTML="Après étude de votre profil, <strong>nous n'avons pas d'offre de crédit adaptée à votre demande pour le moment</strong>. Voici les meilleures alternatives selon votre situation 👇";
-    var hasCredits=(state.hasCredits==="oui");
-    var html="";
     var primes='<div class="sec-label">Récupérez de l\'argent sans crédit</div>'+primesIntro+boursoCard()+fortuneoCard();
     var rachat='<div class="sec-label">Alléger vos mensualités</div>'+rachatBlock();
-    // S'il a des crédits en cours → rachat en tête ; sinon primes en tête.
-    html += hasCredits ? (rachat+primes) : (primes+rachat);
+    // Primes de bienvenue en premier, puis la box rachat de crédit.
+    var html = primes + rachat;
     html += '<p class="disclaimer">*Une baisse de mensualité peut allonger la durée et augmenter le coût total du crédit. Offres soumises aux conditions des partenaires. monelor.com est un site indépendant ; cette page contient des liens d\'affiliation.</p>';
     $("resBody").innerHTML=html;
     show("screen-result");
