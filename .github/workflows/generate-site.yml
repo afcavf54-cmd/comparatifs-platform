@@ -16,6 +16,12 @@ on:
         required: false
         type: string
         default: ''
+# Sérialise les runs d'un même site : un nouveau run attend la fin du précédent
+# au lieu de pousser en parallèle (ce qui créait des conflits de rebase sur les
+# JSON générés — posts-index.json / dates.json — et faisait échouer le déploiement).
+concurrency:
+  group: generate-site-${{ inputs.site }}
+  cancel-in-progress: false
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -95,7 +101,10 @@ jobs:
           for i in 1 2 3 4 5; do
             echo "→ Push tentative $i/5..."
             git fetch origin main
-            if ! git rebase --autostash origin/main; then
+            # -X theirs : en cas de conflit sur un fichier généré (dates.json,
+            # posts-index.json…), on garde la version de CE build (fraîchement
+            # régénérée) plutôt que d'échouer.
+            if ! git rebase --autostash -X theirs origin/main; then
               echo "  ⚠ Rebase a échoué (conflits ?), abort et retry"
               git rebase --abort 2>/dev/null || true
               sleep $((i * 2))
@@ -180,7 +189,7 @@ jobs:
           PUSH_OK=0
           for i in 1 2 3 4 5; do
             git fetch origin main
-            if ! git rebase --autostash origin/main; then
+            if ! git rebase --autostash -X theirs origin/main; then
               git rebase --abort 2>/dev/null || true
               sleep $((i * 2))
               continue
