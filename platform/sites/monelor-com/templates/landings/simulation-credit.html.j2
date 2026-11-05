@@ -81,8 +81,9 @@
     .modal-card h2{color:var(--forest);font-size:19px;margin:2px 0 8px;padding-right:20px}
     .modal-card p{color:var(--ink2);font-size:14.5px;margin:0 0 14px}
     .args{list-style:none;padding:0;margin:0 0 18px}
-    .args li{display:flex;gap:9px;font-size:14px;margin:9px 0;align-items:flex-start}
-    .args li::before{content:"✓";color:var(--forest2);font-weight:800;flex:none}
+    .args li{position:relative;padding-left:24px;font-size:14px;margin:9px 0;line-height:1.45}
+    .args li::before{content:"✓";color:var(--forest2);font-weight:800;position:absolute;left:0;top:0}
+    .args li strong{white-space:nowrap}
   </style>
 </head>
 <body>
