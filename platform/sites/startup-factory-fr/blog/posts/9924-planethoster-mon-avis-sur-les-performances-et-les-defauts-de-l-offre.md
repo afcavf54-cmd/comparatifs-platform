@@ -18,7 +18,8 @@ cta_link: https://www.awin1.com/cread.php?s=4108184&v=15380&q=355939&r=420025
 cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 6275-o2switch-avis-un-hebergeur-francais-convaincant-malgre-quelques-limites
 ---
 <p>J'utilise PlanetHoster depuis un moment maintenant. Pas par hasard, parce qu'un pote m'a filé une promo ou parce que j'ai vu une pub. J'avais un vrai problème à résoudre : trouver un hébergeur fiable, qui ne me fasse pas perdre du temps à chaque mise à jour, et qui reste dans un budget raisonnable pour une startup de 20 à 50 personnes. Spoiler : j'ai eu des surprises, bonnes et moins bonnes.</p>
 
