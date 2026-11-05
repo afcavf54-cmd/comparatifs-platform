@@ -144,8 +144,8 @@
 <div class="modal" id="consoModal" aria-hidden="true">
   <div class="modal-card">
     <button class="modal-x" id="consoClose" type="button" aria-label="Fermer">&times;</button>
-    <h2>Vous avez déjà des crédits en cours ?</h2>
-    <p>Souhaitez-vous les regrouper en une seule mensualité ?</p>
+    <h2>Souhaitez-vous les regrouper en une seule mensualité ?</h2>
+    <p id="consoSub"></p>
     <ul class="args">
       <li>Une seule mensualité à rembourser</li>
       <li>Jusqu'à <strong>-60%</strong> sur votre remboursement mensuel</li>
@@ -190,7 +190,10 @@
   });
 
   // Popup regroupement : "Oui" → page rachat ; fermeture → suite du tunnel.
-  function openConso(){ $("consoModal").classList.add("show"); }
+  function openConso(){
+    $("consoSub").innerHTML='Emprunter <strong>'+fmt(state.amount)+' €</strong> et regrouper vos crédits en cours.';
+    $("consoModal").classList.add("show");
+  }
   function closeConso(){ $("consoModal").classList.remove("show"); stepIdx=0; renderStep(); show("screen-steps"); }
   $("consoClose").addEventListener("click",closeConso);
   $("consoNo").addEventListener("click",closeConso);
