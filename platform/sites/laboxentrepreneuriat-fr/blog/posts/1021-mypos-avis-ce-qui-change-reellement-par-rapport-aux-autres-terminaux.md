@@ -19,9 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive myPOS
 cta_button: En profiter
 related_posts:
-- 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
-- 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
+- 2383-airwallex-mon-avis-sur-cette-alternative-aux-banques-internationales
 - 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
+- 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
+- 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
 ---
 <p>Je vais être honnête avec vous : quand j'ai commencé à tester myPOS il y a quelques années, je n'avais pas d'attentes particulières. Il y a tellement de solutions de paiement sur le marché que j'avais un peu arrêté de croire aux promesses marketing. Et puis j'ai commencé à regarder les détails. Les vrais détails. Pas ceux du site commercial, mais ceux que vous découvrez après deux semaines d'utilisation quotidienne.</p>
 

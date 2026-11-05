@@ -19,8 +19,9 @@ cta_text: Offre exclusive Bunq pro
 cta_button: En profiter
 related_posts:
 - 1021-mypos-avis-ce-qui-change-reellement-par-rapport-aux-autres-terminaux
-- 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
 - 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
+- 2383-airwallex-mon-avis-sur-cette-alternative-aux-banques-internationales
+- 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
 ---
 <p>Je vais être honnête avec vous : quand j'ai découvert bunq pour la première fois, j'étais sceptique. Une banque néerlandaise, 100 % mobile, qui se targue de tout réinventer... j'en ai vu passer des dizaines comme ça. La plupart finissent par décevoir sur les fonctionnalités professionnelles, sur le support, ou sur la tarification réelle une fois qu'on regarde de près.</p>
 
