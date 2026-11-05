@@ -18,9 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive SumUp
 cta_button: En profiter
 related_posts:
+- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
+- 5284-qonto-mon-avis-sur-les-abonnements-et-les-frais-a-anticiper
 - 4432-sogexia-business-avis-ce-que-coutent-reellement-ses-services-bancaires
 - 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
-- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
 ---
 <p>Ça fait maintenant plusieurs mois que j'utilise SumUp dans mon quotidien professionnel, et j'ai décidé de faire les calculs moi-même plutôt que de me fier aux pages marketing. Parce qu'en comptabilité, les chiffres ne mentent pas. Et franchement, les résultats m'ont parfois surprise.</p>
 
