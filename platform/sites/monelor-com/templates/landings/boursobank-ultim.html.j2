@@ -42,21 +42,21 @@
     .cardwrap::before{content:"";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
       width:320px;height:230px;border-radius:50%;z-index:0;pointer-events:none;
       background:radial-gradient(ellipse at center,rgba(255,43,160,.45),rgba(255,43,160,0) 68%);filter:blur(10px)}
-    .cardwrap .cardimg{position:relative;z-index:1;transform:rotate(-9deg)}
+    .cardwrap .cardimg{position:relative;z-index:1;transform:rotate(-4deg)}
     .float{animation:cardfloat 5.5s ease-in-out infinite}
-    @keyframes cardfloat{0%,100%{transform:rotate(-9deg) translateY(8px)}50%{transform:rotate(-9deg) translateY(-8px)}}
+    @keyframes cardfloat{0%,100%{transform:rotate(-4deg) translateY(3px)}50%{transform:rotate(-4deg) translateY(-3px)}}
     @media (prefers-reduced-motion:reduce){.float{animation:none}}
     /* Hero */
     .hero{padding:12px 20px 34px;text-align:center}
-    .hero h1{font-size:clamp(23px,5.2vw,30px);font-weight:800;margin:22px 0 10px;letter-spacing:-.02em}
+    .hero h1{font-size:clamp(23px,5.2vw,30px);font-weight:600;margin:22px 0 10px;letter-spacing:-.02em}
     .hero p{color:var(--muted);max-width:430px;margin:0 auto;font-size:14.5px}
-    .hero p b{color:var(--ink)}
+    .hero p b{color:var(--ink);font-weight:600}
     .cta{display:block;width:100%;max-width:440px;margin:22px auto 0;background:var(--grad);color:#fff;font-weight:700;font-size:16px;text-align:center;text-decoration:none;padding:16px 22px;border-radius:999px;box-shadow:0 12px 26px rgba(232,11,135,.32);transition:transform .15s,box-shadow .15s}
     .cta:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(232,11,135,.4)}
-    .cta-note{color:var(--muted);font-size:12px;text-align:center;margin:10px 0 0}
+    .cta-note{color:var(--muted);font-size:11px;text-align:center;margin:18px 0 0}
     .lbl{color:var(--pink);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;margin:0 0 12px}
     /* Offre */
-    .offer{border:2px solid var(--pink);border-radius:20px;padding:22px;margin:30px 0;box-shadow:0 14px 36px rgba(232,11,135,.12)}
+    .offer{border:2px solid var(--pink);border-radius:20px;padding:22px;margin:8px 0 30px;box-shadow:0 14px 36px rgba(232,11,135,.12)}
     .offer .cardimg{margin-bottom:14px}
     .offer h2{text-align:center;font-size:20px;font-weight:800;margin:4px 0 10px}
     .pill{display:block;width:max-content;margin:0 auto 14px;background:#FDE9F4;color:var(--pink-ink);font-weight:700;font-size:12px;padding:5px 14px;border-radius:999px}
@@ -126,7 +126,7 @@
 
   <div class="sec">
     <!-- Offre exclusive -->
-    <p class="lbl" style="margin-top:30px">Ton offre exclusive</p>
+    <p class="lbl" style="margin:30px 0 4px">Ton offre exclusive</p>
     <div class="offer">
       <img class="cardimg" src="/landings/boursobank-ultim/carte-ultim.webp" alt="Carte BoursoBank Visa Ultim" width="170">
       <h2>Visa Ultim</h2>
