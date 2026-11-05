@@ -29,19 +29,25 @@
     .wrap{max-width:640px;margin:0 auto}
     .sec{padding:0 20px}
     a{color:inherit}
-    /* Header 2 logos */
-    .top{border-bottom:1px solid var(--line);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:16px}
+    /* Zone rose continue : header + hero partagent le même fond rose (pas de blanc) */
+    .topzone{background:linear-gradient(180deg,#FBDCEE 0%,#FDE8F4 46%,#fff 100%)}
+    /* Header 2 logos (sur le fond rose) */
+    .top{padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:16px}
     .top .hlogo{height:26px;width:auto;display:block}
-    .top .sep{width:1px;height:22px;background:var(--line)}
+    .top .sep{width:1px;height:22px;background:rgba(36,25,51,.14)}
     /* Carte bancaire (image) */
     .cardimg{display:block;margin:0 auto;height:auto;border-radius:10px;filter:drop-shadow(0 16px 26px rgba(0,0,0,.26))}
-    /* Animation du hero : léger va-et-vient vertical en boucle (bas → haut) */
-    .float{animation:cardfloat 3.2s ease-in-out infinite}
-    @keyframes cardfloat{0%,100%{transform:translateY(7px)}50%{transform:translateY(-7px)}}
+    /* Carte du hero : halo rose derrière + inclinaison + flottement lent */
+    .cardwrap{position:relative;display:flex;justify-content:center;padding:18px 0 8px}
+    .cardwrap::before{content:"";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
+      width:320px;height:230px;border-radius:50%;z-index:0;pointer-events:none;
+      background:radial-gradient(ellipse at center,rgba(255,43,160,.45),rgba(255,43,160,0) 68%);filter:blur(10px)}
+    .cardwrap .cardimg{position:relative;z-index:1;transform:rotate(-9deg)}
+    .float{animation:cardfloat 5.5s ease-in-out infinite}
+    @keyframes cardfloat{0%,100%{transform:rotate(-9deg) translateY(8px)}50%{transform:rotate(-9deg) translateY(-8px)}}
     @media (prefers-reduced-motion:reduce){.float{animation:none}}
     /* Hero */
-    .hero{background:linear-gradient(180deg,#FDE6F3 0%,#fff 72%);padding:26px 20px 34px;text-align:center}
-    .hero .cardimg{margin-top:6px;margin-bottom:4px}
+    .hero{padding:12px 20px 34px;text-align:center}
     .hero h1{font-size:clamp(23px,5.2vw,30px);font-weight:800;margin:22px 0 10px;letter-spacing:-.02em}
     .hero p{color:var(--muted);max-width:430px;margin:0 auto;font-size:14.5px}
     .hero p b{color:var(--ink)}
@@ -99,21 +105,24 @@
 <body>
 <div class="wrap">
 
-  <!-- Header -->
-  <div class="top">
-    <img class="hlogo" src="/landings/boursobank-ultim/logo-monelor.png" alt="Monelor">
-    <span class="sep"></span>
-    <img class="hlogo" src="/landings/boursobank-ultim/logo-boursobank.png" alt="BoursoBank">
-  </div>
+  <!-- Zone rose : header + hero sur le même fond -->
+  <div class="topzone">
+    <!-- Header -->
+    <div class="top">
+      <img class="hlogo" src="/landings/boursobank-ultim/logo-monelor.png" alt="Monelor">
+      <span class="sep"></span>
+      <img class="hlogo" src="/landings/boursobank-ultim/logo-boursobank.png" alt="BoursoBank">
+    </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <img class="cardimg float" src="/landings/boursobank-ultim/carte-ultim.webp" alt="Carte BoursoBank Visa Ultim" width="210">
-    <h1>180€ offerts avec la carte Ultim.</h1>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="cardwrap"><img class="cardimg float" src="/landings/boursobank-ultim/carte-ultim.webp" alt="Carte BoursoBank Visa Ultim" width="220"></div>
+      <h1>180€ offerts avec la carte Ultim.</h1>
     <p>BoursoBank, élue <b>banque la moins chère depuis 18 ans</b>, lance une <b>offre de bienvenue exclusive</b> sur la <b>carte Visa Ultim</b> : jusqu'à 180€ offerts*, compte sans frais et carte gratuite sans condition de revenus.</p>
     <a class="cta" href="#" rel="nofollow sponsored">Je récupère mes 180€</a>
     <p class="cta-note">100% en ligne · Sans engagement</p>
-  </section>
+    </section>
+  </div>
 
   <div class="sec">
     <!-- Offre exclusive -->
