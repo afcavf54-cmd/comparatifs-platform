@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive HubSpot
 cta_button: En profiter
 related_posts:
-- 1152-affichage-dynamique-en-ecole-et-universite-usages-et-mise-en-place
-- 5697-logiciel-d-affichage-dynamique-role-fonctionnement-et-criteres-de-choix
-- 4348-les-agences-klaviyo-a-paris-pour-developper-votre-e-commerce
-- 2709-affichage-dynamique-avec-raspberry-pi-comment-le-mettre-en-place
+- 8327-comment-creer-une-video-professionnelle-en-entreprise
+- elephant-cast-presentation-du-logiciel-d-affichage-dynamique-digital-signage
+- 8313-digital-signage-vs-affichage-dynamique-quelle-difference
+- 2800-comment-ajouter-des-sous-titres-a-une-video-professionnelle
 ---
 <p>J'utilise HubSpot depuis un peu plus de deux ans maintenant. Au départ, j'avoue que j'étais sceptique. Un CRM gratuit qui fait tout ? Ça sentait le piège à plein nez. Et puis on s'y fait, on l'adopte, on découvre les limites. Voici ce que j'en pense vraiment, en tant que dirigeant d'une TPE à Marseille avec une équipe qui n'est pas vraiment composée de techniciens.</p>
 
