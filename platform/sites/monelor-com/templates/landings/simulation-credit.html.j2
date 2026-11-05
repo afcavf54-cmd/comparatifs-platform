@@ -69,6 +69,8 @@
     .offer .o-cta{flex:none;background:var(--orange);color:#fff;font-weight:800;font-size:13px;text-decoration:none;padding:10px 15px;border-radius:999px;white-space:nowrap}
     .aff{display:block;text-align:right;color:var(--ink2);font-size:11px;margin:2px 0 0}
     .disclaimer{color:var(--ink2);font-size:12px;margin:16px 0 0;line-height:1.5}
+    .explain{background:#fff;border:1.6px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:14px 16px;margin:0 0 14px;font-size:13.5px;color:var(--ink2);line-height:1.55}
+    .explain b{color:var(--forest);display:block;margin-bottom:4px;font-size:14px}
     .legal-foot{font-size:11.5px;color:var(--ink2);text-align:center;margin-top:28px;line-height:1.6}
     .hidden{display:none!important}
     /* Popup regroupement de crédit */
@@ -249,7 +251,10 @@
       '<p>Le rachat de crédit regroupe vos prêts en une seule mensualité, allégée jusqu\'à -60%.*</p>'+
       '<a class="btn" href="'+RACHAT_URL+'">Étudier mon rachat de crédit →</a></div>';
   }
-  var primesIntro='<p class="disclaimer" style="margin-top:0">Ces offres de bienvenue sont indépendantes d\'une demande de crédit : vous récupérez de l\'argent <strong>sans frais et sans remboursement</strong>. Ce ne sont pas des crédits.</p>';
+  var primesIntro='<div class="explain"><b>💡 Une prime de bienvenue, c\'est quoi ?</b>'+
+    'Certaines banques en ligne vous versent une prime (de l\'argent) lorsque vous ouvrez un compte via un lien partenaire. '+
+    'Vous la touchez <strong>sans crédit, sans frais et sans engagement</strong> : il suffit généralement d\'ouvrir le compte et d\'y faire un premier versement. '+
+    'C\'est donc de l\'argent que vous gardez, totalement indépendant d\'une demande de crédit.</div>';
 
   function renderResult(){
     $("resTitle").textContent="Résultat de votre simulation";
