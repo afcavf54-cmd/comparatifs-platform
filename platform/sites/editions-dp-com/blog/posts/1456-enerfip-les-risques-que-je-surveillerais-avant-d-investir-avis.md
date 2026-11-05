@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
 related_posts:
+- 2484-trimbox-fonctionnalites-tarifs-et-retours-d-experience-sur-cet-outil-de-gestion
+- 6786-waltio-avis-les-difficultes-que-j-ai-identifiees-avant-de-declarer-mes-cryptos
 - 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
-- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
-- 1015-bordereau-de-situation-fiscale-modele-p-237-a-quoi-sert-il-et-comment-l-obtenir
-- 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
+- 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
 ---
 <p>J'ai découvert Enerfip il y a environ deux ans, via un collègue qui investissait déjà dans les énergies renouvelables en crowdfunding. L'idée m'avait séduit : financer des projets solaires ou éoliens, récupérer des intérêts entre 4 et 9 % par an, et se sentir un peu utile au passage. Bon. La réalité est un peu plus nuancée que ça.</p>
 
