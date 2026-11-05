@@ -60,15 +60,14 @@
     .rachat b{display:block;font-size:17px;margin-bottom:5px}
     .rachat p{margin:0 0 14px;font-size:14px;color:rgba(255,255,255,.86)}
     .rachat .btn{background:var(--orange)}
-    .offer{display:flex;align-items:center;gap:14px;border:1.6px solid var(--line);border-radius:var(--r);padding:15px 16px;margin:10px 0;background:#fff}
-    .offer .logo{width:56px;height:56px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);overflow:hidden}
+    .offer{border:1.6px solid var(--line);border-radius:var(--r);padding:18px;margin:12px 0;background:#fff}
+    .offer .o-name{font-weight:800;font-size:16px;line-height:1.3}
+    .offer .o-prime{color:var(--forest2);font-weight:800;font-size:15px;margin-top:4px}
+    .offer .o-sub{color:var(--ink2);font-size:13px;margin-top:4px}
+    .offer .o-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+    .offer .logo{width:54px;height:54px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);overflow:hidden}
     .offer .logo img{width:100%;height:100%;object-fit:contain}
-    .offer .o-body{flex:1;min-width:0}
-    .offer .o-name{font-weight:800;font-size:15px}
-    .offer .o-prime{color:var(--forest2);font-weight:800;font-size:14px}
-    .offer .o-sub{color:var(--ink2);font-size:12.5px}
-    .offer .o-cta{flex:none;background:var(--orange);color:#fff;font-weight:800;font-size:13px;text-decoration:none;padding:10px 15px;border-radius:999px;white-space:nowrap}
-    .aff{display:block;text-align:right;color:var(--ink2);font-size:11px;margin:2px 0 0}
+    .offer .o-cta{flex:none;background:var(--orange);color:#fff;font-weight:800;font-size:14px;text-decoration:none;padding:12px 20px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 18px rgba(255,138,61,.28)}
     .disclaimer{color:var(--ink2);font-size:12px;margin:16px 0 0;line-height:1.5}
     .explain{background:#fff;border:1.6px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:14px 16px;margin:0 0 14px;font-size:13.5px;color:var(--ink2);line-height:1.55}
     .explain b{color:var(--forest);display:block;margin-bottom:4px;font-size:14px}
@@ -232,20 +231,20 @@
   }
 
   function boursoCard(){
-    return '<div class="offer"><span class="logo"><img src="/landings/banks/boursobank.png" alt="BoursoBank"></span>'+
-      '<div class="o-body"><div class="o-name">BoursoBank — Visa Ultim</div>'+
+    return '<div class="offer">'+
+      '<div class="o-name">BoursoBank — Visa Ultim</div>'+
       '<div class="o-prime">Jusqu\'à 180 € offerts</div>'+
-      '<div class="o-sub">Compte &amp; carte gratuits, sans condition de revenus</div></div>'+
-      '<a class="o-cta" href="'+AWIN_BOURSO+'" target="_blank" rel="nofollow sponsored noopener">J\'en profite →</a></div>'+
-      '<span class="aff">Lien affilié</span>';
+      '<div class="o-sub">Compte &amp; carte gratuits, sans condition de revenus</div>'+
+      '<div class="o-foot"><span class="logo"><img src="/landings/banks/boursobank.png" alt="BoursoBank"></span>'+
+      '<a class="o-cta" href="'+AWIN_BOURSO+'" target="_blank" rel="nofollow sponsored noopener">J\'en profite →</a></div></div>';
   }
   function fortuneoCard(){
-    return '<div class="offer"><span class="logo"><img src="/landings/banks/fortuneo.png" alt="Fortuneo"></span>'+
-      '<div class="o-body"><div class="o-name">Fortuneo — Carte gratuite</div>'+
+    return '<div class="offer">'+
+      '<div class="o-name">Fortuneo — Carte gratuite</div>'+
       '<div class="o-prime">Jusqu\'à 180 € offerts</div>'+
-      '<div class="o-sub">Carte Fosfo / Gold gratuite, 0 € de frais de tenue</div></div>'+
-      '<a class="o-cta" href="'+FORTUNEO_URL+'" target="_blank" rel="nofollow sponsored noopener">J\'en profite →</a></div>'+
-      '<span class="aff">Lien affilié</span>';
+      '<div class="o-sub">Carte Fosfo / Gold gratuite, 0 € de frais de tenue</div>'+
+      '<div class="o-foot"><span class="logo"><img src="/landings/banks/fortuneo.png" alt="Fortuneo"></span>'+
+      '<a class="o-cta" href="'+FORTUNEO_URL+'" target="_blank" rel="nofollow sponsored noopener">J\'en profite →</a></div></div>';
   }
   function rachatBlock(){
     return '<div class="rachat"><b>Vous remboursez déjà plusieurs crédits ?</b>'+
