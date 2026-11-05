@@ -30,21 +30,18 @@
     .sec{padding:0 20px}
     a{color:inherit}
     /* Header 2 logos */
-    .top{border-bottom:1px solid var(--line);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:14px}
-    .top .b1{font-weight:800;font-size:17px;letter-spacing:-.01em}
-    .top .b1 .o{color:var(--pink)}
-    .top .sep{width:1px;height:20px;background:var(--line)}
-    .top .b2{font-weight:800;font-size:16px;color:#F50A8B;display:flex;align-items:center;gap:5px}
-    .top .b2::before{content:"✦";font-size:13px}
-    /* Carte bancaire (CSS) */
-    .ccard{width:150px;height:95px;border-radius:12px;background:linear-gradient(135deg,#161616,#2b2b2b);position:relative;box-shadow:0 14px 28px rgba(0,0,0,.28);margin:0 auto}
-    .ccard .visa{position:absolute;left:12px;bottom:9px;color:#fff;font-style:italic;font-weight:800;font-size:18px;letter-spacing:.5px}
-    .ccard .bs{position:absolute;right:11px;top:10px;color:#fff;font-size:10px;font-weight:700;opacity:.9}
-    .ccard .chip{position:absolute;left:14px;top:30px;width:22px;height:16px;border-radius:4px;background:linear-gradient(135deg,#d9b85a,#b58e2e)}
-    .ccard.lg{width:190px;height:120px}
+    .top{border-bottom:1px solid var(--line);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:16px}
+    .top .hlogo{height:26px;width:auto;display:block}
+    .top .sep{width:1px;height:22px;background:var(--line)}
+    /* Carte bancaire (image) */
+    .cardimg{display:block;margin:0 auto;height:auto;border-radius:10px;filter:drop-shadow(0 16px 26px rgba(0,0,0,.26))}
+    /* Animation du hero : léger va-et-vient vertical en boucle (bas → haut) */
+    .float{animation:cardfloat 3.2s ease-in-out infinite}
+    @keyframes cardfloat{0%,100%{transform:translateY(7px)}50%{transform:translateY(-7px)}}
+    @media (prefers-reduced-motion:reduce){.float{animation:none}}
     /* Hero */
-    .hero{background:linear-gradient(180deg,#FDE6F3 0%,#fff 72%);padding:26px 20px 30px;text-align:center}
-    .hero .ccard{margin-top:6px;transform:rotate(-7deg)}
+    .hero{background:linear-gradient(180deg,#FDE6F3 0%,#fff 72%);padding:26px 20px 34px;text-align:center}
+    .hero .cardimg{margin-top:6px;margin-bottom:4px}
     .hero h1{font-size:clamp(23px,5.2vw,30px);font-weight:800;margin:22px 0 10px;letter-spacing:-.02em}
     .hero p{color:var(--muted);max-width:430px;margin:0 auto;font-size:14.5px}
     .hero p b{color:var(--ink)}
@@ -54,7 +51,7 @@
     .lbl{color:var(--pink);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;margin:0 0 12px}
     /* Offre */
     .offer{border:2px solid var(--pink);border-radius:20px;padding:22px;margin:30px 0;box-shadow:0 14px 36px rgba(232,11,135,.12)}
-    .offer .ccard{margin-bottom:14px}
+    .offer .cardimg{margin-bottom:14px}
     .offer h2{text-align:center;font-size:20px;font-weight:800;margin:4px 0 10px}
     .pill{display:block;width:max-content;margin:0 auto 14px;background:#FDE9F4;color:var(--pink-ink);font-weight:700;font-size:12px;padding:5px 14px;border-radius:999px}
     .big{text-align:center;color:var(--pink);font-weight:800;font-size:46px;line-height:1;margin:6px 0 2px}
@@ -104,14 +101,14 @@
 
   <!-- Header -->
   <div class="top">
-    <span class="b1">{{ (site.name or 'Monelor') }}</span>
+    <img class="hlogo" src="/landings/boursobank-ultim/logo-monelor.png" alt="Monelor">
     <span class="sep"></span>
-    <span class="b2">BoursoBank</span>
+    <img class="hlogo" src="/landings/boursobank-ultim/logo-boursobank.png" alt="BoursoBank">
   </div>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="ccard"><span class="chip"></span><span class="bs">BoursoBank</span><span class="visa">VISA</span></div>
+    <img class="cardimg float" src="/landings/boursobank-ultim/carte-ultim.webp" alt="Carte BoursoBank Visa Ultim" width="210">
     <h1>180€ offerts avec la carte Ultim.</h1>
     <p>BoursoBank, élue <b>banque la moins chère depuis 18 ans</b>, lance une <b>offre de bienvenue exclusive</b> sur la <b>carte Visa Ultim</b> : jusqu'à 180€ offerts*, compte sans frais et carte gratuite sans condition de revenus.</p>
     <a class="cta" href="#" rel="nofollow sponsored">Je récupère mes 180€</a>
@@ -122,7 +119,7 @@
     <!-- Offre exclusive -->
     <p class="lbl" style="margin-top:30px">Ton offre exclusive</p>
     <div class="offer">
-      <div class="ccard"><span class="chip"></span><span class="bs">BoursoBank</span><span class="visa">VISA</span></div>
+      <img class="cardimg" src="/landings/boursobank-ultim/carte-ultim.webp" alt="Carte BoursoBank Visa Ultim" width="170">
       <h2>Visa Ultim</h2>
       <span class="pill">Sans condition de revenus</span>
       <div class="big">180€</div>
