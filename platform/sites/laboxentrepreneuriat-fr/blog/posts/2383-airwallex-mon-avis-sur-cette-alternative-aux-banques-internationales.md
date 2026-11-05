@@ -17,8 +17,8 @@ cta_enabled: true
 cta_text: Offre exclusive AirWallex
 cta_button: En profiter
 related_posts:
-- 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
 - 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
+- 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
 - 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
 - 1021-mypos-avis-ce-qui-change-reellement-par-rapport-aux-autres-terminaux
 ---
