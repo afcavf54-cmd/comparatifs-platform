@@ -2,6 +2,20 @@
   "_comment": "Landing pages sur-mesure (ads). 'key' = template platform/sites/monelor-com/templates/landings/<key>.html.j2 (créé par le dev). slug/seo_title/meta_description/active sont éditables depuis le dashboard. Ces pages sont en noindex et absentes du sitemap et de la navigation.",
   "landings": [
     {
+      "key": "simulation-credit",
+      "slug": "lp-simulation-credit",
+      "seo_title": "Simulateur de crédit en ligne | Monelor",
+      "meta_description": "Simulez votre crédit en 2 minutes et découvrez les solutions adaptées à votre profil : rachat de crédit ou offres de bienvenue.",
+      "active": true
+    },
+    {
+      "key": "rachat-de-credit",
+      "slug": "lp-rachat-de-credit",
+      "seo_title": "Rachat de crédit : regroupez vos crédits | Monelor",
+      "meta_description": "Regroupez vos crédits en une seule mensualité adaptée à votre budget. Simulation gratuite et sans engagement.",
+      "active": true
+    },
+    {
       "key": "boursobank-ultim",
       "slug": "lp-boursobank-ultim",
       "seo_title": "180€ offerts avec la carte BoursoBank Visa Ultim | Monelor",

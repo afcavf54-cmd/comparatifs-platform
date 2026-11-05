@@ -1,0 +1,231 @@
+{# ──────────────────────────────────────────────────────────────────────────
+   Landing « simulateur de crédit » (ads) — SANS capture d'email, 100% client.
+   Tunnel : projet + montant → quelques questions → analyse → résultat.
+   Résultat : profil non éligible à un crédit → renvoi vers le rachat de crédit
+   (/lp-rachat-de-credit.html) et/ou les primes de bienvenue (Bourso, Fortuneo).
+   noindex + hors sitemap (générateur). Clicky injecté automatiquement.
+   CTA affiliés : Bourso = lien Awin ; Fortuneo = href="#" (lien à fournir).
+────────────────────────────────────────────────────────────────────────── #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>{{ lp.seo_title }}</title>
+  <meta name="description" content="{{ lp.meta_description }}">
+  <link rel="canonical" href="{{ lp.canonical }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#FAFBF5;--lime:#D9F2B0;--lime2:#EAF7D4;--orange:#FF8A3D;--orange-ink:#5A2D00;
+      --forest:#234B3C;--forest2:#2E6350;--ink:#1F2A26;--ink2:#53625B;--line:#E4EADF;--white:#fff;
+      --r:18px;--r2:12px;--shadow:0 12px 34px rgba(35,75,60,.10)}
+    *{box-sizing:border-box}html,body{margin:0}
+    body{font-family:'Nunito',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;font-size:16px}
+    .app{max-width:640px;margin:0 auto;padding:26px 18px 56px;min-height:100vh}
+    .brand{display:flex;align-items:center;justify-content:center;gap:9px;font-weight:900;font-size:19px;color:var(--forest);margin-bottom:5px}
+    .brand b{color:var(--orange)}
+    .sub-top{text-align:center;color:var(--ink2);font-size:13px;margin-bottom:20px}
+    .card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(20px,4vw,32px)}
+    h1{font-size:clamp(21px,4vw,27px);font-weight:800;color:var(--forest);margin:0 0 8px;letter-spacing:-.01em}
+    .lead{color:var(--ink2);margin:0 0 20px;font-size:15px}
+    label.f{display:block;font-weight:700;font-size:14px;margin:0 0 7px;color:var(--forest)}
+    select,input[type=number]{width:100%;padding:13px 14px;border:1.6px solid var(--line);border-radius:var(--r2);font:inherit;background:#fff;color:var(--ink)}
+    select:focus,input:focus{outline:none;border-color:var(--forest2)}
+    .field{margin-bottom:16px}
+    .hint{font-size:12.5px;color:var(--ink2);margin:7px 0 0;display:flex;gap:6px;align-items:flex-start}
+    .btn{display:block;width:100%;background:var(--orange);color:#fff;font-weight:800;font-size:16px;text-align:center;border:0;border-radius:999px;padding:15px 20px;cursor:pointer;text-decoration:none;box-shadow:0 10px 22px rgba(255,138,61,.3);transition:transform .15s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-ghost{background:#fff;color:var(--forest);border:1.6px solid var(--line);box-shadow:none}
+    .err{color:#B4232A;font-size:13px;margin:7px 0 0;display:none}
+    .err.show{display:block}
+    /* progression */
+    .prog{height:7px;background:var(--lime2);border-radius:999px;margin:0 0 20px;overflow:hidden}
+    .prog>i{display:block;height:100%;background:var(--forest2);border-radius:999px;transition:width .3s}
+    /* choix (boutons radio larges) */
+    .opts{display:grid;gap:10px}
+    .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1.6px solid var(--line);border-radius:var(--r2);padding:15px 16px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+    .opt:hover{border-color:var(--forest2);background:var(--lime2)}
+    .opt .em{font-size:20px}
+    .back{background:none;border:0;color:var(--ink2);font:inherit;font-size:14px;cursor:pointer;padding:0;margin:14px 0 0}
+    /* analyse */
+    .spin{width:46px;height:46px;border:4px solid var(--lime2);border-top-color:var(--forest2);border-radius:50%;margin:10px auto 16px;animation:spin .8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    /* résultat */
+    .res-eligi{background:var(--lime2);border:1px solid #CDE6AE;border-radius:var(--r2);padding:16px 18px;margin:0 0 20px;color:var(--forest);font-size:14.5px}
+    .sec-label{color:var(--forest2);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin:24px 0 10px}
+    .rachat{background:linear-gradient(135deg,var(--forest),var(--forest2));color:#fff;border-radius:var(--r);padding:20px;margin:0 0 6px}
+    .rachat b{display:block;font-size:17px;margin-bottom:5px}
+    .rachat p{margin:0 0 14px;font-size:14px;color:rgba(255,255,255,.86)}
+    .rachat .btn{background:var(--orange)}
+    .offer{display:flex;align-items:center;gap:14px;border:1.6px solid var(--line);border-radius:var(--r);padding:15px 16px;margin:10px 0;background:#fff}
+    .offer .logo{width:52px;height:52px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:24px;overflow:hidden}
+    .offer .o-body{flex:1;min-width:0}
+    .offer .o-name{font-weight:800;font-size:15px}
+    .offer .o-prime{color:var(--forest2);font-weight:800;font-size:14px}
+    .offer .o-sub{color:var(--ink2);font-size:12.5px}
+    .offer .o-cta{flex:none;background:var(--orange);color:#fff;font-weight:800;font-size:13px;text-decoration:none;padding:10px 15px;border-radius:999px;white-space:nowrap}
+    .aff{display:block;text-align:right;color:var(--ink2);font-size:11px;margin:2px 0 0}
+    .disclaimer{color:var(--ink2);font-size:12px;margin:16px 0 0;line-height:1.5}
+    .legal-foot{font-size:11.5px;color:var(--ink2);text-align:center;margin-top:28px;line-height:1.6}
+    .hidden{display:none!important}
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="brand">Mon<b>elor</b></div>
+  <div class="sub-top">🔒 Simulation gratuite · sans engagement · 2 minutes</div>
+
+  <!-- ÉTAPE 0 : projet + montant -->
+  <section class="card" id="screen-entry">
+    <h1>Simulez votre crédit en 2 minutes</h1>
+    <p class="lead">Indiquez votre projet, on étudie les solutions adaptées à votre situation.</p>
+    <form id="entryForm" novalidate>
+      <div class="field">
+        <label class="f" for="project">Votre projet</label>
+        <select id="project">
+          <option value="tresorerie">Besoin de trésorerie</option>
+          <option value="auto">Crédit auto / moto</option>
+          <option value="travaux">Travaux</option>
+          <option value="regroupement">Regrouper mes crédits</option>
+          <option value="autre">Autre projet</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="f" for="amount">Montant souhaité</label>
+        <input id="amount" type="number" inputmode="numeric" min="500" step="100" value="5000" aria-describedby="amountErr">
+        <p class="err" id="amountErr">Indiquez un montant valide (à partir de 500 €).</p>
+      </div>
+      <button class="btn" type="submit">Lancer ma simulation</button>
+    </form>
+  </section>
+
+  <!-- ÉTAPES : questions -->
+  <section class="card hidden" id="screen-steps">
+    <div class="prog"><i id="progBar" style="width:33%"></i></div>
+    <h1 id="stepTitle"></h1>
+    <p class="lead" id="stepLead"></p>
+    <div class="opts" id="stepOpts"></div>
+    <button class="back" id="stepBack" type="button">← Retour</button>
+  </section>
+
+  <!-- ANALYSE -->
+  <section class="card hidden" id="screen-analyse" style="text-align:center">
+    <div class="spin"></div>
+    <h1 style="font-size:19px">Analyse de votre profil…</h1>
+    <p class="lead" style="margin:0">Nous comparons votre demande à nos solutions partenaires.</p>
+  </section>
+
+  <!-- RÉSULTAT -->
+  <section class="card hidden" id="screen-result">
+    <h1 id="resTitle">Votre résultat</h1>
+    <div class="res-eligi" id="resEligi"></div>
+    <div id="resBody"></div>
+    <p class="legal-foot">
+      Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.<br>
+      monelor.com oriente vers des offres partenaires et ne constitue ni une offre de crédit ni une évaluation de solvabilité.
+    </p>
+  </section>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var AWIN_BOURSO="https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198";
+  var FORTUNEO_URL="#"; // lien d'affiliation Fortuneo à fournir
+  var RACHAT_URL="/lp-rachat-de-credit.html";
+
+  var state={project:"tresorerie",amount:5000,hasCredits:null,situation:null};
+
+  // Définition des étapes (questions). value stockée dans state[key].
+  var STEPS=[
+    {key:"hasCredits",title:"Avez-vous un ou plusieurs crédits en cours ?",
+     lead:"Crédit conso, auto, renouvelable…",
+     opts:[{v:"oui",l:"Oui, j'ai des crédits en cours",e:"💳"},{v:"non",l:"Non, aucun crédit en cours",e:"🙅"}]},
+    {key:"situation",title:"Quelle est votre situation professionnelle ?",lead:"",
+     opts:[{v:"cdi",l:"CDI / Titulaire",e:"💼"},{v:"cdd",l:"CDD / Intérim",e:"📝"},
+           {v:"indep",l:"Indépendant",e:"🧑‍💻"},{v:"retraite",l:"Retraité(e)",e:"🌴"},{v:"autre",l:"Autre",e:"•"}]},
+    {key:"logement",title:"Votre logement ?",lead:"",
+     opts:[{v:"proprio",l:"Propriétaire",e:"🏠"},{v:"locataire",l:"Locataire",e:"🔑"},{v:"heberge",l:"Hébergé(e)",e:"👪"}]}
+  ];
+  var stepIdx=0;
+
+  function show(id){["screen-entry","screen-steps","screen-analyse","screen-result"].forEach(function(s){
+    $(s).classList.toggle("hidden",s!==id);});window.scrollTo({top:0,behavior:"smooth"});}
+  function fmt(n){return (Math.round(n)).toLocaleString("fr-FR");}
+
+  // Entrée
+  $("entryForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var amt=parseInt($("amount").value,10);
+    if(!amt||amt<500||isNaN(amt)){$("amountErr").classList.add("show");$("amount").focus();return;}
+    state.amount=amt;state.project=$("project").value;
+    stepIdx=0;renderStep();show("screen-steps");
+  });
+
+  function renderStep(){
+    var s=STEPS[stepIdx];
+    $("progBar").style.width=Math.round((stepIdx+1)/(STEPS.length+1)*100)+"%";
+    $("stepTitle").textContent=s.title;
+    $("stepLead").textContent=s.lead||"";$("stepLead").style.display=s.lead?"":"none";
+    var box=$("stepOpts");box.innerHTML="";
+    s.opts.forEach(function(o){
+      var b=document.createElement("button");b.type="button";b.className="opt";
+      b.innerHTML='<span class="em">'+o.e+'</span><span>'+o.l+'</span>';
+      b.addEventListener("click",function(){
+        state[s.key]=o.v;
+        if(stepIdx<STEPS.length-1){stepIdx++;renderStep();}
+        else{runAnalyse();}
+      });
+      box.appendChild(b);
+    });
+    $("stepBack").style.visibility=stepIdx===0?"hidden":"visible";
+  }
+  $("stepBack").addEventListener("click",function(){ if(stepIdx>0){stepIdx--;renderStep();} });
+
+  function runAnalyse(){
+    show("screen-analyse");
+    setTimeout(renderResult,1800);
+  }
+
+  function boursoCard(){
+    return '<div class="offer"><span class="logo" style="background:#0a0a0a">B</span>'+
+      '<div class="o-body"><div class="o-name">BoursoBank — Visa Ultim</div>'+
+      '<div class="o-prime">Jusqu\'à 180 € offerts</div>'+
+      '<div class="o-sub">Compte &amp; carte gratuits, sans condition de revenus</div></div>'+
+      '<a class="o-cta" href="'+AWIN_BOURSO+'" target="_blank" rel="nofollow sponsored noopener">J\'en profite →</a></div>'+
+      '<span class="aff">Lien affilié</span>';
+  }
+  function fortuneoCard(){
+    return '<div class="offer"><span class="logo" style="background:#0A5BD3">F</span>'+
+      '<div class="o-body"><div class="o-name">Fortuneo — Carte gratuite</div>'+
+      '<div class="o-prime">Jusqu\'à 180 € offerts</div>'+
+      '<div class="o-sub">Carte Fosfo / Gold gratuite, 0 € de frais de tenue</div></div>'+
+      '<a class="o-cta" href="'+FORTUNEO_URL+'" target="_blank" rel="nofollow sponsored noopener">J\'en profite →</a></div>'+
+      '<span class="aff">Lien affilié</span>';
+  }
+  function rachatBlock(){
+    return '<div class="rachat"><b>Vous remboursez déjà plusieurs crédits ?</b>'+
+      '<p>Le rachat de crédit regroupe vos prêts en une seule mensualité, allégée jusqu\'à -60%.*</p>'+
+      '<a class="btn" href="'+RACHAT_URL+'">Étudier mon rachat de crédit →</a></div>';
+  }
+  var primesIntro='<p class="disclaimer" style="margin-top:0">Ces offres de bienvenue sont indépendantes d\'une demande de crédit : vous récupérez de l\'argent <strong>sans frais et sans remboursement</strong>. Ce ne sont pas des crédits.</p>';
+
+  function renderResult(){
+    $("resTitle").textContent="Résultat de votre simulation";
+    $("resEligi").innerHTML="Après étude de votre profil, <strong>nous n'avons pas d'offre de crédit adaptée à votre demande pour le moment</strong>. Voici les meilleures alternatives selon votre situation 👇";
+    var hasCredits=(state.hasCredits==="oui");
+    var html="";
+    var primes='<div class="sec-label">Récupérez de l\'argent sans crédit</div>'+primesIntro+boursoCard()+fortuneoCard();
+    var rachat='<div class="sec-label">Alléger vos mensualités</div>'+rachatBlock();
+    // S'il a des crédits en cours → rachat en tête ; sinon primes en tête.
+    html += hasCredits ? (rachat+primes) : (primes+rachat);
+    html += '<p class="disclaimer">*Une baisse de mensualité peut allonger la durée et augmenter le coût total du crédit. Offres soumises aux conditions des partenaires. monelor.com est un site indépendant ; cette page contient des liens d\'affiliation.</p>';
+    $("resBody").innerHTML=html;
+    show("screen-result");
+  }
+})();
+</script>
+</body>
+</html>
