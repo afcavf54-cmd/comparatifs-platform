@@ -61,7 +61,8 @@
     .rachat p{margin:0 0 14px;font-size:14px;color:rgba(255,255,255,.86)}
     .rachat .btn{background:var(--orange)}
     .offer{display:flex;align-items:center;gap:14px;border:1.6px solid var(--line);border-radius:var(--r);padding:15px 16px;margin:10px 0;background:#fff}
-    .offer .logo{width:52px;height:52px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:24px;overflow:hidden}
+    .offer .logo{width:56px;height:56px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);overflow:hidden}
+    .offer .logo img{width:100%;height:100%;object-fit:contain}
     .offer .o-body{flex:1;min-width:0}
     .offer .o-name{font-weight:800;font-size:15px}
     .offer .o-prime{color:var(--forest2);font-weight:800;font-size:14px}
@@ -231,7 +232,7 @@
   }
 
   function boursoCard(){
-    return '<div class="offer"><span class="logo" style="background:#0a0a0a">B</span>'+
+    return '<div class="offer"><span class="logo"><img src="/landings/banks/boursobank.png" alt="BoursoBank"></span>'+
       '<div class="o-body"><div class="o-name">BoursoBank — Visa Ultim</div>'+
       '<div class="o-prime">Jusqu\'à 180 € offerts</div>'+
       '<div class="o-sub">Compte &amp; carte gratuits, sans condition de revenus</div></div>'+
@@ -239,7 +240,7 @@
       '<span class="aff">Lien affilié</span>';
   }
   function fortuneoCard(){
-    return '<div class="offer"><span class="logo" style="background:#0A5BD3">F</span>'+
+    return '<div class="offer"><span class="logo"><img src="/landings/banks/fortuneo.png" alt="Fortuneo"></span>'+
       '<div class="o-body"><div class="o-name">Fortuneo — Carte gratuite</div>'+
       '<div class="o-prime">Jusqu\'à 180 € offerts</div>'+
       '<div class="o-sub">Carte Fosfo / Gold gratuite, 0 € de frais de tenue</div></div>'+
