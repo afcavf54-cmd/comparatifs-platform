@@ -19,7 +19,7 @@ cta_text: Offre exclusive myPOS
 cta_button: En profiter
 related_posts:
 - 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
-- 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
+- 5315-airwallex-j-ai-examine-ses-services-internationaux-mon-bilan
 - 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
 - 5315-airwallex-j-ai-examine-ses-services-internationaux-mon-bilan
 ---

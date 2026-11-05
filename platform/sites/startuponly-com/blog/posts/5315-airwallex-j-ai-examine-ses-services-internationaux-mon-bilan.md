@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive AirWallex
 cta_button: En profiter
 related_posts:
-- 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
-- 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
-- 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
 - 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
+- 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
+- 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
+- 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
 ---
 <p>Je vais être honnête : quand j'ai commencé à chercher une solution pour gérer les paiements internationaux de ma startup, j'étais perdu. Virement SWIFT à 30€ l'unité, taux de change bancaire qui grignote 2 à 3% à chaque transaction, délais de 3 à 5 jours. Avec des fournisseurs en Asie et des clients en Europe, ça devenait vite ingérable financièrement.</p>
 
