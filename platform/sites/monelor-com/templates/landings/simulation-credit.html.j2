@@ -24,8 +24,9 @@
     *{box-sizing:border-box}html,body{margin:0}
     body{font-family:'Nunito',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;font-size:16px}
     .app{max-width:640px;margin:0 auto;padding:26px 18px 56px;min-height:100vh}
-    .brand{display:flex;align-items:center;justify-content:center;gap:9px;font-weight:900;font-size:19px;color:var(--forest);margin-bottom:5px}
-    .brand b{color:var(--orange)}
+    .brand{display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+    .brand img{height:30px;width:auto;display:block}
+    #screen-entry h1,#screen-entry .lead{text-align:center}
     .sub-top{text-align:center;color:var(--ink2);font-size:13px;margin-bottom:20px}
     .card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(20px,4vw,32px)}
     h1{font-size:clamp(21px,4vw,27px);font-weight:800;color:var(--forest);margin:0 0 8px;letter-spacing:-.01em}
@@ -84,7 +85,7 @@
 </head>
 <body>
 <div class="app">
-  <div class="brand">Mon<b>elor</b></div>
+  <div class="brand"><img src="/landings/monelor-logo.png" alt="Monelor"></div>
   <div class="sub-top">🔒 Simulation gratuite · sans engagement · 2 minutes</div>
 
   <!-- ÉTAPE 0 : projet + montant -->
@@ -104,7 +105,7 @@
       </div>
       <div class="field">
         <label class="f" for="amount">Montant souhaité</label>
-        <input id="amount" type="number" inputmode="numeric" min="500" step="100" value="5000" aria-describedby="amountErr">
+        <input id="amount" type="number" inputmode="numeric" min="500" step="100" value="500" aria-describedby="amountErr">
         <p class="err" id="amountErr">Indiquez un montant valide (à partir de 500 €).</p>
       </div>
       <button class="btn" type="submit">Lancer ma simulation</button>
@@ -163,7 +164,7 @@
   var FORTUNEO_URL="#"; // lien d'affiliation Fortuneo à fournir
   var RACHAT_URL="/lp-rachat-de-credit.html";
 
-  var state={project:"tresorerie",amount:5000,situation:null};
+  var state={project:"tresorerie",amount:500,situation:null};
 
   // Définition des étapes (questions). value stockée dans state[key].
   var STEPS=[
