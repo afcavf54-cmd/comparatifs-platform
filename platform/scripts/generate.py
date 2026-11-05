@@ -1033,6 +1033,18 @@ def _ensure_noindex(html: str) -> str:
     return (html[:m.end()] + "\n  " + tag + html[m.end():]) if m else (tag + html)
 
 
+def _inject_clicky(html: str, site: dict) -> str:
+    """Injecte le tag Clicky (analytics) dans une landing autonome, à partir de
+    site.analytics_clicky (ID nu ou <script> complet). Même analytics que le
+    reste du site. Sans effet si déjà présent."""
+    val = site.get("analytics_clicky")
+    if not val or "getclicky.com" in html:
+        return html
+    snippet = str(val) if "<script" in str(val) else \
+        f'<script async data-id="{val}" src="//static.getclicky.com/js"></script>'
+    return html.replace("</body>", snippet + "\n</body>", 1) if "</body>" in html else (html + snippet)
+
+
 def generate_landings(site: dict, config: dict, site_dir: Path, output_dir: Path, env) -> None:
     """Rend les landing pages sur-mesure (dédiées aux ads).
 
@@ -1080,6 +1092,7 @@ def generate_landings(site: dict, config: dict, site_dir: Path, output_dir: Path
             print(f"  ⚠ landing '{slug}' — template landings/{key}.html.j2 KO : {ex}")
             continue
         html = _ensure_noindex(html)
+        html = _inject_clicky(html, site)
         (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
         sub = output_dir / slug
         sub.mkdir(parents=True, exist_ok=True)
