@@ -18,9 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive myPOS
 cta_button: En profiter
 related_posts:
+- 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
 - 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
 - 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
-- 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
+- 5315-airwallex-j-ai-examine-ses-services-internationaux-mon-bilan
 ---
 <p>J'ai passé plusieurs semaines à tester myPOS pour ma startup. Honnêtement, j'avais des attentes assez précises : un terminal qui gère les paiements carte sans me ruiner avec des abonnements mensuels, une application simple pour suivre les encaissements en temps réel, et idéalement un truc que je peux confier à mes deux salariés sans leur faire une formation de trois jours. Voici ce que j'ai trouvé, les bonnes et les mauvaises surprises.</p>
 
