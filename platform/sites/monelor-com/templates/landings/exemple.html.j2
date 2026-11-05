@@ -1,0 +1,67 @@
+{# ──────────────────────────────────────────────────────────────────────────
+   Landing page sur-mesure (gabarit d'exemple).
+   Variables fournies par le générateur :
+     lp.seo_title, lp.meta_description, lp.slug, lp.canonical   (éditables au dashboard)
+     site.*  (domain, name, social_*, logo_img…)  ·  build_date
+   À respecter pour chaque nouvelle landing :
+     - page autonome (full HTML), aucune dépendance au reste du site
+     - noindex (déjà présent ci-dessous ; sinon le générateur l'injecte)
+     - aucun lien de/vers le blog ou la navigation du site
+   Dupliquez ce fichier sous un nouveau <key>.html.j2 pour une nouvelle page.
+────────────────────────────────────────────────────────────────────────── #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>{{ lp.seo_title }}</title>
+  <meta name="description" content="{{ lp.meta_description }}">
+  <link rel="canonical" href="{{ lp.canonical }}">
+  {% if site.favicon_file %}<link rel="icon" href="{{ site.favicon_file }}">{% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#000921;--accent:#E8410A;--bg:#fff;--soft:#F5F6FA;--muted:#5a6479;--line:#e7e9f0;--r:16px}
+    *{box-sizing:border-box}html,body{margin:0}
+    body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
+    .wrap{max-width:720px;margin:0 auto;padding:40px 20px 64px}
+    .brand{font-weight:900;font-size:20px;text-align:center;margin-bottom:28px}
+    .hero{text-align:center;margin-bottom:36px}
+    .hero h1{font-size:clamp(28px,6vw,42px);font-weight:900;line-height:1.1;letter-spacing:-.02em;margin:0 0 14px}
+    .hero p{font-size:clamp(17px,2.4vw,20px);color:var(--muted);margin:0 auto;max-width:560px}
+    .cta{display:inline-block;margin-top:26px;background:var(--accent);color:#fff;font-weight:800;font-size:18px;text-decoration:none;padding:16px 34px;border-radius:999px;box-shadow:0 10px 26px rgba(232,65,10,.28);transition:transform .15s,box-shadow .15s}
+    .cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(232,65,10,.36)}
+    .benefits{display:grid;gap:16px;margin:40px 0}
+    .benefit{display:flex;gap:14px;align-items:flex-start;background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
+    .benefit .ic{font-size:26px;flex:none}
+    .benefit b{display:block;font-size:17px;margin-bottom:2px}
+    .benefit span{color:var(--muted);font-size:15px}
+    .foot{margin-top:48px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">{{ site.name | default('Monelor') }}</div>
+
+    <section class="hero">
+      <h1>Votre titre d'accroche, orienté conversion</h1>
+      <p>Un sous-titre qui explique la promesse en une phrase et donne envie de cliquer sur le bouton.</p>
+      <a class="cta" href="#" rel="nofollow">Je découvre l'offre →</a>
+    </section>
+
+    <section class="benefits">
+      <div class="benefit"><span class="ic">✅</span><div><b>Bénéfice n°1</b><span>Décrivez l'avantage principal pour le visiteur.</span></div></div>
+      <div class="benefit"><span class="ic">⚡</span><div><b>Bénéfice n°2</b><span>Un deuxième argument court et concret.</span></div></div>
+      <div class="benefit"><span class="ic">🔒</span><div><b>Bénéfice n°3</b><span>Rassurez (gratuit, sans engagement, données protégées…).</span></div></div>
+    </section>
+
+    <div style="text-align:center"><a class="cta" href="#" rel="nofollow">Je m'inscris maintenant →</a></div>
+
+    <p class="foot">
+      © {{ build_date[:4] }} {{ site.name | default('Monelor') }}. Page d'information à but publicitaire.<br>
+      Gabarit d'exemple — à dupliquer et personnaliser pour chaque campagne.
+    </p>
+  </div>
+</body>
+</html>

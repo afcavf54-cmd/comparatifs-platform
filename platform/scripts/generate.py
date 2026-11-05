@@ -1008,6 +1008,88 @@ def generate_robots(site: dict, output_dir: Path, config: dict = None, site_dir:
     print(f"  ✓ robots.txt généré (accès ouvert, IA incluse — sitemap → {domain}/sitemap.xml)")
 
 
+# Slugs réservés : une landing ne peut pas écraser une page système du site.
+_LANDING_RESERVED = {
+    "index", "sitemap", "robots", "404", "blog", "avis", "contact",
+    "mentions-legales", "politique-confidentialite", "plan-du-site",
+    "nos-comparateurs", "comparatifs-scpi", "avis-scpi", "a-propos",
+    "auteur", "simulation-credit", "simulation-rachat-de-credit",
+}
+
+
+def _landing_slug(s: str) -> str:
+    """Normalise un slug de landing : minuscules, [a-z0-9-], sans tiret aux bords."""
+    s = _re.sub(r"[^a-z0-9]+", "-", str(s or "").strip().lower()).strip("-")
+    return s
+
+
+def _ensure_noindex(html: str) -> str:
+    """Garantit la présence d'une balise robots noindex (filet de sécurité même
+    si le template l'oublie). Insérée juste après <head>."""
+    if _re.search(r'name=["\']robots["\']', html, _re.I):
+        return html
+    tag = '<meta name="robots" content="noindex,nofollow,noarchive">'
+    m = _re.search(r'<head[^>]*>', html, _re.I)
+    return (html[:m.end()] + "\n  " + tag + html[m.end():]) if m else (tag + html)
+
+
+def generate_landings(site: dict, config: dict, site_dir: Path, output_dir: Path, env) -> None:
+    """Rend les landing pages sur-mesure (dédiées aux ads).
+
+    Caractéristiques voulues :
+      - développement sur-mesure : un template par page (templates/landings/<key>.html.j2) ;
+      - éditables depuis le dashboard : slug, seo_title, meta_description (via landings.json) ;
+      - noindex + noarchive (balise injectée si absente) ;
+      - ABSENTES du sitemap.xml (on ne les y ajoute jamais) ;
+      - non liées depuis le blog ou la navigation (aucun lien généré).
+
+    Appelée APRÈS le nettoyage orphelins et la copie public/ → les fichiers
+    produits survivent à l'écrasement 404.
+    """
+    lp_file = site_dir / "landings.json"
+    if not lp_file.exists():
+        return
+    try:
+        data = json.loads(lp_file.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"  ⚠ landings.json illisible ({e}) — ignoré")
+        return
+    entries = data.get("landings", []) if isinstance(data, dict) else []
+    n = 0
+    for e in entries:
+        if not isinstance(e, dict) or not e.get("active"):
+            continue
+        slug = _landing_slug(e.get("slug", ""))
+        key = str(e.get("key", "")).strip()
+        if not slug or not key or slug in _LANDING_RESERVED:
+            print(f"  ⚠ landing ignorée (slug/key invalide ou réservé) : {e.get('slug')!r} / {key!r}")
+            continue
+        lp_ctx = {
+            "slug": slug,
+            "seo_title": e.get("seo_title") or site.get("name", ""),
+            "meta_description": e.get("meta_description") or "",
+            "key": key,
+            "canonical": f"{str(site.get('domain', '')).rstrip('/')}/{slug}.html",
+        }
+        try:
+            html = env.get_template(f"landings/{key}.html.j2").render(
+                site=site, theme=config.get("theme", {}), config=config,
+                lp=lp_ctx, build_date=date.today().isoformat(),
+            )
+        except Exception as ex:
+            print(f"  ⚠ landing '{slug}' — template landings/{key}.html.j2 KO : {ex}")
+            continue
+        html = _ensure_noindex(html)
+        (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
+        sub = output_dir / slug
+        sub.mkdir(parents=True, exist_ok=True)
+        (sub / "index.html").write_text(html, encoding="utf-8")
+        n += 1
+        print(f"  ✓ landing /{slug}.html (template {key})")
+    if n:
+        print(f"  ✓ {n} landing page(s) générée(s) — noindex, hors sitemap")
+
+
 def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list, is_classement_template: bool = False, blog_expected: set | None = None) -> None:
     """Supprime les fichiers HTML et entrées editorial.json des produits supprimés."""
     current_slugs = {p["slug"] for p in products}
@@ -2434,6 +2516,11 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # Copie logos PNG legacy depuis racine site_dir
         for logo in site_dir.glob("*.png"):
             shutil.copy2(logo, output_dir / logo.name)
+
+        # ── Landing pages sur-mesure (ads) : noindex, hors sitemap/nav ─────
+        # Placé APRÈS le nettoyage orphelins et la copie public/ → survit à
+        # l'écrasement 404 des pages non « attendues ».
+        generate_landings(site, config, site_dir, output_dir, env)
 
         # ── Copie images partagées du schema (classement) ─────────────────
         if is_classement_template:

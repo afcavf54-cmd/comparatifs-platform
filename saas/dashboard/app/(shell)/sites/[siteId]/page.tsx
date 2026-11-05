@@ -166,7 +166,7 @@ export default function SiteDetailPage() {
               ...(pageTypes.classement ? [{ icon: '📊', label: 'Gérer les classements', href: `/sites/${siteId}/classements` }] : []),
               { icon: '📝', label: 'Gérer le blog', href: `/sites/${siteId}/blog` },
               ...(siteId === 'captain-parrainage' ? [{ icon: '🎁', label: 'Offres de parrainage', href: `/sites/${siteId}/parrainages` }, { icon: '👤', label: 'Membres inscrits', href: `/sites/${siteId}/parrainages-membres` }, { icon: '✉️', label: 'Newsletter parrainage', href: `/sites/${siteId}/parrainages-newsletter` }] : []),
-              ...(siteId === 'monelor-com' ? [{ icon: '💰', label: 'Simulation de dividendes', href: `/sites/${siteId}/dividendes` }, { icon: '✉️', label: 'Newsletter', href: `/sites/${siteId}/newsletter` }, { icon: '💶', label: "Chiffre d'affaires", href: `/sites/${siteId}/revenues` }] : []),
+              ...(siteId === 'monelor-com' ? [{ icon: '💰', label: 'Simulation de dividendes', href: `/sites/${siteId}/dividendes` }, { icon: '✉️', label: 'Newsletter', href: `/sites/${siteId}/newsletter` }, { icon: '💶', label: "Chiffre d'affaires", href: `/sites/${siteId}/revenues` }, { icon: '🎯', label: 'Landing pages', href: `/sites/${siteId}/landings` }] : []),
               ...(siteId === 'mon-credit-facile-fr' ? [{ icon: '💳', label: 'Offres du simulateur', href: `/sites/${siteId}/offres` }, { icon: '✉️', label: 'Abonnés & newsletter', href: `/sites/${siteId}/abonnes` }] : []),
               { icon: '⚙️', label: 'Paramètres du site', href: `/sites/${siteId}/settings` },
             ].map(action => (

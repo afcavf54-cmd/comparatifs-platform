@@ -1,0 +1,12 @@
+{
+  "_comment": "Landing pages sur-mesure (ads). 'key' = template platform/sites/monelor-com/templates/landings/<key>.html.j2 (créé par le dev). slug/seo_title/meta_description/active sont éditables depuis le dashboard. Ces pages sont en noindex et absentes du sitemap et de la navigation.",
+  "landings": [
+    {
+      "key": "exemple",
+      "slug": "exemple-landing",
+      "seo_title": "Exemple de landing page | Monelor",
+      "meta_description": "Page d'exemple servant de gabarit aux landing pages dédiées aux campagnes publicitaires.",
+      "active": true
+    }
+  ]
+}
