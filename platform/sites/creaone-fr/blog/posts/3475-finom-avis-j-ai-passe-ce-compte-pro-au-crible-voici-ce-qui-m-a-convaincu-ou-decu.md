@@ -20,9 +20,9 @@ cta_enabled: true
 cta_text: Offre exclusive Finom
 cta_button: En profiter
 related_posts:
-- 3187-qonto-avis-apres-avoir-teste-cette-banque-pro-voici-ce-que-j-en-retiens
-- 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
+- 2125-equals-avis-mon-avis-sans-detour-sur-cette-solution-et-ses-veritables-avantages
 - 9883-sogexia-business-avis-mon-analyse-de-ce-compte-professionnel-et-les-pieges-a-eviter
+- 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
 - 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
 ---
 <p>Ça fait maintenant neuf ans que je gère la comptabilité d'entreprises de taille intermédiaire. J'ai vu passer beaucoup de solutions bancaires, des classiques aux néobanques. Finom, j'en avais entendu parler via un de mes collègues RH qui cherchait à simplifier la gestion des notes de frais. J'ai décidé de tester sérieusement pendant plusieurs semaines, avec un regard comptable, pas commercial.</p>
