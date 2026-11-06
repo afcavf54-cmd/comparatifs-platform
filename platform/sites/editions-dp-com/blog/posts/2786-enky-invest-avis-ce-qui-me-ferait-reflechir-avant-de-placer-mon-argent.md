@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Enky Invest
 cta_button: En profiter
 related_posts:
-- 1456-enerfip-les-risques-que-je-surveillerais-avant-d-investir-avis
+- 6786-waltio-avis-les-difficultes-que-j-ai-identifiees-avant-de-declarer-mes-cryptos
+- 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
 - 6125-trezor-avis-ce-qui-pourrait-me-faire-hesiter-avant-d-acheter-ce-wallet
-- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
-- 1015-bordereau-de-situation-fiscale-modele-p-237-a-quoi-sert-il-et-comment-l-obtenir
+- 1694-assujettissement-a-la-tva-en-cas-d-operations-imposables-sur-option-regles-et-demarches
 ---
 <p>J'ai regardé de près plusieurs plateformes d'investissement ces derniers mois. Enky Invest est revenue plusieurs fois dans mes recherches. Alors j'ai creusé. Voici ce que j'ai trouvé, sans filtre.</p>
 
