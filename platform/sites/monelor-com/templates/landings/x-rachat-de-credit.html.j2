@@ -1,0 +1,72 @@
+{# ──────────────────────────────────────────────────────────────────────────
+   Landing « rachat de crédit » (ads) — page avec iframe/widget partenaire.
+   noindex + hors sitemap (générateur). Clicky injecté automatiquement.
+   ⚠️ Le widget DevisProx ci-dessous est repris de mon-credit-facile (partner
+   8063699, questionnaire 748). Donne-moi l'embed/l'ID à utiliser pour monelor
+   si différent, je le remplace.
+────────────────────────────────────────────────────────────────────────── #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>{{ lp.seo_title }}</title>
+  <meta name="description" content="{{ lp.meta_description }}">
+  <link rel="canonical" href="{{ lp.canonical }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#FAFBF5;--lime2:#EAF7D4;--orange:#FF8A3D;--forest:#234B3C;--forest2:#2E6350;
+      --ink:#1F2A26;--ink2:#53625B;--line:#E4EADF;--white:#fff;--r:18px;--shadow:0 12px 34px rgba(35,75,60,.10)}
+    *{box-sizing:border-box}html,body{margin:0}
+    body{font-family:'Nunito',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;font-size:16px}
+    .app{max-width:720px;margin:0 auto;padding:26px 18px 56px;min-height:100vh}
+    .brand{display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+    .brand img{height:30px;width:auto;display:block}
+    .sub-top{text-align:center;color:var(--ink2);font-size:13px;margin-bottom:20px}
+    .card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(20px,4vw,32px)}
+    h1{font-size:clamp(22px,4.2vw,29px);font-weight:800;color:var(--forest);margin:0 0 14px;letter-spacing:-.01em}
+    #DevisProxContent{min-height:320px}
+    .warn{background:var(--lime2);border-radius:12px;padding:12px 14px;font-size:12.5px;color:var(--forest);line-height:1.5}
+    .legal-foot{font-size:12px;color:var(--ink2);text-align:center;margin-top:28px;line-height:1.6}
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="brand"><img src="/landings/monelor-logo.png" alt="Monelor"></div>
+  <div class="sub-top">🔒 Comparaison gratuite · sans engagement · vos données restent confidentielles</div>
+
+  <section class="card">
+    <h1>Rachat de crédit : regroupez vos crédits</h1>
+
+    <!-- Widget partenaire DevisProx (à remplacer par l'embed monelor si différent) -->
+    <script type="text/javascript">
+    (function(d, s, id) {
+        var js, dpjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://static.devisprox.com/whitelabelforms.js";
+        dpjs.parentNode.insertBefore(js, dpjs);
+    }(document, 'script', 'devisprox-jssdk-init'));
+    var _dp_questionnaires = _dp_questionnaires || [];
+    _dp_questionnaires.push({
+      elementid: 'DevisProxContent',
+      partner: 8063699,
+      questionnaire: 762,
+      options: {'ref':'X-simulation-credit','ref1':'rachat de crédit'}
+    });
+    </script>
+    <div id="DevisProxContent" style="width:100%;"></div>
+
+    <div class="warn" style="margin-top:20px">⚠️ Une baisse de mensualité peut s'accompagner d'une durée plus longue et d'un coût total plus élevé. Un crédit vous engage et doit être remboursé.</div>
+  </section>
+
+  <p class="legal-foot">
+    Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.<br>
+    monelor.com oriente vers des offres partenaires et ne constitue ni une offre de crédit ni une évaluation de solvabilité. L'acceptation dépend de l'étude de votre dossier par l'organisme prêteur.<br>
+    <a href="/mentions-legales/" style="color:var(--forest2)">Mentions légales</a>
+  </p>
+</div>
+</body>
+</html>
