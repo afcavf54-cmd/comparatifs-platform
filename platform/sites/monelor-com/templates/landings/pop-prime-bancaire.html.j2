@@ -40,6 +40,13 @@
     .btn.disabled{background:#C7D0DF;color:#6C7A93;box-shadow:none;cursor:not-allowed}
     /* Hero */
     .hero{text-align:center;padding:30px 0 10px}
+    .hero-top{display:flex;align-items:center;gap:30px;text-align:left;margin-bottom:10px}
+    .hero-img{flex:1 1 46%;min-width:0}
+    .hero-img img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 18px 40px rgba(18,32,57,.16)}
+    .hero-txt{flex:1 1 50%}
+    .hero-txt h1{text-align:left;margin:0 0 12px}
+    .hero-txt .sub{text-align:left;margin:0}
+    @media(max-width:720px){.hero-top{flex-direction:column;gap:18px;text-align:center}.hero-txt h1,.hero-txt .sub{text-align:center}.hero-img{max-width:420px;width:100%;order:-1}}
     .eyebrow{display:inline-block;background:var(--green-soft);color:var(--green-ink);font-weight:800;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
     .hero h1{font-size:clamp(27px,6vw,42px);font-weight:900;line-height:1.1;letter-spacing:-.02em;margin:16px auto 12px;max-width:640px}
     .hero h1 .amt{color:var(--green)}
@@ -117,8 +124,13 @@
   <div class="wrap">
     <!-- 1. HERO + offres directement -->
     <section class="hero">
-      <h1>Recevez jusqu'à <span class="amt" id="primeMax">440</span> € en ouvrant un compte bancaire</h1>
-      <p class="sub" style="margin-bottom:22px">Certaines banques vous versent une prime lorsque vous ouvrez un compte et remplissez les conditions de leur offre. Choisissez votre offre ci-dessous.</p>
+      <div class="hero-top">
+        <div class="hero-img"><img src="/landings/pop/hero-prime.png" alt="Exemple de prime de bienvenue créditée sur un compte bancaire" loading="eager"></div>
+        <div class="hero-txt">
+          <h1>Recevez jusqu'à <span class="amt" id="primeMax">440</span> € en ouvrant un compte bancaire</h1>
+          <p class="sub">Certaines banques vous versent une prime lorsque vous ouvrez un compte et remplissez les conditions de leur offre. Choisissez votre offre ci-dessous.</p>
+        </div>
+      </div>
       <div class="offers" id="offres"></div>
       <p class="note" style="margin-top:14px">* Offres soumises à conditions, détails et éligibilité sur le site de chaque banque.</p>
     </section>
