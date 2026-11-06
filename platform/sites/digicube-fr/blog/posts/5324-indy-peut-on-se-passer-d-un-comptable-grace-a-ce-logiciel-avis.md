@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
 related_posts:
-- kelio-presentation-fonctionnalites-et-avis-sur-le-logiciel-rh
-- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
-- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
-- 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
+- 1024-le-logiciel-crm-salestrack-pro-face-a-la-version-evolution
+- 6904-ce-que-salesforce-premium-offre-en-plus-d-un-crm-basique
+- 8699-strategie-corporate-comment-definir-les-orientations-globales-de-votre-entreprise
+- 1643-le-logiciel-crm-salestrack-360-face-aux-autres-crm
 ---
 <p>J'ai découvert Indy il y a un peu moins de deux ans, au moment où je cherchais à réduire ma facture comptable. Gérant d'une petite structure à Marseille, avec une équipe qui a grandi progressivement, je n'avais pas forcément les moyens de payer un cabinet comptable au tarif plein chaque année, surtout pour des tâches qui me semblaient répétitives. Un ami m'avait parlé d'Indy. J'ai testé. Et j'ai des choses à dire.</p>
 
