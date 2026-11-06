@@ -209,15 +209,19 @@
   const source = params.get("utm_source");
   const creative = params.get("utm_content") || "";
 
+  // Préfixe d'attribution par source publicitaire ; la créa = utm_content.
+  const PREFIX = { meta: "meta_bourso_", x: "x_bourso_" };
+
   // Accepte uniquement des références publicitaires simples.
   const validCreative = /^[a-zA-Z0-9_-]{1,80}$/.test(creative);
+  const prefix = PREFIX[source];
 
   const clickref =
-    source === "meta" && validCreative
-      ? `meta_bourso_${creative}`
+    prefix && validCreative
+      ? `${prefix}${creative}`
       : "lp_bourso_non_attribue";
 
-  document.querySelectorAll("a.cta").forEach((button) => {
+  document.querySelectorAll('a[href*="awin1.com"]').forEach((button) => {
     const link = new URL(
       "https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198"
     );
