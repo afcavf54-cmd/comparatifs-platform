@@ -257,14 +257,14 @@
   function boursoCard(){
     return '<div class="offer">'+
       '<span class="logo"><img src="/landings/banks/boursobank.png" alt="BoursoBank"></span>'+
-      '<div class="o-body"><div class="o-name">BoursoBank vous offre <span class="amt">180 €</span> !</div>'+
+      '<div class="o-body"><div class="o-name">BoursoBank vous offre <span class="amt">180 €</span></div>'+
       '<ul class="o-pts"><li>Carte Welcome et compte gratuit*</li><li>Sans condition de revenus</li></ul></div>'+
       '<a class="o-cta" href="'+AWIN_BOURSO+'" target="_blank" rel="nofollow sponsored noopener">J\'en profite →</a></div>';
   }
   function fortuneoCard(){
     return '<div class="offer">'+
       '<span class="logo"><img src="/landings/banks/fortuneo.png" alt="Fortuneo"></span>'+
-      '<div class="o-body"><div class="o-name">Fortuneo vous offre <span class="amt">260 €</span> !</div>'+
+      '<div class="o-body"><div class="o-name">Fortuneo vous offre <span class="amt">260 €</span></div>'+
       '<ul class="o-pts"><li>Carte Gold gratuite*</li><li>0 € de frais de tenue</li></ul></div>'+
       '<a class="o-cta" href="'+FORTUNEO_URL+'" target="_blank" rel="nofollow sponsored noopener">J\'en profite →</a></div>';
   }
@@ -293,6 +293,9 @@
     // Primes de bienvenue en premier, puis la box rachat de crédit.
     var html = primes + rachat;
     html += '<p class="disclaimer">* Cartes et primes soumises à conditions : détails et éligibilité à consulter sur le site de chaque banque.<br>** Une baisse de mensualité peut allonger la durée et augmenter le coût total du crédit. Offres soumises aux conditions des partenaires. monelor.com est un site indépendant.</p>';
+    // Sur l'écran de résultat : on masque le logo et la ligne « Confidentiel… ».
+    var brand=document.querySelector(".brand"); if(brand) brand.style.display="none";
+    var subTop=document.querySelector(".sub-top"); if(subTop) subTop.style.display="none";
     $("resBody").innerHTML=html;
     var tgl=$("primeToggle");
     if(tgl){tgl.addEventListener("click",function(){
