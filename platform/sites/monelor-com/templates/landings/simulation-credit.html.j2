@@ -177,15 +177,15 @@
 
   // Définition des étapes (questions). value stockée dans state[key].
   var STEPS=[
+    {key:"logement",title:"Êtes-vous propriétaire ou locataire ?",lead:"",
+     opts:[{v:"proprio",l:"Propriétaire",e:"🏠"},{v:"locataire",l:"Locataire",e:"🔑"},{v:"heberge",l:"Hébergé gratuitement",e:"👪"}]},
     {key:"situation",title:"Quelle est votre situation professionnelle ?",lead:"",
      opts:[{v:"cdi",l:"CDI / Titulaire",e:"💼"},{v:"cdd",l:"CDD / Intérim",e:"📝"},
            {v:"indep",l:"Indépendant",e:"🧑‍💻"},{v:"retraite",l:"Retraité(e)",e:"🌴"},{v:"autre",l:"Autre",e:"•"}]},
     {key:"salaire",title:"Quel est votre salaire net mensuel ?",lead:"",
      opts:[{v:"<1200",l:"Moins de 1 200 €",e:"💶"},{v:"1200-1800",l:"1 200 € – 1 800 €",e:"💶"},
            {v:"1800-2500",l:"1 800 € – 2 500 €",e:"💶"},{v:"2500-3500",l:"2 500 € – 3 500 €",e:"💶"},
-           {v:">3500",l:"Plus de 3 500 €",e:"💶"}]},
-    {key:"logement",title:"Votre logement ?",lead:"",
-     opts:[{v:"proprio",l:"Propriétaire",e:"🏠"},{v:"locataire",l:"Locataire",e:"🔑"},{v:"heberge",l:"Hébergé(e)",e:"👪"}]}
+           {v:">3500",l:"Plus de 3 500 €",e:"💶"}]}
   ];
   var stepIdx=0;
 
@@ -199,18 +199,24 @@
     var amt=parseInt($("amount").value,10);
     if(!amt||amt<500||isNaN(amt)){$("amountErr").classList.add("show");$("amount").focus();return;}
     state.amount=amt;state.project=$("project").value;
-    openConso();
+    stepIdx=0;renderStep();show("screen-steps");
   });
 
-  // Popup regroupement : "Oui" → page rachat ; fermeture → suite du tunnel.
+  // Popup regroupement : déclenchée UNIQUEMENT quand on choisit « Propriétaire ».
+  // "Oui" → page rachat ; fermeture → on poursuit le tunnel normalement.
   function openConso(){
     $("consoSub").innerHTML='Emprunter <strong>'+fmt(state.amount)+' €</strong> et regrouper vos crédits en cours.';
     $("consoModal").classList.add("show");
   }
-  function closeConso(){ $("consoModal").classList.remove("show"); stepIdx=0; renderStep(); show("screen-steps"); }
+  function closeConso(){ $("consoModal").classList.remove("show"); advanceStep(); }
   $("consoClose").addEventListener("click",closeConso);
   $("consoNo").addEventListener("click",closeConso);
   // ("consoYes" est un lien <a> vers /lp-rachat-de-credit.html)
+
+  function advanceStep(){
+    if(stepIdx<STEPS.length-1){stepIdx++;renderStep();}
+    else{runAnalyse();}
+  }
 
   function renderStep(){
     var s=STEPS[stepIdx];
@@ -223,8 +229,9 @@
       b.innerHTML='<span class="em">'+o.e+'</span><span>'+o.l+'</span>';
       b.addEventListener("click",function(){
         state[s.key]=o.v;
-        if(stepIdx<STEPS.length-1){stepIdx++;renderStep();}
-        else{runAnalyse();}
+        // Propriétaire → on déclenche la popup rachat ; sinon on avance.
+        if(s.key==="logement" && o.v==="proprio"){ openConso(); return; }
+        advanceStep();
       });
       box.appendChild(b);
     });
