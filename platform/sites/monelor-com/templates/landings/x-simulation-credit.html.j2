@@ -179,6 +179,15 @@
 (function(){
   var $=function(id){return document.getElementById(id);};
   var AWIN_BOURSO="https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198";
+  // Attribution Awin (clickref) selon la source publicitaire — même logique que lp-boursobank-ultim.
+  (function(){
+    var p=new URLSearchParams(window.location.search);
+    var src=p.get("utm_source"), crea=p.get("utm_content")||"";
+    var PREFIX={meta:"meta_bourso_",x:"x_bourso_"};
+    var ok=PREFIX[src] && /^[a-zA-Z0-9_-]{1,80}$/.test(crea);
+    var clickref=ok?PREFIX[src]+crea:"lp_bourso_non_attribue";
+    AWIN_BOURSO+=(AWIN_BOURSO.indexOf("?")>=0?"&":"?")+"clickref="+encodeURIComponent(clickref);
+  })();
   var FORTUNEO_URL="https://tracking.publicidees.com/clic.php?promoid=272621&progid=1325&partid=64100";
   var RACHAT_URL="/lp-x-rachat-de-credit.html";
 
