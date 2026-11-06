@@ -3,8 +3,11 @@ title: 'Indy : Peut-on se passer d''un comptable grâce à ce logiciel ? Avis 20
 slug: 5324-indy-peut-on-se-passer-d-un-comptable-grace-a-ce-logiciel-avis
 date: '2026-11-06T08:00:00+01:00'
 categorie: Gestion d'entreprise
-meta_title: Indy peut-il simplifier les obligations comptables des travailleurs indépendants ?
-meta_description: 'Indy promet de remplacer votre comptable pour les indépendants et petites structures. Avis concret après deux ans d''utilisation : ce que le logiciel fait bien et…'
+meta_title: Indy peut-il simplifier les obligations comptables des travailleurs indépendants
+  ?
+meta_description: 'Indy promet de remplacer votre comptable pour les indépendants
+  et petites structures. Avis concret après deux ans d''utilisation : ce que le logiciel
+  fait bien et…'
 min_words: 3000
 status: published
 featured_image: /blog/5324-indy-peut-on-se-passer-d-un-comptable-grace-a-ce-logiciel-avis.jpg
@@ -15,8 +18,12 @@ cta_link: https://c3po.link/QZrBCYjH2T
 cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
+related_posts:
+- kelio-presentation-fonctionnalites-et-avis-sur-le-logiciel-rh
+- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
+- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
+- 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
 ---
-
 <p>J'ai découvert Indy il y a un peu moins de deux ans, au moment où je cherchais à réduire ma facture comptable. Gérant d'une petite structure à Marseille, avec une équipe qui a grandi progressivement, je n'avais pas forcément les moyens de payer un cabinet comptable au tarif plein chaque année, surtout pour des tâches qui me semblaient répétitives. Un ami m'avait parlé d'Indy. J'ai testé. Et j'ai des choses à dire.</p>
 
 <p>Pas de suspense artificiel : Indy est un logiciel de comptabilité pensé pour les indépendants et les petites structures. Rapprochement bancaire automatique, déclarations fiscales, catégorisation des transactions... Sur le papier, ça ressemble à ce qu'on rêve tous d'avoir. Dans la réalité, c'est un peu plus nuancé.</p>
