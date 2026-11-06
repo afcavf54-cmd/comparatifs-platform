@@ -57,11 +57,17 @@
     .step b{display:block;font-size:16px;margin-bottom:4px}
     .step span{color:var(--ink2);font-size:13.5px}
     /* Offres */
-    .offers{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+    .offers{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;text-align:left;margin-top:6px}
     .ocard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .ohead{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+    .ologo{width:52px;height:52px;border-radius:12px;background:#fff;border:1px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .ologo img{width:100%;height:100%;object-fit:contain}
     .obank{font-weight:900;font-size:18px}
-    .omontant{margin:10px 0 2px;font-size:16px;font-weight:700;color:var(--ink2)}
+    .omontant{margin:6px 0 2px;font-size:16px;font-weight:700;color:var(--ink2)}
     .omontant .amt{color:var(--green);font-size:30px;font-weight:900}
+    .opts{list-style:none;padding:0;margin:10px 0 18px}
+    .opts li{position:relative;padding-left:22px;font-size:14px;color:var(--ink);margin:6px 0}
+    .opts li::before{content:"✓";color:var(--green);font-weight:900;position:absolute;left:0;top:0}
     .oresume{color:var(--ink2);font-size:14px;margin:6px 0 12px}
     .mob{display:flex;flex-direction:column;gap:4px;background:var(--green-soft);border-radius:var(--r2);padding:10px 12px;font-size:13px;color:var(--green-ink);margin:0 0 12px}
     .odetails{list-style:none;padding:0;margin:0 0 16px}
@@ -105,22 +111,14 @@
   <header class="top"><img src="/landings/monelor-logo.png" alt="Monelor"></header>
 
   <div class="wrap">
-    <!-- 1. HERO -->
+    <!-- 1. HERO + offres directement -->
     <section class="hero">
       <span class="eyebrow">Les primes de bienvenue des banques</span>
-      <h1>Recevez jusqu'à <span class="amt" id="primeMax">[PRIME_MAX]</span> € en ouvrant un compte bancaire</h1>
-      <p class="sub">Certaines banques vous versent une prime lorsque vous ouvrez un compte et remplissez les conditions de leur offre. Découvrez comment en profiter.</p>
-      <div class="hero-illus" aria-hidden="true">
-        <svg viewBox="0 0 260 150" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect x="18" y="34" width="168" height="104" rx="14" fill="#122039"/>
-          <rect x="32" y="60" width="28" height="20" rx="4" fill="#C9A646"/>
-          <rect x="32" y="112" width="86" height="10" rx="5" fill="#ffffff" opacity=".85"/>
-          <circle cx="196" cy="96" r="42" fill="#E7F7EE" stroke="#12A150" stroke-width="3"/>
-          <text x="196" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="40" font-weight="900" fill="#12A150">€</text>
-        </svg>
-      </div>
-      <a class="btn" href="#offres" data-scroll>Voir les primes disponibles</a>
-      <p class="note">Réservé aux nouveaux clients • Offres soumises à conditions</p>
+      <h1>Recevez jusqu'à <span class="amt" id="primeMax">440</span> € en ouvrant un compte bancaire</h1>
+      <p class="sub">Certaines banques vous versent une prime lorsque vous ouvrez un compte et remplissez les conditions de leur offre. Choisissez votre offre ci-dessous.</p>
+      <p class="note" style="margin:0 0 20px">Réservé aux nouveaux clients • Offres soumises à conditions</p>
+      <div class="offers" id="offres"></div>
+      <p class="note" style="margin-top:14px">* Offres soumises à conditions, détails et éligibilité sur le site de chaque banque.</p>
     </section>
 
     <!-- 2. PRINCIPE -->
@@ -132,13 +130,6 @@
         <div class="step"><div class="n">2</div><b>Ouvrez votre compte</b><span>Faites votre demande sur le site officiel de la banque.</span></div>
         <div class="step"><div class="n">3</div><b>Recevez votre prime</b><span>Effectuez les actions demandées et respectez les délais de l'offre.</span></div>
       </div>
-    </section>
-
-    <!-- 3. OFFRES -->
-    <section id="offres">
-      <h2 class="sec-h">Choisissez votre prime de bienvenue</h2>
-      <p class="sec-lead">Comparez les offres, en portant attention au premier versement demandé.</p>
-      <div class="offers" id="offersGrid"></div>
     </section>
 
     <!-- 4. FAQ -->
@@ -177,7 +168,7 @@
   </footer>
 
   <!-- Bouton fixe mobile (apparaît après le hero) -->
-  <a class="sticky" id="stickyBtn" href="#offres" data-scroll>Voir les primes ↓</a>
+  <a class="sticky" id="stickyBtn" href="#offres" data-scroll>Voir les offres</a>
 
 <script>
 (function(){
@@ -190,39 +181,21 @@
   //  subidParam : nom du paramètre d'identifiant de sous-suivi accepté par la
   //  plateforme (Awin = "clickref"). Laisser "" tant qu'il n'est pas confirmé.
   // ══════════════════════════════════════════════════════════════════════
-  var PRIME_MAX = "[PRIME_MAX]"; // ex. "260"
+  var PRIME_MAX = "440";
 
   var OFFERS = [
     {
-      id:"boursobank", name:"BoursoBank",
-      montant:"[PRIME_BOURSO]",
-      resume:"[RESUME_BOURSO]",
-      carte:"[CARTE_BOURSO]",
-      carteGratuite:"[CONDITIONS_GRATUITE_BOURSO]",
-      versement:"[VERSEMENT_BOURSO]",
-      actions:"[ACTIONS_BOURSO]",
-      delai:"[DELAI_PRIME_BOURSO]",
-      conservation:"[CONSERVATION_BOURSO]",
-      sansMobilite:"[MONTANT_SANS_MOBILITE_BOURSO]",
-      supplementMobilite:"[SUPPLEMENT_MOBILITE_BOURSO]",
-      conditions:"[CONDITIONS_DETAILLEES_BOURSO]",
+      id:"boursobank", name:"BoursoBank", logo:"/landings/banks/boursobank.png",
+      montant:"180",
+      pts:["Carte Welcome et compte gratuit*","Sans condition de revenus"],
       url:"https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198",
       subidParam:"clickref",
       cta:"Voir l'offre BoursoBank"
     },
     {
-      id:"fortuneo", name:"Fortuneo",
-      montant:"[PRIME_FORTUNEO]",
-      resume:"[RESUME_FORTUNEO]",
-      carte:"[CARTE_FORTUNEO]",
-      carteGratuite:"[CONDITIONS_GRATUITE_FORTUNEO]",
-      versement:"[VERSEMENT_FORTUNEO]",
-      actions:"[ACTIONS_FORTUNEO]",
-      delai:"[DELAI_PRIME_FORTUNEO]",
-      conservation:"[CONSERVATION_FORTUNEO]",
-      sansMobilite:"[MONTANT_SANS_MOBILITE_FORTUNEO]",
-      supplementMobilite:"[SUPPLEMENT_MOBILITE_FORTUNEO]",
-      conditions:"[CONDITIONS_DETAILLEES_FORTUNEO]",
+      id:"fortuneo", name:"Fortuneo", logo:"/landings/banks/fortuneo.png",
+      montant:"260",
+      pts:["Carte Gold gratuite*","0 € de frais de tenue"],
       url:"https://tracking.publicidees.com/clic.php?promoid=272621&progid=1325&partid=64100",
       subidParam:"", // param de sous-suivi publicidees à confirmer
       cta:"Voir l'offre Fortuneo"
@@ -256,27 +229,16 @@
     var btn = url
       ? '<a class="btn block cta" href="'+url+'" target="_blank" rel="nofollow sponsored noopener" data-bank="'+o.id+'" data-loc="'+loc+'">'+esc(o.cta)+' →</a>'
       : '<span class="btn block cta disabled" role="button" aria-disabled="true" title="Lien d\'affiliation à renseigner">Lien bientôt disponible</span>';
-    var mob = (o.sansMobilite || o.supplementMobilite)
-      ? '<div class="mob"><span>Sans mobilité bancaire : <strong>'+esc(o.sansMobilite)+' €</strong></span><span>+ avec mobilité bancaire : <strong>'+esc(o.supplementMobilite)+' €</strong></span></div>'
-      : '';
+    var pts = o.pts.map(function(p){ return '<li>'+esc(p)+'</li>'; }).join("");
     return '<div class="ocard">'+
-      '<span class="obank">'+esc(o.name)+'</span>'+
+      '<div class="ohead"><span class="ologo"><img src="'+o.logo+'" alt="'+esc(o.name)+'"></span><span class="obank">'+esc(o.name)+'</span></div>'+
       '<div class="omontant">Jusqu\'à <span class="amt">'+esc(o.montant)+' €</span> de prime</div>'+
-      '<p class="oresume">'+esc(o.resume)+'</p>'+
-      mob+
-      '<ul class="odetails">'+
-        '<li><span class="k">💳 Carte</span><span class="v">'+esc(o.carte)+' — '+esc(o.carteGratuite)+'</span></li>'+
-        '<li class="hl"><span class="k">💶 Premier versement demandé</span><span class="v">'+esc(o.versement)+'</span></li>'+
-        '<li><span class="k">✅ Pour obtenir la prime</span><span class="v">'+esc(o.actions)+'</span></li>'+
-        '<li><span class="k">⏱️ Versement de la prime</span><span class="v">'+esc(o.delai)+'</span></li>'+
-        (o.conservation ? '<li><span class="k">📅 Conservation du compte</span><span class="v">'+esc(o.conservation)+'</span></li>' : '')+
-      '</ul>'+
+      '<ul class="opts">'+pts+'</ul>'+
       btn+
-      '<details class="cond"><summary>Voir les conditions</summary><div class="cond-body">'+esc(o.conditions)+'</div></details>'+
     '</div>';
   }
 
-  $("#offersGrid").innerHTML = OFFERS.map(function(o){ return card(o,"offres"); }).join("");
+  $("#offres").innerHTML = OFFERS.map(function(o){ return card(o,"offres"); }).join("");
 
   // Suivi des clics sortants (Clicky, best-effort) + param banque/emplacement.
   document.addEventListener("click", function(e){
