@@ -1,0 +1,308 @@
+{# ──────────────────────────────────────────────────────────────────────────
+   Landing PopAds — « Primes de bienvenue bancaires » (ads, trafic froid).
+   Objectif : clics qualifiés vers les liens d'affiliation BoursoBank & Fortuneo.
+   noindex + hors sitemap (générateur). Clicky injecté automatiquement.
+
+   ⚠️ CONFIG CENTRALISÉE dans le <script> en bas (objet OFFERS + PRIME_MAX) :
+   les montants et conditions sont des PLACEHOLDERS [..] à remplir — rien n'est
+   inventé. Les liens d'affiliation Bourso (Awin) et Fortuneo (publicidees) sont
+   déjà renseignés ; un bouton sans lien est automatiquement désactivé.
+────────────────────────────────────────────────────────────────────────── #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>{{ lp.seo_title }}</title>
+  <meta name="description" content="{{ lp.meta_description }}">
+  <link rel="canonical" href="{{ lp.canonical }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#122039;--ink2:#56688A;--bg:#F4F7FC;--card:#fff;--line:#E3E9F2;
+      --green:#12A150;--green2:#0C8A43;--green-soft:#E7F7EE;--green-ink:#0B6B35;
+      --blue:#1D4ED8;--amber-soft:#FFF4E0;--amber-ink:#8A5A00;
+      --r:18px;--r2:12px;--shadow:0 10px 30px rgba(18,32,57,.07);
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0}
+    body{font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased;padding-bottom:0}
+    .wrap{max-width:900px;margin:0 auto;padding:0 18px}
+    a{color:inherit}
+    /* En-tête minimal */
+    .top{display:flex;justify-content:center;padding:16px 18px;background:var(--card);border-bottom:1px solid var(--line)}
+    .top img{height:28px;width:auto;display:block}
+    /* Boutons */
+    .btn{display:inline-block;background:var(--green);color:#fff;font-weight:800;font-size:16px;text-align:center;text-decoration:none;border:0;border-radius:999px;padding:15px 26px;cursor:pointer;box-shadow:0 10px 24px rgba(18,161,80,.28);transition:transform .15s,box-shadow .15s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(18,161,80,.36)}
+    .btn.block{display:block;width:100%}
+    .btn.disabled{background:#C7D0DF;color:#6C7A93;box-shadow:none;cursor:not-allowed}
+    /* Hero */
+    .hero{text-align:center;padding:30px 0 10px}
+    .eyebrow{display:inline-block;background:var(--green-soft);color:var(--green-ink);font-weight:800;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+    .hero h1{font-size:clamp(27px,6vw,42px);font-weight:900;line-height:1.1;letter-spacing:-.02em;margin:16px auto 12px;max-width:640px}
+    .hero h1 .amt{color:var(--green)}
+    .hero .sub{color:var(--ink2);font-size:clamp(15px,2.4vw,18px);max-width:540px;margin:0 auto 22px}
+    .hero .note{color:var(--ink2);font-size:12.5px;margin:12px 0 0}
+    .hero-illus{margin:6px auto 20px;max-width:260px}
+    /* Section générique */
+    section{padding:34px 0}
+    .sec-h{font-size:clamp(21px,3.4vw,28px);font-weight:900;text-align:center;letter-spacing:-.01em;margin:0 0 10px}
+    .sec-lead{color:var(--ink2);text-align:center;max-width:620px;margin:0 auto 24px;font-size:15.5px}
+    /* 3 étapes */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;text-align:center;box-shadow:var(--shadow)}
+    .step .n{width:38px;height:38px;border-radius:50%;background:var(--green-soft);color:var(--green-ink);font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:17px}
+    .step b{display:block;font-size:16px;margin-bottom:4px}
+    .step span{color:var(--ink2);font-size:13.5px}
+    /* Offres */
+    .offers{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+    .ocard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .obank{font-weight:900;font-size:18px}
+    .omontant{margin:10px 0 2px;font-size:16px;font-weight:700;color:var(--ink2)}
+    .omontant .amt{color:var(--green);font-size:30px;font-weight:900}
+    .oresume{color:var(--ink2);font-size:14px;margin:6px 0 12px}
+    .mob{display:flex;flex-direction:column;gap:4px;background:var(--green-soft);border-radius:var(--r2);padding:10px 12px;font-size:13px;color:var(--green-ink);margin:0 0 12px}
+    .odetails{list-style:none;padding:0;margin:0 0 16px}
+    .odetails li{display:flex;flex-direction:column;gap:1px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+    .odetails li:last-child{border-bottom:0}
+    .odetails .k{color:var(--ink2);font-size:12.5px;font-weight:700}
+    .odetails .v{color:var(--ink)}
+    .odetails li.hl{background:var(--amber-soft);border-radius:var(--r2);padding:10px 12px;border-bottom:0;margin:4px 0}
+    .odetails li.hl .k{color:var(--amber-ink)}
+    .ocard .cta{margin-top:auto}
+    .cond{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+    .cond summary{cursor:pointer;color:var(--blue);font-weight:700;font-size:13.5px;list-style:none}
+    .cond summary::-webkit-details-marker{display:none}
+    .cond summary::after{content:" ↓"}
+    .cond[open] summary::after{content:" ↑"}
+    .cond-body{color:var(--ink2);font-size:13px;margin-top:8px;line-height:1.5}
+    /* FAQ */
+    .faq{max-width:680px;margin:0 auto}
+    .faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);margin:10px 0;box-shadow:var(--shadow)}
+    .faq summary{cursor:pointer;font-weight:800;font-size:15px;padding:16px 18px;list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";color:var(--green);font-weight:900;font-size:20px}
+    .faq details[open] summary::after{content:"–"}
+    .faq .a{padding:0 18px 16px;color:var(--ink2);font-size:14px;line-height:1.55}
+    /* CTA final */
+    .final{background:var(--ink);color:#fff;border-radius:var(--r);padding:30px 24px;text-align:center}
+    .final h2{font-size:clamp(20px,3vw,26px);font-weight:900;margin:0 0 8px}
+    .final p{color:rgba(255,255,255,.8);font-size:15px;margin:0 0 18px;max-width:520px;margin-left:auto;margin-right:auto}
+    /* Footer */
+    footer{text-align:center;padding:30px 18px 100px;color:var(--ink2);font-size:12.5px;line-height:1.6}
+    footer .links{margin-top:10px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    footer .links a{color:var(--blue);text-decoration:none}
+    /* Bouton fixe mobile */
+    .sticky{position:fixed;left:50%;transform:translateX(-50%) translateY(120%);bottom:14px;z-index:40;background:var(--green);color:#fff;font-weight:800;font-size:14px;padding:12px 22px;border-radius:999px;box-shadow:0 10px 26px rgba(18,161,80,.4);text-decoration:none;transition:transform .25s ease;white-space:nowrap}
+    .sticky.show{transform:translateX(-50%) translateY(0)}
+    @media(min-width:721px){.sticky{display:none}}
+    @media(max-width:720px){.offers{grid-template-columns:1fr}.steps{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="top"><img src="/landings/monelor-logo.png" alt="Monelor"></header>
+
+  <div class="wrap">
+    <!-- 1. HERO -->
+    <section class="hero">
+      <span class="eyebrow">Les primes de bienvenue des banques</span>
+      <h1>Recevez jusqu'à <span class="amt" id="primeMax">[PRIME_MAX]</span> € en ouvrant un compte bancaire</h1>
+      <p class="sub">Certaines banques vous versent une prime lorsque vous ouvrez un compte et remplissez les conditions de leur offre. Découvrez comment en profiter.</p>
+      <div class="hero-illus" aria-hidden="true">
+        <svg viewBox="0 0 260 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect x="18" y="34" width="168" height="104" rx="14" fill="#122039"/>
+          <rect x="32" y="60" width="28" height="20" rx="4" fill="#C9A646"/>
+          <rect x="32" y="112" width="86" height="10" rx="5" fill="#ffffff" opacity=".85"/>
+          <circle cx="196" cy="96" r="42" fill="#E7F7EE" stroke="#12A150" stroke-width="3"/>
+          <text x="196" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="40" font-weight="900" fill="#12A150">€</text>
+        </svg>
+      </div>
+      <a class="btn" href="#offres" data-scroll>Voir les primes disponibles</a>
+      <p class="note">Réservé aux nouveaux clients • Offres soumises à conditions</p>
+    </section>
+
+    <!-- 2. PRINCIPE -->
+    <section>
+      <h2 class="sec-h">Pourquoi les banques vous versent-elles une prime ?</h2>
+      <p class="sec-lead">Pour attirer de nouveaux clients, certaines banques proposent une prime de bienvenue. Vous ouvrez un compte, vous remplissez les conditions de l'offre et la banque vous verse la prime sur votre compte.</p>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><b>Choisissez votre offre</b><span>Comparez la prime et les conditions.</span></div>
+        <div class="step"><div class="n">2</div><b>Ouvrez votre compte</b><span>Faites votre demande sur le site officiel de la banque.</span></div>
+        <div class="step"><div class="n">3</div><b>Recevez votre prime</b><span>Effectuez les actions demandées et respectez les délais de l'offre.</span></div>
+      </div>
+    </section>
+
+    <!-- 3. OFFRES -->
+    <section id="offres">
+      <h2 class="sec-h">Choisissez votre prime de bienvenue</h2>
+      <p class="sec-lead">Comparez les offres, en portant attention au premier versement demandé.</p>
+      <div class="offers" id="offersGrid"></div>
+    </section>
+
+    <!-- 4. FAQ -->
+    <section>
+      <h2 class="sec-h">Les réponses à vos questions</h2>
+      <div class="faq">
+        <details><summary>Faut-il quitter ma banque actuelle ?</summary><div class="a">Non, vous pouvez tout à fait conserver votre banque actuelle : l'ouverture d'un nouveau compte n'oblige pas à fermer l'ancien. Une partie de la prime peut toutefois être liée à une mobilité bancaire (transfert de vos prélèvements et virements) ; dans ce cas, les conditions spécifiques de cette prime sont précisées par la banque.</div></details>
+        <details><summary>Le premier versement est-il un paiement ?</summary><div class="a">Non. Le premier versement alimente votre nouveau compte : c'est votre argent, qui reste disponible sur le compte. Les modalités de disponibilité et de maintien de ce montant dépendent des conditions de l'offre de chaque banque.</div></details>
+        <details><summary>La carte bancaire est-elle gratuite ?</summary><div class="a">Cela dépend de la carte choisie et de ses conditions. Certaines cartes sont gratuites sous réserve d'une utilisation régulière (par exemple au moins un paiement par mois). Les conditions exactes sont indiquées par la banque.</div></details>
+        <details><summary>Quand vais-je recevoir la prime ?</summary><div class="a">La prime n'est pas immédiate. Son versement intervient après le respect des conditions de l'offre (ouverture, premier versement, utilisation de la carte, éventuelle mobilité…) et dans les délais fixés par la banque.</div></details>
+        <details><summary>Quels documents faut-il prévoir ?</summary><div class="a">Les justificatifs demandés (pièce d'identité, justificatif de domicile, RIB…) sont précisés par chaque banque au moment de l'ouverture du compte.</div></details>
+        <details><summary>Puis-je fermer le compte après avoir reçu la prime ?</summary><div class="a">Une durée minimale de conservation du compte peut être imposée par l'offre. Si elle n'est pas respectée, la banque peut reprendre tout ou partie de la prime. Vérifiez cette durée dans les conditions de l'offre.</div></details>
+      </div>
+    </section>
+
+    <!-- 5. CTA FINAL -->
+    <section>
+      <div class="final">
+        <h2>Prêt à choisir votre offre ?</h2>
+        <p>Comparez la prime, le premier versement demandé et les conditions avant de vous lancer.</p>
+        <a class="btn" href="#offres" data-scroll>Comparer les offres</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- 6. FOOTER -->
+  <footer>
+    <div class="wrap">
+      Monelor est un site indépendant. Certains liens sont des liens d'affiliation : nous pouvons percevoir une commission si vous ouvrez un compte via ces liens, sans surcoût pour vous.
+      <div class="links">
+        <a href="/mentions-legales/">Mentions légales</a>
+        <a href="/politique-confidentialite/">Confidentialité</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton fixe mobile (apparaît après le hero) -->
+  <a class="sticky" id="stickyBtn" href="#offres" data-scroll>Voir les primes ↓</a>
+
+<script>
+(function(){
+  var $=function(s,el){return (el||document).querySelector(s);};
+
+  // ══════════════════════════════════════════════════════════════════════
+  //  CONFIGURATION CENTRALISÉE — à éditer ici.
+  //  Montants & conditions = PLACEHOLDERS [..] à remplir (rien n'est inventé).
+  //  Liens d'affiliation déjà renseignés ; un lien vide désactive le bouton.
+  //  subidParam : nom du paramètre d'identifiant de sous-suivi accepté par la
+  //  plateforme (Awin = "clickref"). Laisser "" tant qu'il n'est pas confirmé.
+  // ══════════════════════════════════════════════════════════════════════
+  var PRIME_MAX = "[PRIME_MAX]"; // ex. "260"
+
+  var OFFERS = [
+    {
+      id:"boursobank", name:"BoursoBank",
+      montant:"[PRIME_BOURSO]",
+      resume:"[RESUME_BOURSO]",
+      carte:"[CARTE_BOURSO]",
+      carteGratuite:"[CONDITIONS_GRATUITE_BOURSO]",
+      versement:"[VERSEMENT_BOURSO]",
+      actions:"[ACTIONS_BOURSO]",
+      delai:"[DELAI_PRIME_BOURSO]",
+      conservation:"[CONSERVATION_BOURSO]",
+      sansMobilite:"[MONTANT_SANS_MOBILITE_BOURSO]",
+      supplementMobilite:"[SUPPLEMENT_MOBILITE_BOURSO]",
+      conditions:"[CONDITIONS_DETAILLEES_BOURSO]",
+      url:"https://www.awin1.com/awclick.php?gid=309815&mid=6992&awinaffid=420025&linkid=643198",
+      subidParam:"clickref",
+      cta:"Voir l'offre BoursoBank"
+    },
+    {
+      id:"fortuneo", name:"Fortuneo",
+      montant:"[PRIME_FORTUNEO]",
+      resume:"[RESUME_FORTUNEO]",
+      carte:"[CARTE_FORTUNEO]",
+      carteGratuite:"[CONDITIONS_GRATUITE_FORTUNEO]",
+      versement:"[VERSEMENT_FORTUNEO]",
+      actions:"[ACTIONS_FORTUNEO]",
+      delai:"[DELAI_PRIME_FORTUNEO]",
+      conservation:"[CONSERVATION_FORTUNEO]",
+      sansMobilite:"[MONTANT_SANS_MOBILITE_FORTUNEO]",
+      supplementMobilite:"[SUPPLEMENT_MOBILITE_FORTUNEO]",
+      conditions:"[CONDITIONS_DETAILLEES_FORTUNEO]",
+      url:"https://tracking.publicidees.com/clic.php?promoid=272621&progid=1325&partid=64100",
+      subidParam:"", // param de sous-suivi publicidees à confirmer
+      cta:"Voir l'offre Fortuneo"
+    }
+  ];
+
+  if(PRIME_MAX) $("#primeMax").textContent = PRIME_MAX;
+
+  // ── Suivi : conserve les UTM/identifiants reçus et construit un subid ────
+  var params = new URLSearchParams(location.search);
+  function clean(s){ return String(s||"").replace(/[^a-zA-Z0-9_-]/g,"").slice(0,40); }
+  function subid(bankId, loc){
+    var src = clean(params.get("utm_source")) || "pop";
+    var camp = clean(params.get("utm_campaign"));
+    var content = clean(params.get("utm_content"));
+    return [src, bankId, loc, camp, content].filter(Boolean).join("_").slice(0,90);
+  }
+  function buildUrl(o, loc){
+    if(!o.url) return null;
+    try{
+      var u = new URL(o.url);
+      if(o.subidParam){ u.searchParams.set(o.subidParam, subid(o.id, loc)); }
+      return u.toString();
+    }catch(e){ return o.url; }
+  }
+
+  function esc(s){ var d=document.createElement("div"); d.textContent=String(s==null?"":s); return d.innerHTML; }
+
+  function card(o, loc){
+    var url = buildUrl(o, loc);
+    var btn = url
+      ? '<a class="btn block cta" href="'+url+'" target="_blank" rel="nofollow sponsored noopener" data-bank="'+o.id+'" data-loc="'+loc+'">'+esc(o.cta)+' →</a>'
+      : '<span class="btn block cta disabled" role="button" aria-disabled="true" title="Lien d\'affiliation à renseigner">Lien bientôt disponible</span>';
+    var mob = (o.sansMobilite || o.supplementMobilite)
+      ? '<div class="mob"><span>Sans mobilité bancaire : <strong>'+esc(o.sansMobilite)+' €</strong></span><span>+ avec mobilité bancaire : <strong>'+esc(o.supplementMobilite)+' €</strong></span></div>'
+      : '';
+    return '<div class="ocard">'+
+      '<span class="obank">'+esc(o.name)+'</span>'+
+      '<div class="omontant">Jusqu\'à <span class="amt">'+esc(o.montant)+' €</span> de prime</div>'+
+      '<p class="oresume">'+esc(o.resume)+'</p>'+
+      mob+
+      '<ul class="odetails">'+
+        '<li><span class="k">💳 Carte</span><span class="v">'+esc(o.carte)+' — '+esc(o.carteGratuite)+'</span></li>'+
+        '<li class="hl"><span class="k">💶 Premier versement demandé</span><span class="v">'+esc(o.versement)+'</span></li>'+
+        '<li><span class="k">✅ Pour obtenir la prime</span><span class="v">'+esc(o.actions)+'</span></li>'+
+        '<li><span class="k">⏱️ Versement de la prime</span><span class="v">'+esc(o.delai)+'</span></li>'+
+        (o.conservation ? '<li><span class="k">📅 Conservation du compte</span><span class="v">'+esc(o.conservation)+'</span></li>' : '')+
+      '</ul>'+
+      btn+
+      '<details class="cond"><summary>Voir les conditions</summary><div class="cond-body">'+esc(o.conditions)+'</div></details>'+
+    '</div>';
+  }
+
+  $("#offersGrid").innerHTML = OFFERS.map(function(o){ return card(o,"offres"); }).join("");
+
+  // Suivi des clics sortants (Clicky, best-effort) + param banque/emplacement.
+  document.addEventListener("click", function(e){
+    var a = e.target.closest ? e.target.closest("a.cta") : null;
+    if(!a) return;
+    if(window.clicky){ try{ clicky.goal("clic_"+(a.getAttribute("data-bank")||"offre")); }catch(_){} }
+  });
+
+  // Défilement doux vers les offres (fallback si scroll-behavior non supporté).
+  document.querySelectorAll('[data-scroll]').forEach(function(el){
+    el.addEventListener("click", function(ev){
+      var t = document.getElementById("offres"); if(!t) return;
+      ev.preventDefault(); t.scrollIntoView({behavior:"smooth"});
+    });
+  });
+
+  // Bouton fixe mobile : visible après avoir quitté le premier écran.
+  var sticky = $("#stickyBtn"), hero = $(".hero");
+  function onScroll(){
+    var past = hero.getBoundingClientRect().bottom < 0;
+    var atOffers = (function(){ var o=document.getElementById("offres"); if(!o) return false; var r=o.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; })();
+    sticky.classList.toggle("show", past && !atOffers);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", onScroll); onScroll();
+})();
+</script>
+</body>
+</html>
