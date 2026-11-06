@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive myPOS
 cta_button: En profiter
 related_posts:
-- 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
+- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
 - 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
 - 4432-sogexia-business-avis-ce-que-coutent-reellement-ses-services-bancaires
-- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
+- 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
 ---
 <p>Vingt ans que je travaille sur les comptes d'entreprises de taille intermédiaire. Et vingt ans que je vois des dirigeants signer des contrats de paiement sans vraiment regarder ce qu'ils paient. Les commissions, les abonnements, les frais cachés sur chaque transaction... tout ça finit par peser lourd en fin d'année.</p>
 
