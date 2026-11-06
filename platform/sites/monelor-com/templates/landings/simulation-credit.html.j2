@@ -56,7 +56,8 @@
     @keyframes spin{to{transform:rotate(360deg)}}
     /* résultat */
     .res-eligi{background:var(--lime2);border:1px solid #CDE6AE;border-radius:var(--r2);padding:16px 18px;margin:0 0 20px;color:var(--forest);font-size:14.5px}
-    .sec-label{color:var(--forest2);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin:24px 0 10px}
+    .sec-label{color:var(--forest2);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin:24px 0 10px;text-align:center}
+    #screen-result > h1{text-align:center}
     .rachat{background:linear-gradient(135deg,var(--forest),var(--forest2));color:#fff;border-radius:var(--r);padding:20px;margin:0 0 6px}
     .rachat b{display:block;font-size:17px;margin-bottom:5px}
     .rachat p{margin:0 0 14px;font-size:14px;color:rgba(255,255,255,.86)}
@@ -269,7 +270,7 @@
   }
   function rachatBlock(){
     return '<div class="rachat"><b>Vous remboursez déjà plusieurs crédits ?</b>'+
-      '<p>Le rachat de crédit regroupe vos prêts en une seule mensualité, allégée jusqu\'à -60%.*</p>'+
+      '<p>Le rachat de crédit regroupe vos prêts en une seule mensualité, allégée jusqu\'à -60%.**</p>'+
       '<a class="btn" href="'+RACHAT_URL+'">Étudier mon rachat de crédit →</a></div>';
   }
   var primesIntro='<div class="explain collapsible" id="primeBox"><b>🎁 Comment recevoir votre prime ?</b>'+
@@ -291,7 +292,7 @@
     var rachat='<div class="sec-label">Alléger vos mensualités</div>'+rachatBlock();
     // Primes de bienvenue en premier, puis la box rachat de crédit.
     var html = primes + rachat;
-    html += '<p class="disclaimer">*Une baisse de mensualité peut allonger la durée et augmenter le coût total du crédit. Offres soumises aux conditions des partenaires. monelor.com est un site indépendant.</p>';
+    html += '<p class="disclaimer">* Cartes et primes soumises à conditions : détails et éligibilité à consulter sur le site de chaque banque.<br>** Une baisse de mensualité peut allonger la durée et augmenter le coût total du crédit. Offres soumises aux conditions des partenaires. monelor.com est un site indépendant.</p>';
     $("resBody").innerHTML=html;
     var tgl=$("primeToggle");
     if(tgl){tgl.addEventListener("click",function(){
