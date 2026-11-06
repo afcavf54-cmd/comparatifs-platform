@@ -70,6 +70,8 @@
     .offers{display:flex;flex-direction:column;gap:14px;text-align:left;margin-top:6px}
     .ocard{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;box-shadow:var(--shadow)}
     .ologo{width:68px;height:68px;border-radius:14px;background:#fff;border:1px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px}
+    .hero-txt .sub strong{color:var(--ink);font-weight:800}
+    @media(min-width:721px){.ologo{width:88px;height:88px;border-radius:16px}}
     .ologo img{width:100%;height:100%;object-fit:contain}
     .o-name{flex:0 1 255px;font-weight:900;font-size:16px;line-height:1.3}
     .o-name .amt{color:var(--green)}
@@ -133,7 +135,7 @@
         </div>
         <div class="hero-txt">
           <h1>Recevez jusqu'à <span class="amt" id="primeMax">440</span> € en ouvrant un compte bancaire</h1>
-          <p class="sub">Certaines banques vous versent une prime lorsque vous ouvrez un compte et remplissez les conditions de leur offre. Choisissez votre offre ci-dessous.</p>
+          <p class="sub">Certaines banques vous versent <strong>une prime</strong> lorsque vous <strong>ouvrez un compte</strong> et remplissez les conditions de leur offre. Choisissez votre offre ci-dessous.</p>
         </div>
       </div>
       <div class="offers" id="offres"></div>
