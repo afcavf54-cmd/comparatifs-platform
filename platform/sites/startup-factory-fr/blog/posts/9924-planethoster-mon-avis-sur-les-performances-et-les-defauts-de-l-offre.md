@@ -22,6 +22,7 @@ related_posts:
 - 6782-hostinger-les-points-positifs-et-negatifs-que-j-ai-releves-avis
 - 1385-nordvpn-avis-excellent-vpn-ou-service-trop-cher-pour-ce-qu-il-propose
 - 6275-o2switch-avis-un-hebergeur-francais-convaincant-malgre-quelques-limites
+- 1385-nordvpn-avis-excellent-vpn-ou-service-trop-cher-pour-ce-qu-il-propose
 ---
 <p>J'utilise PlanetHoster depuis un moment maintenant. Pas par hasard, parce qu'un pote m'a filé une promo ou parce que j'ai vu une pub. J'avais un vrai problème à résoudre : trouver un hébergeur fiable, qui ne me fasse pas perdre du temps à chaque mise à jour, et qui reste dans un budget raisonnable pour une startup de 20 à 50 personnes. Spoiler : j'ai eu des surprises, bonnes et moins bonnes.</p>
 

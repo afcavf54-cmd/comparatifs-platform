@@ -19,8 +19,8 @@ cta_enabled: true
 cta_text: Offre exclusive O2switch
 cta_button: En profiter
 related_posts:
-- 9924-planethoster-mon-avis-sur-les-performances-et-les-defauts-de-l-offre
 - 1385-nordvpn-avis-excellent-vpn-ou-service-trop-cher-pour-ce-qu-il-propose
+- 9924-planethoster-mon-avis-sur-les-performances-et-les-defauts-de-l-offre
 - 6782-hostinger-les-points-positifs-et-negatifs-que-j-ai-releves-avis
 ---
 <p>J'utilise o2switch depuis un moment maintenant pour héberger plusieurs sites de ma startup, et je vais te donner mon vrai ressenti. Pas un copier-coller de spec technique, mais ce que j'ai vécu au quotidien avec cet hébergeur français.</p>

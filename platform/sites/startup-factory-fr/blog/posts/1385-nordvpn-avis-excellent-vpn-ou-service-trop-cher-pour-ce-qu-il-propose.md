@@ -20,9 +20,9 @@ cta_enabled: true
 cta_text: Offre exclusive NordVPN
 cta_button: En profiter
 related_posts:
-- 9924-planethoster-mon-avis-sur-les-performances-et-les-defauts-de-l-offre
-- 6782-hostinger-les-points-positifs-et-negatifs-que-j-ai-releves-avis
 - 6275-o2switch-avis-un-hebergeur-francais-convaincant-malgre-quelques-limites
+- 6782-hostinger-les-points-positifs-et-negatifs-que-j-ai-releves-avis
+- 9924-planethoster-mon-avis-sur-les-performances-et-les-defauts-de-l-offre
 ---
 <p>Je vais être honnête : j'ai testé NordVPN pendant plusieurs mois, d'abord pour sécuriser les connexions de mon équipe en télétravail, puis pour des usages plus précis comme l'accès à des ressources bloquées géographiquement ou la protection sur les réseaux publics. Voilà ce que j'en pense vraiment, sans langue de bois.</p>
 
