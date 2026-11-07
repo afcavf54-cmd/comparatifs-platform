@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
 related_posts:
-- 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
-- 7635-enerfip-avis-mon-verdict-sur-l-interet-d-investir-dans-cette-plateforme
-- 1939-enky-invest-a-qui-s-adresse-reellement-cet-investissement-mon-avis
 - 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
+- 7635-enerfip-avis-mon-verdict-sur-l-interet-d-investir-dans-cette-plateforme
+- 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
+- 1939-enky-invest-a-qui-s-adresse-reellement-cet-investissement-mon-avis
 ---
 <p>Je vais être honnête avec vous : j'ai longtemps hésité avant d'investir sur Homunity. Pas par manque d'intérêt pour le crowdfunding immobilier, mais parce que j'avais déjà testé deux ou trois plateformes qui m'avaient laissé un goût amer. Des interfaces peu claires, des projets mal documentés, un support client aux abonnés absents dès qu'on posait une question un peu précise. Bref, j'étais méfiante.</p>
 
