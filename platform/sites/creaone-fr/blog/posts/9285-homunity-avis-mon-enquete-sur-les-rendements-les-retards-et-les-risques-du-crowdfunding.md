@@ -1,10 +1,14 @@
 ---
-title: 'Homunity Avis 2026 : Mon enquête sur les rendements, les retards et les risques du crowdfunding'
+title: 'Homunity Avis 2026 : Mon enquête sur les rendements, les retards et les risques
+  du crowdfunding'
 slug: 9285-homunity-avis-mon-enquete-sur-les-rendements-les-retards-et-les-risques-du-crowdfunding
 date: '2026-11-07T08:00:00+01:00'
 categorie: Finance & Comptabilité
-meta_title: 'Mon avis sur Homunity : les rendements et les risques du crowdfunding immobilier'
-meta_description: Homunity tient-il vraiment ses promesses de rendement entre 8 et 12 % ? Mon analyse honnête des retards, des risques réels et des chiffres concrets du crowdfunding…
+meta_title: 'Mon avis sur Homunity : les rendements et les risques du crowdfunding
+  immobilier'
+meta_description: Homunity tient-il vraiment ses promesses de rendement entre 8 et
+  12 % ? Mon analyse honnête des retards, des risques réels et des chiffres concrets
+  du crowdfunding…
 min_words: 3000
 status: published
 featured_image: /blog/9285-homunity-avis-mon-enquete-sur-les-rendements-les-retards-et-les-risques-du-crowdfunding.jpg
@@ -15,8 +19,12 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4970117978T&subid=creaone.fr
 cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
+related_posts:
+- 6050-enerfip-avis-j-ai-etudie-les-rendements-et-les-risques-voici-ce-que-j-en-pense
+- 8910-enky-invest-avis-j-ai-decouvert-l-investissement-dans-le-mobilier-faut-il-se-lancer
+- 3767-trezor-avis-j-ai-teste-ce-portefeuille-crypto-est-il-aussi-securise-qu-on-le-dit
+- 3807-waltio-avis-2026-j-ai-teste-cet-outil-pour-declarer-mes-cryptos-voici-mon-verdict
 ---
-
 <p>Je vais être honnête avec vous : j'ai commencé à regarder Homunity un peu par hasard, en cherchant des alternatives aux livrets qui ne rapportent presque rien. Un collègue m'en avait parlé à la machine à café, et j'ai creusé le sujet sérieusement pendant plusieurs semaines. Ce que je vais vous partager ici, c'est mon analyse complète, avec les chiffres réels, les retards constatés, et les questions que je me pose encore aujourd'hui.</p>
 
 <p>Pas de langue de bois. Homunity a des atouts, mais aussi des zones d'ombre que je veux aborder franchement.</p>

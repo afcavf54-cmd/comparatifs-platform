@@ -19,9 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Enky Invest
 cta_button: En profiter
 related_posts:
+- 3807-waltio-avis-2026-j-ai-teste-cet-outil-pour-declarer-mes-cryptos-voici-mon-verdict
+- 9285-homunity-avis-mon-enquete-sur-les-rendements-les-retards-et-les-risques-du-crowdfunding
 - 6050-enerfip-avis-j-ai-etudie-les-rendements-et-les-risques-voici-ce-que-j-en-pense
 - 3767-trezor-avis-j-ai-teste-ce-portefeuille-crypto-est-il-aussi-securise-qu-on-le-dit
-- 3807-waltio-avis-2026-j-ai-teste-cet-outil-pour-declarer-mes-cryptos-voici-mon-verdict
 ---
 <p>J'avoue que quand j'ai entendu parler d'Enky Invest pour la première fois, j'ai cru que c'était une blague. Investir dans du mobilier ? Du mobilier. Pas de l'immobilier classique, pas des SCPI, pas des ETF. Des meubles. Mon premier réflexe a été de lever les yeux au ciel.</p>
 
