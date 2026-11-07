@@ -17,10 +17,10 @@ cta_enabled: true
 cta_text: Offre exclusive Equals
 cta_button: En profiter
 related_posts:
-- 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
-- 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
 - 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
+- 6991-vivid-business-mon-avis-et-les-details-que-j-aurais-aime-connaitre-avant
 - 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
+- 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
 ---
 <p>J'ai découvert Equals il y a un peu plus d'un an, dans un contexte assez classique : on cherchait à simplifier la gestion des dépenses de mon équipe, réduire les aller-retours avec le comptable, et surtout arrêter de passer du temps à réconcilier des notes de frais papier. Un collègue m'avait conseillé d'y jeter un oeil. Voilà ce que j'en pense vraiment, sans filtre, après plusieurs mois d'utilisation quotidienne.</p>
 
