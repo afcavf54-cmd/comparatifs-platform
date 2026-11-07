@@ -20,10 +20,10 @@ cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
 related_posts:
-- 6050-enerfip-avis-j-ai-etudie-les-rendements-et-les-risques-voici-ce-que-j-en-pense
-- 8910-enky-invest-avis-j-ai-decouvert-l-investissement-dans-le-mobilier-faut-il-se-lancer
-- 3767-trezor-avis-j-ai-teste-ce-portefeuille-crypto-est-il-aussi-securise-qu-on-le-dit
 - 3807-waltio-avis-2026-j-ai-teste-cet-outil-pour-declarer-mes-cryptos-voici-mon-verdict
+- 3767-trezor-avis-j-ai-teste-ce-portefeuille-crypto-est-il-aussi-securise-qu-on-le-dit
+- 8910-enky-invest-avis-j-ai-decouvert-l-investissement-dans-le-mobilier-faut-il-se-lancer
+- 6050-enerfip-avis-j-ai-etudie-les-rendements-et-les-risques-voici-ce-que-j-en-pense
 ---
 <p>Je vais être honnête avec vous : j'ai commencé à regarder Homunity un peu par hasard, en cherchant des alternatives aux livrets qui ne rapportent presque rien. Un collègue m'en avait parlé à la machine à café, et j'ai creusé le sujet sérieusement pendant plusieurs semaines. Ce que je vais vous partager ici, c'est mon analyse complète, avec les chiffres réels, les retards constatés, et les questions que je me pose encore aujourd'hui.</p>
 
