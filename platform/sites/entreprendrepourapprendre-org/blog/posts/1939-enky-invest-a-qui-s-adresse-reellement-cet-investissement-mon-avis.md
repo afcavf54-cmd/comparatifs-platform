@@ -21,6 +21,7 @@ related_posts:
 - 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
 - 7635-enerfip-avis-mon-verdict-sur-l-interet-d-investir-dans-cette-plateforme
 - 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
+- 6407-homunity-mon-avis-faut-il-encore-investir-dans-cette-plateforme
 ---
 <p>J'ai découvert Enky Invest il y a quelques mois, un peu par hasard, via une publicité Instagram. Le visuel était propre, le discours rassurant, et la promesse claire : investir dans des projets concrets, avec des rendements annoncés autour de 8 à 12 %, sans avoir besoin d'un cabinet de gestion de patrimoine derrière soi. En tant que dirigeante d'une petite agence, je cherche toujours des façons de faire travailler la trésorerie dormante de l'entreprise. Alors j'ai creusé le sujet.</p>
 
