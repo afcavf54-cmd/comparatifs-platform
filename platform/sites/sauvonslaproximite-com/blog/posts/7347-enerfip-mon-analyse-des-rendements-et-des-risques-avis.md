@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
 related_posts:
+- 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
+- 3874-waltio-avis-j-ai-examine-ses-tarifs-vaut-il-vraiment-son-prix
+- 5084-trezor-avis-combien-faut-il-depenser-pour-proteger-ses-cryptomonnaies
 - 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
-- 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
-- ce-que-je-pense-de-flatpay-ses-points-forts-et-ses-limites
-- 8253-bordereau-fiscal-modele-p-237-utilite-obtention-et-demarches-administratives
 ---
 <p>J'ai découvert Enerfip il y a un peu plus de deux ans, au moment où je cherchais à diversifier un portefeuille qui commençait à ressembler à une collection de livrets A et de fonds euros un peu somnolents. Une collègue m'en avait parlé, j'avais regardé le site, et ma première réaction avait été : "encore une plateforme de financement participatif qui va promettre 8% et disparaître dans deux ans". Je suis prudente par nature. Vingt ans à surveiller des bilans comptables, ça rend méfiant.</p>
 
