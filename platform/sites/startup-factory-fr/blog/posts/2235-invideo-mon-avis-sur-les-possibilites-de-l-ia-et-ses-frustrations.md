@@ -3,8 +3,11 @@ title: 'InVideo : Mon avis 2026 sur les possibilités de l''IA et ses frustratio
 slug: 2235-invideo-mon-avis-sur-les-possibilites-de-l-ia-et-ses-frustrations
 date: '2026-11-08T08:00:00+01:00'
 categorie: Marketing
-meta_title: 'InVideo : une création vidéo simplifiée, mais des limites créatives à anticiper'
-meta_description: 'Avis honnête sur InVideo en 2026 : ce que l''IA sait vraiment faire, ses limites concrètes et si l''outil vaut le coup pour automatiser votre création vidéo.'
+meta_title: 'InVideo : une création vidéo simplifiée, mais des limites créatives à
+  anticiper'
+meta_description: 'Avis honnête sur InVideo en 2026 : ce que l''IA sait vraiment faire,
+  ses limites concrètes et si l''outil vaut le coup pour automatiser votre création
+  vidéo.'
 min_words: 3000
 status: published
 featured_image: /blog/2235-invideo-mon-avis-sur-les-possibilites-de-l-ia-et-ses-frustrations.jpg
@@ -15,8 +18,9 @@ cta_link: https://invideo.sjv.io/7XoD7A
 cta_enabled: true
 cta_text: Offre exclusive InVideo
 cta_button: En profiter
+related_posts:
+- 2847-linkuma-mon-avis-sur-les-prix-les-liens-et-les-limites-de-la-plateforme
 ---
-
 <p>J'ai testé InVideo pendant plusieurs semaines avec mon équipe chez Nantis Studio. On cherchait un outil pour automatiser la création de contenus vidéo sans passer des heures à bricoler des montages. Le verdict ? Mitigé. Pas dans le mauvais sens du terme, mais clairement pas le paradis qu'on nous avait vendu.</p>
 
 <p>Voilà mon retour honnête, sans filtre, sur ce que l'IA d'InVideo sait vraiment faire en 2026, et là où ça coince.</p>
