@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Cashbee Pro
 cta_button: En profiter
 related_posts:
-- 6407-homunity-mon-avis-faut-il-encore-investir-dans-cette-plateforme
-- 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
-- 7635-enerfip-avis-mon-verdict-sur-l-interet-d-investir-dans-cette-plateforme
 - 6382-waltio-mon-verdict-a-qui-je-recommande-vraiment-cet-outil-fiscal-crypto
+- 6407-homunity-mon-avis-faut-il-encore-investir-dans-cette-plateforme
+- 1939-enky-invest-a-qui-s-adresse-reellement-cet-investissement-mon-avis
+- 2726-trezor-faut-il-acheter-ce-portefeuille-crypto-mon-verdict
 ---
 <p>J'ai découvert Cashbee Pro il y a un peu plus d'un an, dans un moment où j'essayais de comprendre ce qu'on pouvait faire de la trésorerie dormante de mon agence. On avait quelques dizaines de milliers d'euros qui traînaient sur le compte courant professionnel, à ne rien rapporter. Mon expert-comptable m'avait dit, presque en passant : "Tu devrais regarder les comptes rémunérés pour pros." Bon. Facile à dire.</p>
 
