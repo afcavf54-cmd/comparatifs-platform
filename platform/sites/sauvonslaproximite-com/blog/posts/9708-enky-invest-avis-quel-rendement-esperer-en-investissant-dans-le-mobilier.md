@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Enky Invest
 cta_button: En profiter
 related_posts:
-- 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
-- 8253-bordereau-fiscal-modele-p-237-utilite-obtention-et-demarches-administratives
 - ce-que-je-pense-de-flatpay-ses-points-forts-et-ses-limites
+- 9079-tva-sur-option-comment-fonctionne-l-assujettissement-volontaire
 - 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
+- 3874-waltio-avis-j-ai-examine-ses-tarifs-vaut-il-vraiment-son-prix
 ---
 <p>Je vais être honnête : quand on m'a parlé d'Enky Invest pour la première fois, j'ai levé un sourcil. Investir dans du mobilier ? En tant que responsable comptable avec vingt ans de pratique derrière moi, j'ai l'habitude de regarder les chiffres avant tout le reste. Et franchement, ce type de placement sort vraiment de l'ordinaire.</p>
 
