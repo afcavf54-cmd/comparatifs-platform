@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Trezor
 cta_button: En profiter
 related_posts:
-- 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
-- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
-- 4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il
 - 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
+- 4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il
+- 5075-waltio-peut-on-vraiment-declarer-ses-cryptos-facilement-mon-avis
+- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
 ---
 <p>J'utilise un Trezor depuis un peu plus de deux ans maintenant. Je suis loin d'être un expert crypto, mais quand on gère une boîte à Marseille avec une centaine de salariés, on finit par se poser des questions sur la sécurité de ses actifs numériques. J'ai regardé ce que proposait le marché, j'ai comparé, et j'ai fini par acheter un Trezor Model One d'abord, puis un Model T quelques mois après. Voici ce que j'en pense vraiment, sans filtre.</p>
 
