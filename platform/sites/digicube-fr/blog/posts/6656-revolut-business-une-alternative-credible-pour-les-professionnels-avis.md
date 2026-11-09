@@ -20,6 +20,7 @@ cta_enabled: true
 cta_text: Offre exclusive Revolut Business
 cta_button: En profiter
 related_posts:
+- 7774-sumup-faut-il-choisir-ses-terminaux-de-paiement-mon-avis
 - 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
 ---
 <p>Je vais vous donner mon avis franc sur Revolut Business, après deux ans à l'utiliser au quotidien pour mon entreprise à Marseille. Pas un avis de testeur pressé qui a cliqué trois fois sur l'interface. Un retour de terrain, avec les bons et les moins bons côtés.</p>
