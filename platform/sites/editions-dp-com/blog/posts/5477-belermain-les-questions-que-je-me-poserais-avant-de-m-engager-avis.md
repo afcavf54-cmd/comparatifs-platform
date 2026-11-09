@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Belermain
 cta_button: En profiter
 related_posts:
-- 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
+- 3113-indy-les-situations-ou-ce-logiciel-pourrait-montrer-ses-limites-avis
 - 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
-- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
-- developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise
+- 2575-strategie-corporate-qu-est-ce-que-c-est-et-comment-la-differencier-de-la-strategie-business
+- 3107-comment-configurer-crm-leadflow-automation-etape-par-etape
 ---
 <p>Je vais être honnête avec vous : quand on dirige une TPE à Lyon avec une centaine de salariés, on n'a pas le temps de tester chaque logiciel six mois avant de décider. On regarde le prix, on demande à quelqu'un de fiable ce qu'il en pense, et on tranche. C'est exactement ce que j'essaie de faire ici avec Belermain. Pas un test de labo. Un regard terrain, avec les vraies questions que je me suis posées avant de potentiellement m'engager.</p>
 
