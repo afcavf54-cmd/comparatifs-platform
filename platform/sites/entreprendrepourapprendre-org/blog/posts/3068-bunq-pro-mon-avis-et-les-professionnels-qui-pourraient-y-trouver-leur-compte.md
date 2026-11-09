@@ -20,9 +20,9 @@ cta_enabled: true
 cta_text: Offre exclusive Bunq pro
 cta_button: En profiter
 related_posts:
-- 3642-vivid-business-avis-pour-quels-entrepreneurs-ce-compte-est-il-interessant
-- 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
 - 9383-finom-mon-verdict-sur-ce-compte-pour-freelances-et-petites-entreprises
+- 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
+- 1377-equals-avis-pour-quelles-entreprises-cette-solution-peut-elle-etre-pertinente
 - 4860-sumup-avis-a-quels-commercants-je-conseillerais-ces-terminaux
 ---
 <p>J'ai ouvert un compte Bunq Pro il y a un peu plus d'un an. Pas par hasard, pas par curiosité technologique. Plutôt parce que ma banque professionnelle à l'époque me facturait des frais que je trouvais franchement disproportionnés pour ce qu'elle m'apportait en retour, et qu'une collègue dirigeante m'avait parlé de Bunq lors d'un déjeuner. Je suis donc allée voir. J'ai testé. J'ai eu des surprises, bonnes et moins bonnes.</p>
