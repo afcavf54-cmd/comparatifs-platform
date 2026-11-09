@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Equals
 cta_button: En profiter
 related_posts:
-- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
+- 9029-mypos-avis-j-ai-decortique-les-commissions-et-les-tarifs-des-terminaux
 - 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
-- 5284-qonto-mon-avis-sur-les-abonnements-et-les-frais-a-anticiper
-- 4432-sogexia-business-avis-ce-que-coutent-reellement-ses-services-bancaires
+- 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
+- 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
 ---
 <p>Quand on gère la comptabilité d'une PME de 60 personnes, chaque outil qu'on adopte doit se justifier. Pas par rapport à une promesse marketing, mais face à la réalité du quotidien : les clôtures de fin de mois, les relances clients, les exports pour l'expert-comptable, les dashboards que personne ne regarde sauf moi. J'ai regardé <strong>Equals</strong> de près ces derniers mois, et je vais vous dire ce que j'en pense vraiment.</p>
 
