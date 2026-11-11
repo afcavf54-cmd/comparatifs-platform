@@ -20,6 +20,7 @@ cta_enabled: true
 cta_text: Offre exclusive Hostinger
 cta_button: En profiter
 related_posts:
+- 8334-nordvpn-pourquoi-reste-t-il-une-reference-sur-le-marche-mon-avis
 - 4396-planethoster-avis-pourquoi-cet-hebergeur-pourrait-faire-la-difference
 - 5437-o2switch-mon-avis-sur-son-positionnement-parmi-les-hebergeurs-francais
 ---
