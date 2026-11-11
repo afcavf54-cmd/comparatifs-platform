@@ -22,6 +22,7 @@ cta_button: En profiter
 related_posts:
 - 8334-nordvpn-pourquoi-reste-t-il-une-reference-sur-le-marche-mon-avis
 - 4396-planethoster-avis-pourquoi-cet-hebergeur-pourrait-faire-la-difference
+- 8334-nordvpn-pourquoi-reste-t-il-une-reference-sur-le-marche-mon-avis
 - 5437-o2switch-mon-avis-sur-son-positionnement-parmi-les-hebergeurs-francais
 ---
 <p>Je vais être honnête avec vous : j'ai longtemps évité Hostinger. Trop "grand public", trop agressif sur les prix, ce genre de solution qui ressemble de loin à un hébergeur low-cost dont on regrette le choix six mois plus tard. Et puis j'ai commencé à en entendre parler via des clients, des indépendants qui m'arrivaient en disant "j'ai pris Hostinger, t'as un avis là-dessus ?"</p>
