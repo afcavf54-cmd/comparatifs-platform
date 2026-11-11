@@ -49,17 +49,37 @@
   .btn.danger{background:#FDEBEC; color:var(--red)}
   .btn.danger:hover{background:#fbdcde}
 
-  /* ---- Recipient tabs ---- */
-  .tabs{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:20px}
-  .tab{
-    background:#fff; border:1px solid var(--line); color:var(--ink);
-    padding:9px 16px; border-radius:999px; cursor:pointer; font-weight:700; font-size:14px;
-    display:inline-flex; align-items:center; gap:8px; transition:.12s;
-  }
-  .tab:hover{border-color:#c7d2ea}
-  .tab.active{background:var(--ink); color:#fff; border-color:var(--ink)}
-  .tab .cnt{font-size:12px; opacity:.7; font-weight:600}
-  .tab.add{background:transparent; border-style:dashed; color:var(--accent)}
+  /* ---- Statut de sauvegarde ---- */
+  .sync{font-size:12.5px; font-weight:700; padding:5px 11px; border-radius:999px; background:rgba(255,255,255,.16); display:inline-flex; align-items:center; gap:6px}
+  .sync .d{width:8px;height:8px;border-radius:50%;background:#7CF0A6}
+  .sync.saving .d{background:#FFD36B}
+  .sync.err .d{background:#FF8A8A}
+
+  /* ---- Mise en page : événements à gauche, liste à droite ---- */
+  .layout{display:grid; grid-template-columns:270px minmax(0,1fr); gap:26px; align-items:start}
+  @media(max-width:900px){ .layout{grid-template-columns:1fr; gap:18px} }
+  .nav{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:12px; position:sticky; top:16px}
+  @media(max-width:900px){ .nav{position:static} }
+  .ev{padding:6px 4px 10px}
+  .ev + .ev{border-top:1px solid var(--line); padding-top:12px}
+  .ev-head{display:flex; align-items:center; gap:4px; padding:2px 4px 6px}
+  .ev-name{font-weight:800; font-size:15px; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .ico{border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:14px;padding:4px 6px;border-radius:7px;line-height:1}
+  .ico:hover{background:#EEF2FB;color:var(--accent)}
+  .ico.del:hover{background:#FDEBEC;color:var(--red)}
+  .nl{display:flex; align-items:center; gap:8px; width:100%; text-align:left; border:0; background:transparent; cursor:pointer;
+      font:inherit; font-size:14px; font-weight:600; color:var(--ink); padding:8px 10px 8px 14px; border-radius:10px; position:relative}
+  .nl::before{content:"•"; color:#AFC0E2; position:absolute; left:4px}
+  .nl:hover{background:#F2F5FC}
+  .nl.active{background:var(--ink); color:#fff}
+  .nl.active::before{color:var(--accent2)}
+  .nl .cnt{margin-left:auto; font-size:12px; opacity:.65; font-weight:700}
+  .nl.add{color:var(--accent); font-weight:700; font-size:13px}
+  .nl.add::before{content:""}
+  .add-ev{margin-top:8px; width:100%; border:1.5px dashed #c3d0ea; background:#F9FBFF; color:var(--accent); cursor:pointer;
+          border-radius:12px; padding:10px; font:inherit; font-weight:800; font-size:14px}
+  .add-ev:hover{background:#EEF4FF; border-color:var(--accent)}
+  .crumb{font-size:13px; font-weight:800; color:var(--accent); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px}
 
   /* ---- Recipient head ---- */
   .rec-head{display:flex; align-items:center; gap:12px; margin-bottom:6px; flex-wrap:wrap}
@@ -219,7 +239,9 @@
   <div class="wrap">
     <span class="brand">cadeauclic<span class="dot">.</span>com</span>
     <h1>Mes listes de souhaits</h1>
+    <span class="sync" id="sync"><span class="d"></span><span id="syncTxt">Chargement…</span></span>
     <div class="top-actions">
+      <button class="btn ghost sm" id="btnSync">🔗 Autre appareil</button>
       <button class="btn ghost sm" id="btnExport">⬇ Exporter</button>
       <button class="btn ghost sm" id="btnImport">⬆ Importer</button>
       <input type="file" id="fileImport" accept="application/json" hidden>
@@ -227,9 +249,9 @@
   </div>
 </header>
 
-<div class="wrap">
-  <div class="tabs" id="tabs"></div>
-  <div id="board"></div>
+<div class="wrap layout">
+  <aside class="nav" id="nav"></aside>
+  <main id="board"></main>
 </div>
 
 <!-- Dialog générique (cadeau / renommage) -->
@@ -254,22 +276,92 @@
   var uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);};
   var $=function(s,r){return (r||document).querySelector(s);};
 
-  // ---------- State ----------
-  var data=load();
-  function load(){
-    try{var d=JSON.parse(localStorage.getItem(KEY)); if(d&&d.recipients) return d;}catch(e){}
-    return seed();
+  var API="https://comparatifs-platform.vercel.app/api/wishlist";
+  var CUR_KEY="cadeauclic_current", SYNC_KEY="cadeauclic_sync_key";
+
+  // ---------- Stockage local (sans jamais planter si indisponible) ----------
+  function lsGet(k){ try{return localStorage.getItem(k);}catch(e){return null;} }
+  function lsSet(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+
+  // ---------- Clé de synchronisation (lien privé) ----------
+  function newKey(){
+    var a=new Uint8Array(24); (window.crypto||window.msCrypto).getRandomValues(a);
+    return Array.prototype.map.call(a,function(b){return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[b%62];}).join('');
   }
+  function keyFromHash(){ var m=location.hash.match(/k=([A-Za-z0-9_-]{24,80})/); return m?m[1]:null; }
+  var prevKey=lsGet(SYNC_KEY), hashKey=keyFromHash();
+  var syncKey=hashKey||prevKey||newKey();
+  // Ouverture d'un lien d'un autre appareil : la version du serveur fait foi.
+  var joined=!!(hashKey && hashKey!==prevKey);
+  lsSet(SYNC_KEY,syncKey);
+  if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+
+  // ---------- Modèle : événements → listes ----------
+  // {v:2, savedAt, events:[{id,name}], lists:[{id,eventId,name,buyers,gifts}]}
   function seed(){
-    var rid=uid();
-    return {current:rid, recipients:[{
-      id:rid, name:"Julien",
+    var eid=uid();
+    return {v:2,savedAt:0,events:[{id:eid,name:"Noël 2026"}],lists:[{
+      id:uid(),eventId:eid,name:"Liste Julien",
       buyers:[{id:uid(),name:"Maman",budget:null},{id:uid(),name:"Thierry",budget:null},{id:uid(),name:"Sylvie",budget:null}],
       gifts:[]
     }]};
   }
-  function save(){ try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){} }
-  function cur(){ return data.recipients.find(function(r){return r.id===data.current;}) || data.recipients[0]; }
+  // Ancien format (une simple suite de listes) → tout va dans « Noël 2026 »
+  function migrate(d){
+    if(!d) return null;
+    if(d.v===2 && d.events && d.lists) return d;
+    if(d.recipients){
+      var eid=uid();
+      return {v:2,savedAt:d.savedAt||1,events:[{id:eid,name:"Noël 2026"}],lists:d.recipients.map(function(r){
+        return {id:r.id,eventId:eid,name:/^(liste|idées|idees)/i.test(r.name)?r.name:"Liste "+r.name,buyers:r.buyers||[],gifts:r.gifts||[]};
+      })};
+    }
+    return null;
+  }
+  var data=(function(){ try{return migrate(JSON.parse(lsGet(KEY)));}catch(e){return null;} })()||seed();
+  var currentId=lsGet(CUR_KEY);
+
+  function cur(){ return data.lists.find(function(l){return l.id===currentId;}) || data.lists[0]; }
+  function setCurrent(id){ currentId=id; lsSet(CUR_KEY,id||''); }
+  function eventOf(list){ return data.events.find(function(e){return e.id===list.eventId;}); }
+
+  // ---------- Sauvegarde : appareil + serveur ----------
+  var ready=false, pushT=null, pushing=false, dirty=false;
+  function setStatus(kind,txt){ var s=$('#sync'); s.className='sync '+(kind||''); $('#syncTxt').textContent=txt; }
+  function save(){
+    data.savedAt=Date.now();
+    lsSet(KEY,JSON.stringify(data));
+    dirty=true; setStatus('saving','Enregistrement…');
+    clearTimeout(pushT); pushT=setTimeout(push,700);
+  }
+  function push(){
+    if(!ready){ pushT=setTimeout(push,700); return; }
+    if(pushing){ pushT=setTimeout(push,400); return; }
+    pushing=true; dirty=false;
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({k:syncKey,data:data})})
+      .then(function(r){ if(!r.ok) throw r.status; return r.json(); })
+      .then(function(){ if(!dirty) setStatus('','Enregistré'); })
+      .catch(function(){ dirty=true; setStatus('err','Non synchronisé — gardé sur cet appareil'); pushT=setTimeout(push,15000); })
+      .then(function(){ pushing=false; });
+  }
+  // Récupère la version serveur ; la plus récente gagne.
+  function pull(first){
+    return fetch(API+'?k='+encodeURIComponent(syncKey),{cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw r.status; return r.json(); })
+      .then(function(j){
+        var remote=migrate(j&&j.data);
+        if(remote && ((first && joined) || ((remote.savedAt||0)>(data.savedAt||0) && !dirty))){
+          if(first && joined) setCurrent(null);
+          data=remote; lsSet(KEY,JSON.stringify(data)); paint();
+        } else if(first && (!remote || (data.savedAt||0)>(remote.savedAt||0))){
+          ready=true; push(); return;
+        }
+        if(!dirty) setStatus('','Enregistré');
+      })
+      .catch(function(){ setStatus('err','Hors ligne — gardé sur cet appareil'); })
+      .then(function(){ ready=true; });
+  }
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='visible' && ready && !dirty) pull(false); });
 
   // ---------- Helpers ----------
   function domain(url){ try{return new URL(url).hostname.replace(/^www\./,'');}catch(e){return '';} }
@@ -295,14 +387,18 @@
       if(fd.placeholder) i.placeholder=fd.placeholder;
       if(fd.type==='number'){i.step='0.01'; i.min='0';}
       if(fd.required) i.required=true;
+      if(fd.readonly){ i.readOnly=true; i.style.background='#F4F6FB'; i.style.fontSize='13px'; }
       w.appendChild(i); f.appendChild(w);
     });
     dlgCb=opts.onsave;
     dlg.showModal();
     setTimeout(function(){var first=$('#dlgFields input'); if(first) first.focus();},30);
   }
+  // Bouton cliqué mémorisé (e.submitter n'existe pas sur certains Safari)
+  var lastBtn=null;
+  $('#dlgForm').addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) lastBtn=b.value; });
   $('#dlgForm').addEventListener('submit',function(e){
-    var val=e.submitter&&e.submitter.value;
+    var val=(e.submitter&&e.submitter.value)||lastBtn||'ok'; lastBtn=null;
     if(val!=='ok'){ return; } // annuler
     var inputs=$('#dlgFields').querySelectorAll('input');
     var out={};
@@ -314,40 +410,73 @@
   });
 
   // ---------- Render ----------
-  function render(){
-    renderTabs();
-    renderBoard();
-    save();
-  }
+  // render() = après une modification (sauvegarde) ; paint() = affichage seul.
+  function render(){ paint(); save(); }
+  function paint(){ renderNav(); renderBoard(); }
 
-  function renderTabs(){
-    var t=$('#tabs'); t.innerHTML='';
-    data.recipients.forEach(function(r){
-      var b=document.createElement('button');
-      b.className='tab'+(r.id===data.current?' active':'');
-      b.innerHTML=esc(r.name)+' <span class="cnt">'+r.gifts.length+'</span>';
-      b.onclick=function(){ data.current=r.id; render(); };
-      t.appendChild(b);
+  function evIcon(n){ n=(n||'').toLowerCase(); return /no[eë]l/.test(n)?'🎄':/anniv/.test(n)?'🎂':/f[eê]te des (m|p)/.test(n)?'💐':'🎉'; }
+
+  function renderNav(){
+    var nav=$('#nav'); nav.innerHTML='';
+    var c=cur();
+    data.events.forEach(function(ev){
+      var box=document.createElement('div'); box.className='ev';
+      var h=document.createElement('div'); h.className='ev-head';
+      h.innerHTML='<span class="ev-name">'+evIcon(ev.name)+' '+esc(ev.name)+'</span>'+
+        '<button class="ico" data-a="ren" title="Renommer l\'événement">✎</button>'+
+        '<button class="ico del" data-a="del" title="Supprimer l\'événement">🗑</button>';
+      h.querySelector('[data-a="ren"]').onclick=function(){
+        openDialog({title:"Renommer l'événement",ok:"Renommer",fields:[{name:'name',label:"Nom",required:true,value:ev.name}],onsave:function(o){ ev.name=o.name.trim(); render(); }});
+      };
+      h.querySelector('[data-a="del"]').onclick=function(){
+        var n=data.lists.filter(function(l){return l.eventId===ev.id;}).length;
+        if(!confirm('Supprimer « '+ev.name+' »'+(n?' et ses '+n+' liste(s)':'')+' ?')) return;
+        data.events=data.events.filter(function(x){return x.id!==ev.id;});
+        data.lists=data.lists.filter(function(l){return l.eventId!==ev.id;});
+        render();
+      };
+      box.appendChild(h);
+      data.lists.filter(function(l){return l.eventId===ev.id;}).forEach(function(l){
+        var b=document.createElement('button'); b.className='nl'+(c&&l.id===c.id?' active':'');
+        b.innerHTML='<span>'+esc(l.name)+'</span><span class="cnt">'+l.gifts.length+'</span>';
+        b.onclick=function(){ setCurrent(l.id); paint(); if(window.innerWidth<=900) $('#board').scrollIntoView({behavior:'smooth'}); };
+        box.appendChild(b);
+      });
+      var add=document.createElement('button'); add.className='nl add'; add.textContent='＋ Ajouter une liste';
+      add.onclick=function(){
+        openDialog({title:"Nouvelle liste — "+ev.name,ok:"Créer",fields:[{name:'name',label:"Nom de la liste",required:true,placeholder:"Ex : Liste Marion, Idées Rose…"}],onsave:function(o){
+          var id=uid();
+          data.lists.push({id:id,eventId:ev.id,name:o.name.trim(),buyers:[],gifts:[]});
+          setCurrent(id); render(); toast("Liste créée");
+        }});
+      };
+      box.appendChild(add);
+      nav.appendChild(box);
     });
-    var add=document.createElement('button');
-    add.className='tab add'; add.innerHTML='＋ Nouvelle liste';
-    add.onclick=function(){
-      openDialog({title:"Nouvelle liste de souhaits",ok:"Créer",fields:[{name:'name',label:"Pour qui ? (prénom)",required:true,placeholder:"Ex : Marion"}],onsave:function(o){
-        var rid=uid();
-        data.recipients.push({id:rid,name:o.name.trim(),buyers:[],gifts:[]});
-        data.current=rid; render(); toast("Liste créée");
+    var ae=document.createElement('button'); ae.className='add-ev'; ae.textContent='＋ Nouvel événement';
+    ae.onclick=function(){
+      openDialog({title:"Nouvel événement",ok:"Créer",fields:[
+        {name:'name',label:"Événement",required:true,placeholder:"Ex : Anniversaire Julien"},
+        {name:'list',label:"Première liste",placeholder:"Ex : Idées Julien"}
+      ],onsave:function(o){
+        var eid=uid(); data.events.push({id:eid,name:o.name.trim()});
+        var ln=(o.list||'').trim();
+        if(ln){ var id=uid(); data.lists.push({id:id,eventId:eid,name:ln,buyers:[],gifts:[]}); setCurrent(id); }
+        render(); toast("Événement créé");
       }});
     };
-    t.appendChild(add);
+    nav.appendChild(ae);
   }
 
   function renderBoard(){
     var rec=cur(); var board=$('#board'); board.innerHTML='';
-    if(!rec){ board.innerHTML='<div class="empty-state"><div class="big">🎁</div>Aucune liste. Crée-en une pour commencer.</div>'; return; }
+    if(!rec){ board.innerHTML='<div class="empty-state"><div class="big">🎁</div>Aucune liste pour l\'instant.<br>Crée un événement à gauche, puis ajoute-lui une liste.</div>'; return; }
+    var ev=eventOf(rec);
 
     // Head
+    if(ev){ var cr=document.createElement('div'); cr.className='crumb'; cr.textContent=evIcon(ev.name)+' '+ev.name; board.appendChild(cr); }
     var head=document.createElement('div'); head.className='rec-head';
-    head.innerHTML='<h2>Liste de souhaits de '+esc(rec.name)+'</h2>'+
+    head.innerHTML='<h2>'+esc(rec.name)+'</h2>'+
       '<div class="rec-tools">'+
         '<button class="btn subtle sm" id="renRec">✎ Renommer</button>'+
         '<button class="btn danger sm" id="delRec">🗑 Supprimer</button>'+
@@ -387,7 +516,19 @@
     ab.onclick=function(){
       rec.buyers.push({id:uid(),name:"Nouvel acheteur",budget:null}); render();
     };
-    abw.appendChild(ab); board.appendChild(abw);
+    abw.appendChild(ab);
+    // Liste sans acheteur : proposer de reprendre ceux d'une autre liste
+    if(!rec.buyers.length){
+      var src=data.lists.filter(function(l){return l.id!==rec.id && l.buyers.length;})
+        .sort(function(a,b){return (a.eventId===rec.eventId?0:1)-(b.eventId===rec.eventId?0:1);})[0];
+      if(src){
+        var cp=document.createElement('button'); cp.className='btn subtle'; cp.style.marginTop='10px';
+        cp.textContent='Reprendre les acheteurs de « '+src.name+' » ('+src.buyers.map(function(b){return b.name;}).join(', ')+')';
+        cp.onclick=function(){ rec.buyers=src.buyers.map(function(b){return {id:uid(),name:b.name,budget:b.budget};}); render(); };
+        abw.appendChild(cp);
+      }
+    }
+    board.appendChild(abw);
 
     // ---- Summary ----
     var totalAll=rec.gifts.reduce(function(s,g){return s+(Number(g.price)||0);},0);
@@ -402,13 +543,13 @@
 
     // bind head actions
     $('#renRec').onclick=function(){
-      openDialog({title:"Renommer la liste",ok:"Renommer",fields:[{name:'name',label:"Prénom",required:true,value:rec.name}],onsave:function(o){ rec.name=o.name.trim(); render(); }});
+      openDialog({title:"Renommer la liste",ok:"Renommer",fields:[{name:'name',label:"Nom de la liste",required:true,value:rec.name}],onsave:function(o){ rec.name=o.name.trim(); render(); }});
     };
     $('#delRec').onclick=function(){
-      if(data.recipients.length<=1){ toast("Garde au moins une liste 🙂"); return; }
-      if(confirm('Supprimer la liste de '+rec.name+' et tous ses cadeaux ?')){
-        data.recipients=data.recipients.filter(function(r){return r.id!==rec.id;});
-        data.current=data.recipients[0].id; render();
+      if(confirm('Supprimer « '+rec.name+' » et tous ses cadeaux ?')){
+        data.lists=data.lists.filter(function(l){return l.id!==rec.id;});
+        var next=data.lists.find(function(l){return l.eventId===rec.eventId;})||data.lists[0];
+        setCurrent(next?next.id:null); render();
       }
     };
   }
@@ -502,7 +643,7 @@
   function fetchImage(g,manual){
     if(!g.url || fetching[g.id]) return;
     if(!manual && g.noImg) return;
-    fetching[g.id]=true; render();
+    fetching[g.id]=true; paint();
     fetch('https://api.microlink.io/?url='+encodeURIComponent(g.url))
       .then(function(r){ return r.json(); })
       .then(function(j){
@@ -600,9 +741,9 @@
   }
 
   // Cadeaux déjà enregistrés avec un lien mais sans photo : on complète une fois.
-  setTimeout(function(){
-    data.recipients.forEach(function(r){ r.gifts.forEach(function(g){ if(g.url && !g.img && !g.noImg) fetchImage(g,false); }); });
-  },400);
+  function autoPhotos(){
+    data.lists.forEach(function(l){ l.gifts.forEach(function(g){ if(g.url && !g.img && !g.noImg) fetchImage(g,false); }); });
+  }
 
   // ---------- Export / Import ----------
   $('#btnExport').onclick=function(){
@@ -615,13 +756,29 @@
   $('#fileImport').onchange=function(e){
     var f=e.target.files[0]; if(!f) return;
     var r=new FileReader();
-    r.onload=function(){ try{ var d=JSON.parse(r.result); if(!d.recipients) throw 0;
-      if(confirm('Remplacer les listes actuelles par le fichier importé ?')){ data=d; if(!data.current&&data.recipients[0]) data.current=data.recipients[0].id; render(); toast("Importé ✓"); }
+    r.onload=function(){ try{ var d=migrate(JSON.parse(r.result)); if(!d) throw 0;
+      if(confirm('Remplacer les listes actuelles par le fichier importé ?')){ data=d; setCurrent(null); render(); toast("Importé ✓"); }
     }catch(err){ toast("Fichier invalide"); } e.target.value=''; };
     r.readAsText(f);
   };
 
-  render();
+  // ---------- Synchronisation d'un autre appareil ----------
+  $('#btnSync').onclick=function(){
+    var link=location.origin+location.pathname+'#k='+syncKey;
+    openDialog({title:"Retrouver tes listes sur un autre appareil",ok:"Fermer",fields:[
+      {name:'link',label:"Ouvre ce lien sur ton téléphone ou un autre ordinateur (garde-le privé)",value:link,readonly:true},
+      {name:'join',label:"…ou colle ici le lien d'un autre appareil",placeholder:"https://www.cadeauclic.com/mes-cadeaux/#k=…"}
+    ],onsave:function(o){
+      var m=(o.join||'').match(/k=([A-Za-z0-9_-]{24,80})/);
+      if(m && m[1]!==syncKey){ location.hash='k='+m[1]; location.reload(); }
+    }});
+    var li=$('#dlgFields input[name="link"]');
+    li.addEventListener('focus',function(){ li.select(); });
+    if(navigator.clipboard){ navigator.clipboard.writeText(link).then(function(){ toast("Lien copié"); },function(){}); }
+  };
+
+  paint();
+  pull(true).then(autoPhotos);
 })();
 </script>
 </body>
