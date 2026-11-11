@@ -19,8 +19,8 @@ cta_enabled: true
 cta_text: Offre exclusive Qonto
 cta_button: En profiter
 related_posts:
-- 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
 - 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
+- 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
 - 9640-sogexia-business-avis-une-veritable-alternative-aux-banques-traditionnelles
 - 7774-sumup-faut-il-choisir-ses-terminaux-de-paiement-mon-avis
 ---

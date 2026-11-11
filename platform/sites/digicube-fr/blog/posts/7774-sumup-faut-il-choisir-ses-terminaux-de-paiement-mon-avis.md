@@ -19,9 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive SumUp
 cta_button: En profiter
 related_posts:
-- 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
-- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
 - 9640-sogexia-business-avis-une-veritable-alternative-aux-banques-traditionnelles
+- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
+- 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
 - 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
 ---
 <p>Ça fait maintenant deux ans que j'utilise SumUp dans mon entreprise. Deux ans à tester, à râler parfois, à être agréablement surpris à d'autres moments. Alors quand des confrères me demandent si ça vaut le coup, j'ai enfin une réponse honnête à donner. Pas celle d'un commercial. La mienne.</p>

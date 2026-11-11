@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Vivid Business
 cta_button: En profiter
 related_posts:
-- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
-- 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
 - 7774-sumup-faut-il-choisir-ses-terminaux-de-paiement-mon-avis
 - 9640-sogexia-business-avis-une-veritable-alternative-aux-banques-traditionnelles
+- 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
+- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
 ---
 <p>Ça fait maintenant deux ans que je gère la trésorerie de mon entreprise avec différents outils bancaires. Marseille, 120 salariés, des prestataires partout en France et quelques fournisseurs en Europe. Les frais bancaires, les délais, les exports comptables mal fichus... j'ai connu tout ça. Alors quand des collègues m'ont parlé de Vivid Business, j'ai voulu voir par moi-même.</p>
 

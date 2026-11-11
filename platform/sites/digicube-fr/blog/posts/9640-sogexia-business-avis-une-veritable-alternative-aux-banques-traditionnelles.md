@@ -20,10 +20,11 @@ cta_enabled: true
 cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
 related_posts:
+- 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
+- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
 - 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
 - 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
 - 7774-sumup-faut-il-choisir-ses-terminaux-de-paiement-mon-avis
-- 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
 ---
 <p>Je vais être honnête avec vous : quand j'ai commencé à chercher une alternative bancaire pour mon entreprise, Sogexia n'était pas dans mes premiers résultats. C'est un de mes associés qui m'en a parlé, presque par hasard. Et après deux ans à jongler entre plusieurs solutions, j'ai décidé de tester sérieusement cette néobanque orientée professionnels.</p>
 
