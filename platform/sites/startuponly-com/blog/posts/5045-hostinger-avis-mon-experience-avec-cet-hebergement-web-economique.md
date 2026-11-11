@@ -19,6 +19,7 @@ cta_text: Offre exclusive Hostinger
 cta_button: En profiter
 related_posts:
 - 3742-planethoster-avis-performances-support-et-prix-ce-que-j-en-retiens
+- 9526-nordvpn-mon-test-et-mon-avis-sur-ce-vpn-tres-populaire
 - 6452-o2switch-j-ai-evalue-cet-hebergeur-francais-mon-verdict
 ---
 <p>J'héberge des sites depuis plus de dix ans. WordPress, landing pages, apps Node.js, petits projets SaaS... J'ai testé beaucoup d'hébergeurs. OVH, o2switch, Infomaniak, Kinsta, et évidemment Hostinger. Et c'est sur ce dernier que je reviens régulièrement depuis 2022, notamment pour mes projets à petit budget.</p>
