@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Belermain
 cta_button: En profiter
 related_posts:
+- 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
+- 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
+- 2218-tableau-de-caracterisation-methode-simple-pour-analyser-un-projet-efficacement
 - 3324-why-how-what-appliquer-le-golden-circle-pour-renforcer-votre-strategie
-- 5171-strategie-corporate-les-fondamentaux-pour-piloter-la-croissance-d-un-groupe
-- 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
-- 4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable
 ---
 <p>Quand on gère la comptabilité d'une PME depuis vingt ans, on développe un radar assez précis pour repérer les outils qui tiennent leurs promesses. Belermain, j'en entends parler depuis quelques mois dans des groupes de responsables comptables. J'ai décidé d'aller voir par moi-même ce que ça donne vraiment, au quotidien, pour une équipe comme la nôtre.</p>
 
