@@ -19,9 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive Revolut Business
 cta_button: En profiter
 related_posts:
+- 9186-bunq-pro-ce-que-j-aime-dans-cette-banque-et-ce-qui-me-freine-avis
 - 7820-finom-mon-avis-sur-les-fonctionnalites-gratuites-et-les-restrictions
 - 6593-airwallex-avis-frais-competitifs-ou-mauvaises-surprises-a-prevoir
-- 9186-bunq-pro-ce-que-j-aime-dans-cette-banque-et-ce-qui-me-freine-avis
 ---
 <p>J'utilise Revolut Business depuis presque deux ans maintenant. Et honnêtement, mon avis a évolué pas mal depuis le début. Au départ j'étais hyper enthousiaste, et aujourd'hui... disons que j'ai une vision beaucoup plus nuancée. Pas négative, mais nuancée.</p>
 
