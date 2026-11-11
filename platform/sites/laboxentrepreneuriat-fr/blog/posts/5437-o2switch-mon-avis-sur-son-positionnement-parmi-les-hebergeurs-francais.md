@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive O2switch
 cta_button: En profiter
 related_posts:
+- 5986-hostinger-avis-ce-qui-le-rend-interessant-face-aux-hebergeurs-plus-chers
 - 4396-planethoster-avis-pourquoi-cet-hebergeur-pourrait-faire-la-difference
 ---
 <p>Quand on cherche un hébergeur web en France pour une TPE ou un indépendant, on tombe rapidement sur o2switch. Impossible de passer à côté. Et après avoir accompagné des dizaines de clients dans le choix de leur hébergement, je peux vous dire que ce nom revient souvent dans mes recommandations. Mais pas pour les raisons qu'on entend habituellement.</p>
