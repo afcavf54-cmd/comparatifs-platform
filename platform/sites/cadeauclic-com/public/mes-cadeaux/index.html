@@ -127,7 +127,7 @@
   .gift.dragging{opacity:.5}
   .gift.in-pool{width:280px; max-width:100%}
   .gift .thumb{
-    width:40px;height:40px;border-radius:9px;flex:none;
+    width:56px;height:56px;border-radius:10px;flex:none;overflow:hidden;
     background:linear-gradient(135deg,#EEF2FB,#E3E8F2);
     display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--accent);
   }
@@ -142,9 +142,14 @@
   .gift .g-menu:hover{background:#EEF2FB;color:var(--accent)}
 
   .menu{
-    position:absolute; top:34px; right:8px; background:#fff; border:1px solid var(--line);
-    border-radius:12px; box-shadow:0 10px 30px rgba(15,26,46,.16); padding:6px; z-index:30; min-width:180px;
+    position:fixed; background:#fff; border:1px solid var(--line);
+    border-radius:12px; box-shadow:0 10px 30px rgba(15,26,46,.18); padding:6px; z-index:200; min-width:210px;
+    max-height:calc(100vh - 24px); overflow-y:auto;
   }
+  .gift .thumb img{width:100%;height:100%;object-fit:contain;border-radius:9px;background:#fff}
+  .gift .thumb.has-img{background:#fff;border:1px solid var(--line)}
+  .gift .thumb.loading{animation:pulse 1s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.45}}
   .menu button{
     display:flex; align-items:center; gap:9px; width:100%; text-align:left; border:0; background:transparent;
     padding:9px 10px; border-radius:8px; cursor:pointer; font:inherit; font-size:13.5px; color:var(--ink);
@@ -463,8 +468,11 @@
     var el=document.createElement('div'); el.className='gift'+(inPool?' in-pool':''); el.draggable=true; el.dataset.gift=g.id;
     var dom=g.url?domain(g.url):'';
     var titleHtml=g.url?'<a href="'+esc(g.url)+'" target="_blank" rel="noopener">'+esc(g.title)+'</a>':esc(g.title);
+    var thumbHtml = g.img
+      ? '<div class="thumb has-img"><img src="'+esc(g.img)+'" alt="" loading="lazy" referrerpolicy="no-referrer"></div>'
+      : '<div class="thumb'+(fetching[g.id]?' loading':'')+'">🎁</div>';
     el.innerHTML=
-      '<div class="thumb">🎁</div>'+
+      thumbHtml+
       '<div class="g-main">'+
         '<div class="g-title">'+titleHtml+'</div>'+
         '<div class="g-meta">'+
@@ -478,31 +486,75 @@
     el.addEventListener('dragstart',function(e){ el.classList.add('dragging'); e.dataTransfer.setData('text/plain',g.id); e.dataTransfer.effectAllowed='move'; });
     el.addEventListener('dragend',function(){ el.classList.remove('dragging'); });
 
+    // photo cassée → on revient à l'icône
+    var im=el.querySelector('.thumb img');
+    if(im) im.addEventListener('error',function(){ var t=im.parentNode; t.classList.remove('has-img'); t.innerHTML='🎁'; });
+
     // menu
-    el.querySelector('.g-menu').addEventListener('click',function(ev){ ev.stopPropagation(); openGiftMenu(el,g); });
+    var mb=el.querySelector('.g-menu');
+    mb.addEventListener('click',function(ev){ ev.stopPropagation(); openGiftMenu(mb,g); });
     return el;
   }
 
-  function openGiftMenu(anchor,g){
+  // ---------- Photo produit automatique ----------
+  // Récupère l'image principale (og:image) de la page produit via Microlink.
+  var fetching={};
+  function fetchImage(g,manual){
+    if(!g.url || fetching[g.id]) return;
+    if(!manual && g.noImg) return;
+    fetching[g.id]=true; render();
+    fetch('https://api.microlink.io/?url='+encodeURIComponent(g.url))
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        var d=j&&j.data||{};
+        var u=(d.image&&d.image.url)||'';
+        if(u){ g.img=u; g.imgAuto=true; g.noImg=false; if(manual) toast("Photo récupérée"); }
+        else { g.noImg=true; if(manual) toast("Pas de photo trouvée — colle un lien d'image via Modifier"); }
+      })
+      .catch(function(){ g.noImg=true; if(manual) toast("Récupération impossible pour ce site"); })
+      .then(function(){ delete fetching[g.id]; render(); });
+  }
+
+  function openGiftMenu(btn,g){
     closeMenus();
     var rec=cur();
+    var assigned=g.buyerId && rec.buyers.some(function(b){return b.id===g.buyerId;});
     var m=document.createElement('div'); m.className='menu';
-    var html='<button data-a="edit">✎ Modifier</button>'+
-             '<div class="sep"></div><div class="mv-label">Déplacer vers</div>';
-    html+='<button data-mv="__pool">💡 Idées (non attribué)</button>';
-    rec.buyers.forEach(function(bu){ html+='<button data-mv="'+bu.id+'">👤 '+esc(bu.name)+'</button>'; });
+    var html='<button data-a="edit">✎ Modifier</button>';
+    if(g.url) html+='<button data-a="photo">🖼 '+(g.img?'Actualiser la photo':'Récupérer la photo')+'</button>';
+    if(g.url) html+='<button data-a="open">↗ Ouvrir le produit</button>';
+    if(assigned) html+='<button data-a="unassign">↩ Retirer l\'attribution</button>';
+    var targets=rec.buyers.filter(function(b){return b.id!==g.buyerId;});
+    if(targets.length){
+      html+='<div class="sep"></div><div class="mv-label">'+(assigned?'Attribuer plutôt à':'Attribuer à')+'</div>';
+      targets.forEach(function(bu){ html+='<button data-mv="'+bu.id+'">👤 '+esc(bu.name)+'</button>'; });
+    }
     html+='<div class="sep"></div><button class="del" data-a="del">🗑 Supprimer</button>';
     m.innerHTML=html;
-    anchor.appendChild(m);
+    document.body.appendChild(m);
+
+    // Positionnement fixe sous le bouton ⋮, retourné vers le haut si besoin
+    var r=btn.getBoundingClientRect(), mw=m.offsetWidth, mh=m.offsetHeight;
+    var left=Math.min(Math.max(8,r.right-mw), window.innerWidth-mw-8);
+    var top=r.bottom+6;
+    if(top+mh>window.innerHeight-8) top=Math.max(8, r.top-mh-6);
+    m.style.left=left+'px'; m.style.top=top+'px';
+
     m.addEventListener('click',function(ev){
       var b=ev.target.closest('button'); if(!b) return; ev.stopPropagation();
-      if(b.dataset.a==='edit'){ closeMenus(); editGift(g); }
-      else if(b.dataset.a==='del'){ closeMenus(); if(confirm('Supprimer « '+g.title+' » ?')){ rec.gifts=rec.gifts.filter(function(x){return x.id!==g.id;}); render(); } }
-      else if(b.dataset.mv){ g.buyerId=b.dataset.mv==='__pool'?null:b.dataset.mv; closeMenus(); render(); }
+      var a=b.dataset.a; closeMenus();
+      if(a==='edit') editGift(g);
+      else if(a==='photo') fetchImage(g,true);
+      else if(a==='open') window.open(g.url,'_blank','noopener');
+      else if(a==='unassign'){ g.buyerId=null; render(); toast("Remis dans les idées"); }
+      else if(a==='del'){ if(confirm('Supprimer « '+g.title+' » ?')){ rec.gifts=rec.gifts.filter(function(x){return x.id!==g.id;}); render(); } }
+      else if(b.dataset.mv){ g.buyerId=b.dataset.mv; render(); }
     });
     setTimeout(function(){ document.addEventListener('click',closeMenus,{once:true}); },0);
   }
   function closeMenus(){ var m=document.querySelector('.menu'); if(m) m.remove(); }
+  window.addEventListener('scroll',closeMenus,{passive:true});
+  window.addEventListener('resize',closeMenus);
 
   function makeDropZone(el,buyerId){
     el.addEventListener('dragover',function(e){ e.preventDefault(); e.dataTransfer.dropEffect='move'; el.classList.add('drop-on'); });
@@ -519,22 +571,38 @@
     openDialog({title:"Nouveau cadeau",ok:"Ajouter",fields:[
       {name:'title',label:"Nom du cadeau",required:true,placeholder:"Ex : Casque audio sans fil"},
       {name:'url',label:"Lien vers le produit (optionnel)",placeholder:"https://…"},
-      {name:'price',label:"Prix (€, optionnel)",type:'number',placeholder:"0"}
+      {name:'price',label:"Prix (€, optionnel)",type:'number',placeholder:"0"},
+      {name:'img',label:"Photo (optionnel — récupérée automatiquement depuis le lien)",placeholder:"Lien d'une image, si besoin"}
     ],onsave:function(o){
       var rec=cur();
-      rec.gifts.push({id:uid(),title:o.title.trim(),url:(o.url||'').trim(),price:o.price===''?null:Number(o.price),buyerId:buyerId||null});
+      var g={id:uid(),title:o.title.trim(),url:(o.url||'').trim(),price:o.price===''?null:Number(o.price),img:(o.img||'').trim(),buyerId:buyerId||null};
+      rec.gifts.push(g);
       render(); toast("Cadeau ajouté");
+      if(g.url && !g.img) fetchImage(g,false);
     }});
   }
   function editGift(g){
     openDialog({title:"Modifier le cadeau",ok:"Enregistrer",fields:[
       {name:'title',label:"Nom du cadeau",required:true,value:g.title},
       {name:'url',label:"Lien vers le produit (optionnel)",value:g.url},
-      {name:'price',label:"Prix (€, optionnel)",type:'number',value:(g.price==null?'':g.price)}
+      {name:'price',label:"Prix (€, optionnel)",type:'number',value:(g.price==null?'':g.price)},
+      {name:'img',label:"Photo (lien d'image — vide = récupération auto)",value:g.img||''}
     ],onsave:function(o){
-      g.title=o.title.trim(); g.url=(o.url||'').trim(); g.price=o.price===''?null:Number(o.price); render();
+      var oldUrl=g.url, oldImg=g.img||'';
+      var newImg=(o.img||'').trim();
+      g.title=o.title.trim(); g.url=(o.url||'').trim(); g.price=o.price===''?null:Number(o.price);
+      if(newImg!==oldImg){ g.img=newImg; g.imgAuto=false; }
+      // Lien produit changé et photo automatique (non saisie) → on la récupère à nouveau
+      if(g.url!==oldUrl && (g.imgAuto || !g.img)){ g.img=''; g.noImg=false; }
+      render();
+      if(g.url && !g.img) fetchImage(g,false);
     }});
   }
+
+  // Cadeaux déjà enregistrés avec un lien mais sans photo : on complète une fois.
+  setTimeout(function(){
+    data.recipients.forEach(function(r){ r.gifts.forEach(function(g){ if(g.url && !g.img && !g.noImg) fetchImage(g,false); }); });
+  },400);
 
   // ---------- Export / Import ----------
   $('#btnExport').onclick=function(){
