@@ -3,8 +3,11 @@ title: 'Homunity Avis 2026 : Retards, défauts et risques, ce que j''ai voulu v�
 slug: 1799-homunity-avis-retards-defauts-et-risques-ce-que-j-ai-voulu-verifier
 date: '2026-11-10T08:00:00+01:00'
 categorie: Finance & Comptabilité
-meta_title: 'Homunity : comprendre les retards de remboursement et les risques du crowdfunding'
-meta_description: Homunity est-il fiable en 2026 ? Retards, défauts et risques réels analysés en profondeur pour vous aider à investir dans le crowdfunding immobilier en toute…
+meta_title: 'Homunity : comprendre les retards de remboursement et les risques du
+  crowdfunding'
+meta_description: Homunity est-il fiable en 2026 ? Retards, défauts et risques réels
+  analysés en profondeur pour vous aider à investir dans le crowdfunding immobilier
+  en toute…
 min_words: 3000
 status: published
 featured_image: /blog/1799-homunity-avis-retards-defauts-et-risques-ce-que-j-ai-voulu-verifier.jpg
@@ -15,8 +18,12 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4970117978T&subid=editions-d
 cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
+related_posts:
+- 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
+- 1456-enerfip-les-risques-que-je-surveillerais-avant-d-investir-avis
+- 2786-enky-invest-avis-ce-qui-me-ferait-reflechir-avant-de-placer-mon-argent
+- 1694-assujettissement-a-la-tva-en-cas-d-operations-imposables-sur-option-regles-et-demarches
 ---
-
 <p>Je vais être honnête avec vous : j'ai commencé à regarder Homunity parce qu'un de mes collaborateurs m'en avait parlé lors d'un déjeuner. Il investissait là-dedans depuis deux ans et affichait des rendements annoncés autour de 9 à 11 %. Moi, j'avais surtout entendu parler du crowdfunding immobilier de façon vague, sans jamais avoir creusé sérieusement. Alors j'ai décidé de regarder ça de près. Très près.</p>
 
 <p>Ce que vous allez lire ici, c'est le résultat de plusieurs semaines d'analyse. J'ai épluché des forums, lu des témoignages d'investisseurs, comparé les projets publiés sur la plateforme, et tenté de comprendre ce qui se passe réellement quand un projet tourne mal. Parce que certains tournent mal. Et je voulais savoir comment Homunity gère ça.</p>
