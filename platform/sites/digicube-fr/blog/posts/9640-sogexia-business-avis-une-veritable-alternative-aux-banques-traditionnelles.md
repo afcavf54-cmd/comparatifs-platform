@@ -21,6 +21,7 @@ cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
 related_posts:
 - 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
+- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
 - 7774-sumup-faut-il-choisir-ses-terminaux-de-paiement-mon-avis
 - 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
 ---
