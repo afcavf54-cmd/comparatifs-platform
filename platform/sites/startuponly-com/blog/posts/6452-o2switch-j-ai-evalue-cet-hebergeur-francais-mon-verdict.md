@@ -19,6 +19,7 @@ cta_text: Offre exclusive O2switch
 cta_button: En profiter
 related_posts:
 - 3742-planethoster-avis-performances-support-et-prix-ce-que-j-en-retiens
+- 5045-hostinger-avis-mon-experience-avec-cet-hebergement-web-economique
 ---
 <p>J'utilise o2switch depuis maintenant un peu plus de deux ans pour héberger les sites de ma startup et quelques projets clients. Autant dire que j'ai eu le temps de tester en conditions réelles, pas juste en mode découverte le premier mois.</p>
 

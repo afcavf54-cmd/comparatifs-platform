@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
 related_posts:
+- 5045-hostinger-avis-mon-experience-avec-cet-hebergement-web-economique
 - 6452-o2switch-j-ai-evalue-cet-hebergeur-francais-mon-verdict
 ---
 <p>J'utilise des outils d'hébergement depuis mes premiers projets web il y a quinze ans. J'ai testé pas mal de trucs, fait des erreurs, changé plusieurs fois. Et quand j'ai commencé à chercher une solution pour héberger les sites de ma startup et de quelques clients, PlanetHoster est remonté régulièrement dans mes recherches. Alors j'ai testé. Voilà ce que j'en retiens vraiment, sans langue de bois.</p>
