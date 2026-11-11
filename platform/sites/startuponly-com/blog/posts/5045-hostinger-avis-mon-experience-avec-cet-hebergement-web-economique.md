@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive Hostinger
 cta_button: En profiter
 related_posts:
+- 9526-nordvpn-mon-test-et-mon-avis-sur-ce-vpn-tres-populaire
 - 3742-planethoster-avis-performances-support-et-prix-ce-que-j-en-retiens
 - 9526-nordvpn-mon-test-et-mon-avis-sur-ce-vpn-tres-populaire
 - 6452-o2switch-j-ai-evalue-cet-hebergeur-francais-mon-verdict

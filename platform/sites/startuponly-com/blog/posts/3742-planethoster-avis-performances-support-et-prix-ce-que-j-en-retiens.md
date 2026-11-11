@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
 related_posts:
+- 9526-nordvpn-mon-test-et-mon-avis-sur-ce-vpn-tres-populaire
 - 5045-hostinger-avis-mon-experience-avec-cet-hebergement-web-economique
 - 6452-o2switch-j-ai-evalue-cet-hebergeur-francais-mon-verdict
 - 9526-nordvpn-mon-test-et-mon-avis-sur-ce-vpn-tres-populaire
