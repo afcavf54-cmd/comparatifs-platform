@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Mes listes de souhaits — cadeauclic</title>
+<style>
+  :root{
+    --accent:#1B4FD8; --accent-d:#143db0; --accent2:#ff8080;
+    --bg:#F4F6FB; --ink:#0F1A2E; --card:#fff; --line:#E3E8F2;
+    --muted:#64748B; --green:#16A34A; --red:#DC2626; --amber:#D97706;
+    --shadow:0 6px 20px rgba(15,26,46,.08);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent)}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 16px 80px}
+
+  /* ---- Header ---- */
+  header.top{
+    background:linear-gradient(120deg,var(--accent),#2f6bff);
+    color:#fff; padding:18px 0; box-shadow:var(--shadow); margin-bottom:22px;
+  }
+  header.top .wrap{padding-bottom:0; display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+  .brand{font-weight:800; font-size:19px; letter-spacing:.2px}
+  .brand .dot{color:var(--accent2)}
+  header.top h1{font-size:15px; font-weight:500; margin:0; opacity:.92}
+  .top-actions{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
+  .btn{
+    border:0; cursor:pointer; font:inherit; font-weight:700; font-size:14px;
+    padding:9px 15px; border-radius:999px; background:var(--accent); color:#fff;
+    display:inline-flex; align-items:center; gap:7px; transition:transform .12s, background .12s, box-shadow .12s;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn.ghost{background:rgba(255,255,255,.16); color:#fff}
+  .btn.ghost:hover{background:rgba(255,255,255,.26)}
+  .btn.light{background:#fff; color:var(--accent)}
+  .btn.sm{padding:6px 12px; font-size:13px}
+  .btn.subtle{background:#EEF2FB; color:var(--accent)}
+  .btn.subtle:hover{background:#E2E9F9}
+  .btn.danger{background:#FDEBEC; color:var(--red)}
+  .btn.danger:hover{background:#fbdcde}
+
+  /* ---- Recipient tabs ---- */
+  .tabs{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:20px}
+  .tab{
+    background:#fff; border:1px solid var(--line); color:var(--ink);
+    padding:9px 16px; border-radius:999px; cursor:pointer; font-weight:700; font-size:14px;
+    display:inline-flex; align-items:center; gap:8px; transition:.12s;
+  }
+  .tab:hover{border-color:#c7d2ea}
+  .tab.active{background:var(--ink); color:#fff; border-color:var(--ink)}
+  .tab .cnt{font-size:12px; opacity:.7; font-weight:600}
+  .tab.add{background:transparent; border-style:dashed; color:var(--accent)}
+
+  /* ---- Recipient head ---- */
+  .rec-head{display:flex; align-items:center; gap:12px; margin-bottom:6px; flex-wrap:wrap}
+  .rec-head h2{margin:0; font-size:26px; font-weight:800}
+  .rec-sub{color:var(--muted); font-size:14px; margin:0 0 20px}
+  .rec-tools{margin-left:auto; display:flex; gap:8px}
+
+  /* ---- Section ---- */
+  .sec-label{
+    font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--muted); margin:26px 0 12px; display:flex; align-items:center; gap:10px;
+  }
+  .sec-label .line{height:1px; background:var(--line); flex:1}
+
+  /* ---- Suggestions pool ---- */
+  .pool{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:14px; box-shadow:var(--shadow); min-height:70px;
+  }
+  .pool.drop-on{outline:2px dashed var(--accent); outline-offset:-6px; background:#F5F8FF}
+  .pool-grid{display:flex; flex-wrap:wrap; gap:10px}
+  .pool .empty{color:var(--muted); font-size:14px; padding:12px 6px}
+
+  /* ---- Buyers grid ---- */
+  .buyers{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px}
+  .buyer{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden;
+  }
+  .buyer-head{padding:14px 14px 12px; border-bottom:1px solid var(--line)}
+  .buyer-top{display:flex; align-items:center; gap:8px}
+  .buyer-name{
+    font-weight:800; font-size:16px; border:0; background:transparent; color:var(--ink);
+    width:100%; padding:4px 6px; border-radius:8px; font-family:inherit;
+  }
+  .buyer-name:focus{outline:2px solid var(--accent); background:#F5F8FF}
+  .buyer-del{border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:17px;padding:2px 6px;border-radius:8px;line-height:1}
+  .buyer-del:hover{background:#FDEBEC;color:var(--red)}
+  .budget-row{display:flex; align-items:center; gap:8px; margin-top:10px; flex-wrap:wrap}
+  .budget-row label{font-size:12.5px; color:var(--muted); font-weight:600}
+  .budget-input{
+    width:92px; border:1px solid var(--line); border-radius:9px; padding:6px 9px;
+    font:inherit; font-size:13.5px; font-weight:700; color:var(--ink);
+  }
+  .budget-input:focus{outline:2px solid var(--accent); border-color:var(--accent)}
+  .totals{margin-top:11px; display:flex; align-items:baseline; justify-content:space-between; gap:8px}
+  .totals .amt{font-size:21px; font-weight:800}
+  .totals .cap{font-size:12px; color:var(--muted); font-weight:600}
+  .bar{height:7px; border-radius:999px; background:#EDF1F8; overflow:hidden; margin-top:9px}
+  .bar > i{display:block; height:100%; background:var(--green); border-radius:999px; transition:width .2s}
+  .pill{font-size:11.5px; font-weight:800; padding:2px 9px; border-radius:999px}
+  .pill.ok{background:#E7F6ee; color:var(--green)}
+  .pill.over{background:#FDEBEC; color:var(--red)}
+  .buyer-body{padding:12px; display:flex; flex-direction:column; gap:10px; flex:1; min-height:90px}
+  .buyer-body.drop-on{outline:2px dashed var(--accent); outline-offset:-6px; background:#F5F8FF; border-radius:12px}
+  .buyer-body .empty{color:var(--muted); font-size:13px; text-align:center; padding:16px 6px; border:1.5px dashed var(--line); border-radius:12px}
+
+  /* ---- Gift card ---- */
+  .gift{
+    background:#fff; border:1px solid var(--line); border-radius:13px; padding:11px 12px;
+    display:flex; gap:10px; align-items:flex-start; cursor:grab; position:relative;
+    transition:box-shadow .12s, border-color .12s, transform .05s;
+  }
+  .gift:hover{border-color:#c7d2ea; box-shadow:0 4px 12px rgba(15,26,46,.07)}
+  .gift.dragging{opacity:.5}
+  .gift.in-pool{width:280px; max-width:100%}
+  .gift .thumb{
+    width:40px;height:40px;border-radius:9px;flex:none;
+    background:linear-gradient(135deg,#EEF2FB,#E3E8F2);
+    display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--accent);
+  }
+  .gift .g-main{flex:1; min-width:0}
+  .gift .g-title{font-weight:700; font-size:14.5px; word-break:break-word}
+  .gift .g-title a{color:var(--ink); text-decoration:none}
+  .gift .g-title a:hover{color:var(--accent); text-decoration:underline}
+  .gift .g-meta{display:flex; align-items:center; gap:8px; margin-top:3px; flex-wrap:wrap}
+  .gift .g-price{font-weight:800; font-size:14px; color:var(--accent)}
+  .gift .g-dom{font-size:11.5px; color:var(--muted); max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .gift .g-menu{border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:18px;line-height:1;padding:2px 5px;border-radius:7px;flex:none}
+  .gift .g-menu:hover{background:#EEF2FB;color:var(--accent)}
+
+  .menu{
+    position:absolute; top:34px; right:8px; background:#fff; border:1px solid var(--line);
+    border-radius:12px; box-shadow:0 10px 30px rgba(15,26,46,.16); padding:6px; z-index:30; min-width:180px;
+  }
+  .menu button{
+    display:flex; align-items:center; gap:9px; width:100%; text-align:left; border:0; background:transparent;
+    padding:9px 10px; border-radius:8px; cursor:pointer; font:inherit; font-size:13.5px; color:var(--ink);
+  }
+  .menu button:hover{background:#F2F5FC}
+  .menu .sep{height:1px; background:var(--line); margin:5px 2px}
+  .menu .mv-label{font-size:11px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:6px 10px 3px}
+  .menu button.del{color:var(--red)}
+  .menu button.del:hover{background:#FDEBEC}
+
+  /* ---- Add tiles ---- */
+  .add-tile{
+    border:1.5px dashed #c3d0ea; background:#F9FBFF; color:var(--accent); cursor:pointer;
+    border-radius:13px; padding:12px; font-weight:700; font-size:14px; display:flex;
+    align-items:center; justify-content:center; gap:8px; transition:.12s; font-family:inherit; width:100%;
+  }
+  .add-tile:hover{background:#EEF4FF; border-color:var(--accent)}
+  .add-tile.pool{width:280px; max-width:100%; min-height:64px}
+  .add-buyer-wrap{margin-top:16px}
+  .add-buyer{
+    border:1.5px dashed #c3d0ea; background:#F9FBFF; color:var(--accent); cursor:pointer;
+    border-radius:var(--radius); padding:18px; font-weight:800; font-size:15px; width:100%;
+    display:flex;align-items:center;justify-content:center;gap:9px;font-family:inherit;transition:.12s;
+  }
+  .add-buyer:hover{background:#EEF4FF; border-color:var(--accent)}
+
+  /* ---- Recipient summary ---- */
+  .rec-summary{
+    margin-top:26px; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:16px 18px; display:flex; gap:26px; flex-wrap:wrap; align-items:center;
+  }
+  .rec-summary .blk .k{font-size:12px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.05em}
+  .rec-summary .blk .v{font-size:22px; font-weight:800; margin-top:2px}
+
+  /* ---- Dialog ---- */
+  dialog{
+    border:0; border-radius:18px; padding:0; box-shadow:0 30px 70px rgba(15,26,46,.3);
+    width:min(440px,calc(100vw - 32px)); color:var(--ink);
+  }
+  dialog::backdrop{background:rgba(15,26,46,.45)}
+  .dlg-in{padding:22px}
+  .dlg-in h3{margin:0 0 16px; font-size:19px; font-weight:800}
+  .field{margin-bottom:13px}
+  .field label{display:block; font-size:13px; font-weight:700; color:var(--muted); margin-bottom:5px}
+  .field input{
+    width:100%; border:1px solid var(--line); border-radius:11px; padding:11px 12px; font:inherit; font-size:15px;
+  }
+  .field input:focus{outline:2px solid var(--accent); border-color:var(--accent)}
+  .dlg-actions{display:flex; gap:9px; justify-content:flex-end; margin-top:20px}
+  .empty-state{text-align:center; padding:70px 20px; color:var(--muted)}
+  .empty-state .big{font-size:40px; margin-bottom:10px}
+  .toast{
+    position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:#fff; padding:11px 18px; border-radius:999px; font-size:14px; font-weight:600;
+    opacity:0; pointer-events:none; transition:.25s; z-index:100; box-shadow:var(--shadow);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+  @media(max-width:560px){
+    .gift.in-pool,.add-tile.pool{width:100%}
+    .rec-head h2{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">cadeauclic<span class="dot">.</span>com</span>
+    <h1>Mes listes de souhaits</h1>
+    <div class="top-actions">
+      <button class="btn ghost sm" id="btnExport">⬇ Exporter</button>
+      <button class="btn ghost sm" id="btnImport">⬆ Importer</button>
+      <input type="file" id="fileImport" accept="application/json" hidden>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div id="board"></div>
+</div>
+
+<!-- Dialog générique (cadeau / renommage) -->
+<dialog id="dlg">
+  <form method="dialog" class="dlg-in" id="dlgForm">
+    <h3 id="dlgTitle">Cadeau</h3>
+    <div id="dlgFields"></div>
+    <div class="dlg-actions">
+      <button class="btn subtle" value="cancel" type="submit" formnovalidate>Annuler</button>
+      <button class="btn" value="ok" id="dlgOk" type="submit">Enregistrer</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  var KEY="cadeauclic_wishlists_v1";
+  var euro=new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:2});
+  var uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);};
+  var $=function(s,r){return (r||document).querySelector(s);};
+
+  // ---------- State ----------
+  var data=load();
+  function load(){
+    try{var d=JSON.parse(localStorage.getItem(KEY)); if(d&&d.recipients) return d;}catch(e){}
+    return seed();
+  }
+  function seed(){
+    var rid=uid();
+    return {current:rid, recipients:[{
+      id:rid, name:"Julien",
+      buyers:[{id:uid(),name:"Maman",budget:null},{id:uid(),name:"Thierry",budget:null},{id:uid(),name:"Sylvie",budget:null}],
+      gifts:[]
+    }]};
+  }
+  function save(){ try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){} }
+  function cur(){ return data.recipients.find(function(r){return r.id===data.current;}) || data.recipients[0]; }
+
+  // ---------- Helpers ----------
+  function domain(url){ try{return new URL(url).hostname.replace(/^www\./,'');}catch(e){return '';} }
+  function giftsOf(rec,buyerId){ return rec.gifts.filter(function(g){return (g.buyerId||null)===(buyerId||null);}); }
+  function buyerTotal(rec,buyerId){ return giftsOf(rec,buyerId).reduce(function(s,g){return s+(Number(g.price)||0);},0); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];}); }
+
+  // ---------- Toast ----------
+  var toastT;
+  function toast(msg){ var t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(function(){t.classList.remove('show');},1600); }
+
+  // ---------- Dialog ----------
+  var dlg=$('#dlg'), dlgCb=null;
+  function openDialog(opts){
+    $('#dlgTitle').textContent=opts.title;
+    $('#dlgOk').textContent=opts.ok||"Enregistrer";
+    var f=$('#dlgFields'); f.innerHTML='';
+    opts.fields.forEach(function(fd){
+      var w=document.createElement('div'); w.className='field';
+      w.innerHTML='<label>'+esc(fd.label)+'</label>';
+      var i=document.createElement('input');
+      i.type=fd.type||'text'; i.value=fd.value==null?'':fd.value; i.name=fd.name;
+      if(fd.placeholder) i.placeholder=fd.placeholder;
+      if(fd.type==='number'){i.step='0.01'; i.min='0';}
+      if(fd.required) i.required=true;
+      w.appendChild(i); f.appendChild(w);
+    });
+    dlgCb=opts.onsave;
+    dlg.showModal();
+    setTimeout(function(){var first=$('#dlgFields input'); if(first) first.focus();},30);
+  }
+  $('#dlgForm').addEventListener('submit',function(e){
+    var val=e.submitter&&e.submitter.value;
+    if(val!=='ok'){ return; } // annuler
+    var inputs=$('#dlgFields').querySelectorAll('input');
+    var out={};
+    for(var k=0;k<inputs.length;k++){
+      if(inputs[k].required && !inputs[k].value.trim()){ e.preventDefault(); inputs[k].focus(); return; }
+      out[inputs[k].name]=inputs[k].value;
+    }
+    if(dlgCb) dlgCb(out);
+  });
+
+  // ---------- Render ----------
+  function render(){
+    renderTabs();
+    renderBoard();
+    save();
+  }
+
+  function renderTabs(){
+    var t=$('#tabs'); t.innerHTML='';
+    data.recipients.forEach(function(r){
+      var b=document.createElement('button');
+      b.className='tab'+(r.id===data.current?' active':'');
+      b.innerHTML=esc(r.name)+' <span class="cnt">'+r.gifts.length+'</span>';
+      b.onclick=function(){ data.current=r.id; render(); };
+      t.appendChild(b);
+    });
+    var add=document.createElement('button');
+    add.className='tab add'; add.innerHTML='＋ Nouvelle liste';
+    add.onclick=function(){
+      openDialog({title:"Nouvelle liste de souhaits",ok:"Créer",fields:[{name:'name',label:"Pour qui ? (prénom)",required:true,placeholder:"Ex : Marion"}],onsave:function(o){
+        var rid=uid();
+        data.recipients.push({id:rid,name:o.name.trim(),buyers:[],gifts:[]});
+        data.current=rid; render(); toast("Liste créée");
+      }});
+    };
+    t.appendChild(add);
+  }
+
+  function renderBoard(){
+    var rec=cur(); var board=$('#board'); board.innerHTML='';
+    if(!rec){ board.innerHTML='<div class="empty-state"><div class="big">🎁</div>Aucune liste. Crée-en une pour commencer.</div>'; return; }
+
+    // Head
+    var head=document.createElement('div'); head.className='rec-head';
+    head.innerHTML='<h2>Liste de souhaits de '+esc(rec.name)+'</h2>'+
+      '<div class="rec-tools">'+
+        '<button class="btn subtle sm" id="renRec">✎ Renommer</button>'+
+        '<button class="btn danger sm" id="delRec">🗑 Supprimer</button>'+
+      '</div>';
+    board.appendChild(head);
+    var sub=document.createElement('p'); sub.className='rec-sub';
+    sub.textContent="Ajoute tes idées de cadeaux, puis attribue-les à chaque acheteur en les glissant dans sa colonne.";
+    board.appendChild(sub);
+
+    // ---- Suggestions ----
+    var lbl1=document.createElement('div'); lbl1.className='sec-label';
+    lbl1.innerHTML='Idées de cadeaux (à attribuer) <span class="line"></span>';
+    board.appendChild(lbl1);
+
+    var pool=document.createElement('div'); pool.className='pool';
+    makeDropZone(pool,null);
+    var grid=document.createElement('div'); grid.className='pool-grid';
+    var poolGifts=giftsOf(rec,null);
+    poolGifts.forEach(function(g){ grid.appendChild(giftCard(g,true)); });
+    var addG=document.createElement('button'); addG.className='add-tile pool'; addG.innerHTML='＋ Ajouter un cadeau';
+    addG.onclick=function(){ addGift(null); };
+    grid.appendChild(addG);
+    pool.appendChild(grid);
+    board.appendChild(pool);
+
+    // ---- Buyers ----
+    var lbl2=document.createElement('div'); lbl2.className='sec-label';
+    lbl2.innerHTML='Acheteurs <span class="line"></span>';
+    board.appendChild(lbl2);
+
+    var buyers=document.createElement('div'); buyers.className='buyers';
+    rec.buyers.forEach(function(bu){ buyers.appendChild(buyerCol(rec,bu)); });
+    board.appendChild(buyers);
+
+    var abw=document.createElement('div'); abw.className='add-buyer-wrap';
+    var ab=document.createElement('button'); ab.className='add-buyer'; ab.innerHTML='＋ Ajouter un acheteur';
+    ab.onclick=function(){
+      rec.buyers.push({id:uid(),name:"Nouvel acheteur",budget:null}); render();
+    };
+    abw.appendChild(ab); board.appendChild(abw);
+
+    // ---- Summary ----
+    var totalAll=rec.gifts.reduce(function(s,g){return s+(Number(g.price)||0);},0);
+    var totalAssigned=rec.buyers.reduce(function(s,bu){return s+buyerTotal(rec,bu.id);},0);
+    var sumEl=document.createElement('div'); sumEl.className='rec-summary';
+    sumEl.innerHTML=
+      '<div class="blk"><div class="k">Cadeaux</div><div class="v">'+rec.gifts.length+'</div></div>'+
+      '<div class="blk"><div class="k">Valeur totale des idées</div><div class="v">'+euro.format(totalAll)+'</div></div>'+
+      '<div class="blk"><div class="k">Déjà attribué</div><div class="v">'+euro.format(totalAssigned)+'</div></div>'+
+      '<div class="blk"><div class="k">Non attribué</div><div class="v">'+euro.format(totalAll-totalAssigned)+'</div></div>';
+    board.appendChild(sumEl);
+
+    // bind head actions
+    $('#renRec').onclick=function(){
+      openDialog({title:"Renommer la liste",ok:"Renommer",fields:[{name:'name',label:"Prénom",required:true,value:rec.name}],onsave:function(o){ rec.name=o.name.trim(); render(); }});
+    };
+    $('#delRec').onclick=function(){
+      if(data.recipients.length<=1){ toast("Garde au moins une liste 🙂"); return; }
+      if(confirm('Supprimer la liste de '+rec.name+' et tous ses cadeaux ?')){
+        data.recipients=data.recipients.filter(function(r){return r.id!==rec.id;});
+        data.current=data.recipients[0].id; render();
+      }
+    };
+  }
+
+  function buyerCol(rec,bu){
+    var col=document.createElement('div'); col.className='buyer';
+    var total=buyerTotal(rec,bu.id);
+    var budget=bu.budget==null?null:Number(bu.budget);
+    var over=budget!=null && total>budget;
+    var pct=budget&&budget>0?Math.min(100,Math.round(total/budget*100)):0;
+
+    var h=document.createElement('div'); h.className='buyer-head';
+    var top=document.createElement('div'); top.className='buyer-top';
+    var nm=document.createElement('input'); nm.className='buyer-name'; nm.value=bu.name; nm.setAttribute('aria-label','Nom de l\'acheteur');
+    nm.onchange=function(){ bu.name=nm.value.trim()||"Acheteur"; save(); };
+    var del=document.createElement('button'); del.className='buyer-del'; del.title="Supprimer l'acheteur"; del.innerHTML='✕';
+    del.onclick=function(){
+      var gc=giftsOf(rec,bu.id).length;
+      if(gc && !confirm(bu.name+' a '+gc+' cadeau(x) attribué(s). Les remettre dans les idées et supprimer l\'acheteur ?')) return;
+      rec.gifts.forEach(function(g){ if(g.buyerId===bu.id) g.buyerId=null; });
+      rec.buyers=rec.buyers.filter(function(x){return x.id!==bu.id;}); render();
+    };
+    top.appendChild(nm); top.appendChild(del); h.appendChild(top);
+
+    var br=document.createElement('div'); br.className='budget-row';
+    br.innerHTML='<label>Budget max</label>';
+    var bi=document.createElement('input'); bi.className='budget-input'; bi.type='number'; bi.min='0'; bi.step='1';
+    bi.placeholder='—'; bi.value=budget==null?'':budget;
+    bi.onchange=function(){ var v=bi.value.trim(); bu.budget=v===''?null:Math.max(0,Number(v)||0); render(); };
+    var eur=document.createElement('span'); eur.style.cssText='font-weight:700;color:var(--muted)'; eur.textContent='€';
+    br.appendChild(bi); br.appendChild(eur);
+    h.appendChild(br);
+
+    var tl=document.createElement('div'); tl.className='totals';
+    tl.innerHTML='<div><span class="amt" style="color:'+(over?'var(--red)':'var(--ink)')+'">'+euro.format(total)+'</span>'+
+      (budget!=null?' <span class="cap">/ '+euro.format(budget)+'</span>':'')+'</div>'+
+      (budget!=null?'<span class="pill '+(over?'over':'ok')+'">'+(over?'Dépassé':'OK')+'</span>':'');
+    h.appendChild(tl);
+    if(budget!=null){
+      var bar=document.createElement('div'); bar.className='bar';
+      bar.innerHTML='<i style="width:'+pct+'%;background:'+(over?'var(--red)':'var(--green)')+'"></i>';
+      h.appendChild(bar);
+    }
+    col.appendChild(h);
+
+    var body=document.createElement('div'); body.className='buyer-body';
+    makeDropZone(body,bu.id);
+    var list=giftsOf(rec,bu.id);
+    if(!list.length){ var e=document.createElement('div'); e.className='empty'; e.textContent='Glisse un cadeau ici'; body.appendChild(e); }
+    else list.forEach(function(g){ body.appendChild(giftCard(g,false)); });
+    col.appendChild(body);
+    return col;
+  }
+
+  function giftCard(g,inPool){
+    var rec=cur();
+    var el=document.createElement('div'); el.className='gift'+(inPool?' in-pool':''); el.draggable=true; el.dataset.gift=g.id;
+    var dom=g.url?domain(g.url):'';
+    var titleHtml=g.url?'<a href="'+esc(g.url)+'" target="_blank" rel="noopener">'+esc(g.title)+'</a>':esc(g.title);
+    el.innerHTML=
+      '<div class="thumb">🎁</div>'+
+      '<div class="g-main">'+
+        '<div class="g-title">'+titleHtml+'</div>'+
+        '<div class="g-meta">'+
+          '<span class="g-price">'+(g.price!=null&&g.price!==''?euro.format(Number(g.price)):'— €')+'</span>'+
+          (dom?'<span class="g-dom">'+esc(dom)+'</span>':'')+
+        '</div>'+
+      '</div>'+
+      '<button class="g-menu" aria-label="Options">⋮</button>';
+
+    // drag
+    el.addEventListener('dragstart',function(e){ el.classList.add('dragging'); e.dataTransfer.setData('text/plain',g.id); e.dataTransfer.effectAllowed='move'; });
+    el.addEventListener('dragend',function(){ el.classList.remove('dragging'); });
+
+    // menu
+    el.querySelector('.g-menu').addEventListener('click',function(ev){ ev.stopPropagation(); openGiftMenu(el,g); });
+    return el;
+  }
+
+  function openGiftMenu(anchor,g){
+    closeMenus();
+    var rec=cur();
+    var m=document.createElement('div'); m.className='menu';
+    var html='<button data-a="edit">✎ Modifier</button>'+
+             '<div class="sep"></div><div class="mv-label">Déplacer vers</div>';
+    html+='<button data-mv="__pool">💡 Idées (non attribué)</button>';
+    rec.buyers.forEach(function(bu){ html+='<button data-mv="'+bu.id+'">👤 '+esc(bu.name)+'</button>'; });
+    html+='<div class="sep"></div><button class="del" data-a="del">🗑 Supprimer</button>';
+    m.innerHTML=html;
+    anchor.appendChild(m);
+    m.addEventListener('click',function(ev){
+      var b=ev.target.closest('button'); if(!b) return; ev.stopPropagation();
+      if(b.dataset.a==='edit'){ closeMenus(); editGift(g); }
+      else if(b.dataset.a==='del'){ closeMenus(); if(confirm('Supprimer « '+g.title+' » ?')){ rec.gifts=rec.gifts.filter(function(x){return x.id!==g.id;}); render(); } }
+      else if(b.dataset.mv){ g.buyerId=b.dataset.mv==='__pool'?null:b.dataset.mv; closeMenus(); render(); }
+    });
+    setTimeout(function(){ document.addEventListener('click',closeMenus,{once:true}); },0);
+  }
+  function closeMenus(){ var m=document.querySelector('.menu'); if(m) m.remove(); }
+
+  function makeDropZone(el,buyerId){
+    el.addEventListener('dragover',function(e){ e.preventDefault(); e.dataTransfer.dropEffect='move'; el.classList.add('drop-on'); });
+    el.addEventListener('dragleave',function(e){ if(!el.contains(e.relatedTarget)) el.classList.remove('drop-on'); });
+    el.addEventListener('drop',function(e){
+      e.preventDefault(); el.classList.remove('drop-on');
+      var id=e.dataTransfer.getData('text/plain'); if(!id) return;
+      var rec=cur(); var g=rec.gifts.find(function(x){return x.id===id;}); if(!g) return;
+      g.buyerId=buyerId||null; render();
+    });
+  }
+
+  function addGift(buyerId){
+    openDialog({title:"Nouveau cadeau",ok:"Ajouter",fields:[
+      {name:'title',label:"Nom du cadeau",required:true,placeholder:"Ex : Casque audio sans fil"},
+      {name:'url',label:"Lien vers le produit (optionnel)",placeholder:"https://…"},
+      {name:'price',label:"Prix (€, optionnel)",type:'number',placeholder:"0"}
+    ],onsave:function(o){
+      var rec=cur();
+      rec.gifts.push({id:uid(),title:o.title.trim(),url:(o.url||'').trim(),price:o.price===''?null:Number(o.price),buyerId:buyerId||null});
+      render(); toast("Cadeau ajouté");
+    }});
+  }
+  function editGift(g){
+    openDialog({title:"Modifier le cadeau",ok:"Enregistrer",fields:[
+      {name:'title',label:"Nom du cadeau",required:true,value:g.title},
+      {name:'url',label:"Lien vers le produit (optionnel)",value:g.url},
+      {name:'price',label:"Prix (€, optionnel)",type:'number',value:(g.price==null?'':g.price)}
+    ],onsave:function(o){
+      g.title=o.title.trim(); g.url=(o.url||'').trim(); g.price=o.price===''?null:Number(o.price); render();
+    }});
+  }
+
+  // ---------- Export / Import ----------
+  $('#btnExport').onclick=function(){
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download='listes-cadeaux-'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);},500); toast("Sauvegarde exportée");
+  };
+  $('#btnImport').onclick=function(){ $('#fileImport').click(); };
+  $('#fileImport').onchange=function(e){
+    var f=e.target.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(){ try{ var d=JSON.parse(r.result); if(!d.recipients) throw 0;
+      if(confirm('Remplacer les listes actuelles par le fichier importé ?')){ data=d; if(!data.current&&data.recipients[0]) data.current=data.recipients[0].id; render(); toast("Importé ✓"); }
+    }catch(err){ toast("Fichier invalide"); } e.target.value=''; };
+    r.readAsText(f);
+  };
+
+  render();
+})();
+</script>
+</body>
+</html>
