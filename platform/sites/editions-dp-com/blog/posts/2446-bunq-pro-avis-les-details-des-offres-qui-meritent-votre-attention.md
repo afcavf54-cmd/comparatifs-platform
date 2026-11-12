@@ -17,10 +17,10 @@ cta_enabled: true
 cta_text: Offre exclusive Bunq pro
 cta_button: En profiter
 related_posts:
-- 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
-- 4445-finom-avis-ce-qu-il-faut-savoir-avant-de-choisir-cette-banque-pro
-- 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
 - 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
+- 4445-finom-avis-ce-qu-il-faut-savoir-avant-de-choisir-cette-banque-pro
+- 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
+- 6991-vivid-business-mon-avis-et-les-details-que-j-aurais-aime-connaitre-avant
 ---
 <p>J'utilise Bunq depuis un moment maintenant. Pas par hasard, parce que j'avais besoin d'un compte qui me simplifie la vie sans me coûter un bras. Et quand j'ai commencé à regarder l'offre Pro, j'ai voulu comprendre exactement ce qu'on payait, ce qu'on obtenait, et surtout si c'était vraiment rentable pour une TPE comme la mienne.</p>
 
