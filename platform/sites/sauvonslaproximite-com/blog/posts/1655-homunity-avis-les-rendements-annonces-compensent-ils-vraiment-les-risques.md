@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
 related_posts:
-- ce-que-je-pense-de-flatpay-ses-points-forts-et-ses-limites
-- 5084-trezor-avis-combien-faut-il-depenser-pour-proteger-ses-cryptomonnaies
-- 3874-waltio-avis-j-ai-examine-ses-tarifs-vaut-il-vraiment-son-prix
-- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
+- 7347-enerfip-mon-analyse-des-rendements-et-des-risques-avis
+- 9708-enky-invest-avis-quel-rendement-esperer-en-investissant-dans-le-mobilier
+- 9079-tva-sur-option-comment-fonctionne-l-assujettissement-volontaire
+- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 ---
 <p>J'ai regardé de près la plateforme Homunity depuis quelques mois maintenant. Pas par curiosité intellectuelle, mais parce que plusieurs responsables financiers de mon réseau m'ont posé la question : "Marie, tu ferais confiance à ce type de placement pour diversifier notre trésorerie d'entreprise ?" Ma réponse courte : ça dépend vraiment de ce que vous cherchez. Ma réponse longue, c'est cet article.</p>
 
