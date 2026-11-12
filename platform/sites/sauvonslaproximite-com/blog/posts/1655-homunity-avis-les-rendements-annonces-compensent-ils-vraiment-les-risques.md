@@ -1,10 +1,12 @@
 ---
-title: 'Homunity Avis 2026 : Les rendements annoncés compensent-ils vraiment les risques ?'
+title: 'Homunity Avis 2026 : Les rendements annoncés compensent-ils vraiment les risques
+  ?'
 slug: 1655-homunity-avis-les-rendements-annonces-compensent-ils-vraiment-les-risques
 date: '2026-11-12T08:00:00+01:00'
 categorie: Finance & Comptabilité
 meta_title: 'Homunity : rendement potentiel, fiscalité et risque de perte en capital'
-meta_description: Homunity promet 9 à 12% de rendement annuel en crowdfunding immobilier. Mais les risques sont-ils vraiment à la hauteur ? Analyse complète et avis 2026.
+meta_description: Homunity promet 9 à 12% de rendement annuel en crowdfunding immobilier.
+  Mais les risques sont-ils vraiment à la hauteur ? Analyse complète et avis 2026.
 min_words: 3000
 status: published
 featured_image: /blog/1655-homunity-avis-les-rendements-annonces-compensent-ils-vraiment-les-risques.jpg
@@ -15,8 +17,12 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4970117978T&subid=sauvonslap
 cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
+related_posts:
+- ce-que-je-pense-de-flatpay-ses-points-forts-et-ses-limites
+- 5084-trezor-avis-combien-faut-il-depenser-pour-proteger-ses-cryptomonnaies
+- 3874-waltio-avis-j-ai-examine-ses-tarifs-vaut-il-vraiment-son-prix
+- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
 ---
-
 <p>J'ai regardé de près la plateforme Homunity depuis quelques mois maintenant. Pas par curiosité intellectuelle, mais parce que plusieurs responsables financiers de mon réseau m'ont posé la question : "Marie, tu ferais confiance à ce type de placement pour diversifier notre trésorerie d'entreprise ?" Ma réponse courte : ça dépend vraiment de ce que vous cherchez. Ma réponse longue, c'est cet article.</p>
 
 <p>Homunity, c'est une plateforme de crowdfunding immobilier française, agréée par l'AMF. Le concept : vous prêtez de l'argent à des promoteurs immobiliers, et en échange vous percevez des intérêts. Les rendements annoncés tournent autour de <strong>9 à 12% par an</strong>, sur des durées de 12 à 36 mois. Ça semble attractif. Très attractif, même.</p>
