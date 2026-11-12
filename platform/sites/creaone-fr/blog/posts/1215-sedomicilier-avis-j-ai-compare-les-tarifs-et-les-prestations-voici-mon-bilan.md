@@ -1,10 +1,14 @@
 ---
-title: 'SeDomicilier Avis 2026 : J''ai comparé les tarifs et les prestations, voici mon bilan'
+title: 'SeDomicilier Avis 2026 : J''ai comparé les tarifs et les prestations, voici
+  mon bilan'
 slug: 1215-sedomicilier-avis-j-ai-compare-les-tarifs-et-les-prestations-voici-mon-bilan
 date: '2026-11-12T08:00:00+01:00'
 categorie: Création d'entreprise
-meta_title: 'J''ai analysé SeDomicilier : mon avis sur les tarifs et les services de domiciliation'
-meta_description: 'Avis complet sur SeDomicilier en 2026 : tarifs, prestations et retours d''utilisateurs analysés pour vous aider à choisir la bonne domiciliation d''entreprise en…'
+meta_title: 'J''ai analysé SeDomicilier : mon avis sur les tarifs et les services
+  de domiciliation'
+meta_description: 'Avis complet sur SeDomicilier en 2026 : tarifs, prestations et
+  retours d''utilisateurs analysés pour vous aider à choisir la bonne domiciliation
+  d''entreprise en…'
 min_words: 2500
 status: published
 featured_image: /blog/1215-sedomicilier-avis-j-ai-compare-les-tarifs-et-les-prestations-voici-mon-bilan.jpg
@@ -15,8 +19,8 @@ cta_link: https://www.awin1.com/awclick.php?gid=429398&mid=24149&awinaffid=42002
 cta_enabled: true
 cta_text: Offre exclusive SeDomicilier
 cta_button: En profiter
+related_posts: []
 ---
-
 <p>J'ai regardé pas mal de solutions de domiciliation ces dernières années, notamment quand on accompagne des dirigeants de TPE dans les démarches de création. Et <strong>SeDomicilier</strong> revient souvent dans les discussions. Trop souvent pour que je ne me penche pas dessus sérieusement.</p>
 
 <p>Alors j'ai pris le temps de comparer les offres, lire les conditions générales, tester le parcours client et recueillir les retours de quelques dirigeants qui utilisent ou ont utilisé le service. Ce bilan, c'est ce que j'aurais aimé lire avant de conseiller quoi que ce soit à mes interlocuteurs.</p>
