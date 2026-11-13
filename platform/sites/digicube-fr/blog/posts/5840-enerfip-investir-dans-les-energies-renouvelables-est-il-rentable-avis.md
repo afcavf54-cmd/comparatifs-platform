@@ -20,10 +20,10 @@ cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
 related_posts:
-- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
 - 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
-- 4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il
-- 3429-tva-sur-option-obligations-avantages-et-formalites-a-connaitre
+- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
+- 4648-trezor-avis-est-ce-le-portefeuille-crypto-que-je-recommanderais
+- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
 ---
 <p>J'ai découvert Enerfip il y a environ un an et demi. Un ami chef d'entreprise m'en avait parlé lors d'un déjeuner, en me disant qu'il plaçait une partie de sa trésorerie dessus. Sur le moment, j'étais sceptique. Investir dans des projets d'énergies renouvelables via une plateforme en ligne, ça sonnait un peu comme un gadget pour bobos parisiens. Et puis j'ai creusé.</p>
 
