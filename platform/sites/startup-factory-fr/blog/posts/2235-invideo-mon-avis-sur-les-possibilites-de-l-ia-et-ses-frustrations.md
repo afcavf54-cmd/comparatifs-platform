@@ -20,6 +20,7 @@ cta_text: Offre exclusive InVideo
 cta_button: En profiter
 related_posts:
 - 2847-linkuma-mon-avis-sur-les-prix-les-liens-et-les-limites-de-la-plateforme
+- 1960-klaviyo-avis-un-outil-puissant-mais-son-prix-est-il-justifie
 ---
 <p>J'ai testé InVideo pendant plusieurs semaines avec mon équipe chez Nantis Studio. On cherchait un outil pour automatiser la création de contenus vidéo sans passer des heures à bricoler des montages. Le verdict ? Mitigé. Pas dans le mauvais sens du terme, mais clairement pas le paradis qu'on nous avait vendu.</p>
 
