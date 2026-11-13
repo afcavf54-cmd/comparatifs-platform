@@ -19,9 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive AirWallex
 cta_button: En profiter
 related_posts:
+- 4445-finom-avis-ce-qu-il-faut-savoir-avant-de-choisir-cette-banque-pro
 - 2446-bunq-pro-avis-les-details-des-offres-qui-meritent-votre-attention
-- 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
-- 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
+- 5468-equals-mon-avis-sur-les-limites-et-les-conditions-a-examiner
 - 8992-sogexia-business-avis-les-points-a-verifier-avant-d-ouvrir-un-compte
 ---
 <p>J'ai passé plusieurs semaines à tester Airwallex pour notre structure. Pas pour le plaisir, mais parce que j'avais un vrai problème : on réglait des fournisseurs à l'étranger, et les frais de virement international sur notre compte bancaire classique commençaient à peser. Chaque mois, entre les commissions de change et les frais fixes, on perdait de l'argent bêtement.</p>
