@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
 related_posts:
+- 1963-surfshark-mon-avis-sur-ses-differences-avec-les-vpn-premium
 - 5986-hostinger-avis-ce-qui-le-rend-interessant-face-aux-hebergeurs-plus-chers
 - 8334-nordvpn-pourquoi-reste-t-il-une-reference-sur-le-marche-mon-avis
 - 5437-o2switch-mon-avis-sur-son-positionnement-parmi-les-hebergeurs-francais
