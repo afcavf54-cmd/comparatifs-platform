@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Cashbee Pro
 cta_button: En profiter
 related_posts:
-- 7347-enerfip-mon-analyse-des-rendements-et-des-risques-avis
+- 3874-waltio-avis-j-ai-examine-ses-tarifs-vaut-il-vraiment-son-prix
+- ce-que-je-pense-de-flatpay-ses-points-forts-et-ses-limites
 - 9079-tva-sur-option-comment-fonctionne-l-assujettissement-volontaire
 - 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
-- 1655-homunity-avis-les-rendements-annonces-compensent-ils-vraiment-les-risques
 ---
 <p>J'utilise Cashbee Pro depuis maintenant plusieurs mois pour gérer la trésorerie excédentaire de mon entreprise, et je vais vous dire clairement ce que j'en pense. Pas un avis de façade. Un vrai retour, avec les bons côtés, les frustrations, et ce que ça donne concrètement sur la rentabilité.</p>
 
