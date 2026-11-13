@@ -1,10 +1,14 @@
 ---
-title: 'Enerfip : Investir dans les énergies renouvelables est-il rentable ? Avis 2026'
+title: 'Enerfip : Investir dans les énergies renouvelables est-il rentable ? Avis
+  2026'
 slug: 5840-enerfip-investir-dans-les-energies-renouvelables-est-il-rentable-avis
 date: '2026-11-13T08:00:00+01:00'
 categorie: Finance & Comptabilité
-meta_title: Quels risques faut-il accepter pour investir dans des projets financés via Enerfip ?
-meta_description: 'Avis concret sur Enerfip après 2 ans d''investissement réel dans les énergies renouvelables : rendements, risques et ce que personne ne vous dit avant de vous lancer.'
+meta_title: Quels risques faut-il accepter pour investir dans des projets financés
+  via Enerfip ?
+meta_description: 'Avis concret sur Enerfip après 2 ans d''investissement réel dans
+  les énergies renouvelables : rendements, risques et ce que personne ne vous dit
+  avant de vous lancer.'
 min_words: 3000
 status: published
 featured_image: /blog/5840-enerfip-investir-dans-les-energies-renouvelables-est-il-rentable-avis.jpg
@@ -15,8 +19,12 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4988118244T&subid=digicube.f
 cta_enabled: true
 cta_text: Offre exclusive Enerfip
 cta_button: En profiter
+related_posts:
+- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
+- 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
+- 4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il
+- 3429-tva-sur-option-obligations-avantages-et-formalites-a-connaitre
 ---
-
 <p>J'ai découvert Enerfip il y a environ un an et demi. Un ami chef d'entreprise m'en avait parlé lors d'un déjeuner, en me disant qu'il plaçait une partie de sa trésorerie dessus. Sur le moment, j'étais sceptique. Investir dans des projets d'énergies renouvelables via une plateforme en ligne, ça sonnait un peu comme un gadget pour bobos parisiens. Et puis j'ai creusé.</p>
 
 <p>Ce que vous allez lire, c'est mon avis après presque deux ans d'utilisation réelle, avec de l'argent réel. Je ne suis pas conseiller financier. Je suis dirigeant d'une TPE à Marseille, avec un budget serré et peu de temps. Je cherche des placements simples, pas des usines à gaz.</p>
