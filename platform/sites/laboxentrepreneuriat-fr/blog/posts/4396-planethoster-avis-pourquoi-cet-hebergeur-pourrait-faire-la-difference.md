@@ -21,8 +21,9 @@ cta_button: En profiter
 related_posts:
 - 1963-surfshark-mon-avis-sur-ses-differences-avec-les-vpn-premium
 - 5986-hostinger-avis-ce-qui-le-rend-interessant-face-aux-hebergeurs-plus-chers
-- 8334-nordvpn-pourquoi-reste-t-il-une-reference-sur-le-marche-mon-avis
 - 5437-o2switch-mon-avis-sur-son-positionnement-parmi-les-hebergeurs-francais
+- 8334-nordvpn-pourquoi-reste-t-il-une-reference-sur-le-marche-mon-avis
+- 1963-surfshark-mon-avis-sur-ses-differences-avec-les-vpn-premium
 ---
 <p>J'ai testé pas mal d'hébergeurs ces dernières années. Certains pour des clients, d'autres par curiosité, quelques-uns par obligation quand un projet arrivait déjà avec son contrat en cours. PlanetHoster, je l'ai découvert un peu par hasard via un indépendant lyonnais qui en était client depuis trois ans et qui m'a dit, sans que je lui demande : "Je n'ai pas eu un seul vrai problème depuis que je suis chez eux."</p>
 
