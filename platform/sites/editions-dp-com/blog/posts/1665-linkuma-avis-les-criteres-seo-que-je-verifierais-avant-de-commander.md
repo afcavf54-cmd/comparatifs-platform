@@ -17,10 +17,10 @@ cta_enabled: true
 cta_text: Offre exclusive Linkuma
 cta_button: En profiter
 related_posts:
-- 9695-desabonnement-email-obligations-legales-et-bonnes-pratiques
-- 7068-segmentation-en-email-marketing-methodes-et-bonnes-pratiques
+- 5637-rgpd-et-email-marketing-quelles-obligations-respecter
+- 4365-opt-in-en-email-marketing-definition-types-et-bonnes-pratiques
+- 3256-email-marketing-b2b-specificites-et-bonnes-pratiques
 - 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
-- 4875-quel-logiciel-choisir-pour-envoyer-des-sms-professionnels
 ---
 <p>Je vais être honnête avec vous : quand on dirige une boîte de 150 personnes à Lyon, on n'a pas le temps de tester chaque plateforme de netlinking pendant trois semaines avant de sortir la carte bleue. J'ai quand même pris le temps de décortiquer Linkuma sérieusement, parce que le budget SEO, ça se justifie ou ça se coupe. Voici ce que j'aurais voulu savoir avant.</p>
 
