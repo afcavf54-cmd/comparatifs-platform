@@ -20,10 +20,10 @@ cta_enabled: true
 cta_text: Offre exclusive Enky Invest
 cta_button: En profiter
 related_posts:
-- 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
-- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
+- 4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il
 - 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
-- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
+- 5075-waltio-peut-on-vraiment-declarer-ses-cryptos-facilement-mon-avis
+- 4648-trezor-avis-est-ce-le-portefeuille-crypto-que-je-recommanderais
 ---
 <p>Je vais vous parler d'Enky Invest. Pas parce que c'est une plateforme ultra-connue, mais parce que j'en ai entendu parler à plusieurs reprises dans des groupes d'entrepreneurs sur Marseille, et que j'ai voulu comprendre de quoi il s'agissait vraiment avant de me positionner.</p>
 
