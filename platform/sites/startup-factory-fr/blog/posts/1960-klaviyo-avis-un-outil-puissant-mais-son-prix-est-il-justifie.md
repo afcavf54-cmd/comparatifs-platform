@@ -19,6 +19,7 @@ cta_button: En profiter
 related_posts:
 - 2847-linkuma-mon-avis-sur-les-prix-les-liens-et-les-limites-de-la-plateforme
 - 2235-invideo-mon-avis-sur-les-possibilites-de-l-ia-et-ses-frustrations
+- 8795-hubspot-ce-que-j-apprecie-dans-ce-crm-et-ses-limites-avis
 ---
 <p>J'utilise Klaviyo depuis maintenant presque deux ans pour ma startup à Nantes. Vingt salariés, une boutique en ligne qui commence à bien tourner, et une vraie question qui revenait tout le temps : est-ce qu'on pouvait automatiser nos relances email sans y passer des heures chaque semaine ?</p>
 

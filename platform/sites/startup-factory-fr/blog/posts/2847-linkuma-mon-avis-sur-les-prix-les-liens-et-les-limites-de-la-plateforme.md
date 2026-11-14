@@ -21,6 +21,7 @@ cta_button: En profiter
 related_posts:
 - 1960-klaviyo-avis-un-outil-puissant-mais-son-prix-est-il-justifie
 - 2235-invideo-mon-avis-sur-les-possibilites-de-l-ia-et-ses-frustrations
+- 8795-hubspot-ce-que-j-apprecie-dans-ce-crm-et-ses-limites-avis
 ---
 <p>J'ai testé Linkuma pendant plusieurs semaines. Pas en mode "je fais un tour rapide et j'écris un article", non. Je l'ai utilisé pour de vraies campagnes, avec de vrais budgets, pour ma startup à Nantes. Et je vais te dire exactement ce que j'en pense, sans filtre.</p>
 
