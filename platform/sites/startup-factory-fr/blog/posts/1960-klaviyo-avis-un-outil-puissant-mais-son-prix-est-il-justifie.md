@@ -17,6 +17,7 @@ cta_enabled: true
 cta_text: Offre exclusive Klaviyo
 cta_button: En profiter
 related_posts:
+- 8795-hubspot-ce-que-j-apprecie-dans-ce-crm-et-ses-limites-avis
 - 2847-linkuma-mon-avis-sur-les-prix-les-liens-et-les-limites-de-la-plateforme
 - 2235-invideo-mon-avis-sur-les-possibilites-de-l-ia-et-ses-frustrations
 - 8795-hubspot-ce-que-j-apprecie-dans-ce-crm-et-ses-limites-avis

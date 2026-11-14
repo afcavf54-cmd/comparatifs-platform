@@ -19,9 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive HubSpot
 cta_button: En profiter
 related_posts:
+- 1960-klaviyo-avis-un-outil-puissant-mais-son-prix-est-il-justifie
 - 2847-linkuma-mon-avis-sur-les-prix-les-liens-et-les-limites-de-la-plateforme
 - 2235-invideo-mon-avis-sur-les-possibilites-de-l-ia-et-ses-frustrations
-- 1960-klaviyo-avis-un-outil-puissant-mais-son-prix-est-il-justifie
 ---
 <p>J'utilise HubSpot depuis un moment maintenant. Et honnêtement, mon avis est contrasté. Pas négatif, pas dithyrambique. Juste... nuancé. Parce que c'est un outil puissant, mais pas pour tout le monde, et certainement pas dans toutes les configurations.</p>
 
