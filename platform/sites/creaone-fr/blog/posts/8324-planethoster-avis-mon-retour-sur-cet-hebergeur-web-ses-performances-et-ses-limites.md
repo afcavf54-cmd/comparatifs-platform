@@ -19,7 +19,8 @@ cta_link: https://www.awin1.com/cread.php?s=4108184&v=15380&q=355939&r=420025
 cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 4756-o2switch-avis-j-ai-teste-cet-hebergeur-francais-voici-pourquoi-il-m-a-surpris
 ---
 <p>Je vais être honnête avec vous : j'ai découvert PlanetHoster un peu par hasard, en cherchant une alternative à OVH pour héberger plusieurs sites internes de notre PME. Un collègue l'avait testé sur un projet annexe, m'en avait parlé en bien, et j'ai fini par creuser le sujet sérieusement. Neuf ans à travailler sur des environnements comptables et de gestion, ça m'a appris une chose : un hébergeur lent ou instable, c'est du temps perdu pour tout le monde. Et du temps perdu, ça coûte de l'argent.</p>
 
