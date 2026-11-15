@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Equals
 cta_button: En profiter
 related_posts:
-- 9640-sogexia-business-avis-une-veritable-alternative-aux-banques-traditionnelles
-- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
-- 7774-sumup-faut-il-choisir-ses-terminaux-de-paiement-mon-avis
 - 3326-mypos-avis-les-frais-sont-ils-reellement-interessants-pour-les-commercants
+- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
+- 9640-sogexia-business-avis-une-veritable-alternative-aux-banques-traditionnelles
+- 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
 ---
 <p>J'ai découvert Equals il y a quelques mois, un peu par hasard, en cherchant une alternative à ce que j'utilisais pour gérer les paiements et la trésorerie de mon entreprise. On m'en avait parlé dans un groupe de dirigeants sur LinkedIn. Quelqu'un avait écrit "ça m'a changé la vie" dans les commentaires. Bon. J'ai eu envie de vérifier par moi-même.</p>
 
