@@ -20,6 +20,7 @@ cta_enabled: true
 cta_text: Offre exclusive O2switch
 cta_button: En profiter
 related_posts:
+- 1263-hostinger-avis-mon-experience-avec-cet-hebergeur-a-petit-prix-faut-il-lui-faire-confiance
 - 8324-planethoster-avis-mon-retour-sur-cet-hebergeur-web-ses-performances-et-ses-limites
 ---
 <p>Je vais être honnête avec vous : j'ai longtemps hésité avant de tester o2switch. Pas par manque d'intérêt, mais parce que j'entendais tellement de retours contradictoires. Des collègues qui juraient que c'était le meilleur hébergeur français du marché, d'autres qui me disaient que c'était surévalué. J'ai fini par craquer et tester moi-même, pour des raisons très concrètes liées à mon quotidien professionnel.</p>
