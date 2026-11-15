@@ -21,6 +21,7 @@ cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
 related_posts:
 - 4008-o2switch-avis-est-ce-l-hebergeur-que-je-recommanderais-pour-un-site-professionnel
+- 6523-hostinger-mon-verdict-sur-cet-hebergement-et-les-profils-auxquels-il-convient
 ---
 <p>J'ai testé pas mal d'hébergeurs ces huit dernières années. Certains pour des projets clients, d'autres pour mes propres sites. PlanetHoster, je l'ai découvert un peu par hasard, recommandé par un prestataire avec qui je travaille régulièrement. Et franchement, je m'attendais à quelque chose de très banal. Un hébergeur parmi d'autres.</p>
 

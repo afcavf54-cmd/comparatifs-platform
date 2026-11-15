@@ -19,6 +19,7 @@ cta_text: Offre exclusive O2switch
 cta_button: En profiter
 related_posts:
 - 6396-planethoster-mon-verdict-sur-cet-hebergeur-et-les-sites-auxquels-il-convient
+- 6523-hostinger-mon-verdict-sur-cet-hebergement-et-les-profils-auxquels-il-convient
 ---
 <p>Ça fait maintenant plusieurs années que j'entends parler d'o2switch dans les cercles d'entrepreneurs et de freelances du coin. Lyon, Paris, peu importe, le nom revient souvent dès qu'on parle d'hébergement web "à la française". Alors quand j'ai dû migrer le site de mon agence l'an dernier, j'ai décidé de tester par moi-même plutôt que de me fier aux avis sur les forums. Voilà ce que j'en pense vraiment, sans filtre.</p>
 
