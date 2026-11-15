@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive AirWallex
 cta_button: En profiter
 related_posts:
-- 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
 - 7560-revolut-business-mon-avis-sur-les-forfaits-et-les-frais-bancaires
+- 3426-vivid-business-mon-avis-sur-les-frais-et-les-offres-de-compte-professionnel
 - 8939-sumup-j-ai-calcule-le-cout-des-paiements-voici-mon-avis
-- 4432-sogexia-business-avis-ce-que-coutent-reellement-ses-services-bancaires
+- 2321-equals-tarifs-et-fonctionnalites-mon-avis-sur-le-rapport-qualite-prix
 ---
 <p>Depuis une vingtaine d'années que je gère des comptabilités, j'ai vu passer des dizaines d'outils censés "simplifier" les paiements internationaux. Airwallex, j'en avais entendu parler lors d'un salon professionnel à Paris fin 2024. Une collègue d'un cabinet lillois me l'avait recommandé pour les entreprises qui jonglent avec plusieurs devises. J'ai décidé d'y regarder de plus près, vraiment, pas juste survol du site marketing.</p>
 
