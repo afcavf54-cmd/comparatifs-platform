@@ -15,8 +15,8 @@ link_anchors:
   max: 5
 related_posts:
 - 6304-indy-avis-une-comptabilite-simplifiee-mais-jusqu-ou-peut-on-aller
-- 2552-belermain-avis-j-ai-pese-le-pour-et-le-contre-voici-mon-analyse
 - 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
+- 2552-belermain-avis-j-ai-pese-le-pour-et-le-contre-voici-mon-analyse
 ---
 <p>On m'a posé la question plusieurs fois ces derniers mois, alors autant y répondre clairement : est-ce qu'on configure DynaBiz Pro en interne, ou est-ce qu'on passe par un intégrateur ? J'ai vécu les deux situations. Et franchement, le choix n'est pas aussi évident qu'il y paraît.</p>
 

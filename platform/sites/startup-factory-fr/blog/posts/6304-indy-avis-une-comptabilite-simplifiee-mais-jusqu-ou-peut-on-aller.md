@@ -20,9 +20,9 @@ cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
 related_posts:
-- 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
-- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
 - 2552-belermain-avis-j-ai-pese-le-pour-et-le-contre-voici-mon-analyse
+- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
+- 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
 ---
 <p>J'utilise Indy depuis un peu plus d'un an maintenant. Et franchement, j'aurais aimé qu'on me dise exactement ce que je vais te dire ici, avant que je m'abonne. Parce que sur le papier, ça ressemble à la solution parfaite. Dans les faits, c'est un peu plus nuancé.</p>
 
