@@ -1,10 +1,14 @@
 ---
-title: 'Indy Avis 2026 : Une comptabilité simplifiée, mais jusqu''où peut-on aller ?'
+title: 'Indy Avis 2026 : Une comptabilité simplifiée, mais jusqu''où peut-on aller
+  ?'
 slug: 6304-indy-avis-une-comptabilite-simplifiee-mais-jusqu-ou-peut-on-aller
 date: '2026-11-15T08:00:00+01:00'
 categorie: Gestion d'entreprise
-meta_title: 'Indy : une gestion comptable simplifiée qui ne répond pas à tous les besoins'
-meta_description: 'Découvrez un avis sincère sur Indy en 2026 : points forts, limites et ce que le logiciel de comptabilité vaut vraiment pour les indépendants et petites structures.'
+meta_title: 'Indy : une gestion comptable simplifiée qui ne répond pas à tous les
+  besoins'
+meta_description: 'Découvrez un avis sincère sur Indy en 2026 : points forts, limites
+  et ce que le logiciel de comptabilité vaut vraiment pour les indépendants et petites
+  structures.'
 min_words: 3000
 status: published
 featured_image: /blog/6304-indy-avis-une-comptabilite-simplifiee-mais-jusqu-ou-peut-on-aller.jpg
@@ -15,8 +19,11 @@ cta_link: https://c3po.link/QZrBCYjH2T
 cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
+related_posts:
+- 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
+- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
+- 2552-belermain-avis-j-ai-pese-le-pour-et-le-contre-voici-mon-analyse
 ---
-
 <p>J'utilise Indy depuis un peu plus d'un an maintenant. Et franchement, j'aurais aimé qu'on me dise exactement ce que je vais te dire ici, avant que je m'abonne. Parce que sur le papier, ça ressemble à la solution parfaite. Dans les faits, c'est un peu plus nuancé.</p>
 
 <p>Petit contexte : je gère une startup à Nantes, une vingtaine de personnes, et j'ai longtemps bataillé avec des outils comptables qui demandaient soit un comptable dédié, soit une formation de trois semaines pour s'en sortir. Indy a changé quelque chose dans ma façon de gérer les finances au quotidien. Mais pas tout.</p>

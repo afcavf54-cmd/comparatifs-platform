@@ -19,8 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive Belermain
 cta_button: En profiter
 related_posts:
-- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
+- 6304-indy-avis-une-comptabilite-simplifiee-mais-jusqu-ou-peut-on-aller
 - 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
+- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
 ---
 <p>J'ai testé pas mal d'outils de gestion d'entreprise ces dernières années. Des bons, des mauvais, des moyens. Quand on monte une startup à Nantes avec une équipe d'une vingtaine de personnes, on n'a pas le temps de se tromper sur les logiciels. Chaque abonnement qui ne sert à rien, c'est du budget cramé. Chaque outil trop complexe, c'est une semaine de formation perdue.</p>
 

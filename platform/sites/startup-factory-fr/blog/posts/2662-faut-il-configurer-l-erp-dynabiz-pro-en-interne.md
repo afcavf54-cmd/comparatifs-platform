@@ -14,6 +14,7 @@ link_anchors:
 - text: comment configurer l'ERP DynaBiz Pro
   max: 5
 related_posts:
+- 6304-indy-avis-une-comptabilite-simplifiee-mais-jusqu-ou-peut-on-aller
 - 2552-belermain-avis-j-ai-pese-le-pour-et-le-contre-voici-mon-analyse
 - 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
 ---

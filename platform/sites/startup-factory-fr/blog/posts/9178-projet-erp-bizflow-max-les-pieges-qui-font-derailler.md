@@ -13,8 +13,9 @@ link_anchors:
 - text: comment implémenter l'ERP BizFlow Max
   max: 5
 related_posts:
-- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
+- 6304-indy-avis-une-comptabilite-simplifiee-mais-jusqu-ou-peut-on-aller
 - 2552-belermain-avis-j-ai-pese-le-pour-et-le-contre-voici-mon-analyse
+- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
 featured_image: /blog/9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler.jpg
 ---
 <h2>J'ai vu trop d'ERP partir en vrille</h2>
