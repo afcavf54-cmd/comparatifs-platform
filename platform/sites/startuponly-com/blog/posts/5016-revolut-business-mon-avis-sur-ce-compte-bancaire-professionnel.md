@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Revolut Business
 cta_button: En profiter
 related_posts:
-- 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
+- 5315-airwallex-j-ai-examine-ses-services-internationaux-mon-bilan
+- 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
 - 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
 - 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
-- 5315-airwallex-j-ai-examine-ses-services-internationaux-mon-bilan
 ---
 <p>J'utilise Revolut Business depuis un peu plus de deux ans maintenant. Au départ, j'avais juste besoin d'un compte pro sans frais de tenue cachés et avec une carte pour payer mes abonnements SaaS en devises étrangères. Petit à petit, j'ai commencé à m'en servir pour pas mal d'autres choses. Les virements, les notes de frais de mon équipe, quelques automatisations comptables.</p>
 
