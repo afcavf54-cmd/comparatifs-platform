@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive O2switch
 cta_button: En profiter
 related_posts:
+- 9353-nordvpn-avis-a-qui-je-conseillerais-ce-vpn-et-dans-quelles-situations
 - 6396-planethoster-mon-verdict-sur-cet-hebergeur-et-les-sites-auxquels-il-convient
 - 6523-hostinger-mon-verdict-sur-cet-hebergement-et-les-profils-auxquels-il-convient
 ---
