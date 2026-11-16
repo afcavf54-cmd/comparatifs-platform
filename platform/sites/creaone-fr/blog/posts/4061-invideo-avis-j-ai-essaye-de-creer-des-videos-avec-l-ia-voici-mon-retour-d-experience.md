@@ -1,10 +1,14 @@
 ---
-title: 'InVideo Avis 2026 : J''ai essayé de créer des vidéos avec l''IA, voici mon retour d''expérience'
+title: 'InVideo Avis 2026 : J''ai essayé de créer des vidéos avec l''IA, voici mon
+  retour d''expérience'
 slug: 4061-invideo-avis-j-ai-essaye-de-creer-des-videos-avec-l-ia-voici-mon-retour-d-experience
 date: '2026-11-16T08:00:00+01:00'
 categorie: Marketing
-meta_title: 'Mon avis sur InVideo : peut-on vraiment créer des vidéos de qualité avec l''intelligence artificielle ?'
-meta_description: 'Avis InVideo 2026 par un non-monteur : un comptable teste l''IA pour créer des vidéos pro. Résultats, limites et surprises après plusieurs semaines d''utilisation…'
+meta_title: 'Mon avis sur InVideo : peut-on vraiment créer des vidéos de qualité avec
+  l''intelligence artificielle ?'
+meta_description: 'Avis InVideo 2026 par un non-monteur : un comptable teste l''IA
+  pour créer des vidéos pro. Résultats, limites et surprises après plusieurs semaines
+  d''utilisation…'
 min_words: 3000
 status: published
 featured_image: /blog/4061-invideo-avis-j-ai-essaye-de-creer-des-videos-avec-l-ia-voici-mon-retour-d-experience.jpg
@@ -15,8 +19,9 @@ cta_link: https://invideo.sjv.io/7XoD7A
 cta_enabled: true
 cta_text: Offre exclusive InVideo
 cta_button: En profiter
+related_posts:
+- 6304-linkuma-avis-en-tant-que-consultant-seo-voici-ce-que-je-pense-de-cette-plateforme-de-backlinks
 ---
-
 <p>Je vais être honnête : je ne suis pas monteur vidéo. Je suis comptable, j'ai passé neuf ans à manipuler des tableaux Excel et des logiciels de gestion, et l'idée de créer du contenu vidéo pour notre service marketing me paraissait complètement hors de portée. Et puis notre directrice commerciale m'a demandé de tester quelques outils IA pour voir si on pouvait automatiser la production de courtes vidéos de présentation, sans passer par une agence.</p>
 
 <p>J'ai donc passé plusieurs semaines sur <strong>InVideo</strong>, l'outil qui revenait le plus souvent dans les comparatifs. Ce que vous allez lire, c'est mon retour brut : ce qui m'a surpris, ce qui m'a agacé, et ce que j'ai vraiment réussi à produire avec.</p>
