@@ -20,6 +20,7 @@ cta_text: Offre exclusive InVideo
 cta_button: En profiter
 related_posts:
 - 3897-linkuma-avis-mon-regard-de-consultant-seo-sur-la-qualite-des-backlinks
+- 7546-klaviyo-mon-retour-sur-cet-outil-d-email-marketing-en-2026
 ---
 <p>Je vais être honnête : j'ai découvert InVideo un peu par hasard, en cherchant un moyen de produire des vidéos pour nos réseaux sans passer trois heures sur Premiere Pro. On est une petite équipe, on n'a pas de motion designer, et moi j'ai à peine le temps de répondre à mes mails. Donc quand j'ai vu qu'un outil promettait de générer des vidéos depuis un simple texte, j'ai testé.</p>
 

@@ -17,6 +17,7 @@ cta_enabled: true
 cta_text: Offre exclusive Linkuma
 cta_button: En profiter
 related_posts:
+- 7546-klaviyo-mon-retour-sur-cet-outil-d-email-marketing-en-2026
 - 4931-invideo-avis-j-ai-essaye-la-creation-video-avec-l-ia-voici-mon-bilan
 ---
 <p>J'ai testé pas mal de plateformes de netlinking ces deux dernières années. Certaines m'ont déçu rapidement, d'autres m'ont surpris. Linkuma fait partie de celles dont j'ai mis un peu de temps à comprendre la valeur réelle, parce que l'interface donne d'abord une impression très simple, presque trop simple.</p>
