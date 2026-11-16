@@ -20,6 +20,7 @@ cta_button: En profiter
 related_posts:
 - 7820-finom-mon-avis-sur-les-fonctionnalites-gratuites-et-les-restrictions
 - 9186-bunq-pro-ce-que-j-aime-dans-cette-banque-et-ce-qui-me-freine-avis
+- 7791-vivid-business-avis-2026-les-vrais-points-forts-et-les-limites-que-j-ai-relevees
 - 9341-revolut-business-avis-les-avantages-reels-et-les-contraintes-a-connaitre
 ---
 <p>Gérer des paiements internationaux quand t'as une startup de 30 personnes, c'est pas forcément une partie de plaisir. J'ai testé Airwallex il y a un peu plus d'un an, et je vais te dire ce que j'en pense vraiment, sans te noyer dans du jargon bancaire.</p>

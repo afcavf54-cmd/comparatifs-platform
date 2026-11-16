@@ -19,9 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Bunq pro
 cta_button: En profiter
 related_posts:
-- 6593-airwallex-avis-frais-competitifs-ou-mauvaises-surprises-a-prevoir
 - 7820-finom-mon-avis-sur-les-fonctionnalites-gratuites-et-les-restrictions
+- 7791-vivid-business-avis-2026-les-vrais-points-forts-et-les-limites-que-j-ai-relevees
 - 6593-airwallex-avis-frais-competitifs-ou-mauvaises-surprises-a-prevoir
+- 9341-revolut-business-avis-les-avantages-reels-et-les-contraintes-a-connaitre
 ---
 <p>J'utilise Bunq depuis maintenant un peu plus de deux ans pour ma startup. On est une vingtaine de personnes, pas d'équipe financière dédiée, et je gère une bonne partie de la compta et des dépenses moi-même. Autant dire que j'ai eu le temps de tester Bunq Pro dans tous les sens.</p>
 
