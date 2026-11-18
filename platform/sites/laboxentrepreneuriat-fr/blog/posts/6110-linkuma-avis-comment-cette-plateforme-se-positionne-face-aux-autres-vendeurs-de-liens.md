@@ -20,6 +20,7 @@ cta_enabled: true
 cta_text: Offre exclusive Linkuma
 cta_button: En profiter
 related_posts:
+- 4880-hubspot-avis-ce-qui-justifie-de-choisir-ce-crm-plutot-qu-un-autre
 - 1722-invideo-avis-ce-que-cet-outil-ia-apporte-face-aux-editeurs-video-classiques
 - 3426-klaviyo-ce-qui-le-differencie-des-outils-d-emailing-classiques-avis
 ---
