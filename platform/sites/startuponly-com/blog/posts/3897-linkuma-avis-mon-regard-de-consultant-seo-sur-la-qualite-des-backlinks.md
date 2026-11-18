@@ -17,6 +17,7 @@ cta_enabled: true
 cta_text: Offre exclusive Linkuma
 cta_button: En profiter
 related_posts:
+- 5712-hubspot-avis-j-ai-analyse-son-crm-ses-tarifs-et-ses-fonctionnalites
 - 7546-klaviyo-mon-retour-sur-cet-outil-d-email-marketing-en-2026
 - 4931-invideo-avis-j-ai-essaye-la-creation-video-avec-l-ia-voici-mon-bilan
 ---
