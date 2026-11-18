@@ -1,10 +1,14 @@
 ---
-title: 'Homunity Avis 2026 : Le crowdfunding immobilier est-il encore intéressant ?'
+title: 'Homunity Avis 2026 : Le crowdfunding immobilier est-il encore intéressant
+  ?'
 slug: 7974-homunity-avis-le-crowdfunding-immobilier-est-il-encore-interessant
 date: '2026-11-18T08:00:00+01:00'
 categorie: Finance & Comptabilité
-meta_title: Homunity est-il encore pertinent pour diversifier son patrimoine immobilier ?
-meta_description: 'Avis honnête sur Homunity, plateforme de crowdfunding immobilier : rendements, risques, projets financés et retour d''expérience concret pour bien décider en 2026.'
+meta_title: Homunity est-il encore pertinent pour diversifier son patrimoine immobilier
+  ?
+meta_description: 'Avis honnête sur Homunity, plateforme de crowdfunding immobilier
+  : rendements, risques, projets financés et retour d''expérience concret pour bien
+  décider en 2026.'
 min_words: 3000
 status: published
 featured_image: /blog/7974-homunity-avis-le-crowdfunding-immobilier-est-il-encore-interessant.jpg
@@ -15,8 +19,12 @@ cta_link: https://www.financeads.net/tc.php?t=74753C4970117978T&subid=digicube.f
 cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
+related_posts:
+- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
+- 1498-enky-invest-avis-le-mobilier-peut-il-devenir-un-investissement-interessant
+- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
+- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
 ---
-
 <p>Je vais être honnête avec vous : quand on dirige une TPE à Marseille et qu'on cherche à faire travailler son épargne, le crowdfunding immobilier paraît séduisant sur le papier. Des rendements annoncés à 8, 9, 10 %. Des projets concrets. Pas besoin d'acheter un appartement en direct. J'ai regardé Homunity de près pendant plusieurs mois, j'ai investi sur quelques projets, et je vais vous dire ce que j'en pense vraiment.</p>
 
 <p>Pas de langue de bois. Pas de discours commercial. Juste mon retour, avec ce qui m'a plu et ce qui m'a agacé.</p>
