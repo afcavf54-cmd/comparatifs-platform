@@ -21,9 +21,9 @@ cta_text: Offre exclusive Hostinger
 cta_button: En profiter
 related_posts:
 - 7915-surfshark-avis-mon-test-complet-de-ce-vpn-et-les-defauts-que-j-ai-identifies
-- 7964-nordvpn-avis-j-ai-mis-ce-vpn-a-l-epreuve-voici-ce-que-j-ai-reellement-constate
-- 4756-o2switch-avis-j-ai-teste-cet-hebergeur-francais-voici-pourquoi-il-m-a-surpris
 - 8324-planethoster-avis-mon-retour-sur-cet-hebergeur-web-ses-performances-et-ses-limites
+- 4756-o2switch-avis-j-ai-teste-cet-hebergeur-francais-voici-pourquoi-il-m-a-surpris
+- 7964-nordvpn-avis-j-ai-mis-ce-vpn-a-l-epreuve-voici-ce-que-j-ai-reellement-constate
 ---
 <p>J'ai commencé à utiliser Hostinger il y a un peu plus de deux ans, pour un projet interne de mon service : un extranet de suivi comptable. Budget serré, équipe non technique, pas question de passer des semaines en formation. J'avais besoin d'un hébergeur qui ne me prendrait pas la tête.</p>
 
