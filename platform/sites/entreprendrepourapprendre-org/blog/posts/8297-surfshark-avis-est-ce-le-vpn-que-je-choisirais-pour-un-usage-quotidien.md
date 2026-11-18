@@ -20,10 +20,10 @@ cta_enabled: true
 cta_text: Offre exclusive Surfshark
 cta_button: En profiter
 related_posts:
-- 4008-o2switch-avis-est-ce-l-hebergeur-que-je-recommanderais-pour-un-site-professionnel
-- 9353-nordvpn-avis-a-qui-je-conseillerais-ce-vpn-et-dans-quelles-situations
-- 6396-planethoster-mon-verdict-sur-cet-hebergeur-et-les-sites-auxquels-il-convient
 - 6523-hostinger-mon-verdict-sur-cet-hebergement-et-les-profils-auxquels-il-convient
+- 4008-o2switch-avis-est-ce-l-hebergeur-que-je-recommanderais-pour-un-site-professionnel
+- 6396-planethoster-mon-verdict-sur-cet-hebergeur-et-les-sites-auxquels-il-convient
+- 9353-nordvpn-avis-a-qui-je-conseillerais-ce-vpn-et-dans-quelles-situations
 ---
 <p>J'ai testé pas mal de VPN ces dernières années. Pas par passion pour la technique, rassurez-vous. Juste parce qu'on travaille souvent en déplacement chez des clients, que certains de mes salariés télétravaillent depuis des connexions Wi-Fi qui m'inspirent zéro confiance, et que la sécurité des données d'une agence de communication, c'est mon problème, pas celui d'un prestataire IT.</p>
 

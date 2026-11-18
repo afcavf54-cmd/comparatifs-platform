@@ -18,8 +18,8 @@ cta_enabled: true
 cta_text: Offre exclusive NordVPN
 cta_button: En profiter
 related_posts:
-- 6523-hostinger-mon-verdict-sur-cet-hebergement-et-les-profils-auxquels-il-convient
 - 6396-planethoster-mon-verdict-sur-cet-hebergeur-et-les-sites-auxquels-il-convient
+- 6523-hostinger-mon-verdict-sur-cet-hebergement-et-les-profils-auxquels-il-convient
 - 8297-surfshark-avis-est-ce-le-vpn-que-je-choisirais-pour-un-usage-quotidien
 - 4008-o2switch-avis-est-ce-l-hebergeur-que-je-recommanderais-pour-un-site-professionnel
 ---
