@@ -19,6 +19,8 @@ cta_enabled: true
 cta_text: Offre exclusive InVideo
 cta_button: En profiter
 related_posts:
+- 5712-hubspot-avis-j-ai-analyse-son-crm-ses-tarifs-et-ses-fonctionnalites
+- 3897-linkuma-avis-mon-regard-de-consultant-seo-sur-la-qualite-des-backlinks
 - 7546-klaviyo-mon-retour-sur-cet-outil-d-email-marketing-en-2026
 - 3897-linkuma-avis-mon-regard-de-consultant-seo-sur-la-qualite-des-backlinks
 - 5712-hubspot-avis-j-ai-analyse-son-crm-ses-tarifs-et-ses-fonctionnalites

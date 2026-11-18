@@ -17,8 +17,8 @@ cta_enabled: true
 cta_text: Offre exclusive HubSpot
 cta_button: En profiter
 related_posts:
-- 3897-linkuma-avis-mon-regard-de-consultant-seo-sur-la-qualite-des-backlinks
 - 4931-invideo-avis-j-ai-essaye-la-creation-video-avec-l-ia-voici-mon-bilan
+- 3897-linkuma-avis-mon-regard-de-consultant-seo-sur-la-qualite-des-backlinks
 - 7546-klaviyo-mon-retour-sur-cet-outil-d-email-marketing-en-2026
 ---
 <p>J'utilise HubSpot depuis un moment maintenant. Pas en tant que grande entreprise avec un budget illimité, mais en tant que fondateur d'une petite structure à Bordeaux, avec une équipe réduite et des ressources comptées. Et franchement, j'ai une opinion assez tranchée sur ce que vaut vraiment cet outil en 2026.</p>
