@@ -20,10 +20,10 @@ cta_enabled: true
 cta_text: Offre exclusive Homunity
 cta_button: En profiter
 related_posts:
-- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
+- 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
 - 1498-enky-invest-avis-le-mobilier-peut-il-devenir-un-investissement-interessant
-- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
-- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
+- 4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il
+- 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
 ---
 <p>Je vais être honnête avec vous : quand on dirige une TPE à Marseille et qu'on cherche à faire travailler son épargne, le crowdfunding immobilier paraît séduisant sur le papier. Des rendements annoncés à 8, 9, 10 %. Des projets concrets. Pas besoin d'acheter un appartement en direct. J'ai regardé Homunity de près pendant plusieurs mois, j'ai investi sur quelques projets, et je vais vous dire ce que j'en pense vraiment.</p>
 
