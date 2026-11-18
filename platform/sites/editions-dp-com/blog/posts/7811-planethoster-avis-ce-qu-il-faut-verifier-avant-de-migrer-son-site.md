@@ -17,6 +17,7 @@ cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
 related_posts:
+- 1379-hostinger-avis-les-details-tarifaires-a-connaitre-avant-de-souscrire
 - 7628-o2switch-les-limites-de-l-offre-que-j-ai-etudiees-avis
 ---
 <p>J'héberge des sites pour mon entreprise depuis maintenant onze ans. J'ai testé pas mal d'hébergeurs, fait des erreurs, perdu quelques nuits à cause de pannes, et appris à poser les bonnes questions avant de signer quoi que ce soit. PlanetHoster, j'en entends parler depuis un moment. Des avis sur des forums, des recommandations de prestataires freelance, des comparatifs qui le placent régulièrement dans le top 5 des hébergeurs francophones.</p>
