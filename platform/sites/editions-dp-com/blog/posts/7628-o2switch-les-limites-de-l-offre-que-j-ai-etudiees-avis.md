@@ -18,8 +18,9 @@ cta_enabled: true
 cta_text: Offre exclusive O2switch
 cta_button: En profiter
 related_posts:
-- 7811-planethoster-avis-ce-qu-il-faut-verifier-avant-de-migrer-son-site
 - 1379-hostinger-avis-les-details-tarifaires-a-connaitre-avant-de-souscrire
+- 7552-nordvpn-mon-avis-sur-les-defauts-que-les-comparatifs-evoquent-rarement
+- 7811-planethoster-avis-ce-qu-il-faut-verifier-avant-de-migrer-son-site
 ---
 <p>J'utilise o2switch depuis un moment pour héberger plusieurs sites de mon entreprise. Et franchement, au début, j'étais plutôt satisfait. Le prix est attractif, l'offre unique est claire, pas de prise de tête. Mais après avoir creusé un peu, j'ai découvert des limites que personne ne vous dit clairement avant d'acheter.</p>
 

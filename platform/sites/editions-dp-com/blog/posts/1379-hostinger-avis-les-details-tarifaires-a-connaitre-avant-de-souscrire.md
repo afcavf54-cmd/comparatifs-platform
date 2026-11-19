@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive Hostinger
 cta_button: En profiter
 related_posts:
+- 7552-nordvpn-mon-avis-sur-les-defauts-que-les-comparatifs-evoquent-rarement
 - 7811-planethoster-avis-ce-qu-il-faut-verifier-avant-de-migrer-son-site
 - 7628-o2switch-les-limites-de-l-offre-que-j-ai-etudiees-avis
 ---
