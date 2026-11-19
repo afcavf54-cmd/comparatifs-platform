@@ -3,8 +3,11 @@ title: 'Indy : Mon avis 2026 sur cette alternative aux logiciels comptables trad
 slug: 7777-indy-mon-avis-sur-cette-alternative-aux-logiciels-comptables-traditionnels
 date: '2026-11-19T08:00:00+01:00'
 categorie: Gestion d'entreprise
-meta_title: 'Indy et les solutions comptables traditionnelles : quelles différences pour les indépendants ?'
-meta_description: Découvrez mon avis terrain sur Indy, le logiciel comptable pensé pour les indépendants, freelances et professions libérales, testé sur de vrais dossiers en 2026.
+meta_title: 'Indy et les solutions comptables traditionnelles : quelles différences
+  pour les indépendants ?'
+meta_description: Découvrez mon avis terrain sur Indy, le logiciel comptable pensé
+  pour les indépendants, freelances et professions libérales, testé sur de vrais dossiers
+  en 2026.
 min_words: 3000
 status: published
 featured_image: /blog/7777-indy-mon-avis-sur-cette-alternative-aux-logiciels-comptables-traditionnels.jpg
@@ -15,8 +18,10 @@ cta_link: https://c3po.link/QZrBCYjH2T
 cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
+related_posts:
+- 1566-gerer-ses-stocks-sous-inventory-control-smart-les-bases
+- 6431-belermain-ce-qui-differencie-cette-offre-du-marche-mon-avis
 ---
-
 <h2>Indy, c'est quoi exactement ?</h2>
 
 <p>J'ai commencé à tester Indy il y a un peu plus d'un an, suite à une recommandation d'un client indépendant qui en était enthousiaste. À l'époque, j'avais quelques réserves. Je connais beaucoup de logiciels qui font de belles promesses en termes de simplicité, et qui s'avèrent finalement aussi complexes qu'un ERP mal configuré. Alors avant de le conseiller à quiconque, je l'ai utilisé dans des conditions réelles, avec de vrais dossiers.</p>

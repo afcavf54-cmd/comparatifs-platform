@@ -18,6 +18,7 @@ cta_enabled: true
 cta_text: Offre exclusive Belermain
 cta_button: En profiter
 related_posts:
+- 7777-indy-mon-avis-sur-cette-alternative-aux-logiciels-comptables-traditionnels
 - 1566-gerer-ses-stocks-sous-inventory-control-smart-les-bases
 ---
 <p>J'ai eu l'occasion de tester pas mal de logiciels de gestion d'entreprise ces douze dernières années. Certains m'ont bluffé dès la première connexion. D'autres m'ont fait perdre deux heures rien que pour comprendre où se trouvait le bouton "créer une facture". Belermain, je l'ai découvert via un client lyonnais qui gérait une TPE de onze salariés et cherchait à sortir d'Excel. Il m'en a parlé avec un enthousiasme que je ne partageais pas forcément au départ. Alors j'ai pris le temps de l'explorer sérieusement.</p>

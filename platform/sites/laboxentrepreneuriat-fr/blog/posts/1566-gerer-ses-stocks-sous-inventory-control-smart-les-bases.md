@@ -14,6 +14,7 @@ link_anchors:
 - text: comment gérer ses stocks avec Inventory Control Smart
   max: 5
 related_posts:
+- 7777-indy-mon-avis-sur-cette-alternative-aux-logiciels-comptables-traditionnels
 - 6431-belermain-ce-qui-differencie-cette-offre-du-marche-mon-avis
 ---
 <p>La gestion de stock, c'est souvent le parent pauvre de l'organisation d'entreprise. On y pense quand il y a une rupture, quand un client appelle pour une commande introuvable, ou quand l'inventaire de fin d'année révèle des écarts inexplicables. J'ai accompagné des dizaines de dirigeants dans cette situation. Et dans la majorité des cas, le problème n'est pas le stock lui-même, c'est l'absence d'outil adapté pour le suivre.</p>
