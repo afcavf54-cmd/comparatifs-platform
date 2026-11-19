@@ -24,7 +24,7 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: VIPO0272
+    cta_text: GUMA0383
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvza942o9d7i
@@ -40,7 +40,7 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: ""
+    cta_text: GUMA0383
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvzah67vuwi8
@@ -56,7 +56,7 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: ""
+    cta_text: GUMA0383
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvzait8rmnq4
@@ -72,7 +72,7 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: ""
+    cta_text: GUMA0383
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvzajlbv80gw
@@ -88,7 +88,7 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: ""
+    cta_text: GUMA0383
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvzbeh1lq0j1
@@ -104,7 +104,7 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: ""
+    cta_text: GUMA0383
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
   - id: cmvzbfac7szg3
@@ -120,7 +120,7 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
-    cta_text: ""
+    cta_text: GUMA0383
     cta_url: https://bon-plan.eu/BoursoBank
     produits: []
 faq:
@@ -249,7 +249,7 @@ status: published
 meta_title: "Code Promo & Parrainage BoursoBank ({mois_annee}) : Jusqu'à {best_remise} Offerts"
 h1_custom: "Codes Promo et Parrainage BoursoBank {mois_annee} : {best_remise} de prime"
 date_creation: "2026-11-02"
-date_maj: "2026-11-02"
+date_maj: "2026-11-19"
 ---
 
 <h1>Comment débloquer les primes BoursoBank, étape par étape ?</h1><p>Vous avez vu une offre BoursoBank annonçant <strong>jusqu’à 260 € offerts</strong> ? Cette somme ne tombe pas en une seule fois à l’ouverture. Elle correspond à plusieurs primes : certaines dépendent de votre premier versement, d’autres de l’utilisation de votre carte ou du transfert de vos opérations bancaires.</p>
@@ -337,3 +337,4 @@ date_maj: "2026-11-02"
 <h2>Peut-on se limiter à 100 € ?</h2>
 <p><strong>Oui : les 20 € d’ouverture et les 80 € liés au premier versement de 300 € représentent 100 €.</strong> Pour ces 2 primes, vous n’avez pas à réaliser EasyMove ni les opérations qui débloquent les bonus d’utilisation. La conservation du compte pendant 24 mois reste à respecter.</p>
 <p>Pour viser les 260 €, suivez l’ensemble du parcours, en lançant la mobilité dès le premier mois. Avant de vous inscrire, vérifiez toujours le barème de votre invitation : les montants de cet article ne s’appliquent pas automatiquement aux offres suivantes.</p>
+
