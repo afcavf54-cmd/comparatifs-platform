@@ -18,7 +18,8 @@ cta_link: https://www.awin1.com/cread.php?s=4108184&v=15380&q=355939&r=420025
 cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 3538-o2switch-un-hebergement-tout-compris-rentable-mon-avis
 ---
 <p>J'ai testé pas mal d'hébergeurs au fil des années pour le compte de mes clients ou pour des projets internes. PlanetHoster fait partie de ceux qui reviennent souvent dans les discussions, notamment parce que l'offre tarifaire a de quoi intriguer. Alors j'ai pris le temps de regarder vraiment ce qu'ils proposent, au-delà du discours marketing.</p>
 
