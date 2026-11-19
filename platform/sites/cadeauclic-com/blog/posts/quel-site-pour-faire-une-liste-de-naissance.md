@@ -2,7 +2,7 @@
 title: Comparatif des sites pour créer une liste de naissance
 slug: quel-site-pour-faire-une-liste-de-naissance
 date: 2026-06-15T22:04:00+02:00
-updated: 2026-11-06T15:38:52
+updated: 2026-11-19T15:46:07
 categorie: Bébé & Naissance
 categories:
 - Bébé & Naissance
@@ -34,17 +34,7 @@ link_anchors:
 
 <p>En plus, la plupart des sites proposent maintenant une <strong>cagnotte collective</strong>, ce qui permet à une famille ou un groupe d'amis de contribuer ensemble à un article plus cher, comme un lit évolutif ou une poussette.</p>
 
-<h2>Comparatif des principales plateformes</h2>
-
-<p>J'ai testé ou comparé en détail les quatre sites les plus utilisés en France. Voici ce que j'en pense vraiment.</p>
-
-<h3>Amazon Wishlist / Listes de naissance Amazon</h3>
-
-<p>C'est probablement la solution la plus connue. Et les <strong>avis liste de naissance amazon</strong> sont globalement positifs sur un point : le choix est imbattable. Tu peux ajouter n'importe quel produit vendu sur la plateforme, et même des articles d'autres sites grâce à l'extension navigateur.</p>
-
-<p>Ce que j'ai aimé : la facilité de gestion, le suivi des achats en temps réel, et la livraison souvent rapide pour les proches qui commandent à la dernière minute. Par contre, l'interface n'est pas la plus jolie, l'expérience "liste de naissance" reste assez froide et commerciale. Pas l'idéal si tu veux quelque chose de personnalisé ou d'esthétique. Et attention, certains articles vendus par des tiers ont des délais de livraison vraiment longs.</p>
-
-<h3>Smallable Liste de naissance</h3>
+<h2>Comparatif des principales plateformes</h2><p>J'ai testé ou comparé en détail les quatre sites les plus utilisés en France. Voici ce que j'en pense vraiment.</p><h2>Mini Pouce, une liste de naissance gratuite et multi-enseignes</h2><p><img src="/blog/quel-site-pour-faire-une-liste-de-naissance/mini-pouce-1641.png" alt="Mini Pouce"></p>Si tu as déjà repéré une poussette sur un site, un lit bébé sur un autre et quelques pyjamas dans ta boutique préférée, Mini Pouce te permet <b>de tout réunir sur une seule liste de naissance</b>. La création est <b>gratuite</b>, et tu peux ajouter tes articles en collant leur lien ou en utilisant le moteur de recherche intégré. Tu peux aussi choisir les couleurs de ta liste, ajouter une photo de couverture et la partager avec tes proches.&nbsp;<br><br>Côté cadeaux, chacun peut <b>acheter un article directement chez le marchand</b> ou <b>participer à la cagnotte</b>. C’est pratique quand plusieurs personnes veulent se cotiser pour une poussette ou un siège auto. Tu peux ensuite récupérer l’argent sur ton compte bancaire.<h3>Smallable Liste de naissance</h3>
 
 <p>Si tu cherches un univers plus déco, plus "bébé stylé", Smallable est une valeur sûre. Les produits sont beaux, la navigation est agréable, et l'interface de la liste est claire. J'ai une amie qui l'a utilisée pour son troisième et elle était ravie de la présentation.</p>
 
@@ -58,7 +48,7 @@ link_anchors:
 
 <p>L'avantage de MyRegistry, c'est qu'il s'agit d'une liste <strong>universelle</strong>. Tu peux y ajouter des produits de n'importe quel site, un peu comme Amazon mais en plus flexible encore. Idéal si tu as repéré le landau chez Cybex, un doudou chez Moulin Roty et un humidificateur sur un site spécialisé.</p>
 
-<p>Par contre, les invités doivent acheter directement sur les sites sources, ce qui peut compliquer la gestion des achats et les doublons. L'expérience est moins fluide pour les proches moins à l'aise avec internet.</p>
+<p>Par contre, les invités doivent acheter directement sur les sites sources, ce qui peut compliquer la gestion des achats et les doublons. L'expérience est moins fluide pour les proches moins à l'aise avec internet.</p><h2>Amazon Wishlist / Listes de naissance Amazon</h2><p>C'est probablement la solution la plus connue. Et les avis liste de naissance amazon sont globalement positifs sur un point : le choix est imbattable. Tu peux ajouter n'importe quel produit vendu sur la plateforme, et même des articles d'autres sites grâce à l'extension navigateur.<br><br>Ce que j'ai aimé : la facilité de gestion, le suivi des achats en temps réel, et la livraison souvent rapide pour les proches qui commandent à la dernière minute. Par contre, l'interface n'est pas la plus jolie, l'expérience "liste de naissance" reste assez froide et commerciale. Pas l'idéal si tu veux quelque chose de personnalisé ou d'esthétique. Et attention, certains articles vendus par des tiers ont des délais de livraison vraiment longs.</p>
 
 <h2>Un exemple de liste de naissance bien construite</h2>
 
@@ -129,4 +119,5 @@ link_anchors:
 <p>Ce que je déconseille : créer plusieurs listes sur des sites différents en espérant tout centraliser. J'ai vu des amies s'y perdre, avec des doublons et des invités qui ne savaient plus où regarder. Choisis une plateforme, fais-la bien, et envoie un seul lien.</p>
 
 <p>Et surtout : mets à jour ta liste régulièrement. Enlève les articles achetés, ajoute des idées au fil des semaines. Une liste bien tenue, c'est la garantie de recevoir des cadeaux qui servent vraiment.</p>
+
 
