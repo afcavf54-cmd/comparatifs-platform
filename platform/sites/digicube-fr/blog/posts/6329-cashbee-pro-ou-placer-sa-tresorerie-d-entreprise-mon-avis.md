@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Cashbee Pro
 cta_button: En profiter
 related_posts:
-- 7974-homunity-avis-le-crowdfunding-immobilier-est-il-encore-interessant
-- 1498-enky-invest-avis-le-mobilier-peut-il-devenir-un-investissement-interessant
-- 3429-tva-sur-option-obligations-avantages-et-formalites-a-connaitre
-- 4648-trezor-avis-est-ce-le-portefeuille-crypto-que-je-recommanderais
+- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
+- 4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il
+- 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
+- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
 ---
 <p>Je vais être honnête avec vous : pendant longtemps, la trésorerie de mon entreprise dormait sur un compte courant professionnel à 0 %. Zéro. Et je trouvais ça normal. Jusqu'au jour où un ami dirigeant m'a demandé pourquoi je "jetais de l'argent par les fenêtres". C'est là que j'ai commencé à chercher des solutions pour placer ma trésorerie d'entreprise.</p>
 
