@@ -17,7 +17,8 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5102120394T&subid=Startuponl
 cta_enabled: true
 cta_text: Offre exclusive Belermain
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 5087-indy-mon-avis-sur-cette-solution-de-comptabilite-pour-independants
 ---
 <p>Je vais être honnête avec toi dès le début : quand j'ai découvert Belermain, je cherchais un outil pour automatiser une bonne partie de la gestion administrative de ma startup. On était trois à l'époque, on perdait un temps fou sur des tâches qui n'avaient aucune valeur ajoutée, et j'avais besoin que ça change vite. Voilà le contexte. Voilà pourquoi j'ai testé ça sérieusement, pas juste survol de la démo.</p>
 
