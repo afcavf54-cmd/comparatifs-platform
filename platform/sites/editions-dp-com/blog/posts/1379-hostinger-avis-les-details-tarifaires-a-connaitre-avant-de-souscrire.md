@@ -20,6 +20,7 @@ cta_button: En profiter
 related_posts:
 - 7552-nordvpn-mon-avis-sur-les-defauts-que-les-comparatifs-evoquent-rarement
 - 7811-planethoster-avis-ce-qu-il-faut-verifier-avant-de-migrer-son-site
+- 7552-nordvpn-mon-avis-sur-les-defauts-que-les-comparatifs-evoquent-rarement
 - 7628-o2switch-les-limites-de-l-offre-que-j-ai-etudiees-avis
 ---
 <p>J'ai testé pas mal d'hébergeurs ces dernières années. Pour mon entreprise, pour des sites de clients, pour des projets internes. Et Hostinger revient souvent dans les discussions. Prix très bas, interface soignée, offres qui semblent taillées pour les non-techniciens. Sur le papier, c'est difficile de trouver mieux à ce tarif.</p>

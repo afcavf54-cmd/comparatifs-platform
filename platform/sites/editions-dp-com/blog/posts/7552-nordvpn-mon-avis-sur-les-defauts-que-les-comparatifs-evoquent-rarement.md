@@ -18,9 +18,9 @@ cta_enabled: true
 cta_text: Offre exclusive NordVPN
 cta_button: En profiter
 related_posts:
-- 1379-hostinger-avis-les-details-tarifaires-a-connaitre-avant-de-souscrire
-- 7628-o2switch-les-limites-de-l-offre-que-j-ai-etudiees-avis
 - 7811-planethoster-avis-ce-qu-il-faut-verifier-avant-de-migrer-son-site
+- 7628-o2switch-les-limites-de-l-offre-que-j-ai-etudiees-avis
+- 1379-hostinger-avis-les-details-tarifaires-a-connaitre-avant-de-souscrire
 ---
 <p>J'utilise NordVPN depuis un moment maintenant. Pas depuis hier. Et je vais vous dire ce que les comparatifs classiques ne disent jamais vraiment, parce qu'ils sont souvent rédigés par des gens qui testent l'outil deux semaines puis passent à autre chose.</p>
 
