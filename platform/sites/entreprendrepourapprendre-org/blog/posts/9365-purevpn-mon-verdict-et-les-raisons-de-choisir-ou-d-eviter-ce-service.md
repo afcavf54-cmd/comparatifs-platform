@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive PureVPN
 cta_button: En profiter
 related_posts:
-- 4008-o2switch-avis-est-ce-l-hebergeur-que-je-recommanderais-pour-un-site-professionnel
-- 8297-surfshark-avis-est-ce-le-vpn-que-je-choisirais-pour-un-usage-quotidien
-- 9353-nordvpn-avis-a-qui-je-conseillerais-ce-vpn-et-dans-quelles-situations
 - 6396-planethoster-mon-verdict-sur-cet-hebergeur-et-les-sites-auxquels-il-convient
+- 9353-nordvpn-avis-a-qui-je-conseillerais-ce-vpn-et-dans-quelles-situations
+- 6523-hostinger-mon-verdict-sur-cet-hebergement-et-les-profils-auxquels-il-convient
+- 4008-o2switch-avis-est-ce-l-hebergeur-que-je-recommanderais-pour-un-site-professionnel
 ---
 <p>Je vais être honnête : je ne pensais pas finir par rédiger un article sur un VPN. Ce n'est pas exactement le type d'outil dont je parle au quotidien avec mes équipes. Mais quand j'ai commencé à travailler avec des clients qui nous transmettent des briefs confidentiels, des contrats, des maquettes non finalisées, la question de la sécurité des connexions s'est imposée d'elle-même. Surtout en télétravail, quand deux de mes salariés bossent depuis chez eux sur des réseaux que je ne contrôle pas.</p>
 
