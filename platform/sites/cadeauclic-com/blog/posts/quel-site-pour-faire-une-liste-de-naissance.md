@@ -2,7 +2,7 @@
 title: Comparatif des sites pour créer une liste de naissance
 slug: quel-site-pour-faire-une-liste-de-naissance
 date: 2026-06-15T22:04:00+02:00
-updated: 2026-11-19T15:46:07
+updated: 2026-11-19T15:53:14
 categorie: Bébé & Naissance
 categories:
 - Bébé & Naissance
@@ -34,7 +34,7 @@ link_anchors:
 
 <p>En plus, la plupart des sites proposent maintenant une <strong>cagnotte collective</strong>, ce qui permet à une famille ou un groupe d'amis de contribuer ensemble à un article plus cher, comme un lit évolutif ou une poussette.</p>
 
-<h2>Comparatif des principales plateformes</h2><p>J'ai testé ou comparé en détail les quatre sites les plus utilisés en France. Voici ce que j'en pense vraiment.</p><h2>Mini Pouce, une liste de naissance gratuite et multi-enseignes</h2><p><img src="/blog/quel-site-pour-faire-une-liste-de-naissance/mini-pouce-1641.png" alt="Mini Pouce"></p>Si tu as déjà repéré une poussette sur un site, un lit bébé sur un autre et quelques pyjamas dans ta boutique préférée, Mini Pouce te permet <b>de tout réunir sur une seule liste de naissance</b>. La création est <b>gratuite</b>, et tu peux ajouter tes articles en collant leur lien ou en utilisant le moteur de recherche intégré. Tu peux aussi choisir les couleurs de ta liste, ajouter une photo de couverture et la partager avec tes proches.&nbsp;<br><br>Côté cadeaux, chacun peut <b>acheter un article directement chez le marchand</b> ou <b>participer à la cagnotte</b>. C’est pratique quand plusieurs personnes veulent se cotiser pour une poussette ou un siège auto. Tu peux ensuite récupérer l’argent sur ton compte bancaire.<h3>Smallable Liste de naissance</h3>
+<h2>Comparatif des principales plateformes</h2><p>J'ai testé ou comparé en détail les quatre sites les plus utilisés en France. Voici ce que j'en pense vraiment.</p><h2>Mini Pouce, une liste de naissance gratuite et multi-enseignes</h2><p><img src="/blog/quel-site-pour-faire-une-liste-de-naissance/mini-pouce-1641.png" alt="Mini Pouce"></p>Si tu as déjà repéré une poussette sur un site, un lit bébé sur un autre et quelques pyjamas dans ta boutique préférée,&nbsp;<a href="https://www.minipouce.fr/" target="_blank" rel="noopener noreferrer">Mini Pouce</a>&nbsp;te permet <b>de tout réunir sur une seule liste de naissance</b>. La création est <b>gratuite</b>, et tu peux ajouter tes articles en collant leur lien ou en utilisant le moteur de recherche intégré. Tu peux aussi choisir les couleurs de ta liste, ajouter une photo de couverture et la partager avec tes proches.&nbsp;<br><br>Côté cadeaux, chacun peut <b>acheter un article directement chez le marchand</b> ou <b>participer à la cagnotte</b>. C’est pratique quand plusieurs personnes veulent se cotiser pour une poussette ou un siège auto. Tu peux ensuite récupérer l’argent sur ton compte bancaire.<h3>Smallable Liste de naissance</h3>
 
 <p>Si tu cherches un univers plus déco, plus "bébé stylé", Smallable est une valeur sûre. Les produits sont beaux, la navigation est agréable, et l'interface de la liste est claire. J'ai une amie qui l'a utilisée pour son troisième et elle était ravie de la présentation.</p>
 
