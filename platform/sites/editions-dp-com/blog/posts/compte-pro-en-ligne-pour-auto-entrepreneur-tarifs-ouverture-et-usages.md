@@ -1,19 +1,24 @@
 ---
-title: "Compte pro en ligne pour auto-entrepreneur : tarifs, ouverture et usages"
+title: 'Compte pro en ligne pour auto-entrepreneur : tarifs, ouverture et usages'
 slug: compte-pro-en-ligne-pour-auto-entrepreneur-tarifs-ouverture-et-usages
 date: 2026-11-20 13:54:40+02:00
-updated: 2026-11-20T13:54:44
+updated: 2026-11-20 13:54:44
 categorie: Finance & Comptabilité
 categories:
 - Finance & Comptabilité
-meta_title: "Compte pro en ligne auto-entrepreneur : tarifs, ouverture et usages"
-meta_description: Comparez les tarifs des comptes pro en ligne pour auto-entrepreneurs. Découvrez comment ouvrir un compte et gérer vos encaissements et dépenses au quotidien.
+meta_title: 'Compte pro en ligne auto-entrepreneur : tarifs, ouverture et usages'
+meta_description: Comparez les tarifs des comptes pro en ligne pour auto-entrepreneurs.
+  Découvrez comment ouvrir un compte et gérer vos encaissements et dépenses au quotidien.
 featured_image: /blog/8973-compte-pro-en-ligne-pour-auto-entrepreneur-tarifs-ouverture-et-usages/featured-31654.png
 status: published
 min_words: 750
 show_toc: true
+related_posts:
+- 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
+- 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
+- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
+- 6786-waltio-avis-les-difficultes-que-j-ai-identifiees-avant-de-declarer-mes-cryptos
 ---
-
 <p>Vous venez de lancer votre micro-entreprise et vous vous demandez s'il vaut vraiment la peine de payer un compte bancaire dédié, alors que votre compte personnel fonctionne très bien ? Séparer ses flux professionnels de ses dépenses privées simplifie pourtant la vie, que ce soit pour suivre son chiffre d'affaires ou préparer ses déclarations Urssaf. Ouvrir un compte pro en ligne pour auto-entrepreneur prend quelques minutes depuis un smartphone, et les offres se sont multipliées ces dernières années. Reste à choisir la bonne avec ce <a href="https://www.indy.fr/guide/auto-entrepreneur/compte-bancaire/en-ligne/">guide compte pro en ligne auto entrepreneur</a>, en regardant au-delà du seul prix affiché.</p>
 <h2>Les tarifs d'un compte pro en ligne auto-entrepreneur</h2>
 <p>Bonne nouvelle pour les petits budgets : plusieurs banques et néobanques proposent une formule d'entrée gratuite. Les offres payantes démarrent généralement autour de quelques euros par mois et dépassent rarement une vingtaine d'euros pour un indépendant seul. Certains acteurs, comme Indy, vont même jusqu'à associer un compte gratuit à leur outil de comptabilité.</p>
