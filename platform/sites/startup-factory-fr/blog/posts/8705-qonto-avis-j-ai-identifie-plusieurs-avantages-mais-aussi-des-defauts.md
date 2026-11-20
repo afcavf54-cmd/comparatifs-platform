@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Qonto
 cta_button: En profiter
 related_posts:
-- 8764-sumup-avis-des-frais-attractifs-mais-quels-sont-les-inconvenients
+- 7791-vivid-business-avis-2026-les-vrais-points-forts-et-les-limites-que-j-ai-relevees
+- 9341-revolut-business-avis-les-avantages-reels-et-les-contraintes-a-connaitre
 - 6593-airwallex-avis-frais-competitifs-ou-mauvaises-surprises-a-prevoir
-- 1867-sogexia-business-ce-que-j-apprecie-et-ce-qui-me-decoit-avis
-- 9186-bunq-pro-ce-que-j-aime-dans-cette-banque-et-ce-qui-me-freine-avis
+- 7820-finom-mon-avis-sur-les-fonctionnalites-gratuites-et-les-restrictions
 ---
 <p>J'ai ouvert un compte Qonto il y a un peu plus de deux ans pour ma startup à Nantes. Au départ, c'était surtout pour éviter les banques traditionnelles et leurs délais interminables. Et franchement, ça a changé pas mal de choses dans ma façon de gérer les finances de l'équipe. Mais ce n'est pas non plus la solution parfaite. Loin de là.</p>
 
