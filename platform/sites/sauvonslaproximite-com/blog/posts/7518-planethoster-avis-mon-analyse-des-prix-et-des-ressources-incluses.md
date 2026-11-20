@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
 related_posts:
+- 9896-hostinger-avis-j-ai-examine-les-promotions-et-les-tarifs-de-renouvellement
 - 3538-o2switch-un-hebergement-tout-compris-rentable-mon-avis
 ---
 <p>J'ai testé pas mal d'hébergeurs au fil des années pour le compte de mes clients ou pour des projets internes. PlanetHoster fait partie de ceux qui reviennent souvent dans les discussions, notamment parce que l'offre tarifaire a de quoi intriguer. Alors j'ai pris le temps de regarder vraiment ce qu'ils proposent, au-delà du discours marketing.</p>
