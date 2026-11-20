@@ -21,6 +21,7 @@ cta_button: En profiter
 related_posts:
 - 9896-hostinger-avis-j-ai-examine-les-promotions-et-les-tarifs-de-renouvellement
 - 7518-planethoster-avis-mon-analyse-des-prix-et-des-ressources-incluses
+- 9896-hostinger-avis-j-ai-examine-les-promotions-et-les-tarifs-de-renouvellement
 ---
 <p>Vingt ans que je gère des budgets, des tableaux de bord, et des outils qui promettent monts et merveilles. J'ai appris à me méfier des arguments commerciaux. Alors quand on m'a parlé d'o2switch comme d'un hébergement "tout compris illimité" à prix fixe, j'ai voulu voir ce que ça donnait vraiment sur la durée, pas juste les deux premières semaines.</p>
 
