@@ -18,8 +18,8 @@ cta_enabled: true
 cta_text: Offre exclusive Vivid Business
 cta_button: En profiter
 related_posts:
+- 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
 - 3482-revolut-business-mon-avis-sur-cette-alternative-aux-comptes-pro-traditionnels
-- 2383-airwallex-mon-avis-sur-cette-alternative-aux-banques-internationales
 - 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
 - 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
 ---
