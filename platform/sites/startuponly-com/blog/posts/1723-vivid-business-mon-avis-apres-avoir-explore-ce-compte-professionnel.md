@@ -18,9 +18,9 @@ cta_text: Offre exclusive Vivid Business
 cta_button: En profiter
 related_posts:
 - 8609-mypos-avis-j-ai-examine-les-frais-et-les-terminaux-voici-mes-conclusions
+- 5016-revolut-business-mon-avis-sur-ce-compte-bancaire-professionnel
 - 5315-airwallex-j-ai-examine-ses-services-internationaux-mon-bilan
 - 3781-finom-avis-ce-que-je-pense-reellement-de-ce-compte-pour-independants
-- 3124-equals-j-ai-analyse-cette-solution-professionnelle-mon-avis
 ---
 <p>J'ai testé pas mal de comptes pros ces deux dernières années. Qonto, Shine, Revolut Business... et depuis quelques mois, <strong>Vivid Business</strong>. Pas parce que j'en avais marre des autres, mais parce qu'un ami fondateur m'en avait parlé et que j'étais curieux de voir ce que ça donnait vraiment au quotidien pour une petite structure comme la mienne.</p>
 
