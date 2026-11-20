@@ -20,7 +20,7 @@ cta_text: Offre exclusive Bunq pro
 cta_button: En profiter
 related_posts:
 - 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
-- 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
+- 8236-finom-avis-peut-on-gerer-son-activite-professionnelle-sans-banque-classique
 - 3326-mypos-avis-les-frais-sont-ils-reellement-interessants-pour-les-commercants
 - 9640-sogexia-business-avis-une-veritable-alternative-aux-banques-traditionnelles
 ---
