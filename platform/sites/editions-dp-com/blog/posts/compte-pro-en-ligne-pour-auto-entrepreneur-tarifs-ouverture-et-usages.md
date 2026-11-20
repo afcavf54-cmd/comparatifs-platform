@@ -2,7 +2,7 @@
 title: "Compte pro en ligne pour auto-entrepreneur : tarifs, ouverture et usages"
 slug: compte-pro-en-ligne-pour-auto-entrepreneur-tarifs-ouverture-et-usages
 date: 2026-11-20 13:54:40+02:00
-updated: 2026-11-20T13:54:40
+updated: 2026-11-20T13:54:44
 categorie: Finance & Comptabilité
 categories:
 - Finance & Comptabilité
@@ -61,3 +61,4 @@ show_toc: true
 <p>Côté encaissements, un IBAN français reste un atout pour rassurer certains clients et administrations, même si la discrimination à l'IBAN européen est en principe interdite. Les virements instantanés sont désormais largement disponibles. Certaines banques permettent aussi d'accepter les paiements par carte directement sur votre smartphone, sans terminal dédié, ou d'envoyer des liens de paiement avec vos factures.</p>
 <p>Le dépôt reste le point faible de nombreuses banques en ligne. Les chèques s'envoient généralement par courrier, avec un délai d'encaissement plus long. Pour les espèces, il faut le plus souvent passer par un réseau partenaire, moyennant des frais. Si vous manipulez beaucoup de liquide, ce critère mérite de passer avant tous les autres.</p>
 <p>Dernier réflexe à avoir : vérifier le statut de l'établissement. Une banque est couverte par la garantie des dépôts jusqu'à 100 000 € par client, tandis qu'un établissement de paiement protège vos fonds par un autre mécanisme, le cantonnement sur un compte séparé.</p>
+
