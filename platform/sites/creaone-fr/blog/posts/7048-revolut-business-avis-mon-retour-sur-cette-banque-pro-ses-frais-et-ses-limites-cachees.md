@@ -20,10 +20,10 @@ cta_enabled: true
 cta_text: Offre exclusive Revolut Business
 cta_button: En profiter
 related_posts:
+- 2771-mypos-avis-mon-retour-d-experience-sur-les-terminaux-les-frais-et-les-services
 - 3187-qonto-avis-apres-avoir-teste-cette-banque-pro-voici-ce-que-j-en-retiens
-- 3475-finom-avis-j-ai-passe-ce-compte-pro-au-crible-voici-ce-qui-m-a-convaincu-ou-decu
 - 6970-sumup-avis-j-ai-utilise-ce-terminal-de-paiement-voici-ses-avantages-et-ses-defauts
-- 2125-equals-avis-mon-avis-sans-detour-sur-cette-solution-et-ses-veritables-avantages
+- 3475-finom-avis-j-ai-passe-ce-compte-pro-au-crible-voici-ce-qui-m-a-convaincu-ou-decu
 ---
 <p>Ça fait maintenant un peu plus de deux ans que j'utilise Revolut Business dans mon quotidien de responsable comptable. Pas en test rapide, pas en "j'ai joué avec quelques semaines" : vraiment en production, pour des virements fournisseurs, des dépenses de déplacement, quelques opérations en devises étrangères, et surtout pour gérer les notes de frais de l'équipe commerciale. Autant dire que j'ai eu le temps de voir ce que ça vaut vraiment.</p>
 
