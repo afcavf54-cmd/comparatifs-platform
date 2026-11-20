@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Revolut Business
 cta_button: En profiter
 related_posts:
-- 3068-bunq-pro-mon-avis-et-les-professionnels-qui-pourraient-y-trouver-leur-compte
+- 4860-sumup-avis-a-quels-commercants-je-conseillerais-ces-terminaux
+- 1377-equals-avis-pour-quelles-entreprises-cette-solution-peut-elle-etre-pertinente
 - 2724-sogexia-business-mon-verdict-sur-cette-solution-bancaire-professionnelle
-- 3972-qonto-avis-est-ce-le-compte-professionnel-que-je-choisirais-aujourd-hui
-- 9383-finom-mon-verdict-sur-ce-compte-pour-freelances-et-petites-entreprises
+- 3068-bunq-pro-mon-avis-et-les-professionnels-qui-pourraient-y-trouver-leur-compte
 ---
 <p>Je vais être honnête : quand j'ai entendu parler de Revolut Business pour la première fois, j'étais sceptique. Une néobanque pour gérer les finances d'une agence de communication avec 6 salariés ? J'avais l'habitude de ma banque traditionnelle, ses frais incompréhensibles, ses conseillers injoignables et ses virements qui prenaient trois jours ouvrés. Pas folle, j'ai quand même testé.</p>
 
