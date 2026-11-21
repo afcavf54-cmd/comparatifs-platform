@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive Trezor
 cta_button: En profiter
 related_posts:
-- 7835-homunity-avis-pourquoi-cette-plateforme-se-distingue-dans-le-crowdfunding
-- 3355-enerfip-mon-avis-sur-cette-alternative-aux-placements-traditionnels
-- 2118-cashbee-pro-une-alternative-aux-placements-bancaires-classiques-avis
 - 7482-waltio-avis-pourquoi-je-le-choisirais-plutot-qu-un-autre-outil-fiscal-crypto
+- 2118-cashbee-pro-une-alternative-aux-placements-bancaires-classiques-avis
+- 3899-enky-invest-avis-une-nouvelle-facon-d-investir-qui-m-interpelle
+- 3355-enerfip-mon-avis-sur-cette-alternative-aux-placements-traditionnels
 ---
 <p>J'ai eu Trezor entre les mains pour la première fois en 2021. Un client m'avait demandé conseil pour sécuriser ses cryptomonnaies après avoir lu quelques articles anxiogènes sur les hacks d'exchanges. Il gérait une petite structure, quelques dizaines de milliers d'euros en Bitcoin et Ethereum, et il voulait arrêter de laisser ses actifs sur Binance "comme ça, sans vraiment savoir si c'est sûr".</p>
 
