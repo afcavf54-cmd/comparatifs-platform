@@ -18,6 +18,8 @@ cta_enabled: true
 cta_text: Offre exclusive Hostinger
 cta_button: En profiter
 related_posts:
+- 7626-nordvpn-mon-avis-sur-ses-abonnements-et-les-reductions-proposees
+- 7518-planethoster-avis-mon-analyse-des-prix-et-des-ressources-incluses
 - 3538-o2switch-un-hebergement-tout-compris-rentable-mon-avis
 - 7518-planethoster-avis-mon-analyse-des-prix-et-des-ressources-incluses
 - 7626-nordvpn-mon-avis-sur-ses-abonnements-et-les-reductions-proposees
