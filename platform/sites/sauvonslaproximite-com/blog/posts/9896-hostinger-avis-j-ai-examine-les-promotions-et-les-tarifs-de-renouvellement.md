@@ -18,8 +18,9 @@ cta_enabled: true
 cta_text: Offre exclusive Hostinger
 cta_button: En profiter
 related_posts:
-- 7518-planethoster-avis-mon-analyse-des-prix-et-des-ressources-incluses
 - 3538-o2switch-un-hebergement-tout-compris-rentable-mon-avis
+- 7518-planethoster-avis-mon-analyse-des-prix-et-des-ressources-incluses
+- 7626-nordvpn-mon-avis-sur-ses-abonnements-et-les-reductions-proposees
 ---
 <p>Je vais être honnête avec vous : j'ai commencé à regarder Hostinger par curiosité, parce que les tarifs affichés en promotion sont tout simplement difficiles à ignorer. Quand on voit <strong>des offres à moins de 3€/mois</strong>, on se demande forcément ce qu'il y a derrière. Et après avoir passé plusieurs semaines à analyser leur grille tarifaire, testé l'interface, comparé les renouvellements... j'ai des choses à dire.</p>
 
