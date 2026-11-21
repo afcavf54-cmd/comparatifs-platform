@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive myPOS
 cta_button: En profiter
 related_posts:
-- 9186-bunq-pro-ce-que-j-aime-dans-cette-banque-et-ce-qui-me-freine-avis
-- 7791-vivid-business-avis-2026-les-vrais-points-forts-et-les-limites-que-j-ai-relevees
-- 8705-qonto-avis-j-ai-identifie-plusieurs-avantages-mais-aussi-des-defauts
+- 1867-sogexia-business-ce-que-j-apprecie-et-ce-qui-me-decoit-avis
+- 8764-sumup-avis-des-frais-attractifs-mais-quels-sont-les-inconvenients
 - 6593-airwallex-avis-frais-competitifs-ou-mauvaises-surprises-a-prevoir
+- 7820-finom-mon-avis-sur-les-fonctionnalites-gratuites-et-les-restrictions
 ---
 <p>J'utilise des outils de paiement depuis pas mal d'années pour ma startup, et honnêtement, j'en ai testé un bon nombre. myPOS fait partie de ceux qui m'ont un peu surpris, dans les deux sens du terme. Pas de discours marketing ici, juste ce que j'ai vraiment observé après plusieurs mois d'utilisation au quotidien avec mon équipe à Nantes.</p>
 
