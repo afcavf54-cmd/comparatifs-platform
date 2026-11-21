@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive AirWallex
 cta_button: En profiter
 related_posts:
-- 4734-qonto-est-ce-la-meilleure-banque-pour-les-entrepreneurs-mon-avis
-- 9574-vivid-business-avis-ce-compte-pro-merite-t-il-qu-on-s-y-interesse
-- 8236-finom-avis-peut-on-gerer-son-activite-professionnelle-sans-banque-classique
-- 9640-sogexia-business-avis-une-veritable-alternative-aux-banques-traditionnelles
+- 1930-bunq-pro-avis-ce-compte-professionnel-vaut-il-le-detour
+- 3326-mypos-avis-les-frais-sont-ils-reellement-interessants-pour-les-commercants
+- 6656-revolut-business-une-alternative-credible-pour-les-professionnels-avis
+- 1431-equals-cette-solution-vaut-elle-vraiment-son-prix-mon-avis
 ---
 <p>J'ai mis du temps avant de tester Airwallex sérieusement. On m'en avait parlé dans un réseau d'entrepreneurs à Marseille, et je suis passé à côté pendant presque un an. Grosse erreur, peut-être. Ou pas. Je vais vous dire ce que j'en pense vraiment, après l'avoir utilisé dans mon contexte : une TPE de 100 à 500 salariés, des fournisseurs à l'étranger, des paiements en devises, et un budget qu'on surveille de près.</p>
 
