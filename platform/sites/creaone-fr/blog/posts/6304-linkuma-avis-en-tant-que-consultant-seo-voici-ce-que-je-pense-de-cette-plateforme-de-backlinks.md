@@ -20,6 +20,7 @@ cta_text: Offre exclusive Linkuma
 cta_button: En profiter
 related_posts:
 - 4061-invideo-avis-j-ai-essaye-de-creer-des-videos-avec-l-ia-voici-mon-retour-d-experience
+- 6771-klaviyo-avis-mon-analyse-de-cet-outil-d-email-marketing-vaut-il-vraiment-son-prix
 ---
 <p>J'utilise des plateformes de netlinking depuis pas mal d'années maintenant. Pas autant que certains SEO qui font ça à plein temps, mais suffisamment pour avoir une opinion assez arrêtée sur ce qui fonctionne, ce qui déçoit, et ce qui fait perdre du temps. <strong>Linkuma</strong> est arrivée dans mon radar il y a quelques mois, et j'ai décidé de la tester sérieusement avant d'en parler ici.</p>
 
