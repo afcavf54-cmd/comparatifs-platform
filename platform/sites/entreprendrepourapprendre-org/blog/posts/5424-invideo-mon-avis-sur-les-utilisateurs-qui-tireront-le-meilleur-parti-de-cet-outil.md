@@ -21,6 +21,7 @@ cta_text: Offre exclusive InVideo
 cta_button: En profiter
 related_posts:
 - 5958-linkuma-mon-verdict-seo-est-ce-une-plateforme-que-je-recommande
+- 8020-klaviyo-avis-a-partir-de-quand-cet-outil-devient-il-vraiment-interessant
 ---
 <p>Je vais être honnête : j'ai mis du temps avant d'essayer InVideo. Pendant longtemps, je pensais que les outils de création vidéo, c'était réservé aux agences avec un monteur dans l'équipe ou aux freelances qui passent leurs journées sur Adobe Premiere. Pas vraiment mon profil. Moi, je gère une petite agence de communication à Lyon, six personnes, et on croule sous les briefs clients, les relances, les devis et les plannings. La vidéo, on la sous-traitait. Jusqu'au jour où un client a changé de budget en cours de route et qu'on s'est retrouvées à devoir produire une série de contenus vidéo sans prestataire.</p>
 
