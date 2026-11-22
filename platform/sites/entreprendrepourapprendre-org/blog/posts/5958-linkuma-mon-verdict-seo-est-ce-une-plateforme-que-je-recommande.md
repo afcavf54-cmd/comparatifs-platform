@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive Linkuma
 cta_button: En profiter
 related_posts:
+- 8020-klaviyo-avis-a-partir-de-quand-cet-outil-devient-il-vraiment-interessant
 - 5424-invideo-mon-avis-sur-les-utilisateurs-qui-tireront-le-meilleur-parti-de-cet-outil
 - 8020-klaviyo-avis-a-partir-de-quand-cet-outil-devient-il-vraiment-interessant
 ---
