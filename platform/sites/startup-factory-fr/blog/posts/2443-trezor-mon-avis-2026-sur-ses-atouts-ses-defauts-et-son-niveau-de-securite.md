@@ -14,9 +14,10 @@ link_anchors:
 - text: Trezor
   max: 10
 related_posts:
-- 9918-homunity-mon-avis-entre-promesses-de-rendement-et-risques-de-retard
 - 2250-cashbee-pro-avis-les-atouts-et-les-contraintes-pour-placer-sa-tresorerie
+- 6562-enerfip-avis-rendements-seduisants-mais-les-risques-sont-ils-sous-estimes
 - 4573-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
+- 9918-homunity-mon-avis-entre-promesses-de-rendement-et-risques-de-retard
 ---
 <p>J'ai mis les mains dessus il y a un moment déjà. Et franchement, j'aurais dû le faire bien plus tôt. Trezor, c'est un des hardware wallets les plus connus du marché, et j'ai voulu vérifier par moi-même si la réputation était méritée, ou si c'était juste du marketing bien ficelé.</p>
 
