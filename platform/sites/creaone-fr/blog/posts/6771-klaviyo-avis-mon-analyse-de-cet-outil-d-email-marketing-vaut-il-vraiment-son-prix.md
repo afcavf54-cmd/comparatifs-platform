@@ -19,8 +19,8 @@ cta_enabled: true
 cta_text: Offre exclusive Klaviyo
 cta_button: En profiter
 related_posts:
-- 6304-linkuma-avis-en-tant-que-consultant-seo-voici-ce-que-je-pense-de-cette-plateforme-de-backlinks
 - 4061-invideo-avis-j-ai-essaye-de-creer-des-videos-avec-l-ia-voici-mon-retour-d-experience
+- 6304-linkuma-avis-en-tant-que-consultant-seo-voici-ce-que-je-pense-de-cette-plateforme-de-backlinks
 ---
 <p>Je vais être honnête : quand on m'a demandé de tester Klaviyo dans un contexte qui dépasse largement mon périmètre comptable habituel, j'ai d'abord regardé ça de loin. Puis j'ai commencé à creuser les chiffres, les tarifs, les fonctionnalités. Et là, j'ai compris pourquoi tant de responsables marketing et de e-commerçants en parlent autant. Mais aussi pourquoi certains s'y brûlent les doigts.</p>
 

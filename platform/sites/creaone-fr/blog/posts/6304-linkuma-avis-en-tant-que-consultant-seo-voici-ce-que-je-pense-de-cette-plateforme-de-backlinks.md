@@ -19,6 +19,7 @@ cta_enabled: true
 cta_text: Offre exclusive Linkuma
 cta_button: En profiter
 related_posts:
+- 6771-klaviyo-avis-mon-analyse-de-cet-outil-d-email-marketing-vaut-il-vraiment-son-prix
 - 4061-invideo-avis-j-ai-essaye-de-creer-des-videos-avec-l-ia-voici-mon-retour-d-experience
 - 6771-klaviyo-avis-mon-analyse-de-cet-outil-d-email-marketing-vaut-il-vraiment-son-prix
 ---
