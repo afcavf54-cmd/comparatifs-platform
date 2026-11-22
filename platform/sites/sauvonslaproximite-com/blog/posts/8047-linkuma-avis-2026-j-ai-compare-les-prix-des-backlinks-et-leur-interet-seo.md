@@ -15,9 +15,9 @@ link_anchors:
 - text: Linkuma
   max: 10
 related_posts:
-- 1719-klaviyo-mon-analyse-des-tarifs-et-du-retour-sur-investissement-avis
 - 6388-hubspot-avis-j-ai-examine-ses-offres-gratuites-et-payantes-voici-mon-bilan
 - 3796-invideo-avis-les-forfaits-payants-sont-ils-indispensables-pour-creer-des-videos
+- 1719-klaviyo-mon-analyse-des-tarifs-et-du-retour-sur-investissement-avis
 ---
 <p>Voilà un sujet sur lequel j'ai passé un bon moment à tâtonner avant d'avoir un avis vraiment tranché. Linkuma. J'en avais entendu parler via un prestataire SEO qui travaille avec notre groupe, et j'ai décidé de creuser moi-même, chiffres en main, pour voir si ça valait vraiment quelque chose côté retour sur investissement.</p>
 
