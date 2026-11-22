@@ -20,9 +20,9 @@ cta_text: Offre exclusive Homunity
 cta_button: En profiter
 related_posts:
 - 2250-cashbee-pro-avis-les-atouts-et-les-contraintes-pour-placer-sa-tresorerie
-- 4573-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
-- 6562-enerfip-avis-rendements-seduisants-mais-les-risques-sont-ils-sous-estimes
 - 2443-trezor-mon-avis-2026-sur-ses-atouts-ses-defauts-et-son-niveau-de-securite
+- 6562-enerfip-avis-rendements-seduisants-mais-les-risques-sont-ils-sous-estimes
+- 4573-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
 ---
 <p>J'ai commencé à regarder Homunity sérieusement il y a environ deux ans. Une collègue m'en avait parlé en passant, entre deux réunions, en disant que ça lui rapportait plus que son livret A. Bon. Ce genre de phrase, ça m'intrigue et ça m'agace en même temps. Alors j'ai creusé.</p>
 
