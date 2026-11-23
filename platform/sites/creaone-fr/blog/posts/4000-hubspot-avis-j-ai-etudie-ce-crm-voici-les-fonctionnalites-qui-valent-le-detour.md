@@ -1,10 +1,13 @@
 ---
-title: 'HubSpot Avis 2026 : J''ai étudié ce CRM, voici les fonctionnalités qui valent le détour'
+title: 'HubSpot Avis 2026 : J''ai étudié ce CRM, voici les fonctionnalités qui valent
+  le détour'
 slug: 4000-hubspot-avis-j-ai-etudie-ce-crm-voici-les-fonctionnalites-qui-valent-le-detour
 date: '2026-11-23T08:00:00+01:00'
 categorie: Marketing
-meta_title: 'J''ai analysé HubSpot : mon retour sur les fonctionnalités, les tarifs et les limites de ce CRM'
-meta_description: 'Avis HubSpot 2026 : un utilisateur terrain de 9 ans en compta analyse ce CRM, ses vraies forces et ses limites avant tout engagement pour votre équipe.'
+meta_title: 'J''ai analysé HubSpot : mon retour sur les fonctionnalités, les tarifs
+  et les limites de ce CRM'
+meta_description: 'Avis HubSpot 2026 : un utilisateur terrain de 9 ans en compta analyse
+  ce CRM, ses vraies forces et ses limites avant tout engagement pour votre équipe.'
 min_words: 3000
 status: published
 featured_image: /blog/4000-hubspot-avis-j-ai-etudie-ce-crm-voici-les-fonctionnalites-qui-valent-le-detour.jpg
@@ -15,8 +18,11 @@ cta_link: https://go.try-hubspot.com/WOR9LP
 cta_enabled: true
 cta_text: Offre exclusive HubSpot
 cta_button: En profiter
+related_posts:
+- 6771-klaviyo-avis-mon-analyse-de-cet-outil-d-email-marketing-vaut-il-vraiment-son-prix
+- 4061-invideo-avis-j-ai-essaye-de-creer-des-videos-avec-l-ia-voici-mon-retour-d-experience
+- 6304-linkuma-avis-en-tant-que-consultant-seo-voici-ce-que-je-pense-de-cette-plateforme-de-backlinks
 ---
-
 <p>Je vais être honnête avec vous : j'ai commencé à regarder HubSpot parce qu'on me l'a recommandé lors d'un séminaire RH, et j'ai continué parce que j'avais du mal à lâcher l'affaire. Neuf ans en comptabilité, ça forge une certaine méfiance des outils qui promettent trop. HubSpot promet beaucoup. Et pour une fois, une partie de ces promesses tient la route.</p>
 
 <p>Mais une partie seulement. Et c'est précisément ce que je vais vous détailler ici.</p>

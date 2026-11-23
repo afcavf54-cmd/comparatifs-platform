@@ -21,6 +21,7 @@ cta_text: Offre exclusive InVideo
 cta_button: En profiter
 related_posts:
 - 6304-linkuma-avis-en-tant-que-consultant-seo-voici-ce-que-je-pense-de-cette-plateforme-de-backlinks
+- 4000-hubspot-avis-j-ai-etudie-ce-crm-voici-les-fonctionnalites-qui-valent-le-detour
 - 6771-klaviyo-avis-mon-analyse-de-cet-outil-d-email-marketing-vaut-il-vraiment-son-prix
 ---
 <p>Je vais être honnête : je ne suis pas monteur vidéo. Je suis comptable, j'ai passé neuf ans à manipuler des tableaux Excel et des logiciels de gestion, et l'idée de créer du contenu vidéo pour notre service marketing me paraissait complètement hors de portée. Et puis notre directrice commerciale m'a demandé de tester quelques outils IA pour voir si on pouvait automatiser la production de courtes vidéos de présentation, sans passer par une agence.</p>
