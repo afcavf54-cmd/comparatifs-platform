@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Enky Invest
 cta_button: En profiter
 related_posts:
-- 9918-homunity-mon-avis-entre-promesses-de-rendement-et-risques-de-retard
-- 2250-cashbee-pro-avis-les-atouts-et-les-contraintes-pour-placer-sa-tresorerie
 - 2443-trezor-mon-avis-2026-sur-ses-atouts-ses-defauts-et-son-niveau-de-securite
 - 4573-waltio-avis-ce-qui-me-plait-dans-cet-outil-crypto-et-ce-qui-me-derange
+- 9918-homunity-mon-avis-entre-promesses-de-rendement-et-risques-de-retard
+- 2250-cashbee-pro-avis-les-atouts-et-les-contraintes-pour-placer-sa-tresorerie
 ---
 <p>Je vais être honnête avec toi : j'ai découvert Enky Invest un peu par hasard, via une discussion dans un groupe Slack de fondateurs nantais. Quelqu'un cherchait un moyen de faire travailler la trésorerie de sa boîte sans immobiliser les fonds trop longtemps. Et Enky est revenu plusieurs fois dans la conversation.</p>
 
