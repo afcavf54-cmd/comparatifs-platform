@@ -19,9 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive HubSpot
 cta_button: En profiter
 related_posts:
-- 6771-klaviyo-avis-mon-analyse-de-cet-outil-d-email-marketing-vaut-il-vraiment-son-prix
-- 4061-invideo-avis-j-ai-essaye-de-creer-des-videos-avec-l-ia-voici-mon-retour-d-experience
 - 6304-linkuma-avis-en-tant-que-consultant-seo-voici-ce-que-je-pense-de-cette-plateforme-de-backlinks
+- 4061-invideo-avis-j-ai-essaye-de-creer-des-videos-avec-l-ia-voici-mon-retour-d-experience
+- 6771-klaviyo-avis-mon-analyse-de-cet-outil-d-email-marketing-vaut-il-vraiment-son-prix
 ---
 <p>Je vais être honnête avec vous : j'ai commencé à regarder HubSpot parce qu'on me l'a recommandé lors d'un séminaire RH, et j'ai continué parce que j'avais du mal à lâcher l'affaire. Neuf ans en comptabilité, ça forge une certaine méfiance des outils qui promettent trop. HubSpot promet beaucoup. Et pour une fois, une partie de ces promesses tient la route.</p>
 
