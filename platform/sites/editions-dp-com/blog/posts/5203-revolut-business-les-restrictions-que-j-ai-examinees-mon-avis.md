@@ -19,9 +19,9 @@ cta_text: Offre exclusive Revolut Business
 cta_button: En profiter
 related_posts:
 - 2615-mypos-avis-les-mauvaises-surprises-potentielles-a-eviter
-- 4445-finom-avis-ce-qu-il-faut-savoir-avant-de-choisir-cette-banque-pro
 - 5468-equals-mon-avis-sur-les-limites-et-les-conditions-a-examiner
 - 1288-qonto-mon-avis-sur-les-limites-que-les-entrepreneurs-doivent-connaitre
+- 1895-sumup-les-frais-et-contraintes-que-j-ai-releves-mon-avis
 ---
 <p>J'utilise Revolut Business depuis un peu plus de deux ans maintenant. Et franchement, j'aurais aimé lire un article honnête avant de me lancer, parce que j'ai perdu un peu de temps à découvrir certaines limites au fur et à mesure. Pas des catastrophes, mais des petits freins qui, quand on gère une boîte de 100 à 500 personnes à Lyon, finissent par peser sur le quotidien.</p>
 
