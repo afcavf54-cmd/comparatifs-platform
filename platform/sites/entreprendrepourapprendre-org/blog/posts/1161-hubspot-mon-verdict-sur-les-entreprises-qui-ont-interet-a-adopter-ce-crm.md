@@ -20,9 +20,9 @@ cta_enabled: true
 cta_text: Offre exclusive HubSpot
 cta_button: En profiter
 related_posts:
-- 5958-linkuma-mon-verdict-seo-est-ce-une-plateforme-que-je-recommande
-- 5424-invideo-mon-avis-sur-les-utilisateurs-qui-tireront-le-meilleur-parti-de-cet-outil
 - 8020-klaviyo-avis-a-partir-de-quand-cet-outil-devient-il-vraiment-interessant
+- 5424-invideo-mon-avis-sur-les-utilisateurs-qui-tireront-le-meilleur-parti-de-cet-outil
+- 5958-linkuma-mon-verdict-seo-est-ce-une-plateforme-que-je-recommande
 ---
 <p>Je vais être honnête avec vous : j'ai hésité longtemps avant de tester HubSpot sérieusement. L'outil a une réputation de mastodonte, et moi ce que je fuis par-dessus tout c'est l'usine à gaz. J'ai six salariés, une agence de communication qui tourne, et pas une seule minute à perdre sur un logiciel que je dois expliquer trois fois à chaque nouvelle recrue.</p>
 
