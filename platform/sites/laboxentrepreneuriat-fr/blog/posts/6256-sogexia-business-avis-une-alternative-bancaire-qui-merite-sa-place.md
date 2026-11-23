@@ -19,9 +19,9 @@ cta_enabled: true
 cta_text: Offre exclusive Sogexia Business
 cta_button: En profiter
 related_posts:
-- 1021-mypos-avis-ce-qui-change-reellement-par-rapport-aux-autres-terminaux
-- 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
+- 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
 - 2383-airwallex-mon-avis-sur-cette-alternative-aux-banques-internationales
+- 1965-sumup-ce-que-j-en-pense-face-aux-terminaux-concurrents-avis
 - 5301-vivid-business-ce-qui-le-distingue-des-autres-comptes-pro-mon-avis
 ---
 <h2>Ce que j'ai trouvé en ouvrant un compte Sogexia Business</h2>
