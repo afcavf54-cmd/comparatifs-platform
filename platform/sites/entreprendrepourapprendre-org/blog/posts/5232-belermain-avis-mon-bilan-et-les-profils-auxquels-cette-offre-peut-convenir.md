@@ -18,7 +18,8 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5102120394T&subid=entreprend
 cta_enabled: true
 cta_text: Offre exclusive Belermain
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 9178-indy-avis-a-quels-independants-je-conseillerais-ce-logiciel-comptable
 ---
 <p>Honnêtement, j'avais des doutes avant de tester Belermain. On m'en avait parlé comme d'un outil de gestion pensé pour les petites structures, et j'avoue que ce genre de promesse, j'en entends souvent. Après 8 ans à gérer mon agence, j'ai essayé pas mal de logiciels qui se présentaient comme "la solution tout-en-un parfaite pour les TPE" et qui se révélaient être soit trop complexes, soit trop limités, soit franchement mal foutus.</p>
 
