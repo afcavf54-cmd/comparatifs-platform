@@ -19,7 +19,8 @@ cta_link: https://www.financeads.net/tc.php?t=74753C5102120394T&subid=creaone.fr
 cta_enabled: true
 cta_text: Offre exclusive Belermain
 cta_button: En profiter
-related_posts: []
+related_posts:
+- 9631-indy-avis-mon-experience-avec-ce-logiciel-de-comptabilite-peut-il-remplacer-un-comptable
 ---
 <p>Ça fait maintenant plusieurs années que je teste des outils de gestion pour notre service comptable. On a une équipe de taille intermédiaire, un budget serré, et pas de temps à perdre avec des plateformes qui promettent tout et délivrent peu. Quand un collègue m'a parlé de Belermain il y a quelques mois, j'ai été honnêtement sceptique. Encore une promesse de "tout-en-un" ? J'ai quand même décidé de creuser.</p>
 

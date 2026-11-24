@@ -1,10 +1,13 @@
 ---
-title: 'Indy Avis 2026 : Mon expérience avec ce logiciel de comptabilité, peut-il remplacer un comptable ?'
+title: 'Indy Avis 2026 : Mon expérience avec ce logiciel de comptabilité, peut-il
+  remplacer un comptable ?'
 slug: 9631-indy-avis-mon-experience-avec-ce-logiciel-de-comptabilite-peut-il-remplacer-un-comptable
 date: '2026-11-24T08:00:00+01:00'
 categorie: Gestion d'entreprise
-meta_title: 'Mon avis sur Indy : peut-on réellement gérer sa comptabilité sans expert-comptable ?'
-meta_description: 'Avis complet sur Indy en 2026 par un responsable comptable : fonctionnalités testées, limites observées et verdict honnête pour les freelances qui veulent se…'
+meta_title: 'Mon avis sur Indy : peut-on réellement gérer sa comptabilité sans expert-comptable
+  ?'
+meta_description: 'Avis complet sur Indy en 2026 par un responsable comptable : fonctionnalités
+  testées, limites observées et verdict honnête pour les freelances qui veulent se…'
 min_words: 3000
 status: published
 featured_image: /blog/9631-indy-avis-mon-experience-avec-ce-logiciel-de-comptabilite-peut-il-remplacer-un-comptable.jpg
@@ -15,8 +18,9 @@ cta_link: https://c3po.link/QZrBCYjH2T
 cta_enabled: true
 cta_text: Offre exclusive Indy
 cta_button: En profiter
+related_posts:
+- 9623-belermain-avis-ce-que-j-ai-decouvert-sur-cette-plateforme-et-mon-verdict-personnel
 ---
-
 <p>J'ai testé Indy pendant plusieurs semaines, et je vais vous donner un retour honnête, sans langue de bois. Pas un résumé de la page produit, pas un copier-coller des fonctionnalités officielles. Ce que j'ai vraiment vécu, ce qui m'a plu, ce qui m'a agacé, et surtout : est-ce que ça tient la route pour un indépendant qui veut se passer de comptable ?</p>
 
 <p>Petit contexte : je travaille comme responsable comptable dans une PME de 200 personnes à Toulouse. Autant dire que je connais les logiciels de compta de l'intérieur. Et quand des freelances ou des micro-entrepreneurs de mon entourage me demandent ce qu'ils doivent utiliser, j'ai commencé à creuser sérieusement les outils dédiés aux indépendants. Indy fait partie de ceux dont j'entends le plus parler depuis quelques années.</p>
