@@ -19,10 +19,10 @@ cta_enabled: true
 cta_text: Offre exclusive PlanetHoster
 cta_button: En profiter
 related_posts:
-- 7256-nordvpn-est-il-toujours-aussi-performant-face-a-ses-concurrents-avis
-- 3276-purevpn-avis-ce-fournisseur-merite-t-il-votre-confiance
-- 4067-o2switch-faut-il-lui-confier-son-site-internet-mon-avis
 - 1603-hostinger-avis-peut-on-obtenir-un-hebergement-performant-a-bas-prix
+- 3276-purevpn-avis-ce-fournisseur-merite-t-il-votre-confiance
+- 7256-nordvpn-est-il-toujours-aussi-performant-face-a-ses-concurrents-avis
+- 4067-o2switch-faut-il-lui-confier-son-site-internet-mon-avis
 ---
 <p>J'utilise PlanetHoster depuis un peu plus d'un an maintenant. Au départ, je cherchais simplement un hébergeur pas trop cher pour héberger le site vitrine de mon entreprise et un ou deux sites secondaires. Je ne voulais pas passer des heures à comparer des offres incompréhensibles. Je voulais quelque chose de simple, stable, et qui ne me coûte pas un bras.</p>
 
