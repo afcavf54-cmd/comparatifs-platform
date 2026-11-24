@@ -10,6 +10,7 @@ min_words: 2500
 status: published
 featured_image: /blog/3339-les-15-meilleurs-espaces-de-coworking-a-lyon-pour-travailler.jpg
 related_posts:
+- 4629-shopify-avis-les-couts-et-contraintes-a-anticiper-avant-de-lancer-sa-boutique
 - 2151-ou-travailler-a-paris-8-espaces-de-coworking-que-j-ai-selectionnes
 ---
 <h2>Pourquoi chercher un espace de coworking à Lyon quand on dirige une TPE ?</h2>
