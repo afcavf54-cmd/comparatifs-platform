@@ -17,10 +17,10 @@ cta_enabled: true
 cta_text: Offre exclusive Qonto
 cta_button: En profiter
 related_posts:
-- 9475-sumup-j-ai-passe-ses-terminaux-au-crible-mon-verdict-en
-- 5315-airwallex-j-ai-examine-ses-services-internationaux-mon-bilan
 - 5325-sogexia-business-avis-ce-que-j-ai-retenu-de-cette-alternative-bancaire
 - 3972-bunq-pro-avis-les-fonctionnalites-qui-m-ont-convaincu-et-celles-qui-manquent
+- 5315-airwallex-j-ai-examine-ses-services-internationaux-mon-bilan
+- 1723-vivid-business-mon-avis-apres-avoir-explore-ce-compte-professionnel
 ---
 <p>J'utilise Qonto depuis maintenant un peu plus de deux ans pour ma startup à Bordeaux. Et franchement, c'est l'un des rares outils dont je parle spontanément à d'autres fondateurs quand on cause gestion financière. Pas parce que c'est parfait. Mais parce que ça m'a sorti la tête de l'eau sur pas mal de trucs qui me prenaient un temps fou avant.</p>
 
