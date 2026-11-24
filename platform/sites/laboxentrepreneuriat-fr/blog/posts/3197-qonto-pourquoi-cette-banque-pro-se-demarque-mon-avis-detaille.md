@@ -18,10 +18,10 @@ cta_enabled: true
 cta_text: Offre exclusive Qonto
 cta_button: En profiter
 related_posts:
-- 2383-airwallex-mon-avis-sur-cette-alternative-aux-banques-internationales
-- 3491-bunq-pro-avis-ce-qui-la-differencie-des-autres-banques-professionnelles
+- 4079-finom-avis-ce-compte-professionnel-peut-il-rivaliser-avec-les-leaders
+- 8994-equals-mon-avis-sur-son-positionnement-face-aux-solutions-concurrentes
+- 1965-sumup-ce-que-j-en-pense-face-aux-terminaux-concurrents-avis
 - 5301-vivid-business-ce-qui-le-distingue-des-autres-comptes-pro-mon-avis
-- 1021-mypos-avis-ce-qui-change-reellement-par-rapport-aux-autres-terminaux
 ---
 <p>J'ai testé beaucoup de comptes pro ces dernières années. Des vieilles banques traditionnelles avec leur conseiller injoignable, des néobanques qui promettent tout et livrent peu, et quelques solutions qui m'ont vraiment surpris. Qonto fait partie de la deuxième catégorie. Enfin, partiellement.</p>
 
