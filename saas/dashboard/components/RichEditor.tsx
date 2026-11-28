@@ -99,6 +99,8 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   const editingLinkRef = useRef<HTMLAnchorElement | null>(null) // <a> à éditer, ou null si nouveau lien
   const savedRangeRef = useRef<Range | null>(null)              // sélection sauvegardée à la restoration
   const [showYtModal, setShowYtModal] = useState(false)
+  // Bulle affichée au clic sur un lien existant (Retirer / Modifier)
+  const [linkBubble, setLinkBubble] = useState<{ el: HTMLAnchorElement; top: number; left: number } | null>(null)
   const [ytUrl, setYtUrl] = useState('')
 
   useEffect(() => {
@@ -337,6 +339,48 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     savedRangeRef.current = null
   }
 
+  // Retire un lien précis en gardant son texte.
+  function removeLinkEl(a: HTMLAnchorElement) {
+    const parent = a.parentNode
+    if (!parent) return
+    while (a.firstChild) parent.insertBefore(a.firstChild, a)
+    parent.removeChild(a)
+    emit()
+  }
+
+  // Ouvre la modale d'édition pour un lien précis (depuis la bulle).
+  function editLinkEl(a: HTMLAnchorElement) {
+    editingLinkRef.current = a
+    savedRangeRef.current = null
+    setLinkUrl(a.getAttribute('href') || '')
+    setLinkText(a.textContent || '')
+    setLinkBlank(a.getAttribute('target') === '_blank')
+    setLinkNofollow(/\bnofollow\b/.test((a.getAttribute('rel') || '').toLowerCase()))
+    setShowLinkModal(true)
+  }
+
+  // Clic dans la zone d'édition : sur un lien → bulle d'actions.
+  function onEditorClick(e: React.MouseEvent<HTMLDivElement>) {
+    const t = e.target as HTMLElement
+    const a = t && t.closest ? (t.closest('a') as HTMLAnchorElement | null) : null
+    if (a && ref.current && ref.current.contains(a)) {
+      e.preventDefault()
+      const r = a.getBoundingClientRect()
+      const left = Math.max(8, Math.min(r.left, window.innerWidth - 340))
+      setLinkBubble({ el: a, top: r.bottom + 6, left })
+    } else {
+      setLinkBubble(null)
+    }
+  }
+
+  useEffect(() => {
+    if (!linkBubble) return
+    const close = () => setLinkBubble(null)
+    window.addEventListener('scroll', close, true)
+    window.addEventListener('resize', close)
+    return () => { window.removeEventListener('scroll', close, true); window.removeEventListener('resize', close) }
+  }, [linkBubble])
+
   function unlink() {
     if (!ref.current) return
     // Curseur simplement posé dans un lien (sans sélection) : execCommand('unlink')
@@ -516,7 +560,9 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           ref={ref}
           contentEditable
           suppressContentEditableWarning
-          onInput={emit}
+          onInput={() => { setLinkBubble(null); emit() }}
+          onClick={onEditorClick}
+          onKeyDown={() => { if (linkBubble) setLinkBubble(null) }}
           onPaste={e => {
             e.preventDefault()
             const text = e.clipboardData.getData('text/plain')
@@ -540,6 +586,26 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
       </div>
 
       {/* ─── Modale Insertion / édition de lien ─────────────────────────── */}
+      {linkBubble && !showSource && (
+        <div onMouseDown={e => e.preventDefault()}
+             style={{ position: 'fixed', top: linkBubble.top, left: linkBubble.left, zIndex: 150,
+                      display: 'flex', alignItems: 'center', gap: 6, padding: '6px 6px 6px 12px', maxWidth: 330,
+                      background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 10, boxShadow: '0 10px 30px rgba(0,0,0,.45)' }}>
+          <a href={linkBubble.el.getAttribute('href') || '#'} target="_blank" rel="noopener noreferrer"
+             style={{ color: '#8B9CB0', fontSize: 12, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1, minWidth: 0 }}>
+            {linkBubble.el.getAttribute('href')}
+          </a>
+          <button type="button" onClick={() => { const a = linkBubble.el; setLinkBubble(null); editLinkEl(a) }}
+                  style={{ padding: '6px 10px', borderRadius: 7, background: '#1E2D3D', color: '#fff', border: 0, cursor: 'pointer', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}>
+            ✏️ Modifier
+          </button>
+          <button type="button" onClick={() => { const a = linkBubble.el; setLinkBubble(null); removeLinkEl(a) }}
+                  style={{ padding: '6px 10px', borderRadius: 7, background: 'rgba(252,129,129,.15)', color: '#FC8181', border: 0, cursor: 'pointer', fontSize: 12, fontWeight: 700, whiteSpace: 'nowrap' }}>
+            ✕ Retirer le lien
+          </button>
+        </div>
+      )}
+
       {showLinkModal && (
         <div onClick={cancelLink}
              style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.75)',
@@ -602,6 +668,13 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginTop: 20 }}>
+              {editingLinkRef.current && (
+                <button onClick={() => { const a = editingLinkRef.current; cancelLink(); if (a) removeLinkEl(a) }}
+                        style={{ marginRight: 'auto', padding: '10px 18px', borderRadius: 8, background: 'rgba(252,129,129,.15)',
+                                 color: '#FC8181', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700 }}>
+                  ✕ Retirer le lien
+                </button>
+              )}
               <button onClick={cancelLink}
                       style={{ padding: '10px 18px', borderRadius: 8, background: '#1E2D3D',
                                color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
