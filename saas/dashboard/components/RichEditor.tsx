@@ -338,7 +338,30 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   }
 
   function unlink() {
-    exec('unlink')
+    if (!ref.current) return
+    // Curseur simplement posé dans un lien (sans sélection) : execCommand('unlink')
+    // ne fait rien dans Chrome → on « déballe » nous-mêmes le <a> qui l'entoure.
+    const sel = window.getSelection()
+    const anchors = new Set<HTMLAnchorElement>()
+    if (sel && sel.rangeCount) {
+      const r = sel.getRangeAt(0)
+      const up = (n: Node | null) => { while (n && n !== ref.current) { if (n.nodeName === 'A') return n as HTMLAnchorElement; n = n.parentNode } return null }
+      const a1 = up(r.startContainer), a2 = up(r.endContainer)
+      if (a1) anchors.add(a1)
+      if (a2) anchors.add(a2)
+      if (!r.collapsed) ref.current.querySelectorAll('a').forEach(a => { if (r.intersectsNode(a)) anchors.add(a) })
+    }
+    if (anchors.size) {
+      anchors.forEach(a => {
+        const parent = a.parentNode
+        if (!parent) return
+        while (a.firstChild) parent.insertBefore(a.firstChild, a)
+        parent.removeChild(a)
+      })
+      emit()
+    } else {
+      exec('unlink')
+    }
   }
 
   // ── Vidéo YouTube (embed responsive plein largeur) ──────────────────────
@@ -477,7 +500,16 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
 
       {/* Zone d'édition */}
       {showSource ? (
-        <textarea value={sourceValue} onChange={e => setSourceValue(e.target.value)}
+        <textarea value={sourceValue} onChange={e => {
+            // On transmet chaque modification du code source tout de suite : sinon,
+            // un enregistrement fait sans revenir au mode visuel reprenait l'ancien contenu.
+            const v = e.target.value
+            setSourceValue(v)
+            const stored = toStored(v)
+            pendingSourceRef.current = stored
+            lastEmittedRef.current = stored
+            onChange(stored)
+          }}
           style={{ width: '100%', minHeight: height, padding: 18, background: '#0A0E1A', border: 'none', color: '#fff', fontFamily: 'Menlo, Monaco, Consolas, monospace', fontSize: 12, lineHeight: 1.6, resize: 'vertical', outline: 'none' }} />
       ) : (
         <div

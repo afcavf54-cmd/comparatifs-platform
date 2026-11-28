@@ -49,7 +49,7 @@ related_posts:
 
 <h3>Teamtailor</h3>
 
-<p><a href="https://www.teamtailor.com/fr/" rel="nofollow noopener">Teamtailor</a> est une solution suédoise qui a gagné du terrain en France, notamment auprès des ETI en forte croissance. L'outil mise beaucoup sur la marque employeur intégrée : vous construisez votre page carrière directement dans la plateforme, avec des blocs personnalisables, des témoignages de collaborateurs, des photos d'équipe.</p>
+<p>Teamtailor est une solution suédoise qui a gagné du terrain en France, notamment auprès des ETI en forte croissance. L'outil mise beaucoup sur la marque employeur intégrée : vous construisez votre page carrière directement dans la plateforme, avec des blocs personnalisables, des témoignages de collaborateurs, des photos d'équipe.</p>
 
 <p>Ce qui plaît dans les équipes RH, c'est la simplicité de prise en main. J'ai vu une équipe de trois recruteurs opérationnelle dessus en moins d'une semaine. Les workflows de validation sont visuels, le kanban de suivi des candidatures est clair, et les intégrations avec les jobboards sont nombreuses.</p>
 
@@ -57,7 +57,7 @@ related_posts:
 
 <h3>Kelio</h3>
 
-<p><a href="https://www.kelio.com/fr/fonctionnalites/gestion-des-talents/recrutement.html">Kelio</a> propose un module de recrutement pensé pour les entreprises qui recrutent régulièrement et qui ont besoin que leur outil s'intègre avec le reste de leur écosystème RH. C'est justement là que ça devient intéressant pour une ETI.</p>
+<p>Kelio propose un module de recrutement pensé pour les entreprises qui recrutent régulièrement et qui ont besoin que leur outil s'intègre avec le reste de leur écosystème RH. C'est justement là que ça devient intéressant pour une ETI.</p>
 
 <p>L'intégration avec les SIRH, les outils de gestion RH et les plateformes de multidiffusion d'offres d'emploi est un point fort documenté de la solution. Pour une structure qui utilise déjà Kelio pour la gestion des temps ou la paie, le fait de ne pas dupliquer les données entre modules représente un vrai gain opérationnel. Un dossier candidat accepté peut alimenter directement le dossier salarié, sans ressaisie.</p>
 
@@ -67,7 +67,7 @@ related_posts:
 
 <h3>Beetween</h3>
 
-<p><a href="https://www.beetween.com/" rel="nofollow noopener">Beetween</a> est une solution française positionnée spécifiquement sur le marché des PME et ETI. L'ATS propose une multidiffusion des offres vers plus de 100 jobboards, ce qui est un argument concret pour les équipes RH qui publient régulièrement des annonces.</p>
+<p>Beetween est une solution française positionnée spécifiquement sur le marché des PME et ETI. L'ATS propose une multidiffusion des offres vers plus de 100 jobboards, ce qui est un argument concret pour les équipes RH qui publient régulièrement des annonces.</p>
 
 <p>Ce qui m'a semblé pertinent dans leur approche, c'est le rapport fonctionnalités/accessibilité. L'outil couvre les bases sans vous noyer dans des options inutiles pour votre taille. Suivi des candidatures, scoring, parsing de CV, notifications automatiques, gestion des entretiens... les fonctions du quotidien sont là.</p>
 
