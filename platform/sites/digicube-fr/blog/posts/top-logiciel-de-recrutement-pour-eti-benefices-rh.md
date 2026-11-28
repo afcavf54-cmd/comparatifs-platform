@@ -2,13 +2,13 @@
 title: "Top logiciel de recrutement pour ETI : bénéfices RH"
 slug: top-logiciel-de-recrutement-pour-eti-benefices-rh
 date: 2026-11-16 16:45:54+02:00
-updated: 2026-11-28T06:38:08
+updated: 2026-11-28T06:50:50
 categorie: "Gestion d'entreprise"
 categories:
 - "Gestion d'entreprise"
 meta_title: "Top logiciel de recrutement pour ETI : bénéfices RH"
 meta_description: "Découvrez pourquoi un logiciel de recrutement transforme la gestion RH des ETI : gain de temps, centralisation des candidatures et processus enfin maîtrisés."
-featured_image: ""
+featured_image: /blog/top-logiciel-de-recrutement-pour-eti-benefices-rh/featured-33866.jpg
 status: draft
 min_words: 1300
 show_toc: true
